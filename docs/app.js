@@ -7,7 +7,14 @@
   const CONFIG_PATH = "config/searches.json";
   const STATUS_PATH = "docs/data/status.json";
   const DEALS_PATH = "docs/data/deals.json";
-  const TOKEN_KEY = "tarifa-radar-panel-key";
+  const ACCESS_KEY_STORAGE = "tarifa-radar-panel-key";
+  const TOKEN_VAULT = {
+    salt: "JVjEw2MYf1z15nqoGYMyAQ==",
+    iv: "bTZ51FpHrrHWjWC9",
+    ciphertext:
+      "metpSPyAb7GcM3x8P/wFLwxr0OS47BPxI8qZcVwwnNQHS/WN0kSZ/2M1i3hEO0ZnZEeAKtddSSM3hqzVjjPJzKv4tKP11zeyuIt4VJ5C+kOVPo4pmtZ2vI2kdCPIgQ+BvUv/TP5D5pQjR53ACg==",
+    iterations: 250000,
+  };
 
   const propertyOptions = [
     ["hotel", "Hotel"],
@@ -41,7 +48,8 @@
   ];
 
   const state = {
-    token: localStorage.getItem(TOKEN_KEY) || "",
+    accessKey: localStorage.getItem(ACCESS_KEY_STORAGE) || "",
+    token: "",
     config: { version: 1, monitors: [] },
     status: { summary: {}, monitors: {}, alerts: [] },
     deals: { deals: [] },
@@ -145,6 +153,44 @@
       character.charCodeAt(0),
     );
     return new TextDecoder().decode(bytes);
+  }
+
+  function base64Bytes(value) {
+    return Uint8Array.from(atob(value), (character) =>
+      character.charCodeAt(0),
+    );
+  }
+
+  async function decryptPanelToken(accessKey) {
+    const encoder = new TextEncoder();
+    const material = await crypto.subtle.importKey(
+      "raw",
+      encoder.encode(accessKey),
+      "PBKDF2",
+      false,
+      ["deriveKey"],
+    );
+    const key = await crypto.subtle.deriveKey(
+      {
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt: base64Bytes(TOKEN_VAULT.salt),
+        iterations: TOKEN_VAULT.iterations,
+      },
+      material,
+      { name: "AES-GCM", length: 256 },
+      false,
+      ["decrypt"],
+    );
+    const decrypted = await crypto.subtle.decrypt(
+      {
+        name: "AES-GCM",
+        iv: base64Bytes(TOKEN_VAULT.iv),
+      },
+      key,
+      base64Bytes(TOKEN_VAULT.ciphertext),
+    );
+    return new TextDecoder().decode(decrypted);
   }
 
   async function apiFetch(pathname, options = {}) {
@@ -900,34 +946,37 @@
 
   async function login(event) {
     event.preventDefault();
-    const token = $("#access-key").value.trim();
+    const accessKey = $("#access-key").value.trim();
     $("#login-error").textContent = "";
-    if (!token) return;
-    state.token = token;
+    if (!accessKey) return;
     setBusy(true);
     try {
+      state.token = await decryptPanelToken(accessKey);
       const repo = await apiFetch(`/repos/${OWNER}/${REPO}`);
       if (!repo.permissions?.push) {
         throw new Error("La clave no tiene permiso para guardar búsquedas.");
       }
-      localStorage.setItem(TOKEN_KEY, token);
+      state.accessKey = accessKey;
+      localStorage.setItem(ACCESS_KEY_STORAGE, accessKey);
       await loadAll();
       showApp();
     } catch (error) {
+      state.accessKey = "";
       state.token = "";
-      localStorage.removeItem(TOKEN_KEY);
+      localStorage.removeItem(ACCESS_KEY_STORAGE);
       $("#login-error").textContent =
         error.status === 401 || error.status === 404
           ? "La clave no es válida."
-          : error.message;
+          : "La clave no es válida.";
     } finally {
       setBusy(false);
     }
   }
 
   function logout() {
+    state.accessKey = "";
     state.token = "";
-    localStorage.removeItem(TOKEN_KEY);
+    localStorage.removeItem(ACCESS_KEY_STORAGE);
     showLogin();
   }
 
@@ -976,11 +1025,12 @@
     state.draft = defaultMonitor();
     fillEditor();
     refreshIcons();
-    if (!state.token) {
+    if (!state.accessKey) {
       showLogin();
       return;
     }
     try {
+      state.token = await decryptPanelToken(state.accessKey);
       await loadAll();
       showApp();
     } catch {
