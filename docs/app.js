@@ -255,7 +255,7 @@
       : "GitHub Actions";
     $("#sync-badge").classList.add("ready");
     $("#sync-badge").innerHTML =
-      '<i data-lucide="cloud-check"></i> Sincronizado';
+      '<i data-lucide="cloud"></i> Sincronizado';
     $("#github-status").textContent = updatedAt
       ? `Último ciclo: ${formatDateTime(updatedAt)}.`
       : "Escáner gratuito programado.";
