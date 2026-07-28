@@ -1,0 +1,48 @@
+name: Tarifa Radar - busqueda gratuita
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/5 * * * *"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: free-hotel-scan
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    container:
+      image: mcr.microsoft.com/playwright:v1.60.0-noble
+    env:
+      SEARCH_CONFIG_JSON: ${{ secrets.SEARCH_CONFIG_JSON }}
+      PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
+
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Validar configuracion privada
+        shell: bash
+        run: |
+          if [ -z "$SEARCH_CONFIG_JSON" ]; then
+            echo "Falta el secreto SEARCH_CONFIG_JSON."
+            exit 1
+          fi
+          mkdir -p config output
+          printf '%s' "$SEARCH_CONFIG_JSON" > config/runtime.json
+
+      - name: Instalar el scraper
+        run: npm install --no-audit --no-fund
+
+      - name: Buscar precios
+        run: >
+          xvfb-run -a node src/cli.cjs
+          --config config/runtime.json
+          --output output/latest.json
+          --headed
+          --summary
