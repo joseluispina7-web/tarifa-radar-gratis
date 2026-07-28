@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#10201b" />
+    <title>Tarifa Radar</title>
+    <meta
+      name="description"
+      content="Panel independiente para vigilar tarifas de hoteles."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./vendor/lucide.min.js" defer></script>
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <main id="login-view" class="access-page">
+      <section class="access-panel" aria-labelledby="access-title">
+        <span class="access-mark"><i data-lucide="radar"></i></span>
+        <p class="eyebrow">Panel independiente</p>
+        <h1 id="access-title">Tarifa Radar</h1>
+        <p class="access-copy">Acceso privado para gestionar tus búsquedas.</p>
+        <form id="login-form">
+          <label>
+            <span>Clave del panel</span>
+            <span class="access-input">
+              <i data-lucide="key-round"></i>
+              <input
+                id="access-key"
+                name="accessKey"
+                type="password"
+                autocomplete="current-password"
+                required
+              />
+            </span>
+          </label>
+          <p id="login-error" class="form-error" role="alert"></p>
+          <button class="primary-button" type="submit">
+            <i data-lucide="log-in"></i>
+            Entrar
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <div id="app-view" class="app-shell hidden">
+      <aside id="sidebar" class="sidebar">
+        <div class="brand">
+          <span class="brand-mark"><i data-lucide="radar"></i></span>
+          <div>
+            <strong>Tarifa Radar</strong>
+            <span>Hotel scanner</span>
+          </div>
+        </div>
+        <nav class="primary-nav" aria-label="Secciones">
+          <button class="nav-button active" data-view="monitors">
+            <i data-lucide="layout-dashboard"></i>
+            <span>Búsquedas</span>
+            <b id="monitor-count" class="nav-count">0</b>
+          </button>
+          <button class="nav-button" data-view="deals">
+            <i data-lucide="circle-dollar-sign"></i>
+            <span>Ofertas</span>
+            <b id="deal-count" class="nav-count">0</b>
+          </button>
+          <button class="nav-button" data-view="connections">
+            <i data-lucide="radio-tower"></i>
+            <span>Conexiones</span>
+          </button>
+        </nav>
+        <div class="sidebar-status">
+          <span id="scanner-dot" class="status-dot"></span>
+          <div>
+            <strong id="scanner-label">Sin datos</strong>
+            <span id="scanner-time">GitHub Actions</span>
+          </div>
+        </div>
+      </aside>
+
+      <section class="workspace">
+        <header class="topbar">
+          <button
+            id="menu-button"
+            class="icon-button mobile-menu"
+            type="button"
+            title="Abrir menú"
+          >
+            <i data-lucide="menu"></i>
+          </button>
+          <div class="topbar-copy">
+            <span>Panel de control</span>
+            <strong id="view-title">Búsquedas guardadas</strong>
+          </div>
+          <div class="topbar-actions">
+            <span id="sync-badge" class="connection-badge">
+              <i data-lucide="cloud-off"></i>
+              Sin sincronizar
+            </span>
+            <button
+              id="refresh-button"
+              class="icon-button"
+              type="button"
+              title="Actualizar"
+            >
+              <i data-lucide="refresh-cw"></i>
+            </button>
+            <button
+              id="logout-button"
+              class="icon-button"
+              type="button"
+              title="Cerrar sesión"
+            >
+              <i data-lucide="log-out"></i>
+            </button>
+            <button id="new-monitor-button" class="primary-button" type="button">
+              <i data-lucide="plus"></i>
+              Nueva búsqueda
+            </button>
+          </div>
+        </header>
+
+        <div id="loading-line" class="loading-line hidden"></div>
+        <div id="toast" class="toast hidden" role="status"></div>
+
+        <div class="content">
+          <section id="monitors-view" class="view active">
+            <div class="page-heading">
+              <div>
+                <p class="eyebrow">Vigilancia automática</p>
+                <h1>Precios que encajan contigo</h1>
+                <p id="monitor-subtitle">Configura destinos, fechas y presupuesto.</p>
+              </div>
+              <div class="headline-signal">
+                <i data-lucide="activity"></i>
+                <span id="active-count">0</span>
+                <small>activas</small>
+              </div>
+            </div>
+
+            <div class="stats-band">
+              <div>
+                <span class="stat-icon lime"><i data-lucide="search"></i></span>
+                <strong id="stat-searches">0</strong>
+                <p>consultas en el último ciclo</p>
+              </div>
+              <div>
+                <span class="stat-icon coral"><i data-lucide="hotel"></i></span>
+                <strong id="stat-offers">0</strong>
+                <p>alojamientos revisados</p>
+              </div>
+              <div>
+                <span class="stat-icon blue"><i data-lucide="badge-euro"></i></span>
+                <strong id="stat-matches">0</strong>
+                <p>ofertas que cumplen filtros</p>
+              </div>
+              <div>
+                <span class="stat-icon dark"><i data-lucide="clock-3"></i></span>
+                <strong>5 min</strong>
+                <p>frecuencia mínima</p>
+              </div>
+            </div>
+
+            <div class="monitor-layout">
+              <section class="monitor-list">
+                <header class="section-heading">
+                  <div>
+                    <p class="eyebrow">Monitores</p>
+                    <h2>Tus búsquedas</h2>
+                  </div>
+                  <button
+                    id="compact-new-button"
+                    class="icon-button"
+                    type="button"
+                    title="Nueva búsqueda"
+                  >
+                    <i data-lucide="plus"></i>
+                  </button>
+                </header>
+                <div id="monitor-list" class="monitor-items"></div>
+              </section>
+
+              <form id="monitor-form" class="monitor-editor" autocomplete="off">
+                <header class="editor-header">
+                  <div>
+                    <p class="eyebrow">Configuración</p>
+                    <h2 id="editor-title">Nueva búsqueda</h2>
+                  </div>
+                  <span id="editor-status" class="large-status ready">Activa</span>
+                </header>
+
+                <fieldset class="form-section">
+                  <legend>Destino verificado</legend>
+                  <div class="two-columns destination-grid">
+                    <label>
+                      <span>Nombre de la búsqueda</span>
+                      <input id="monitor-name" name="name" required />
+                    </label>
+                    <label class="location-search">
+                      <span>Ciudad, región o país</span>
+                      <span class="input-with-icon">
+                        <i data-lucide="map-pin"></i>
+                        <input
+                          id="location-query"
+                          name="location"
+                          aria-autocomplete="list"
+                          required
+                        />
+                      </span>
+                      <div
+                        id="location-results"
+                        class="location-results hidden"
+                        role="listbox"
+                      ></div>
+                    </label>
+                  </div>
+                  <p id="location-confirmed" class="location-confirmed"></p>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Fechas y duración</legend>
+                  <div class="segmented">
+                    <button type="button" data-date-mode="flexible">Fechas flexibles</button>
+                    <button type="button" data-date-mode="fixed">Fechas exactas</button>
+                  </div>
+                  <div id="flexible-fields" class="number-grid three">
+                    <label>
+                      <span>Noches mínimas</span>
+                      <input id="min-nights" type="number" min="1" max="30" />
+                    </label>
+                    <label>
+                      <span>Noches máximas</span>
+                      <input id="max-nights" type="number" min="1" max="30" />
+                    </label>
+                    <label>
+                      <span>Ventana</span>
+                      <select id="window-days">
+                        <option value="30">30 días</option>
+                        <option value="90">90 días</option>
+                        <option value="180">180 días</option>
+                        <option value="365">365 días</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div id="fixed-fields" class="two-columns hidden">
+                    <label>
+                      <span>Entrada</span>
+                      <input id="date-start" type="date" />
+                    </label>
+                    <label>
+                      <span>Salida</span>
+                      <input id="date-end" type="date" />
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Presupuesto</legend>
+                  <div class="number-grid two">
+                    <label>
+                      <span>Máximo total</span>
+                      <span class="suffix-input">
+                        <input id="max-total" type="number" min="0" step="1" />
+                        <b>€</b>
+                      </span>
+                    </label>
+                    <label>
+                      <span>Máximo por noche</span>
+                      <span class="suffix-input">
+                        <input id="max-nightly" type="number" min="0" step="1" />
+                        <b>€</b>
+                      </span>
+                    </label>
+                  </div>
+                  <label class="inline-field">
+                    <span>Cumplir</span>
+                    <select id="price-match">
+                      <option value="any">Uno de los dos límites</option>
+                      <option value="both">Los dos límites</option>
+                    </select>
+                  </label>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Calidad y condiciones</legend>
+                  <span class="field-label">Estrellas mínimas</span>
+                  <div id="star-picker" class="star-picker"></div>
+                  <div class="number-grid two compact">
+                    <label>
+                      <span>Nota mínima</span>
+                      <select id="guest-rating">
+                        <option value="0">Cualquiera</option>
+                        <option value="6">6 o más</option>
+                        <option value="7">7 o más</option>
+                        <option value="8">8 o más</option>
+                        <option value="9">9 o más</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span>Distancia máxima</span>
+                      <select id="max-distance">
+                        <option value="0">Cualquiera</option>
+                        <option value="1">1 km</option>
+                        <option value="3">3 km</option>
+                        <option value="5">5 km</option>
+                        <option value="10">10 km</option>
+                        <option value="25">25 km</option>
+                      </select>
+                    </label>
+                  </div>
+                  <div class="condition-grid">
+                    <label class="binary-option">
+                      <input id="free-cancellation" type="checkbox" />
+                      <span>
+                        <strong>Cancelación gratuita</strong>
+                        <small>Solo tarifas que la indiquen</small>
+                      </span>
+                    </label>
+                    <label>
+                      <span>Régimen mínimo</span>
+                      <select id="meal-plan">
+                        <option value="any">Cualquiera</option>
+                        <option value="breakfast">Desayuno incluido</option>
+                        <option value="half_board">Media pensión</option>
+                        <option value="all_inclusive">Todo incluido</option>
+                      </select>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Tipo de alojamiento</legend>
+                  <div id="property-types" class="option-grid property-grid"></div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Servicios obligatorios</legend>
+                  <div id="amenities" class="option-grid amenity-grid"></div>
+                </fieldset>
+
+                <fieldset class="form-section">
+                  <legend>Viajeros y frecuencia</legend>
+                  <div class="number-grid four">
+                    <label>
+                      <span>Adultos</span>
+                      <input id="adults" type="number" min="1" max="20" />
+                    </label>
+                    <label>
+                      <span>Niños</span>
+                      <input id="children" type="number" min="0" max="12" />
+                    </label>
+                    <label>
+                      <span>Habitaciones</span>
+                      <input id="rooms" type="number" min="1" max="10" />
+                    </label>
+                    <label>
+                      <span>Cada</span>
+                      <select id="interval-minutes">
+                        <option value="5">5 min</option>
+                        <option value="10">10 min</option>
+                        <option value="15">15 min</option>
+                        <option value="30">30 min</option>
+                        <option value="60">1 hora</option>
+                      </select>
+                    </label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="form-section bottom-fields">
+                  <legend>Buscadores</legend>
+                  <div id="source-grid" class="source-grid"></div>
+                </fieldset>
+
+                <div id="rule-preview" class="rule-preview"></div>
+                <p id="form-error" class="form-error editor-error"></p>
+                <footer class="editor-actions">
+                  <button id="delete-button" class="secondary-button danger-text" type="button">
+                    <i data-lucide="trash-2"></i>
+                    Eliminar
+                  </button>
+                  <span class="action-spacer"></span>
+                  <label class="active-switch">
+                    <input id="monitor-active" type="checkbox" />
+                    <span>Activa</span>
+                  </label>
+                  <button class="primary-button" type="submit">
+                    <i data-lucide="save"></i>
+                    Guardar y buscar
+                  </button>
+                </footer>
+              </form>
+            </div>
+
+            <section class="manual-searches">
+              <header class="section-heading">
+                <div>
+                  <p class="eyebrow">Comparación manual</p>
+                  <h2>Abrir la búsqueda seleccionada</h2>
+                </div>
+              </header>
+              <div id="manual-links" class="manual-list"></div>
+            </section>
+          </section>
+
+          <section id="deals-view" class="view">
+            <div class="page-heading compact-heading">
+              <div>
+                <p class="eyebrow">Resultados recientes</p>
+                <h1>Ofertas encontradas</h1>
+              </div>
+            </div>
+            <div id="deals-table" class="deals-table"></div>
+          </section>
+
+          <section id="connections-view" class="view">
+            <div class="page-heading compact-heading">
+              <div>
+                <p class="eyebrow">Estado técnico</p>
+                <h1>Conexiones</h1>
+              </div>
+            </div>
+            <div class="connections-grid">
+              <article class="connection-panel">
+                <div class="connection-heading">
+                  <span class="connection-icon github">
+                    <i data-lucide="github"></i>
+                  </span>
+                  <span class="large-status ready">Conectado</span>
+                </div>
+                <h2>GitHub Actions</h2>
+                <p id="github-status">Escáner gratuito programado.</p>
+                <a
+                  class="secondary-button"
+                  href="https://github.com/joseluispina7-web/tarifa-radar-gratis/actions"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <i data-lucide="external-link"></i>
+                  Ver ejecuciones
+                </a>
+              </article>
+              <article class="connection-panel">
+                <div class="connection-heading">
+                  <span class="connection-icon telegram">
+                    <i data-lucide="send"></i>
+                  </span>
+                  <span class="large-status">Pendiente</span>
+                </div>
+                <h2>Telegram</h2>
+                <p>La salida de ofertas está preparada para conectar el bot.</p>
+              </article>
+              <article class="connection-panel">
+                <div class="connection-heading">
+                  <span class="connection-icon free">
+                    <i data-lucide="shield-check"></i>
+                  </span>
+                  <span class="large-status ready">0 €</span>
+                </div>
+                <h2>Infraestructura</h2>
+                <p>GitHub Pages y GitHub Actions. Sin Google Cloud.</p>
+              </article>
+            </div>
+          </section>
+        </div>
+      </section>
+      <button id="sidebar-scrim" class="sidebar-scrim hidden" type="button"></button>
+    </div>
+  </body>
+</html>

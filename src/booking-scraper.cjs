@@ -47,7 +47,19 @@ function normalizeSearch(input = {}) {
     priceRule: input.priceRule === "and" ? "and" : "or",
     minStars: clampNumber(input.minStars, 0, 5, 0),
     guestRatingMin: clampNumber(input.guestRatingMin, 0, 10, 0),
+    maxDistanceKm: clampNumber(input.maxDistanceKm, 0, 100, 0),
     freeCancellation: input.freeCancellation === true,
+    mealPlan: ["breakfast", "half_board", "all_inclusive"].includes(
+      input.mealPlan,
+    )
+      ? input.mealPlan
+      : "any",
+    propertyTypes: Array.isArray(input.propertyTypes)
+      ? input.propertyTypes.map(String)
+      : [],
+    amenities: Array.isArray(input.amenities)
+      ? input.amenities.map(String)
+      : [],
     excludeSharedRooms: input.excludeSharedRooms !== false,
     maxResults: clampNumber(input.maxResults, 1, 100, 30),
   };
@@ -130,6 +142,51 @@ function parseStars(value) {
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
 
+function parseDistanceKm(value) {
+  const text = String(value || "").replace(",", ".");
+  const kilometerMatch = text.match(/(\d+(?:\.\d+)?)\s*km\s+del centro/i);
+  if (kilometerMatch) return Number(kilometerMatch[1]);
+  const meterMatch = text.match(/(\d+)\s*m\s+del centro/i);
+  if (meterMatch) return Math.round((Number(meterMatch[1]) / 1000) * 100) / 100;
+  return 0;
+}
+
+function detectPropertyType(value) {
+  const text = String(value || "");
+  if (/apartamento|aparthotel|apartahotel/i.test(text)) return "apartment";
+  if (/resort/i.test(text)) return "resort";
+  if (/casa rural|agroturismo/i.test(text)) return "rural";
+  if (/hostal|hostel|albergue|pensi[oó]n|guest house/i.test(text)) return "hostel";
+  return "hotel";
+}
+
+function detectAmenities(value) {
+  const text = String(value || "");
+  const matches = [
+    ["pool", /piscina/i],
+    ["spa", /\bspa\b|baño turco|sauna/i],
+    ["parking", /parking|aparcamiento/i],
+    ["beach", /playa|frente al mar/i],
+    ["breakfast", /desayuno incluido/i],
+    ["pets", /admite mascotas|mascotas permitidas/i],
+    ["air_conditioning", /aire acondicionado/i],
+    ["family_rooms", /habitaciones familiares/i],
+    ["all_inclusive", /todo incluido/i],
+    ["gym", /gimnasio|centro de fitness/i],
+  ];
+  return matches
+    .filter(([, pattern]) => pattern.test(text))
+    .map(([amenity]) => amenity);
+}
+
+function detectMealPlan(value) {
+  const text = String(value || "");
+  if (/todo incluido/i.test(text)) return "all_inclusive";
+  if (/media pensi[oó]n/i.test(text)) return "half_board";
+  if (/desayuno incluido/i.test(text)) return "breakfast";
+  return "any";
+}
+
 function sanitizeBookingUrl(value, search) {
   try {
     const original = new URL(value);
@@ -174,6 +231,34 @@ function matchesSearch(offer, search) {
     return false;
   }
   if (search.freeCancellation && !offer.freeCancellation) return false;
+  if (
+    search.maxDistanceKm > 0 &&
+    (!offer.distanceKm || offer.distanceKm > search.maxDistanceKm)
+  ) {
+    return false;
+  }
+  if (
+    search.mealPlan !== "any" &&
+    offer.mealPlan !== search.mealPlan &&
+    !(
+      search.mealPlan === "breakfast" &&
+      offer.amenities?.includes("breakfast")
+    )
+  ) {
+    return false;
+  }
+  if (
+    search.propertyTypes.length > 0 &&
+    !search.propertyTypes.includes(offer.propertyType)
+  ) {
+    return false;
+  }
+  if (
+    search.amenities.length > 0 &&
+    !search.amenities.every((amenity) => offer.amenities?.includes(amenity))
+  ) {
+    return false;
+  }
   if (search.excludeSharedRooms && offer.sharedRoom) return false;
   return true;
 }
@@ -230,9 +315,13 @@ async function extractVisibleCards(page, search) {
       stars: parseStars(card.starLabel),
       guestRating: parseReviewScore(card.reviewText),
       reviewCount: parseReviewCount(card.reviewText),
+      distanceKm: parseDistanceKm(`${card.address}\n${card.text}`),
       freeCancellation: /cancelaci[oó]n gratis/i.test(card.text),
       breakfastIncluded: /desayuno incluido/i.test(card.text),
       limitedAvailability: /nos quedan \d+/i.test(card.text),
+      propertyType: detectPropertyType(`${card.title}\n${card.text}`),
+      amenities: detectAmenities(card.text),
+      mealPlan: detectMealPlan(card.text),
       roomName,
       sharedRoom: isSharedRoomText(`${roomName}\n${card.text}`),
       url: sanitizeBookingUrl(card.href, search),
@@ -300,11 +389,15 @@ async function scrapeBooking(input, options = {}) {
 
 module.exports = {
   buildBookingSearchUrl,
+  detectAmenities,
+  detectMealPlan,
+  detectPropertyType,
   isSharedRoomText,
   matchesSearch,
   nightsBetween,
   normalizeSearch,
   parseEuroPrice,
+  parseDistanceKm,
   parseLocalizedNumber,
   parseReviewCount,
   parseReviewScore,

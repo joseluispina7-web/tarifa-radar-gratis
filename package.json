@@ -5,6 +5,8 @@
   "description": "Buscador gratuito de precios de hoteles con Playwright",
   "scripts": {
     "scan": "node src/cli.cjs",
+    "scan:remote": "node src/remote-scan.cjs",
+    "scan:repository": "node src/repository-scan.cjs",
     "test": "node --test test/*.test.cjs"
   },
   "dependencies": {

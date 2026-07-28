@@ -2,16 +2,25 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
   buildBookingSearchUrl,
+  detectAmenities,
+  detectMealPlan,
+  detectPropertyType,
   isSharedRoomText,
   matchesSearch,
   nightsBetween,
   normalizeSearch,
+  parseDistanceKm,
   parseEuroPrice,
   parseReviewCount,
   parseReviewScore,
   parseStars,
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
+const {
+  buildMonitorSearches,
+  monitorIsDue,
+  monitorToSearch,
+} = require("../src/remote-scan.cjs");
 
 const searchInput = {
   destination: { query: "Madrid", label: "Madrid, España" },
@@ -98,6 +107,115 @@ test("excludes shared beds by default but can include them explicitly", () => {
       normalizeSearch({ ...searchInput, excludeSharedRooms: false }),
     ),
     true,
+  );
+});
+
+test("extracts useful card details for panel filters", () => {
+  const text =
+    "Hostal junto a la playa con piscina, parking y desayuno incluido";
+  assert.equal(detectPropertyType(text), "hostel");
+  assert.deepEqual(detectAmenities(text), [
+    "pool",
+    "parking",
+    "beach",
+    "breakfast",
+  ]);
+  assert.equal(detectMealPlan(text), "breakfast");
+  assert.equal(parseDistanceKm("A 750 m del centro"), 0.75);
+  assert.equal(parseDistanceKm("A 2,4 km del centro"), 2.4);
+});
+
+test("applies distance, property, meal and amenity filters", () => {
+  const filteredSearch = normalizeSearch({
+    ...searchInput,
+    maxDistanceKm: 3,
+    propertyTypes: ["hotel"],
+    mealPlan: "breakfast",
+    amenities: ["pool", "parking"],
+  });
+  const matchingOffer = {
+    totalPrice: 120,
+    nightlyPrice: 30,
+    stars: 0,
+    guestRating: 8,
+    distanceKm: 2.4,
+    freeCancellation: false,
+    mealPlan: "breakfast",
+    propertyType: "hotel",
+    amenities: ["breakfast", "pool", "parking"],
+    sharedRoom: false,
+  };
+  assert.equal(matchesSearch(matchingOffer, filteredSearch), true);
+  assert.equal(
+    matchesSearch({ ...matchingOffer, distanceKm: 4 }, filteredSearch),
+    false,
+  );
+  assert.equal(
+    matchesSearch({ ...matchingOffer, propertyType: "hostel" }, filteredSearch),
+    false,
+  );
+  assert.equal(
+    matchesSearch(
+      { ...matchingOffer, amenities: ["breakfast", "pool"] },
+      filteredSearch,
+    ),
+    false,
+  );
+});
+
+test("turns panel monitors into fixed or rotating exact searches", () => {
+  const now = new Date("2026-07-29T00:00:00Z");
+  assert.deepEqual(
+    buildMonitorSearches(
+      {
+        id: 1,
+        dateMode: "fixed",
+        dateStart: "2026-08-23",
+        dateEnd: "2026-08-27",
+      },
+      now,
+    ),
+    [{ checkIn: "2026-08-23", checkOut: "2026-08-27" }],
+  );
+
+  const searches = buildMonitorSearches(
+    {
+      id: 2,
+      dateMode: "flexible",
+      windowDays: 90,
+      minNights: 4,
+      maxNights: 7,
+    },
+    now,
+  );
+  assert.equal(searches.length, 2);
+  assert.notDeepEqual(searches[0], searches[1]);
+
+  const search = monitorToSearch(
+    {
+      id: 2,
+      name: "Madrid",
+      location: "Madrid",
+      adults: 2,
+      children: 0,
+      rooms: 1,
+      maxTotal: 150,
+      maxNightly: 30,
+      priceMatch: "both",
+      minStars: 0,
+      guestRatingMin: 0,
+      freeCancellation: false,
+    },
+    searches[0],
+  );
+  assert.equal(search.priceRule, "and");
+  assert.equal(monitorIsDue({ intervalMinutes: 5, lastScanAt: null }, now), true);
+  assert.equal(
+    monitorIsDue(
+      { intervalMinutes: 15, lastScanAt: "2026-07-28 23:55:00" },
+      now,
+    ),
+    false,
   );
 });
 

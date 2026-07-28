@@ -1,39 +1,44 @@
-# Tarifa Radar - scraper gratuito
+# Tarifa Radar
 
-Primera fuente: Booking, consultada con un navegador Playwright sin API,
-cuenta de afiliado ni credenciales.
+Panel independiente y escáner gratuito de tarifas de hoteles.
 
-## Ejecutar una prueba
+## Arquitectura
+
+- `docs/`: panel estático publicado con GitHub Pages.
+- `config/searches.json`: búsquedas creadas desde el panel.
+- `src/repository-scan.cjs`: escáner automático.
+- `docs/data/`: estado y ofertas visibles en el panel.
+- `.github/workflows/free-hotel-scan.yml`: ciclo programado.
+
+El panel usa una clave de GitHub limitada a este repositorio para leer y
+guardar la configuración. La clave permanece en el navegador del usuario. No
+depende de una cuenta de ChatGPT ni de Google Cloud.
+
+## Búsqueda automática
+
+Booking es la primera fuente automática. El escáner usa Playwright sin API,
+cuenta de afiliado ni credenciales de Booking. Admite:
+
+- destino verificado con coordenadas;
+- fechas exactas o flexibles;
+- noches mínimas y máximas;
+- presupuesto total y por noche;
+- alojamientos con o sin estrellas;
+- valoración, distancia, cancelación y régimen;
+- tipo de alojamiento y servicios visibles en la ficha;
+- adultos, niños, habitaciones y frecuencia.
+
+Los demás comparadores aparecen como enlaces manuales desde el panel. No se
+intenta evitar CAPTCHA ni otras protecciones del sitio.
+
+## Ejecución local
 
 ```powershell
+npm install
+npm test
 node src/cli.cjs --config config/madrid-test.json --headed
+node src/repository-scan.cjs
 ```
 
-La salida incluye todos los alojamientos visibles, los que cumplen el
-presupuesto y el precio más barato observado.
-
-## Alcance inicial
-
-- Destino y fechas exactas.
-- Adultos, niños y habitaciones.
-- Presupuesto total o por noche.
-- Estrellas, valoración y cancelación gratuita.
-- Exclusión de camas y dormitorios compartidos (activada por defecto).
-- Precio total, precio por noche, puntuación y enlace de reserva.
-
-No se intenta evitar CAPTCHA ni otras protecciones del sitio. Si Booking
-bloquea la consulta, la ejecución falla de forma visible y no genera una
-oferta falsa.
-
-## Ejecución gratuita
-
-Esta carpeta es un repositorio independiente: no hace falta publicar el panel
-ni ningún proyecto de Google Cloud. El flujo
-`.github/workflows/free-hotel-scan.yml` está preparado para un repositorio
-público de GitHub. Se ejecuta aproximadamente cada cinco minutos en el
-contenedor oficial de Playwright y usa un navegador con pantalla virtual.
-GitHub puede retrasar alguna ejecución programada; no es un servicio con horario
-garantizado.
-
-La búsqueda real debe guardarse como el secreto `SEARCH_CONFIG_JSON`. El
-repositorio solo contiene una configuración de prueba, no credenciales.
+GitHub puede retrasar alguna ejecución programada. El cron de cinco minutos es
+la frecuencia solicitada, no una garantía de hora exacta.

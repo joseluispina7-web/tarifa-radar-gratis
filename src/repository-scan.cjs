@@ -1,0 +1,248 @@
+const fs = require("node:fs");
+const path = require("node:path");
+const { scrapeBooking } = require("./booking-scraper.cjs");
+const {
+  buildMonitorSearches,
+  monitorIsDue,
+  monitorToSearch,
+} = require("./remote-scan.cjs");
+
+function readJson(filePath, fallback) {
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf8"));
+  } catch {
+    return fallback;
+  }
+}
+
+function writeJson(filePath, value) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
+}
+
+function updateOfferState(previous = {}, offer, searchedAt) {
+  return {
+    hotelName: offer.hotelName,
+    totalPrice: offer.totalPrice,
+    nightlyPrice: offer.nightlyPrice,
+    matches: offer.matches,
+    firstSeenAt: previous.firstSeenAt || searchedAt,
+    lastSeenAt: searchedAt,
+  };
+}
+
+function mergeDeal(previousDeals, monitor, offer, searchedAt) {
+  const dealId = `${monitor.id}:${offer.id}`;
+  const previous = previousDeals.get(dealId);
+  previousDeals.set(dealId, {
+    id: dealId,
+    monitorId: monitor.id,
+    monitorName: monitor.name,
+    hotelName: offer.hotelName,
+    location: monitor.location,
+    address: offer.address,
+    checkIn: offer.checkIn,
+    checkOut: offer.checkOut,
+    nights: offer.nights,
+    totalPrice: offer.totalPrice,
+    nightlyPrice: offer.nightlyPrice,
+    stars: offer.stars,
+    guestRating: offer.guestRating,
+    reviewCount: offer.reviewCount,
+    distanceKm: offer.distanceKm,
+    freeCancellation: offer.freeCancellation,
+    mealPlan: offer.mealPlan,
+    propertyType: offer.propertyType,
+    amenities: offer.amenities,
+    source: offer.source,
+    url: offer.url,
+    firstSeenAt: previous?.firstSeenAt || searchedAt,
+    updatedAt: searchedAt,
+  });
+}
+
+async function runRepositoryScan(options = {}) {
+  const root = path.resolve(options.root || process.cwd());
+  const configPath = path.resolve(
+    root,
+    options.configPath || "config/searches.json",
+  );
+  const statePath = path.resolve(
+    root,
+    options.statePath || "state/repository-state.json",
+  );
+  const dealsPath = path.resolve(
+    root,
+    options.dealsPath || "docs/data/deals.json",
+  );
+  const statusPath = path.resolve(
+    root,
+    options.statusPath || "docs/data/status.json",
+  );
+  const config = readJson(configPath, { monitors: [] });
+  const previousState = readJson(statePath, {
+    version: 1,
+    monitors: {},
+  });
+  const previousDeals = readJson(dealsPath, { deals: [] });
+  const now = options.now || new Date();
+  const monitors = (config.monitors || [])
+    .filter((monitor) => monitor.active)
+    .filter((monitor) => monitor.sources?.includes("booking"))
+    .filter((monitor) =>
+      monitorIsDue(
+        {
+          ...monitor,
+          lastScanAt: previousState.monitors?.[monitor.id]?.lastScanAt,
+        },
+        now,
+      ),
+    )
+    .slice(0, 10);
+  const nextState = {
+    version: 1,
+    updatedAt: now.toISOString(),
+    monitors: { ...(previousState.monitors || {}) },
+  };
+  const dealMap = new Map(
+    (previousDeals.deals || []).map((deal) => [deal.id, deal]),
+  );
+  const monitorStatus = {};
+  const alerts = [];
+  const summary = {
+    generatedAt: now.toISOString(),
+    monitors: monitors.length,
+    searches: 0,
+    offers: 0,
+    matches: 0,
+    newMatches: 0,
+    priceDrops: 0,
+    errors: [],
+  };
+
+  for (const monitor of monitors) {
+    const beforeMonitor = nextState.monitors[monitor.id] || { offers: {} };
+    const nextOffers = { ...(beforeMonitor.offers || {}) };
+    const status = {
+      monitorId: monitor.id,
+      monitorName: monitor.name,
+      lastScanAt: now.toISOString(),
+      lastSuccessAt: beforeMonitor.lastSuccessAt || null,
+      searches: 0,
+      offers: 0,
+      matches: 0,
+      error: "",
+    };
+
+    for (const dates of buildMonitorSearches(monitor, now)) {
+      summary.searches += 1;
+      status.searches += 1;
+      try {
+        const result = await scrapeBooking(monitorToSearch(monitor, dates), {
+          headless: options.headless !== false,
+        });
+        status.lastSuccessAt = result.searchedAt;
+        status.offers += result.offers.length;
+        status.matches += result.matchingOffers.length;
+        summary.offers += result.offers.length;
+        summary.matches += result.matchingOffers.length;
+
+        for (const offer of result.offers) {
+          const offerKey = `${monitor.id}:${offer.id}`;
+          const before = nextOffers[offerKey];
+          if (
+            offer.matches &&
+            (!before || !before.matches || offer.totalPrice < before.totalPrice)
+          ) {
+            const type = before ? "price_drop" : "new_match";
+            alerts.push({
+              type,
+              monitorId: monitor.id,
+              monitorName: monitor.name,
+              previousPrice: before?.totalPrice || 0,
+              offer,
+              createdAt: result.searchedAt,
+            });
+            if (type === "price_drop") summary.priceDrops += 1;
+            else summary.newMatches += 1;
+          }
+          nextOffers[offerKey] = updateOfferState(
+            before,
+            offer,
+            result.searchedAt,
+          );
+          if (offer.matches) {
+            mergeDeal(dealMap, monitor, offer, result.searchedAt);
+          }
+        }
+      } catch (error) {
+        const message = error instanceof Error ? error.message : String(error);
+        status.error = message;
+        summary.errors.push({
+          monitorId: monitor.id,
+          monitorName: monitor.name,
+          dates,
+          message,
+        });
+      }
+    }
+
+    nextState.monitors[monitor.id] = {
+      lastScanAt: now.toISOString(),
+      lastSuccessAt: status.lastSuccessAt,
+      offers: nextOffers,
+    };
+    monitorStatus[monitor.id] = status;
+  }
+
+  const sevenDaysAgo = now.getTime() - 7 * 86_400_000;
+  const deals = Array.from(dealMap.values())
+    .filter((deal) => Date.parse(deal.updatedAt) >= sevenDaysAgo)
+    .sort(
+      (left, right) =>
+        left.totalPrice - right.totalPrice ||
+        Date.parse(right.updatedAt) - Date.parse(left.updatedAt),
+    )
+    .slice(0, 300);
+  const status = {
+    version: 1,
+    updatedAt: now.toISOString(),
+    summary,
+    monitors: monitorStatus,
+    alerts: alerts.slice(0, 100),
+  };
+
+  writeJson(statePath, nextState);
+  writeJson(dealsPath, {
+    version: 1,
+    updatedAt: now.toISOString(),
+    deals,
+  });
+  writeJson(statusPath, status);
+
+  return { summary, deals, status };
+}
+
+if (require.main === module) {
+  runRepositoryScan({ headless: false })
+    .then(({ summary }) => {
+      process.stdout.write(`${JSON.stringify(summary, null, 2)}\n`);
+      if (summary.searches > 0 && summary.errors.length === summary.searches) {
+        process.exitCode = 1;
+      }
+    })
+    .catch((error) => {
+      process.stderr.write(
+        `${error instanceof Error ? error.message : String(error)}\n`,
+      );
+      process.exitCode = 1;
+    });
+}
+
+module.exports = {
+  mergeDeal,
+  readJson,
+  runRepositoryScan,
+  updateOfferState,
+  writeJson,
+};

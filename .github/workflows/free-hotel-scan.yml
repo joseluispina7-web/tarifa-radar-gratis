@@ -2,11 +2,16 @@ name: Tarifa Radar - busqueda gratuita
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - "config/searches.json"
   schedule:
     - cron: "*/5 * * * *"
 
 permissions:
-  contents: read
+  contents: write
 
 concurrency:
   group: free-hotel-scan
@@ -19,30 +24,29 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:v1.60.0-noble
     env:
-      SEARCH_CONFIG_JSON: ${{ secrets.SEARCH_CONFIG_JSON }}
       PLAYWRIGHT_BROWSERS_PATH: /ms-playwright
 
     steps:
       - name: Descargar codigo
         uses: actions/checkout@v4
 
-      - name: Validar configuracion privada
-        shell: bash
-        run: |
-          if [ -z "$SEARCH_CONFIG_JSON" ]; then
-            echo "Falta el secreto SEARCH_CONFIG_JSON."
-            exit 1
-          fi
-          mkdir -p config output
-          printf '%s' "$SEARCH_CONFIG_JSON" > config/runtime.json
-
       - name: Instalar el scraper
         run: npm install --no-audit --no-fund
 
       - name: Buscar precios
-        run: >
-          xvfb-run -a node src/cli.cjs
-          --config config/runtime.json
-          --output output/latest.json
-          --headed
-          --summary
+        run: xvfb-run -a node src/repository-scan.cjs
+
+      - name: Publicar resultados
+        if: always()
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/deals.json docs/data/status.json state/repository-state.json
+          if git diff --cached --quiet; then
+            echo "No hay cambios de resultados."
+          else
+            git commit -m "Actualizar resultados del radar"
+            git pull --rebase origin main
+            git push
+          fi
