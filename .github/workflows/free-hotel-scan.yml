@@ -38,15 +38,6 @@ jobs:
 
       - name: Publicar resultados
         if: always()
-        shell: bash
-        run: |
-          git -C "$GITHUB_WORKSPACE" config user.name "github-actions[bot]"
-          git -C "$GITHUB_WORKSPACE" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git -C "$GITHUB_WORKSPACE" add docs/data/deals.json docs/data/status.json state/repository-state.json
-          if git -C "$GITHUB_WORKSPACE" diff --cached --quiet; then
-            echo "No hay cambios de resultados."
-          else
-            git -C "$GITHUB_WORKSPACE" commit -m "Actualizar resultados del radar"
-            git -C "$GITHUB_WORKSPACE" pull --rebase origin main
-            git -C "$GITHUB_WORKSPACE" push
-          fi
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node src/publish-results.cjs
