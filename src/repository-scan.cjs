@@ -27,6 +27,8 @@ function updateOfferState(previous = {}, offer, searchedAt) {
     totalPrice: offer.totalPrice,
     nightlyPrice: offer.nightlyPrice,
     matches: offer.matches,
+    priceVerified: offer.priceVerified,
+    priceBasis: offer.priceBasis,
     firstSeenAt: previous.firstSeenAt || searchedAt,
     lastSeenAt: searchedAt,
   };
@@ -113,6 +115,8 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     totalPrice: offer.totalPrice,
     nightlyPrice: offer.nightlyPrice,
     rateSubtotal: offer.rateSubtotal,
+    searchResultPrice: offer.searchResultPrice,
+    bookingTableTotal: offer.bookingTableTotal,
     additionalCharges: offer.additionalCharges,
     taxesText: offer.taxesText,
     stayText: offer.stayText,
@@ -188,6 +192,7 @@ async function runRepositoryScan(options = {}) {
     matches: 0,
     newMatches: 0,
     priceDrops: 0,
+    verificationErrors: [],
     errors: [],
   };
 
@@ -221,6 +226,14 @@ async function runRepositoryScan(options = {}) {
         status.matches += result.matchingOffers.length;
         summary.offers += result.offers.length;
         summary.matches += result.matchingOffers.length;
+        summary.verificationErrors.push(
+          ...(result.verificationErrors || []).map((error) => ({
+            monitorId: monitor.id,
+            monitorName: monitor.name,
+            dates,
+            ...error,
+          })),
+        );
         clearSearchedDeals(dealMap, monitor.id, dates);
 
         for (const offer of result.offers) {

@@ -62,6 +62,7 @@ function normalizeSearch(input = {}) {
       : [],
     excludeSharedRooms: input.excludeSharedRooms !== false,
     maxResults: clampNumber(input.maxResults, 1, 100, 30),
+    maxVerifiedResults: clampNumber(input.maxVerifiedResults, 1, 20, 10),
   };
 }
 
@@ -143,6 +144,22 @@ function parseBookingRateTotal(value) {
   }
 }
 
+function parseBookingBlockIds(value) {
+  try {
+    const url = new URL(value);
+    const blocks =
+      url.searchParams.get("all_sr_blocks") ||
+      url.searchParams.get("matching_block_id") ||
+      "";
+    return blocks
+      .split(",")
+      .map((block) => block.trim())
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
 function parseAdditionalCharges(value) {
   const text = String(value || "").trim();
   if (!text || /incluye impuestos|impuestos y cargos incluidos/i.test(text)) {
@@ -150,6 +167,26 @@ function parseAdditionalCharges(value) {
   }
   if (!/(?:^|\s)\+\s*€|más\s+€|adicional(?:es)?/i.test(text)) return 0;
   return parseEuroPrice(text);
+}
+
+function calculateVerifiedTableTotal(blockIds, rows) {
+  const rowsById = new Map(
+    rows.map((row) => [String(row.blockId || ""), row]),
+  );
+  let total = 0;
+  for (const blockId of blockIds) {
+    const row = rowsById.get(String(blockId));
+    if (!row) return 0;
+    const price = parseEuroPrice(row.priceText);
+    const charges = parseAdditionalCharges(row.taxesText);
+    const taxesAccountedFor = Boolean(
+      /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText) ||
+      charges > 0
+    );
+    if (!price || !taxesAccountedFor) return 0;
+    total += price + charges;
+  }
+  return Math.round(total * 100) / 100;
 }
 
 function stayMatchesSearch(value, search) {
@@ -344,13 +381,13 @@ async function extractVisibleCards(page, search) {
     const additionalCharges = parseAdditionalCharges(card.taxesText);
     const subtotal = rateSubtotal || visiblePrice;
     const totalPrice = Math.round((subtotal + additionalCharges) * 100) / 100;
-    const priceVerified = Boolean(
+    const cardContextValid = Boolean(
       card.title &&
       card.href &&
       rateSubtotal &&
       stayMatchesSearch(card.stayText, search)
     );
-    if (!priceVerified || !totalPrice) return [];
+    if (!cardContextValid || !totalPrice) return [];
     const nightlyPrice = Math.round((totalPrice / search.nights) * 100) / 100;
     const roomName = card.text.split("\n").find((line) =>
       /habitaci[oó]n|apartamento|estudio|cama/i.test(line),
@@ -369,8 +406,9 @@ async function extractVisibleCards(page, search) {
       additionalCharges,
       taxesText: card.taxesText,
       stayText: card.stayText,
-      priceVerified,
-      priceBasis: "booking_rate_blocks",
+      bookingBlockIds: parseBookingBlockIds(card.href),
+      priceVerified: false,
+      priceBasis: "booking_search_candidate",
       stars: parseStars(card.starLabel),
       guestRating: parseReviewScore(card.reviewText),
       reviewCount: parseReviewCount(card.reviewText),
@@ -385,9 +423,115 @@ async function extractVisibleCards(page, search) {
       sharedRoom: isSharedRoomText(`${roomName}\n${card.text}`),
       url: sanitizeBookingUrl(card.href, search),
     };
-    offer.matches = matchesSearch(offer, search);
+    offer.candidateMatches = matchesSearch(offer, search);
+    offer.matches = false;
     return [offer];
   });
+}
+
+async function verifyBookingOffer(page, offer, search, options = {}) {
+  if (!offer.bookingBlockIds?.length) {
+    throw new Error("Booking no indicó la habitación exacta de la tarifa.");
+  }
+
+  await page.goto(offer.url, {
+    waitUntil: "domcontentloaded",
+    timeout: options.timeoutMs || 25_000,
+  });
+  await page.locator("#hprt-table tr[data-block-id]").first().waitFor({
+    state: "visible",
+    timeout: options.timeoutMs || 25_000,
+  });
+
+  const currentUrl = new URL(page.url());
+  if (
+    currentUrl.searchParams.get("checkin") !== search.checkIn ||
+    currentUrl.searchParams.get("checkout") !== search.checkOut ||
+    Number(currentUrl.searchParams.get("group_adults")) !== search.adults ||
+    Number(currentUrl.searchParams.get("no_rooms")) !== search.rooms
+  ) {
+    throw new Error("Booking cambió las fechas, viajeros o habitaciones.");
+  }
+
+  const availability = await page.locator("#hprt-table").evaluate(
+    (table, blockIds) => {
+      const headerText =
+        table.querySelector(".hprt-table-header")?.textContent?.trim() || "";
+      const rows = Array.from(table.querySelectorAll("tr[data-block-id]"))
+        .filter((row) => blockIds.includes(row.getAttribute("data-block-id")))
+        .map((row) => ({
+          blockId: row.getAttribute("data-block-id") || "",
+          priceText:
+            row.querySelector(
+              ".prco-valign-middle-helper, [data-testid='price-and-discounted-price']",
+            )?.textContent?.trim() || "",
+          taxesText:
+            row.querySelector(".prd-taxes-and-fees-under-price")
+              ?.textContent?.trim() || "",
+        }));
+      return { headerText, rows };
+    },
+    offer.bookingBlockIds,
+  );
+
+  if (!new RegExp(`${search.nights}\\s+noches?`, "i").test(
+    availability.headerText,
+  )) {
+    throw new Error("Booking no confirmó la duración de la estancia.");
+  }
+
+  const verifiedTotal = calculateVerifiedTableTotal(
+    offer.bookingBlockIds,
+    availability.rows,
+  );
+  if (!verifiedTotal) {
+    throw new Error(
+      "Booking no mostró un total final con impuestos para esa habitación.",
+    );
+  }
+
+  offer.searchResultPrice = offer.totalPrice;
+  offer.totalPrice = verifiedTotal;
+  offer.nightlyPrice =
+    Math.round((verifiedTotal / search.nights) * 100) / 100;
+  offer.bookingTableTotal = verifiedTotal;
+  offer.verificationRows = availability.rows;
+  offer.priceVerified = true;
+  offer.priceBasis = "booking_availability_table";
+  offer.matches = matchesSearch(offer, search);
+  return offer;
+}
+
+async function verifyBookingCandidates(context, offers, search, options = {}) {
+  const candidates = offers
+    .filter((offer) => offer.candidateMatches)
+    .sort((left, right) => left.totalPrice - right.totalPrice)
+    .slice(0, search.maxVerifiedResults);
+  const errors = [];
+  if (!candidates.length) return errors;
+
+  const page = await context.newPage();
+  try {
+    for (const offer of candidates) {
+      try {
+        await verifyBookingOffer(page, offer, search, {
+          timeoutMs: Math.min(options.timeoutMs || 25_000, 25_000),
+        });
+      } catch (error) {
+        offer.matches = false;
+        offer.priceVerified = false;
+        offer.verificationError =
+          error instanceof Error ? error.message : String(error);
+        errors.push({
+          hotelName: offer.hotelName,
+          message: offer.verificationError,
+        });
+      }
+    }
+  } finally {
+    await page.close();
+  }
+  return errors;
 }
 
 async function scrapeBooking(input, options = {}) {
@@ -427,6 +571,12 @@ async function scrapeBooking(input, options = {}) {
     }
 
     const offers = await extractVisibleCards(page, search);
+    const verificationErrors = await verifyBookingCandidates(
+      context,
+      offers,
+      search,
+      options,
+    );
     const matchingOffers = offers
       .filter((offer) => offer.matches)
       .sort((left, right) => left.totalPrice - right.totalPrice);
@@ -437,7 +587,9 @@ async function scrapeBooking(input, options = {}) {
       searchUrl: url,
       offers,
       matchingOffers,
+      verificationErrors,
       cheapestOffer: offers
+        .filter((offer) => offer.priceVerified)
         .slice()
         .sort((left, right) => left.totalPrice - right.totalPrice)[0] || null,
     };
@@ -448,6 +600,7 @@ async function scrapeBooking(input, options = {}) {
 
 module.exports = {
   buildBookingSearchUrl,
+  calculateVerifiedTableTotal,
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
@@ -456,6 +609,7 @@ module.exports = {
   nightsBetween,
   normalizeSearch,
   parseAdditionalCharges,
+  parseBookingBlockIds,
   parseBookingRateTotal,
   parseEuroPrice,
   parseDistanceKm,
@@ -465,4 +619,5 @@ module.exports = {
   parseStars,
   scrapeBooking,
   stayMatchesSearch,
+  verifyBookingOffer,
 };

@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
   buildBookingSearchUrl,
+  calculateVerifiedTableTotal,
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
@@ -10,6 +11,7 @@ const {
   nightsBetween,
   normalizeSearch,
   parseAdditionalCharges,
+  parseBookingBlockIds,
   parseBookingRateTotal,
   parseDistanceKm,
   parseEuroPrice,
@@ -74,6 +76,54 @@ test("uses the exact stay total encoded in Booking rate blocks", () => {
   );
   assert.equal(parseAdditionalCharges("+ € 18 de impuestos y cargos"), 18);
   assert.equal(parseAdditionalCharges("Incluye impuestos y cargos"), 0);
+});
+
+test("reads the exact room block ids from a Booking result", () => {
+  assert.deepEqual(
+    parseBookingBlockIds(
+      "https://www.booking.com/hotel/es/example.es.html?all_sr_blocks=room-a%2Croom-a",
+    ),
+    ["room-a", "room-a"],
+  );
+  assert.deepEqual(
+    parseBookingBlockIds(
+      "https://www.booking.com/hotel/es/example.es.html?matching_block_id=room-b",
+    ),
+    ["room-b"],
+  );
+});
+
+test("accepts only bookable table totals with taxes accounted for", () => {
+  const included = [
+    {
+      blockId: "room-a",
+      priceText: "€ 426",
+      taxesText: "Incluye impuestos y cargos",
+    },
+  ];
+  assert.equal(calculateVerifiedTableTotal(["room-a"], included), 426);
+  assert.equal(
+    calculateVerifiedTableTotal(["room-a", "room-a"], included),
+    852,
+  );
+  assert.equal(
+    calculateVerifiedTableTotal(
+      ["room-b"],
+      [{
+        blockId: "room-b",
+        priceText: "€ 400",
+        taxesText: "+ € 40 de impuestos y cargos",
+      }],
+    ),
+    440,
+  );
+  assert.equal(
+    calculateVerifiedTableTotal(
+      ["room-c"],
+      [{ blockId: "room-c", priceText: "€ 350", taxesText: "" }],
+    ),
+    0,
+  );
 });
 
 test("rejects a card when its stay does not match the requested search", () => {
