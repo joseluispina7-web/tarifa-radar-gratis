@@ -628,13 +628,18 @@
     const bookingDates = exact
       ? `&checkin=${monitor.dateStart}&checkout=${monitor.dateEnd}`
       : "";
+    const bookingGuests =
+      `&group_adults=${monitor.adults}` +
+      `&group_children=${monitor.children}` +
+      `&no_rooms=${monitor.rooms}` +
+      "&selected_currency=EUR";
     const query = encodeURIComponent(
       `${monitor.location} hotel ${monitor.minNights} noches`,
     );
     return [
       [
         "Booking",
-        `https://www.booking.com/searchresults.es.html?ss=${encoded}${bookingDates}`,
+        `https://www.booking.com/searchresults.es.html?ss=${encoded}${bookingDates}${bookingGuests}`,
       ],
       ["Google Hoteles", `https://www.google.com/travel/search?q=${query}`],
       ["Trivago", `https://www.trivago.es/es/srl?search=${encoded}`],
