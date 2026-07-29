@@ -413,35 +413,57 @@ async function extractGoogleHotelCandidates(page, search) {
   const rawCards = await page.locator("h2").evaluateAll(
     (headings, limit) => headings.slice(0, limit + 8).flatMap((heading) => {
       if (/patrocinado|sponsored/i.test(heading.textContent || "")) return [];
-      let container = heading;
-      let nightlyLink = null;
-      let pricesLink = null;
-      for (let level = 0; level < 9 && container; level += 1) {
-        const links = Array.from(container.querySelectorAll("a"));
-        nightlyLink = links.find((link) =>
-          /^(?:precios de|prices (?:of|for))/.test(
-            (link.getAttribute("aria-label") || "").trim().toLowerCase(),
-          )
-        );
-        pricesLink = links.find((link) =>
-          /^(?:ver precios de|view prices (?:of|for))/.test(
-            (link.getAttribute("aria-label") || "").trim().toLowerCase(),
-          )
-        );
-        if (nightlyLink && pricesLink) break;
-        container = container.parentElement;
-      }
-      if (!container || !nightlyLink || !pricesLink) return [];
+      const ordered = Array.from(document.querySelectorAll("h2, a"));
+      const headingIndex = ordered.indexOf(heading);
+      const nextHeadingIndex = ordered.findIndex(
+        (element, index) => index > headingIndex && element.tagName === "H2",
+      );
+      const cardElements = ordered.slice(
+        headingIndex + 1,
+        nextHeadingIndex < 0 ? undefined : nextHeadingIndex,
+      );
+      const links = cardElements.filter((element) => element.tagName === "A");
+      const labelFor = (link) =>
+        `${link.getAttribute("aria-label") || ""} ${link.innerText || ""}`
+          .trim();
+      const nightlyLink = links.find((link) =>
+        /(?:precios de|prices (?:of|for)|a partir de|starting (?:at|from))/.test(
+          labelFor(link).toLowerCase(),
+        ) &&
+        /(?:\u20ac|EUR)/i.test(labelFor(link))
+      );
+      const pricesLink = links.find((link) =>
+        /(?:ver precios de|view prices (?:of|for))/.test(
+          labelFor(link).toLowerCase(),
+        )
+      );
+      if (!nightlyLink || !pricesLink) return [];
+      const nextHeading =
+        nextHeadingIndex < 0 ? null : ordered[nextHeadingIndex];
+      const labels = Array.from(document.querySelectorAll("[aria-label]"))
+        .filter((element) => {
+          const followsCurrent =
+            heading.compareDocumentPosition(element) &
+            Node.DOCUMENT_POSITION_FOLLOWING;
+          const precedesNext =
+            !nextHeading ||
+            element.compareDocumentPosition(nextHeading) &
+            Node.DOCUMENT_POSITION_FOLLOWING;
+          return followsCurrent && precedesNext;
+        })
+        .map((element) => element.getAttribute("aria-label") || "")
+        .filter(Boolean);
       return [{
         hotelName: (heading.textContent || "").trim(),
         nightlyText:
           nightlyLink.innerText ||
           nightlyLink.getAttribute("aria-label") ||
           "",
-        text: container.innerText || "",
-        labels: Array.from(container.querySelectorAll("[aria-label]"))
-          .map((element) => element.getAttribute("aria-label") || "")
-          .filter(Boolean),
+        text: cardElements
+          .map((element) => element.innerText || "")
+          .filter(Boolean)
+          .join("\n"),
+        labels,
         pricePageUrl: pricesLink.href || "",
       }];
     }),
