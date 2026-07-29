@@ -7,6 +7,7 @@
     "scan": "node src/cli.cjs",
     "scan:remote": "node src/remote-scan.cjs",
     "scan:repository": "node src/repository-scan.cjs",
+    "notify:telegram": "node src/send-telegram.cjs",
     "publish:results": "node src/publish-results.cjs",
     "test": "node --test test/*.test.cjs"
   },
