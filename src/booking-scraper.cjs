@@ -38,6 +38,12 @@ function normalizeSearch(input = {}) {
     destinationLabel: String(
       input.destination?.label || input.destinationLabel || destination,
     ),
+    searchArea: String(
+      input.searchArea || input.destination?.label || destination,
+    ),
+    isNearbySearch: input.isNearbySearch === true,
+    originLatitude: optionalCoordinate(input.originLatitude, -90, 90),
+    originLongitude: optionalCoordinate(input.originLongitude, -180, 180),
     countryCode: String(
       input.countryCode || input.destination?.countryCode || "",
     ).toUpperCase(),
@@ -69,6 +75,15 @@ function normalizeSearch(input = {}) {
     maxResults: clampNumber(input.maxResults, 1, 100, 30),
     maxVerifiedResults: clampNumber(input.maxVerifiedResults, 1, 20, 10),
   };
+}
+
+function optionalCoordinate(value, minimum, maximum) {
+  if (value === null || value === undefined || value === "") return null;
+  const number = Number(value);
+  if (!Number.isFinite(number) || number < minimum || number > maximum) {
+    return null;
+  }
+  return number;
 }
 
 function clampNumber(value, minimum, maximum, fallback) {
@@ -360,7 +375,7 @@ function isSharedRoomText(value) {
     .test(String(value || ""));
 }
 
-function matchesSearch(offer, search) {
+function matchesSearch(offer, search, options = {}) {
   if (!meetsBudget(offer, search)) return false;
   if (search.minStars > 0 && offer.stars < search.minStars) return false;
   if (
@@ -370,15 +385,16 @@ function matchesSearch(offer, search) {
     return false;
   }
   if (search.freeCancellation && !offer.freeCancellation) return false;
-  if (
-    search.maxDistanceKm > 0 &&
-    (
-      offer.distanceKm === null ||
-      offer.distanceKm === undefined ||
+  if (search.maxDistanceKm > 0 && !options.ignoreDistance) {
+    const distanceIsUnknown =
+      offer.distanceKm === null || offer.distanceKm === undefined;
+    if (distanceIsUnknown) return false;
+    if (
+      !distanceIsUnknown &&
       offer.distanceKm > search.maxDistanceKm
-    )
-  ) {
-    return false;
+    ) {
+      return false;
+    }
   }
   if (
     search.mealPlan !== "any" &&
@@ -495,9 +511,12 @@ async function extractVisibleCards(page, search) {
       mealPlan: detectMealPlan(card.text),
       roomName,
       sharedRoom: isSharedRoomText(`${roomName}\n${card.text}`),
+      searchArea: search.searchArea,
       url: sanitizeBookingUrl(card.href, search),
     };
-    offer.candidateMatches = matchesSearch(offer, search);
+    offer.candidateMatches = matchesSearch(offer, search, {
+      ignoreDistance: true,
+    });
     offer.matches = false;
     return [offer];
   });
@@ -527,6 +546,40 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     Number(currentUrl.searchParams.get("no_rooms")) !== search.rooms
   ) {
     throw new Error("Booking cambió las fechas, viajeros o habitaciones.");
+  }
+
+  if (
+    search.maxDistanceKm > 0 &&
+    search.originLatitude !== null &&
+    search.originLongitude !== null
+  ) {
+    const coordinatesText = await page
+      .locator("[data-atlas-latlng]")
+      .first()
+      .getAttribute("data-atlas-latlng")
+      .catch(() => "");
+    const [hotelLatitude, hotelLongitude] = String(coordinatesText || "")
+      .split(",")
+      .map(Number);
+    if (
+      Number.isFinite(hotelLatitude) &&
+      Number.isFinite(hotelLongitude)
+    ) {
+      offer.latitude = hotelLatitude;
+      offer.longitude = hotelLongitude;
+      offer.distanceKm = Math.round(
+        distanceBetweenCoordinates(
+          search.originLatitude,
+          search.originLongitude,
+          hotelLatitude,
+          hotelLongitude,
+        ) * 100,
+      ) / 100;
+      offer.distanceVerified = true;
+    } else {
+      offer.distanceKm = null;
+      offer.distanceVerified = false;
+    }
   }
 
   const rows = await page.locator("#hprt-table").evaluate(
@@ -587,6 +640,26 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     : "booking_availability_table";
   offer.matches = matchesSearch(offer, search);
   return offer;
+}
+
+function distanceBetweenCoordinates(
+  latitudeA,
+  longitudeA,
+  latitudeB,
+  longitudeB,
+) {
+  const toRadians = (value) => Number(value) * Math.PI / 180;
+  const earthRadiusKm = 6371.0088;
+  const latA = toRadians(latitudeA);
+  const latB = toRadians(latitudeB);
+  const latitudeDelta = toRadians(Number(latitudeB) - Number(latitudeA));
+  const longitudeDelta = toRadians(Number(longitudeB) - Number(longitudeA));
+  const haversine =
+    Math.sin(latitudeDelta / 2) ** 2 +
+    Math.cos(latA) *
+      Math.cos(latB) *
+      Math.sin(longitudeDelta / 2) ** 2;
+  return 2 * earthRadiusKm * Math.asin(Math.sqrt(haversine));
 }
 
 async function verifyBookingCandidates(context, offers, search, options = {}) {
@@ -706,6 +779,7 @@ module.exports = {
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
+  distanceBetweenCoordinates,
   fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,

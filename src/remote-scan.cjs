@@ -68,15 +68,56 @@ function buildMonitorSearches(monitor, now = new Date()) {
   });
 }
 
-function monitorToSearch(monitor, dates) {
+function buildMonitorScanRequests(
+  monitor,
+  nearbyLocations = [],
+  now = new Date(),
+) {
+  const dates = buildMonitorSearches(monitor, now);
+  const mainArea = {
+    name: monitor.location,
+    query: monitor.location,
+    isNearby: false,
+  };
+  const nearbyAreas = (nearbyLocations || []).map((location) => ({
+    name: location.name,
+    query: location.query || location.name,
+    isNearby: true,
+  }));
+  if (!nearbyAreas.length) {
+    return dates.map((stay) => ({ dates: stay, area: mainArea }));
+  }
+
+  const slot = Math.floor(now.getTime() / FIVE_MINUTES_MS);
+  const startIndex = (slot + monitorSeed(monitor.id)) % nearbyAreas.length;
+  if (monitor.dateMode === "fixed") {
+    return [
+      { dates: dates[0], area: mainArea },
+      { dates: dates[0], area: nearbyAreas[startIndex] },
+    ];
+  }
+
+  const areas = [mainArea, ...nearbyAreas];
+  return dates.map((stay, index) => ({
+    dates: stay,
+    area: areas[(slot + monitorSeed(monitor.id) + index) % areas.length],
+  }));
+}
+
+function monitorToSearch(monitor, dates, area = null) {
+  const destination = area?.query || monitor.location;
   return {
     id: `${monitor.id}-${dates.checkIn}-${dates.checkOut}`,
     name: monitor.name,
     destination: {
-      query: monitor.location,
-      label: monitor.location,
+      query: destination,
+      label: area?.name || monitor.location,
       countryCode: monitor.countryCode,
     },
+    searchArea: area?.name || monitor.location,
+    isNearbySearch: area?.isNearby === true,
+    originLatitude: monitor.latitude,
+    originLongitude: monitor.longitude,
     countryCode: monitor.countryCode,
     checkIn: dates.checkIn,
     checkOut: dates.checkOut,
@@ -94,7 +135,7 @@ function monitorToSearch(monitor, dates) {
     propertyTypes: monitor.propertyTypes,
     amenities: monitor.amenities,
     excludeSharedRooms: true,
-    maxResults: Number(monitor.maxDistanceKm) > 0 ? 75 : 30,
+    maxResults: Number(monitor.maxDistanceKm) > 0 ? 25 : 30,
   };
 }
 
@@ -226,6 +267,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildMonitorScanRequests,
   buildMonitorSearches,
   monitorIsDue,
   monitorToSearch,

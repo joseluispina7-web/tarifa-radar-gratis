@@ -2,8 +2,9 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { scrapeBooking } = require("./booking-scraper.cjs");
+const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
-  buildMonitorSearches,
+  buildMonitorScanRequests,
   monitorIsDue,
   monitorToSearch,
 } = require("./remote-scan.cjs");
@@ -38,6 +39,8 @@ function monitorFingerprint(monitor) {
   const fields = [
     "location",
     "locationId",
+    "latitude",
+    "longitude",
     "countryCode",
     "dateMode",
     "dateStart",
@@ -87,12 +90,14 @@ function buildDealMap(previousDeals, activeMonitors) {
   );
 }
 
-function clearSearchedDeals(dealMap, monitorId, dates) {
+function clearSearchedDeals(dealMap, monitorId, dates, searchArea = null) {
   for (const [dealId, deal] of dealMap) {
+    const dealArea = deal.searchArea || deal.location;
     if (
       String(deal.monitorId) === String(monitorId) &&
       deal.checkIn === dates.checkIn &&
-      deal.checkOut === dates.checkOut
+      deal.checkOut === dates.checkOut &&
+      (!searchArea || String(dealArea) === String(searchArea))
     ) {
       dealMap.delete(dealId);
     }
@@ -109,6 +114,7 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     monitorFingerprint: fingerprint || monitorFingerprint(monitor),
     hotelName: offer.hotelName,
     location: monitor.location,
+    searchArea: offer.searchArea || monitor.location,
     address: offer.address,
     checkIn: offer.checkIn,
     checkOut: offer.checkOut,
@@ -195,6 +201,7 @@ async function runRepositoryScan(options = {}) {
     newMatches: 0,
     priceDrops: 0,
     verificationErrors: [],
+    nearbyErrors: [],
     errors: [],
   };
 
@@ -213,16 +220,44 @@ async function runRepositoryScan(options = {}) {
       searches: 0,
       offers: 0,
       matches: 0,
+      nearbyLocations: [],
       error: "",
     };
 
-    for (const dates of buildMonitorSearches(monitor, now)) {
+    let nearbyLocations = Array.isArray(beforeMonitor.nearbyLocations)
+      ? beforeMonitor.nearbyLocations
+      : null;
+    let nearbyDiscoveryFailed = false;
+    if (Number(monitor.maxDistanceKm) <= 0) {
+      nearbyLocations = [];
+    } else if (!nearbyLocations) {
+      try {
+        nearbyLocations = await discoverNearbyLocations(monitor);
+      } catch (error) {
+        nearbyLocations = [];
+        nearbyDiscoveryFailed = true;
+        summary.nearbyErrors.push({
+          monitorId: monitor.id,
+          monitorName: monitor.name,
+          message: error instanceof Error ? error.message : String(error),
+        });
+      }
+    }
+    status.nearbyLocations = nearbyLocations.map((location) => location.name);
+
+    for (const request of buildMonitorScanRequests(
+      monitor,
+      nearbyLocations,
+      now,
+    )) {
+      const { dates, area } = request;
       summary.searches += 1;
       status.searches += 1;
       try {
-        const result = await scrapeBooking(monitorToSearch(monitor, dates), {
-          headless: options.headless !== false,
-        });
+        const result = await scrapeBooking(
+          monitorToSearch(monitor, dates, area),
+          { headless: options.headless !== false },
+        );
         status.lastSuccessAt = result.searchedAt;
         status.offers += result.offers.length;
         status.matches += result.matchingOffers.length;
@@ -233,10 +268,11 @@ async function runRepositoryScan(options = {}) {
             monitorId: monitor.id,
             monitorName: monitor.name,
             dates,
+            searchArea: area.name,
             ...error,
           })),
         );
-        clearSearchedDeals(dealMap, monitor.id, dates);
+        clearSearchedDeals(dealMap, monitor.id, dates, area.name);
 
         for (const offer of result.offers) {
           const offerKey = `${monitor.id}:${offer.id}`;
@@ -279,6 +315,7 @@ async function runRepositoryScan(options = {}) {
           monitorId: monitor.id,
           monitorName: monitor.name,
           dates,
+          searchArea: area.name,
           message,
         });
       }
@@ -288,6 +325,7 @@ async function runRepositoryScan(options = {}) {
       fingerprint,
       lastScanAt: now.toISOString(),
       lastSuccessAt: status.lastSuccessAt,
+      nearbyLocations: nearbyDiscoveryFailed ? null : nearbyLocations,
       offers: nextOffers,
     };
     monitorStatus[monitor.id] = status;

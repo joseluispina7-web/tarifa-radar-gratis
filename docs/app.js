@@ -620,6 +620,8 @@
 
   function fillEditor() {
     const draft = state.draft;
+    const nearbyLocations =
+      state.status.monitors?.[draft.id]?.nearbyLocations || [];
     $("#editor-title").textContent = state.config.monitors.some(
       (monitor) => monitor.id === draft.id,
     )
@@ -632,7 +634,9 @@
     $("#location-confirmed").innerHTML = draft.locationId
       ? `<i data-lucide="map-pin-check"></i> Ubicación detectada · ${escapeHtml(
           draft.countryCode || "",
-        )}`
+        )}${nearbyLocations.length
+          ? ` · También: ${escapeHtml(nearbyLocations.join(", "))}`
+          : ""}`
       : "";
     $("#min-nights").value = draft.minNights;
     $("#max-nights").value = draft.maxNights;

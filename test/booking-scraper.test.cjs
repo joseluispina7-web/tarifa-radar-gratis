@@ -7,6 +7,7 @@ const {
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
+  distanceBetweenCoordinates,
   fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,
@@ -24,6 +25,7 @@ const {
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
 const {
+  buildMonitorScanRequests,
   buildMonitorSearches,
   monitorIsDue,
   monitorToSearch,
@@ -265,6 +267,22 @@ test("applies distance, property, meal and amenity filters", () => {
     false,
   );
   assert.equal(
+    matchesSearch(
+      { ...matchingOffer, distanceKm: null },
+      filteredSearch,
+      { ignoreDistance: true },
+    ),
+    true,
+  );
+  assert.equal(
+    matchesSearch(
+      { ...matchingOffer, distanceKm: 40 },
+      filteredSearch,
+      { ignoreDistance: true },
+    ),
+    true,
+  );
+  assert.equal(
     matchesSearch({ ...matchingOffer, distanceKm: 4 }, filteredSearch),
     false,
   );
@@ -314,6 +332,8 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
       id: 2,
       name: "Madrid",
       location: "Madrid",
+      latitude: 40.4168,
+      longitude: -3.7038,
       adults: 2,
       children: 0,
       rooms: 1,
@@ -328,7 +348,9 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
     searches[0],
   );
   assert.equal(search.priceRule, "and");
-  assert.equal(search.maxResults, 75);
+  assert.equal(search.maxResults, 25);
+  assert.equal(search.originLatitude, 40.4168);
+  assert.equal(search.originLongitude, -3.7038);
   assert.equal(monitorIsDue({ intervalMinutes: 5, lastScanAt: null }, now), true);
   assert.equal(
     monitorIsDue(
@@ -337,6 +359,52 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
     ),
     false,
   );
+});
+
+test("rotates one nearby area without multiplying every flexible stay", () => {
+  const now = new Date("2026-07-29T00:00:00Z");
+  const nearby = [
+    { name: "Finestrat", query: "Finestrat, España" },
+    { name: "La Nucia", query: "La Nucia, España" },
+  ];
+  const fixed = buildMonitorScanRequests(
+    {
+      id: "benidorm",
+      location: "Benidorm, España",
+      dateMode: "fixed",
+      dateStart: "2026-08-05",
+      dateEnd: "2026-08-09",
+    },
+    nearby,
+    now,
+  );
+  assert.equal(fixed.length, 2);
+  assert.equal(fixed[0].area.isNearby, false);
+  assert.equal(fixed[1].area.isNearby, true);
+
+  const flexible = buildMonitorScanRequests(
+    {
+      id: "alicante",
+      location: "Alicante, España",
+      dateMode: "flexible",
+      windowDays: 90,
+      minNights: 1,
+      maxNights: 4,
+    },
+    nearby,
+    now,
+  );
+  assert.equal(flexible.length, 2);
+});
+
+test("calculates the real distance between destination and hotel coordinates", () => {
+  const distance = distanceBetweenCoordinates(
+    38.53816,
+    -0.13098,
+    38.5386298,
+    -0.1317479,
+  );
+  assert.ok(distance > 0.08 && distance < 0.09);
 });
 
 test("reports only new matches and genuine price drops", () => {
