@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const crypto = require("node:crypto");
 const { scrapeBooking } = require("./booking-scraper.cjs");
 const {
   buildMonitorSearches,
@@ -31,13 +32,78 @@ function updateOfferState(previous = {}, offer, searchedAt) {
   };
 }
 
-function mergeDeal(previousDeals, monitor, offer, searchedAt) {
+function monitorFingerprint(monitor) {
+  const fields = [
+    "location",
+    "locationId",
+    "dateMode",
+    "dateStart",
+    "dateEnd",
+    "windowDays",
+    "minNights",
+    "maxNights",
+    "maxTotal",
+    "maxNightly",
+    "priceMatch",
+    "minStars",
+    "guestRatingMin",
+    "maxDistanceKm",
+    "freeCancellation",
+    "mealPlan",
+    "propertyTypes",
+    "amenities",
+    "adults",
+    "children",
+    "rooms",
+    "sources",
+  ];
+  const normalized = Object.fromEntries(
+    fields.map((field) => [field, monitor[field] ?? null]),
+  );
+  return crypto
+    .createHash("sha256")
+    .update(JSON.stringify(normalized))
+    .digest("hex")
+    .slice(0, 20);
+}
+
+function buildDealMap(previousDeals, activeMonitors) {
+  const monitorsById = new Map(
+    activeMonitors.map((monitor) => [String(monitor.id), monitor]),
+  );
+  return new Map(
+    (previousDeals.deals || [])
+      .filter((deal) => {
+        const monitor = monitorsById.get(String(deal.monitorId));
+        return Boolean(
+          monitor &&
+          deal.monitorFingerprint === monitorFingerprint(monitor)
+        );
+      })
+      .map((deal) => [deal.id, deal]),
+  );
+}
+
+function clearSearchedDeals(dealMap, monitorId, dates) {
+  for (const [dealId, deal] of dealMap) {
+    if (
+      String(deal.monitorId) === String(monitorId) &&
+      deal.checkIn === dates.checkIn &&
+      deal.checkOut === dates.checkOut
+    ) {
+      dealMap.delete(dealId);
+    }
+  }
+}
+
+function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
   const dealId = `${monitor.id}:${offer.id}`;
   const previous = previousDeals.get(dealId);
   previousDeals.set(dealId, {
     id: dealId,
     monitorId: monitor.id,
     monitorName: monitor.name,
+    monitorFingerprint: fingerprint || monitorFingerprint(monitor),
     hotelName: offer.hotelName,
     location: monitor.location,
     address: offer.address,
@@ -46,6 +112,12 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt) {
     nights: offer.nights,
     totalPrice: offer.totalPrice,
     nightlyPrice: offer.nightlyPrice,
+    rateSubtotal: offer.rateSubtotal,
+    additionalCharges: offer.additionalCharges,
+    taxesText: offer.taxesText,
+    stayText: offer.stayText,
+    priceVerified: offer.priceVerified,
+    priceBasis: offer.priceBasis,
     stars: offer.stars,
     guestRating: offer.guestRating,
     reviewCount: offer.reviewCount,
@@ -86,9 +158,10 @@ async function runRepositoryScan(options = {}) {
   });
   const previousDeals = readJson(dealsPath, { deals: [] });
   const now = options.now || new Date();
-  const monitors = (config.monitors || [])
+  const activeMonitors = (config.monitors || [])
     .filter((monitor) => monitor.active)
-    .filter((monitor) => monitor.sources?.includes("booking"))
+    .filter((monitor) => monitor.sources?.includes("booking"));
+  const monitors = activeMonitors
     .filter((monitor) =>
       monitorIsDue(
         {
@@ -104,9 +177,7 @@ async function runRepositoryScan(options = {}) {
     updatedAt: now.toISOString(),
     monitors: { ...(previousState.monitors || {}) },
   };
-  const dealMap = new Map(
-    (previousDeals.deals || []).map((deal) => [deal.id, deal]),
-  );
+  const dealMap = buildDealMap(previousDeals, activeMonitors);
   const monitorStatus = {};
   const alerts = [];
   const summary = {
@@ -121,7 +192,11 @@ async function runRepositoryScan(options = {}) {
   };
 
   for (const monitor of monitors) {
-    const beforeMonitor = nextState.monitors[monitor.id] || { offers: {} };
+    const fingerprint = monitorFingerprint(monitor);
+    const storedMonitor = nextState.monitors[monitor.id] || { offers: {} };
+    const beforeMonitor = storedMonitor.fingerprint === fingerprint
+      ? storedMonitor
+      : { offers: {} };
     const nextOffers = { ...(beforeMonitor.offers || {}) };
     const status = {
       monitorId: monitor.id,
@@ -146,6 +221,7 @@ async function runRepositoryScan(options = {}) {
         status.matches += result.matchingOffers.length;
         summary.offers += result.offers.length;
         summary.matches += result.matchingOffers.length;
+        clearSearchedDeals(dealMap, monitor.id, dates);
 
         for (const offer of result.offers) {
           const offerKey = `${monitor.id}:${offer.id}`;
@@ -172,7 +248,13 @@ async function runRepositoryScan(options = {}) {
             result.searchedAt,
           );
           if (offer.matches) {
-            mergeDeal(dealMap, monitor, offer, result.searchedAt);
+            mergeDeal(
+              dealMap,
+              monitor,
+              offer,
+              result.searchedAt,
+              fingerprint,
+            );
           }
         }
       } catch (error) {
@@ -188,6 +270,7 @@ async function runRepositoryScan(options = {}) {
     }
 
     nextState.monitors[monitor.id] = {
+      fingerprint,
       lastScanAt: now.toISOString(),
       lastSuccessAt: status.lastSuccessAt,
       offers: nextOffers,
@@ -240,7 +323,10 @@ if (require.main === module) {
 }
 
 module.exports = {
+  buildDealMap,
+  clearSearchedDeals,
   mergeDeal,
+  monitorFingerprint,
   readJson,
   runRepositoryScan,
   updateOfferState,

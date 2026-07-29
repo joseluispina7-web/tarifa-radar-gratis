@@ -127,6 +127,43 @@ function parseEuroPrice(value) {
   return parseLocalizedNumber(matches[matches.length - 1][1]);
 }
 
+function parseBookingRateTotal(value) {
+  try {
+    const url = new URL(value);
+    const blocks = url.searchParams.get("sr_pri_blocks");
+    if (!blocks) return 0;
+    const totalInCents = blocks
+      .split(",")
+      .map((block) => block.match(/__([0-9]+)$/)?.[1] || "")
+      .filter(Boolean)
+      .reduce((total, price) => total + Number(price), 0);
+    return Math.round(totalInCents) / 100;
+  } catch {
+    return 0;
+  }
+}
+
+function parseAdditionalCharges(value) {
+  const text = String(value || "").trim();
+  if (!text || /incluye impuestos|impuestos y cargos incluidos/i.test(text)) {
+    return 0;
+  }
+  if (!/(?:^|\s)\+\s*€|más\s+€|adicional(?:es)?/i.test(text)) return 0;
+  return parseEuroPrice(text);
+}
+
+function stayMatchesSearch(value, search) {
+  const text = String(value || "");
+  const nightsMatch = text.match(/(\d+)\s+noches?/i);
+  const adultsMatch = text.match(/(\d+)\s+adultos?/i);
+  return Boolean(
+    nightsMatch &&
+    adultsMatch &&
+    Number(nightsMatch[1]) === search.nights &&
+    Number(adultsMatch[1]) === search.adults
+  );
+}
+
 function parseReviewScore(value) {
   const match = String(value || "").match(/Puntuaci[oó]n:\s*(\d{1,2}(?:[,.]\d)?)/i);
   return match ? parseLocalizedNumber(match[1]) : 0;
@@ -189,14 +226,19 @@ function detectMealPlan(value) {
 
 function sanitizeBookingUrl(value, search) {
   try {
-    const original = new URL(value);
-    const clean = new URL(`${original.origin}${original.pathname}`);
-    clean.searchParams.set("checkin", search.checkIn);
-    clean.searchParams.set("checkout", search.checkOut);
-    clean.searchParams.set("group_adults", String(search.adults));
-    clean.searchParams.set("group_children", String(search.children));
-    clean.searchParams.set("no_rooms", String(search.rooms));
-    return clean.toString();
+    const url = new URL(value);
+    url.searchParams.delete("aid");
+    url.searchParams.delete("label");
+    url.searchParams.delete("sid");
+    url.searchParams.set("checkin", search.checkIn);
+    url.searchParams.set("checkout", search.checkOut);
+    url.searchParams.set("group_adults", String(search.adults));
+    url.searchParams.set("req_adults", String(search.adults));
+    url.searchParams.set("group_children", String(search.children));
+    url.searchParams.set("req_children", String(search.children));
+    url.searchParams.set("no_rooms", String(search.rooms));
+    url.searchParams.set("selected_currency", "EUR");
+    return url.toString();
   } catch {
     return value;
   }
@@ -287,6 +329,7 @@ async function extractVisibleCards(page, search) {
         reviewText: read("review-score"),
         priceText: read("price-and-discounted-price"),
         stayText: read("price-for-x-nights"),
+        taxesText: read("taxes-and-charges"),
         href: titleLink?.href || "",
         starLabel: labels.find((label) => /^\d(?:[,.]\d)?\s+de\s+5$/i.test(label)) || "",
         text: card.innerText || "",
@@ -296,8 +339,18 @@ async function extractVisibleCards(page, search) {
   );
 
   return rawCards.flatMap((card) => {
-    const totalPrice = parseEuroPrice(card.priceText);
-    if (!card.title || !totalPrice) return [];
+    const visiblePrice = parseEuroPrice(card.priceText);
+    const rateSubtotal = parseBookingRateTotal(card.href);
+    const additionalCharges = parseAdditionalCharges(card.taxesText);
+    const subtotal = rateSubtotal || visiblePrice;
+    const totalPrice = Math.round((subtotal + additionalCharges) * 100) / 100;
+    const priceVerified = Boolean(
+      card.title &&
+      card.href &&
+      rateSubtotal &&
+      stayMatchesSearch(card.stayText, search)
+    );
+    if (!priceVerified || !totalPrice) return [];
     const nightlyPrice = Math.round((totalPrice / search.nights) * 100) / 100;
     const roomName = card.text.split("\n").find((line) =>
       /habitaci[oó]n|apartamento|estudio|cama/i.test(line),
@@ -312,6 +365,12 @@ async function extractVisibleCards(page, search) {
       nights: search.nights,
       totalPrice,
       nightlyPrice,
+      rateSubtotal,
+      additionalCharges,
+      taxesText: card.taxesText,
+      stayText: card.stayText,
+      priceVerified,
+      priceBasis: "booking_rate_blocks",
       stars: parseStars(card.starLabel),
       guestRating: parseReviewScore(card.reviewText),
       reviewCount: parseReviewCount(card.reviewText),
@@ -396,6 +455,8 @@ module.exports = {
   matchesSearch,
   nightsBetween,
   normalizeSearch,
+  parseAdditionalCharges,
+  parseBookingRateTotal,
   parseEuroPrice,
   parseDistanceKm,
   parseLocalizedNumber,
@@ -403,4 +464,5 @@ module.exports = {
   parseReviewScore,
   parseStars,
   scrapeBooking,
+  stayMatchesSearch,
 };

@@ -391,7 +391,9 @@
   }
 
   function renderDeals() {
-    const deals = state.deals.deals || [];
+    const deals = (state.deals.deals || []).filter(
+      (deal) => deal.priceVerified === true,
+    );
     $("#deal-count").textContent = String(deals.length);
     $("#deals-table").innerHTML = deals.length
       ? `

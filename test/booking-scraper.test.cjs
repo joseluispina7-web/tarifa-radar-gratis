@@ -9,11 +9,14 @@ const {
   matchesSearch,
   nightsBetween,
   normalizeSearch,
+  parseAdditionalCharges,
+  parseBookingRateTotal,
   parseDistanceKm,
   parseEuroPrice,
   parseReviewCount,
   parseReviewScore,
   parseStars,
+  stayMatchesSearch,
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
 const {
@@ -54,6 +57,30 @@ test("parses Booking prices and Spanish review values", () => {
   assert.equal(parseReviewScore("Puntuación: 8,0 8,0 Muy bien"), 8);
   assert.equal(parseReviewCount("Muy bien 2.074 comentarios"), 2074);
   assert.equal(parseStars("3 de 5"), 3);
+});
+
+test("uses the exact stay total encoded in Booking rate blocks", () => {
+  assert.equal(
+    parseBookingRateTotal(
+      "https://www.booking.com/hotel/es/example.es.html?sr_pri_blocks=123_4_2_0_0__42570",
+    ),
+    425.7,
+  );
+  assert.equal(
+    parseBookingRateTotal(
+      "https://www.booking.com/hotel/es/example.es.html?sr_pri_blocks=123__26000%2C123__26000",
+    ),
+    520,
+  );
+  assert.equal(parseAdditionalCharges("+ € 18 de impuestos y cargos"), 18);
+  assert.equal(parseAdditionalCharges("Incluye impuestos y cargos"), 0);
+});
+
+test("rejects a card when its stay does not match the requested search", () => {
+  const search = normalizeSearch(searchInput);
+  assert.equal(stayMatchesSearch("4 noches, 2 adultos", search), true);
+  assert.equal(stayMatchesSearch("1 noche, 2 adultos", search), false);
+  assert.equal(stayMatchesSearch("4 noches, 1 adulto", search), false);
 });
 
 test("applies total or nightly budget without requiring stars", () => {
