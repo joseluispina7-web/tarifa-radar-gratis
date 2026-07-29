@@ -456,7 +456,7 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   const availability = await page.locator("#hprt-table").evaluate(
     (table, blockIds) => {
       const headerText =
-        table.querySelector(".hprt-table-header")?.textContent?.trim() || "";
+        table.querySelector(".hprt-table-header")?.innerText?.trim() || "";
       const rows = Array.from(table.querySelectorAll("tr[data-block-id]"))
         .filter((row) => blockIds.includes(row.getAttribute("data-block-id")))
         .map((row) => ({
