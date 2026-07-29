@@ -1,18 +1,286 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T16:07:39.617Z",
+  "updatedAt": "2026-07-29T16:10:55.033Z",
   "summary": {
-    "generatedAt": "2026-07-29T16:07:39.617Z",
-    "monitors": 0,
-    "searches": 0,
-    "offers": 0,
-    "matches": 0,
-    "newMatches": 0,
+    "generatedAt": "2026-07-29T16:10:55.033Z",
+    "monitors": 2,
+    "searches": 7,
+    "offers": 168,
+    "matches": 5,
+    "newMatches": 4,
     "priceDrops": 0,
-    "verificationErrors": [],
+    "verificationErrors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "dates": {
+          "checkIn": "2026-07-31",
+          "checkOut": "2026-08-01"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Villamil",
+        "message": "Booking cambio el total de 39.60 a 36.30 EUR durante la comprobacion."
+      }
+    ],
     "nearbyErrors": [],
     "errors": []
   },
-  "monitors": {},
-  "alerts": []
+  "monitors": {
+    "madrid-agosto-4-noches": {
+      "monitorId": "madrid-agosto-4-noches",
+      "monitorName": "Benidorm",
+      "lastScanAt": "2026-07-29T16:10:55.033Z",
+      "lastSuccessAt": "2026-07-29T16:12:12.494Z",
+      "searches": 3,
+      "offers": 74,
+      "matches": 1,
+      "nearbyLocations": [
+        "La Nucia",
+        "Finestrat"
+      ],
+      "error": ""
+    },
+    "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "lastScanAt": "2026-07-29T16:10:55.033Z",
+      "lastSuccessAt": "2026-07-29T16:13:13.585Z",
+      "searches": 4,
+      "offers": 94,
+      "matches": 4,
+      "nearbyLocations": [],
+      "error": "",
+      "flexibleCoverage": {
+        "sweepStartDate": "2026-07-29",
+        "totalCombinations": 360,
+        "startIndex": 0,
+        "checkedThisRun": 4,
+        "nextIndex": 4,
+        "remainingInSweep": 356,
+        "completedSweep": false
+      }
+    }
+  },
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-07-30|2026-07-31",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-07-30",
+        "checkOut": "2026-07-31",
+        "nights": 1,
+        "totalPrice": 35.2,
+        "nightlyPrice": 35.2,
+        "rateSubtotal": 32.41,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.3,
+        "reviewCount": 2176,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-07-30&checkout=2026-07-31&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=d75771ee4655009d&srepoch=1785341535&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3241&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 35.2,
+        "bookingTableTotal": 35.2,
+        "verificationRows": [
+          {
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 32",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-29T16:12:37.328Z"
+      },
+      "createdAt": "2026-07-29T16:12:41.432Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/a-amp-z-villegas.es.html|2026-07-30|2026-07-31",
+        "source": "booking",
+        "hotelName": "AYZ Villegas - Auto check-in property",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-07-30",
+        "checkOut": "2026-07-31",
+        "nights": 1,
+        "totalPrice": 36.3,
+        "nightlyPrice": 36.3,
+        "rateSubtotal": 32.71,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "546049310_376304918_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 7,
+        "reviewCount": 2651,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/a-amp-z-villegas.es.html?ucfs=1&arphpl=1&checkin=2026-07-30&checkout=2026-07-31&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=d75771ee4655009d&srepoch=1785341535&all_sr_blocks=546049310_376304918_2_0_0&highlighted_blocks=546049310_376304918_2_0_0&matching_block_id=546049310_376304918_2_0_0&sr_pri_blocks=546049310_376304918_2_0_0__3271&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 36.3,
+        "bookingTableTotal": 36.3,
+        "verificationRows": [
+          {
+            "blockId": "546049310_376304918_2_0_0",
+            "priceText": "€ 33",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-29T16:12:39.385Z"
+      },
+      "createdAt": "2026-07-29T16:12:41.432Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-villamil.es.html|2026-07-30|2026-07-31",
+        "source": "booking",
+        "hotelName": "Rooms Villamil",
+        "address": "Tetuán, Madrid",
+        "checkIn": "2026-07-30",
+        "checkOut": "2026-07-31",
+        "nights": 1,
+        "totalPrice": 36.3,
+        "nightlyPrice": 36.3,
+        "rateSubtotal": 33.17,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1491083203_420768519_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6,
+        "reviewCount": 245,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-villamil.es.html?ucfs=1&arphpl=1&checkin=2026-07-30&checkout=2026-07-31&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=d75771ee4655009d&srepoch=1785341535&all_sr_blocks=1491083203_420768519_2_0_0&highlighted_blocks=1491083203_420768519_2_0_0&matching_block_id=1491083203_420768519_2_0_0&sr_pri_blocks=1491083203_420768519_2_0_0__3317&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 36.3,
+        "bookingTableTotal": 36.3,
+        "verificationRows": [
+          {
+            "blockId": "1491083203_420768519_2_0_0",
+            "priceText": "€ 33",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-29T16:12:41.409Z"
+      },
+      "createdAt": "2026-07-29T16:12:41.432Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-07-31|2026-08-01",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-07-31",
+        "checkOut": "2026-08-01",
+        "nights": 1,
+        "totalPrice": 39.6,
+        "nightlyPrice": 39.6,
+        "rateSubtotal": 35.55,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.3,
+        "reviewCount": 2176,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-07-31&checkout=2026-08-01&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=658271ffc1320269&srepoch=1785341567&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3555&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 39.6,
+        "bookingTableTotal": 39.6,
+        "verificationRows": [
+          {
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 36",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-29T16:13:07.641Z"
+      },
+      "createdAt": "2026-07-29T16:13:10.231Z"
+    }
+  ]
 }
