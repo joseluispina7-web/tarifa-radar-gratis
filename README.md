@@ -19,7 +19,8 @@ depende de una cuenta de ChatGPT ni de Google Cloud.
 Booking y Google Hotels pueden activarse juntos o por separado dentro de cada
 búsqueda guardada. El escáner usa Playwright sin API, cuenta de afiliado ni
 credenciales de los buscadores. En Google Hotels solo publica el total de la
-estancia cuando la tarjeta indica que incluye impuestos y tasas.
+estancia cuando la tarjeta lo indica o cuando un proveedor de Google expone
+un total final con impuestos en EUR para exactamente esas fechas.
 
 - destino verificado con coordenadas;
 - fechas exactas o flexibles;

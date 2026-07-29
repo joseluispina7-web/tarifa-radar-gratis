@@ -6,6 +6,7 @@ const {
   parseGoogleGuestRating,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
+  parseGoogleProviderInclusiveTotal,
   parseGoogleHotelsTotal,
   parseGoogleStars,
   stableOfferId,
@@ -52,6 +53,28 @@ test("parses the explicit taxed stay total and nightly amount", () => {
     "\u20ac33\u20ac130 total4 nights including taxes and fees\u20ac33Aug 5-9";
   assert.equal(parseGoogleHotelsNightly(prefixEnglish), 33);
   assert.equal(parseGoogleHotelsTotal(prefixEnglish), 130);
+});
+
+test("reads only explicit all-inclusive EUR totals from Google providers", () => {
+  const providerUrl =
+    "https://www.google.com/travel/lodging/clk?" +
+    "pcurl=https%3A%2F%2Fwww.super.com%2Ftravel%2Ftransition%2F%3F" +
+    "currency%253DEUR%2526total_price%253D209.22%2526" +
+    "display_all_inclusive_price%253D227.46%2526" +
+    "checkin_at%253D2026-08-05%2526checkout_at%253D2026-08-09";
+  assert.equal(parseGoogleProviderInclusiveTotal(providerUrl), 227.46);
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://provider.test/?currency=USD&display_all_inclusive_price=90",
+    ),
+    0,
+  );
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://provider.test/?currency=EUR&total_price=90",
+    ),
+    0,
+  );
 });
 
 test("normalizes Google review rating to the ten-point panel scale", () => {
