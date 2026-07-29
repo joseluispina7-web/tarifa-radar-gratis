@@ -448,16 +448,16 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     currentUrl.searchParams.get("checkin") !== search.checkIn ||
     currentUrl.searchParams.get("checkout") !== search.checkOut ||
     Number(currentUrl.searchParams.get("group_adults")) !== search.adults ||
+    Number(currentUrl.searchParams.get("group_children") || 0) !==
+      search.children ||
     Number(currentUrl.searchParams.get("no_rooms")) !== search.rooms
   ) {
     throw new Error("Booking cambió las fechas, viajeros o habitaciones.");
   }
 
-  const availability = await page.locator("#hprt-table").evaluate(
+  const rows = await page.locator("#hprt-table").evaluate(
     (table, blockIds) => {
-      const headerText =
-        table.querySelector(".hprt-table-header")?.innerText?.trim() || "";
-      const rows = Array.from(table.querySelectorAll("tr[data-block-id]"))
+      return Array.from(table.querySelectorAll("tr[data-block-id]"))
         .filter((row) => blockIds.includes(row.getAttribute("data-block-id")))
         .map((row) => ({
           blockId: row.getAttribute("data-block-id") || "",
@@ -469,20 +469,13 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
             row.querySelector(".prd-taxes-and-fees-under-price")
               ?.textContent?.trim() || "",
         }));
-      return { headerText, rows };
     },
     offer.bookingBlockIds,
   );
 
-  if (!new RegExp(`${search.nights}\\s+noches?`, "i").test(
-    availability.headerText,
-  )) {
-    throw new Error("Booking no confirmó la duración de la estancia.");
-  }
-
   const verifiedTotal = calculateVerifiedTableTotal(
     offer.bookingBlockIds,
-    availability.rows,
+    rows,
   );
   if (!verifiedTotal) {
     throw new Error(
@@ -495,7 +488,7 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   offer.nightlyPrice =
     Math.round((verifiedTotal / search.nights) * 100) / 100;
   offer.bookingTableTotal = verifiedTotal;
-  offer.verificationRows = availability.rows;
+  offer.verificationRows = rows;
   offer.priceVerified = true;
   offer.priceBasis = "booking_availability_table";
   offer.matches = matchesSearch(offer, search);
