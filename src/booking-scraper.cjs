@@ -677,16 +677,26 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
   const errors = [];
   if (!candidates.length) return errors;
 
+  const verifyOffer = options.verifyOffer || verifyBookingOffer;
+  const matchingFirstPass = [];
   const page = await context.newPage();
   try {
     for (const offer of candidates) {
       try {
-        await verifyBookingOffer(page, offer, search, {
+        await verifyOffer(page, offer, search, {
           timeoutMs: Math.min(options.timeoutMs || 25_000, 25_000),
         });
+        offer.priceConfirmationCount = 0;
+        if (offer.matches) {
+          matchingFirstPass.push({
+            offer,
+            totalPrice: offer.totalPrice,
+          });
+        }
       } catch (error) {
         offer.matches = false;
         offer.priceVerified = false;
+        offer.priceConfirmationCount = 0;
         offer.verificationError =
           error instanceof Error ? error.message : String(error);
         errors.push({
@@ -697,6 +707,70 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
     }
   } finally {
     await page.close();
+  }
+
+  if (!matchingFirstPass.length) return errors;
+
+  const confirmationDelayMs = Number.isFinite(options.confirmationDelayMs)
+    ? Math.max(0, Number(options.confirmationDelayMs))
+    : 10_000;
+  const sleep =
+    options.sleep ||
+    ((delayMs) => new Promise((resolve) => setTimeout(resolve, delayMs)));
+  await sleep(confirmationDelayMs);
+
+  const browser = typeof context.browser === "function"
+    ? context.browser()
+    : null;
+  const confirmationContext = browser
+    ? await browser.newContext({
+        locale: "es-ES",
+        timezoneId: "Europe/Madrid",
+        viewport: { width: 1365, height: 900 },
+      })
+    : context;
+  const confirmationPage = await confirmationContext.newPage();
+  try {
+    for (const firstPass of matchingFirstPass) {
+      const { offer, totalPrice: firstTotal } = firstPass;
+      try {
+        await verifyOffer(confirmationPage, offer, search, {
+          timeoutMs: Math.min(options.timeoutMs || 25_000, 25_000),
+        });
+        const samePrice =
+          Math.abs(Number(offer.totalPrice) - Number(firstTotal)) <= 0.01;
+        if (!offer.matches || !samePrice) {
+          const secondTotal = Number(offer.totalPrice);
+          offer.matches = false;
+          offer.priceConfirmationCount = 0;
+          offer.verificationError = samePrice
+            ? "La tarifa dejo de cumplir los filtros al volver a comprobarla."
+            : `Booking cambio el total de ${firstTotal.toFixed(2)} a ${secondTotal.toFixed(2)} EUR durante la comprobacion.`;
+          errors.push({
+            hotelName: offer.hotelName,
+            message: offer.verificationError,
+          });
+          continue;
+        }
+        offer.priceConfirmationCount = 2;
+        offer.priceConfirmedAt = new Date().toISOString();
+      } catch (error) {
+        offer.matches = false;
+        offer.priceVerified = false;
+        offer.priceConfirmationCount = 0;
+        offer.verificationError =
+          error instanceof Error ? error.message : String(error);
+        errors.push({
+          hotelName: offer.hotelName,
+          message: `La segunda comprobacion fallo: ${offer.verificationError}`,
+        });
+      }
+    }
+  } finally {
+    await confirmationPage.close();
+    if (confirmationContext !== context) {
+      await confirmationContext.close();
+    }
   }
   return errors;
 }
@@ -803,5 +877,6 @@ module.exports = {
   parseStars,
   scrapeBooking,
   stayMatchesSearch,
+  verifyBookingCandidates,
   verifyBookingOffer,
 };

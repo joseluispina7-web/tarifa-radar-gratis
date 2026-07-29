@@ -51,7 +51,7 @@ test("builds one compact verified Booking alert", () => {
   assert.match(message, /106,43/);
   assert.match(message, /Sin estrellas/);
   assert.match(message, /4,8 km del destino/);
-  assert.match(message, /Precio confirmado en 2 ciclos de Booking/);
+  assert.match(message, /Precio reconfirmado en Booking antes del aviso/);
   assert.match(message, /Abrir Tarifa Radar/);
 });
 

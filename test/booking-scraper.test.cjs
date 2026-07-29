@@ -22,6 +22,7 @@ const {
   parseReviewScore,
   parseStars,
   stayMatchesSearch,
+  verifyBookingCandidates,
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
 const {
@@ -41,6 +42,100 @@ const searchInput = {
   maxNightly: 30,
   priceRule: "or",
 };
+
+function makeVerificationContext() {
+  const state = {
+    closedContexts: 0,
+    closedPages: 0,
+  };
+  const confirmationContext = {
+    newPage: async () => ({
+      close: async () => {
+        state.closedPages += 1;
+      },
+    }),
+    close: async () => {
+      state.closedContexts += 1;
+    },
+  };
+  return {
+    context: {
+      newPage: async () => ({
+        close: async () => {
+          state.closedPages += 1;
+        },
+      }),
+      browser: () => ({
+        newContext: async () => confirmationContext,
+      }),
+    },
+    state,
+  };
+}
+
+test("confirms a matching price twice in one scan", async () => {
+  const { context, state } = makeVerificationContext();
+  const offer = {
+    hotelName: "Hotel estable",
+    candidateMatches: true,
+    totalPrice: 120,
+  };
+  let calls = 0;
+  let waited = 0;
+  const errors = await verifyBookingCandidates(
+    context,
+    [offer],
+    { maxVerifiedResults: 5 },
+    {
+      confirmationDelayMs: 10_000,
+      sleep: async (delayMs) => {
+        waited = delayMs;
+      },
+      verifyOffer: async (_page, currentOffer) => {
+        calls += 1;
+        currentOffer.totalPrice = 120;
+        currentOffer.matches = true;
+        currentOffer.priceVerified = true;
+      },
+    },
+  );
+
+  assert.equal(calls, 2);
+  assert.equal(waited, 10_000);
+  assert.equal(offer.matches, true);
+  assert.equal(offer.priceConfirmationCount, 2);
+  assert.equal(errors.length, 0);
+  assert.equal(state.closedPages, 2);
+  assert.equal(state.closedContexts, 1);
+});
+
+test("rejects a price that changes during same-scan confirmation", async () => {
+  const { context } = makeVerificationContext();
+  const offer = {
+    hotelName: "Hotel cambiante",
+    candidateMatches: true,
+    totalPrice: 120,
+  };
+  let calls = 0;
+  const errors = await verifyBookingCandidates(
+    context,
+    [offer],
+    { maxVerifiedResults: 5 },
+    {
+      confirmationDelayMs: 0,
+      verifyOffer: async (_page, currentOffer) => {
+        calls += 1;
+        currentOffer.totalPrice = calls === 1 ? 120 : 130;
+        currentOffer.matches = true;
+        currentOffer.priceVerified = true;
+      },
+    },
+  );
+
+  assert.equal(offer.matches, false);
+  assert.equal(offer.priceConfirmationCount, 0);
+  assert.match(errors[0].message, /cambio el total/);
+});
 
 test("builds an exact Booking search without affiliate credentials", () => {
   const url = new URL(buildBookingSearchUrl(searchInput));

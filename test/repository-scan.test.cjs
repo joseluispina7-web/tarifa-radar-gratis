@@ -70,13 +70,14 @@ test("replaces only deals for the date pair just searched", () => {
   assert.deepEqual(Array.from(deals.keys()), ["other-dates"]);
 });
 
-test("publishes a price only after two different scan cycles", () => {
+test("publishes a price after two checks in the same scan cycle", () => {
   const offer = {
     hotelName: "Hotel estable",
     totalPrice: 120,
     nightlyPrice: 30,
     matches: true,
     priceVerified: true,
+    priceConfirmationCount: 2,
     priceBasis: "booking_availability_table",
     searchArea: "Benidorm",
     checkIn: "2026-08-05",
@@ -88,46 +89,34 @@ test("publishes a price only after two different scan cycles", () => {
     "2026-07-29T08:45:00.000Z",
     "cycle-1",
   );
-  assert.equal(first.confirmationCount, 1);
-  assert.equal(offerStateIsConfirmed(first), false);
+  assert.equal(first.confirmationCount, 2);
+  assert.equal(offerStateIsConfirmed(first), true);
 
-  const migrated = updateOfferState(
-    { matches: true, totalPrice: 120 },
-    offer,
+  const unconfirmed = updateOfferState(
+    first,
+    { ...offer, priceConfirmationCount: 1 },
     "2026-07-29T08:45:00.000Z",
     "cycle-1",
   );
-  assert.equal(migrated.confirmationCount, 1);
-  assert.equal(offerStateIsConfirmed(migrated), false);
-
-  const duplicateInCycle = updateOfferState(
-    first,
-    offer,
-    "2026-07-29T08:45:20.000Z",
-    "cycle-1",
-  );
-  assert.equal(duplicateInCycle.confirmationCount, 1);
-
-  const second = updateOfferState(
-    duplicateInCycle,
-    offer,
-    "2026-07-29T08:50:00.000Z",
-    "cycle-2",
-  );
-  assert.equal(second.confirmationCount, 2);
-  assert.equal(offerStateIsConfirmed(second), true);
+  assert.equal(unconfirmed.confirmationCount, 1);
+  assert.equal(offerStateIsConfirmed(unconfirmed), false);
 
   const changedPrice = updateOfferState(
-    second,
-    { ...offer, totalPrice: 130, nightlyPrice: 32.5 },
+    first,
+    {
+      ...offer,
+      totalPrice: 130,
+      nightlyPrice: 32.5,
+      priceConfirmationCount: 0,
+    },
     "2026-07-29T08:55:00.000Z",
     "cycle-3",
   );
-  assert.equal(changedPrice.confirmationCount, 1);
+  assert.equal(changedPrice.confirmationCount, 0);
   assert.equal(offerStateIsConfirmed(changedPrice), false);
 
   const unavailable = updateOfferState(
-    second,
+    first,
     { ...offer, matches: false, priceVerified: false },
     "2026-07-29T08:55:00.000Z",
     "cycle-3",

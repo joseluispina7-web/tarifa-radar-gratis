@@ -31,18 +31,8 @@ function updateOfferState(
   searchedAt,
   scanCycle = searchedAt,
 ) {
-  const previousConfirmations = Number(previous.confirmationCount) || 0;
-  const samePrice =
-    previous.matches === true &&
-    Math.abs(Number(previous.totalPrice) - Number(offer.totalPrice)) <=
-      PRICE_COMPARISON_EPSILON;
-  const sameCycle = previous.lastObservationCycle === scanCycle;
   const confirmationCount = offer.matches
-    ? samePrice
-      ? sameCycle
-        ? previousConfirmations
-        : previousConfirmations + 1
-      : 1
+    ? Number(offer.priceConfirmationCount) || 0
     : 0;
   const previousPublishedPrice =
     Number(previous.publishedPrice) ||
@@ -357,7 +347,8 @@ async function runRepositoryScan(options = {}) {
                 ? "price_drop"
                 : "";
             offer.priceConfirmationCount = nextOfferState.confirmationCount;
-            offer.priceConfirmedAt = result.searchedAt;
+            offer.priceConfirmedAt =
+              offer.priceConfirmedAt || result.searchedAt;
             nextOfferState.publishedPrice = offer.totalPrice;
             monitorMatchingOffers.add(offerKey);
             currentMatchingOffers.add(offerKey);

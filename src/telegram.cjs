@@ -83,7 +83,7 @@ function formatAlert(alert) {
     )}${priceDrop}`,
     escapeHtml(details),
     Number(offer.priceConfirmationCount) >= 2
-      ? "<i>Precio confirmado en 2 ciclos de Booking</i>"
+      ? "<i>Precio reconfirmado en Booking antes del aviso</i>"
       : "",
   ]
     .filter(Boolean)
