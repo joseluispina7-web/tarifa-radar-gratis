@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
+  buildBookingPageUrls,
   buildBookingSearchUrl,
   calculateVerifiedTableTotal,
   detectAmenities,
@@ -77,6 +78,19 @@ test("uses the exact stay total encoded in Booking rate blocks", () => {
   );
   assert.equal(parseAdditionalCharges("+ € 18 de impuestos y cargos"), 18);
   assert.equal(parseAdditionalCharges("Incluye impuestos y cargos"), 0);
+});
+
+test("checks additional Booking pages when a surrounding radius is selected", () => {
+  const urls = buildBookingPageUrls({
+    ...searchInput,
+    maxDistanceKm: 5,
+    maxResults: 75,
+  }).map((value) => new URL(value));
+  assert.equal(urls.length, 3);
+  assert.equal(urls[0].searchParams.has("offset"), false);
+  assert.equal(urls[1].searchParams.get("offset"), "25");
+  assert.equal(urls[2].searchParams.get("offset"), "50");
+  assert.equal(buildBookingPageUrls(searchInput).length, 1);
 });
 
 test("reads the exact room block ids from a Booking result", () => {
@@ -211,6 +225,14 @@ test("extracts useful card details for panel filters", () => {
   assert.equal(detectMealPlan(text), "breakfast");
   assert.equal(parseDistanceKm("A 750 m del centro"), 0.75);
   assert.equal(parseDistanceKm("A 2,4 km del centro"), 2.4);
+  assert.equal(
+    parseDistanceKm("Finestrat · A 4,8 km de Benidorm", "Benidorm, España"),
+    4.8,
+  );
+  assert.equal(
+    parseDistanceKm("A 5,4 km de Terra Natura", "Benidorm, España"),
+    0,
+  );
 });
 
 test("applies distance, property, meal and amenity filters", () => {
@@ -234,6 +256,14 @@ test("applies distance, property, meal and amenity filters", () => {
     sharedRoom: false,
   };
   assert.equal(matchesSearch(matchingOffer, filteredSearch), true);
+  assert.equal(
+    matchesSearch({ ...matchingOffer, distanceKm: 0 }, filteredSearch),
+    true,
+  );
+  assert.equal(
+    matchesSearch({ ...matchingOffer, distanceKm: null }, filteredSearch),
+    false,
+  );
   assert.equal(
     matchesSearch({ ...matchingOffer, distanceKm: 4 }, filteredSearch),
     false,
@@ -292,11 +322,13 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
       priceMatch: "both",
       minStars: 0,
       guestRatingMin: 0,
+      maxDistanceKm: 5,
       freeCancellation: false,
     },
     searches[0],
   );
   assert.equal(search.priceRule, "and");
+  assert.equal(search.maxResults, 75);
   assert.equal(monitorIsDue({ intervalMinutes: 5, lastScanAt: null }, now), true);
   assert.equal(
     monitorIsDue(

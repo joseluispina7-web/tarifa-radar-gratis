@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="./styles.css?v=3" />
     <script src="./vendor/lucide.min.js" defer></script>
-    <script src="./app.js?v=5" defer></script>
+    <script src="./app.js?v=6" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -302,14 +302,14 @@
                       </select>
                     </label>
                     <label>
-                      <span>Distancia máxima</span>
+                      <span>Buscar alrededor</span>
                       <select id="max-distance">
-                        <option value="0">Cualquiera</option>
-                        <option value="1">1 km</option>
-                        <option value="3">3 km</option>
-                        <option value="5">5 km</option>
-                        <option value="10">10 km</option>
-                        <option value="25">25 km</option>
+                        <option value="0">Resultado habitual</option>
+                        <option value="1">Hasta 1 km</option>
+                        <option value="3">Hasta 3 km</option>
+                        <option value="5">Hasta 5 km</option>
+                        <option value="10">Hasta 10 km</option>
+                        <option value="25">Hasta 25 km</option>
                       </select>
                     </label>
                   </div>
@@ -455,10 +455,10 @@
                   <span class="connection-icon telegram">
                     <i data-lucide="send"></i>
                   </span>
-                  <span class="large-status">Pendiente</span>
+                  <span class="large-status ready">Activo</span>
                 </div>
                 <h2>Telegram</h2>
-                <p>La salida de ofertas está preparada para conectar el bot.</p>
+                <p>Alertas nuevas y bajadas de precio en Tarifa Radar Hotel.</p>
               </article>
               <article class="connection-panel">
                 <div class="connection-heading">

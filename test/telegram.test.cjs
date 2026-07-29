@@ -22,6 +22,7 @@ function makeAlert(overrides = {}) {
       nightlyPrice: 106.43,
       stars: 0,
       guestRating: 8.7,
+      distanceKm: 4.8,
       breakfastIncluded: true,
       priceVerified: true,
       url: "https://www.booking.com/hotel/es/example.html?a=1&b=2",
@@ -48,6 +49,7 @@ test("builds one compact verified Booking alert", () => {
   assert.match(message, /425,7/);
   assert.match(message, /106,43/);
   assert.match(message, /Sin estrellas/);
+  assert.match(message, /4,8 km del destino/);
   assert.match(message, /Precio verificado en Booking/);
   assert.match(message, /Abrir Tarifa Radar/);
 });

@@ -320,6 +320,11 @@
     return `${monitor.minNights}-${monitor.maxNights} noches · ${monitor.windowDays} días`;
   }
 
+  function radiusText(monitor) {
+    const radius = Number(monitor.maxDistanceKm) || 0;
+    return radius > 0 ? `hasta ${radius} km alrededor` : "zona habitual";
+  }
+
   function renderMonitorList() {
     const monitors = state.config.monitors || [];
     $("#monitor-count").textContent = String(monitors.length);
@@ -355,7 +360,9 @@
                     <span class="monitor-rule">
                       ${escapeHtml(priceText(monitor))} · ${escapeHtml(
                         dateText(monitor),
-                      )} · cada ${escapeHtml(monitor.intervalMinutes)} min
+                      )} · ${escapeHtml(radiusText(monitor))} · cada ${escapeHtml(
+                        monitor.intervalMinutes,
+                      )} min
                     </span>
                   </span>
                 </button>
@@ -404,11 +411,17 @@
   }
 
   function dealRow(deal) {
+    const distance = Number(deal.distanceKm) || 0;
+    const distanceLabel = distance > 0
+      ? ` · ${distance.toLocaleString("es-ES")} km del destino`
+      : "";
     return `
       <article class="deal-row">
         <span>
           <strong>${escapeHtml(deal.hotelName)}</strong>
-          <small>${escapeHtml(deal.address || deal.location)}</small>
+          <small>${escapeHtml(
+            `${deal.address || deal.location}${distanceLabel}`,
+          )}</small>
         </span>
         <span>
           <strong>${escapeHtml(formatDate(deal.checkIn))}</strong>
@@ -688,7 +701,9 @@
       <span><i data-lucide="radar"></i></span>
       <div>
         <strong>${escapeHtml(draft.location || "Destino")} · ${escapeHtml(dates)}</strong>
-        <p>${escapeHtml(priceText(draft))} · ${escapeHtml(stars)} · Booking automático</p>
+        <p>${escapeHtml(priceText(draft))} · ${escapeHtml(stars)} · ${escapeHtml(
+          radiusText(draft),
+        )} · Booking automático</p>
       </div>
     `;
     refreshIcons();

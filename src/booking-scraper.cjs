@@ -2,6 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const DEFAULT_TIMEOUT_MS = 60_000;
+const BOOKING_PAGE_SIZE = 25;
+const MAX_RADIUS_PAGES = 3;
 
 function assertIsoDate(value, fieldName) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(String(value || ""))) {
@@ -100,6 +102,24 @@ function buildBookingSearchUrl(input) {
   if (filters.length) url.searchParams.set("nflt", filters.join(";"));
 
   return url.toString();
+}
+
+function buildBookingPageUrls(input) {
+  const search = normalizeSearch(input);
+  const firstUrl = buildBookingSearchUrl(search);
+  const pageCount = search.maxDistanceKm > 0
+    ? Math.min(
+        MAX_RADIUS_PAGES,
+        Math.max(1, Math.ceil(search.maxResults / BOOKING_PAGE_SIZE)),
+      )
+    : 1;
+  return Array.from({ length: pageCount }, (_, index) => {
+    const url = new URL(firstUrl);
+    if (index > 0) {
+      url.searchParams.set("offset", String(index * BOOKING_PAGE_SIZE));
+    }
+    return url.toString();
+  });
 }
 
 function parseLocalizedNumber(value) {
@@ -229,12 +249,36 @@ function parseStars(value) {
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
 
-function parseDistanceKm(value) {
+function escapeRegExp(value) {
+  return String(value || "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function parseDistanceKm(value, destination = "") {
   const text = String(value || "").replace(",", ".");
   const kilometerMatch = text.match(/(\d+(?:\.\d+)?)\s*km\s+del centro/i);
   if (kilometerMatch) return Number(kilometerMatch[1]);
   const meterMatch = text.match(/(\d+)\s*m\s+del centro/i);
   if (meterMatch) return Math.round((Number(meterMatch[1]) / 1000) * 100) / 100;
+
+  const destinationName = String(destination || "").split(",")[0].trim();
+  if (!destinationName) return 0;
+  const destinationPattern = escapeRegExp(destinationName);
+  const destinationKilometers = text.match(
+    new RegExp(
+      `(\\d+(?:\\.\\d+)?)\\s*km\\s+(?:de|del|de la)\\s+${destinationPattern}\\b`,
+      "i",
+    ),
+  );
+  if (destinationKilometers) return Number(destinationKilometers[1]);
+  const destinationMeters = text.match(
+    new RegExp(
+      `(\\d+)\\s*m\\s+(?:de|del|de la)\\s+${destinationPattern}\\b`,
+      "i",
+    ),
+  );
+  if (destinationMeters) {
+    return Math.round((Number(destinationMeters[1]) / 1000) * 100) / 100;
+  }
   return 0;
 }
 
@@ -328,7 +372,11 @@ function matchesSearch(offer, search) {
   if (search.freeCancellation && !offer.freeCancellation) return false;
   if (
     search.maxDistanceKm > 0 &&
-    (!offer.distanceKm || offer.distanceKm > search.maxDistanceKm)
+    (
+      offer.distanceKm === null ||
+      offer.distanceKm === undefined ||
+      offer.distanceKm > search.maxDistanceKm
+    )
   ) {
     return false;
   }
@@ -408,6 +456,15 @@ async function extractVisibleCards(page, search) {
     const roomName = card.text.split("\n").find((line) =>
       /habitaci[oó]n|apartamento|estudio|cama/i.test(line),
     ) || "";
+    const parsedDistance = parseDistanceKm(
+      `${card.address}\n${card.text}`,
+      search.destination,
+    );
+    const destinationName = search.destination.split(",")[0].trim();
+    const addressIsInDestination = destinationName
+      ? new RegExp(`\\b${escapeRegExp(destinationName)}\\b`, "i")
+          .test(card.address)
+      : false;
     const offer = {
       id: `${new URL(card.href).pathname}|${search.checkIn}|${search.checkOut}`,
       source: "booking",
@@ -428,7 +485,8 @@ async function extractVisibleCards(page, search) {
       stars: parseStars(card.starLabel),
       guestRating: parseReviewScore(card.reviewText),
       reviewCount: parseReviewCount(card.reviewText),
-      distanceKm: parseDistanceKm(`${card.address}\n${card.text}`),
+      distanceKm:
+        parsedDistance > 0 || addressIsInDestination ? parsedDistance : null,
       freeCancellation: /cancelaci[oó]n gratis/i.test(card.text),
       breakfastIncluded: /desayuno incluido/i.test(card.text),
       limitedAvailability: /nos quedan \d+/i.test(card.text),
@@ -579,27 +637,40 @@ async function scrapeBooking(input, options = {}) {
       viewport: { width: 1365, height: 900 },
     });
     const page = await context.newPage();
-    const url = buildBookingSearchUrl(search);
-    await page.goto(url, {
-      waitUntil: "domcontentloaded",
-      timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
-    });
-    try {
-      await page.locator('[data-testid="property-card"]').first().waitFor({
-        state: "visible",
-        timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
-      });
-    } catch (error) {
-      const challenged = /[?&]chal_t=|force_referer/i.test(page.url());
-      throw new Error(
-        challenged
-          ? "Booking ha solicitado una comprobación del navegador; no se publican precios."
-          : "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite.",
-        { cause: error },
-      );
+    const pageUrls = buildBookingPageUrls(search);
+    const offers = [];
+    const seenOfferIds = new Set();
+    let searchedPages = 0;
+    for (const [pageIndex, pageUrl] of pageUrls.entries()) {
+      try {
+        await page.goto(pageUrl, {
+          waitUntil: "domcontentloaded",
+          timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
+        });
+        await page.locator('[data-testid="property-card"]').first().waitFor({
+          state: "visible",
+          timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
+        });
+      } catch (error) {
+        if (pageIndex > 0) break;
+        const challenged = /[?&]chal_t=|force_referer/i.test(page.url());
+        throw new Error(
+          challenged
+            ? "Booking ha solicitado una comprobación del navegador; no se publican precios."
+            : "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite.",
+          { cause: error },
+        );
+      }
+      searchedPages += 1;
+
+      const pageOffers = await extractVisibleCards(page, search);
+      for (const offer of pageOffers) {
+        if (seenOfferIds.has(offer.id)) continue;
+        seenOfferIds.add(offer.id);
+        offers.push(offer);
+      }
     }
 
-    const offers = await extractVisibleCards(page, search);
     const verificationErrors = await verifyBookingCandidates(
       context,
       offers,
@@ -613,7 +684,8 @@ async function scrapeBooking(input, options = {}) {
       source: "booking",
       searchedAt: new Date().toISOString(),
       search,
-      searchUrl: url,
+      searchUrl: pageUrls[0],
+      searchedPages,
       offers,
       matchingOffers,
       verificationErrors,
@@ -628,6 +700,7 @@ async function scrapeBooking(input, options = {}) {
 }
 
 module.exports = {
+  buildBookingPageUrls,
   buildBookingSearchUrl,
   calculateVerifiedTableTotal,
   detectAmenities,

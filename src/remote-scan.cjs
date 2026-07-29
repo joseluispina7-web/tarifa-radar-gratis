@@ -88,13 +88,13 @@ function monitorToSearch(monitor, dates) {
     priceRule: monitor.priceMatch === "both" ? "and" : "or",
     minStars: monitor.minStars,
     guestRatingMin: monitor.guestRatingMin,
-    maxDistanceKm: monitor.maxDistanceKm,
+    maxDistanceKm: Number(monitor.maxDistanceKm) || 0,
     freeCancellation: monitor.freeCancellation,
     mealPlan: monitor.mealPlan,
     propertyTypes: monitor.propertyTypes,
     amenities: monitor.amenities,
     excludeSharedRooms: true,
-    maxResults: 30,
+    maxResults: Number(monitor.maxDistanceKm) > 0 ? 75 : 30,
   };
 }
 
