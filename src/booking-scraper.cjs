@@ -490,9 +490,14 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     rows,
   );
   if (!verifiedTotal) {
-    throw new Error(
+    const error = new Error(
       "Booking no mostró un total final con impuestos para esa habitación.",
     );
+    error.details = {
+      bookingBlockIds: offer.bookingBlockIds,
+      rows,
+    };
+    throw error;
   }
 
   offer.searchResultPrice = offer.totalPrice;
@@ -530,6 +535,7 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
         errors.push({
           hotelName: offer.hotelName,
           message: offer.verificationError,
+          details: error instanceof Error ? error.details || null : null,
         });
       }
     }
