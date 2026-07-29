@@ -30,16 +30,26 @@ function buildGoogleHotelsSearchUrl(input) {
 }
 
 function parseGoogleHotelsTotal(value) {
-  const match = String(value || "").match(
+  const text = String(value || "");
+  const suffixMatch = text.match(
     /([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*\u20ac\s+(?:en total|total)/i,
   );
+  const prefixMatch = text.match(
+    /\u20ac\s*([\d][\d.,\s\u00a0]*)\s+(?:en total|total)/i,
+  );
+  const match = suffixMatch || prefixMatch;
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
 
 function parseGoogleHotelsNightly(value) {
-  const match = String(value || "").match(
+  const text = String(value || "");
+  const suffixMatch = text.match(
     /^\s*([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*\u20ac/i,
   );
+  const prefixMatch = text.match(
+    /^\s*\u20ac\s*([\d][\d.,\s\u00a0]*?)(?=\s*\u20ac|\s|$)/i,
+  );
+  const match = suffixMatch || prefixMatch;
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
 
@@ -220,15 +230,35 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
   await options.first().waitFor({ state: "visible", timeout: timeoutMs });
   const labels = await options.allTextContents();
   const normalizedQuery = normalizeGoogleQuery(query);
-  const exactIndex = labels.findIndex(
-    (label) => normalizeGoogleQuery(label) === normalizedQuery,
+  const normalizedDestination = normalizeGoogleQuery(destination);
+  const exactForms = new Set([
+    normalizedQuery,
+    `hotels in ${normalizedDestination}`,
+    `${normalizedDestination} hotels`,
+  ]);
+  let selectedIndex = labels.findIndex((label) =>
+    exactForms.has(normalizeGoogleQuery(label)),
   );
-  if (exactIndex < 0) {
+  if (selectedIndex < 0) {
+    const candidates = labels
+      .map((label, index) => ({
+        index,
+        label: normalizeGoogleQuery(label),
+      }))
+      .filter(({ label }) =>
+        label.includes(normalizedDestination) &&
+        /hotel|hoteles/.test(label),
+      )
+      .sort((left, right) => left.label.length - right.label.length);
+    selectedIndex = candidates[0]?.index ?? -1;
+  }
+  if (selectedIndex < 0) {
     throw new Error(
-      `Google Hotels no reconocio el destino ${destination}.`,
+      `Google Hotels no reconocio el destino ${destination}. ` +
+        `Sugerencias: ${labels.slice(0, 3).join(" | ") || "ninguna"}.`,
     );
   }
-  await options.nth(exactIndex).click();
+  await options.nth(selectedIndex).click();
   await page.waitForTimeout(1_500);
 }
 
@@ -240,7 +270,8 @@ async function ensureCalendarDate(page, isoDate, timeoutMs) {
     const dateButton = page.locator(selector).first();
     if (await dateButton.count()) return dateButton;
     const nextButton = page
-      .locator('[role="dialog"]:visible button[aria-label="Siguiente"]')
+      .locator('[role="dialog"]:visible')
+      .getByRole("button", { name: /Siguiente|Next/i })
       .first();
     if (!(await nextButton.count())) break;
     await nextButton.click();
@@ -338,6 +369,19 @@ async function extractGoogleHotelCards(page, search) {
     .filter(Boolean);
 }
 
+async function googleHotelsDiagnostics(page) {
+  return page.evaluate(() => ({
+    headings: Array.from(document.querySelectorAll("h2"))
+      .map((heading) => (heading.textContent || "").trim())
+      .filter(Boolean)
+      .slice(0, 4),
+    prices: Array.from(document.querySelectorAll("a"))
+      .map((link) => (link.innerText || "").trim().replace(/\s+/g, " "))
+      .filter((text) => /[\u20ac$]|total|nights?|noches?/i.test(text))
+      .slice(0, 4),
+  }));
+}
+
 async function loadGoogleHotels(page, search, options = {}) {
   const timeoutMs = options.timeoutMs || DEFAULT_TIMEOUT_MS;
   const searchUrl = buildGoogleHotelsSearchUrl(search);
@@ -361,6 +405,8 @@ async function loadGoogleHotels(page, search, options = {}) {
         state: "visible",
         timeout: timeoutMs,
       });
+      await page.locator("h2").nth(1).scrollIntoViewIfNeeded();
+      await page.mouse.wheel(0, 900);
       await page.waitForTimeout(1_500);
       return { searchUrl, resultUrl: page.url() };
     } catch (error) {
@@ -404,6 +450,14 @@ async function scrapeGoogleHotels(input, options = {}) {
       options,
     );
     const offers = await extractGoogleHotelCards(page, search);
+    if (!offers.length) {
+      const diagnostics = await googleHotelsDiagnostics(page);
+      throw new Error(
+        "Google Hotels abrio la busqueda pero no expuso un total verificable. " +
+          `Titulos: ${diagnostics.headings.join(" | ") || "ninguno"}. ` +
+          `Precios: ${diagnostics.prices.join(" | ") || "ninguno"}.`,
+      );
+    }
     const matchingOffers = offers
       .filter((offer) => offer.matches)
       .sort((left, right) => left.totalPrice - right.totalPrice);
@@ -431,6 +485,7 @@ module.exports = {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
   extractGoogleHotelCards,
+  googleHotelsDiagnostics,
   parseGoogleGuestRating,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,

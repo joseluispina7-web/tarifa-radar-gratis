@@ -48,6 +48,10 @@ test("parses the explicit taxed stay total and nightly amount", () => {
   assert.equal(parseGoogleHotelsNightly(english), 33);
   assert.equal(parseGoogleHotelsTotal(english), 130);
   assert.equal(parseGoogleHotelsNights(english), 4);
+  const prefixEnglish =
+    "\u20ac33\u20ac130 total4 nights including taxes and fees\u20ac33Aug 5-9";
+  assert.equal(parseGoogleHotelsNightly(prefixEnglish), 33);
+  assert.equal(parseGoogleHotelsTotal(prefixEnglish), 130);
 });
 
 test("normalizes Google review rating to the ten-point panel scale", () => {
