@@ -38,7 +38,26 @@ function formatStars(stars) {
 }
 
 function formatSource(source) {
-  return source === "google_hotels" ? "Google Hotels" : "Booking";
+  return {
+    booking: "Booking",
+    google_hotels: "Google Hotels",
+    agoda: "Agoda",
+    trip: "Trip.com",
+    bluepillow: "Bluepillow",
+  }[source] || source;
+}
+
+function formatVerification(source) {
+  if (source === "booking") {
+    return "Precio reconfirmado en Booking antes del aviso";
+  }
+  if (source === "google_hotels") {
+    return "Total con impuestos y tasas leido en Google Hotels";
+  }
+  if (["agoda", "trip", "bluepillow"].includes(source)) {
+    return `Total en EUR para la estancia obtenido de ${formatSource(source)} via Bluepillow`;
+  }
+  return "Precio verificado antes del aviso";
 }
 
 function formatAlert(alert) {
@@ -89,9 +108,7 @@ function formatAlert(alert) {
     escapeHtml(details),
     `<b>Fuente:</b> ${escapeHtml(source)}`,
     Number(offer.priceConfirmationCount) >= 2
-      ? offer.source === "google_hotels"
-        ? "<i>Total con impuestos y tasas leido en Google Hotels</i>"
-        : "<i>Precio reconfirmado en Booking antes del aviso</i>"
+      ? `<i>${escapeHtml(formatVerification(offer.source))}</i>`
       : "",
   ]
     .filter(Boolean)
@@ -173,6 +190,7 @@ module.exports = {
   formatDate,
   formatMoney,
   formatSource,
+  formatVerification,
   sendAlertDigest,
   telegramRequest,
 };

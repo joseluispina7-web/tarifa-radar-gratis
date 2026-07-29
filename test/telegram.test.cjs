@@ -79,6 +79,22 @@ test("labels Google Hotels alerts without claiming Booking verification", () => 
   assert.doesNotMatch(message, /reconfirmado en Booking/);
 });
 
+test("labels Agoda alerts as prices supplied through Bluepillow", () => {
+  const message = buildAlertMessage([
+    makeAlert({
+      offer: {
+        source: "agoda",
+        provider: "Agoda via Bluepillow",
+        priceConfirmationCount: 2,
+        url: "https://www.bluepillow.com/skippy?connectorname=Agoda",
+      },
+    }),
+  ]);
+  assert.match(message, /Fuente:<\/b> Agoda/);
+  assert.match(message, /obtenido de Agoda via Bluepillow/);
+  assert.doesNotMatch(message, /reconfirmado en Booking/);
+});
+
 test("limits a digest and reports omitted offers", () => {
   const alerts = Array.from(
     { length: MAX_ALERTS_PER_MESSAGE + 2 },

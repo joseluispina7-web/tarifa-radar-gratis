@@ -38,12 +38,13 @@
   const sources = [
     ["booking", "Booking", true],
     ["google_hotels", "Google Hotels", true],
+    ["agoda", "Agoda", true, "Automático via Bluepillow"],
+    ["trip", "Trip.com", true, "Automático via Bluepillow"],
+    ["bluepillow", "Bluepillow", true, "API gratuita"],
     ["trivago", "Trivago", false],
     ["kayak", "KAYAK", false],
     ["expedia", "Expedia", false],
     ["hotels", "Hotels.com", false],
-    ["agoda", "Agoda", false],
-    ["trip", "Trip.com", false],
     ["skyscanner", "Skyscanner", false],
   ];
 
@@ -638,7 +639,7 @@
       : ["booking"];
     $("#source-grid").innerHTML = sources
       .map(
-        ([id, label, automatic]) =>
+        ([id, label, automatic, detail]) =>
           automatic
             ? `
               <button
@@ -647,7 +648,9 @@
                 data-source-id="${id}"
                 aria-pressed="${selectedSources.includes(id)}"
               >
-                <span>${escapeHtml(label)}<small>Automático</small></span>
+                <span>${escapeHtml(label)}<small>${escapeHtml(
+                  detail || "Automático",
+                )}</small></span>
                 <i data-lucide="${
                   selectedSources.includes(id) ? "check" : "plus"
                 }"></i>
@@ -821,6 +824,8 @@
       ],
       ["Agoda", `https://www.agoda.com/es-es/search?textToSearch=${encoded}`],
       ["Trip.com", `https://es.trip.com/hotels/list?city=${encoded}`],
+      ["Skyscanner", "https://www.skyscanner.es/hoteles"],
+      ["Bluepillow", "https://www.bluepillow.es/"],
     ];
   }
 
@@ -893,7 +898,7 @@
         sources.some(([id, , automatic]) => id === source && automatic),
       )
     ) {
-      return "Activa Booking, Google Hotels o ambos.";
+      return "Activa al menos un buscador automatico.";
     }
     if (draft.dateMode === "fixed") {
       if (!draft.dateStart || !draft.dateEnd) {

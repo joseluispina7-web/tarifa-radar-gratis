@@ -3,6 +3,11 @@ const path = require("node:path");
 const crypto = require("node:crypto");
 const { scrapeBooking } = require("./booking-scraper.cjs");
 const { scrapeGoogleHotels } = require("./google-hotels-scraper.cjs");
+const {
+  scrapeAgoda,
+  scrapeBluepillow,
+  scrapeTrip,
+} = require("./bluepillow-scraper.cjs");
 const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
   buildMonitorScanRequests,
@@ -17,6 +22,9 @@ const FLEXIBLE_SWEEP_VERSION = 2;
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
+  agoda: scrapeAgoda,
+  trip: scrapeTrip,
+  bluepillow: scrapeBluepillow,
 };
 
 function readJson(filePath, fallback) {
