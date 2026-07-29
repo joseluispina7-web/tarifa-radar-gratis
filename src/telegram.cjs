@@ -1,6 +1,7 @@
 const PANEL_URL =
   "https://joseluispina7-web.github.io/tarifa-radar-gratis/";
 const MAX_ALERTS_PER_MESSAGE = 5;
+const MESSAGE_DELAY_MS = 1_100;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -115,30 +116,44 @@ function formatAlert(alert) {
     .join("\n");
 }
 
-function buildAlertMessage(alerts, options = {}) {
+function sortedAlerts(alerts) {
+  return [...(alerts || [])].sort(
+    (left, right) =>
+      Number(left.offer?.totalPrice || Infinity) -
+      Number(right.offer?.totalPrice || Infinity),
+  );
+}
+
+function buildAlertMessages(alerts, options = {}) {
   const panelUrl = options.panelUrl || PANEL_URL;
-  const limited = [...(alerts || [])]
-    .sort(
-      (left, right) =>
-        Number(left.offer?.totalPrice || Infinity) -
-        Number(right.offer?.totalPrice || Infinity),
-    )
-    .slice(0, MAX_ALERTS_PER_MESSAGE);
-  if (!limited.length) return "";
+  const ordered = sortedAlerts(alerts);
+  if (!ordered.length) return [];
 
-  const omitted = Math.max(0, alerts.length - limited.length);
-  const heading =
-    alerts.length === 1
-      ? "<b>Tarifa Radar: 1 alerta</b>"
-      : `<b>Tarifa Radar: ${alerts.length} alertas</b>`;
-  const footer = [
-    omitted ? `Hay ${omitted} ofertas más en el panel.` : "",
-    `<a href="${escapeHtml(panelUrl)}">Abrir Tarifa Radar</a>`,
-  ]
-    .filter(Boolean)
-    .join("\n");
+  const pages = [];
+  for (
+    let index = 0;
+    index < ordered.length;
+    index += MAX_ALERTS_PER_MESSAGE
+  ) {
+    pages.push(ordered.slice(index, index + MAX_ALERTS_PER_MESSAGE));
+  }
 
-  return [heading, ...limited.map(formatAlert), footer].join("\n\n");
+  return pages.map((page, index) => {
+    const pageText = pages.length > 1
+      ? ` (${index + 1}/${pages.length})`
+      : "";
+    const heading =
+      ordered.length === 1
+        ? "<b>Tarifa Radar: 1 alerta</b>"
+        : `<b>Tarifa Radar: ${ordered.length} alertas${pageText}</b>`;
+    const footer =
+      `<a href="${escapeHtml(panelUrl)}">Abrir Tarifa Radar</a>`;
+    return [heading, ...page.map(formatAlert), footer].join("\n\n");
+  });
+}
+
+function buildAlertMessage(alerts, options = {}) {
+  return buildAlertMessages(alerts, options)[0] || "";
 }
 
 async function telegramRequest(token, method, body, options = {}) {
@@ -154,37 +169,71 @@ async function telegramRequest(token, method, body, options = {}) {
   );
   const payload = await response.json().catch(() => ({}));
   if (!response.ok || !payload.ok) {
-    throw new Error(
+    const error = new Error(
       payload.description || `Telegram respondió ${response.status}.`,
     );
+    error.retryAfter = Number(payload.parameters?.retry_after) || 0;
+    throw error;
   }
   return payload.result;
 }
 
+function sleep(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
 async function sendAlertDigest(options) {
-  const text = buildAlertMessage(options.alerts, {
+  const messages = buildAlertMessages(options.alerts, {
     panelUrl: options.panelUrl,
   });
-  if (!text) return { sent: false, reason: "no_alerts" };
+  if (!messages.length) return { sent: false, reason: "no_alerts" };
 
-  const result = await telegramRequest(
-    options.token,
-    "sendMessage",
-    {
+  const sleepImpl = options.sleepImpl || sleep;
+  const delayMs = options.delayMs ?? MESSAGE_DELAY_MS;
+  const messageIds = [];
+  for (const [index, text] of messages.entries()) {
+    if (index > 0 && delayMs > 0) await sleepImpl(delayMs);
+    const body = {
       chat_id: options.chatId,
       text,
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
-    },
-    options,
-  );
-  return { sent: true, messageId: result.message_id };
+    };
+    let result;
+    try {
+      result = await telegramRequest(
+        options.token,
+        "sendMessage",
+        body,
+        options,
+      );
+    } catch (error) {
+      if (!error.retryAfter) throw error;
+      await sleepImpl((error.retryAfter + 1) * 1_000);
+      result = await telegramRequest(
+        options.token,
+        "sendMessage",
+        body,
+        options,
+      );
+    }
+    messageIds.push(result.message_id);
+  }
+  return {
+    sent: true,
+    messageId: messageIds[0],
+    messageIds,
+    messageCount: messageIds.length,
+    alertsSent: options.alerts.length,
+  };
 }
 
 module.exports = {
   MAX_ALERTS_PER_MESSAGE,
+  MESSAGE_DELAY_MS,
   PANEL_URL,
   buildAlertMessage,
+  buildAlertMessages,
   escapeHtml,
   formatAlert,
   formatDate,

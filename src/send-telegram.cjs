@@ -33,7 +33,9 @@ if (require.main === module) {
       } else if (result.reason === "no_alerts") {
         process.stdout.write("No hay alertas nuevas para Telegram.\n");
       } else {
-        process.stdout.write("Alerta enviada a Telegram.\n");
+        process.stdout.write(
+          `${result.alertsSent} alertas enviadas en ${result.messageCount} mensajes de Telegram.\n`,
+        );
       }
     })
     .catch((error) => {

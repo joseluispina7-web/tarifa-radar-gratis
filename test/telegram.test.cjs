@@ -3,6 +3,7 @@ const test = require("node:test");
 const {
   MAX_ALERTS_PER_MESSAGE,
   buildAlertMessage,
+  buildAlertMessages,
   escapeHtml,
   sendAlertDigest,
 } = require("../src/telegram.cjs");
@@ -95,7 +96,7 @@ test("labels Agoda alerts as prices supplied through Bluepillow", () => {
   assert.doesNotMatch(message, /reconfirmado en Booking/);
 });
 
-test("limits a digest and reports omitted offers", () => {
+test("splits a digest into pages without omitting offers", () => {
   const alerts = Array.from(
     { length: MAX_ALERTS_PER_MESSAGE + 2 },
     (_, index) =>
@@ -106,10 +107,15 @@ test("limits a digest and reports omitted offers", () => {
         },
       }),
   );
-  const message = buildAlertMessage(alerts);
-  assert.match(message, /7 alertas/);
-  assert.match(message, /Hay 2 ofertas más en el panel/);
-  assert.doesNotMatch(message, /Hotel 6/);
+  const messages = buildAlertMessages(alerts);
+  assert.equal(messages.length, 2);
+  assert.match(messages[0], /7 alertas \(1\/2\)/);
+  assert.match(messages[1], /7 alertas \(2\/2\)/);
+  assert.doesNotMatch(messages.join("\n"), /ofertas más en el panel/);
+  for (let index = 0; index < alerts.length; index += 1) {
+    assert.match(messages.join("\n"), new RegExp(`Hotel ${index}`));
+  }
+  assert.equal(messages.every((message) => message.length < 4_096), true);
 });
 
 test("does not call Telegram when there are no alerts", async () => {
@@ -145,4 +151,77 @@ test("sends a digest with previews disabled", async () => {
   assert.equal(request.body.chat_id, "123");
   assert.equal(request.body.link_preview_options.is_disabled, true);
   assert.match(request.url, /botsecret\/sendMessage$/);
+});
+
+test("sends every alert across multiple Telegram messages", async () => {
+  const alerts = Array.from(
+    { length: MAX_ALERTS_PER_MESSAGE * 2 + 1 },
+    (_, index) =>
+      makeAlert({
+        offer: {
+          hotelName: `Hotel completo ${index}`,
+          totalPrice: 100 + index,
+        },
+      }),
+  );
+  const requests = [];
+  const result = await sendAlertDigest({
+    alerts,
+    token: "secret",
+    chatId: "123",
+    delayMs: 0,
+    fetchImpl: async (url, options) => {
+      requests.push({ url, body: JSON.parse(options.body) });
+      return {
+        ok: true,
+        json: async () => ({
+          ok: true,
+          result: { message_id: requests.length },
+        }),
+      };
+    },
+  });
+
+  assert.equal(result.sent, true);
+  assert.equal(result.alertsSent, alerts.length);
+  assert.equal(result.messageCount, 3);
+  assert.deepEqual(result.messageIds, [1, 2, 3]);
+  assert.equal(requests.length, 3);
+  const sentText = requests.map((request) => request.body.text).join("\n");
+  for (let index = 0; index < alerts.length; index += 1) {
+    assert.match(sentText, new RegExp(`Hotel completo ${index}`));
+  }
+});
+
+test("waits and retries a Telegram rate-limit response", async () => {
+  let calls = 0;
+  const waits = [];
+  const result = await sendAlertDigest({
+    alerts: [makeAlert()],
+    token: "secret",
+    chatId: "123",
+    sleepImpl: async (milliseconds) => waits.push(milliseconds),
+    fetchImpl: async () => {
+      calls += 1;
+      if (calls === 1) {
+        return {
+          ok: false,
+          status: 429,
+          json: async () => ({
+            ok: false,
+            description: "Too Many Requests",
+            parameters: { retry_after: 1 },
+          }),
+        };
+      }
+      return {
+        ok: true,
+        json: async () => ({ ok: true, result: { message_id: 9 } }),
+      };
+    },
+  });
+
+  assert.equal(result.sent, true);
+  assert.equal(calls, 2);
+  assert.deepEqual(waits, [2_000]);
 });
