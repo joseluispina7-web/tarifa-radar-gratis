@@ -272,6 +272,7 @@ async function runRepositoryScan(options = {}) {
   const monitorStatus = {};
   const alerts = [];
   const currentMatchingOffers = new Set();
+  const currentMatchingOffersBySource = new Map();
   const summary = {
     generatedAt: now.toISOString(),
     monitors: monitors.length,
@@ -310,6 +311,7 @@ async function runRepositoryScan(options = {}) {
       : "";
     const nextOffers = { ...(beforeMonitor.offers || {}) };
     const monitorMatchingOffers = new Set();
+    const monitorMatchingOffersBySource = new Map();
     const observedOfferKeys = new Set();
     const pendingAlerts = new Map();
     const status = {
@@ -382,6 +384,12 @@ async function runRepositoryScan(options = {}) {
             matches: 0,
             errors: 0,
           };
+          if (!currentMatchingOffersBySource.has(source)) {
+            currentMatchingOffersBySource.set(source, new Set());
+          }
+          if (!monitorMatchingOffersBySource.has(source)) {
+            monitorMatchingOffersBySource.set(source, new Set());
+          }
           summary.sources[source].searches += 1;
           status.sources[source].searches += 1;
           try {
@@ -471,7 +479,9 @@ async function runRepositoryScan(options = {}) {
               offer.priceConfirmedAt || result.searchedAt;
             nextOfferState.publishedPrice = offer.totalPrice;
             monitorMatchingOffers.add(offerKey);
+            monitorMatchingOffersBySource.get(source).add(offerKey);
             currentMatchingOffers.add(offerKey);
+            currentMatchingOffersBySource.get(source).add(offerKey);
             if (type) {
               pendingAlerts.set(offerKey, {
                 type,
@@ -494,14 +504,18 @@ async function runRepositoryScan(options = {}) {
             );
           } else {
             monitorMatchingOffers.delete(offerKey);
+            monitorMatchingOffersBySource.get(source).delete(offerKey);
             currentMatchingOffers.delete(offerKey);
+            currentMatchingOffersBySource.get(source).delete(offerKey);
             pendingAlerts.delete(offerKey);
             dealMap.delete(`${monitor.id}:${offer.id}`);
           }
           status.matches = monitorMatchingOffers.size;
           summary.matches = currentMatchingOffers.size;
-          status.sources[source].matches += confirmed ? 1 : 0;
-          summary.sources[source].matches += confirmed ? 1 : 0;
+          status.sources[source].matches =
+            monitorMatchingOffersBySource.get(source).size;
+          summary.sources[source].matches =
+            currentMatchingOffersBySource.get(source).size;
         }
       }
       if (flexibleShape && requestSucceeded) completedFlexibleRequests += 1;

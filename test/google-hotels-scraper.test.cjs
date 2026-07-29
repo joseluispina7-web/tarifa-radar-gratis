@@ -43,6 +43,11 @@ test("parses the explicit taxed stay total and nightly amount", () => {
   assert.equal(parseGoogleHotelsNightly(text), 33);
   assert.equal(parseGoogleHotelsTotal(text), 130);
   assert.equal(parseGoogleHotelsNights(text), 4);
+  const english =
+    "33 \u20ac130 \u20ac total4 nights including taxes and fees33 \u20acAug 5-9";
+  assert.equal(parseGoogleHotelsNightly(english), 33);
+  assert.equal(parseGoogleHotelsTotal(english), 130);
+  assert.equal(parseGoogleHotelsNights(english), 4);
 });
 
 test("normalizes Google review rating to the ten-point panel scale", () => {
@@ -51,6 +56,29 @@ test("normalizes Google review rating to the ten-point panel scale", () => {
     9.6,
   );
   assert.equal(parseGoogleStars("Hotel de 4 estrellas"), 4);
+  assert.equal(parseGoogleGuestRating("4.8 out of 5 stars"), 9.6);
+  assert.equal(parseGoogleStars("4-star hotel"), 4);
+});
+
+test("accepts an explicit English total from GitHub runners", () => {
+  const offer = buildGoogleOffer(
+    {
+      hotelName: "Hotel Center",
+      priceText:
+        "37 \u20ac148 \u20ac total4 nights including taxes and fees37 \u20acAug 5-9",
+      text: "4.4 out of 5 stars from 320 reviews 3-star hotel Pool",
+      labels: ["Amenities: Pool, Air conditioning"],
+      url: "https://www.google.com/travel/search?qs=hotel",
+    },
+    search(),
+  );
+  assert.equal(offer.totalPrice, 148);
+  assert.equal(offer.stars, 3);
+  assert.equal(offer.guestRating, 8.8);
+  assert.deepEqual(
+    offer.amenities.sort(),
+    ["air_conditioning", "pool"],
+  );
 });
 
 test("builds a verified source-specific offer only from an explicit total", () => {

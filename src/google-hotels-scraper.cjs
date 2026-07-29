@@ -31,7 +31,7 @@ function buildGoogleHotelsSearchUrl(input) {
 
 function parseGoogleHotelsTotal(value) {
   const match = String(value || "").match(
-    /([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*\u20ac\s+en total/i,
+    /([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*\u20ac\s+(?:en total|total)/i,
   );
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
@@ -44,13 +44,13 @@ function parseGoogleHotelsNightly(value) {
 }
 
 function parseGoogleHotelsNights(value) {
-  const match = String(value || "").match(/(\d+)\s+noches?/i);
+  const match = String(value || "").match(/(\d+)\s+(?:noches?|nights?)/i);
   return match ? Number(match[1]) : 0;
 }
 
 function parseGoogleGuestRating(value) {
   const match = String(value || "").match(
-    /(\d(?:[,.]\d)?)\s+de\s+5\s+estrellas?/i,
+    /(\d(?:[,.]\d)?)\s+(?:de\s+5\s+estrellas?|out of 5 stars?)/i,
   );
   return match
     ? Math.round(parseLocalizedNumber(match[1]) * 2 * 10) / 10
@@ -59,16 +59,43 @@ function parseGoogleGuestRating(value) {
 
 function parseGoogleStars(value) {
   const match = String(value || "").match(
-    /hotel de\s+(\d(?:[,.]\d)?)\s+estrellas?/i,
+    /(?:hotel de\s+(\d(?:[,.]\d)?)\s+estrellas?|(\d(?:[,.]\d)?)-star hotel)/i,
   );
-  return match ? parseLocalizedNumber(match[1]) : 0;
+  return match ? parseLocalizedNumber(match[1] || match[2]) : 0;
 }
 
 function parseGoogleReviewCount(value) {
-  const match = String(value || "").match(
-    /de\s+([\d.\s\u00a0]+)\s+rese\u00f1as?/i,
+  const text = String(value || "");
+  const match = text.match(
+    /(?:de|from)\s+([\d.\s\u00a0]+)\s+(?:rese\u00f1as?|reviews?)/i,
   );
-  return match ? Math.round(parseLocalizedNumber(match[1])) : 0;
+  if (!match) return 0;
+  const numberText =
+    /reviews?/i.test(text) && /^\d{1,3}(?:,\d{3})+$/.test(match[1].trim())
+      ? match[1].replaceAll(",", "")
+      : match[1];
+  return Math.round(parseLocalizedNumber(numberText));
+}
+
+function detectGoogleAmenities(value) {
+  const text = String(value || "");
+  const amenities = new Set(detectAmenities(text));
+  const patterns = [
+    ["pool", /\bpool\b/i],
+    ["spa", /\bspa\b|\bsauna\b/i],
+    ["parking", /\bparking\b/i],
+    ["beach", /\bbeach\b|oceanfront/i],
+    ["breakfast", /breakfast included/i],
+    ["pets", /pet-friendly|pets allowed/i],
+    ["air_conditioning", /air conditioning/i],
+    ["family_rooms", /family rooms/i],
+    ["all_inclusive", /all-inclusive/i],
+    ["gym", /\bgym\b|fitness cent(?:er|re)/i],
+  ];
+  for (const [amenity, pattern] of patterns) {
+    if (pattern.test(text)) amenities.add(amenity);
+  }
+  return Array.from(amenities);
 }
 
 function stableOfferId(hotelName, checkIn, checkOut) {
@@ -84,7 +111,9 @@ function buildGoogleOffer(card, search) {
   const totalPrice = parseGoogleHotelsTotal(card.priceText);
   const displayedNights = parseGoogleHotelsNights(card.priceText);
   const includesTaxes =
-    /impuestos y tasas incluidos/i.test(String(card.priceText || ""));
+    /impuestos y tasas incluidos|taxes and fees included|including taxes and fees/i.test(
+      String(card.priceText || ""),
+    );
   if (
     !card.hotelName ||
     !card.url ||
@@ -125,11 +154,12 @@ function buildGoogleOffer(card, search) {
     guestRating: parseGoogleGuestRating(text),
     reviewCount: parseGoogleReviewCount(text),
     distanceKm: parsedDistance > 0 ? parsedDistance : null,
-    freeCancellation: /cancelaci\u00f3n gratis/i.test(text),
-    breakfastIncluded: /desayuno incluido/i.test(text),
+    freeCancellation:
+      /cancelaci\u00f3n gratis|free cancellation/i.test(text),
+    breakfastIncluded: /desayuno incluido|breakfast included/i.test(text),
     limitedAvailability: false,
     propertyType: detectPropertyType(`${card.hotelName}\n${text}`),
-    amenities: detectAmenities(text),
+    amenities: detectGoogleAmenities(text),
     mealPlan: detectMealPlan(text),
     roomName: "",
     sharedRoom:
@@ -277,15 +307,18 @@ async function extractGoogleHotelCards(page, search) {
       let totalLink = null;
       for (let level = 0; level < 9 && container; level += 1) {
         totalLink = Array.from(container.querySelectorAll("a")).find((link) =>
-          /en total/i.test(link.innerText || "") &&
-          /noches?/i.test(link.innerText || "")
+          /(?:en total|\btotal\b)/i.test(link.innerText || "") &&
+          /noches?|nights?/i.test(link.innerText || "")
         );
         if (totalLink) break;
         container = container.parentElement;
       }
       if (!container || !totalLink) return [];
       const detailsLink = Array.from(container.querySelectorAll("a")).find(
-        (link) => /ver detalles de/i.test(link.getAttribute("aria-label") || ""),
+        (link) =>
+          /ver detalles de|view details (?:of|for)/i.test(
+            link.getAttribute("aria-label") || "",
+          ),
       );
       return [{
         hotelName: (heading.textContent || "").trim(),
@@ -336,7 +369,10 @@ async function loadGoogleHotels(page, search, options = {}) {
     }
   }
   throw new Error(
-    "Google Hotels no ha mostrado resultados para las fechas solicitadas.",
+    "Google Hotels no ha mostrado resultados para las fechas solicitadas." +
+      (lastError
+        ? ` Motivo: ${lastError instanceof Error ? lastError.message : String(lastError)}`
+        : ""),
     { cause: lastError },
   );
 }
