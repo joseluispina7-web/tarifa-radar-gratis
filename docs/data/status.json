@@ -1,29 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T20:32:46.366Z",
+  "updatedAt": "2026-07-29T20:37:19.014Z",
   "summary": {
-    "generatedAt": "2026-07-29T20:32:46.366Z",
+    "generatedAt": "2026-07-29T20:37:19.014Z",
     "monitors": 2,
     "searches": 14,
-    "offers": 150,
+    "offers": 136,
     "matches": 0,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 7,
-        "offers": 150,
+        "offers": 134,
         "matches": 0,
         "errors": 0
       },
       "google_hotels": {
         "searches": 7,
-        "offers": 0,
+        "offers": 2,
         "matches": 0,
-        "errors": 7
+        "errors": 4
       }
     },
-    "verificationErrors": [],
+    "verificationErrors": [
+      {
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "Hotel Queens Benidorm",
+        "message": "Google no expuso un total final con impuestos en EUR."
+      }
+    ],
     "nearbyErrors": [],
     "errors": [
       {
@@ -34,8 +47,8 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
+        "searchArea": "La Nucia",
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: ninguno. Precios: ninguno. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a[href*=\"/travel/lodging/clk\"][href*=\"pcurl=\"]').first()\n."
       },
       {
         "monitorId": "madrid-agosto-4-noches",
@@ -46,78 +59,37 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Finestrat",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Hoteles cercanos | Cencibel - Harbor's Light - Studio with Sea View | Casa Meli, Finestrat | NIU Line. Precios: B&B HOTEL Benidorm Finestrat 116 € Hotels.com 4,5/5 (800) · Hotel de 2 estrellas Se admiten mascotas · Restaurante | Nature Suites Puig Campana by AR Hotels & Resorts 230 € Booking.com 4,4/5 (588) · Hotel de 3 estrellas Piscina · Restaurante | Hotel Bed and Breakfast Benidorm 101 € Expedia.com 2,3/5 (82) Traslado del/al aeropuerto · Desayuno gratis | Apartotel Magic Tropical Splash 591 € Travelocity.com 4,2/5 (5,9 mil) · Hotel de 3 estrellas Jacuzzi · Spa."
-      },
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorm",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·La Nucia hoteles | Aparthotel BCL Levante Beach | Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended. Precios: Hotel La Estación 159 € Booking.com 3,9/5 (2,6 mil) · Hotel de 4 estrellas Piscina · Adecuado para niños | Barceló La Nucía Hills 249 € Expedia.com 4,6/5 (1,0 mil) · Hotel de 5 estrellas Jacuzzi · Spa | B&B HOTEL Benidorm Finestrat 116 € Hotels.com 4,5/5 (800) · Hotel de 2 estrellas Se admiten mascotas · Restaurante | Halley Hotel & Apartments Affiliated by Meliá 174 € Travelocity.com 4,2/5 (849) · Hotel de 2 estrellas Piscina · Bar."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: ninguno. Precios: ninguno. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a[href*=\"/travel/lodging/clk\"][href*=\"pcurl=\"]').first()\n."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-12-04",
-          "checkOut": "2026-12-05",
+          "checkIn": "2027-01-03",
+          "checkOut": "2027-01-04",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-27",
-          "flexibleCheckInEnd": "2026-12-11"
+          "flexibleCheckInStart": "2026-12-27",
+          "flexibleCheckInEnd": "2027-01-10"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Madrid hoteles | The Hat Madrid | Apartamento Con Parrilla Al Aire Libre En El Que Se Admiten Mascotas | Zleep Madrid Airport. Precios: Holiday Inn Express Madrid - Alcobendas 113 € Booking.com 4,0/5 (2,3 mil) · Hotel de 3 estrellas Cancelación gratuita · Adecuado para niños | Madrid Marriott Auditorium Hotel & Conference Center 164 € Expedia.com 4,5/5 (11,1 mil) · Hotel de 4 estrellas Cancelación gratuita · Piscina | Hotel NH Madrid Atocha 190 € NH Madrid Atocha 4,2/5 (1,7 mil) · Hotel de 3 estrellas Adecuado para niños · Aparcamiento | Hotel NH Madrid Las Tablas 128 € NH Madrid Las Tablas 4,3/5 (2,8 mil) · Hotel de 4 estrellas Adecuado para niños · Restaurante."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: ninguno. Precios: ninguno. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a[href*=\"/travel/lodging/clk\"][href*=\"pcurl=\"]').first()\n."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-12-04",
-          "checkOut": "2026-12-06",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-27",
-          "flexibleCheckInEnd": "2026-12-11"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Madrid hoteles | Apartamento Con Parrilla Al Aire Libre En El Que Se Admiten Mascotas | Hotel NH Madrid Nacional | Meliá Avenida América. Precios: Madrid Marriott Auditorium Hotel & Conference Center 164 € Expedia.com 4,5/5 (11,1 mil) · Hotel de 4 estrellas Cancelación gratuita · Piscina | Hampton by Hilton Alcobendas Madrid 130 € Booking.com 4,6/5 (1,9 mil) · Hotel de 3 estrellas Piscina · Se admiten mascotas | Hotel NH Madrid Atocha 196 € NH Madrid Atocha 4,2/5 (1,7 mil) · Hotel de 3 estrellas Aparcamiento · Wi‑Fi gratis | Hotel NH Madrid Lagasca 236 € NH Madrid Lagasca 4,3/5 (1,0 mil) · Hotel de 4 estrellas Aparcamiento · Gimnasio."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-12-19",
-          "checkOut": "2026-12-20",
+          "checkIn": "2027-01-18",
+          "checkOut": "2027-01-19",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-12",
-          "flexibleCheckInEnd": "2026-12-26"
+          "flexibleCheckInStart": "2027-01-11",
+          "flexibleCheckInEnd": "2027-01-25"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Madrid hoteles | Meliá Avenida América | Vértice Roomspace Madrid | B&B HOTEL Madrid Centro Puerta del Sol. Precios: Madrid Marriott Auditorium Hotel & Conference Center 146 € Booking.com 4,5/5 (11,1 mil) · Hotel de 4 estrellas Cancelación gratuita · Piscina | Hotel NH Madrid Atocha 164 € NH Madrid Atocha 4,2/5 (1,7 mil) · Hotel de 3 estrellas Aparcamiento · Wi‑Fi gratis | Hampton by Hilton Alcobendas Madrid 121 € Expedia.com 4,6/5 (1,9 mil) · Hotel de 3 estrellas Piscina · Se admiten mascotas | Hotel NH Madrid Lagasca 236 € NH Madrid Lagasca 4,3/5 (1,0 mil) · Hotel de 4 estrellas Aparcamiento · Gimnasio."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-12-19",
-          "checkOut": "2026-12-21",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-12",
-          "flexibleCheckInEnd": "2026-12-26"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Madrid hoteles | Meliá Avenida América | The Hat Madrid | Vértice Roomspace Madrid. Precios: Hotel NH Madrid Atocha 155 € NH Madrid Atocha 4,2/5 (1,7 mil) · Hotel de 3 estrellas Aparcamiento · Wi‑Fi gratis | Hampton by Hilton Alcobendas Madrid 120 € Booking.com 4,6/5 (1,9 mil) · Hotel de 3 estrellas Piscina · Se admiten mascotas | Madrid Marriott Auditorium Hotel & Conference Center 146 € Expedia.com 4,5/5 (11,1 mil) · Hotel de 4 estrellas Cancelación gratuita · Piscina | Hotel NH Madrid Lagasca 232 € NH Madrid Lagasca 4,3/5 (1,0 mil) · Hotel de 4 estrellas Aparcamiento · Gimnasio."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
       }
     ]
   },
@@ -125,10 +97,10 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-29T20:32:46.366Z",
-      "lastSuccessAt": "2026-07-29T20:33:30.577Z",
+      "lastScanAt": "2026-07-29T20:37:19.014Z",
+      "lastSuccessAt": "2026-07-29T20:39:33.439Z",
       "searches": 6,
-      "offers": 74,
+      "offers": 76,
       "matches": 0,
       "nearbyLocations": [
         "La Nucia",
@@ -143,26 +115,26 @@
         },
         "google_hotels": {
           "searches": 3,
-          "offers": 0,
+          "offers": 2,
           "matches": 0,
-          "errors": 3
+          "errors": 2
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·La Nucia hoteles | Aparthotel BCL Levante Beach | Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended. Precios: Hotel La Estación 159 € Booking.com 3,9/5 (2,6 mil) · Hotel de 4 estrellas Piscina · Adecuado para niños | Barceló La Nucía Hills 249 € Expedia.com 4,6/5 (1,0 mil) · Hotel de 5 estrellas Jacuzzi · Spa | B&B HOTEL Benidorm Finestrat 116 € Hotels.com 4,5/5 (800) · Hotel de 2 estrellas Se admiten mascotas · Restaurante | Halley Hotel & Apartments Affiliated by Meliá 174 € Travelocity.com 4,2/5 (849) · Hotel de 2 estrellas Piscina · Bar."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: ninguno. Precios: ninguno. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a[href*=\"/travel/lodging/clk\"][href*=\"pcurl=\"]').first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-29T20:32:46.366Z",
-      "lastSuccessAt": "2026-07-29T20:34:04.659Z",
+      "lastScanAt": "2026-07-29T20:37:19.014Z",
+      "lastSuccessAt": "2026-07-29T20:41:50.728Z",
       "searches": 8,
-      "offers": 76,
+      "offers": 60,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 76,
+          "offers": 60,
           "matches": 0,
           "errors": 0
         },
@@ -170,19 +142,19 @@
           "searches": 4,
           "offers": 0,
           "matches": 0,
-          "errors": 4
+          "errors": 2
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. Titulos: Patrocinado·Madrid hoteles | Meliá Avenida América | The Hat Madrid | Vértice Roomspace Madrid. Precios: Hotel NH Madrid Atocha 155 € NH Madrid Atocha 4,2/5 (1,7 mil) · Hotel de 3 estrellas Aparcamiento · Wi‑Fi gratis | Hampton by Hilton Alcobendas Madrid 120 € Booking.com 4,6/5 (1,9 mil) · Hotel de 3 estrellas Piscina · Se admiten mascotas | Madrid Marriott Auditorium Hotel & Conference Center 146 € Expedia.com 4,5/5 (11,1 mil) · Hotel de 4 estrellas Cancelación gratuita · Piscina | Hotel NH Madrid Lagasca 232 € NH Madrid Lagasca 4,3/5 (1,0 mil) · Hotel de 4 estrellas Aparcamiento · Gimnasio.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-29",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 16,
+        "startWindowIndex": 20,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 20,
-        "remainingWindowsInSweep": 4,
-        "completedSweep": false
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     }
   },
