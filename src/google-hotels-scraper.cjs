@@ -415,9 +415,15 @@ async function extractGoogleHotelCandidates(page, search) {
       if (/patrocinado|sponsored/i.test(heading.textContent || "")) return [];
       const ordered = Array.from(document.querySelectorAll("h2, a"));
       const headingIndex = ordered.indexOf(heading);
+      const previousHeadingIndex = ordered.findLastIndex(
+        (element, index) => index < headingIndex && element.tagName === "H2",
+      );
       const nextHeadingIndex = ordered.findIndex(
         (element, index) => index > headingIndex && element.tagName === "H2",
       );
+      const precedingLinks = ordered
+        .slice(previousHeadingIndex + 1, headingIndex)
+        .filter((element) => element.tagName === "A");
       const cardElements = ordered.slice(
         headingIndex + 1,
         nextHeadingIndex < 0 ? undefined : nextHeadingIndex,
@@ -437,7 +443,19 @@ async function extractGoogleHotelCandidates(page, search) {
           labelFor(link).toLowerCase(),
         )
       );
-      if (!nightlyLink || !pricesLink) return [];
+      const hotelName = (heading.textContent || "").trim();
+      const normalizedHotelName = hotelName.toLowerCase();
+      const hotelLink = precedingLinks.reverse().find((link) =>
+        labelFor(link).toLowerCase().includes(normalizedHotelName) &&
+        /\/travel\/search/i.test(link.href || "")
+      );
+      let pricePageUrl = pricesLink?.href || "";
+      if (!pricePageUrl && hotelLink?.href) {
+        const url = new URL(hotelLink.href);
+        url.searchParams.set("ap", "MAC6AQZwcmljZXM");
+        pricePageUrl = url.toString();
+      }
+      if (!pricePageUrl) return [];
       const nextHeading =
         nextHeadingIndex < 0 ? null : ordered[nextHeadingIndex];
       const labels = Array.from(document.querySelectorAll("[aria-label]"))
@@ -454,17 +472,17 @@ async function extractGoogleHotelCandidates(page, search) {
         .map((element) => element.getAttribute("aria-label") || "")
         .filter(Boolean);
       return [{
-        hotelName: (heading.textContent || "").trim(),
+        hotelName,
         nightlyText:
-          nightlyLink.innerText ||
-          nightlyLink.getAttribute("aria-label") ||
+          nightlyLink?.innerText ||
+          nightlyLink?.getAttribute("aria-label") ||
           "",
         text: cardElements
           .map((element) => element.innerText || "")
           .filter(Boolean)
           .join("\n"),
         labels,
-        pricePageUrl: pricesLink.href || "",
+        pricePageUrl,
       }];
     }),
     search.maxResults,
@@ -477,14 +495,13 @@ async function extractGoogleHotelCandidates(page, search) {
         String(card.nightlyText).replace(/^.*?(?=\d[\d.,\s]*\s*\u20ac)/, ""),
       ),
     }))
-    .filter((card) =>
-      card.hotelName && card.pricePageUrl && card.nightlyPrice > 0
-    );
+    .filter((card) => card.hotelName && card.pricePageUrl);
 }
 
 function googleCandidateMatches(card, search, options = {}) {
+  const estimatedNightly = card.nightlyPrice || 1;
   const estimatedTotal =
-    Math.round(card.nightlyPrice * search.nights * 100) / 100;
+    Math.round(estimatedNightly * search.nights * 100) / 100;
   const candidateSearch = options.ignoreBudget
     ? { ...search, maxTotal: 0, maxNightly: 0 }
     : search;
@@ -492,7 +509,7 @@ function googleCandidateMatches(card, search, options = {}) {
     {
       hotelName: card.hotelName,
       priceText:
-        `${card.nightlyPrice} \u20ac${estimatedTotal} \u20ac en total` +
+        `${estimatedNightly} \u20ac${estimatedTotal} \u20ac en total` +
         `${search.nights} noches con impuestos y tasas incluidos`,
       text: card.text,
       labels: card.labels,
@@ -528,7 +545,11 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
     .filter((candidate) =>
       googleCandidateMatches(candidate, search, { ignoreBudget: true })
     )
-    .sort((left, right) => left.nightlyPrice - right.nightlyPrice)
+    .sort(
+      (left, right) =>
+        (left.nightlyPrice || Infinity) -
+        (right.nightlyPrice || Infinity),
+    )
     .slice(
       0,
       Math.min(search.maxVerifiedResults, MAX_GOOGLE_DETAIL_CANDIDATES),
@@ -566,8 +587,11 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         const averageNightly = totalPrice / search.nights;
         const displayedNightly = candidate.nightlyPrice;
         if (
-          averageNightly < displayedNightly * 0.75 ||
-          averageNightly > displayedNightly * 1.5
+          displayedNightly > 0 &&
+          (
+            averageNightly < displayedNightly * 0.75 ||
+            averageNightly > displayedNightly * 1.5
+          )
         ) {
           return [];
         }
@@ -587,7 +611,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         {
           hotelName: candidate.hotelName,
           priceText:
-            `${candidate.nightlyPrice} \u20ac` +
+            `${candidate.nightlyPrice || bestProvider.totalPrice / search.nights} \u20ac` +
             `${bestProvider.totalPrice} \u20ac en total` +
             `${search.nights} noches con impuestos y tasas incluidos`,
           text: candidate.text,
