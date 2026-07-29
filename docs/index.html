@@ -17,7 +17,7 @@
     />
     <link rel="stylesheet" href="./styles.css?v=3" />
     <script src="./vendor/lucide.min.js" defer></script>
-    <script src="./app.js?v=8" defer></script>
+    <script src="./app.js?v=9" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -277,13 +277,24 @@
                       </span>
                     </label>
                   </div>
-                  <label class="inline-field">
-                    <span>Cumplir</span>
-                    <select id="price-match">
-                      <option value="any">Uno de los dos límites</option>
-                      <option value="both">Los dos límites</option>
-                    </select>
-                  </label>
+                  <div class="number-grid two compact">
+                    <label>
+                      <span>Cumplir</span>
+                      <select id="price-match">
+                        <option value="any">Uno de los dos límites</option>
+                        <option value="both">Los dos límites</option>
+                      </select>
+                    </label>
+                    <label>
+                      <span>Margen de seguridad</span>
+                      <select id="price-safety">
+                        <option value="0">Sin margen</option>
+                        <option value="3">3%</option>
+                        <option value="5">5%</option>
+                        <option value="10">10%</option>
+                      </select>
+                    </label>
+                  </div>
                 </fieldset>
 
                 <fieldset class="form-section">

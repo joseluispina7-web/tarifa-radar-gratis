@@ -56,6 +56,12 @@ function normalizeSearch(input = {}) {
     maxTotal: clampNumber(input.maxTotal, 0, 100_000, 0),
     maxNightly: clampNumber(input.maxNightly, 0, 10_000, 0),
     priceRule: input.priceRule === "and" ? "and" : "or",
+    priceSafetyPercent: clampNumber(
+      input.priceSafetyPercent,
+      0,
+      20,
+      0,
+    ),
     minStars: clampNumber(input.minStars, 0, 5, 0),
     guestRatingMin: clampNumber(input.guestRatingMin, 0, 10, 0),
     maxDistanceKm: clampNumber(input.maxDistanceKm, 0, 100, 0),
@@ -357,11 +363,12 @@ function sanitizeBookingUrl(value, search) {
 }
 
 function meetsBudget(offer, search) {
+  const safetyMultiplier = 1 - search.priceSafetyPercent / 100;
   const totalRule = search.maxTotal > 0
-    ? offer.totalPrice <= search.maxTotal
+    ? offer.totalPrice <= search.maxTotal * safetyMultiplier
     : null;
   const nightlyRule = search.maxNightly > 0
-    ? offer.nightlyPrice <= search.maxNightly
+    ? offer.nightlyPrice <= search.maxNightly * safetyMultiplier
     : null;
   const priceRules = [totalRule, nightlyRule].filter((value) => value !== null);
   if (!priceRules.length) return true;

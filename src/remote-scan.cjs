@@ -137,6 +137,7 @@ function monitorToSearch(monitor, dates, area = null) {
     maxTotal: monitor.maxTotal,
     maxNightly: monitor.maxNightly,
     priceRule: monitor.priceMatch === "both" ? "and" : "or",
+    priceSafetyPercent: monitor.priceSafetyPercent ?? 5,
     minStars: monitor.minStars,
     guestRatingMin: monitor.guestRatingMin,
     maxDistanceKm: Number(monitor.maxDistanceKm) || 0,

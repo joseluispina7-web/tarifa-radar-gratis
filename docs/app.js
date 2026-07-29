@@ -117,6 +117,7 @@
       maxTotal: 150,
       maxNightly: 30,
       priceMatch: "any",
+      priceSafetyPercent: 5,
       minStars: 0,
       guestRatingMin: 0,
       maxDistanceKm: 0,
@@ -310,7 +311,8 @@
 
   function priceText(monitor) {
     const joiner = monitor.priceMatch === "both" ? "y" : "o";
-    return `${monitor.maxTotal || 0} € total ${joiner} ${monitor.maxNightly || 0} €/noche`;
+    const safety = Number(monitor.priceSafetyPercent ?? 5);
+    return `${monitor.maxTotal || 0} € total ${joiner} ${monitor.maxNightly || 0} €/noche · margen ${safety}%`;
   }
 
   function dateText(monitor) {
@@ -648,6 +650,7 @@
     $("#max-total").value = draft.maxTotal;
     $("#max-nightly").value = draft.maxNightly;
     $("#price-match").value = draft.priceMatch;
+    $("#price-safety").value = String(draft.priceSafetyPercent ?? 5);
     $("#guest-rating").value = String(draft.guestRatingMin);
     $("#max-distance").value = String(draft.maxDistanceKm);
     $("#free-cancellation").checked = draft.freeCancellation;
@@ -680,6 +683,7 @@
     draft.maxTotal = Number($("#max-total").value) || 0;
     draft.maxNightly = Number($("#max-nightly").value) || 0;
     draft.priceMatch = $("#price-match").value;
+    draft.priceSafetyPercent = Number($("#price-safety").value) || 0;
     draft.guestRatingMin = Number($("#guest-rating").value) || 0;
     draft.maxDistanceKm = Number($("#max-distance").value) || 0;
     draft.freeCancellation = $("#free-cancellation").checked;

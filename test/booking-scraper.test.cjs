@@ -191,6 +191,28 @@ test("applies total or nightly budget without requiring stars", () => {
   );
 });
 
+test("keeps a configurable safety margin below the budget", () => {
+  const search = normalizeSearch({
+    ...searchInput,
+    maxTotal: 100,
+    maxNightly: 0,
+    priceSafetyPercent: 5,
+  });
+  const offer = {
+    totalPrice: 95,
+    nightlyPrice: 23.75,
+    stars: 0,
+    guestRating: 8,
+    freeCancellation: false,
+    sharedRoom: false,
+  };
+  assert.equal(matchesSearch(offer, search), true);
+  assert.equal(
+    matchesSearch({ ...offer, totalPrice: 95.01 }, search),
+    false,
+  );
+});
+
 test("excludes shared beds by default but can include them explicitly", () => {
   assert.equal(
     isSharedRoomText("Cama individual en habitación compartida femenina"),
@@ -349,6 +371,7 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
   );
   assert.equal(search.priceRule, "and");
   assert.equal(search.maxResults, 25);
+  assert.equal(search.priceSafetyPercent, 5);
   assert.equal(search.originLatitude, 40.4168);
   assert.equal(search.originLongitude, -3.7038);
   assert.equal(monitorIsDue({ intervalMinutes: 5, lastScanAt: null }, now), true);

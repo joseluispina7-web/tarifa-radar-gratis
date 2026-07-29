@@ -105,6 +105,7 @@ function monitorFingerprint(monitor) {
     "maxTotal",
     "maxNightly",
     "priceMatch",
+    "priceSafetyPercent",
     "minStars",
     "guestRatingMin",
     "maxDistanceKm",
