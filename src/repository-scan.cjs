@@ -192,6 +192,7 @@ async function runRepositoryScan(options = {}) {
   const dealMap = buildDealMap(previousDeals, activeMonitors);
   const monitorStatus = {};
   const alerts = [];
+  const currentMatchingOffers = new Set();
   const summary = {
     generatedAt: now.toISOString(),
     monitors: monitors.length,
@@ -212,6 +213,7 @@ async function runRepositoryScan(options = {}) {
       ? storedMonitor
       : { offers: {} };
     const nextOffers = { ...(beforeMonitor.offers || {}) };
+    const monitorMatchingOffers = new Set();
     const status = {
       monitorId: monitor.id,
       monitorName: monitor.name,
@@ -260,9 +262,14 @@ async function runRepositoryScan(options = {}) {
         );
         status.lastSuccessAt = result.searchedAt;
         status.offers += result.offers.length;
-        status.matches += result.matchingOffers.length;
         summary.offers += result.offers.length;
-        summary.matches += result.matchingOffers.length;
+        for (const offer of result.matchingOffers) {
+          const offerKey = `${monitor.id}:${offer.id}`;
+          monitorMatchingOffers.add(offerKey);
+          currentMatchingOffers.add(offerKey);
+        }
+        status.matches = monitorMatchingOffers.size;
+        summary.matches = currentMatchingOffers.size;
         summary.verificationErrors.push(
           ...(result.verificationErrors || []).map((error) => ({
             monitorId: monitor.id,
