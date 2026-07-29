@@ -13,7 +13,7 @@ const {
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const GOOGLE_SOURCE = "google_hotels";
-const MAX_GOOGLE_DETAIL_CANDIDATES = 3;
+const MAX_GOOGLE_DETAIL_CANDIDATES = 1;
 const GOOGLE_HOTELS_SEED_URL =
   "https://www.google.com/travel/search?" +
   "q=hoteles%20en%20Madrid&" +
