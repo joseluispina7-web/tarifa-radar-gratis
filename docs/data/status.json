@@ -1,73 +1,84 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T07:13:43.564Z",
+  "updatedAt": "2026-07-29T07:19:16.383Z",
   "summary": {
-    "generatedAt": "2026-07-29T07:13:43.564Z",
+    "generatedAt": "2026-07-29T07:19:16.383Z",
     "monitors": 1,
     "searches": 1,
     "offers": 24,
-    "matches": 0,
-    "newMatches": 0,
+    "matches": 1,
+    "newMatches": 1,
     "priceDrops": 0,
-    "verificationErrors": [
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorn",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "hotelName": "Hostal B and B Benidorm",
-        "message": "Booking no mostró un total final con impuestos para esa habitación.",
-        "details": {
-          "bookingBlockIds": [
-            "1429426601_414516065_2_1_0"
-          ],
-          "rows": [
-            {
-              "blockId": "1429426601_414516065_2_1_0",
-              "priceText": "€ 387",
-              "taxesText": ""
-            }
-          ]
-        }
-      },
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorn",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "hotelName": "PENSIÓN ROSA",
-        "message": "Booking no mostró un total final con impuestos para esa habitación.",
-        "details": {
-          "bookingBlockIds": [
-            "787077002_338267051_2_0_0"
-          ],
-          "rows": [
-            {
-              "blockId": "787077002_338267051_2_0_0",
-              "priceText": "€ 413",
-              "taxesText": ""
-            }
-          ]
-        }
-      }
-    ],
+    "verificationErrors": [],
     "errors": []
   },
   "monitors": {
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorn",
-      "lastScanAt": "2026-07-29T07:13:43.564Z",
-      "lastSuccessAt": "2026-07-29T07:13:52.933Z",
+      "lastScanAt": "2026-07-29T07:19:16.383Z",
+      "lastSuccessAt": "2026-07-29T07:19:30.805Z",
       "searches": 1,
       "offers": 24,
-      "matches": 0,
+      "matches": 1,
       "error": ""
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "madrid-agosto-4-noches",
+      "monitorName": "Benidorn",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/hostal-b-and-b-benidorm.es.html|2026-08-05|2026-08-09",
+        "source": "booking",
+        "hotelName": "Hostal B and B Benidorm",
+        "address": "Centro histórico de Benidorm, Benidorm",
+        "checkIn": "2026-08-05",
+        "checkOut": "2026-08-09",
+        "nights": 4,
+        "totalPrice": 425.7,
+        "nightlyPrice": 106.43,
+        "rateSubtotal": 387,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "4 noches, 2 adultos",
+        "bookingBlockIds": [
+          "1429426601_414516065_2_1_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 4.7,
+        "reviewCount": 395,
+        "distanceKm": 0.25,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": true,
+        "propertyType": "hostel",
+        "amenities": [
+          "beach",
+          "breakfast"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "Habitación Doble - 1 o 2 camas",
+        "sharedRoom": false,
+        "url": "https://www.booking.com/hotel/es/hostal-b-and-b-benidorm.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=3492337af4de026d&srepoch=1785309559&all_sr_blocks=1429426601_414516065_2_1_0&highlighted_blocks=1429426601_414516065_2_1_0&matching_block_id=1429426601_414516065_2_1_0&sr_pri_blocks=1429426601_414516065_2_1_0__38700&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 387,
+        "bookingTableTotal": 425.7,
+        "verificationRows": [
+          {
+            "blockId": "1429426601_414516065_2_1_0",
+            "priceText": "€ 97 por noche\n€ 387\nPrecio € 387\n4 noches\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1
+      },
+      "createdAt": "2026-07-29T07:19:30.805Z"
+    }
+  ]
 }
