@@ -1,26 +1,26 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T19:58:42.805Z",
+  "updatedAt": "2026-07-29T20:17:32.391Z",
   "summary": {
-    "generatedAt": "2026-07-29T19:58:42.805Z",
+    "generatedAt": "2026-07-29T20:17:32.391Z",
     "monitors": 2,
     "searches": 14,
-    "offers": 158,
+    "offers": 111,
     "matches": 1,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 7,
-        "offers": 158,
+        "offers": 111,
         "matches": 1,
-        "errors": 0
+        "errors": 2
       },
       "google_hotels": {
         "searches": 7,
         "offers": 0,
         "matches": 0,
-        "errors": 7
+        "errors": 0
       }
     },
     "verificationErrors": [],
@@ -29,95 +29,24 @@
       {
         "monitorId": "madrid-agosto-4-noches",
         "monitorName": "Benidorm",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.scrollIntoViewIfNeeded: Element is not attached to the DOM\nCall log:\n  - attempting scroll into view action\n    2 × waiting for element to be stable\n      - element is not visible\n    - retrying scroll into view action\n    - waiting 20ms\n    2 × waiting for element to be stable\n      - element is not visible\n    - retrying scroll into view action\n      - waiting 100ms\n    - waiting for element to be stable\n    - element is not visible\n  - retrying scroll into view action\n    - waiting 500ms\n    - waiting for element to be stable\n"
-      },
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorm",
-        "source": "google_hotels",
+        "source": "booking",
         "dates": {
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
         "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total verificable. Titulos: Patrocinado·La Nucia hoteles | Aparthotel BCL Levante Beach | Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended. Precios: Barceló La Nucía Hills 284 US$ Booking.com 4,6/5 (1,0 mil) · Hotel de 5 estrellas Jacuzzi · Spa | Barceló La Nucía Palms - Adults Recommended 273 US$ Hotels.com 4,3/5 (1,1 mil) · Hotel de 5 estrellas Spa · Piscina | Hotel Sun Palace Albir & Spa 188 US$ Sun Palace Albir 3,8/5 (2,3 mil) · Hotel de 4 estrellas Jacuzzi · Spa | Hotel Caballo de Oro 179 US$ es.KAYAK.com 4,0/5 (1,8 mil) · Hotel de 3 estrellas."
+        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
       },
       {
         "monitorId": "madrid-agosto-4-noches",
         "monitorName": "Benidorm",
-        "source": "google_hotels",
+        "source": "booking",
         "dates": {
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
         "searchArea": "Finestrat",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total verificable. Titulos: Patrocinado·Finestrat hoteles | Gran Hotel Bali | Vistamar Hotel Luxury Wellness by DLV | Nature Suites Puig Campana by AR Hotels & Resorts. Precios: B&B HOTEL Benidorm Finestrat 116 € Hotels.com 4,5/5 (800) · Hotel de 2 estrellas Se admiten mascotas · Restaurante | Hostal El Mercat 105 € Booking.com 3,6/5 (288) · Hotel de 3 estrellas Se admiten mascotas · Adecuado para niños | Hotel Bed and Breakfast Benidorm 101 € Expedia.com 2,3/5 (82) Traslado del/al aeropuerto · Desayuno gratis | Hotel Andalucía 126 € Booking.com 4,2/5 (641) · Hotel de 2 estrellas Se admiten mascotas · Adecuado para niños."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-05",
-          "checkOut": "2026-09-06",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-29",
-          "flexibleCheckInEnd": "2026-09-12"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible [role=\"gridcell\"][data-iso=\"2026-09-05\"][aria-hidden=\"false\"] [role=\"button\"]').first()\n    - locator resolved to <div role=\"button\" tabindex=\"-1\" class=\"p1BRgf KQqAEc\">…</div>\n  - attempting click action\n    2 × waiting for element to be visible, enabled and stable\n      - element is not stable\n    - retrying click action\n    - waiting 20ms\n    - waiting for element to be visible, enabled and stable\n    - element is not stable\n  - retrying click action\n    - waiting 100ms\n    - waiting for element to be visible, enabled and stable\n  - element was detached from the DOM, retrying\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-05",
-          "checkOut": "2026-09-07",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-29",
-          "flexibleCheckInEnd": "2026-09-12"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-05 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-20",
-          "checkOut": "2026-09-21",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-13",
-          "flexibleCheckInEnd": "2026-09-27"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-20",
-          "checkOut": "2026-09-22",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-13",
-          "flexibleCheckInEnd": "2026-09-27"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-20 en el calendario."
+        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
       }
     ]
   },
@@ -125,10 +54,10 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-29T19:58:42.805Z",
-      "lastSuccessAt": "2026-07-29T20:00:07.768Z",
+      "lastScanAt": "2026-07-29T20:17:32.391Z",
+      "lastSuccessAt": "2026-07-29T20:19:07.541Z",
       "searches": 6,
-      "offers": 74,
+      "offers": 24,
       "matches": 1,
       "nearbyLocations": [
         "La Nucia",
@@ -137,32 +66,32 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 74,
+          "offers": 24,
           "matches": 1,
-          "errors": 0
+          "errors": 2
         },
         "google_hotels": {
           "searches": 3,
           "offers": 0,
           "matches": 0,
-          "errors": 3
+          "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total verificable. Titulos: Patrocinado·Finestrat hoteles | Gran Hotel Bali | Vistamar Hotel Luxury Wellness by DLV | Nature Suites Puig Campana by AR Hotels & Resorts. Precios: B&B HOTEL Benidorm Finestrat 116 € Hotels.com 4,5/5 (800) · Hotel de 2 estrellas Se admiten mascotas · Restaurante | Hostal El Mercat 105 € Booking.com 3,6/5 (288) · Hotel de 3 estrellas Se admiten mascotas · Adecuado para niños | Hotel Bed and Breakfast Benidorm 101 € Expedia.com 2,3/5 (82) Traslado del/al aeropuerto · Desayuno gratis | Hotel Andalucía 126 € Booking.com 4,2/5 (641) · Hotel de 2 estrellas Se admiten mascotas · Adecuado para niños."
+      "error": "[booking] Booking ha solicitado una comprobación del navegador; no se publican precios."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-29T19:58:42.805Z",
-      "lastSuccessAt": "2026-07-29T20:02:52.738Z",
+      "lastScanAt": "2026-07-29T20:17:32.391Z",
+      "lastSuccessAt": "2026-07-29T20:22:16.663Z",
       "searches": 8,
-      "offers": 84,
+      "offers": 87,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 84,
+          "offers": 87,
           "matches": 0,
           "errors": 0
         },
@@ -170,18 +99,18 @@
           "searches": 4,
           "offers": 0,
           "matches": 0,
-          "errors": 4
+          "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-20 en el calendario.",
+      "error": "",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-29",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 4,
+        "startWindowIndex": 8,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 8,
-        "remainingWindowsInSweep": 16,
+        "nextWindowIndex": 12,
+        "remainingWindowsInSweep": 12,
         "completedSweep": false
       }
     }
