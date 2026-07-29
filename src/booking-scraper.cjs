@@ -459,16 +459,28 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     (table, blockIds) => {
       return Array.from(table.querySelectorAll("tr[data-block-id]"))
         .filter((row) => blockIds.includes(row.getAttribute("data-block-id")))
-        .map((row) => ({
-          blockId: row.getAttribute("data-block-id") || "",
-          priceText:
+        .map((row) => {
+          const priceCell = row.querySelector(".hprt-table-cell-price");
+          const priceText =
             row.querySelector(
               ".prco-valign-middle-helper, [data-testid='price-and-discounted-price']",
-            )?.textContent?.trim() || "",
-          taxesText:
+            )?.textContent?.trim() ||
+            priceCell?.innerText?.trim() ||
+            "";
+          const visibleTaxText = (priceCell?.innerText || row.innerText || "")
+            .split("\n")
+            .map((line) => line.trim())
+            .filter((line) => /impuestos|cargos/i.test(line))
+            .join(" ");
+          return {
+            blockId: row.getAttribute("data-block-id") || "",
+            priceText,
+            taxesText:
             row.querySelector(".prd-taxes-and-fees-under-price")
-              ?.textContent?.trim() || "",
-        }));
+              ?.textContent?.trim() ||
+              visibleTaxText,
+          };
+        });
     },
     offer.bookingBlockIds,
   );
