@@ -1,25 +1,25 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T15:31:40.628Z",
+  "updatedAt": "2026-07-29T15:54:27.912Z",
   "summary": {
-    "generatedAt": "2026-07-29T15:31:40.628Z",
+    "generatedAt": "2026-07-29T15:54:27.912Z",
     "monitors": 2,
     "searches": 5,
     "offers": 120,
-    "matches": 1,
-    "newMatches": 0,
+    "matches": 2,
+    "newMatches": 1,
     "priceDrops": 0,
     "verificationErrors": [
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "dates": {
-          "checkIn": "2026-08-19",
-          "checkOut": "2026-08-20"
+          "checkIn": "2026-08-23",
+          "checkOut": "2026-08-24"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
+        "hotelName": "Rooms Villamil",
+        "message": "Booking cambio el total de 39.60 a 36.30 EUR durante la comprobacion."
       }
     ],
     "nearbyErrors": [],
@@ -29,8 +29,8 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-29T15:31:40.628Z",
-      "lastSuccessAt": "2026-07-29T15:32:21.343Z",
+      "lastScanAt": "2026-07-29T15:54:27.912Z",
+      "lastSuccessAt": "2026-07-29T15:55:51.541Z",
       "searches": 3,
       "offers": 74,
       "matches": 1,
@@ -43,14 +43,70 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-29T15:31:40.628Z",
-      "lastSuccessAt": "2026-07-29T15:32:36.068Z",
+      "lastScanAt": "2026-07-29T15:54:27.912Z",
+      "lastSuccessAt": "2026-07-29T15:56:22.275Z",
       "searches": 2,
       "offers": 46,
-      "matches": 0,
+      "matches": 1,
       "nearbyLocations": [],
       "error": ""
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-23|2026-08-24",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-08-23",
+        "checkOut": "2026-08-24",
+        "nights": 1,
+        "totalPrice": 29.7,
+        "nightlyPrice": 29.7,
+        "rateSubtotal": 27.27,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125510_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-23&checkout=2026-08-24&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=0080700470330003&srepoch=1785340554&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2727&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 29.7,
+        "bookingTableTotal": 29.7,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 27 por noche\n€ 27\nPrecio € 27\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-29T15:56:16.483Z"
+      },
+      "createdAt": "2026-07-29T15:56:19.021Z"
+    }
+  ]
 }
