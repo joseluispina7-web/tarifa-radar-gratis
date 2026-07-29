@@ -654,8 +654,9 @@ async function googleHotelsDiagnostics(page) {
 async function loadGoogleHotels(page, search, options = {}) {
   const timeoutMs = options.timeoutMs || DEFAULT_TIMEOUT_MS;
   const searchUrl = buildGoogleHotelsSearchUrl(search);
+  const attempts = process.env.GITHUB_ACTIONS === "true" ? 1 : 2;
   let lastError = null;
-  for (let attempt = 0; attempt < 2; attempt += 1) {
+  for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
       await page.goto(GOOGLE_HOTELS_SEED_URL, {
         waitUntil: "domcontentloaded",
@@ -679,7 +680,7 @@ async function loadGoogleHotels(page, search, options = {}) {
       return { searchUrl, resultUrl: page.url() };
     } catch (error) {
       lastError = error;
-      if (attempt === 0) await page.waitForTimeout(800);
+      if (attempt + 1 < attempts) await page.waitForTimeout(800);
     }
   }
   throw new Error(
