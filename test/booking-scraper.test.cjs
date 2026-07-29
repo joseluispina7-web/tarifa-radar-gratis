@@ -6,6 +6,7 @@ const {
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
+  fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,
   nightsBetween,
@@ -124,6 +125,16 @@ test("accepts only bookable table totals with taxes accounted for", () => {
     ),
     0,
   );
+  assert.equal(
+    calculateVerifiedTableTotal(
+      ["room-c"],
+      [{ blockId: "room-c", priceText: "€ 387", taxesText: "" }],
+      { fallbackTaxRate: fallbackTaxRateForCountry("ES") },
+    ),
+    425.7,
+  );
+  assert.equal(fallbackTaxRateForCountry("ES"), 0.1);
+  assert.equal(fallbackTaxRateForCountry("FR"), 0);
 });
 
 test("rejects a card when its stay does not match the requested search", () => {

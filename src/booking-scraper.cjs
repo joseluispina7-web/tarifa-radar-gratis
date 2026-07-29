@@ -36,6 +36,9 @@ function normalizeSearch(input = {}) {
     destinationLabel: String(
       input.destination?.label || input.destinationLabel || destination,
     ),
+    countryCode: String(
+      input.countryCode || input.destination?.countryCode || "",
+    ).toUpperCase(),
     checkIn,
     checkOut,
     nights,
@@ -169,9 +172,19 @@ function parseAdditionalCharges(value) {
   return parseEuroPrice(text);
 }
 
-function calculateVerifiedTableTotal(blockIds, rows) {
+function fallbackTaxRateForCountry(countryCode) {
+  return String(countryCode || "").toUpperCase() === "ES" ? 0.1 : 0;
+}
+
+function calculateVerifiedTableTotal(blockIds, rows, options = {}) {
   const rowsById = new Map(
     rows.map((row) => [String(row.blockId || ""), row]),
+  );
+  const fallbackTaxRate = clampNumber(
+    options.fallbackTaxRate,
+    0,
+    1,
+    0,
   );
   let total = 0;
   for (const blockId of blockIds) {
@@ -179,12 +192,12 @@ function calculateVerifiedTableTotal(blockIds, rows) {
     if (!row) return 0;
     const price = parseEuroPrice(row.priceText);
     const charges = parseAdditionalCharges(row.taxesText);
-    const taxesAccountedFor = Boolean(
-      /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText) ||
-      charges > 0
-    );
-    if (!price || !taxesAccountedFor) return 0;
-    total += price + charges;
+    const taxesIncluded =
+      /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText);
+    if (!price || (!taxesIncluded && !charges && !fallbackTaxRate)) return 0;
+    total += charges
+      ? price + charges
+      : price * (1 + (taxesIncluded ? 0 : fallbackTaxRate));
   }
   return Math.round(total * 100) / 100;
 }
@@ -275,6 +288,9 @@ function sanitizeBookingUrl(value, search) {
     url.searchParams.set("req_children", String(search.children));
     url.searchParams.set("no_rooms", String(search.rooms));
     url.searchParams.set("selected_currency", "EUR");
+    url.searchParams.set("sb_price_type", "total");
+    url.searchParams.set("type", "total");
+    url.searchParams.set("lang", "es");
     return url.toString();
   } catch {
     return value;
@@ -488,6 +504,9 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   const verifiedTotal = calculateVerifiedTableTotal(
     offer.bookingBlockIds,
     rows,
+    {
+      fallbackTaxRate: fallbackTaxRateForCountry(search.countryCode),
+    },
   );
   if (!verifiedTotal) {
     const error = new Error(
@@ -506,8 +525,13 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     Math.round((verifiedTotal / search.nights) * 100) / 100;
   offer.bookingTableTotal = verifiedTotal;
   offer.verificationRows = rows;
+  offer.taxFallbackRate = rows.some((row) => !row.taxesText)
+    ? fallbackTaxRateForCountry(search.countryCode)
+    : 0;
   offer.priceVerified = true;
-  offer.priceBasis = "booking_availability_table";
+  offer.priceBasis = offer.taxFallbackRate
+    ? "booking_availability_table_with_country_tax"
+    : "booking_availability_table";
   offer.matches = matchesSearch(offer, search);
   return offer;
 }
@@ -615,6 +639,7 @@ module.exports = {
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
+  fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,
   nightsBetween,

@@ -38,6 +38,7 @@ function monitorFingerprint(monitor) {
   const fields = [
     "location",
     "locationId",
+    "countryCode",
     "dateMode",
     "dateStart",
     "dateEnd",
@@ -117,6 +118,7 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     rateSubtotal: offer.rateSubtotal,
     searchResultPrice: offer.searchResultPrice,
     bookingTableTotal: offer.bookingTableTotal,
+    taxFallbackRate: offer.taxFallbackRate,
     additionalCharges: offer.additionalCharges,
     taxesText: offer.taxesText,
     stayText: offer.stayText,

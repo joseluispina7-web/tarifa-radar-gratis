@@ -75,7 +75,9 @@ function monitorToSearch(monitor, dates) {
     destination: {
       query: monitor.location,
       label: monitor.location,
+      countryCode: monitor.countryCode,
     },
+    countryCode: monitor.countryCode,
     checkIn: dates.checkIn,
     checkOut: dates.checkOut,
     adults: monitor.adults,
