@@ -460,9 +460,12 @@ async function extractGoogleHotelCandidates(page, search) {
     );
 }
 
-function googleCandidateMatches(card, search) {
+function googleCandidateMatches(card, search, options = {}) {
   const estimatedTotal =
     Math.round(card.nightlyPrice * search.nights * 100) / 100;
+  const candidateSearch = options.ignoreBudget
+    ? { ...search, maxTotal: 0, maxNightly: 0 }
+    : search;
   const provisional = buildGoogleOffer(
     {
       hotelName: card.hotelName,
@@ -473,7 +476,7 @@ function googleCandidateMatches(card, search) {
       labels: card.labels,
       url: card.pricePageUrl,
     },
-    search,
+    candidateSearch,
   );
   return Boolean(provisional?.matches);
 }
@@ -500,7 +503,9 @@ function providerLinkMatchesStay(value, search) {
 async function verifyGoogleHotelCandidates(page, candidates, search, options = {}) {
   const timeoutMs = Math.min(options.timeoutMs || 25_000, 25_000);
   const selected = candidates
-    .filter((candidate) => googleCandidateMatches(candidate, search))
+    .filter((candidate) =>
+      googleCandidateMatches(candidate, search, { ignoreBudget: true })
+    )
     .sort((left, right) => left.nightlyPrice - right.nightlyPrice)
     .slice(
       0,
@@ -672,6 +677,14 @@ async function scrapeGoogleHotels(input, options = {}) {
     let verificationErrors = [];
     if (!offers.length) {
       const candidates = await extractGoogleHotelCandidates(page, search);
+      if (!candidates.length) {
+        const diagnostics = await googleHotelsDiagnostics(page);
+        throw new Error(
+          "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. " +
+            `Titulos: ${diagnostics.headings.join(" | ") || "ninguno"}. ` +
+            `Precios: ${diagnostics.prices.join(" | ") || "ninguno"}.`,
+        );
+      }
       const verification = await verifyGoogleHotelCandidates(
         page,
         candidates,
