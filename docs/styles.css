@@ -1453,12 +1453,20 @@ select:focus {
   }
 
   .deal-row {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: minmax(0, 1fr) auto 38px;
   }
 
   .deal-row > span:nth-child(2),
   .deal-row > span:nth-child(4) {
     display: none;
+  }
+
+  .deal-row > span:nth-child(3) {
+    grid-column: 2;
+  }
+
+  .deal-row > a {
+    grid-column: 3;
   }
 }
 
