@@ -28,6 +28,7 @@ const { compareWithState } = require("../src/state.cjs");
 const {
   buildMonitorScanRequests,
   buildMonitorSearches,
+  flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
 } = require("../src/remote-scan.cjs");
@@ -441,7 +442,7 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
     },
     now,
   );
-  assert.equal(searches.length, 2);
+  assert.equal(searches.length, 4);
   assert.notDeepEqual(searches[0], searches[1]);
 
   const search = monitorToSearch(
@@ -513,7 +514,44 @@ test("rotates one nearby area without multiplying every flexible stay", () => {
     nearby,
     now,
   );
-  assert.equal(flexible.length, 2);
+  assert.equal(flexible.length, 4);
+});
+
+test("walks every flexible date combination with a persistent cursor", () => {
+  const now = new Date("2026-07-29T16:00:00Z");
+  const monitor = {
+    id: "madrid",
+    dateMode: "flexible",
+    windowDays: 180,
+    minNights: 1,
+    maxNights: 2,
+  };
+  assert.deepEqual(flexibleSearchShape(monitor), {
+    windowDays: 180,
+    minNights: 1,
+    maxNights: 2,
+    stayOptions: 2,
+    combinations: 360,
+  });
+
+  const firstBatch = buildMonitorSearches(monitor, now, {
+    startIndex: 0,
+    anchorDate: "2026-07-29",
+  });
+  assert.deepEqual(firstBatch, [
+    { checkIn: "2026-07-30", checkOut: "2026-07-31" },
+    { checkIn: "2026-07-30", checkOut: "2026-08-01" },
+    { checkIn: "2026-07-31", checkOut: "2026-08-01" },
+    { checkIn: "2026-07-31", checkOut: "2026-08-02" },
+  ]);
+
+  const lastBatch = buildMonitorSearches(monitor, now, {
+    startIndex: 359,
+    anchorDate: "2026-07-29",
+  });
+  assert.deepEqual(lastBatch, [
+    { checkIn: "2027-01-25", checkOut: "2027-01-27" },
+  ]);
 });
 
 test("calculates the real distance between destination and hotel coordinates", () => {

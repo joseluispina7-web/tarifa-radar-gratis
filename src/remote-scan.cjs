@@ -1,7 +1,7 @@
 const { scrapeBooking } = require("./booking-scraper.cjs");
 
 const FIVE_MINUTES_MS = 5 * 60_000;
-const FLEXIBLE_SEARCHES_PER_RUN = 2;
+const FLEXIBLE_SEARCHES_PER_RUN = 4;
 const FIXED_NEARBY_AREAS_PER_RUN = 3;
 
 function parseTimestamp(value) {
@@ -35,33 +35,59 @@ function monitorSeed(value) {
     .reduce((total, character) => (total * 31 + character.charCodeAt(0)) % 10007, 0);
 }
 
-function buildMonitorSearches(monitor, now = new Date()) {
-  if (monitor.dateMode === "fixed") {
-    return [{ checkIn: monitor.dateStart, checkOut: monitor.dateEnd }];
-  }
-
-  const today = new Date(
-    Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()),
+function flexibleSearchShape(monitor) {
+  const windowDays = Math.max(
+    30,
+    Math.min(365, Number(monitor.windowDays) || 180),
   );
-  const windowDays = Math.max(30, Math.min(365, Number(monitor.windowDays) || 180));
   const minNights = Math.max(1, Number(monitor.minNights) || 4);
   const maxNights = Math.max(
     minNights,
     Math.min(minNights + 13, Number(monitor.maxNights) || minNights),
   );
   const stayOptions = maxNights - minNights + 1;
-  const combinations = windowDays * stayOptions;
-  const slot = Math.floor(now.getTime() / FIVE_MINUTES_MS);
+  return {
+    windowDays,
+    minNights,
+    maxNights,
+    stayOptions,
+    combinations: windowDays * stayOptions,
+  };
+}
 
-  return Array.from({ length: FLEXIBLE_SEARCHES_PER_RUN }, (_, offset) => {
-    const index =
-      (slot * FLEXIBLE_SEARCHES_PER_RUN +
-        monitorSeed(monitor.id) * 29 +
-        offset) %
-      combinations;
-    const dayOffset = Math.floor(index / stayOptions) + 1;
-    const nights = minNights + (index % stayOptions);
-    const checkInDate = addUtcDays(today, dayOffset);
+function buildMonitorSearches(monitor, now = new Date(), options = {}) {
+  if (monitor.dateMode === "fixed") {
+    return [{ checkIn: monitor.dateStart, checkOut: monitor.dateEnd }];
+  }
+
+  const shape = flexibleSearchShape(monitor);
+  const anchorDate = options.anchorDate
+    ? new Date(`${options.anchorDate}T00:00:00Z`)
+    : new Date(
+        Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate()),
+      );
+  const slot = Math.floor(now.getTime() / FIVE_MINUTES_MS);
+  const hasPersistentCursor =
+    options.startIndex !== undefined &&
+    options.startIndex !== null &&
+    Number.isFinite(Number(options.startIndex));
+  const startIndex = hasPersistentCursor
+    ? Math.max(0, Math.floor(Number(options.startIndex))) %
+      shape.combinations
+    : (slot * FLEXIBLE_SEARCHES_PER_RUN + monitorSeed(monitor.id) * 29) %
+      shape.combinations;
+  const searchesThisRun = hasPersistentCursor
+    ? Math.min(
+        FLEXIBLE_SEARCHES_PER_RUN,
+        shape.combinations - startIndex,
+      )
+    : FLEXIBLE_SEARCHES_PER_RUN;
+
+  return Array.from({ length: searchesThisRun }, (_, offset) => {
+    const index = (startIndex + offset) % shape.combinations;
+    const dayOffset = Math.floor(index / shape.stayOptions) + 1;
+    const nights = shape.minNights + (index % shape.stayOptions);
+    const checkInDate = addUtcDays(anchorDate, dayOffset);
     return {
       checkIn: isoDay(checkInDate),
       checkOut: isoDay(addUtcDays(checkInDate, nights)),
@@ -73,8 +99,9 @@ function buildMonitorScanRequests(
   monitor,
   nearbyLocations = [],
   now = new Date(),
+  options = {},
 ) {
-  const dates = buildMonitorSearches(monitor, now);
+  const dates = buildMonitorSearches(monitor, now, options);
   const mainArea = {
     name: monitor.location,
     query: monitor.location,
@@ -280,6 +307,7 @@ if (require.main === module) {
 module.exports = {
   buildMonitorScanRequests,
   buildMonitorSearches,
+  flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
   parseTimestamp,

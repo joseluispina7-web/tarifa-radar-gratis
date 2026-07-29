@@ -5,6 +5,7 @@ const { scrapeBooking } = require("./booking-scraper.cjs");
 const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
   buildMonitorScanRequests,
+  flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
 } = require("./remote-scan.cjs");
@@ -258,6 +259,17 @@ async function runRepositoryScan(options = {}) {
     const beforeMonitor = storedMonitor.fingerprint === fingerprint
       ? storedMonitor
       : { offers: {} };
+    const flexibleShape = monitor.dateMode === "flexible"
+      ? flexibleSearchShape(monitor)
+      : null;
+    const flexibleCursor = flexibleShape
+      ? Math.max(0, Number(beforeMonitor.flexibleCursor) || 0) %
+        flexibleShape.combinations
+      : 0;
+    const flexibleSweepStartDate = flexibleShape
+      ? beforeMonitor.flexibleSweepStartDate ||
+        now.toISOString().slice(0, 10)
+      : "";
     const nextOffers = { ...(beforeMonitor.offers || {}) };
     const monitorMatchingOffers = new Set();
     const observedOfferKeys = new Set();
@@ -299,8 +311,15 @@ async function runRepositoryScan(options = {}) {
       monitor,
       nearbyLocations,
       now,
+      flexibleShape
+        ? {
+            startIndex: flexibleCursor,
+            anchorDate: flexibleSweepStartDate,
+          }
+        : {},
     );
     let successfulSearches = 0;
+    let completedFlexibleRequests = 0;
     for (const request of scanRequests) {
       const { dates, area } = request;
       summary.searches += 1;
@@ -311,6 +330,7 @@ async function runRepositoryScan(options = {}) {
           { headless: options.headless !== false },
         );
         successfulSearches += 1;
+        if (flexibleShape) completedFlexibleRequests += 1;
         status.lastSuccessAt = result.searchedAt;
         status.offers += result.offers.length;
         summary.offers += result.offers.length;
@@ -391,7 +411,31 @@ async function runRepositoryScan(options = {}) {
           searchArea: area.name,
           message,
         });
+        if (flexibleShape) break;
       }
+    }
+
+    let nextFlexibleCursor = flexibleCursor;
+    let nextFlexibleSweepStartDate = flexibleSweepStartDate;
+    let completedFlexibleSweep = false;
+    if (flexibleShape && completedFlexibleRequests > 0) {
+      nextFlexibleCursor = flexibleCursor + completedFlexibleRequests;
+      if (nextFlexibleCursor >= flexibleShape.combinations) {
+        nextFlexibleCursor = 0;
+        nextFlexibleSweepStartDate = now.toISOString().slice(0, 10);
+        completedFlexibleSweep = true;
+      }
+      status.flexibleCoverage = {
+        sweepStartDate: flexibleSweepStartDate,
+        totalCombinations: flexibleShape.combinations,
+        startIndex: flexibleCursor,
+        checkedThisRun: completedFlexibleRequests,
+        nextIndex: nextFlexibleCursor,
+        remainingInSweep: completedFlexibleSweep
+          ? 0
+          : flexibleShape.combinations - nextFlexibleCursor,
+        completedSweep: completedFlexibleSweep,
+      };
     }
 
     if (
@@ -416,6 +460,12 @@ async function runRepositoryScan(options = {}) {
       lastScanAt: now.toISOString(),
       lastSuccessAt: status.lastSuccessAt,
       nearbyLocations: nearbyDiscoveryFailed ? null : nearbyLocations,
+      ...(flexibleShape
+        ? {
+            flexibleCursor: nextFlexibleCursor,
+            flexibleSweepStartDate: nextFlexibleSweepStartDate,
+          }
+        : {}),
       offers: nextOffers,
     };
     monitorStatus[monitor.id] = status;
