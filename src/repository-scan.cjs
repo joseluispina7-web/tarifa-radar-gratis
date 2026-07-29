@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
 const { scrapeBooking } = require("./booking-scraper.cjs");
+const { scrapeGoogleHotels } = require("./google-hotels-scraper.cjs");
 const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
   buildMonitorScanRequests,
@@ -13,6 +14,10 @@ const {
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
 const FLEXIBLE_SWEEP_VERSION = 2;
+const AUTOMATIC_SCRAPERS = {
+  booking: scrapeBooking,
+  google_hotels: scrapeGoogleHotels,
+};
 
 function readJson(filePath, fallback) {
   try {
@@ -40,6 +45,8 @@ function updateOfferState(
     Number(previous.publishedPrice) ||
     (previous.matches ? Number(previous.totalPrice) : 0);
   return {
+    source: offer.source,
+    provider: offer.provider,
     hotelName: offer.hotelName,
     totalPrice: offer.totalPrice,
     nightlyPrice: offer.nightlyPrice,
@@ -65,10 +72,17 @@ function offerStateIsConfirmed(offerState) {
   );
 }
 
-function resetUnobservedFixedOffers(offers, monitorId, observedOfferKeys) {
+function resetUnobservedFixedOffers(
+  offers,
+  monitorId,
+  observedOfferKeys,
+  source,
+) {
   for (const [offerKey, offerState] of Object.entries(offers)) {
+    const offerSource = offerState.source || "booking";
     if (
       offerKey.startsWith(`${monitorId}:`) &&
+      offerSource === source &&
       !observedOfferKeys.has(offerKey)
     ) {
       offers[offerKey] = {
@@ -137,7 +151,13 @@ function buildDealMap(previousDeals, activeMonitors) {
   );
 }
 
-function clearSearchedDeals(dealMap, monitorId, dates, searchArea = null) {
+function clearSearchedDeals(
+  dealMap,
+  monitorId,
+  dates,
+  searchArea = null,
+  source = null,
+) {
   for (const [dealId, deal] of dealMap) {
     const dealArea = deal.searchArea || deal.location;
     const datesMatch = dates.flexibleCheckInStart
@@ -149,7 +169,8 @@ function clearSearchedDeals(dealMap, monitorId, dates, searchArea = null) {
     if (
       String(deal.monitorId) === String(monitorId) &&
       datesMatch &&
-      (!searchArea || String(dealArea) === String(searchArea))
+      (!searchArea || String(dealArea) === String(searchArea)) &&
+      (!source || String(deal.source || "booking") === String(source))
     ) {
       dealMap.delete(dealId);
     }
@@ -192,6 +213,7 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     propertyType: offer.propertyType,
     amenities: offer.amenities,
     source: offer.source,
+    provider: offer.provider,
     url: offer.url,
     firstSeenAt: previous?.firstSeenAt || searchedAt,
     updatedAt: searchedAt,
@@ -225,7 +247,11 @@ async function runRepositoryScan(options = {}) {
   const now = options.now || new Date();
   const activeMonitors = (config.monitors || [])
     .filter((monitor) => monitor.active)
-    .filter((monitor) => monitor.sources?.includes("booking"));
+    .filter((monitor) =>
+      (monitor.sources || ["booking"]).some(
+        (source) => AUTOMATIC_SCRAPERS[source],
+      ),
+    );
   const monitors = activeMonitors
     .filter((monitor) =>
       monitorIsDue(
@@ -254,6 +280,7 @@ async function runRepositoryScan(options = {}) {
     matches: 0,
     newMatches: 0,
     priceDrops: 0,
+    sources: {},
     verificationErrors: [],
     nearbyErrors: [],
     errors: [],
@@ -294,6 +321,7 @@ async function runRepositoryScan(options = {}) {
       offers: 0,
       matches: 0,
       nearbyLocations: [],
+      sources: {},
       error: "",
     };
 
@@ -329,32 +357,93 @@ async function runRepositoryScan(options = {}) {
           }
         : {},
     );
-    let successfulSearches = 0;
+    const selectedSources = (monitor.sources || ["booking"])
+      .filter((source) => AUTOMATIC_SCRAPERS[source]);
+    const successfulSearches = new Map(
+      selectedSources.map((source) => [source, 0]),
+    );
     let completedFlexibleRequests = 0;
     for (const request of scanRequests) {
       const { dates, area } = request;
-      summary.searches += 1;
-      status.searches += 1;
-      try {
-        const result = await scrapeBooking(
-          monitorToSearch(monitor, dates, area),
-          { headless: options.headless !== false },
+      const searchInput = monitorToSearch(monitor, dates, area);
+      const sourceRuns = await Promise.all(
+        selectedSources.map(async (source) => {
+          summary.searches += 1;
+          status.searches += 1;
+          summary.sources[source] ||= {
+            searches: 0,
+            offers: 0,
+            matches: 0,
+            errors: 0,
+          };
+          status.sources[source] ||= {
+            searches: 0,
+            offers: 0,
+            matches: 0,
+            errors: 0,
+          };
+          summary.sources[source].searches += 1;
+          status.sources[source].searches += 1;
+          try {
+            const result = await AUTOMATIC_SCRAPERS[source](
+              searchInput,
+              { headless: options.headless !== false },
+            );
+            return { source, result };
+          } catch (error) {
+            return { source, error };
+          }
+        }),
+      );
+      let requestSucceeded = false;
+      for (const run of sourceRuns) {
+        const { source } = run;
+        if (run.error) {
+          const message = run.error instanceof Error
+            ? run.error.message
+            : String(run.error);
+          status.error = `[${source}] ${message}`;
+          status.sources[source].errors += 1;
+          summary.sources[source].errors += 1;
+          summary.errors.push({
+            monitorId: monitor.id,
+            monitorName: monitor.name,
+            source,
+            dates,
+            searchArea: area.name,
+            message,
+          });
+          continue;
+        }
+
+        requestSucceeded = true;
+        const { result } = run;
+        successfulSearches.set(
+          source,
+          successfulSearches.get(source) + 1,
         );
-        successfulSearches += 1;
-        if (flexibleShape) completedFlexibleRequests += 1;
         status.lastSuccessAt = result.searchedAt;
         status.offers += result.offers.length;
         summary.offers += result.offers.length;
+        status.sources[source].offers += result.offers.length;
+        summary.sources[source].offers += result.offers.length;
         summary.verificationErrors.push(
           ...(result.verificationErrors || []).map((error) => ({
             monitorId: monitor.id,
             monitorName: monitor.name,
+            source,
             dates,
             searchArea: area.name,
             ...error,
           })),
         );
-        clearSearchedDeals(dealMap, monitor.id, dates, area.name);
+        clearSearchedDeals(
+          dealMap,
+          monitor.id,
+          dates,
+          area.name,
+          source,
+        );
 
         for (const offer of result.offers) {
           const offerKey = `${monitor.id}:${offer.id}`;
@@ -411,19 +500,12 @@ async function runRepositoryScan(options = {}) {
           }
           status.matches = monitorMatchingOffers.size;
           summary.matches = currentMatchingOffers.size;
+          status.sources[source].matches += confirmed ? 1 : 0;
+          summary.sources[source].matches += confirmed ? 1 : 0;
         }
-      } catch (error) {
-        const message = error instanceof Error ? error.message : String(error);
-        status.error = message;
-        summary.errors.push({
-          monitorId: monitor.id,
-          monitorName: monitor.name,
-          dates,
-          searchArea: area.name,
-          message,
-        });
-        if (flexibleShape) break;
       }
+      if (flexibleShape && requestSucceeded) completedFlexibleRequests += 1;
+      if (flexibleShape && !requestSucceeded) break;
     }
 
     let nextFlexibleCursor = flexibleCursor;
@@ -450,15 +532,17 @@ async function runRepositoryScan(options = {}) {
       };
     }
 
-    if (
-      monitor.dateMode === "fixed" &&
-      successfulSearches === scanRequests.length
-    ) {
-      resetUnobservedFixedOffers(
-        nextOffers,
-        String(monitor.id),
-        observedOfferKeys,
-      );
+    if (monitor.dateMode === "fixed") {
+      for (const source of selectedSources) {
+        if (successfulSearches.get(source) === scanRequests.length) {
+          resetUnobservedFixedOffers(
+            nextOffers,
+            String(monitor.id),
+            observedOfferKeys,
+            source,
+          );
+        }
+      }
     }
 
     for (const alert of pendingAlerts.values()) {

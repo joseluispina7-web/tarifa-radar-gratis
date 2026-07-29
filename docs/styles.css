@@ -974,6 +974,7 @@ select:focus {
 }
 
 .option-grid button,
+.source-grid > button,
 .source-grid > span {
   align-items: center;
   background: #fff;
@@ -989,9 +990,17 @@ select:focus {
 }
 
 .option-grid button.selected,
-.source-grid > span.automatic {
+.source-grid > button.selected {
   background: #f7fadf;
   border-color: #cadb6e;
+}
+
+.source-grid > button {
+  cursor: pointer;
+}
+
+.source-grid > button:not(.selected) {
+  color: #6a7671;
 }
 
 .source-grid small {
@@ -1470,6 +1479,38 @@ select:focus {
   .deal-row > a {
     grid-column: 3;
   }
+}
+
+.deal-source-header {
+  align-items: center;
+  background: #fff;
+  border-top: 1px solid var(--line);
+  color: var(--deep);
+  display: flex;
+  font-size: 10px;
+  font-weight: 900;
+  justify-content: space-between;
+  min-height: 38px;
+  padding: 8px 16px;
+}
+
+.deal-source-header span {
+  align-items: center;
+  display: flex;
+  gap: 7px;
+}
+
+.deal-source-header svg {
+  height: 14px;
+  width: 14px;
+}
+
+.deal-source-header b {
+  background: #eef2ed;
+  border-radius: 4px;
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  padding: 3px 6px;
 }
 
 @media (max-width: 540px) {

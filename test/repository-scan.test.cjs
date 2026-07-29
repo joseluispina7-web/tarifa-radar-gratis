@@ -70,6 +70,40 @@ test("replaces only deals for the date pair just searched", () => {
   assert.deepEqual(Array.from(deals.keys()), ["other-dates"]);
 });
 
+test("clears one source without deleting the other source", () => {
+  const deals = new Map([
+    [
+      "booking",
+      {
+        monitorId: monitor.id,
+        source: "booking",
+        checkIn: "2026-08-05",
+        checkOut: "2026-08-09",
+      },
+    ],
+    [
+      "google",
+      {
+        monitorId: monitor.id,
+        source: "google_hotels",
+        checkIn: "2026-08-05",
+        checkOut: "2026-08-09",
+      },
+    ],
+  ]);
+  clearSearchedDeals(
+    deals,
+    monitor.id,
+    {
+      checkIn: "2026-08-05",
+      checkOut: "2026-08-09",
+    },
+    null,
+    "google_hotels",
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["booking"]);
+});
+
 test("replaces deals covered by one flexible Booking window", () => {
   const deals = new Map([
     [
@@ -115,6 +149,7 @@ test("replaces deals covered by one flexible Booking window", () => {
 
 test("publishes a price after two checks in the same scan cycle", () => {
   const offer = {
+    source: "google_hotels",
     hotelName: "Hotel estable",
     totalPrice: 120,
     nightlyPrice: 30,
@@ -133,6 +168,7 @@ test("publishes a price after two checks in the same scan cycle", () => {
     "cycle-1",
   );
   assert.equal(first.confirmationCount, 2);
+  assert.equal(first.source, "google_hotels");
   assert.equal(offerStateIsConfirmed(first), true);
 
   const unconfirmed = updateOfferState(

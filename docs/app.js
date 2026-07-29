@@ -37,7 +37,7 @@
   ];
   const sources = [
     ["booking", "Booking", true],
-    ["google_hotels", "Google Hoteles", false],
+    ["google_hotels", "Google Hotels", true],
     ["trivago", "Trivago", false],
     ["kayak", "KAYAK", false],
     ["expedia", "Expedia", false],
@@ -327,6 +327,19 @@
     return radius > 0 ? `hasta ${radius} km alrededor` : "zona habitual";
   }
 
+  function sourceLabel(source) {
+    return sources.find(([id]) => id === source)?.[1] || source;
+  }
+
+  function automaticSourceText(monitor) {
+    const selected = (monitor.sources || ["booking"])
+      .filter((source) =>
+        sources.some(([id, , automatic]) => id === source && automatic),
+      )
+      .map(sourceLabel);
+    return selected.length ? selected.join(" + ") : "Sin buscador";
+  }
+
   function renderMonitorList() {
     const monitors = state.config.monitors || [];
     $("#monitor-count").textContent = String(monitors.length);
@@ -364,7 +377,7 @@
                         dateText(monitor),
                       )} · ${escapeHtml(radiusText(monitor))} · cada ${escapeHtml(
                         monitor.intervalMinutes,
-                      )} min
+                      )} min | ${escapeHtml(automaticSourceText(monitor))}
                     </span>
                   </span>
                 </button>
@@ -520,6 +533,12 @@
         const monitor = monitorById.get(monitorId);
         const name = monitor?.name || group[0].monitorName || group[0].location;
         const location = monitor?.location || group[0].location || "";
+        const sourceGroups = new Map();
+        for (const deal of group) {
+          const source = deal.source || "booking";
+          if (!sourceGroups.has(source)) sourceGroups.set(source, []);
+          sourceGroups.get(source).push(deal);
+        }
         return `
           <section class="deal-group">
             <header class="deal-group-header">
@@ -529,8 +548,23 @@
               </span>
               <b>${group.length} ${group.length === 1 ? "oferta" : "ofertas"}</b>
             </header>
-            ${dealTableHeader()}
-            ${group.map(dealRow).join("")}
+            ${Array.from(sourceGroups.entries())
+              .map(
+                ([source, sourceDeals]) => `
+                  <div class="deal-source-header">
+                    <span>
+                      <i data-lucide="${
+                        source === "google_hotels" ? "search" : "bed-double"
+                      }"></i>
+                      ${escapeHtml(sourceLabel(source))}
+                    </span>
+                    <b>${sourceDeals.length}</b>
+                  </div>
+                  ${dealTableHeader()}
+                  ${sourceDeals.map(dealRow).join("")}
+                `,
+              )
+              .join("")}
           </section>
         `;
       })
@@ -599,16 +633,47 @@
       state.draft.amenities,
       "amenities",
     );
+    const selectedSources = Array.isArray(state.draft.sources)
+      ? state.draft.sources
+      : ["booking"];
     $("#source-grid").innerHTML = sources
       .map(
-        ([id, label, automatic]) => `
-          <span class="${automatic ? "automatic" : ""}">
-            <span>${escapeHtml(label)}<small>${automatic ? "Automático" : "Enlace manual"}</small></span>
-            <i data-lucide="${automatic ? "check" : "external-link"}"></i>
-          </span>
-        `,
+        ([id, label, automatic]) =>
+          automatic
+            ? `
+              <button
+                type="button"
+                class="${selectedSources.includes(id) ? "selected" : ""}"
+                data-source-id="${id}"
+                aria-pressed="${selectedSources.includes(id)}"
+              >
+                <span>${escapeHtml(label)}<small>Automático</small></span>
+                <i data-lucide="${
+                  selectedSources.includes(id) ? "check" : "plus"
+                }"></i>
+              </button>
+            `
+            : `
+              <span>
+                <span>${escapeHtml(label)}<small>Enlace manual</small></span>
+                <i data-lucide="external-link"></i>
+              </span>
+            `,
       )
       .join("");
+    $$("[data-source-id]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const source = button.dataset.sourceId;
+        const values = Array.isArray(state.draft.sources)
+          ? state.draft.sources
+          : ["booking"];
+        state.draft.sources = values.includes(source)
+          ? values.filter((value) => value !== source)
+          : [...values, source];
+        renderEditorOptions();
+        renderRulePreview();
+      });
+    });
     refreshIcons();
   }
 
@@ -624,6 +689,9 @@
 
   function fillEditor() {
     const draft = state.draft;
+    draft.sources = Array.isArray(draft.sources) && draft.sources.length
+      ? draft.sources
+      : ["booking"];
     const nearbyLocations =
       state.status.monitors?.[draft.id]?.nearbyLocations || [];
     $("#editor-title").textContent = state.config.monitors.some(
@@ -696,7 +764,7 @@
       Number($("#interval-minutes").value) || 5,
     );
     draft.active = $("#monitor-active").checked;
-    draft.sources = ["booking"];
+    draft.sources = Array.isArray(draft.sources) ? draft.sources : ["booking"];
   }
 
   function renderRulePreview() {
@@ -707,13 +775,14 @@
       draft.dateMode === "fixed"
         ? `${draft.dateStart || "entrada"} a ${draft.dateEnd || "salida"}`
         : `${draft.minNights}-${draft.maxNights} noches`;
+    const activeSources = automaticSourceText(draft);
     $("#rule-preview").innerHTML = `
       <span><i data-lucide="radar"></i></span>
       <div>
         <strong>${escapeHtml(draft.location || "Destino")} · ${escapeHtml(dates)}</strong>
         <p>${escapeHtml(priceText(draft))} · ${escapeHtml(stars)} · ${escapeHtml(
           radiusText(draft),
-        )} · Booking automático</p>
+        )} · ${escapeHtml(activeSources)} automático</p>
       </div>
     `;
     refreshIcons();
@@ -818,6 +887,13 @@
     }
     if (!draft.maxTotal && !draft.maxNightly) {
       return "Indica al menos un límite de precio.";
+    }
+    if (
+      !(draft.sources || []).some((source) =>
+        sources.some(([id, , automatic]) => id === source && automatic),
+      )
+    ) {
+      return "Activa Booking, Google Hotels o ambos.";
     }
     if (draft.dateMode === "fixed") {
       if (!draft.dateStart || !draft.dateEnd) {

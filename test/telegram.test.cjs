@@ -26,6 +26,7 @@ function makeAlert(overrides = {}) {
       breakfastIncluded: true,
       priceVerified: true,
       priceConfirmationCount: 2,
+      source: "booking",
       url: "https://www.booking.com/hotel/es/example.html?a=1&b=2",
       ...overrides.offer,
     },
@@ -61,6 +62,21 @@ test("shows the former price for price drops", () => {
   ]);
   assert.match(message, /Bajada de precio/);
   assert.match(message, /<s>499/);
+});
+
+test("labels Google Hotels alerts without claiming Booking verification", () => {
+  const message = buildAlertMessage([
+    makeAlert({
+      offer: {
+        source: "google_hotels",
+        priceConfirmationCount: 2,
+        url: "https://www.google.com/travel/search?qs=hotel",
+      },
+    }),
+  ]);
+  assert.match(message, /Fuente:<\/b> Google Hotels/);
+  assert.match(message, /Total con impuestos y tasas leido en Google Hotels/);
+  assert.doesNotMatch(message, /reconfirmado en Booking/);
 });
 
 test("limits a digest and reports omitted offers", () => {

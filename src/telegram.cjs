@@ -37,6 +37,10 @@ function formatStars(stars) {
     : "Sin estrellas";
 }
 
+function formatSource(source) {
+  return source === "google_hotels" ? "Google Hotels" : "Booking";
+}
+
 function formatAlert(alert) {
   const offer = alert.offer || {};
   const type =
@@ -67,6 +71,7 @@ function formatAlert(alert) {
       ? `\nAntes: <s>${escapeHtml(formatMoney(alert.previousPrice))}</s>`
       : "";
   const hotelName = escapeHtml(offer.hotelName || "Hotel");
+  const source = formatSource(offer.source);
   const hotel = offer.url
     ? `<a href="${escapeHtml(offer.url)}">${hotelName}</a>`
     : hotelName;
@@ -82,8 +87,11 @@ function formatAlert(alert) {
       `${formatMoney(offer.nightlyPrice)}/noche`,
     )}${priceDrop}`,
     escapeHtml(details),
+    `<b>Fuente:</b> ${escapeHtml(source)}`,
     Number(offer.priceConfirmationCount) >= 2
-      ? "<i>Precio reconfirmado en Booking antes del aviso</i>"
+      ? offer.source === "google_hotels"
+        ? "<i>Total con impuestos y tasas leido en Google Hotels</i>"
+        : "<i>Precio reconfirmado en Booking antes del aviso</i>"
       : "",
   ]
     .filter(Boolean)
@@ -164,6 +172,7 @@ module.exports = {
   formatAlert,
   formatDate,
   formatMoney,
+  formatSource,
   sendAlertDigest,
   telegramRequest,
 };

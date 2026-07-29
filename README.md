@@ -16,8 +16,10 @@ depende de una cuenta de ChatGPT ni de Google Cloud.
 
 ## Búsqueda automática
 
-Booking es la primera fuente automática. El escáner usa Playwright sin API,
-cuenta de afiliado ni credenciales de Booking. Admite:
+Booking y Google Hotels pueden activarse juntos o por separado dentro de cada
+búsqueda guardada. El escáner usa Playwright sin API, cuenta de afiliado ni
+credenciales de los buscadores. En Google Hotels solo publica el total de la
+estancia cuando la tarjeta indica que incluye impuestos y tasas.
 
 - destino verificado con coordenadas;
 - fechas exactas o flexibles;
@@ -28,8 +30,10 @@ cuenta de afiliado ni credenciales de Booking. Admite:
 - tipo de alojamiento y servicios visibles en la ficha;
 - adultos, niños, habitaciones y frecuencia.
 
-Los demás comparadores aparecen como enlaces manuales desde el panel. No se
-intenta evitar CAPTCHA ni otras protecciones del sitio.
+Los demás comparadores aparecen como enlaces manuales desde el panel. Google
+Hotels automático admite por ahora una habitación para dos adultos sin niños;
+Booking mantiene todos los controles de viajeros. No se intenta evitar CAPTCHA
+ni otras protecciones del sitio.
 
 ## Ejecución local
 
