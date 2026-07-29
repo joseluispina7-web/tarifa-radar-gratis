@@ -1,46 +1,29 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-29T19:39:24.431Z",
+  "updatedAt": "2026-07-29T19:49:10.273Z",
   "summary": {
-    "generatedAt": "2026-07-29T19:39:24.431Z",
+    "generatedAt": "2026-07-29T19:49:10.273Z",
     "monitors": 2,
-    "searches": 14,
-    "offers": 124,
-    "matches": 1,
-    "newMatches": 1,
+    "searches": 8,
+    "offers": 0,
+    "matches": 0,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 7,
-        "offers": 124,
-        "matches": 2,
-        "errors": 1
-      },
-      "google_hotels": {
-        "searches": 7,
+        "searches": 4,
         "offers": 0,
         "matches": 0,
         "errors": 4
+      },
+      "google_hotels": {
+        "searches": 4,
+        "offers": 0,
+        "matches": 0,
+        "errors": 3
       }
     },
-    "verificationErrors": [
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-21",
-          "checkOut": "2026-08-22",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-14",
-          "flexibleCheckInEnd": "2026-08-28"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      }
-    ],
+    "verificationErrors": [],
     "nearbyErrors": [],
     "errors": [
       {
@@ -51,8 +34,19 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
         "searchArea": "La Nucia",
-        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
       },
       {
         "monitorId": "madrid-agosto-4-noches",
@@ -63,7 +57,18 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "La Nucia",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino La Nucia."
+      },
+      {
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Finestrat",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
       },
       {
         "monitorId": "madrid-agosto-4-noches",
@@ -74,37 +79,37 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Finestrat",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino Finestrat."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
-        "source": "google_hotels",
+        "source": "booking",
         "dates": {
-          "checkIn": "2026-08-06",
-          "checkOut": "2026-08-07",
+          "checkIn": "2026-09-05",
+          "checkOut": "2026-09-06",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-07-30",
-          "flexibleCheckInEnd": "2026-08-13"
+          "flexibleCheckInStart": "2026-08-29",
+          "flexibleCheckInEnd": "2026-09-12"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas."
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-21",
-          "checkOut": "2026-08-23",
-          "nights": 2,
+          "checkIn": "2026-09-05",
+          "checkOut": "2026-09-06",
+          "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-14",
-          "flexibleCheckInEnd": "2026-08-28"
+          "flexibleCheckInStart": "2026-08-29",
+          "flexibleCheckInEnd": "2026-09-12"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-05 en el calendario."
       }
     ]
   },
@@ -112,11 +117,11 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-29T19:39:24.431Z",
-      "lastSuccessAt": "2026-07-29T19:41:31.981Z",
+      "lastScanAt": "2026-07-29T19:49:10.273Z",
+      "lastSuccessAt": "2026-07-29T19:49:20.864Z",
       "searches": 6,
-      "offers": 49,
-      "matches": 1,
+      "offers": 0,
+      "matches": 0,
       "nearbyLocations": [
         "La Nucia",
         "Finestrat"
@@ -124,9 +129,9 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 49,
-          "matches": 2,
-          "errors": 1
+          "offers": 0,
+          "matches": 0,
+          "errors": 3
         },
         "google_hotels": {
           "searches": 3,
@@ -135,105 +140,33 @@
           "errors": 2
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas."
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino Finestrat."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-29T19:39:24.431Z",
+      "lastScanAt": "2026-07-29T19:49:10.273Z",
       "lastSuccessAt": "2026-07-29T19:43:45.915Z",
-      "searches": 8,
-      "offers": 75,
+      "searches": 2,
+      "offers": 0,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
-          "searches": 4,
-          "offers": 75,
-          "matches": 0,
-          "errors": 0
-        },
-        "google_hotels": {
-          "searches": 4,
+          "searches": 1,
           "offers": 0,
           "matches": 0,
-          "errors": 2
+          "errors": 1
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 0,
+          "matches": 0,
+          "errors": 1
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas.",
-      "flexibleCoverage": {
-        "sweepStartDate": "2026-07-29",
-        "totalCombinations": 360,
-        "totalSearchWindows": 24,
-        "startWindowIndex": 0,
-        "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 4,
-        "remainingWindowsInSweep": 20,
-        "completedSweep": false
-      }
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-05 en el calendario."
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "madrid-agosto-4-noches",
-      "monitorName": "Benidorm",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/hostal-b-and-b-benidorm.es.html|2026-08-05|2026-08-09",
-        "source": "booking",
-        "hotelName": "Hostal B and B Benidorm",
-        "address": "Centro histórico de Benidorm, Benidorm",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 425.7,
-        "nightlyPrice": 106.43,
-        "rateSubtotal": 387,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "4 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1429426601_414516065_2_1_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 4.7,
-        "reviewCount": 396,
-        "distanceKm": 0.08,
-        "freeCancellation": false,
-        "breakfastIncluded": true,
-        "limitedAvailability": false,
-        "propertyType": "hostel",
-        "amenities": [
-          "beach",
-          "breakfast"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "Habitación Doble - 1 o 2 camas",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/hostal-b-and-b-benidorm.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=984e8a3bcc4d01df&srepoch=1785353975&all_sr_blocks=1429426601_414516065_2_1_0&highlighted_blocks=1429426601_414516065_2_1_0&matching_block_id=1429426601_414516065_2_1_0&sr_pri_blocks=1429426601_414516065_2_1_0__38700&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.5386298,
-        "longitude": -0.1317479,
-        "distanceVerified": true,
-        "searchResultPrice": 425.7,
-        "bookingTableTotal": 425.7,
-        "verificationRows": [
-          {
-            "blockId": "1429426601_414516065_2_1_0",
-            "priceText": "€ 97 por noche\n€ 387\nPrecio € 387\n4 noches\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-29T19:39:57.581Z"
-      },
-      "createdAt": "2026-07-29T19:39:57.612Z"
-    }
-  ]
+  "alerts": []
 }
