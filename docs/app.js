@@ -58,6 +58,7 @@
     view: "monitors",
     locationResults: [],
     locationTimer: null,
+    dealMonitorFilter: "all",
   };
 
   const $ = (selector) => document.querySelector(selector);
@@ -390,13 +391,8 @@
     $("#stat-matches").textContent = String(summary.matches || 0);
   }
 
-  function renderDeals() {
-    const deals = (state.deals.deals || []).filter(
-      (deal) => deal.priceVerified === true,
-    );
-    $("#deal-count").textContent = String(deals.length);
-    $("#deals-table").innerHTML = deals.length
-      ? `
+  function dealTableHeader() {
+    return `
         <div class="table-header">
           <span>Alojamiento</span>
           <span>Estancia</span>
@@ -404,47 +400,124 @@
           <span>Calidad</span>
           <span></span>
         </div>
-        ${deals
-          .map(
-            (deal) => `
-              <article class="deal-row">
-                <span>
-                  <strong>${escapeHtml(deal.hotelName)}</strong>
-                  <small>${escapeHtml(deal.monitorName || deal.location)}</small>
-                </span>
-                <span>
-                  <strong>${escapeHtml(formatDate(deal.checkIn))}</strong>
-                  <small>${escapeHtml(deal.nights)} noches</small>
-                </span>
-                <span class="deal-price">
-                  <strong>${Number(deal.totalPrice).toFixed(0)} €</strong>
-                  <small>${Number(deal.nightlyPrice).toFixed(2)} €/noche</small>
-                </span>
-                <span>
-                  <strong>${deal.stars ? `${escapeHtml(deal.stars)} estrellas` : "Sin estrellas"}</strong>
-                  <small>${deal.guestRating ? `Nota ${escapeHtml(deal.guestRating)}` : "Sin nota"}</small>
-                </span>
-                <a
-                  class="icon-button"
-                  href="${escapeHtml(safeUrl(deal.url))}"
-                  target="_blank"
-                  rel="noreferrer"
-                  title="Abrir oferta"
-                >
-                  <i data-lucide="external-link"></i>
-                </a>
-              </article>
-            `,
-          )
-          .join("")}
-      `
-      : `
+    `;
+  }
+
+  function dealRow(deal) {
+    return `
+      <article class="deal-row">
+        <span>
+          <strong>${escapeHtml(deal.hotelName)}</strong>
+          <small>${escapeHtml(deal.address || deal.location)}</small>
+        </span>
+        <span>
+          <strong>${escapeHtml(formatDate(deal.checkIn))}</strong>
+          <small>${escapeHtml(deal.nights)} noches</small>
+        </span>
+        <span class="deal-price">
+          <strong>${Number(deal.totalPrice).toFixed(0)} €</strong>
+          <small>${Number(deal.nightlyPrice).toFixed(2)} €/noche</small>
+        </span>
+        <span>
+          <strong>${deal.stars ? `${escapeHtml(deal.stars)} estrellas` : "Sin estrellas"}</strong>
+          <small>${deal.guestRating ? `Nota ${escapeHtml(deal.guestRating)}` : "Sin nota"}</small>
+        </span>
+        <a
+          class="icon-button"
+          href="${escapeHtml(safeUrl(deal.url))}"
+          target="_blank"
+          rel="noreferrer"
+          title="Abrir oferta"
+        >
+          <i data-lucide="external-link"></i>
+        </a>
+      </article>
+    `;
+  }
+
+  function emptyDeals(message) {
+    return `
         <div class="empty-state">
           <span><i data-lucide="radar"></i></span>
-          <strong>Aún no hay coincidencias</strong>
-          <p>Las ofertas aparecerán aquí después del siguiente ciclo.</p>
+          <strong>Sin ofertas en esta búsqueda</strong>
+          <p>${escapeHtml(message)}</p>
         </div>
-      `;
+    `;
+  }
+
+  function renderDeals() {
+    const deals = (state.deals.deals || []).filter(
+      (deal) => deal.priceVerified === true,
+    );
+    const monitorById = new Map(
+      state.config.monitors.map((monitor) => [String(monitor.id), monitor]),
+    );
+    const filter = $("#deal-monitor-filter");
+    const knownMonitorIds = new Set(state.config.monitors.map((monitor) =>
+      String(monitor.id),
+    ));
+    if (
+      state.dealMonitorFilter !== "all" &&
+      !knownMonitorIds.has(state.dealMonitorFilter)
+    ) {
+      state.dealMonitorFilter = "all";
+    }
+
+    filter.innerHTML = [
+      `<option value="all">Todas las búsquedas (${deals.length})</option>`,
+      ...state.config.monitors.map((monitor) => {
+        const count = deals.filter(
+          (deal) => String(deal.monitorId) === String(monitor.id),
+        ).length;
+        return `<option value="${escapeHtml(monitor.id)}">${escapeHtml(monitor.name)} (${count})</option>`;
+      }),
+    ].join("");
+    filter.value = state.dealMonitorFilter;
+
+    const filteredDeals = state.dealMonitorFilter === "all"
+      ? deals
+      : deals.filter(
+        (deal) => String(deal.monitorId) === state.dealMonitorFilter,
+      );
+    $("#deal-count").textContent = String(deals.length);
+
+    if (!filteredDeals.length) {
+      const selectedMonitor = monitorById.get(state.dealMonitorFilter);
+      $("#deals-table").innerHTML = emptyDeals(
+        selectedMonitor
+          ? `Todavía no hay coincidencias para ${selectedMonitor.name}.`
+          : "Las ofertas aparecerán aquí después del siguiente ciclo.",
+      );
+      return;
+    }
+
+    const groupedDeals = new Map();
+    for (const deal of filteredDeals) {
+      const groupId = String(deal.monitorId || "unknown");
+      if (!groupedDeals.has(groupId)) groupedDeals.set(groupId, []);
+      groupedDeals.get(groupId).push(deal);
+    }
+
+    $("#deals-table").innerHTML = Array.from(groupedDeals.entries())
+      .map(([monitorId, group]) => {
+        const monitor = monitorById.get(monitorId);
+        const name = monitor?.name || group[0].monitorName || group[0].location;
+        const location = monitor?.location || group[0].location || "";
+        return `
+          <section class="deal-group">
+            <header class="deal-group-header">
+              <span>
+                <strong>${escapeHtml(name)}</strong>
+                <small>${escapeHtml(location)}</small>
+              </span>
+              <b>${group.length} ${group.length === 1 ? "oferta" : "ofertas"}</b>
+            </header>
+            ${dealTableHeader()}
+            ${group.map(dealRow).join("")}
+          </section>
+        `;
+      })
+      .join("");
   }
 
   function renderOptionButtons(containerSelector, options, selected, key) {
@@ -999,6 +1072,11 @@
     $("#compact-new-button").addEventListener("click", newMonitor);
     $("#monitor-form").addEventListener("submit", handleSave);
     $("#delete-button").addEventListener("click", deleteSelected);
+    $("#deal-monitor-filter").addEventListener("change", (event) => {
+      state.dealMonitorFilter = event.target.value;
+      renderDeals();
+      refreshIcons();
+    });
     $("#location-query").addEventListener("input", handleLocationInput);
     $("#location-query").addEventListener("blur", () => {
       setTimeout(() => $("#location-results").classList.add("hidden"), 180);
