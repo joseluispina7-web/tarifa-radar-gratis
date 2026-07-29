@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
+  bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,
   calculateVerifiedTableTotal,
@@ -16,6 +17,7 @@ const {
   parseAdditionalCharges,
   parseBookingBlockIds,
   parseBookingRateTotal,
+  parseBookingStay,
   parseDistanceKm,
   parseEuroPrice,
   parseReviewCount,
@@ -146,6 +148,36 @@ test("builds an exact Booking search without affiliate credentials", () => {
   assert.equal(url.searchParams.get("checkout"), "2026-08-27");
   assert.equal(url.searchParams.get("selected_currency"), "EUR");
   assert.equal(url.searchParams.has("aid"), false);
+});
+
+test("uses Booking flexible windows and keeps each returned exact stay", () => {
+  const search = normalizeSearch({
+    ...searchInput,
+    checkIn: "2026-08-10",
+    checkOut: "2026-08-12",
+    flexibleWindowDays: 7,
+    flexibleCheckInStart: "2026-08-03",
+    flexibleCheckInEnd: "2026-08-17",
+  });
+  const url = new URL(buildBookingSearchUrl(search));
+  assert.equal(url.searchParams.get("flex_window"), "7");
+
+  const returnedStay = parseBookingStay(
+    "https://www.booking.com/hotel/es/example.es.html?checkin=2026-08-16&checkout=2026-08-18",
+  );
+  assert.deepEqual(returnedStay, {
+    checkIn: "2026-08-16",
+    checkOut: "2026-08-18",
+    nights: 2,
+  });
+  assert.equal(bookingStayMatchesSearch(returnedStay, search), true);
+  assert.equal(
+    bookingStayMatchesSearch(
+      { checkIn: "2026-08-18", checkOut: "2026-08-20", nights: 2 },
+      search,
+    ),
+    false,
+  );
 });
 
 test("calculates nights from exact dates", () => {
@@ -531,7 +563,9 @@ test("walks every flexible date combination with a persistent cursor", () => {
     minNights: 1,
     maxNights: 2,
     stayOptions: 2,
-    combinations: 360,
+    dateWindows: 12,
+    exactCombinations: 360,
+    combinations: 24,
   });
 
   const firstBatch = buildMonitorSearches(monitor, now, {
@@ -539,18 +573,53 @@ test("walks every flexible date combination with a persistent cursor", () => {
     anchorDate: "2026-07-29",
   });
   assert.deepEqual(firstBatch, [
-    { checkIn: "2026-07-30", checkOut: "2026-07-31" },
-    { checkIn: "2026-07-30", checkOut: "2026-08-01" },
-    { checkIn: "2026-07-31", checkOut: "2026-08-01" },
-    { checkIn: "2026-07-31", checkOut: "2026-08-02" },
+    {
+      checkIn: "2026-08-06",
+      checkOut: "2026-08-07",
+      nights: 1,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2026-07-30",
+      flexibleCheckInEnd: "2026-08-13",
+    },
+    {
+      checkIn: "2026-08-06",
+      checkOut: "2026-08-08",
+      nights: 2,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2026-07-30",
+      flexibleCheckInEnd: "2026-08-13",
+    },
+    {
+      checkIn: "2026-08-21",
+      checkOut: "2026-08-22",
+      nights: 1,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2026-08-14",
+      flexibleCheckInEnd: "2026-08-28",
+    },
+    {
+      checkIn: "2026-08-21",
+      checkOut: "2026-08-23",
+      nights: 2,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2026-08-14",
+      flexibleCheckInEnd: "2026-08-28",
+    },
   ]);
 
   const lastBatch = buildMonitorSearches(monitor, now, {
-    startIndex: 359,
+    startIndex: 23,
     anchorDate: "2026-07-29",
   });
   assert.deepEqual(lastBatch, [
-    { checkIn: "2027-01-25", checkOut: "2027-01-27" },
+    {
+      checkIn: "2027-01-18",
+      checkOut: "2027-01-20",
+      nights: 2,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2027-01-11",
+      flexibleCheckInEnd: "2027-01-25",
+    },
   ]);
 });
 

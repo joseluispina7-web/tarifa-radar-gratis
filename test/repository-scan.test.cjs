@@ -70,6 +70,49 @@ test("replaces only deals for the date pair just searched", () => {
   assert.deepEqual(Array.from(deals.keys()), ["other-dates"]);
 });
 
+test("replaces deals covered by one flexible Booking window", () => {
+  const deals = new Map([
+    [
+      "inside-one-night",
+      {
+        monitorId: monitor.id,
+        checkIn: "2026-08-08",
+        checkOut: "2026-08-09",
+        nights: 1,
+      },
+    ],
+    [
+      "inside-two-nights",
+      {
+        monitorId: monitor.id,
+        checkIn: "2026-08-08",
+        checkOut: "2026-08-10",
+        nights: 2,
+      },
+    ],
+    [
+      "outside",
+      {
+        monitorId: monitor.id,
+        checkIn: "2026-08-20",
+        checkOut: "2026-08-21",
+        nights: 1,
+      },
+    ],
+  ]);
+  clearSearchedDeals(deals, monitor.id, {
+    checkIn: "2026-08-06",
+    checkOut: "2026-08-07",
+    nights: 1,
+    flexibleCheckInStart: "2026-07-30",
+    flexibleCheckInEnd: "2026-08-13",
+  });
+  assert.deepEqual(Array.from(deals.keys()), [
+    "inside-two-nights",
+    "outside",
+  ]);
+});
+
 test("publishes a price after two checks in the same scan cycle", () => {
   const offer = {
     hotelName: "Hotel estable",

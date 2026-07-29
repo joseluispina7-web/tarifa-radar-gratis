@@ -21,6 +21,13 @@ function nightsBetween(checkIn, checkOut) {
   return nights;
 }
 
+function shiftIsoDate(value, days) {
+  assertIsoDate(value, "date");
+  const date = new Date(`${value}T12:00:00Z`);
+  date.setUTCDate(date.getUTCDate() + Number(days));
+  return date.toISOString().slice(0, 10);
+}
+
 function normalizeSearch(input = {}) {
   const destination = String(
     input.destination?.query || input.destination?.name || input.destination || "",
@@ -30,6 +37,20 @@ function normalizeSearch(input = {}) {
   const checkIn = String(input.checkIn || input.dateStart || "");
   const checkOut = String(input.checkOut || input.dateEnd || "");
   const nights = nightsBetween(checkIn, checkOut);
+  const requestedFlexibleWindow = Number(input.flexibleWindowDays) || 0;
+  const flexibleWindowDays = [1, 2, 3, 7].includes(requestedFlexibleWindow)
+    ? requestedFlexibleWindow
+    : 0;
+  const flexibleCheckInStart = String(
+    input.flexibleCheckInStart ||
+      (flexibleWindowDays ? shiftIsoDate(checkIn, -flexibleWindowDays) : checkIn),
+  );
+  const flexibleCheckInEnd = String(
+    input.flexibleCheckInEnd ||
+      (flexibleWindowDays ? shiftIsoDate(checkIn, flexibleWindowDays) : checkIn),
+  );
+  assertIsoDate(flexibleCheckInStart, "flexibleCheckInStart");
+  assertIsoDate(flexibleCheckInEnd, "flexibleCheckInEnd");
 
   return {
     id: String(input.id || "manual-search"),
@@ -50,6 +71,9 @@ function normalizeSearch(input = {}) {
     checkIn,
     checkOut,
     nights,
+    flexibleWindowDays,
+    flexibleCheckInStart,
+    flexibleCheckInEnd,
     adults: clampNumber(input.adults, 1, 20, 2),
     children: clampNumber(input.children, 0, 12, 0),
     rooms: clampNumber(input.rooms, 1, 10, 1),
@@ -109,6 +133,12 @@ function buildBookingSearchUrl(input) {
   url.searchParams.set("no_rooms", String(search.rooms));
   url.searchParams.set("selected_currency", "EUR");
   url.searchParams.set("order", "price");
+  if (search.flexibleWindowDays > 0) {
+    url.searchParams.set(
+      "flex_window",
+      String(search.flexibleWindowDays),
+    );
+  }
 
   const filters = [];
   if (search.minStars > 0) {
@@ -204,6 +234,29 @@ function parseBookingBlockIds(value) {
   }
 }
 
+function parseBookingStay(value) {
+  try {
+    const url = new URL(value);
+    const checkIn = url.searchParams.get("checkin") || "";
+    const checkOut = url.searchParams.get("checkout") || "";
+    return {
+      checkIn,
+      checkOut,
+      nights: nightsBetween(checkIn, checkOut),
+    };
+  } catch {
+    return null;
+  }
+}
+
+function bookingStayMatchesSearch(stay, search) {
+  if (!stay || stay.nights !== search.nights) return false;
+  return (
+    stay.checkIn >= search.flexibleCheckInStart &&
+    stay.checkIn <= search.flexibleCheckInEnd
+  );
+}
+
 function parseAdditionalCharges(value) {
   const text = String(value || "").trim();
   if (!text || /incluye impuestos|impuestos y cargos incluidos/i.test(text)) {
@@ -243,14 +296,14 @@ function calculateVerifiedTableTotal(blockIds, rows, options = {}) {
   return Math.round(total * 100) / 100;
 }
 
-function stayMatchesSearch(value, search) {
+function stayMatchesSearch(value, search, expectedNights = search.nights) {
   const text = String(value || "");
   const nightsMatch = text.match(/(\d+)\s+noches?/i);
   const adultsMatch = text.match(/(\d+)\s+adultos?/i);
   return Boolean(
     nightsMatch &&
     adultsMatch &&
-    Number(nightsMatch[1]) === search.nights &&
+    Number(nightsMatch[1]) === expectedNights &&
     Number(adultsMatch[1]) === search.adults
   );
 }
@@ -339,14 +392,15 @@ function detectMealPlan(value) {
   return "any";
 }
 
-function sanitizeBookingUrl(value, search) {
+function sanitizeBookingUrl(value, search, stay = search) {
   try {
     const url = new URL(value);
     url.searchParams.delete("aid");
     url.searchParams.delete("label");
     url.searchParams.delete("sid");
-    url.searchParams.set("checkin", search.checkIn);
-    url.searchParams.set("checkout", search.checkOut);
+    url.searchParams.set("checkin", stay.checkIn);
+    url.searchParams.set("checkout", stay.checkOut);
+    url.searchParams.delete("flex_window");
     url.searchParams.set("group_adults", String(search.adults));
     url.searchParams.set("req_adults", String(search.adults));
     url.searchParams.set("group_children", String(search.children));
@@ -463,6 +517,7 @@ async function extractVisibleCards(page, search) {
   );
 
   return rawCards.flatMap((card) => {
+    const bookingStay = parseBookingStay(card.href);
     const visiblePrice = parseEuroPrice(card.priceText);
     const rateSubtotal = parseBookingRateTotal(card.href);
     const additionalCharges = parseAdditionalCharges(card.taxesText);
@@ -472,10 +527,12 @@ async function extractVisibleCards(page, search) {
       card.title &&
       card.href &&
       rateSubtotal &&
-      stayMatchesSearch(card.stayText, search)
+      bookingStayMatchesSearch(bookingStay, search) &&
+      stayMatchesSearch(card.stayText, search, bookingStay.nights)
     );
     if (!cardContextValid || !totalPrice) return [];
-    const nightlyPrice = Math.round((totalPrice / search.nights) * 100) / 100;
+    const nightlyPrice =
+      Math.round((totalPrice / bookingStay.nights) * 100) / 100;
     const roomName = card.text.split("\n").find((line) =>
       /habitaci[oó]n|apartamento|estudio|cama/i.test(line),
     ) || "";
@@ -489,13 +546,13 @@ async function extractVisibleCards(page, search) {
           .test(card.address)
       : false;
     const offer = {
-      id: `${new URL(card.href).pathname}|${search.checkIn}|${search.checkOut}`,
+      id: `${new URL(card.href).pathname}|${bookingStay.checkIn}|${bookingStay.checkOut}`,
       source: "booking",
       hotelName: card.title,
       address: card.address,
-      checkIn: search.checkIn,
-      checkOut: search.checkOut,
-      nights: search.nights,
+      checkIn: bookingStay.checkIn,
+      checkOut: bookingStay.checkOut,
+      nights: bookingStay.nights,
       totalPrice,
       nightlyPrice,
       rateSubtotal,
@@ -519,7 +576,7 @@ async function extractVisibleCards(page, search) {
       roomName,
       sharedRoom: isSharedRoomText(`${roomName}\n${card.text}`),
       searchArea: search.searchArea,
-      url: sanitizeBookingUrl(card.href, search),
+      url: sanitizeBookingUrl(card.href, search, bookingStay),
     };
     offer.candidateMatches = matchesSearch(offer, search, {
       ignoreDistance: true,
@@ -545,8 +602,8 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
 
   const currentUrl = new URL(page.url());
   if (
-    currentUrl.searchParams.get("checkin") !== search.checkIn ||
-    currentUrl.searchParams.get("checkout") !== search.checkOut ||
+    currentUrl.searchParams.get("checkin") !== offer.checkIn ||
+    currentUrl.searchParams.get("checkout") !== offer.checkOut ||
     Number(currentUrl.searchParams.get("group_adults")) !== search.adults ||
     Number(currentUrl.searchParams.get("group_children") || 0) !==
       search.children ||
@@ -635,7 +692,7 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   offer.searchResultPrice = offer.totalPrice;
   offer.totalPrice = verifiedTotal;
   offer.nightlyPrice =
-    Math.round((verifiedTotal / search.nights) * 100) / 100;
+    Math.round((verifiedTotal / offer.nights) * 100) / 100;
   offer.bookingTableTotal = verifiedTotal;
   offer.verificationRows = rows;
   offer.taxFallbackRate = rows.some((row) => !row.taxesText)
@@ -854,6 +911,7 @@ async function scrapeBooking(input, options = {}) {
 }
 
 module.exports = {
+  bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,
   calculateVerifiedTableTotal,
@@ -869,6 +927,7 @@ module.exports = {
   parseAdditionalCharges,
   parseBookingBlockIds,
   parseBookingRateTotal,
+  parseBookingStay,
   parseEuroPrice,
   parseDistanceKm,
   parseLocalizedNumber,

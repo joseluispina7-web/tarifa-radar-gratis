@@ -2,6 +2,8 @@ const { scrapeBooking } = require("./booking-scraper.cjs");
 
 const FIVE_MINUTES_MS = 5 * 60_000;
 const FLEXIBLE_SEARCHES_PER_RUN = 4;
+const FLEXIBLE_WINDOW_DAYS = 7;
+const FLEXIBLE_WINDOW_SPAN = FLEXIBLE_WINDOW_DAYS * 2 + 1;
 const FIXED_NEARBY_AREAS_PER_RUN = 3;
 
 function parseTimestamp(value) {
@@ -46,12 +48,15 @@ function flexibleSearchShape(monitor) {
     Math.min(minNights + 13, Number(monitor.maxNights) || minNights),
   );
   const stayOptions = maxNights - minNights + 1;
+  const dateWindows = Math.ceil(windowDays / FLEXIBLE_WINDOW_SPAN);
   return {
     windowDays,
     minNights,
     maxNights,
     stayOptions,
-    combinations: windowDays * stayOptions,
+    dateWindows,
+    exactCombinations: windowDays * stayOptions,
+    combinations: dateWindows * stayOptions,
   };
 }
 
@@ -85,12 +90,29 @@ function buildMonitorSearches(monitor, now = new Date(), options = {}) {
 
   return Array.from({ length: searchesThisRun }, (_, offset) => {
     const index = (startIndex + offset) % shape.combinations;
-    const dayOffset = Math.floor(index / shape.stayOptions) + 1;
+    const windowIndex = Math.floor(index / shape.stayOptions);
+    const windowStartOffset =
+      windowIndex * FLEXIBLE_WINDOW_SPAN + 1;
+    const windowEndOffset = Math.min(
+      shape.windowDays,
+      windowStartOffset + FLEXIBLE_WINDOW_SPAN - 1,
+    );
+    const dayOffset = Math.floor(
+      (windowStartOffset + windowEndOffset) / 2,
+    );
     const nights = shape.minNights + (index % shape.stayOptions);
     const checkInDate = addUtcDays(anchorDate, dayOffset);
     return {
       checkIn: isoDay(checkInDate),
       checkOut: isoDay(addUtcDays(checkInDate, nights)),
+      nights,
+      flexibleWindowDays: FLEXIBLE_WINDOW_DAYS,
+      flexibleCheckInStart: isoDay(
+        addUtcDays(anchorDate, windowStartOffset),
+      ),
+      flexibleCheckInEnd: isoDay(
+        addUtcDays(anchorDate, windowEndOffset),
+      ),
     };
   });
 }
@@ -158,6 +180,9 @@ function monitorToSearch(monitor, dates, area = null) {
     countryCode: monitor.countryCode,
     checkIn: dates.checkIn,
     checkOut: dates.checkOut,
+    flexibleWindowDays: dates.flexibleWindowDays || 0,
+    flexibleCheckInStart: dates.flexibleCheckInStart || dates.checkIn,
+    flexibleCheckInEnd: dates.flexibleCheckInEnd || dates.checkIn,
     adults: monitor.adults,
     children: monitor.children,
     rooms: monitor.rooms,

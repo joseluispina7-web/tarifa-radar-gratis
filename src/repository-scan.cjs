@@ -12,6 +12,7 @@ const {
 
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
+const FLEXIBLE_SWEEP_VERSION = 2;
 
 function readJson(filePath, fallback) {
   try {
@@ -139,10 +140,15 @@ function buildDealMap(previousDeals, activeMonitors) {
 function clearSearchedDeals(dealMap, monitorId, dates, searchArea = null) {
   for (const [dealId, deal] of dealMap) {
     const dealArea = deal.searchArea || deal.location;
+    const datesMatch = dates.flexibleCheckInStart
+      ? deal.checkIn >= dates.flexibleCheckInStart &&
+        deal.checkIn <= dates.flexibleCheckInEnd &&
+        Number(deal.nights) === Number(dates.nights)
+      : deal.checkIn === dates.checkIn &&
+        deal.checkOut === dates.checkOut;
     if (
       String(deal.monitorId) === String(monitorId) &&
-      deal.checkIn === dates.checkIn &&
-      deal.checkOut === dates.checkOut &&
+      datesMatch &&
       (!searchArea || String(dealArea) === String(searchArea))
     ) {
       dealMap.delete(dealId);
@@ -262,12 +268,17 @@ async function runRepositoryScan(options = {}) {
     const flexibleShape = monitor.dateMode === "flexible"
       ? flexibleSearchShape(monitor)
       : null;
-    const flexibleCursor = flexibleShape
+    const flexibleStateIsCurrent =
+      flexibleShape &&
+      beforeMonitor.flexibleSweepVersion === FLEXIBLE_SWEEP_VERSION;
+    const flexibleCursor = flexibleStateIsCurrent
       ? Math.max(0, Number(beforeMonitor.flexibleCursor) || 0) %
         flexibleShape.combinations
       : 0;
     const flexibleSweepStartDate = flexibleShape
-      ? beforeMonitor.flexibleSweepStartDate ||
+      ? (flexibleStateIsCurrent
+          ? beforeMonitor.flexibleSweepStartDate
+          : "") ||
         now.toISOString().slice(0, 10)
       : "";
     const nextOffers = { ...(beforeMonitor.offers || {}) };
@@ -427,11 +438,12 @@ async function runRepositoryScan(options = {}) {
       }
       status.flexibleCoverage = {
         sweepStartDate: flexibleSweepStartDate,
-        totalCombinations: flexibleShape.combinations,
-        startIndex: flexibleCursor,
-        checkedThisRun: completedFlexibleRequests,
-        nextIndex: nextFlexibleCursor,
-        remainingInSweep: completedFlexibleSweep
+        totalCombinations: flexibleShape.exactCombinations,
+        totalSearchWindows: flexibleShape.combinations,
+        startWindowIndex: flexibleCursor,
+        windowsCheckedThisRun: completedFlexibleRequests,
+        nextWindowIndex: nextFlexibleCursor,
+        remainingWindowsInSweep: completedFlexibleSweep
           ? 0
           : flexibleShape.combinations - nextFlexibleCursor,
         completedSweep: completedFlexibleSweep,
@@ -462,6 +474,7 @@ async function runRepositoryScan(options = {}) {
       nearbyLocations: nearbyDiscoveryFailed ? null : nearbyLocations,
       ...(flexibleShape
         ? {
+            flexibleSweepVersion: FLEXIBLE_SWEEP_VERSION,
             flexibleCursor: nextFlexibleCursor,
             flexibleSweepStartDate: nextFlexibleSweepStartDate,
           }
