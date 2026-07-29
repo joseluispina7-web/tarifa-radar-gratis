@@ -61,6 +61,8 @@
     locationTimer: null,
     dealMonitorFilter: "all",
   };
+  let resultsRefreshPending = false;
+  let autoRefreshTimer = null;
 
   const $ = (selector) => document.querySelector(selector);
   const $$ = (selector) => Array.from(document.querySelectorAll(selector));
@@ -297,14 +299,28 @@
     const updatedAt = state.status.updatedAt;
     const age = updatedAt ? Date.now() - Date.parse(updatedAt) : Infinity;
     const online = age < 30 * 60_000;
-    $("#scanner-dot").classList.toggle("online", online);
-    $("#scanner-label").textContent = online ? "Escáner activo" : "Esperando ciclo";
-    $("#scanner-time").textContent = updatedAt
-      ? formatDateTime(updatedAt)
-      : "GitHub Actions";
+    const configChangedAt = Date.parse(state.config.updatedAt || "");
+    const scanStartedAt = Date.parse(
+      state.status.summary?.generatedAt || updatedAt || "",
+    );
+    const pendingConfig =
+      Number.isFinite(configChangedAt) &&
+      (!Number.isFinite(scanStartedAt) || configChangedAt > scanStartedAt);
+    $("#scanner-dot").classList.toggle("online", online || pendingConfig);
+    $("#scanner-label").textContent = pendingConfig
+      ? "Cambio pendiente"
+      : online
+        ? "Escáner activo"
+        : "Esperando ciclo";
+    $("#scanner-time").textContent = pendingConfig
+      ? "Buscando con los filtros nuevos"
+      : updatedAt
+        ? formatDateTime(updatedAt)
+        : "GitHub Actions";
     $("#sync-badge").classList.add("ready");
-    $("#sync-badge").innerHTML =
-      '<i data-lucide="cloud"></i> Sincronizado';
+    $("#sync-badge").innerHTML = pendingConfig
+      ? '<i data-lucide="clock-3"></i> Actualizando'
+      : '<i data-lucide="cloud"></i> Sincronizado';
     $("#github-status").textContent = updatedAt
       ? `Último ciclo: ${formatDateTime(updatedAt)}.`
       : "Escáner gratuito programado.";
@@ -940,7 +956,7 @@
       await saveConfig(state.config);
       renderAll();
       fillEditor();
-      showToast("Búsqueda guardada. El próximo ciclo empezará en unos minutos.");
+      showToast("Búsqueda guardada. El panel se actualizará al terminar el ciclo.");
     } catch (saveError) {
       $("#form-error").textContent = `No se pudo guardar: ${saveError.message}`;
       await loadAll().catch(() => {});
@@ -1116,9 +1132,38 @@
     }
   }
 
+  async function refreshResults() {
+    if (!state.token || resultsRefreshPending) return;
+    resultsRefreshPending = true;
+    try {
+      const [status, deals] = await Promise.all([
+        getFile(STATUS_PATH, { summary: {}, monitors: {}, alerts: [] }),
+        getFile(DEALS_PATH, { deals: [] }),
+      ]);
+      state.status = status.value;
+      state.deals = deals.value;
+      renderStats();
+      renderDeals();
+      renderConnectionState();
+      refreshIcons();
+    } finally {
+      resultsRefreshPending = false;
+    }
+  }
+
+  function startAutoRefresh() {
+    if (autoRefreshTimer) return;
+    autoRefreshTimer = window.setInterval(() => {
+      if (!document.hidden && state.token) {
+        refreshResults().catch(() => {});
+      }
+    }, 30_000);
+  }
+
   function showApp() {
     $("#login-view").classList.add("hidden");
     $("#app-view").classList.remove("hidden");
+    startAutoRefresh();
     refreshIcons();
   }
 
