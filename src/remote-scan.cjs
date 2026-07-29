@@ -2,6 +2,7 @@ const { scrapeBooking } = require("./booking-scraper.cjs");
 
 const FIVE_MINUTES_MS = 5 * 60_000;
 const FLEXIBLE_SEARCHES_PER_RUN = 2;
+const FIXED_NEARBY_AREAS_PER_RUN = 3;
 
 function parseTimestamp(value) {
   if (!value) return 0;
@@ -91,9 +92,18 @@ function buildMonitorScanRequests(
   const slot = Math.floor(now.getTime() / FIVE_MINUTES_MS);
   const startIndex = (slot + monitorSeed(monitor.id)) % nearbyAreas.length;
   if (monitor.dateMode === "fixed") {
+    const selectedNearbyAreas = Array.from(
+      {
+        length: Math.min(
+          FIXED_NEARBY_AREAS_PER_RUN,
+          nearbyAreas.length,
+        ),
+      },
+      (_, index) => nearbyAreas[(startIndex + index) % nearbyAreas.length],
+    );
     return [
       { dates: dates[0], area: mainArea },
-      { dates: dates[0], area: nearbyAreas[startIndex] },
+      ...selectedNearbyAreas.map((area) => ({ dates: dates[0], area })),
     ];
   }
 

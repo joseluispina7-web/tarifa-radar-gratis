@@ -9,6 +9,9 @@ const {
   monitorToSearch,
 } = require("./remote-scan.cjs");
 
+const REQUIRED_PRICE_CONFIRMATIONS = 2;
+const PRICE_COMPARISON_EPSILON = 0.01;
+
 function readJson(filePath, fallback) {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -22,7 +25,28 @@ function writeJson(filePath, value) {
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
 }
 
-function updateOfferState(previous = {}, offer, searchedAt) {
+function updateOfferState(
+  previous = {},
+  offer,
+  searchedAt,
+  scanCycle = searchedAt,
+) {
+  const previousConfirmations = Number(previous.confirmationCount) || 0;
+  const samePrice =
+    previous.matches === true &&
+    Math.abs(Number(previous.totalPrice) - Number(offer.totalPrice)) <=
+      PRICE_COMPARISON_EPSILON;
+  const sameCycle = previous.lastObservationCycle === scanCycle;
+  const confirmationCount = offer.matches
+    ? samePrice
+      ? sameCycle
+        ? previousConfirmations
+        : previousConfirmations + 1
+      : 1
+    : 0;
+  const previousPublishedPrice =
+    Number(previous.publishedPrice) ||
+    (previous.matches ? Number(previous.totalPrice) : 0);
   return {
     hotelName: offer.hotelName,
     totalPrice: offer.totalPrice,
@@ -30,9 +54,39 @@ function updateOfferState(previous = {}, offer, searchedAt) {
     matches: offer.matches,
     priceVerified: offer.priceVerified,
     priceBasis: offer.priceBasis,
+    searchArea: offer.searchArea,
+    checkIn: offer.checkIn,
+    checkOut: offer.checkOut,
+    confirmationCount,
+    publishedPrice: offer.matches ? previousPublishedPrice : 0,
+    lastObservationCycle: scanCycle,
     firstSeenAt: previous.firstSeenAt || searchedAt,
     lastSeenAt: searchedAt,
   };
+}
+
+function offerStateIsConfirmed(offerState) {
+  return (
+    offerState.matches === true &&
+    offerState.priceVerified === true &&
+    Number(offerState.confirmationCount) >= REQUIRED_PRICE_CONFIRMATIONS
+  );
+}
+
+function resetUnobservedFixedOffers(offers, monitorId, observedOfferKeys) {
+  for (const [offerKey, offerState] of Object.entries(offers)) {
+    if (
+      offerKey.startsWith(`${monitorId}:`) &&
+      !observedOfferKeys.has(offerKey)
+    ) {
+      offers[offerKey] = {
+        ...offerState,
+        matches: false,
+        confirmationCount: 0,
+        publishedPrice: 0,
+      };
+    }
+  }
 }
 
 function monitorFingerprint(monitor) {
@@ -134,6 +188,7 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     guestRating: offer.guestRating,
     reviewCount: offer.reviewCount,
     distanceKm: offer.distanceKm,
+    priceConfirmationCount: offer.priceConfirmationCount,
     freeCancellation: offer.freeCancellation,
     mealPlan: offer.mealPlan,
     propertyType: offer.propertyType,
@@ -214,6 +269,8 @@ async function runRepositoryScan(options = {}) {
       : { offers: {} };
     const nextOffers = { ...(beforeMonitor.offers || {}) };
     const monitorMatchingOffers = new Set();
+    const observedOfferKeys = new Set();
+    const pendingAlerts = new Map();
     const status = {
       monitorId: monitor.id,
       monitorName: monitor.name,
@@ -247,11 +304,13 @@ async function runRepositoryScan(options = {}) {
     }
     status.nearbyLocations = nearbyLocations.map((location) => location.name);
 
-    for (const request of buildMonitorScanRequests(
+    const scanRequests = buildMonitorScanRequests(
       monitor,
       nearbyLocations,
       now,
-    )) {
+    );
+    let successfulSearches = 0;
+    for (const request of scanRequests) {
       const { dates, area } = request;
       summary.searches += 1;
       status.searches += 1;
@@ -260,16 +319,10 @@ async function runRepositoryScan(options = {}) {
           monitorToSearch(monitor, dates, area),
           { headless: options.headless !== false },
         );
+        successfulSearches += 1;
         status.lastSuccessAt = result.searchedAt;
         status.offers += result.offers.length;
         summary.offers += result.offers.length;
-        for (const offer of result.matchingOffers) {
-          const offerKey = `${monitor.id}:${offer.id}`;
-          monitorMatchingOffers.add(offerKey);
-          currentMatchingOffers.add(offerKey);
-        }
-        status.matches = monitorMatchingOffers.size;
-        summary.matches = currentMatchingOffers.size;
         summary.verificationErrors.push(
           ...(result.verificationErrors || []).map((error) => ({
             monitorId: monitor.id,
@@ -283,29 +336,43 @@ async function runRepositoryScan(options = {}) {
 
         for (const offer of result.offers) {
           const offerKey = `${monitor.id}:${offer.id}`;
+          observedOfferKeys.add(offerKey);
           const before = nextOffers[offerKey];
-          if (
-            offer.matches &&
-            (!before || !before.matches || offer.totalPrice < before.totalPrice)
-          ) {
-            const type = before ? "price_drop" : "new_match";
-            alerts.push({
-              type,
-              monitorId: monitor.id,
-              monitorName: monitor.name,
-              previousPrice: before?.totalPrice || 0,
-              offer,
-              createdAt: result.searchedAt,
-            });
-            if (type === "price_drop") summary.priceDrops += 1;
-            else summary.newMatches += 1;
-          }
-          nextOffers[offerKey] = updateOfferState(
+          const nextOfferState = updateOfferState(
             before,
             offer,
             result.searchedAt,
+            now.toISOString(),
           );
-          if (offer.matches) {
+          const confirmed = offerStateIsConfirmed(nextOfferState);
+          if (confirmed) {
+            const previousPublishedPrice =
+              Number(before?.publishedPrice) ||
+              (before?.matches ? Number(before.totalPrice) : 0);
+            const type = previousPublishedPrice <= 0
+              ? "new_match"
+              : offer.totalPrice <
+                  previousPublishedPrice - PRICE_COMPARISON_EPSILON
+                ? "price_drop"
+                : "";
+            offer.priceConfirmationCount = nextOfferState.confirmationCount;
+            offer.priceConfirmedAt = result.searchedAt;
+            nextOfferState.publishedPrice = offer.totalPrice;
+            monitorMatchingOffers.add(offerKey);
+            currentMatchingOffers.add(offerKey);
+            if (type) {
+              pendingAlerts.set(offerKey, {
+                type,
+                monitorId: monitor.id,
+                monitorName: monitor.name,
+                previousPrice: previousPublishedPrice,
+                offer,
+                createdAt: result.searchedAt,
+              });
+            }
+          }
+          nextOffers[offerKey] = nextOfferState;
+          if (confirmed) {
             mergeDeal(
               dealMap,
               monitor,
@@ -313,7 +380,14 @@ async function runRepositoryScan(options = {}) {
               result.searchedAt,
               fingerprint,
             );
+          } else {
+            monitorMatchingOffers.delete(offerKey);
+            currentMatchingOffers.delete(offerKey);
+            pendingAlerts.delete(offerKey);
+            dealMap.delete(`${monitor.id}:${offer.id}`);
           }
+          status.matches = monitorMatchingOffers.size;
+          summary.matches = currentMatchingOffers.size;
         }
       } catch (error) {
         const message = error instanceof Error ? error.message : String(error);
@@ -326,6 +400,23 @@ async function runRepositoryScan(options = {}) {
           message,
         });
       }
+    }
+
+    if (
+      monitor.dateMode === "fixed" &&
+      successfulSearches === scanRequests.length
+    ) {
+      resetUnobservedFixedOffers(
+        nextOffers,
+        String(monitor.id),
+        observedOfferKeys,
+      );
+    }
+
+    for (const alert of pendingAlerts.values()) {
+      alerts.push(alert);
+      if (alert.type === "price_drop") summary.priceDrops += 1;
+      else summary.newMatches += 1;
     }
 
     nextState.monitors[monitor.id] = {
@@ -387,6 +478,7 @@ module.exports = {
   clearSearchedDeals,
   mergeDeal,
   monitorFingerprint,
+  offerStateIsConfirmed,
   readJson,
   runRepositoryScan,
   updateOfferState,

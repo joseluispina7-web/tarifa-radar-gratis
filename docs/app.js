@@ -425,7 +425,9 @@
         </span>
         <span>
           <strong>${escapeHtml(formatDate(deal.checkIn))}</strong>
-          <small>${escapeHtml(deal.nights)} noches</small>
+          <small>${escapeHtml(deal.nights)} noches · comprobado ${escapeHtml(
+            formatDateTime(deal.updatedAt),
+          )}</small>
         </span>
         <span class="deal-price">
           <strong>${Number(deal.totalPrice).toFixed(0)} €</strong>

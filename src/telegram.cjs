@@ -82,7 +82,9 @@ function formatAlert(alert) {
       `${formatMoney(offer.nightlyPrice)}/noche`,
     )}${priceDrop}`,
     escapeHtml(details),
-    offer.priceVerified ? "<i>Precio verificado en Booking</i>" : "",
+    Number(offer.priceConfirmationCount) >= 2
+      ? "<i>Precio confirmado en 2 ciclos de Booking</i>"
+      : "",
   ]
     .filter(Boolean)
     .join("\n");

@@ -378,9 +378,10 @@ test("rotates one nearby area without multiplying every flexible stay", () => {
     nearby,
     now,
   );
-  assert.equal(fixed.length, 2);
+  assert.equal(fixed.length, 3);
   assert.equal(fixed[0].area.isNearby, false);
   assert.equal(fixed[1].area.isNearby, true);
+  assert.equal(fixed[2].area.isNearby, true);
 
   const flexible = buildMonitorScanRequests(
     {
