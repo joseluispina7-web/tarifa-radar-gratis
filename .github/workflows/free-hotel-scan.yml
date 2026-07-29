@@ -36,6 +36,13 @@ jobs:
       - name: Buscar precios
         run: xvfb-run -a node src/repository-scan.cjs
 
+      - name: Enviar alertas a Telegram
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node src/send-telegram.cjs
+
       - name: Publicar resultados
         if: always()
         env:
