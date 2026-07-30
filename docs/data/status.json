@@ -1,76 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T06:46:16.293Z",
+  "updatedAt": "2026-07-30T06:54:40.471Z",
   "summary": {
-    "generatedAt": "2026-07-30T06:46:16.293Z",
+    "generatedAt": "2026-07-30T06:54:40.471Z",
     "monitors": 2,
     "searches": 35,
-    "offers": 343,
-    "matches": 4,
-    "newMatches": 4,
+    "offers": 362,
+    "matches": 2,
+    "newMatches": 2,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 7,
-        "offers": 169,
-        "matches": 2,
+        "offers": 174,
+        "matches": 1,
         "errors": 0
       },
       "google_hotels": {
         "searches": 7,
-        "offers": 4,
-        "matches": 2,
-        "errors": 3
+        "offers": 3,
+        "matches": 1,
+        "errors": 4
       },
       "agoda": {
         "searches": 7,
-        "offers": 36,
+        "offers": 43,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 7,
-        "offers": 53,
+        "offers": 50,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 7,
-        "offers": 81,
+        "offers": 92,
         "matches": 0,
         "errors": 0
       }
     },
-    "verificationErrors": [
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorm",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "hotelName": "Pensión Pardo",
-        "message": "Booking cambio el total de 413.60 a 459.80 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-09-06",
-          "checkOut": "2026-09-07",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-30",
-          "flexibleCheckInEnd": "2026-09-13"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Villamil",
-        "message": "Booking cambio el total de 39.60 a 36.30 EUR durante la comprobacion."
-      }
-    ],
+    "verificationErrors": [],
     "nearbyErrors": [],
     "errors": [
       {
@@ -81,38 +52,49 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 182 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+        "searchArea": "Finestrat",
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel Censal | B&B HOTEL Benidorm Finestrat | Vistamar Hotel Luxury Wellness by DLV | Hotel Castelar Palace & SPA La Vila Joiosa. Precios: Patrocinado· Booking.com Hotel Censal 155 € · 4,0 (701) Hotel de 3 estrellas · Cancelación gratuita | Patrocinado· Expedia.com B&B HOTEL Benidorm Finestrat 129 € · 4,5 (799) Hotel de 2 estrellas · Cancelación gratuita | Hotel Castelar Palace & SPA La Vila Joiosa EUR 168 · 4,3 (115) Desayuno ($) · Wi‑Fi gratis | Asia Gardens EUR 350 · 4,5 (4,3 mil) Hotel de 5 estrellas · Desayuno ($). Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
       },
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-06",
-          "checkOut": "2026-09-07",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-30",
-          "flexibleCheckInEnd": "2026-09-13"
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
         },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-06 en el calendario."
+        "searchArea": "La Nucia",
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Aparthotel BCL Levante Beach | Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Hotel BCL Podium. Precios: Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Hotel BCL Podium $170 · 4,5 (155) GRAN OFERTA 28% menos de lo habitual | Meliá Villaitana $315 · 4,4 (7,4 mil) Hotel de 4 estrellas · Desayuno GRAN OFERTA 27% menos de lo habitual. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-06",
-          "checkOut": "2026-09-08",
+          "checkIn": "2026-10-06",
+          "checkOut": "2026-10-08",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-30",
-          "flexibleCheckInEnd": "2026-09-13"
+          "flexibleCheckInStart": "2026-09-29",
+          "flexibleCheckInEnd": "2026-10-13"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-06 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-06 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-10-21",
+          "checkOut": "2026-10-22",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-10-14",
+          "flexibleCheckInEnd": "2026-10-28"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-21 en el calendario."
       }
     ]
   },
@@ -120,11 +102,11 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-30T06:46:16.293Z",
-      "lastSuccessAt": "2026-07-30T06:47:20.851619Z",
+      "lastScanAt": "2026-07-30T06:54:40.471Z",
+      "lastSuccessAt": "2026-07-30T06:55:35.882098Z",
       "searches": 15,
-      "offers": 136,
-      "matches": 3,
+      "offers": 140,
+      "matches": 2,
       "nearbyLocations": [
         "La Nucia",
         "Finestrat"
@@ -138,45 +120,45 @@
         },
         "google_hotels": {
           "searches": 3,
-          "offers": 2,
-          "matches": 2,
-          "errors": 1
+          "offers": 1,
+          "matches": 1,
+          "errors": 2
         },
         "agoda": {
           "searches": 3,
-          "offers": 17,
+          "offers": 20,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 3,
-          "offers": 16,
+          "offers": 17,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 3,
-          "offers": 27,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 182 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Aparthotel BCL Levante Beach | Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Hotel BCL Podium. Precios: Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Hotel BCL Podium $170 · 4,5 (155) GRAN OFERTA 28% menos de lo habitual | Meliá Villaitana $315 · 4,4 (7,4 mil) Hotel de 4 estrellas · Desayuno GRAN OFERTA 27% menos de lo habitual. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-30T06:46:16.293Z",
-      "lastSuccessAt": "2026-07-30T06:48:36.031100Z",
+      "lastScanAt": "2026-07-30T06:54:40.471Z",
+      "lastSuccessAt": "2026-07-30T06:56:37.054395Z",
       "searches": 20,
-      "offers": 207,
-      "matches": 1,
+      "offers": 222,
+      "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 95,
-          "matches": 1,
+          "offers": 100,
+          "matches": 0,
           "errors": 0
         },
         "google_hotels": {
@@ -187,32 +169,32 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 19,
+          "offers": 23,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 37,
+          "offers": 33,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 54,
+          "offers": 64,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-06 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-21 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-30",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 4,
+        "startWindowIndex": 8,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 8,
-        "remainingWindowsInSweep": 16,
+        "nextWindowIndex": 12,
+        "remainingWindowsInSweep": 12,
         "completedSweep": false
       }
     }
@@ -224,44 +206,44 @@
       "monitorName": "Benidorm",
       "previousPrice": 0,
       "offer": {
-        "id": "google_hotels:5c76ca93414325af|2026-08-05|2026-08-09",
+        "id": "google_hotels:ff87c89975571a80|2026-08-05|2026-08-09",
         "source": "google_hotels",
-        "provider": "Agoda via Google Hotels",
-        "hotelName": "Hotel Queens Benidorm",
+        "provider": "Tripening Hotels via Google Hotels",
+        "hotelName": "Sol Pelícanos Ocas",
         "address": "Benidorm, Comunidad Valenciana, España",
         "checkIn": "2026-08-05",
         "checkOut": "2026-08-09",
         "nights": 4,
-        "totalPrice": 102,
-        "nightlyPrice": 25.5,
+        "totalPrice": 1.08,
+        "nightlyPrice": 0.27,
         "displayedNightlyPrice": 0,
-        "rateSubtotal": 102,
-        "searchResultPrice": 102,
+        "rateSubtotal": 1.08,
+        "searchResultPrice": 1.08,
         "additionalCharges": 0,
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
         "stayText": "4 noches con impuestos y tasas incluidos",
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T06:46:32.064Z",
+        "priceConfirmedAt": "2026-07-30T06:54:56.438Z",
         "stars": 0,
-        "guestRating": 8.2,
-        "reviewCount": 848,
+        "guestRating": 8,
+        "reviewCount": 6758,
         "distanceKm": null,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
-        "propertyType": "hotel",
+        "propertyType": "resort",
         "amenities": [],
         "mealPlan": "any",
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20benidorm&ts=CAESCgoCCAMKAggDEAAaUgo0EjAyJDB4ZDYyMDRkY2E2MjU3NWMzOjB4MjE5ZmE5MGMwZmYyNmViNToIQmVuaWRvcm0aABIaEhQKBwjqDxAIGAUSBwjqDxAIGAkYBDICCAEqCQoFOgNFVVIaAA&qs=CAEgASgAMiZDaGdJOXRUSXpKR3BxcjFoR2d3dlp5OHhNWGhxTW5Kd1ltd1FBUTgNSAA&ap=MAG6AQZwcmljZXM&ved=0CCEQssMEahgKEwiow7Xv5vmVAxUAAAAAHQAAAAAQvAE",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20benidorm&ts=CAESCgoCCAMKAggDEAAaUgo0EjAyJDB4ZDYyMDRkY2E2MjU3NWMzOjB4MjE5ZmE5MGMwZmYyNmViNToIQmVuaWRvcm0aABIaEhQKBwjqDxAIGAUSBwjqDxAIGAkYBDICCAEqCQoFOgNFVVIaAA&qs=CAEgASgAMiRDaGNJdkwyWHQ5YVp0c0VwR2dzdlp5OHhkR2hzTWpZMU5oQUI4DUgA&ap=MAG6AQZwcmljZXM&ved=0CCIQssMEahgKEwjwltrf6PmVAxUAAAAAHQAAAAAQvwE",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-07-30T06:46:32.064Z"
+      "createdAt": "2026-07-30T06:54:56.438Z"
     },
     {
       "type": "new_match",
@@ -300,7 +282,7 @@
         "roomName": "Habitación Doble - 1 o 2 camas",
         "sharedRoom": false,
         "searchArea": "La Nucia",
-        "url": "https://www.booking.com/hotel/es/pension-pardo.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=price&srpvid=7d052fa8b0de008b&srepoch=1785394003&all_sr_blocks=787447701_350220468_2_0_0&highlighted_blocks=787447701_350220468_2_0_0&matching_block_id=787447701_350220468_2_0_0&sr_pri_blocks=787447701_350220468_2_0_0__37636&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/pension-pardo.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=price&srpvid=418530b3fb0500e7&srepoch=1785394535&all_sr_blocks=787447701_350220468_2_0_0&highlighted_blocks=787447701_350220468_2_0_0&matching_block_id=787447701_350220468_2_0_0&sr_pri_blocks=787447701_350220468_2_0_0__37636&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.539962236933,
@@ -311,117 +293,15 @@
         "verificationRows": [
           {
             "blockId": "787447701_350220468_2_0_0",
-            "priceText": "€ 376",
+            "priceText": "€ 94 por noche\n€ 418 € 376 \nPrecio original € 418 Precio actual € 376\n4 noches\n-10%\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T06:47:09.740Z"
+        "priceConfirmedAt": "2026-07-30T06:56:01.566Z"
       },
-      "createdAt": "2026-07-30T06:47:09.765Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "madrid-agosto-4-noches",
-      "monitorName": "Benidorm",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:fce7a04604378b02|2026-08-05|2026-08-09",
-        "source": "google_hotels",
-        "provider": "Bluepillow.com via Google Hotels",
-        "hotelName": "Vistamar Hotel Luxury Wellness by DLV",
-        "address": "Finestrat",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 75,
-        "nightlyPrice": 18.75,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 75,
-        "searchResultPrice": 75,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "4 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T06:47:30.996Z",
-        "stars": 3,
-        "guestRating": 8.8,
-        "reviewCount": 401,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "spa"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Finestrat",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwigkouM5_mVAxUAAAAAHQAAAAAQrQE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-07-30T06:47:30.996Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-08-31|2026-09-01",
-        "source": "booking",
-        "hotelName": "Rooms Sincelejo",
-        "address": "Hortaleza, Madrid",
-        "checkIn": "2026-08-31",
-        "checkOut": "2026-09-01",
-        "nights": 1,
-        "totalPrice": 35.2,
-        "nightlyPrice": 35.2,
-        "rateSubtotal": 31.82,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "1258125508_398363677_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 8,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-31&checkout=2026-09-01&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=44812fca9a410021&srepoch=1785394070&all_sr_blocks=1258125508_398363677_2_0_0&highlighted_blocks=1258125508_398363677_2_0_0&matching_block_id=1258125508_398363677_2_0_0&sr_pri_blocks=1258125508_398363677_2_0_0__3182&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 35.2,
-        "bookingTableTotal": 35.2,
-        "verificationRows": [
-          {
-            "blockId": "1258125508_398363677_2_0_0",
-            "priceText": "€ 32",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T06:48:10.743Z"
-      },
-      "createdAt": "2026-07-30T06:48:12.886Z"
+      "createdAt": "2026-07-30T06:56:01.594Z"
     }
   ]
 }
