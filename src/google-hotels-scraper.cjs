@@ -558,6 +558,10 @@ function providerNameFromText(value) {
     .trim() || "Proveedor";
 }
 
+function googleProviderCanSupplyVerifiedTotal(value) {
+  return !/\bTripening(?:\s+Hotels)?\b/i.test(String(value || ""));
+}
+
 function providerLinkMatchesStay(value, search) {
   const text = repeatedlyDecodeUrl(value).join("\n");
   const isoCheckIn = text.match(
@@ -609,6 +613,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         }))
       );
       const providerPrices = providerLinks.flatMap((link) => {
+        if (!googleProviderCanSupplyVerifiedTotal(link.text)) return [];
         const totalPrice =
           parseGoogleProviderInclusiveTotal(link.href) ||
           parseGoogleProviderVisibleTotal(link.text);
@@ -647,7 +652,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         throw new Error("Google cambio el hotel o las fechas al verificarlo.");
       }
       offer.provider = `${bestProvider.provider} via Google Hotels`;
-      offer.priceBasis = "google_hotels_provider_all_inclusive_v2";
+      offer.priceBasis = "google_hotels_provider_all_inclusive_v3";
       offer.displayedNightlyPrice = candidate.nightlyPrice;
       offers.push(offer);
     } catch (error) {
@@ -817,6 +822,7 @@ module.exports = {
   extractGoogleHotelCandidates,
   googleHotelsDiagnostics,
   googleCandidateMatches,
+  googleProviderCanSupplyVerifiedTotal,
   parseGoogleGuestRating,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,

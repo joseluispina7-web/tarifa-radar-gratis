@@ -3,6 +3,7 @@ const test = require("node:test");
 const {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
+  googleProviderCanSupplyVerifiedTotal,
   parseGoogleGuestRating,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
@@ -114,6 +115,21 @@ test("reads the final taxed total from the current Google provider row", () => {
       "Provider 70 US$70 US$70 US$Visit website",
     ),
     0,
+  );
+});
+
+test("rejects Tripening technical prices as verified hotel totals", () => {
+  assert.equal(
+    googleProviderCanSupplyVerifiedTotal(
+      "Tripening Hotels\n1,08 EUR\nVisitar sitio web",
+    ),
+    false,
+  );
+  assert.equal(
+    googleProviderCanSupplyVerifiedTotal(
+      "Bluepillow.com\n330,10 EUR\nVisitar sitio web",
+    ),
+    true,
   );
 });
 

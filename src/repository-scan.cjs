@@ -156,7 +156,7 @@ function buildDealMap(previousDeals, activeMonitors) {
           !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
         const hasCurrentGoogleValidation =
           source !== "google_hotels" ||
-          deal.priceBasis === "google_hotels_provider_all_inclusive_v2";
+          deal.priceBasis === "google_hotels_provider_all_inclusive_v3";
         return Boolean(
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
