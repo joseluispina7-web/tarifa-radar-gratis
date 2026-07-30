@@ -116,9 +116,19 @@ function parseGoogleProviderVisibleTotal(value) {
 
   const prices = Array.from(
     text.matchAll(
-      /(?:EUR\s*([\d][\d.\s\u00a0]*(?:,\d{1,2})?)|([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*(?:\u20ac|EUR))/gi,
+      /(?:EUR\s*([\d][\d.,\s\u00a0]*)|([\d][\d.,\s\u00a0]*)\s*(?:\u20ac|EUR))/gi,
     ),
-    (match) => parseLocalizedNumber(match[1] || match[2]),
+    (match) => {
+      const compact = String(match[1] || match[2])
+        .replace(/[\s\u00a0]/g, "");
+      if (/^\d{1,3}(?:,\d{3})+$/.test(compact)) {
+        return Number(compact.replaceAll(",", ""));
+      }
+      if (/^\d{1,3}(?:\.\d{3})+$/.test(compact)) {
+        return Number(compact.replaceAll(".", ""));
+      }
+      return parseLocalizedNumber(compact);
+    },
   ).filter((price) => Number.isFinite(price) && price > 0);
   return prices.at(-1) || 0;
 }
@@ -558,7 +568,9 @@ function googleCandidateMatches(card, search, options = {}) {
 
 function providerNameFromText(value) {
   return String(value || "")
-    .split(/\r?\n|(?=\d+\s+(?:hu\u00e9spedes?|guests?))/i)[0]
+    .split(
+      /\r?\n|(?=(?:EUR\s*|\u20ac)\d)|(?=\d+\s+(?:hu\u00e9spedes?|guests?))/i,
+    )[0]
     .trim() || "Proveedor";
 }
 
@@ -656,7 +668,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         throw new Error("Google cambio el hotel o las fechas al verificarlo.");
       }
       offer.provider = `${bestProvider.provider} via Google Hotels`;
-      offer.priceBasis = "google_hotels_provider_all_inclusive_v4";
+      offer.priceBasis = "google_hotels_provider_all_inclusive_v5";
       offer.displayedNightlyPrice = candidate.nightlyPrice;
       offers.push(offer);
     } catch (error) {

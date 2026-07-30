@@ -124,6 +124,15 @@ test("reads the final taxed total from the current Google provider row", () => {
     ),
     0,
   );
+  assert.equal(
+    parseGoogleProviderVisibleTotal(
+      "Booking.comEUR 253 con impuestos + comisiones" +
+        "Precio base por nochePrecio por noche con impuestos y comisiones" +
+        "Precio total de la estancia con impuestos y comisiones" +
+        "EUR 230EUR 230EUR 253EUR 1,012Visitar sitio web",
+    ),
+    1012,
+  );
 });
 
 test("rejects Tripening technical prices as verified hotel totals", () => {
