@@ -90,6 +90,20 @@ function parseGoogleProviderInclusiveTotal(value) {
   return 0;
 }
 
+function parseGoogleProviderVisibleTotal(value) {
+  const text = String(value || "");
+  if (!/Visitar sitio web|Visit website/i.test(text)) return 0;
+  if (/(?:US\$|USD|\$)\s*\d/i.test(text)) return 0;
+
+  const prices = Array.from(
+    text.matchAll(
+      /(?:EUR\s*([\d][\d.\s\u00a0]*(?:,\d{1,2})?)|([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*(?:\u20ac|EUR))/gi,
+    ),
+    (match) => parseLocalizedNumber(match[1] || match[2]),
+  ).filter((price) => Number.isFinite(price) && price > 0);
+  return prices.at(-1) || 0;
+}
+
 function parseGoogleHotelsNights(value) {
   const match = String(value || "").match(/(\d+)\s+(?:noches?|nights?)/i);
   return match ? Number(match[1]) : 0;
@@ -301,14 +315,17 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
 
 async function ensureCalendarDate(page, isoDate, timeoutMs) {
   const selector =
-    `[role="dialog"]:visible [role="gridcell"][data-iso="${isoDate}"]` +
-    '[aria-hidden="false"] [role="button"]';
+    `[role="gridcell"][data-iso="${isoDate}"][aria-hidden="false"]`;
   for (let month = 0; month < 15; month += 1) {
     const dateButton = page.locator(selector).first();
-    if (await dateButton.count()) return selector;
+    if (await dateButton.count()) {
+      await dateButton.waitFor({ state: "visible", timeout: timeoutMs });
+      return selector;
+    }
     const nextButton = page
-      .locator('[role="dialog"]:visible')
-      .getByRole("button", { name: /Siguiente|Next/i })
+      .getByRole("button", {
+        name: /Siguiente|Next|Mes siguiente|Next month/i,
+      })
       .first();
     if (!(await nextButton.count())) break;
     await nextButton.evaluate((button) => button.click());
@@ -324,7 +341,7 @@ async function clickCalendarDate(page, isoDate, timeoutMs) {
   const selector = await ensureCalendarDate(page, isoDate, timeoutMs);
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
-      await page.locator(selector).first().evaluate((button) => button.click());
+      await page.locator(selector).first().evaluate((cell) => cell.click());
       return;
     } catch (error) {
       if (attempt === 2) throw error;
@@ -348,11 +365,11 @@ async function selectGoogleHotelsDates(page, search, timeoutMs) {
   await clickCalendarDate(page, search.checkOut, timeoutMs);
 
   const selectedCheckIn = page.locator(
-    `[role="dialog"]:visible [role="gridcell"][data-iso="${search.checkIn}"]` +
+    `[role="gridcell"][data-iso="${search.checkIn}"]` +
       '[aria-selected="true"]',
   );
   const selectedCheckOut = page.locator(
-    `[role="dialog"]:visible [role="gridcell"][data-iso="${search.checkOut}"]` +
+    `[role="gridcell"][data-iso="${search.checkOut}"]` +
       '[aria-selected="true"]',
   );
   if (!(await selectedCheckIn.count()) || !(await selectedCheckOut.count())) {
@@ -563,9 +580,9 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         waitUntil: "domcontentloaded",
         timeout: timeoutMs,
       });
-      const providerLocator = page.locator(
-        'a[href*="/travel/lodging/clk"][href*="pcurl="]',
-      );
+      const providerLocator = page
+        .locator("a")
+        .filter({ hasText: /Visitar sitio web|Visit website/i });
       await providerLocator.first().waitFor({
         state: "attached",
         timeout: timeoutMs,
@@ -577,21 +594,12 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         }))
       );
       const providerPrices = providerLinks.flatMap((link) => {
-        const totalPrice = parseGoogleProviderInclusiveTotal(link.href);
+        const totalPrice =
+          parseGoogleProviderInclusiveTotal(link.href) ||
+          parseGoogleProviderVisibleTotal(link.text);
         if (
           !totalPrice ||
           !providerLinkMatchesStay(link.href, search)
-        ) {
-          return [];
-        }
-        const averageNightly = totalPrice / search.nights;
-        const displayedNightly = candidate.nightlyPrice;
-        if (
-          displayedNightly > 0 &&
-          (
-            averageNightly < displayedNightly * 0.75 ||
-            averageNightly > displayedNightly * 1.5
-          )
         ) {
           return [];
         }
@@ -798,6 +806,7 @@ module.exports = {
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
   parseGoogleProviderInclusiveTotal,
+  parseGoogleProviderVisibleTotal,
   parseGoogleHotelsTotal,
   parseGoogleReviewCount,
   parseGoogleStars,

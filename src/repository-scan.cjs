@@ -19,6 +19,7 @@ const {
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
 const FLEXIBLE_SWEEP_VERSION = 2;
+const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -150,9 +151,13 @@ function buildDealMap(previousDeals, activeMonitors) {
     (previousDeals.deals || [])
       .filter((deal) => {
         const monitor = monitorsById.get(String(deal.monitorId));
+        const source = String(deal.source || "booking");
+        const hasCurrentBluepillowValidation =
+          !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
         return Boolean(
           monitor &&
-          deal.monitorFingerprint === monitorFingerprint(monitor)
+          deal.monitorFingerprint === monitorFingerprint(monitor) &&
+          hasCurrentBluepillowValidation
         );
       })
       .map((deal) => [deal.id, deal]),
@@ -202,24 +207,32 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     nights: offer.nights,
     totalPrice: offer.totalPrice,
     nightlyPrice: offer.nightlyPrice,
+    displayedNightlyPrice: offer.displayedNightlyPrice,
     rateSubtotal: offer.rateSubtotal,
     searchResultPrice: offer.searchResultPrice,
     bookingTableTotal: offer.bookingTableTotal,
     taxFallbackRate: offer.taxFallbackRate,
     additionalCharges: offer.additionalCharges,
+    includedTaxesAndFees: offer.includedTaxesAndFees,
     taxesText: offer.taxesText,
     stayText: offer.stayText,
     priceVerified: offer.priceVerified,
     priceBasis: offer.priceBasis,
+    priceConfirmedAt: offer.priceConfirmedAt,
     stars: offer.stars,
     guestRating: offer.guestRating,
     reviewCount: offer.reviewCount,
     distanceKm: offer.distanceKm,
     priceConfirmationCount: offer.priceConfirmationCount,
     freeCancellation: offer.freeCancellation,
+    breakfastIncluded: offer.breakfastIncluded,
+    limitedAvailability: offer.limitedAvailability,
     mealPlan: offer.mealPlan,
     propertyType: offer.propertyType,
     amenities: offer.amenities,
+    roomName: offer.roomName,
+    sharedRoom: offer.sharedRoom,
+    imageUrl: offer.imageUrl,
     source: offer.source,
     provider: offer.provider,
     url: offer.url,

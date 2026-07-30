@@ -7,6 +7,7 @@ const {
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
   parseGoogleProviderInclusiveTotal,
+  parseGoogleProviderVisibleTotal,
   parseGoogleHotelsTotal,
   parseGoogleStars,
   stableOfferId,
@@ -72,6 +73,30 @@ test("reads only explicit all-inclusive EUR totals from Google providers", () =>
   assert.equal(
     parseGoogleProviderInclusiveTotal(
       "https://provider.test/?currency=EUR&total_price=90",
+    ),
+    0,
+  );
+});
+
+test("reads the final taxed total from the current Google provider row", () => {
+  assert.equal(
+    parseGoogleProviderVisibleTotal(
+      "Bluepillow.com\n2 huéspedes · EUR 82 con impuestos + comisiones" +
+        "Precio base por nochePrecio por noche con impuestos y comisiones" +
+        "Precio total de la estancia con impuestos y comisiones" +
+        "EUR 75EUR 75EUR 82EUR 330Visitar sitio web",
+    ),
+    330,
+  );
+  assert.equal(
+    parseGoogleProviderVisibleTotal(
+      "Booking.com\nCancelación gratuita70 €70 €70 €Visitar sitio web",
+    ),
+    70,
+  );
+  assert.equal(
+    parseGoogleProviderVisibleTotal(
+      "Provider 70 US$70 US$70 US$Visit website",
     ),
     0,
   );

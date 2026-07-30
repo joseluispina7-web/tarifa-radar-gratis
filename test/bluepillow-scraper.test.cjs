@@ -4,6 +4,8 @@ const {
   buildBluepillowOffer,
   chooseDestination,
   linkMatchesStay,
+  parseBluepillowPriceBreakdown,
+  scrapeBluepillowSource,
   stableBluepillowOfferId,
 } = require("../src/bluepillow-scraper.cjs");
 const { normalizeSearch } = require("../src/booking-scraper.cjs");
@@ -72,7 +74,7 @@ function property(overrides = {}) {
         refundable: false,
         breakfast_included: true,
         deeplink_url:
-          "https://www.bluepillow.com/skippy?begin=2026-08-05&end=2026-08-09&connectorname=Agoda",
+          "https://www.bluepillow.com/skippy?begin=2026-08-05&end=2026-08-09&connectorname=Agoda&TotalPrice=437.06&TotalTax=39.73&TotalFee=0",
       },
       {
         ota: "TripCom",
@@ -82,7 +84,7 @@ function property(overrides = {}) {
         refundable: true,
         breakfast_included: false,
         deeplink_url:
-          "https://www.bluepillow.com/skippy?begin=2026-08-05&end=2026-08-09&connectorname=TripCom",
+          "https://www.bluepillow.com/skippy?begin=2026-08-05&end=2026-08-09&connectorname=TripCom&display=inctotal",
       },
     ],
     ...overrides,
@@ -141,7 +143,9 @@ test("builds an independent verified Agoda offer", () => {
   assert.equal(offer.guestRating, 8.8);
   assert.equal(offer.distanceKm > 0, true);
   assert.equal(offer.breakfastIncluded, true);
-  assert.equal(offer.priceConfirmationCount, 2);
+  assert.equal(offer.includedTaxesAndFees, 39.73);
+  assert.equal(offer.priceVerified, false);
+  assert.equal(offer.priceConfirmationCount, 0);
   assert.equal(offer.matches, true);
 });
 
@@ -164,6 +168,28 @@ test("keeps Trip.com and Bluepillow as separate result sources", () => {
   assert.equal(bluepillow.provider, "Agoda via Bluepillow");
   assert.equal(bluepillow.totalPrice, 437.06);
   assert.notEqual(trip.id, bluepillow.id);
+});
+
+test("requires evidence that taxes are included in Bluepillow totals", () => {
+  const agoda = property().offers.find((offer) => offer.ota === "Agoda");
+  assert.deepEqual(parseBluepillowPriceBreakdown(agoda), {
+    totalPrice: 437.06,
+    includedTaxes: 39.73,
+    includedFees: 0,
+    evidence: "agoda_total_with_tax_breakdown",
+  });
+  assert.equal(
+    parseBluepillowPriceBreakdown({
+      ...agoda,
+      deeplink_url:
+        "https://www.bluepillow.com/skippy?connectorname=Agoda&TotalPrice=397.33&TotalTax=39.73",
+    }),
+    null,
+  );
+  assert.equal(
+    parseBluepillowPriceBreakdown(property().offers[0]),
+    null,
+  );
 });
 
 test("rejects stale, inconsistent or non-EUR Bluepillow prices", () => {
@@ -207,4 +233,41 @@ test("keeps Bluepillow source ids stable", () => {
     ),
   );
   assert.match(id, /^agoda:/);
+});
+
+test("publishes a Bluepillow match only after the validate endpoint confirms it", async () => {
+  const calls = [];
+  const fetchImpl = async (url) => {
+    calls.push(url);
+    if (url.endsWith("/destinations/resolve")) {
+      return Response.json({
+        candidates: [{
+          id: "dest_benidorm",
+          name: "Benidorm",
+          display_name: "Benidorm",
+          type: "city",
+          country_code: "ES",
+        }],
+      });
+    }
+    if (url.endsWith("/search/stays")) {
+      return Response.json({
+        results: [property()],
+        metadata: { price_as_of: "2026-07-30T08:00:00Z" },
+      });
+    }
+    if (url.endsWith("/validate")) {
+      return Response.json({ still_valid: true });
+    }
+    return Response.json({}, { status: 404 });
+  };
+
+  const result = await scrapeBluepillowSource(search(), "agoda", {
+    disableCache: true,
+    fetchImpl,
+  });
+  assert.equal(calls.filter((url) => url.endsWith("/validate")).length, 1);
+  assert.equal(result.matchingOffers.length, 1);
+  assert.equal(result.matchingOffers[0].priceVerified, true);
+  assert.equal(result.matchingOffers[0].priceConfirmationCount, 2);
 });

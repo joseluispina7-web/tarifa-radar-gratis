@@ -41,11 +41,6 @@
     ["agoda", "Agoda", true, "Automático via Bluepillow"],
     ["trip", "Trip.com", true, "Automático via Bluepillow"],
     ["bluepillow", "Bluepillow", true, "API gratuita"],
-    ["trivago", "Trivago", false],
-    ["kayak", "KAYAK", false],
-    ["expedia", "Expedia", false],
-    ["hotels", "Hotels.com", false],
-    ["skyscanner", "Skyscanner", false],
   ];
 
   const state = {
@@ -442,32 +437,79 @@
     `;
   }
 
+  function propertyLabel(value) {
+    return propertyOptions.find(([id]) => id === value)?.[1] || "Alojamiento";
+  }
+
+  function mealPlanLabel(value) {
+    return {
+      breakfast: "Desayuno incluido",
+      half_board: "Media pensión",
+      all_inclusive: "Todo incluido",
+    }[value] || "";
+  }
+
+  function dealDetails(deal) {
+    const details = [
+      deal.freeCancellation ? "Cancelación gratuita" : "",
+      deal.breakfastIncluded ? "Desayuno incluido" : mealPlanLabel(deal.mealPlan),
+      deal.limitedAvailability ? "Pocas habitaciones" : "",
+      ...(deal.amenities || [])
+        .slice(0, 4)
+        .map((amenity) =>
+          amenityOptions.find(([id]) => id === amenity)?.[1] || "",
+        ),
+    ].filter(Boolean);
+    return Array.from(new Set(details)).join(" · ");
+  }
+
   function dealRow(deal) {
     const distance = Number(deal.distanceKm) || 0;
     const distanceLabel = distance > 0
       ? ` · ${distance.toLocaleString("es-ES")} km del destino`
       : "";
+    const provider = deal.provider || sourceLabel(deal.source || "booking");
+    const quality = deal.guestRating
+      ? `Nota ${Number(deal.guestRating).toLocaleString("es-ES")}/10${
+          deal.reviewCount
+            ? ` · ${Number(deal.reviewCount).toLocaleString("es-ES")} reseñas`
+            : ""
+        }`
+      : "Sin valoración publicada";
+    const details = dealDetails(deal);
     return `
       <article class="deal-row">
-        <span>
+        <span class="deal-hotel">
           <strong>${escapeHtml(deal.hotelName)}</strong>
           <small>${escapeHtml(
             `${deal.address || deal.location}${distanceLabel}`,
           )}</small>
+          <small class="deal-provider">${escapeHtml(provider)}</small>
         </span>
-        <span>
-          <strong>${escapeHtml(formatDate(deal.checkIn))}</strong>
-          <small>${escapeHtml(deal.nights)} noches · comprobado ${escapeHtml(
-            formatDateTime(deal.updatedAt),
-          )}</small>
+        <span class="deal-stay">
+          <strong>${escapeHtml(formatDate(deal.checkIn))} → ${escapeHtml(
+            formatDate(deal.checkOut),
+          )}</strong>
+          <small>${escapeHtml(deal.nights)} ${
+            Number(deal.nights) === 1 ? "noche" : "noches"
+          }${deal.roomName ? ` · ${escapeHtml(deal.roomName)}` : ""}</small>
+          <small>Encontrada ${escapeHtml(
+            formatDateTime(deal.firstSeenAt),
+          )} · revisada ${escapeHtml(formatDateTime(deal.updatedAt))}</small>
         </span>
         <span class="deal-price">
-          <strong>${Number(deal.totalPrice).toFixed(0)} €</strong>
+          <strong>${Number(deal.totalPrice).toFixed(2)} €</strong>
           <small>${Number(deal.nightlyPrice).toFixed(2)} €/noche</small>
+          <small>${escapeHtml(deal.taxesText || "Total final comprobado")}</small>
         </span>
-        <span>
-          <strong>${deal.stars ? `${escapeHtml(deal.stars)} estrellas` : "Sin estrellas"}</strong>
-          <small>${deal.guestRating ? `Nota ${escapeHtml(deal.guestRating)}` : "Sin nota"}</small>
+        <span class="deal-quality">
+          <strong>${
+            deal.stars
+              ? `${escapeHtml(deal.stars)} estrellas`
+              : "Sin categoría por estrellas"
+          } · ${escapeHtml(propertyLabel(deal.propertyType))}</strong>
+          <small>${escapeHtml(quality)}</small>
+          ${details ? `<small>${escapeHtml(details)}</small>` : ""}
         </span>
         <a
           class="icon-button"
@@ -828,19 +870,8 @@
         `https://www.booking.com/searchresults.es.html?ss=${encoded}${bookingDates}${bookingGuests}`,
       ],
       ["Google Hoteles", `https://www.google.com/travel/search?q=${query}`],
-      ["Trivago", `https://www.trivago.es/es/srl?search=${encoded}`],
-      ["KAYAK", `https://www.kayak.es/hotels/${encoded}`],
-      [
-        "Expedia",
-        `https://www.expedia.es/Hotel-Search?destination=${encoded}${bookingDates}`,
-      ],
-      [
-        "Hotels.com",
-        `https://www.hotels.com/Hotel-Search?destination=${encoded}${bookingDates}`,
-      ],
       ["Agoda", `https://www.agoda.com/es-es/search?textToSearch=${encoded}`],
       ["Trip.com", `https://es.trip.com/hotels/list?city=${encoded}`],
-      ["Skyscanner", "https://www.skyscanner.es/hoteles"],
       ["Bluepillow", "https://www.bluepillow.es/"],
     ];
   }

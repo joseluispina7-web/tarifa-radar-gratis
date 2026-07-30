@@ -11,6 +11,7 @@ const {
 const BLUEPILLOW_API_URL = "https://api.b2a.bluepillow.com/v1";
 const BLUEPILLOW_SOURCE = "bluepillow";
 const DEFAULT_TIMEOUT_MS = 30_000;
+const MAX_VALIDATIONS_PER_SEARCH = 2;
 
 // Bluepillow documents anonymous keys as public rate-limit identifiers with
 // no billing identity. An environment variable can replace this shared key.
@@ -33,6 +34,8 @@ const SOURCE_SETTINGS = {
 };
 
 const sharedSearches = new Map();
+const sharedValidations = new Map();
+const validationBudgets = new Map();
 
 function normalizeText(value) {
   return String(value || "")
@@ -44,6 +47,108 @@ function normalizeText(value) {
 
 function normalizeOta(value) {
   return normalizeText(value).replace(/[^a-z0-9.]/g, "");
+}
+
+function decodedLinkValues(value) {
+  const values = [String(value || "")];
+  for (let attempt = 0; attempt < 3; attempt += 1) {
+    try {
+      const decoded = decodeURIComponent(values.at(-1));
+      if (decoded === values.at(-1)) break;
+      values.push(decoded);
+    } catch {
+      break;
+    }
+  }
+  return values;
+}
+
+function linkNumber(values, parameter) {
+  const pattern = new RegExp(`(?:[?&]|%26)${parameter}=([\\d.,]+)`, "i");
+  for (const value of values.slice().reverse()) {
+    const match = value.match(pattern);
+    if (!match) continue;
+    const number = Number(match[1].replace(",", "."));
+    if (Number.isFinite(number)) return number;
+  }
+  return 0;
+}
+
+function linkText(values, parameter) {
+  const pattern = new RegExp(`(?:[?&]|%26)${parameter}=([^&\\s]+)`, "i");
+  for (const value of values.slice().reverse()) {
+    const match = value.match(pattern);
+    if (match) return match[1];
+  }
+  return "";
+}
+
+function pricesAreEqual(left, right) {
+  return Math.abs(Number(left) - Number(right)) <= 0.03;
+}
+
+function parseBluepillowPriceBreakdown(offer) {
+  const totalPrice = Number(offer?.amount);
+  if (!Number.isFinite(totalPrice) || totalPrice <= 0) return null;
+
+  const values = decodedLinkValues(offer.deeplink_url);
+  const ota = normalizeOta(offer.ota);
+  if (ota === "agoda") {
+    const linkedTotal = linkNumber(values, "TotalPrice");
+    if (!pricesAreEqual(linkedTotal, totalPrice)) return null;
+    const includedTaxes = linkNumber(values, "TotalTax");
+    const includedFees =
+      linkNumber(values, "TotalFee") +
+      linkNumber(values, "TotalSurcharge");
+    return {
+      totalPrice,
+      includedTaxes,
+      includedFees,
+      evidence: "agoda_total_with_tax_breakdown",
+    };
+  }
+
+  if (ota === "trip" || ota === "tripcom" || ota === "trip.com") {
+    if (normalizeText(linkText(values, "display")) !== "inctotal") return null;
+    return {
+      totalPrice,
+      includedTaxes: 0,
+      includedFees: 0,
+      evidence: "trip_inclusive_total",
+    };
+  }
+
+  if (ota === "expedia") {
+    const basePrice = linkNumber(values, "mpa");
+    const includedTaxes = linkNumber(values, "mpb");
+    if (
+      basePrice <= 0 ||
+      includedTaxes < 0 ||
+      !pricesAreEqual(basePrice + includedTaxes, totalPrice)
+    ) {
+      return null;
+    }
+    return {
+      totalPrice,
+      includedTaxes,
+      includedFees: 0,
+      evidence: "expedia_total_with_tax_breakdown",
+    };
+  }
+
+  const allInclusiveTotal =
+    linkNumber(values, "display_all_inclusive_price") ||
+    linkNumber(values, "all_inclusive_price") ||
+    linkNumber(values, "grand_total") ||
+    linkNumber(values, "total_including_taxes") ||
+    linkNumber(values, "total_with_taxes");
+  if (!pricesAreEqual(allInclusiveTotal, totalPrice)) return null;
+  return {
+    totalPrice,
+    includedTaxes: 0,
+    includedFees: 0,
+    evidence: "explicit_inclusive_total",
+  };
 }
 
 function stableBluepillowOfferId(source, propertyId, checkIn, checkOut) {
@@ -79,16 +184,7 @@ function chooseDestination(candidates, search) {
 }
 
 function linkMatchesStay(value, search) {
-  let decoded = String(value || "");
-  for (let attempt = 0; attempt < 3; attempt += 1) {
-    try {
-      const next = decodeURIComponent(decoded);
-      if (next === decoded) break;
-      decoded = `${decoded}\n${next}`;
-    } catch {
-      break;
-    }
-  }
+  const decoded = decodedLinkValues(value).join("\n");
   const checkInPattern = new RegExp(
     `(?:begin|checkin|check_in|checkIn)=${search.checkIn.replaceAll("-", "[-/]")}`,
     "i",
@@ -141,7 +237,8 @@ function findSelectedOffer(property, source) {
       offer &&
       offer.currency === "EUR" &&
       Number(offer.amount) > 0 &&
-      offer.deeplink_url
+      offer.deeplink_url &&
+      parseBluepillowPriceBreakdown(offer)
   );
   if (settings.otaNames) {
     return offers
@@ -158,6 +255,7 @@ function findSelectedOffer(property, source) {
 function buildBluepillowOffer(property, search, source, metadata = {}) {
   const settings = sourceSettings(source);
   const selectedOffer = findSelectedOffer(property, source);
+  const priceBreakdown = parseBluepillowPriceBreakdown(selectedOffer);
   const totalPrice = Number(selectedOffer?.amount);
   const displayedNightlyPrice = Number(selectedOffer?.amount_per_night);
   const calculatedNightlyPrice =
@@ -175,6 +273,7 @@ function buildBluepillowOffer(property, search, source, metadata = {}) {
     !property.name ||
     property.availability_status !== "available" ||
     !selectedOffer ||
+    !priceBreakdown ||
     !Number.isFinite(totalPrice) ||
     totalPrice <= 0 ||
     selectedOffer.currency !== "EUR" ||
@@ -237,12 +336,21 @@ function buildBluepillowOffer(property, search, source, metadata = {}) {
     rateSubtotal: totalPrice,
     searchResultPrice: totalPrice,
     additionalCharges: 0,
-    taxesText: `Total en EUR publicado por Bluepillow para ${otaLabel}`,
+    includedTaxesAndFees:
+      Math.round(
+        (priceBreakdown.includedTaxes + priceBreakdown.includedFees) * 100
+      ) / 100,
+    taxesText:
+      priceBreakdown.includedTaxes + priceBreakdown.includedFees > 0
+        ? `Total con ${(
+            priceBreakdown.includedTaxes + priceBreakdown.includedFees
+          ).toFixed(2)} EUR de impuestos y tasas incluidos`
+        : `Total con impuestos y tasas incluidos por ${otaLabel}`,
     stayText: `${search.nights} noches para ${search.adults} adultos`,
-    priceVerified: true,
-    priceBasis: "bluepillow_live_stay_total",
-    priceConfirmationCount: 2,
-    priceConfirmedAt: metadata.price_as_of || new Date().toISOString(),
+    priceVerified: false,
+    priceBasis: priceBreakdown.evidence,
+    priceConfirmationCount: 0,
+    priceConfirmedAt: "",
     stars: Number(property.stars) || 0,
     guestRating: Math.round((Number(property.rating) || 0) * 20) / 10,
     reviewCount:
@@ -265,10 +373,89 @@ function buildBluepillowOffer(property, search, source, metadata = {}) {
     searchArea: search.searchArea,
     url: selectedOffer.deeplink_url || property.web_url,
     imageUrl: property.thumbnail_url || "",
+    bluepillowPropertyId: property.id,
+    bluepillowOta: selectedOffer.ota,
   };
   offer.matches = matchesSearch(offer, search);
   offer.candidateMatches = offer.matches;
   return offer;
+}
+
+function validationCacheKey(offer, search) {
+  return JSON.stringify([
+    offer.bluepillowPropertyId,
+    normalizeOta(offer.bluepillowOta),
+    offer.totalPrice,
+    search.checkIn,
+    search.checkOut,
+    search.adults,
+    search.children,
+    search.rooms,
+  ]);
+}
+
+async function validateBluepillowOffer(offer, search, options = {}) {
+  const searchKey = searchCacheKey(search);
+  const key = validationCacheKey(offer, search);
+  if (sharedValidations.has(key)) return sharedValidations.get(key);
+
+  const used = validationBudgets.get(searchKey) || 0;
+  if (used >= MAX_VALIDATIONS_PER_SEARCH) {
+    return {
+      valid: false,
+      skipped: true,
+      message: "No se publico porque alcanzo el limite de revalidaciones.",
+    };
+  }
+  validationBudgets.set(searchKey, used + 1);
+
+  const pending = requestJson("/validate", {
+    ...options,
+    idempotent: true,
+    body: {
+      property_id: offer.bluepillowPropertyId,
+      dates: {
+        check_in: search.checkIn,
+        check_out: search.checkOut,
+      },
+      guests: {
+        adults: search.adults,
+        children_ages: Array.from({ length: search.children }, () => 7),
+        rooms: search.rooms,
+      },
+      offer_to_compare: {
+        ota: offer.bluepillowOta,
+        total_eur: offer.totalPrice,
+      },
+    },
+  })
+    .then((payload) => {
+      if (payload.still_valid === true) {
+        return {
+          valid: true,
+          checkedAt: payload.metadata?.price_as_of || new Date().toISOString(),
+        };
+      }
+      const refreshedPrice = Number(payload.refreshed_offer?.amount);
+      const detail = Number.isFinite(refreshedPrice) && refreshedPrice > 0
+        ? ` El precio actualizado es ${refreshedPrice.toFixed(2)} EUR.`
+        : "";
+      return {
+        valid: false,
+        message:
+          `Bluepillow no confirmo el precio final (${payload.reason || "cambio de tarifa"}).` +
+          detail,
+      };
+    })
+    .catch((error) => ({
+      valid: false,
+      message:
+        `No se pudo revalidar el total de Bluepillow: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+    }));
+  sharedValidations.set(key, pending);
+  return pending;
 }
 
 async function requestJson(pathname, options = {}) {
@@ -390,9 +577,32 @@ async function scrapeBluepillowSource(input, source, options = {}) {
       buildBluepillowOffer(property, search, source, result.metadata)
     )
     .filter(Boolean);
-  const matchingOffers = offers
+  const candidates = offers
     .filter((offer) => offer.matches)
     .sort((left, right) => left.totalPrice - right.totalPrice);
+  const matchingOffers = [];
+  const verificationErrors = [];
+  for (const offer of candidates) {
+    const validation = await validateBluepillowOffer(offer, search, options);
+    if (!validation.valid) {
+      offer.matches = false;
+      offer.candidateMatches = false;
+      if (!validation.skipped) {
+        verificationErrors.push({
+          hotelName: offer.hotelName,
+          message: validation.message,
+        });
+      }
+      continue;
+    }
+    offer.priceVerified = true;
+    offer.priceConfirmationCount = 2;
+    offer.priceConfirmedAt =
+      validation.checkedAt ||
+      result.metadata.price_as_of ||
+      new Date().toISOString();
+    matchingOffers.push(offer);
+  }
   return {
     source,
     searchedAt: result.metadata.price_as_of || new Date().toISOString(),
@@ -403,7 +613,7 @@ async function scrapeBluepillowSource(input, source, options = {}) {
     searchedPages: 1,
     offers,
     matchingOffers,
-    verificationErrors: [],
+    verificationErrors,
     cheapestOffer:
       offers
         .slice()
@@ -433,6 +643,7 @@ module.exports = {
   mapAmenities,
   mapPropertyType,
   normalizeOta,
+  parseBluepillowPriceBreakdown,
   scrapeAgoda,
   scrapeBluepillow,
   scrapeBluepillowSource,

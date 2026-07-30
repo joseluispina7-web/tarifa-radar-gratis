@@ -70,6 +70,31 @@ test("replaces only deals for the date pair just searched", () => {
   assert.deepEqual(Array.from(deals.keys()), ["other-dates"]);
 });
 
+test("drops old Bluepillow deals that were never revalidated", () => {
+  const currentFingerprint = monitorFingerprint(monitor);
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "old-bluepillow",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "bluepillow",
+        },
+        {
+          id: "validated-bluepillow",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "bluepillow",
+          priceConfirmedAt: "2026-07-30T08:00:00.000Z",
+        },
+      ],
+    },
+    [monitor],
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["validated-bluepillow"]);
+});
+
 test("clears one source without deleting the other source", () => {
   const deals = new Map([
     [
