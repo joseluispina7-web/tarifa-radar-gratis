@@ -1,63 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T17:06:47.595Z",
+  "updatedAt": "2026-07-30T18:45:31.625Z",
   "summary": {
-    "generatedAt": "2026-07-30T17:06:47.595Z",
+    "generatedAt": "2026-07-30T18:45:31.625Z",
     "monitors": 3,
     "searches": 55,
-    "offers": 552,
-    "matches": 5,
+    "offers": 542,
+    "matches": 3,
     "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 11,
-        "offers": 240,
-        "matches": 3,
-        "errors": 1
+        "offers": 265,
+        "matches": 2,
+        "errors": 0
       },
       "google_hotels": {
         "searches": 11,
-        "offers": 2,
+        "offers": 5,
         "matches": 1,
-        "errors": 9
+        "errors": 6
       },
       "agoda": {
         "searches": 11,
-        "offers": 84,
+        "offers": 68,
         "matches": 0,
         "errors": 1
       },
       "trip": {
         "searches": 11,
-        "offers": 88,
+        "offers": 80,
         "matches": 0,
         "errors": 1
       },
       "bluepillow": {
         "searches": 11,
-        "offers": 138,
-        "matches": 1,
+        "offers": 124,
+        "matches": 0,
         "errors": 1
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-22",
-          "checkOut": "2026-08-23",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-15",
-          "flexibleCheckInEnd": "2026-08-29"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
-        "message": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
-      },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
         "monitorName": "Alicante",
@@ -81,57 +65,10 @@
         "searchArea": "Alicante, Comunidad Valenciana, España",
         "hotelName": "Villa Alojamiento y Congresos - Villa Universitaria",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 407.08 EUR."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "hotelName": "Gaya",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "hotelName": "EMMI Guesthouse",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alacant / Alicante",
-        "hotelName": "Gaya",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
       }
     ],
     "nearbyErrors": [],
     "errors": [
-      {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorm",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
-      },
       {
         "monitorId": "madrid-agosto-4-noches",
         "monitorName": "Benidorm",
@@ -141,7 +78,7 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Hotel Queens Benidorm124 € Booking.com4,1/5 (848) · Hotel de 2 estrellasAcceso a la playa · RestauranteIr a Booking.com | Ambassador Playa Hotel & Spa243 € Expedia.com4,4/5 (3,3 mil) · Hotel de 4 estrellasSpa · PiscinaIr a Expedia.com | Estudios Benidorm140 € Hotels.com4,1/5 (320) · Hotel de 2 estrellasSe admiten mascotas · Traslado del/al aeropuertoIr a Hotels.com | Helios Benidorm153 € Booking.com4,6/5 (4,6 mil) · Hotel de 4 estrellasJacuzzi · SpaIr a Booking.com. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-05 en el calendario."
       },
       {
         "monitorId": "madrid-agosto-4-noches",
@@ -155,75 +92,30 @@
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-05 en el calendario."
       },
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-07",
-          "checkOut": "2026-08-08",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-07-31",
-          "flexibleCheckInEnd": "2026-08-14"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-07 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-07",
-          "checkOut": "2026-08-09",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-07-31",
-          "flexibleCheckInEnd": "2026-08-14"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-07\"][aria-hidden=\"false\"]').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-22",
-          "checkOut": "2026-08-23",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-15",
-          "flexibleCheckInEnd": "2026-08-29"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-22\"][aria-hidden=\"false\"]').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-22",
-          "checkOut": "2026-08-24",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-15",
-          "flexibleCheckInEnd": "2026-08-29"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Fotos | Acerca de esta propiedad | Alquileres vacacionales cercanos. Precios: Bluepillow.comEUR 62EUR 62EUR 62EUR 124EUR 124 en totalVisitar sitio web | Bluepillow.com EUR 62 EUR 124 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
+        "searchArea": "Finestrat",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-05 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-09-21",
+          "checkOut": "2026-09-22",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-09-14",
+          "flexibleCheckInEnd": "2026-09-28"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -286,11 +178,11 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-30T17:06:47.595Z",
-      "lastSuccessAt": "2026-07-30T17:08:06.343840Z",
+      "lastScanAt": "2026-07-30T18:45:31.625Z",
+      "lastSuccessAt": "2026-07-30T18:45:56.806721Z",
       "searches": 15,
-      "offers": 118,
-      "matches": 1,
+      "offers": 139,
+      "matches": 0,
       "nearbyLocations": [
         "La Nucia",
         "Finestrat"
@@ -298,15 +190,15 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 49,
+          "offers": 73,
           "matches": 0,
-          "errors": 1
+          "errors": 0
         },
         "google_hotels": {
           "searches": 3,
-          "offers": 1,
-          "matches": 1,
-          "errors": 2
+          "offers": 0,
+          "matches": 0,
+          "errors": 3
         },
         "agoda": {
           "searches": 3,
@@ -316,13 +208,13 @@
         },
         "trip": {
           "searches": 3,
-          "offers": 21,
+          "offers": 20,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 3,
-          "offers": 29,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         }
@@ -332,63 +224,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-30T17:06:47.595Z",
-      "lastSuccessAt": "2026-07-30T17:10:18.970097Z",
+      "lastScanAt": "2026-07-30T18:45:31.625Z",
+      "lastSuccessAt": "2026-07-30T18:47:02.272218Z",
       "searches": 20,
-      "offers": 247,
-      "matches": 4,
+      "offers": 214,
+      "matches": 3,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 95,
-          "matches": 3,
+          "offers": 96,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 4
+          "offers": 3,
+          "matches": 1,
+          "errors": 1
         },
         "agoda": {
           "searches": 4,
-          "offers": 36,
+          "offers": 21,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 44,
+          "offers": 35,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 72,
-          "matches": 1,
+          "offers": 59,
+          "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Fotos | Acerca de esta propiedad | Alquileres vacacionales cercanos. Precios: Bluepillow.comEUR 62EUR 62EUR 62EUR 124EUR 124 en totalVisitar sitio web | Bluepillow.com EUR 62 EUR 124 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR..",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-30",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 0,
+        "startWindowIndex": 4,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 4,
-        "remainingWindowsInSweep": 20,
+        "nextWindowIndex": 8,
+        "remainingWindowsInSweep": 16,
         "completedSweep": false
       }
     },
     "cd280cbf-7c44-4142-84c7-7affe30c1078": {
       "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
       "monitorName": "Alicante",
-      "lastScanAt": "2026-07-30T17:06:47.595Z",
-      "lastSuccessAt": "2026-07-30T17:11:22.339331Z",
+      "lastScanAt": "2026-07-30T18:45:31.625Z",
+      "lastSuccessAt": "2026-07-30T18:48:10.420875Z",
       "searches": 20,
-      "offers": 187,
+      "offers": 189,
       "matches": 0,
       "nearbyLocations": [
         "Mutxamel",
@@ -406,13 +298,13 @@
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
+          "offers": 2,
           "matches": 0,
-          "errors": 3
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 30,
+          "offers": 29,
           "matches": 0,
           "errors": 1
         },
@@ -424,7 +316,7 @@
         },
         "trip": {
           "searches": 4,
-          "offers": 23,
+          "offers": 25,
           "matches": 0,
           "errors": 1
         }
@@ -439,54 +331,44 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-07|2026-08-08",
-        "source": "booking",
-        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
-        "address": "Fuencarral - El Pardo, Madrid",
-        "checkIn": "2026-08-07",
-        "checkOut": "2026-08-08",
-        "nights": 1,
-        "totalPrice": 38.5,
-        "nightlyPrice": 38.5,
-        "rateSubtotal": 34.5,
+        "id": "google_hotels:8ae6707fd2692525|2026-09-21|2026-09-23",
+        "source": "google_hotels",
+        "provider": "HostelworldCancelación gratuita hasta el 31 jul, · via Google Hotels",
+        "hotelName": "The Hat Madrid",
+        "address": "Madrid, Comunidad Autónoma de Madrid, España",
+        "checkIn": "2026-09-21",
+        "checkOut": "2026-09-23",
+        "nights": 2,
+        "totalPrice": 39,
+        "nightlyPrice": 19.5,
+        "displayedNightlyPrice": 0,
+        "rateSubtotal": 39,
+        "searchResultPrice": 39,
         "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "1046568401_377062656_2_0_0"
-        ],
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "2 noches con impuestos y tasas incluidos",
         "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 3,
-        "guestRating": 6.3,
-        "reviewCount": 2176,
-        "distanceKm": 0,
+        "priceBasis": "google_hotels_provider_all_inclusive_v5",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-30T18:47:10.511Z",
+        "stars": 0,
+        "guestRating": 8.6,
+        "reviewCount": 4743,
+        "distanceKm": null,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
+        "roomName": "",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-07&checkout=2026-08-08&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=89417883aa82030b&srepoch=1785431305&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3450&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESCgoCCAMKAggDEAAaTgowEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkEhoSFAoHCOoPEAgYAxIHCOoPEAgYBBgBMgIQACoNCgk6A0VVUmICCAEaAA&qs=CAAgASgAMihDaG9JdTVXZXJkUEwyTVRzQVJvTkwyY3ZNVEZpTmpSeE1YQjBZeEFCOA1IAA&ap=MAC6AQZwcmljZXM&ved=0CCEQssMEahcKEwjg_I_7h_uVAxUAAAAAHQAAAAAQag",
         "matches": true,
-        "searchResultPrice": 38.5,
-        "bookingTableTotal": 38.5,
-        "verificationRows": [
-          {
-            "blockId": "1046568401_377062656_2_0_0",
-            "priceText": "€ 35",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T17:08:45.630Z"
+        "candidateMatches": true
       },
-      "createdAt": "2026-07-30T17:08:48.103Z"
+      "createdAt": "2026-07-30T18:47:10.511Z"
     }
   ]
 }
