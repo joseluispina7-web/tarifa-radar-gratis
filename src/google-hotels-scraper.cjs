@@ -76,16 +76,10 @@ function parseGoogleProviderInclusiveTotal(value) {
         /(?:currency|display_currency|divisa)=([A-Z]{3})/gi,
       ),
     );
-    if (
-      currencyMatches.length &&
-      currencyMatches.some((match) => match[1].toUpperCase() !== "EUR")
-    ) {
-      continue;
-    }
-    const explicitTotal = candidate.match(
-      /(?:^|[?&])(?:display_all_inclusive_price|all_inclusive_price|grand_total|total_including_taxes|total_with_taxes)=([\d.,]+)/i,
+    const hasEurCurrency = currencyMatches.some(
+      (match) => match[1].toUpperCase() === "EUR",
     );
-    if (explicitTotal) return parseLocalizedNumber(explicitTotal[1]);
+    if (!hasEurCurrency) continue;
 
     const bluepillowTotal =
       /bluepillow\.(?:com|es)\//i.test(candidate) &&
@@ -94,6 +88,16 @@ function parseGoogleProviderInclusiveTotal(value) {
         ? candidate.match(/(?:^|[?&])total=([\d.,]+)/i)
         : null;
     if (bluepillowTotal) return parseLocalizedNumber(bluepillowTotal[1]);
+
+    const superTotal =
+      /(?:^|\/\/)(?:www\.)?super\.com\//i.test(candidate) &&
+      /(?:^|[?&])checkin_at=\d{4}-\d{2}-\d{2}/i.test(candidate) &&
+      /(?:^|[?&])checkout_at=\d{4}-\d{2}-\d{2}/i.test(candidate)
+        ? candidate.match(
+            /(?:^|[?&])(?:display_all_inclusive_price|all_inclusive_price|total_including_taxes|total_with_taxes)=([\d.,]+)/i,
+          )
+        : null;
+    if (superTotal) return parseLocalizedNumber(superTotal[1]);
   }
   return 0;
 }
@@ -652,7 +656,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         throw new Error("Google cambio el hotel o las fechas al verificarlo.");
       }
       offer.provider = `${bestProvider.provider} via Google Hotels`;
-      offer.priceBasis = "google_hotels_provider_all_inclusive_v3";
+      offer.priceBasis = "google_hotels_provider_all_inclusive_v4";
       offer.displayedNightlyPrice = candidate.nightlyPrice;
       offers.push(offer);
     } catch (error) {

@@ -92,6 +92,14 @@ test("reads only explicit all-inclusive EUR totals from Google providers", () =>
     ),
     0,
   );
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://mandarinoriental.example/offer?currency=EUR&" +
+        "checkin_at=2026-08-05&checkout_at=2026-08-09&" +
+        "display_all_inclusive_price=1.32",
+    ),
+    0,
+  );
 });
 
 test("reads the final taxed total from the current Google provider row", () => {
