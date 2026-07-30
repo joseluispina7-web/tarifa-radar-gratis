@@ -1,44 +1,44 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T15:28:16.029Z",
+  "updatedAt": "2026-07-30T15:32:52.796Z",
   "summary": {
-    "generatedAt": "2026-07-30T15:28:16.029Z",
-    "monitors": 2,
-    "searches": 35,
-    "offers": 368,
-    "matches": 4,
-    "newMatches": 1,
+    "generatedAt": "2026-07-30T15:32:52.796Z",
+    "monitors": 3,
+    "searches": 55,
+    "offers": 525,
+    "matches": 2,
+    "newMatches": 0,
     "priceDrops": 1,
     "sources": {
       "booking": {
-        "searches": 7,
-        "offers": 173,
-        "matches": 2,
-        "errors": 0
+        "searches": 11,
+        "offers": 247,
+        "matches": 1,
+        "errors": 1
       },
       "google_hotels": {
-        "searches": 7,
+        "searches": 11,
         "offers": 5,
-        "matches": 2,
-        "errors": 2
+        "matches": 1,
+        "errors": 6
       },
       "agoda": {
-        "searches": 7,
-        "offers": 47,
+        "searches": 11,
+        "offers": 73,
         "matches": 0,
-        "errors": 0
+        "errors": 2
       },
       "trip": {
-        "searches": 7,
-        "offers": 60,
-        "matches": 0,
-        "errors": 0
-      },
-      "bluepillow": {
-        "searches": 7,
+        "searches": 11,
         "offers": 83,
         "matches": 0,
-        "errors": 0
+        "errors": 2
+      },
+      "bluepillow": {
+        "searches": 11,
+        "offers": 117,
+        "matches": 0,
+        "errors": 2
       }
     },
     "verificationErrors": [
@@ -50,21 +50,61 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "searchArea": "La Nucia",
         "hotelName": "Hotel Benidorm City Olympia",
         "message": "Booking cambio el total de 446.60 a 451.00 EUR durante la comprobacion."
       },
       {
-        "monitorId": "madrid-agosto-4-noches",
-        "monitorName": "Benidorm",
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-01-19",
+          "checkOut": "2027-01-20",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-12",
+          "flexibleCheckInEnd": "2027-01-26"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Sincelejo",
+        "message": "Booking cambio el total de 35.20 a 31.90 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
         "source": "booking",
         "dates": {
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "La Nucia",
-        "hotelName": "Hotel Benidorm City Olympia",
-        "message": "Booking cambio el total de 446.60 a 451.00 EUR durante la comprobacion."
+        "searchArea": "Elx / Elche",
+        "hotelName": "EMMI Guesthouse",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "hotelName": "Gaya",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Alacant / Alicante",
+        "hotelName": "EMMI Guesthouse",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       }
     ],
     "nearbyErrors": [],
@@ -78,7 +118,22 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Hotel La Estación | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Barceló La Nucía Hills $286 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $239 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $286 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $239 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($). Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-01-19",
+          "checkOut": "2027-01-20",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-12",
+          "flexibleCheckInEnd": "2027-01-26"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
@@ -93,7 +148,117 @@
           "flexibleCheckInEnd": "2027-01-26"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-21\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-21\"][aria-hidden=\"false\"]').first() to be visible\n"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('option').first() to be visible\n"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "message": "No destinations matched name='Elx / Elche', country='ES'"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "message": "No destinations matched name='Elx / Elche', country='ES'"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "message": "No destinations matched name='Elx / Elche', country='ES'"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Alacant / Alicante",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino Alacant / Alicante. Sugerencias: hoteles en gran alacant alicante."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('option').first() to be visible\n"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
+        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
+        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
+        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
       }
     ]
   },
@@ -101,11 +266,11 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-30T15:28:16.029Z",
-      "lastSuccessAt": "2026-07-30T15:29:20.742005Z",
+      "lastScanAt": "2026-07-30T15:32:52.796Z",
+      "lastSuccessAt": "2026-07-30T15:33:29.634095Z",
       "searches": 15,
       "offers": 143,
-      "matches": 2,
+      "matches": 1,
       "nearbyLocations": [
         "La Nucia",
         "Finestrat"
@@ -120,7 +285,7 @@
         "google_hotels": {
           "searches": 3,
           "offers": 2,
-          "matches": 2,
+          "matches": 1,
           "errors": 1
         },
         "agoda": {
@@ -142,29 +307,29 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Hotel La Estación | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Barceló La Nucía Hills $286 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $239 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $286 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $239 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($). Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-30T15:28:16.029Z",
-      "lastSuccessAt": "2026-07-30T15:30:35.585240Z",
+      "lastScanAt": "2026-07-30T15:32:52.796Z",
+      "lastSuccessAt": "2026-07-30T15:35:03.607953Z",
       "searches": 20,
-      "offers": 225,
-      "matches": 2,
+      "offers": 224,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 100,
-          "matches": 2,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 2,
           "matches": 0,
-          "errors": 1
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
@@ -185,7 +350,7 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-21\"][aria-hidden=\"false\"]').first()\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-21\"][aria-hidden=\"false\"]').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-30",
         "totalCombinations": 360,
@@ -196,54 +361,58 @@
         "remainingWindowsInSweep": 0,
         "completedSweep": true
       }
+    },
+    "cd280cbf-7c44-4142-84c7-7affe30c1078": {
+      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+      "monitorName": "Alicante",
+      "lastScanAt": "2026-07-30T15:32:52.796Z",
+      "lastSuccessAt": "2026-07-30T15:36:34.980140Z",
+      "searches": 20,
+      "offers": 158,
+      "matches": 0,
+      "nearbyLocations": [
+        "Mutxamel",
+        "el Campello",
+        "Elx / Elche",
+        "Alacant / Alicante",
+        "Sant Vicent del Raspeig / San Vicente del Raspeig"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 4,
+          "offers": 74,
+          "matches": 0,
+          "errors": 1
+        },
+        "google_hotels": {
+          "searches": 4,
+          "offers": 1,
+          "matches": 0,
+          "errors": 3
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 26,
+          "matches": 0,
+          "errors": 2
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 34,
+          "matches": 0,
+          "errors": 2
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 23,
+          "matches": 0,
+          "errors": 2
+        }
+      },
+      "error": "[trip] No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
     }
   },
   "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "madrid-agosto-4-noches",
-      "monitorName": "Benidorm",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:5c76ca93414325af|2026-08-05|2026-08-09",
-        "source": "google_hotels",
-        "provider": "Super.com via Google Hotels",
-        "hotelName": "Hotel Queens Benidorm",
-        "address": "Benidorm, Comunidad Valenciana, España",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 442.56,
-        "nightlyPrice": 110.64,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 442.56,
-        "searchResultPrice": 442.56,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "4 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T15:28:32.816Z",
-        "stars": 0,
-        "guestRating": 8.2,
-        "reviewCount": 848,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20benidorm&ts=CAESCgoCCAMKAggDEAAaUgo0EjAyJDB4ZDYyMDRkY2E2MjU3NWMzOjB4MjE5ZmE5MGMwZmYyNmViNToIQmVuaWRvcm0aABIaEhQKBwjqDxAIGAUSBwjqDxAIGAkYBDICCAEqCQoFOgNFVVIaAA&qs=CAEgASgAMiZDaGdJOXRUSXpKR3BxcjFoR2d3dlp5OHhNWGhxTW5Kd1ltd1FBUTgNSAA&ap=MAG6AQZwcmljZXM&ved=0CCAQssMEahgKEwjY4O_F2_qVAxUAAAAAHQAAAAAQuAE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-07-30T15:28:32.816Z"
-    },
     {
       "type": "price_drop",
       "monitorId": "madrid-agosto-4-noches",
@@ -269,7 +438,7 @@
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive_v5",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T15:29:33.569Z",
+        "priceConfirmedAt": "2026-07-30T15:33:22.536Z",
         "stars": 3,
         "guestRating": 8.8,
         "reviewCount": 401,
@@ -285,11 +454,11 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Finestrat",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwiIvsXj2_qVAxUAAAAAHQAAAAAQqgE",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwiYn8bQ3PqVAxUAAAAAHQAAAAAQrQE",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-07-30T15:29:33.570Z"
+      "createdAt": "2026-07-30T15:33:22.536Z"
     }
   ]
 }
