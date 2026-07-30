@@ -76,6 +76,15 @@ test("reads only explicit all-inclusive EUR totals from Google providers", () =>
     ),
     0,
   );
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://www.google.com/travel/lodging/clk?" +
+        "pcurl=https%3A%2F%2Fwww.bluepillow.es%2Fsearch%2Foffer%3F" +
+        "begin%253D2026-08-05%2526end%253D2026-08-09%2526" +
+        "tax%253D30.18%2526total%253D332.00%2526currency%253DEUR",
+    ),
+    332,
+  );
 });
 
 test("reads the final taxed total from the current Google provider row", () => {
@@ -92,7 +101,7 @@ test("reads the final taxed total from the current Google provider row", () => {
     parseGoogleProviderVisibleTotal(
       "Booking.com\nCancelación gratuita70 €70 €70 €Visitar sitio web",
     ),
-    70,
+    0,
   );
   assert.equal(
     parseGoogleProviderVisibleTotal(

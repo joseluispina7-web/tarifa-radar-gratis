@@ -83,7 +83,7 @@ function parseGoogleProviderInclusiveTotal(value) {
       continue;
     }
     const match = candidate.match(
-      /(?:display_all_inclusive_price|all_inclusive_price|grand_total|total_including_taxes|total_with_taxes)=([\d.,]+)/i,
+      /(?:^|[?&])(?:display_all_inclusive_price|all_inclusive_price|grand_total|total_including_taxes|total_with_taxes|total)=([\d.,]+)/i,
     );
     if (match) return parseLocalizedNumber(match[1]);
   }
@@ -94,6 +94,13 @@ function parseGoogleProviderVisibleTotal(value) {
   const text = String(value || "");
   if (!/Visitar sitio web|Visit website/i.test(text)) return 0;
   if (/(?:US\$|USD|\$)\s*\d/i.test(text)) return 0;
+  if (
+    !/(?:precio\s+)?total\s+(?:de\s+)?(?:la\s+)?estancia|total\s+(?:for|of)\s+(?:the\s+)?stay|stay\s+total/i.test(
+      text,
+    )
+  ) {
+    return 0;
+  }
 
   const prices = Array.from(
     text.matchAll(
