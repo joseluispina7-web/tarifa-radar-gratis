@@ -154,10 +154,14 @@ function buildDealMap(previousDeals, activeMonitors) {
         const source = String(deal.source || "booking");
         const hasCurrentBluepillowValidation =
           !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
+        const hasCurrentGoogleValidation =
+          source !== "google_hotels" ||
+          deal.priceBasis === "google_hotels_provider_all_inclusive_v2";
         return Boolean(
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
-          hasCurrentBluepillowValidation
+          hasCurrentBluepillowValidation &&
+          hasCurrentGoogleValidation
         );
       })
       .map((deal) => [deal.id, deal]),

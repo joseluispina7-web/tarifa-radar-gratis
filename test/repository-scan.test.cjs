@@ -95,6 +95,32 @@ test("drops old Bluepillow deals that were never revalidated", () => {
   assert.deepEqual(Array.from(deals.keys()), ["validated-bluepillow"]);
 });
 
+test("drops Google deals created by the old nightly-price parser", () => {
+  const currentFingerprint = monitorFingerprint(monitor);
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "old-google",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "google_hotels",
+          priceBasis: "google_hotels_provider_all_inclusive",
+        },
+        {
+          id: "current-google",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "google_hotels",
+          priceBasis: "google_hotels_provider_all_inclusive_v2",
+        },
+      ],
+    },
+    [monitor],
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["current-google"]);
+});
+
 test("clears one source without deleting the other source", () => {
   const deals = new Map([
     [

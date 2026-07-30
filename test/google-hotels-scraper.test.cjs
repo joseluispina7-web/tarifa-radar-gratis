@@ -85,6 +85,12 @@ test("reads only explicit all-inclusive EUR totals from Google providers", () =>
     ),
     332,
   );
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://tripening.example/offer?currency=EUR&tax=30.18&total=1.08",
+    ),
+    0,
+  );
 });
 
 test("reads the final taxed total from the current Google provider row", () => {

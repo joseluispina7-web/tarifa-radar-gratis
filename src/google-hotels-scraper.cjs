@@ -82,10 +82,18 @@ function parseGoogleProviderInclusiveTotal(value) {
     ) {
       continue;
     }
-    const match = candidate.match(
-      /(?:^|[?&])(?:display_all_inclusive_price|all_inclusive_price|grand_total|total_including_taxes|total_with_taxes|total)=([\d.,]+)/i,
+    const explicitTotal = candidate.match(
+      /(?:^|[?&])(?:display_all_inclusive_price|all_inclusive_price|grand_total|total_including_taxes|total_with_taxes)=([\d.,]+)/i,
     );
-    if (match) return parseLocalizedNumber(match[1]);
+    if (explicitTotal) return parseLocalizedNumber(explicitTotal[1]);
+
+    const bluepillowTotal =
+      /bluepillow\.(?:com|es)\//i.test(candidate) &&
+      /(?:^|[?&])(?:begin|checkin)=\d{4}-\d{2}-\d{2}/i.test(candidate) &&
+      /(?:^|[?&])(?:tax|fees)=[\d.,]+/i.test(candidate)
+        ? candidate.match(/(?:^|[?&])total=([\d.,]+)/i)
+        : null;
+    if (bluepillowTotal) return parseLocalizedNumber(bluepillowTotal[1]);
   }
   return 0;
 }
@@ -639,7 +647,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         throw new Error("Google cambio el hotel o las fechas al verificarlo.");
       }
       offer.provider = `${bestProvider.provider} via Google Hotels`;
-      offer.priceBasis = "google_hotels_provider_all_inclusive";
+      offer.priceBasis = "google_hotels_provider_all_inclusive_v2";
       offer.displayedNightlyPrice = candidate.nightlyPrice;
       offers.push(offer);
     } catch (error) {
