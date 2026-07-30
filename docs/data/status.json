@@ -1,13 +1,13 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T07:11:34.889Z",
+  "updatedAt": "2026-07-30T07:16:04.373Z",
   "summary": {
-    "generatedAt": "2026-07-30T07:11:34.889Z",
+    "generatedAt": "2026-07-30T07:16:04.373Z",
     "monitors": 2,
     "searches": 35,
-    "offers": 364,
+    "offers": 370,
     "matches": 3,
-    "newMatches": 2,
+    "newMatches": 3,
     "priceDrops": 0,
     "sources": {
       "booking": {
@@ -18,19 +18,19 @@
       },
       "google_hotels": {
         "searches": 7,
-        "offers": 5,
+        "offers": 6,
         "matches": 1,
-        "errors": 2
+        "errors": 1
       },
       "agoda": {
         "searches": 7,
-        "offers": 44,
+        "offers": 50,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 7,
-        "offers": 59,
+        "offers": 58,
         "matches": 0,
         "errors": 0
       },
@@ -41,7 +41,20 @@
         "errors": 0
       }
     },
-    "verificationErrors": [],
+    "verificationErrors": [
+      {
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Finestrat",
+        "hotelName": "Pensión Pardo",
+        "message": "Booking cambio el total de 420.20 a 378.40 EUR durante la comprobacion."
+      }
+    ],
     "nearbyErrors": [],
     "errors": [
       {
@@ -53,22 +66,7 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 321 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Cancelación gratuita | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 273 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-12-20",
-          "checkOut": "2026-12-21",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-13",
-          "flexibleCheckInEnd": "2026-12-27"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-20\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Hotels.com Barceló La Nucía Palms - Adults Recommended 275 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
       }
     ]
   },
@@ -76,11 +74,11 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-30T07:11:34.889Z",
-      "lastSuccessAt": "2026-07-30T07:12:34.258663Z",
+      "lastScanAt": "2026-07-30T07:16:04.373Z",
+      "lastSuccessAt": "2026-07-30T07:17:06.809521Z",
       "searches": 15,
-      "offers": 142,
-      "matches": 2,
+      "offers": 143,
+      "matches": 1,
       "nearbyLocations": [
         "La Nucia",
         "Finestrat"
@@ -89,7 +87,7 @@
         "booking": {
           "searches": 3,
           "offers": 74,
-          "matches": 1,
+          "matches": 0,
           "errors": 0
         },
         "google_hotels": {
@@ -100,7 +98,7 @@
         },
         "agoda": {
           "searches": 3,
-          "offers": 21,
+          "offers": 22,
           "matches": 0,
           "errors": 0
         },
@@ -117,39 +115,39 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 321 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Cancelación gratuita | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 273 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Hotels.com Barceló La Nucía Palms - Adults Recommended 275 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $247 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $237 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-30T07:11:34.889Z",
-      "lastSuccessAt": "2026-07-30T07:15:12.901516Z",
+      "lastScanAt": "2026-07-30T07:16:04.373Z",
+      "lastSuccessAt": "2026-07-30T07:18:35.019385Z",
       "searches": 20,
-      "offers": 222,
-      "matches": 1,
+      "offers": 227,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 100,
-          "matches": 1,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 4,
           "matches": 0,
-          "errors": 1
+          "errors": 0
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 42,
+          "offers": 41,
           "matches": 0,
           "errors": 0
         },
@@ -160,16 +158,16 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-20\"][aria-hidden=\"false\"]').first()\n",
+      "error": "",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-30",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 16,
+        "startWindowIndex": 20,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 20,
-        "remainingWindowsInSweep": 4,
-        "completedSweep": false
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     }
   },
@@ -197,9 +195,9 @@
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
         "stayText": "4 noches con impuestos y tasas incluidos",
         "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v3",
+        "priceBasis": "google_hotels_provider_all_inclusive_v4",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T07:12:12.229Z",
+        "priceConfirmedAt": "2026-07-30T07:17:18.799Z",
         "stars": 0,
         "guestRating": 8.8,
         "reviewCount": 588,
@@ -213,11 +211,11 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Finestrat",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAEaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoHCgU6A0VVUg&qs=CAEgASgAMihDaG9JdmN1RGlaNjU4cy1JQVJvTkwyY3ZNVEZvTUhwcU16Qm5NUkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAsQssMEahgKEwiQjPfO7PmVAxUAAAAAHQAAAAAQrQE",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAEaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoHCgU6A0VVUg&qs=CAEgASgAMihDaG9JdmN1RGlaNjU4cy1JQVJvTkwyY3ZNVEZvTUhwcU16Qm5NUkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAsQssMEahgKEwjo69Tg7fmVAxUAAAAAHQAAAAAQqwE",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-07-30T07:12:12.230Z"
+      "createdAt": "2026-07-30T07:17:18.799Z"
     },
     {
       "type": "new_match",
@@ -225,16 +223,16 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-12-14|2026-12-15",
+        "id": "/hotel/es/rooms-magangue.es.html|2027-01-04|2027-01-05",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2026-12-14",
-        "checkOut": "2026-12-15",
+        "checkIn": "2027-01-04",
+        "checkOut": "2027-01-05",
         "nights": 1,
-        "totalPrice": 33,
-        "nightlyPrice": 33,
-        "rateSubtotal": 30,
+        "totalPrice": 35.2,
+        "nightlyPrice": 35.2,
+        "rateSubtotal": 31.82,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
@@ -249,30 +247,85 @@
         "distanceKm": 0,
         "freeCancellation": true,
         "breakfastIncluded": false,
-        "limitedAvailability": false,
+        "limitedAvailability": true,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
         "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-12-14&checkout=2026-12-15&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=03ce32d0f1da0102&srepoch=1785395619&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-04&checkout=2027-01-05&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=b09233473a0e0007&srepoch=1785395857&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3182&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 33,
-        "bookingTableTotal": 33,
+        "searchResultPrice": 35.2,
+        "bookingTableTotal": 35.2,
         "verificationRows": [
           {
             "blockId": "1258125510_398363677_2_0_0",
-            "priceText": "€ 30",
+            "priceText": "€ 32 por noche\n€ 32\nPrecio € 32\n1 noche\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T07:13:56.750Z"
+        "priceConfirmedAt": "2026-07-30T07:17:56.842Z"
       },
-      "createdAt": "2026-07-30T07:13:56.798Z"
+      "createdAt": "2026-07-30T07:17:56.874Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2027-01-18|2027-01-19",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2027-01-18",
+        "checkOut": "2027-01-19",
+        "nights": 1,
+        "totalPrice": 35.2,
+        "nightlyPrice": 35.2,
+        "rateSubtotal": 31.82,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125510_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-18&checkout=2027-01-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=60e3335938bc01c9&srepoch=1785395893&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3182&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 35.2,
+        "bookingTableTotal": 35.2,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 32 por noche\n€ 32\nPrecio € 32\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-30T07:18:32.157Z"
+      },
+      "createdAt": "2026-07-30T07:18:32.202Z"
     }
   ]
 }
