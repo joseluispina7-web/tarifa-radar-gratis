@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-30T21:33:41.261Z",
+  "updatedAt": "2026-07-30T22:44:47.628Z",
   "summary": {
-    "generatedAt": "2026-07-30T21:33:41.261Z",
+    "generatedAt": "2026-07-30T22:44:47.628Z",
     "monitors": 3,
     "searches": 55,
-    "offers": 493,
+    "offers": 535,
     "matches": 2,
-    "newMatches": 1,
-    "priceDrops": 1,
+    "newMatches": 0,
+    "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 11,
-        "offers": 245,
-        "matches": 0,
+        "offers": 247,
+        "matches": 1,
         "errors": 1
       },
       "google_hotels": {
         "searches": 11,
-        "offers": 5,
-        "matches": 2,
-        "errors": 6
+        "offers": 6,
+        "matches": 1,
+        "errors": 5
       },
       "agoda": {
         "searches": 11,
-        "offers": 65,
+        "offers": 74,
         "matches": 0,
         "errors": 1
       },
       "trip": {
         "searches": 11,
-        "offers": 69,
+        "offers": 87,
         "matches": 0,
         "errors": 1
       },
       "bluepillow": {
         "searches": 11,
-        "offers": 109,
+        "offers": 121,
         "matches": 0,
         "errors": 1
       }
@@ -78,52 +78,37 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 365 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 275 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $301 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $265 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $301 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $244 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-05",
-          "checkOut": "2026-11-06",
+          "checkIn": "2026-12-05",
+          "checkOut": "2026-12-06",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-29",
-          "flexibleCheckInEnd": "2026-11-12"
+          "flexibleCheckInStart": "2026-11-28",
+          "flexibleCheckInEnd": "2026-12-12"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-05\"][aria-hidden=\"false\"]').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-05 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-20",
-          "checkOut": "2026-11-21",
+          "checkIn": "2026-12-20",
+          "checkOut": "2026-12-21",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-13",
-          "flexibleCheckInEnd": "2026-11-27"
+          "flexibleCheckInStart": "2026-12-13",
+          "flexibleCheckInEnd": "2026-12-27"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-20 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-20",
-          "checkOut": "2026-11-22",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-13",
-          "flexibleCheckInEnd": "2026-11-27"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-22 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-20\"][aria-hidden=\"false\"]').first() to be visible\n"
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -133,8 +118,8 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-05 en el calendario."
+        "searchArea": "Alacant / Alicante",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino Alacant / Alicante. Sugerencias: hoteles en gran alacant alicante."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -197,10 +182,10 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-30T21:33:41.261Z",
-      "lastSuccessAt": "2026-07-30T21:34:12.844322Z",
+      "lastScanAt": "2026-07-30T22:44:47.628Z",
+      "lastSuccessAt": "2026-07-30T22:45:23.222309Z",
       "searches": 15,
-      "offers": 141,
+      "offers": 142,
       "matches": 1,
       "nearbyLocations": [
         "La Nucia",
@@ -221,7 +206,7 @@
         },
         "agoda": {
           "searches": 3,
-          "offers": 18,
+          "offers": 19,
           "matches": 0,
           "errors": 0
         },
@@ -238,68 +223,68 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 365 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 275 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $301 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $265 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Hotel La Estación | Barceló La Nucía Hills | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Patrocinado· Expedia.com Barceló La Nucía Hills 330 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Barceló La Nucía Hills $301 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $244 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-30T21:33:41.261Z",
-      "lastSuccessAt": "2026-07-30T21:35:43.109569Z",
+      "lastScanAt": "2026-07-30T22:44:47.628Z",
+      "lastSuccessAt": "2026-07-30T22:46:55.931708Z",
       "searches": 20,
-      "offers": 215,
+      "offers": 218,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 100,
-          "matches": 0,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
-          "matches": 1,
-          "errors": 3
+          "offers": 2,
+          "matches": 0,
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 26,
+          "offers": 24,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 32,
+          "offers": 40,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 56,
+          "offers": 52,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-22 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-20\"][aria-hidden=\"false\"]').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-30",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 12,
+        "startWindowIndex": 16,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 16,
-        "remainingWindowsInSweep": 8,
+        "nextWindowIndex": 20,
+        "remainingWindowsInSweep": 4,
         "completedSweep": false
       }
     },
     "cd280cbf-7c44-4142-84c7-7affe30c1078": {
       "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
       "monitorName": "Alicante",
-      "lastScanAt": "2026-07-30T21:33:41.261Z",
-      "lastSuccessAt": "2026-07-30T21:37:12.007270Z",
+      "lastScanAt": "2026-07-30T22:44:47.628Z",
+      "lastSuccessAt": "2026-07-30T22:48:32.615389Z",
       "searches": 20,
-      "offers": 137,
+      "offers": 175,
       "matches": 0,
       "nearbyLocations": [
         "Mutxamel",
@@ -311,7 +296,7 @@
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 72,
+          "offers": 74,
           "matches": 0,
           "errors": 1
         },
@@ -323,19 +308,19 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 21,
+          "offers": 31,
           "matches": 0,
           "errors": 1
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 25,
+          "offers": 41,
           "matches": 0,
           "errors": 1
         },
         "trip": {
           "searches": 4,
-          "offers": 17,
+          "offers": 27,
           "matches": 0,
           "errors": 1
         }
@@ -343,98 +328,5 @@
       "error": "[trip] No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
     }
   },
-  "alerts": [
-    {
-      "type": "price_drop",
-      "monitorId": "madrid-agosto-4-noches",
-      "monitorName": "Benidorm",
-      "previousPrice": 307.99,
-      "offer": {
-        "id": "google_hotels:fce7a04604378b02|2026-08-05|2026-08-09",
-        "source": "google_hotels",
-        "provider": "Bluepillow.com via Google Hotels",
-        "hotelName": "Vistamar Hotel Luxury Wellness by DLV",
-        "address": "Finestrat",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 307.94,
-        "nightlyPrice": 76.99,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 307.94,
-        "searchResultPrice": 307.94,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "4 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T21:34:08.392Z",
-        "stars": 3,
-        "guestRating": 8.8,
-        "reviewCount": 400,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "spa"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Finestrat",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwiI-oOjrfuVAxUAAAAAHQAAAAAQrAE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-07-30T21:34:08.392Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:8ae6707fd2692525|2026-11-05|2026-11-07",
-        "source": "google_hotels",
-        "provider": "Bluepillow.com via Google Hotels",
-        "hotelName": "The Hat Madrid",
-        "address": "Madrid, Comunidad Autónoma de Madrid, España",
-        "checkIn": "2026-11-05",
-        "checkOut": "2026-11-07",
-        "nights": 2,
-        "totalPrice": 36.91,
-        "nightlyPrice": 18.45,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 36.91,
-        "searchResultPrice": 36.91,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "2 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-30T21:35:33.384Z",
-        "stars": 0,
-        "guestRating": 8.6,
-        "reviewCount": 4743,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESCgoCCAMKAggDEAAaTgowEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkEhoSFAoHCOoPEAgYAxIHCOoPEAgYBBgBMgIQACoNCgk6A0VVUmICCAEaAA&qs=CAAgASgAMihDaG9JdTVXZXJkUEwyTVRzQVJvTkwyY3ZNVEZpTmpSeE1YQjBZeEFCOA1IAA&ap=MAC6AQZwcmljZXM&ved=0CCEQssMEahcKEwjYitnMrfuVAxUAAAAAHQAAAAAQaA",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-07-30T21:35:33.384Z"
-    }
-  ]
+  "alerts": []
 }
