@@ -1,47 +1,95 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-31T15:06:31.359Z",
+  "updatedAt": "2026-07-31T16:23:50.199Z",
   "summary": {
-    "generatedAt": "2026-07-31T15:06:31.359Z",
-    "monitors": 3,
-    "searches": 55,
-    "offers": 519,
-    "matches": 4,
-    "newMatches": 1,
-    "priceDrops": 2,
+    "generatedAt": "2026-07-31T16:23:50.199Z",
+    "monitors": 4,
+    "searches": 60,
+    "offers": 609,
+    "matches": 8,
+    "newMatches": 7,
+    "priceDrops": 1,
     "sources": {
       "booking": {
-        "searches": 11,
-        "offers": 270,
-        "matches": 3,
+        "searches": 12,
+        "offers": 290,
+        "matches": 5,
         "errors": 0
       },
       "google_hotels": {
-        "searches": 11,
+        "searches": 12,
         "offers": 6,
         "matches": 1,
-        "errors": 5
+        "errors": 6
       },
       "agoda": {
-        "searches": 11,
-        "offers": 61,
+        "searches": 12,
+        "offers": 82,
         "matches": 0,
         "errors": 1
       },
       "trip": {
-        "searches": 11,
-        "offers": 77,
-        "matches": 0,
+        "searches": 12,
+        "offers": 95,
+        "matches": 1,
         "errors": 1
       },
       "bluepillow": {
-        "searches": 11,
-        "offers": 105,
-        "matches": 0,
+        "searches": 12,
+        "offers": 136,
+        "matches": 1,
         "errors": 1
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-23",
+          "checkOut": "2026-08-24",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-16",
+          "flexibleCheckInEnd": "2026-08-30"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Villamil",
+        "message": "Booking cambio el total de 36.30 a 39.60 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-23",
+          "checkOut": "2026-08-24",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-16",
+          "flexibleCheckInEnd": "2026-08-30"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca - Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 28.67 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-23",
+          "checkOut": "2026-08-24",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-16",
+          "flexibleCheckInEnd": "2026-08-30"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca - Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 28.67 EUR."
+      },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
         "monitorName": "Alicante",
@@ -51,6 +99,30 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Alicante, Comunidad Valenciana, España",
+        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
+        "message": "Booking cambio el total de 261.80 a 265.10 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Alicante, Comunidad Valenciana, España",
+        "hotelName": "Сozy House",
+        "message": "Booking cambio el total de 311.30 a 314.60 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Mutxamel",
         "hotelName": "Сozy House",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
@@ -63,8 +135,8 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Mutxamel",
-        "hotelName": "Сozy House",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
+        "hotelName": "Residencia Mediterraneo",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -75,8 +147,32 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Mutxamel",
-        "hotelName": "Residencia Mediterraneo",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
+        "hotelName": "Gaya",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Mutxamel",
+        "hotelName": "EMMI Guesthouse",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Mutxamel",
+        "hotelName": "Antares 62 Apartamentos",
+        "message": "Booking cambio el total de 225.50 a 112.20 EUR durante la comprobacion."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -88,7 +184,7 @@
         },
         "searchArea": "el Campello",
         "hotelName": "Сozy House",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
+        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -100,7 +196,7 @@
         },
         "searchArea": "Elx / Elche",
         "hotelName": "Сozy House",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -112,7 +208,31 @@
         },
         "searchArea": "Elx / Elche",
         "hotelName": "Residencia Mediterraneo",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
+        "message": "Booking cambio el total de 265.10 a 261.80 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
+        "hotelName": "Hostal Meseguer",
+        "message": "Booking cambio el total de 279.40 a 276.10 EUR durante la comprobacion."
       }
     ],
     "nearbyErrors": [],
@@ -125,53 +245,49 @@
           "checkIn": "2026-08-05",
           "checkOut": "2026-08-09"
         },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+      },
+      {
+        "monitorId": "madrid-agosto-4-noches",
+        "monitorName": "Benidorm",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
         "searchArea": "La Nucia",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 313 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 277 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $273 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $246 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Hotel La Estación | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Barceló La Nucía Hills $285 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $247 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-01-04",
-          "checkOut": "2027-01-05",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-28",
-          "flexibleCheckInEnd": "2027-01-11"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-04\"][aria-hidden=\"false\"]').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-01-19",
-          "checkOut": "2027-01-20",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-12",
-          "flexibleCheckInEnd": "2027-01-26"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-20\"][aria-hidden=\"false\"]').first()\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-01-19",
-          "checkOut": "2027-01-21",
+          "checkIn": "2026-08-08",
+          "checkOut": "2026-08-10",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-12",
-          "flexibleCheckInEnd": "2027-01-26"
+          "flexibleCheckInStart": "2026-08-01",
+          "flexibleCheckInEnd": "2026-08-15"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-01-19 en el calendario."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Fotos | Acerca de esta propiedad | Alquileres vacacionales cercanos. Precios: Bluepillow.comEUR 60EUR 60EUR 60EUR 121EUR 121 en totalVisitar sitio web | Bluepillow.com EUR 60 EUR 121 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-23",
+          "checkOut": "2026-08-24",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-16",
+          "flexibleCheckInEnd": "2026-08-30"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -216,6 +332,17 @@
         },
         "searchArea": "Elx / Elche",
         "message": "No destinations matched name='Elx / Elche', country='ES'"
+      },
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
       }
     ]
   },
@@ -223,10 +350,10 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-31T15:06:31.359Z",
-      "lastSuccessAt": "2026-07-31T15:07:28.003432Z",
+      "lastScanAt": "2026-07-31T16:23:50.199Z",
+      "lastSuccessAt": "2026-07-31T16:24:49.272421Z",
       "searches": 15,
-      "offers": 141,
+      "offers": 140,
       "matches": 1,
       "nearbyLocations": [
         "La Nucia",
@@ -235,15 +362,15 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 72,
+          "offers": 73,
           "matches": 0,
           "errors": 0
         },
         "google_hotels": {
           "searches": 3,
-          "offers": 2,
+          "offers": 1,
           "matches": 1,
-          "errors": 1
+          "errors": 2
         },
         "agoda": {
           "searches": 3,
@@ -259,73 +386,73 @@
         },
         "bluepillow": {
           "searches": 3,
-          "offers": 28,
+          "offers": 27,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Barceló La Nucía Palms - Adults Recommended | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Booking.com Barceló La Nucía Hills 313 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Expedia.com Barceló La Nucía Palms - Adults Recommended 277 US$ · 4,3 (1,1 mil) Hotel de 5 estrellas · Spa | Barceló La Nucía Hills $273 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas | Barceló La Nucía Palms - Adults Recommended $246 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Barceló La Nucía Hills | Hotel La Estación | Aparthotel BCL Levante Beach | Barceló La Nucía Hills. Precios: Patrocinado· Expedia.com Barceló La Nucía Hills 286 US$ · 4,6 (1,0 mil) Hotel de 5 estrellas · Jacuzzi | Patrocinado· Booking.com Hotel La Estación 183 US$ · 3,9 (2,6 mil) Hotel de 4 estrellas · Piscina | Barceló La Nucía Hills $285 · 4,6 (1,0 mil) Hotel de 5 estrellas · Desayuno ($) | Barceló La Nucía Palms - Adults Recommended $247 · 4,3 (1,1 mil) Hotel de 5 estrellas · Desayuno ($) GRAN PRECIO para un hotel de 5 estrellas. Detalle: locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n."
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-31T15:06:31.359Z",
-      "lastSuccessAt": "2026-07-31T15:10:13.495621Z",
+      "lastScanAt": "2026-07-31T16:23:50.199Z",
+      "lastSuccessAt": "2026-07-31T16:26:41.924529Z",
       "searches": 20,
-      "offers": 220,
-      "matches": 2,
+      "offers": 248,
+      "matches": 6,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 100,
-          "matches": 2,
+          "offers": 95,
+          "matches": 4,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
+          "offers": 2,
           "matches": 0,
-          "errors": 3
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 25,
+          "offers": 34,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 40,
-          "matches": 0,
+          "offers": 47,
+          "matches": 1,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 54,
-          "matches": 0,
+          "offers": 70,
+          "matches": 1,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-01-19 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
       "flexibleCoverage": {
-        "sweepStartDate": "2026-07-30",
+        "sweepStartDate": "2026-07-31",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 20,
+        "startWindowIndex": 0,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 0,
-        "remainingWindowsInSweep": 0,
-        "completedSweep": true
+        "nextWindowIndex": 4,
+        "remainingWindowsInSweep": 20,
+        "completedSweep": false
       }
     },
     "cd280cbf-7c44-4142-84c7-7affe30c1078": {
       "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
       "monitorName": "Alicante",
-      "lastScanAt": "2026-07-31T15:06:31.359Z",
-      "lastSuccessAt": "2026-07-31T15:11:49.128Z",
+      "lastScanAt": "2026-07-31T16:23:50.199Z",
+      "lastSuccessAt": "2026-07-31T16:28:55.920Z",
       "searches": 20,
-      "offers": 158,
+      "offers": 157,
       "matches": 1,
       "nearbyLocations": [
         "Mutxamel",
@@ -349,7 +476,7 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 16,
+          "offers": 15,
           "matches": 0,
           "errors": 1
         },
@@ -367,80 +494,274 @@
         }
       },
       "error": "[trip] No destinations matched name='Elx / Elche', country='ES'"
+    },
+    "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
+      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+      "monitorName": "Beni",
+      "lastScanAt": "2026-07-31T16:23:50.199Z",
+      "lastSuccessAt": "2026-07-31T16:28:58.312948Z",
+      "searches": 5,
+      "offers": 64,
+      "matches": 0,
+      "nearbyLocations": [],
+      "sources": {
+        "booking": {
+          "searches": 1,
+          "offers": 24,
+          "matches": 0,
+          "errors": 0
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 0,
+          "matches": 0,
+          "errors": 1
+        },
+        "agoda": {
+          "searches": 1,
+          "offers": 13,
+          "matches": 0,
+          "errors": 0
+        },
+        "trip": {
+          "searches": 1,
+          "offers": 11,
+          "matches": 0,
+          "errors": 0
+        },
+        "bluepillow": {
+          "searches": 1,
+          "offers": 16,
+          "matches": 0,
+          "errors": 0
+        }
+      },
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
     }
   },
   "alerts": [
     {
       "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 35.2,
+      "monitorId": "madrid-agosto-4-noches",
+      "monitorName": "Benidorm",
+      "previousPrice": 312.96,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2027-01-04|2027-01-05",
-        "source": "booking",
-        "hotelName": "Rooms Sincelejo",
-        "address": "Hortaleza, Madrid",
-        "checkIn": "2027-01-04",
-        "checkOut": "2027-01-05",
-        "nights": 1,
-        "totalPrice": 34.1,
-        "nightlyPrice": 34.1,
-        "rateSubtotal": 30.91,
+        "id": "google_hotels:fce7a04604378b02|2026-08-05|2026-08-09",
+        "source": "google_hotels",
+        "provider": "Bluepillow.com via Google Hotels",
+        "hotelName": "Vistamar Hotel Luxury Wellness by DLV",
+        "address": "Finestrat",
+        "checkIn": "2026-08-05",
+        "checkOut": "2026-08-09",
+        "nights": 4,
+        "totalPrice": 312.08,
+        "nightlyPrice": 78.02,
+        "displayedNightlyPrice": 0,
+        "rateSubtotal": 312.08,
+        "searchResultPrice": 312.08,
         "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "1258125510_398363677_2_0_0"
-        ],
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "4 noches con impuestos y tasas incluidos",
         "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 8,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-04&checkout=2027-01-05&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=4db06a604c6c02af&srepoch=1785510466&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3091&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 34.1,
-        "bookingTableTotal": 34.1,
-        "verificationRows": [
-          {
-            "blockId": "1258125510_398363677_2_0_0",
-            "priceText": "€ 31",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
+        "priceBasis": "google_hotels_provider_all_inclusive_v5",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T15:08:07.209Z"
+        "priceConfirmedAt": "2026-07-31T16:24:44.711Z",
+        "stars": 3,
+        "guestRating": 8.8,
+        "reviewCount": 400,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "spa"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Finestrat",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwjwgIj9qf2VAxUAAAAAHQAAAAAQrgE",
+        "matches": true,
+        "candidateMatches": true
       },
-      "createdAt": "2026-07-31T15:08:07.241Z"
+      "createdAt": "2026-07-31T16:24:44.711Z"
     },
     {
-      "type": "price_drop",
+      "type": "new_match",
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "previousPrice": 35.2,
+      "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2027-01-18|2027-01-19",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-08|2026-08-09",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2027-01-18",
-        "checkOut": "2027-01-19",
+        "checkIn": "2026-08-08",
+        "checkOut": "2026-08-09",
         "nights": 1,
-        "totalPrice": 34.1,
-        "nightlyPrice": 34.1,
-        "rateSubtotal": 30.91,
+        "totalPrice": 36.3,
+        "nightlyPrice": 36.3,
+        "rateSubtotal": 32.73,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125506_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Económica - 2 camas",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-08&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=95ff737abf7200a6&srepoch=1785515128&all_sr_blocks=1258125506_398363677_2_0_0&highlighted_blocks=1258125506_398363677_2_0_0&matching_block_id=1258125506_398363677_2_0_0&sr_pri_blocks=1258125506_398363677_2_0_0__3273&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 36.3,
+        "bookingTableTotal": 36.3,
+        "verificationRows": [
+          {
+            "blockId": "1258125506_398363677_2_0_0",
+            "priceText": "€ 33 por noche\n€ 33\nPrecio € 33\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T16:25:48.173Z"
+      },
+      "createdAt": "2026-07-31T16:25:50.345Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-08|2026-08-09",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-08-08",
+        "checkOut": "2026-08-09",
+        "nights": 1,
+        "totalPrice": 38.5,
+        "nightlyPrice": 38.5,
+        "rateSubtotal": 34.5,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.3,
+        "reviewCount": 2177,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-08&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=95ff737abf7200a6&srepoch=1785515128&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3450&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 38.5,
+        "bookingTableTotal": 38.5,
+        "verificationRows": [
+          {
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 35 por noche\n€ 35\nPrecio € 35\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T16:25:50.313Z"
+      },
+      "createdAt": "2026-07-31T16:25:50.345Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_67a4ca51064d51dcdc949dcc|2026-08-08|2026-08-09",
+        "source": "bluepillow",
+        "provider": "Expedia via Bluepillow",
+        "hotelName": "Motion Chueca - Hostel",
+        "address": "Madrid",
+        "checkIn": "2026-08-08",
+        "checkOut": "2026-08-09",
+        "nights": 1,
+        "totalPrice": 36.32,
+        "nightlyPrice": 36.32,
+        "displayedNightlyPrice": 36.32,
+        "rateSubtotal": 36.32,
+        "searchResultPrice": 36.32,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 3.3,
+        "taxesText": "Total con 3.30 EUR de impuestos y tasas incluidos",
+        "stayText": "1 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T16:25:29.387Z",
+        "stars": 2,
+        "guestRating": 6,
+        "reviewCount": 415,
+        "distanceKm": 0.5829066595070503,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hostel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1785515125%2526endDate%253D2026-08-09%2526adults%253D2%2526locale%253Den_US%2526chid%253D59304003-8926-4921-9213-bc5206865c97%2526eapid%253D310064%2526startDate%253D2026-08-08%2526mpd%253DEUR%2526mpn%253D202241877%2526currency%253DEUR%2526rateplanid%253D211467875%2526mpm%253D24%2526selected%253D20376619%2526mpb%253D3.30%2526mpq%253D33.61%2526mpa%253D33.02&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=67a4ca51064d51dcdc949dcc&begin=2026-08-08&end=2026-08-09",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/21000000/20380000/20376700/20376619/26c27017.jpg",
+        "bluepillowPropertyId": "prop_67a4ca51064d51dcdc949dcc",
+        "bluepillowOta": "Expedia",
+        "matches": true,
+        "candidateMatches": true
+      },
+      "createdAt": "2026-07-31T16:25:26.348643Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-17|2026-08-18",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-08-17",
+        "checkOut": "2026-08-18",
+        "nights": 1,
+        "totalPrice": 29.7,
+        "nightlyPrice": 29.7,
+        "rateSubtotal": 27.27,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
@@ -462,23 +783,127 @@
         "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-18&checkout=2027-01-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=1d2e6a79229c00de&srepoch=1785510516&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3091&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-17&checkout=2026-08-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=fa7c738dcddd0289&srepoch=1785515165&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2727&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 29.7,
+        "bookingTableTotal": 29.7,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 27 por noche\n€ 27\nPrecio € 27\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T16:26:29.317Z"
+      },
+      "createdAt": "2026-07-31T16:26:34.030Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-23|2026-08-24",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-08-23",
+        "checkOut": "2026-08-24",
+        "nights": 1,
+        "totalPrice": 34.1,
+        "nightlyPrice": 34.1,
+        "rateSubtotal": 31.36,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.3,
+        "reviewCount": 2177,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-23&checkout=2026-08-24&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=fa7c738dcddd0289&srepoch=1785515165&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3136&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "searchResultPrice": 34.1,
         "bookingTableTotal": 34.1,
         "verificationRows": [
           {
-            "blockId": "1258125510_398363677_2_0_0",
-            "priceText": "€ 31",
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 31 por noche\n€ 31\nPrecio € 31\n1 noche\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T15:08:57.988Z"
+        "priceConfirmedAt": "2026-07-31T16:26:31.696Z"
       },
-      "createdAt": "2026-07-31T15:08:58.015Z"
+      "createdAt": "2026-07-31T16:26:34.030Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "trip:prop_648086681f174c2170a26089|2026-08-23|2026-08-24",
+        "source": "trip",
+        "provider": "Trip.com via Bluepillow",
+        "hotelName": "Hostal Numancia",
+        "address": "Madrid",
+        "checkIn": "2026-08-23",
+        "checkOut": "2026-08-24",
+        "nights": 1,
+        "totalPrice": 36.03,
+        "nightlyPrice": 36.03,
+        "displayedNightlyPrice": 36.03,
+        "rateSubtotal": 36.03,
+        "searchResultPrice": 36.03,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 0,
+        "taxesText": "Total con impuestos y tasas incluidos por Trip.com",
+        "stayText": "1 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "trip_inclusive_total",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T16:26:07.178Z",
+        "stars": 1,
+        "guestRating": 8,
+        "reviewCount": 864,
+        "distanceKm": 0.4593742097294949,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D749768%26city%3D357%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-08-23%26checkout%3D2026-08-24%26shoppingid%3D857961f58cfc11f199d5be2fd2263fb5%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1541516540%26swid%3D0%26pay%3DPP%26fgt%3D1%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wD8AAP_ClwKAhgCEgQIARAAGlAI_NmG3wUYADAAOPsRmAHI4S2oAQC4AQLAAQDRAQAAAAAAYEBA4QGkcD0K1wNCQOgBnbLbjQGIAkKJBAAAAAAAAAAAoAQAoQXD9Shcj8IHQBogODU3OTYxZjU4Y2ZjMTFmMTk5ZDViZTJmZDIyNjNmYjUgASibmbPTBkgBUgZjMTYwYWVaHAoDRVVSEc4ZUdobHB9AGgNFVVIhzhlR2hscH0BiBWVuX1VTaOcVcAF4AIoBB0gBeADIAQGqAQDyASI4NTc5NjFmNThjZmMxMWYxOTlkNWJlMmZkMjI2M2ZiNV8ymgIJSGlnaFZhbHVlAAAA__8BAAD__7C84hf8AAAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=648086681f174c2170a26089&begin=2026-08-23&end=2026-08-24",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/ak-d.tripcdn.com/images/0224q120009zrf1jo04DB_R_960_660_R5_D.jpg",
+        "bluepillowPropertyId": "prop_648086681f174c2170a26089",
+        "bluepillowOta": "TripCom",
+        "matches": true,
+        "candidateMatches": true
+      },
+      "createdAt": "2026-07-31T16:26:04.117735Z"
     },
     {
       "type": "new_match",
@@ -486,57 +911,59 @@
       "monitorName": "Alicante",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/hostal-meseguer.es.html|2026-08-05|2026-08-09",
+        "id": "/hotel/es/antares-62-apartamentos.es.html|2026-08-05|2026-08-09",
         "source": "booking",
-        "hotelName": "Hostal Meseguer",
-        "address": "El Altet",
+        "hotelName": "Antares 62 Apartamentos",
+        "address": "Alicante",
         "checkIn": "2026-08-05",
         "checkOut": "2026-08-09",
         "nights": 4,
-        "totalPrice": 276.1,
-        "nightlyPrice": 69.03,
-        "rateSubtotal": 251.3,
+        "totalPrice": 112.2,
+        "nightlyPrice": 28.05,
+        "rateSubtotal": 102.27,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "4 noches, 2 adultos",
         "bookingBlockIds": [
-          "23520402_88495360_2_0_0"
+          "1505186101_422276390_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 2,
-        "guestRating": 7.8,
-        "reviewCount": 2585,
-        "distanceKm": 9.58,
-        "freeCancellation": false,
+        "stars": 0,
+        "guestRating": 0,
+        "reviewCount": 0,
+        "distanceKm": 2.58,
+        "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": false,
-        "propertyType": "hostel",
-        "amenities": [],
+        "propertyType": "apartment",
+        "amenities": [
+          "air_conditioning"
+        ],
         "mealPlan": "any",
-        "roomName": "Habitación Doble - 2 camas",
+        "roomName": "Antares 62 Apartamentos",
         "sharedRoom": false,
         "searchArea": "Elx / Elche",
-        "url": "https://www.booking.com/hotel/es/hostal-meseguer.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=6f646ac7df310062&srepoch=1785510673&all_sr_blocks=23520402_88495360_2_0_0&highlighted_blocks=23520402_88495360_2_0_0&matching_block_id=23520402_88495360_2_0_0&sr_pri_blocks=23520402_88495360_2_0_0__25130&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/antares-62-apartamentos.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=28cf73cfe14000bf&srepoch=1785515295&all_sr_blocks=1505186101_422276390_2_0_0&highlighted_blocks=1505186101_422276390_2_0_0&matching_block_id=1505186101_422276390_2_0_0&sr_pri_blocks=1505186101_422276390_2_0_0__10227&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "latitude": 38.27190625439879,
-        "longitude": -0.5392996966838837,
+        "latitude": 38.347743,
+        "longitude": -0.5109211,
         "distanceVerified": true,
-        "searchResultPrice": 276.1,
-        "bookingTableTotal": 276.1,
+        "searchResultPrice": 112.2,
+        "bookingTableTotal": 112.2,
         "verificationRows": [
           {
-            "blockId": "23520402_88495360_2_0_0",
-            "priceText": "€ 251",
+            "blockId": "1505186101_422276390_2_0_0",
+            "priceText": "€ 26 por noche\n€ 205 € 102 \nPrecio original € 205 Precio actual € 102\n4 noches\n-50%\nOferta Escapada\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T15:11:44.262Z"
+        "priceConfirmedAt": "2026-07-31T16:28:51.722Z"
       },
-      "createdAt": "2026-07-31T15:11:49.128Z"
+      "createdAt": "2026-07-31T16:28:55.920Z"
     }
   ]
 }
