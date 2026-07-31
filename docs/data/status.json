@@ -1,26 +1,26 @@
 {
   "version": 1,
-  "updatedAt": "2026-07-31T20:05:26.869Z",
+  "updatedAt": "2026-07-31T21:20:33.353Z",
   "summary": {
-    "generatedAt": "2026-07-31T20:05:26.869Z",
+    "generatedAt": "2026-07-31T21:20:33.353Z",
     "monitors": 4,
     "searches": 60,
-    "offers": 577,
+    "offers": 578,
     "matches": 7,
-    "newMatches": 5,
-    "priceDrops": 0,
+    "newMatches": 1,
+    "priceDrops": 3,
     "sources": {
       "booking": {
         "searches": 12,
-        "offers": 291,
+        "offers": 289,
         "matches": 5,
         "errors": 0
       },
       "google_hotels": {
         "searches": 12,
-        "offers": 6,
+        "offers": 7,
         "matches": 2,
-        "errors": 6
+        "errors": 5
       },
       "agoda": {
         "searches": 12,
@@ -30,13 +30,13 @@
       },
       "trip": {
         "searches": 12,
-        "offers": 85,
+        "offers": 86,
         "matches": 0,
         "errors": 1
       },
       "bluepillow": {
         "searches": 12,
-        "offers": 120,
+        "offers": 121,
         "matches": 0,
         "errors": 1
       }
@@ -63,8 +63,8 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Mutxamel",
-        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
-        "message": "Booking cambio el total de 288.20 a 265.10 EUR durante la comprobacion."
+        "hotelName": "Сozy House",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -75,8 +75,8 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Mutxamel",
-        "hotelName": "Natalia 2",
-        "message": "Booking cambio el total de 289.30 a 266.20 EUR durante la comprobacion."
+        "hotelName": "Residencia Mediterraneo",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -87,8 +87,20 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "Mutxamel",
-        "hotelName": "Habitación en Alicante 9 plus Ultra",
-        "message": "Booking cambio el total de 331.10 a 304.70 EUR durante la comprobacion."
+        "hotelName": "Gaya",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Mutxamel",
+        "hotelName": "EMMI Guesthouse",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -99,6 +111,18 @@
           "checkOut": "2026-08-09"
         },
         "searchArea": "el Campello",
+        "hotelName": "Сozy House",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
+        "monitorName": "Alicante",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-05",
+          "checkOut": "2026-08-09"
+        },
+        "searchArea": "Elx / Elche",
         "hotelName": "Сozy House",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       }
@@ -121,45 +145,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-06",
-          "checkOut": "2026-11-07",
+          "checkIn": "2026-12-06",
+          "checkOut": "2026-12-07",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-30",
-          "flexibleCheckInEnd": "2026-11-13"
+          "flexibleCheckInStart": "2026-11-29",
+          "flexibleCheckInEnd": "2026-12-13"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-06\"][aria-hidden=\"false\"]').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-06 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-06",
-          "checkOut": "2026-11-08",
+          "checkIn": "2026-12-06",
+          "checkOut": "2026-12-08",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-30",
-          "flexibleCheckInEnd": "2026-11-13"
+          "flexibleCheckInStart": "2026-11-29",
+          "flexibleCheckInEnd": "2026-12-13"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-08 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-06\"][aria-hidden=\"false\"]').first() to be visible\n"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-21",
-          "checkOut": "2026-11-22",
+          "checkIn": "2026-12-21",
+          "checkOut": "2026-12-22",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-14",
-          "flexibleCheckInEnd": "2026-11-28"
+          "flexibleCheckInStart": "2026-12-14",
+          "flexibleCheckInEnd": "2026-12-28"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-21 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
       },
       {
         "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
@@ -204,17 +228,6 @@
         },
         "searchArea": "Elx / Elche",
         "message": "No destinations matched name='Elx / Elche', country='ES'"
-      },
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Hotel Andalucía103 € Booking.com4,2/5 (641) · Hotel de 2 estrellasSe admiten mascotas · Adecuado para niñosIr a Booking.com | Hotel Celymar106 € Expedia.com4,3/5 (368) · Hotel de 1 estrellaAdecuado para niños · Wi‑Fi gratisIr a Expedia.com | Sol Pelícanos Ocas185 € Hotels.com4,0/5 (6,8 mil) · Hotel de 3 estrellasAcceso a la playa · PiscinaIr a Hotels.com | Hotel Melina145 € Booking.com4,0/5 (1,8 mil) · Hotel de 3 estrellasJacuzzi · PiscinaIr a Booking.com. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -222,10 +235,10 @@
     "madrid-agosto-4-noches": {
       "monitorId": "madrid-agosto-4-noches",
       "monitorName": "Benidorm",
-      "lastScanAt": "2026-07-31T20:05:26.869Z",
-      "lastSuccessAt": "2026-07-31T20:05:55.920787Z",
+      "lastScanAt": "2026-07-31T21:20:33.353Z",
+      "lastSuccessAt": "2026-07-31T21:21:07.336631Z",
       "searches": 15,
-      "offers": 142,
+      "offers": 143,
       "matches": 1,
       "nearbyLocations": [
         "La Nucia",
@@ -234,7 +247,7 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 72,
+          "offers": 71,
           "matches": 0,
           "errors": 0
         },
@@ -246,7 +259,7 @@
         },
         "agoda": {
           "searches": 3,
-          "offers": 20,
+          "offers": 21,
           "matches": 0,
           "errors": 0
         },
@@ -258,7 +271,7 @@
         },
         "bluepillow": {
           "searches": 3,
-          "offers": 28,
+          "offers": 29,
           "matches": 0,
           "errors": 0
         }
@@ -268,17 +281,17 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-07-31T20:05:26.869Z",
-      "lastSuccessAt": "2026-07-31T20:07:05.499602Z",
+      "lastScanAt": "2026-07-31T21:20:33.353Z",
+      "lastSuccessAt": "2026-07-31T21:22:49.716618Z",
       "searches": 20,
-      "offers": 214,
-      "matches": 0,
+      "offers": 213,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 97,
-          "matches": 0,
+          "offers": 96,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
@@ -289,43 +302,43 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 26,
+          "offers": 24,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 36,
+          "offers": 37,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 54,
+          "offers": 55,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-21 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-31",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 12,
+        "startWindowIndex": 16,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 16,
-        "remainingWindowsInSweep": 8,
+        "nextWindowIndex": 20,
+        "remainingWindowsInSweep": 4,
         "completedSweep": false
       }
     },
     "cd280cbf-7c44-4142-84c7-7affe30c1078": {
       "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
       "monitorName": "Alicante",
-      "lastScanAt": "2026-07-31T20:05:26.869Z",
-      "lastSuccessAt": "2026-07-31T20:09:34.097Z",
+      "lastScanAt": "2026-07-31T21:20:33.353Z",
+      "lastSuccessAt": "2026-07-31T21:25:08.243Z",
       "searches": 20,
-      "offers": 159,
-      "matches": 6,
+      "offers": 161,
+      "matches": 4,
       "nearbyLocations": [
         "Mutxamel",
         "el Campello",
@@ -337,7 +350,7 @@
         "booking": {
           "searches": 4,
           "offers": 98,
-          "matches": 5,
+          "matches": 3,
           "errors": 0
         },
         "google_hotels": {
@@ -348,7 +361,7 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 17,
+          "offers": 19,
           "matches": 0,
           "errors": 1
         },
@@ -370,10 +383,10 @@
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-07-31T20:05:26.869Z",
-      "lastSuccessAt": "2026-07-31T20:09:36.543731Z",
+      "lastScanAt": "2026-07-31T21:20:33.353Z",
+      "lastSuccessAt": "2026-07-31T21:25:10.618058Z",
       "searches": 5,
-      "offers": 62,
+      "offers": 61,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
@@ -385,13 +398,13 @@
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 0,
+          "offers": 1,
           "matches": 0,
-          "errors": 1
+          "errors": 0
         },
         "agoda": {
           "searches": 1,
-          "offers": 12,
+          "offers": 11,
           "matches": 0,
           "errors": 0
         },
@@ -403,125 +416,177 @@
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 15,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Hotel Andalucía103 € Booking.com4,2/5 (641) · Hotel de 2 estrellasSe admiten mascotas · Adecuado para niñosIr a Booking.com | Hotel Celymar106 € Expedia.com4,3/5 (368) · Hotel de 1 estrellaAdecuado para niños · Wi‑Fi gratisIr a Expedia.com | Sol Pelícanos Ocas185 € Hotels.com4,0/5 (6,8 mil) · Hotel de 3 estrellasAcceso a la playa · PiscinaIr a Hotels.com | Hotel Melina145 € Booking.com4,0/5 (1,8 mil) · Hotel de 3 estrellasJacuzzi · PiscinaIr a Booking.com. Detalle: Google no expuso un total final con impuestos en EUR.."
+      "error": ""
     }
   },
   "alerts": [
     {
-      "type": "new_match",
-      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-      "monitorName": "Alicante",
-      "previousPrice": 0,
+      "type": "price_drop",
+      "monitorId": "madrid-agosto-4-noches",
+      "monitorName": "Benidorm",
+      "previousPrice": 311.26,
       "offer": {
-        "id": "google_hotels:e151536bf4fc01d8|2026-08-05|2026-08-09",
+        "id": "google_hotels:fce7a04604378b02|2026-08-05|2026-08-09",
         "source": "google_hotels",
-        "provider": "Booking.com via Google Hotels",
-        "hotelName": "Residencia Mediterraneo",
-        "address": "Mutxamel",
+        "provider": "Bluepillow.com via Google Hotels",
+        "hotelName": "Vistamar Hotel Luxury Wellness by DLV",
+        "address": "Finestrat",
         "checkIn": "2026-08-05",
         "checkOut": "2026-08-09",
         "nights": 4,
-        "totalPrice": 338,
-        "nightlyPrice": 84.5,
+        "totalPrice": 311.05,
+        "nightlyPrice": 77.76,
         "displayedNightlyPrice": 0,
-        "rateSubtotal": 338,
-        "searchResultPrice": 338,
+        "rateSubtotal": 311.05,
+        "searchResultPrice": 311.05,
         "additionalCharges": 0,
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
         "stayText": "4 noches con impuestos y tasas incluidos",
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive_v5",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T20:08:00.069Z",
+        "priceConfirmedAt": "2026-07-31T21:21:01.647Z",
         "stars": 3,
-        "guestRating": 9,
-        "reviewCount": 95,
+        "guestRating": 8.8,
+        "reviewCount": 401,
         "distanceKm": null,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [],
+        "amenities": [
+          "spa"
+        ],
         "mealPlan": "any",
         "roomName": "",
         "sharedRoom": false,
-        "searchArea": "Mutxamel",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20playa%20mutxamel%20alicante&ts=CAESCgoCCAMKAggDEAAaOwodEhkKDS9nLzExYmM2aGJ0cDM6CE11dHhhbWVsGgASGhIUCgcI6g8QCBgFEgcI6g8QCBgJGAQyAggBKgkKBToDRVVSGgA&qs=CAEgASgAMihDaG9JaEpYdmhPRHZ6WmZUQVJvTkwyY3ZNVEZ6ZWpVNVh6TnhOaEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAwQssMEahgKEwjIwbHx2_2VAxUAAAAAHQAAAAAQsQE",
+        "searchArea": "Finestrat",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20el%20finestrat&ts=CAESCgoCCAMKAggDEAAaOQobEhcKCi9tLzAzaDFnNGs6CUZpbmVzdHJhdBoAEhoSFAoHCOoPEAgYBRIHCOoPEAgYCRgEMgIIASoJCgU6A0VVUhoA&qs=CAEgASgAMihDaG9JOThpZ3lfcVQ5cGJ5QVJvTkwyY3ZNVEZ5WW1SemRHUXllQkFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CB8QssMEahgKEwjAmcqa7P2VAxUAAAAAHQAAAAAQpgE",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-07-31T20:08:00.069Z"
+      "createdAt": "2026-07-31T21:21:01.647Z"
     },
     {
       "type": "new_match",
-      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-      "monitorName": "Alicante",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/habitacion-con-bano-compartido-en-alicante-2.es.html|2026-08-05|2026-08-09",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-12-01|2026-12-02",
         "source": "booking",
-        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
-        "address": "Alicante",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 261.8,
-        "nightlyPrice": 65.45,
-        "rateSubtotal": 238.26,
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-12-01",
+        "checkOut": "2026-12-02",
+        "nights": 1,
+        "totalPrice": 31.9,
+        "nightlyPrice": 31.9,
+        "rateSubtotal": 29.09,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "4 noches, 2 adultos",
+        "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1526045501_424220581_2_0_0"
+          "1258125510_398363677_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
         "stars": 0,
-        "guestRating": 6.7,
-        "reviewCount": 21,
-        "distanceKm": 1.05,
-        "freeCancellation": false,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
+        "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación con baño compartido en Alicante 2 Agost",
+        "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
-        "searchArea": "Elx / Elche",
-        "url": "https://www.booking.com/hotel/es/habitacion-con-bano-compartido-en-alicante-2.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=price&srpvid=7b4f8da72ed30185&srepoch=1785528529&all_sr_blocks=1526045501_424220581_2_0_0&highlighted_blocks=1526045501_424220581_2_0_0&matching_block_id=1526045501_424220581_2_0_0&sr_pri_blocks=1526045501_424220581_2_0_0__23826&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-12-01&checkout=2026-12-02&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=c46496244a770472&srepoch=1785532875&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2909&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "latitude": 38.3545784,
-        "longitude": -0.4799487,
-        "distanceVerified": true,
-        "searchResultPrice": 261.8,
-        "bookingTableTotal": 261.8,
+        "searchResultPrice": 31.9,
+        "bookingTableTotal": 31.9,
         "verificationRows": [
           {
-            "blockId": "1526045501_424220581_2_0_0",
-            "priceText": "€ 60 por noche\n€ 262 € 238 \nPrecio original € 262 Precio actual € 238\n4 noches\n-9%\nNo incluido: 10% IVA",
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 29",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T20:09:28.177Z"
+        "priceConfirmedAt": "2026-07-31T21:21:32.527Z"
       },
-      "createdAt": "2026-07-31T20:09:34.097Z"
+      "createdAt": "2026-07-31T21:21:32.563Z"
     },
     {
-      "type": "new_match",
+      "type": "price_drop",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 33,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-12-14|2026-12-15",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-12-14",
+        "checkOut": "2026-12-15",
+        "nights": 1,
+        "totalPrice": 31.9,
+        "nightlyPrice": 31.9,
+        "rateSubtotal": 29.09,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125510_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-12-14&checkout=2026-12-15&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=091796418cf8007c&srepoch=1785532931&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2909&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 31.9,
+        "bookingTableTotal": 31.9,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 29",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-07-31T21:22:29.418Z"
+      },
+      "createdAt": "2026-07-31T21:22:29.454Z"
+    },
+    {
+      "type": "price_drop",
       "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
       "monitorName": "Alicante",
-      "previousPrice": 0,
+      "previousPrice": 278.3,
       "offer": {
         "id": "/hotel/es/natalia-alicante1.es.html|2026-08-05|2026-08-09",
         "source": "booking",
@@ -530,14 +595,14 @@
         "checkIn": "2026-08-05",
         "checkOut": "2026-08-09",
         "nights": 4,
-        "totalPrice": 278.3,
-        "nightlyPrice": 69.58,
-        "rateSubtotal": 253.14,
+        "totalPrice": 266.2,
+        "nightlyPrice": 66.55,
+        "rateSubtotal": 241.71,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "4 noches, 2 adultos",
         "bookingBlockIds": [
-          "1679759801_439743399_2_0_0"
+          "1679759801_439744253_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
@@ -545,155 +610,37 @@
         "guestRating": 6,
         "reviewCount": 7,
         "distanceKm": 0.5,
-        "freeCancellation": false,
+        "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Habitación Doble con baño compartido",
         "sharedRoom": false,
-        "searchArea": "Elx / Elche",
-        "url": "https://www.booking.com/hotel/es/natalia-alicante1.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=price&srpvid=7b4f8da72ed30185&srepoch=1785528529&all_sr_blocks=1679759801_439743399_2_0_0&highlighted_blocks=1679759801_439743399_2_0_0&matching_block_id=1679759801_439743399_2_0_0&sr_pri_blocks=1679759801_439743399_2_0_0__25314&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Mutxamel",
+        "url": "https://www.booking.com/hotel/es/natalia-alicante1.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=d3499669f6390131&srepoch=1785533012&all_sr_blocks=1679759801_439744253_2_0_0&highlighted_blocks=1679759801_439744253_2_0_0&matching_block_id=1679759801_439744253_2_0_0&sr_pri_blocks=1679759801_439744253_2_0_0__24171&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.3468612,
         "longitude": -0.4867552,
         "distanceVerified": true,
-        "searchResultPrice": 278.3,
-        "bookingTableTotal": 278.3,
+        "searchResultPrice": 266.2,
+        "bookingTableTotal": 266.2,
         "verificationRows": [
           {
-            "blockId": "1679759801_439743399_2_0_0",
-            "priceText": "€ 63 por noche\n€ 278 € 253 \nPrecio original € 278 Precio actual € 253\n4 noches\n-9%\nNo incluido: 10% IVA",
+            "blockId": "1679759801_439744253_2_0_0",
+            "priceText": "€ 242",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T20:09:30.082Z"
+        "priceConfirmedAt": "2026-07-31T21:24:06.370Z"
       },
-      "createdAt": "2026-07-31T20:09:34.097Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-      "monitorName": "Alicante",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/habitacion-en-alicante-9-plus-ultra.es.html|2026-08-05|2026-08-09",
-        "source": "booking",
-        "hotelName": "Habitación en Alicante 9 plus Ultra",
-        "address": "Alicante",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 301.4,
-        "nightlyPrice": 75.35,
-        "rateSubtotal": 273.99,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "4 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1566536401_427766511_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 7,
-        "reviewCount": 19,
-        "distanceKm": 1.57,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "Habitación en Alicante 9 plus Ultra",
-        "sharedRoom": false,
-        "searchArea": "Elx / Elche",
-        "url": "https://www.booking.com/hotel/es/habitacion-en-alicante-9-plus-ultra.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=price&srpvid=7b4f8da72ed30185&srepoch=1785528529&all_sr_blocks=1566536401_427766511_2_0_0&highlighted_blocks=1566536401_427766511_2_0_0&matching_block_id=1566536401_427766511_2_0_0&sr_pri_blocks=1566536401_427766511_2_0_0__27399&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.3592509,
-        "longitude": -0.4813625,
-        "distanceVerified": true,
-        "searchResultPrice": 301.4,
-        "bookingTableTotal": 301.4,
-        "verificationRows": [
-          {
-            "blockId": "1566536401_427766511_2_0_0",
-            "priceText": "€ 68 por noche\n€ 301 € 274 \nPrecio original € 301 Precio actual € 274\n4 noches\n-9%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T20:09:31.934Z"
-      },
-      "createdAt": "2026-07-31T20:09:34.097Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-      "monitorName": "Alicante",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/habitacion-en-alicante-5.es.html|2026-08-05|2026-08-09",
-        "source": "booking",
-        "hotelName": "Habitación en Alicante 5 Agost",
-        "address": "Alicante",
-        "checkIn": "2026-08-05",
-        "checkOut": "2026-08-09",
-        "nights": 4,
-        "totalPrice": 311.3,
-        "nightlyPrice": 77.83,
-        "rateSubtotal": 282.93,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "4 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1546265601_425902207_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 8.4,
-        "reviewCount": 20,
-        "distanceKm": 1.05,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "Habitación en Alicante 5 Agost",
-        "sharedRoom": false,
-        "searchArea": "Elx / Elche",
-        "url": "https://www.booking.com/hotel/es/habitacion-en-alicante-5.es.html?ucfs=1&arphpl=1&checkin=2026-08-05&checkout=2026-08-09&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=12&hapos=12&sr_order=price&srpvid=7b4f8da72ed30185&srepoch=1785528529&all_sr_blocks=1546265601_425902207_2_0_0&highlighted_blocks=1546265601_425902207_2_0_0&matching_block_id=1546265601_425902207_2_0_0&sr_pri_blocks=1546265601_425902207_2_0_0__28293&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.3545784,
-        "longitude": -0.4799487,
-        "distanceVerified": true,
-        "searchResultPrice": 311.3,
-        "bookingTableTotal": 311.3,
-        "verificationRows": [
-          {
-            "blockId": "1546265601_425902207_2_0_0",
-            "priceText": "€ 71 por noche\n€ 311 € 283 \nPrecio original € 311 Precio actual € 283\n4 noches\n-9%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-07-31T20:09:34.075Z"
-      },
-      "createdAt": "2026-07-31T20:09:34.097Z"
+      "createdAt": "2026-07-31T21:24:08.558Z"
     }
   ]
 }
