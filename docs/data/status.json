@@ -1,51 +1,53 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-01T09:37:43.131Z",
+  "updatedAt": "2026-08-01T09:42:38.834Z",
   "summary": {
-    "generatedAt": "2026-08-01T09:37:43.131Z",
-    "monitors": 3,
-    "searches": 45,
-    "offers": 433,
+    "generatedAt": "2026-08-01T09:42:38.834Z",
+    "monitors": 2,
+    "searches": 25,
+    "offers": 270,
     "matches": 2,
-    "newMatches": 1,
-    "priceDrops": 1,
+    "newMatches": 0,
+    "priceDrops": 2,
     "sources": {
       "booking": {
-        "searches": 9,
-        "offers": 198,
-        "matches": 1,
-        "errors": 1
+        "searches": 5,
+        "offers": 124,
+        "matches": 2,
+        "errors": 0
       },
       "google_hotels": {
-        "searches": 9,
-        "offers": 6,
-        "matches": 1,
+        "searches": 5,
+        "offers": 2,
+        "matches": 0,
         "errors": 3
       },
       "agoda": {
-        "searches": 9,
-        "offers": 54,
+        "searches": 5,
+        "offers": 30,
         "matches": 0,
-        "errors": 2
+        "errors": 0
       },
       "trip": {
-        "searches": 9,
-        "offers": 74,
+        "searches": 5,
+        "offers": 47,
         "matches": 0,
-        "errors": 2
+        "errors": 0
       },
       "bluepillow": {
-        "searches": 9,
-        "offers": 101,
+        "searches": 5,
+        "offers": 67,
         "matches": 0,
-        "errors": 2
+        "errors": 0
       }
     },
-    "verificationErrors": [
+    "verificationErrors": [],
+    "nearbyErrors": [],
+    "errors": [
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
-        "source": "booking",
+        "source": "google_hotels",
         "dates": {
           "checkIn": "2027-01-05",
           "checkOut": "2027-01-06",
@@ -55,229 +57,33 @@
           "flexibleCheckInEnd": "2027-01-12"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Sincelejo",
-        "message": "Booking cambio el total de 33.00 a 30.80 EUR durante la comprobacion."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-05\"][aria-hidden=\"false\"]').first()\n"
       },
       {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
-        "message": "Booking cambio el total de 265.10 a 261.80 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "hotelName": "Natalia 2",
-        "message": "Booking cambio el total de 266.20 a 289.30 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "hotelName": "Сozy House",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "hotelName": "Villa Alojamiento y Congresos - Villa Universitaria",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 382.68 EUR."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alicante, Comunidad Valenciana, España",
-        "hotelName": "Villa Alojamiento y Congresos - Villa Universitaria",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 382.68 EUR."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "hotelName": "Сozy House",
-        "message": "La segunda comprobacion fallo: Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alacant / Alicante",
-        "hotelName": "Сozy House",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alacant / Alicante",
-        "hotelName": "Habitación con baño compartido en Alicante 2 Agost",
-        "message": "Booking cambio el total de 261.80 a 265.10 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Alacant / Alicante",
-        "hotelName": "Natalia 2",
-        "message": "Booking cambio el total de 278.30 a 281.60 EUR durante la comprobacion."
-      }
-    ],
-    "nearbyErrors": [],
-    "errors": [
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
+          "checkIn": "2027-01-20",
+          "checkOut": "2027-01-21",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-13",
+          "flexibleCheckInEnd": "2027-01-27"
         },
-        "searchArea": "Elx / Elche",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('option').first() to be visible\n"
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
       },
       {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "message": "No destinations matched name='Elx / Elche', country='ES'"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "message": "No destinations matched name='Elx / Elche', country='ES'"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "trip",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Elx / Elche",
-        "message": "No destinations matched name='Elx / Elche', country='ES'"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
         },
-        "searchArea": "Alacant / Alicante",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no reconocio el destino Alacant / Alicante. Sugerencias: hoteles en gran alacant alicante."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('option').first() to be visible\n"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
-        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
-        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
-      },
-      {
-        "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-        "monitorName": "Alicante",
-        "source": "trip",
-        "dates": {
-          "checkIn": "2026-08-05",
-          "checkOut": "2026-08-09"
-        },
-        "searchArea": "Sant Vicent del Raspeig / San Vicente del Raspeig",
-        "message": "No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
       }
     ]
   },
@@ -285,28 +91,28 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-01T09:37:43.131Z",
-      "lastSuccessAt": "2026-08-01T09:38:44.326716Z",
+      "lastScanAt": "2026-08-01T09:42:38.834Z",
+      "lastSuccessAt": "2026-08-01T09:45:03.896797Z",
       "searches": 20,
-      "offers": 220,
+      "offers": 221,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 100,
-          "matches": 1,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 4,
-          "matches": 1,
-          "errors": 0
+          "offers": 2,
+          "matches": 0,
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 27,
+          "offers": 30,
           "matches": 0,
           "errors": 0
         },
@@ -323,7 +129,7 @@
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-07-31",
         "totalCombinations": 360,
@@ -335,62 +141,13 @@
         "completedSweep": true
       }
     },
-    "cd280cbf-7c44-4142-84c7-7affe30c1078": {
-      "monitorId": "cd280cbf-7c44-4142-84c7-7affe30c1078",
-      "monitorName": "Alicante",
-      "lastScanAt": "2026-08-01T09:37:43.131Z",
-      "lastSuccessAt": "2026-08-01T09:40:10.193067Z",
-      "searches": 20,
-      "offers": 163,
-      "matches": 0,
-      "nearbyLocations": [
-        "Mutxamel",
-        "el Campello",
-        "Elx / Elche",
-        "Alacant / Alicante",
-        "Sant Vicent del Raspeig / San Vicente del Raspeig"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 4,
-          "offers": 74,
-          "matches": 0,
-          "errors": 1
-        },
-        "google_hotels": {
-          "searches": 4,
-          "offers": 1,
-          "matches": 0,
-          "errors": 3
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 27,
-          "matches": 0,
-          "errors": 2
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 34,
-          "matches": 0,
-          "errors": 2
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 27,
-          "matches": 0,
-          "errors": 2
-        }
-      },
-      "error": "[trip] No destinations matched name='Sant Vicent del Raspeig / San Vicente del Raspeig', country='ES'"
-    },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-01T09:37:43.131Z",
-      "lastSuccessAt": "2026-08-01T09:41:40.594300Z",
+      "lastScanAt": "2026-08-01T09:42:38.834Z",
+      "lastSuccessAt": "2026-08-01T09:45:13.648577Z",
       "searches": 5,
-      "offers": 50,
+      "offers": 49,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
@@ -402,9 +159,9 @@
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 1,
+          "offers": 0,
           "matches": 0,
-          "errors": 0
+          "errors": 1
         },
         "agoda": {
           "searches": 1,
@@ -425,54 +182,64 @@
           "errors": 0
         }
       },
-      "error": ""
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
     }
   },
   "alerts": [
     {
-      "type": "new_match",
+      "type": "price_drop",
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "previousPrice": 0,
+      "previousPrice": 34.1,
       "offer": {
-        "id": "google_hotels:8ae6707fd2692525|2027-01-05|2027-01-06",
-        "source": "google_hotels",
-        "provider": "HostelworldCancelación gratuita hasta el 2 ene, · via Google Hotels",
-        "hotelName": "The Hat Madrid",
-        "address": "Madrid, Comunidad Autónoma de Madrid, España",
+        "id": "/hotel/es/rooms-magangue.es.html|2027-01-05|2027-01-06",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
         "checkIn": "2027-01-05",
         "checkOut": "2027-01-06",
         "nights": 1,
-        "totalPrice": 39,
-        "nightlyPrice": 39,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 39,
-        "searchResultPrice": 39,
+        "totalPrice": 33,
+        "nightlyPrice": 33,
+        "rateSubtotal": 30,
         "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "1 noches con impuestos y tasas incluidos",
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125510_398363677_2_0_0"
+        ],
         "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-01T09:37:57.914Z",
+        "priceBasis": "booking_availability_table_with_country_tax",
         "stars": 0,
-        "guestRating": 8.6,
-        "reviewCount": 4743,
-        "distanceKm": null,
-        "freeCancellation": false,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
         "breakfastIncluded": false,
-        "limitedAvailability": false,
+        "limitedAvailability": true,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "",
+        "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESCgoCCAMKAggDEAAaUAoyEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkGgASGhIUCgcI6w8QARgFEgcI6w8QARgGGAEyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMihDaG9JdTVXZXJkUEwyTVRzQVJvTkwyY3ZNVEZpTmpSeE1YQjBZeEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CCIQssMEahgKEwjow_71kP-VAxUAAAAAHQAAAAAQ2QE",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-05&checkout=2027-01-06&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=39914448c24b01e0&srepoch=1785577362&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
         "matches": true,
-        "candidateMatches": true
+        "searchResultPrice": 33,
+        "bookingTableTotal": 33,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 30 por noche\n€ 30\nPrecio € 30\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-01T09:43:02.267Z"
       },
-      "createdAt": "2026-08-01T09:37:57.914Z"
+      "createdAt": "2026-08-01T09:43:02.297Z"
     },
     {
       "type": "price_drop",
@@ -511,7 +278,7 @@
         "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-18&checkout=2027-01-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=28cf43c6d5620150&srepoch=1785577102&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-18&checkout=2027-01-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=5066447d459101cb&srepoch=1785577468&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__3000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "searchResultPrice": 33,
@@ -525,9 +292,9 @@
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-01T09:38:41.629Z"
+        "priceConfirmedAt": "2026-08-01T09:44:46.096Z"
       },
-      "createdAt": "2026-08-01T09:38:41.703Z"
+      "createdAt": "2026-08-01T09:44:46.121Z"
     }
   ]
 }
