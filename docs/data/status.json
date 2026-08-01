@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-01T22:40:26.837Z",
+  "updatedAt": "2026-08-01T23:43:07.352Z",
   "summary": {
-    "generatedAt": "2026-08-01T22:40:26.837Z",
+    "generatedAt": "2026-08-01T23:43:07.352Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 288,
+    "offers": 287,
     "matches": 2,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 120,
-        "matches": 1,
+        "offers": 124,
+        "matches": 2,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 4,
-        "matches": 1,
-        "errors": 1
+        "offers": 2,
+        "matches": 0,
+        "errors": 3
       },
       "agoda": {
         "searches": 5,
-        "offers": 37,
+        "offers": 38,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 52,
+        "offers": 50,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 75,
+        "offers": 73,
         "matches": 0,
         "errors": 0
       }
@@ -44,6 +44,36 @@
     "verificationErrors": [],
     "nearbyErrors": [],
     "errors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-01-06",
+          "checkOut": "2027-01-07",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-12-30",
+          "flexibleCheckInEnd": "2027-01-13"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-06\"][aria-hidden=\"false\"]').first()\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-01-06",
+          "checkOut": "2027-01-08",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-12-30",
+          "flexibleCheckInEnd": "2027-01-13"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-06\"][aria-hidden=\"false\"]').first() to be visible\n"
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -61,34 +91,34 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-01T22:40:26.837Z",
-      "lastSuccessAt": "2026-08-01T22:41:17.114411Z",
+      "lastScanAt": "2026-08-01T23:43:07.352Z",
+      "lastSuccessAt": "2026-08-01T23:45:44.071941Z",
       "searches": 20,
-      "offers": 219,
+      "offers": 221,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 96,
-          "matches": 1,
+          "offers": 100,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 4,
-          "matches": 1,
-          "errors": 0
+          "offers": 2,
+          "matches": 0,
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 25,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 39,
+          "offers": 37,
           "matches": 0,
           "errors": 0
         },
@@ -99,25 +129,25 @@
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-06\"][aria-hidden=\"false\"]').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-01",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 16,
+        "startWindowIndex": 20,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 20,
-        "remainingWindowsInSweep": 4,
-        "completedSweep": false
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-01T22:40:26.837Z",
-      "lastSuccessAt": "2026-08-01T22:41:28.950316Z",
+      "lastScanAt": "2026-08-01T23:43:07.352Z",
+      "lastSuccessAt": "2026-08-01T23:45:57.061465Z",
       "searches": 5,
-      "offers": 69,
+      "offers": 66,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
@@ -135,7 +165,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 14,
+          "offers": 13,
           "matches": 0,
           "errors": 0
         },
@@ -147,7 +177,7 @@
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 18,
+          "offers": 16,
           "matches": 0,
           "errors": 0
         }
