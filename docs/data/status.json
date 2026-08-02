@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-02T14:04:20.088Z",
+  "updatedAt": "2026-08-02T15:16:57.510Z",
   "summary": {
-    "generatedAt": "2026-08-02T14:04:20.088Z",
+    "generatedAt": "2026-08-02T15:16:57.510Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 280,
-    "matches": 3,
-    "newMatches": 0,
+    "offers": 234,
+    "matches": 4,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 120,
-        "matches": 3,
-        "errors": 0
+        "offers": 95,
+        "matches": 4,
+        "errors": 1
       },
       "google_hotels": {
         "searches": 5,
@@ -24,19 +24,19 @@
       },
       "agoda": {
         "searches": 5,
-        "offers": 36,
+        "offers": 29,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 49,
+        "offers": 43,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 72,
+        "offers": 64,
         "matches": 0,
         "errors": 0
       }
@@ -72,17 +72,32 @@
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
-        "source": "google_hotels",
+        "source": "booking",
         "dates": {
-          "checkIn": "2026-10-09",
-          "checkOut": "2026-10-10",
+          "checkIn": "2026-11-08",
+          "checkOut": "2026-11-09",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-02",
-          "flexibleCheckInEnd": "2026-10-16"
+          "flexibleCheckInStart": "2026-11-01",
+          "flexibleCheckInEnd": "2026-11-15"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-09 en el calendario."
+        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-23",
+          "checkOut": "2026-11-24",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-11-16",
+          "flexibleCheckInEnd": "2026-11-30"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-23\"][aria-hidden=\"false\"]').first()\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -101,18 +116,18 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-02T14:04:20.088Z",
-      "lastSuccessAt": "2026-08-02T14:04:51.708653Z",
+      "lastScanAt": "2026-08-02T15:16:57.510Z",
+      "lastSuccessAt": "2026-08-02T15:19:53.385480Z",
       "searches": 20,
-      "offers": 214,
-      "matches": 0,
+      "offers": 170,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 96,
-          "matches": 0,
-          "errors": 0
+          "offers": 72,
+          "matches": 1,
+          "errors": 1
         },
         "google_hotels": {
           "searches": 4,
@@ -122,48 +137,48 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 17,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 36,
+          "offers": 30,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 56,
+          "offers": 48,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-09 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-23\"][aria-hidden=\"false\"]').first()\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-02",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 8,
+        "startWindowIndex": 12,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 12,
-        "remainingWindowsInSweep": 12,
+        "nextWindowIndex": 16,
+        "remainingWindowsInSweep": 8,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-02T14:04:20.088Z",
-      "lastSuccessAt": "2026-08-02T14:05:02.457014Z",
+      "lastScanAt": "2026-08-02T15:16:57.510Z",
+      "lastSuccessAt": "2026-08-02T15:20:04.707550Z",
       "searches": 5,
-      "offers": 66,
+      "offers": 64,
       "matches": 3,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
-          "offers": 24,
+          "offers": 23,
           "matches": 3,
           "errors": 0
         },
@@ -175,7 +190,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 13,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
@@ -195,5 +210,61 @@
       "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial120 €132 €132 €114 €125 €125 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón114 €125 €125 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón171 €188 €188 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón127 €140 €140 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-11-30|2026-12-01",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-11-30",
+        "checkOut": "2026-12-01",
+        "nights": 1,
+        "totalPrice": 30.8,
+        "nightlyPrice": 30.8,
+        "rateSubtotal": 28.18,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125510_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 8,
+        "distanceKm": 0,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-11-30&checkout=2026-12-01&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=52526b9aa8680241&srepoch=1785683896&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 30.8,
+        "bookingTableTotal": 30.8,
+        "verificationRows": [
+          {
+            "blockId": "1258125510_398363677_2_0_0",
+            "priceText": "€ 28",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-02T15:18:34.518Z"
+      },
+      "createdAt": "2026-08-02T15:18:34.579Z"
+    }
+  ]
 }
