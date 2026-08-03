@@ -1,47 +1,63 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-02T23:14:16.373Z",
+  "updatedAt": "2026-08-03T00:16:38.559Z",
   "summary": {
-    "generatedAt": "2026-08-02T23:14:16.373Z",
+    "generatedAt": "2026-08-03T00:16:38.559Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 270,
-    "matches": 3,
+    "offers": 293,
+    "matches": 2,
     "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 122,
-        "matches": 2,
+        "offers": 124,
+        "matches": 1,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 4,
+        "offers": 3,
         "matches": 1,
-        "errors": 1
+        "errors": 2
       },
       "agoda": {
         "searches": 5,
-        "offers": 33,
+        "offers": 38,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 46,
+        "offers": 50,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 65,
+        "offers": 78,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-01-07",
+          "checkOut": "2027-01-08",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-12-31",
+          "flexibleCheckInEnd": "2027-01-14"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Sincelejo",
+        "message": "Booking cambio el total de 29.70 a 31.90 EUR durante la comprobacion."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -70,6 +86,21 @@
     "nearbyErrors": [],
     "errors": [
       {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-01-22",
+          "checkOut": "2027-01-24",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-15",
+          "flexibleCheckInEnd": "2027-01-29"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-22\"][aria-hidden=\"false\"]').first()\n"
+      },
+      {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
         "source": "google_hotels",
@@ -78,7 +109,7 @@
           "checkOut": "2026-08-10"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón114 €125 €125 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón171 €188 €188 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón127 €140 €140 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-10 en el calendario."
       }
     ]
   },
@@ -86,63 +117,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-02T23:14:16.373Z",
-      "lastSuccessAt": "2026-08-02T23:15:05.329527Z",
+      "lastScanAt": "2026-08-03T00:16:38.559Z",
+      "lastSuccessAt": "2026-08-03T00:17:30.031936Z",
       "searches": 20,
-      "offers": 209,
-      "matches": 2,
+      "offers": 230,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 98,
-          "matches": 1,
+          "offers": 100,
+          "matches": 0,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 4,
+          "offers": 3,
           "matches": 1,
-          "errors": 0
+          "errors": 1
         },
         "agoda": {
           "searches": 4,
-          "offers": 22,
+          "offers": 26,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 34,
+          "offers": 38,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 51,
+          "offers": 63,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-22\"][aria-hidden=\"false\"]').first()\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-02",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 16,
+        "startWindowIndex": 20,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 20,
-        "remainingWindowsInSweep": 4,
-        "completedSweep": false
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-02T23:14:16.373Z",
-      "lastSuccessAt": "2026-08-02T23:15:17.697575Z",
+      "lastScanAt": "2026-08-03T00:16:38.559Z",
+      "lastSuccessAt": "2026-08-03T00:19:05.713880Z",
       "searches": 5,
-      "offers": 61,
+      "offers": 63,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -160,7 +191,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 11,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
@@ -172,72 +203,59 @@
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 14,
+          "offers": 15,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón114 €125 €125 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón171 €188 €188 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón127 €140 €140 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-10 en el calendario."
     }
   },
   "alerts": [
     {
       "type": "new_match",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/la-estacion.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "La Estación",
-        "address": "Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
+        "id": "google_hotels:8ae6707fd2692525|2027-01-07|2027-01-08",
+        "source": "google_hotels",
+        "provider": "HostelworldCancelación gratuita hasta el 4 ene, · via Google Hotels",
+        "hotelName": "The Hat Madrid",
+        "address": "Madrid, Comunidad Autónoma de Madrid, España",
+        "checkIn": "2027-01-07",
+        "checkOut": "2027-01-08",
         "nights": 1,
-        "totalPrice": 94.6,
-        "nightlyPrice": 94.6,
-        "rateSubtotal": 86.36,
+        "totalPrice": 39,
+        "nightlyPrice": 39,
+        "displayedNightlyPrice": 0,
+        "rateSubtotal": 39,
+        "searchResultPrice": 39,
         "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "1625209_366309704_0_42_0"
-        ],
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "1 noches con impuestos y tasas incluidos",
         "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 4,
-        "guestRating": 8.1,
-        "reviewCount": 5513,
-        "distanceKm": 1.6,
+        "priceBasis": "google_hotels_provider_all_inclusive_v5",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-03T00:16:55.099Z",
+        "stars": 0,
+        "guestRating": 8.6,
+        "reviewCount": 4745,
+        "distanceKm": null,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [
-          "beach",
-          "air_conditioning"
-        ],
+        "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación Doble - 1 o 2 camas (2 adultos)",
+        "roomName": "",
         "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/la-estacion.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=f0dfa3825b4f00c8&srepoch=1785712517&all_sr_blocks=1625209_366309704_0_42_0&highlighted_blocks=1625209_366309704_0_42_0&matching_block_id=1625209_366309704_0_42_0&sr_pri_blocks=1625209_366309704_0_42_0__8636&from_sustainable_property_sr=1&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESCgoCCAMKAggDEAAaUAoyEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkGgASGhIUCgcI6w8QARgHEgcI6w8QARgIGAEyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMihDaG9JdTVXZXJkUEwyTVRzQVJvTkwyY3ZNVEZpTmpSeE1YQjBZeEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CCIQssMEahgKEwio_oafl4OWAxUAAAAAHQAAAAAQ0wE",
         "matches": true,
-        "searchResultPrice": 94.6,
-        "bookingTableTotal": 94.6,
-        "verificationRows": [
-          {
-            "blockId": "1625209_366309704_0_42_0",
-            "priceText": "€ 86 por noche\n€ 86\nPrecio € 86\n1 noche\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-02T23:15:45.704Z"
+        "candidateMatches": true
       },
-      "createdAt": "2026-08-02T23:15:45.735Z"
+      "createdAt": "2026-08-03T00:16:55.099Z"
     }
   ]
 }
