@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-03T22:31:21.140Z",
+  "updatedAt": "2026-08-03T23:42:59.435Z",
   "summary": {
-    "generatedAt": "2026-08-03T22:31:21.140Z",
+    "generatedAt": "2026-08-03T23:42:59.435Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 297,
-    "matches": 1,
+    "offers": 251,
+    "matches": 3,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 118,
-        "matches": 1,
+        "offers": 120,
+        "matches": 3,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 4,
+        "offers": 2,
         "matches": 0,
-        "errors": 1
+        "errors": 3
       },
       "agoda": {
         "searches": 5,
-        "offers": 43,
+        "offers": 25,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 53,
+        "offers": 44,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 79,
+        "offers": 60,
         "matches": 0,
         "errors": 0
       }
@@ -74,15 +74,41 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-10-10",
-          "checkOut": "2026-10-12",
-          "nights": 2,
+          "checkIn": "2026-11-09",
+          "checkOut": "2026-11-10",
+          "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-03",
-          "flexibleCheckInEnd": "2026-10-17"
+          "flexibleCheckInStart": "2026-11-02",
+          "flexibleCheckInEnd": "2026-11-16"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-10 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-09\"][aria-hidden=\"false\"]').first() to be visible\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-09",
+          "checkOut": "2026-11-11",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-11-02",
+          "flexibleCheckInEnd": "2026-11-16"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-09 en el calendario."
+      },
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón120 €132 €132 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón180 €198 €198 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón134 €147 €147 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -90,63 +116,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-03T22:31:21.140Z",
-      "lastSuccessAt": "2026-08-03T22:31:57.152772Z",
+      "lastScanAt": "2026-08-03T23:42:59.435Z",
+      "lastSuccessAt": "2026-08-03T23:44:07.391459Z",
       "searches": 20,
-      "offers": 233,
-      "matches": 0,
+      "offers": 188,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 94,
-          "matches": 0,
+          "offers": 96,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 2,
           "matches": 0,
-          "errors": 1
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 31,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 42,
+          "offers": 32,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 63,
+          "offers": 44,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-10 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-09 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-03",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 8,
+        "startWindowIndex": 12,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 12,
-        "remainingWindowsInSweep": 12,
+        "nextWindowIndex": 16,
+        "remainingWindowsInSweep": 8,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-03T22:31:21.140Z",
-      "lastSuccessAt": "2026-08-03T22:32:07.936178Z",
+      "lastScanAt": "2026-08-03T23:42:59.435Z",
+      "lastSuccessAt": "2026-08-03T23:44:19.548112Z",
       "searches": 5,
-      "offers": 64,
+      "offers": 63,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -158,19 +184,19 @@
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 1,
+          "offers": 0,
           "matches": 0,
-          "errors": 0
+          "errors": 1
         },
         "agoda": {
           "searches": 1,
-          "offers": 12,
+          "offers": 11,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 11,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
@@ -181,7 +207,7 @@
           "errors": 0
         }
       },
-      "error": ""
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón120 €132 €132 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón180 €198 €198 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón134 €147 €147 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
   "alerts": []
