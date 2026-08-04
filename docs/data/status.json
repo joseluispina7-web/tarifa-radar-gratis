@@ -1,47 +1,191 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T04:33:04.556Z",
+  "updatedAt": "2026-08-04T07:20:53.889Z",
   "summary": {
-    "generatedAt": "2026-08-04T04:33:04.556Z",
+    "generatedAt": "2026-08-04T07:20:53.889Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 297,
-    "matches": 2,
-    "newMatches": 0,
-    "priceDrops": 0,
+    "offers": 321,
+    "matches": 6,
+    "newMatches": 3,
+    "priceDrops": 1,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 124,
-        "matches": 2,
+        "offers": 116,
+        "matches": 4,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 3,
+        "offers": 2,
         "matches": 0,
-        "errors": 2
+        "errors": 3
       },
       "agoda": {
         "searches": 5,
-        "offers": 39,
+        "offers": 51,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 55,
-        "matches": 0,
+        "offers": 64,
+        "matches": 1,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 76,
-        "matches": 0,
+        "offers": 88,
+        "matches": 1,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "NIDOM experience",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Sincelejo",
+        "message": "Booking cambio el total de 27.50 a 29.70 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "message": "Booking cambio el total de 31.90 a 34.10 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "AYZ Villegas - Auto check-in property",
+        "message": "Booking cambio el total de 33.00 a 35.20 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Villamil",
+        "message": "Booking cambio el total de 33.00 a 36.30 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Abel Victoriano",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 49.44 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Abel Victoriano",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 49.44 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-27",
+          "checkOut": "2026-08-28",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-20",
+          "flexibleCheckInEnd": "2026-09-03"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca - Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 30.58 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-27",
+          "checkOut": "2026-08-28",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-20",
+          "flexibleCheckInEnd": "2026-09-03"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca - Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 30.58 EUR."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -86,15 +230,30 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-01-08",
-          "checkOut": "2027-01-09",
+          "checkIn": "2026-08-12",
+          "checkOut": "2026-08-13",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-01",
-          "flexibleCheckInEnd": "2027-01-15"
+          "flexibleCheckInStart": "2026-08-05",
+          "flexibleCheckInEnd": "2026-08-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-12 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-27",
+          "checkOut": "2026-08-28",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-20",
+          "flexibleCheckInEnd": "2026-09-03"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-27\"][aria-hidden=\"false\"]').first()\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -113,63 +272,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-04T04:33:04.556Z",
-      "lastSuccessAt": "2026-08-04T04:34:10.243256Z",
+      "lastScanAt": "2026-08-04T07:20:53.889Z",
+      "lastSuccessAt": "2026-08-04T07:23:27.968333Z",
       "searches": 20,
-      "offers": 233,
-      "matches": 1,
+      "offers": 258,
+      "matches": 5,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 100,
-          "matches": 1,
+          "offers": 92,
+          "matches": 3,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 2,
           "matches": 0,
-          "errors": 1
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 27,
+          "offers": 40,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 43,
-          "matches": 0,
+          "offers": 52,
+          "matches": 1,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 60,
-          "matches": 0,
+          "offers": 72,
+          "matches": 1,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-27\"][aria-hidden=\"false\"]').first()\n",
       "flexibleCoverage": {
-        "sweepStartDate": "2026-08-03",
+        "sweepStartDate": "2026-08-04",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 20,
+        "startWindowIndex": 0,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 0,
-        "remainingWindowsInSweep": 0,
-        "completedSweep": true
+        "nextWindowIndex": 4,
+        "remainingWindowsInSweep": 20,
+        "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-04T04:33:04.556Z",
-      "lastSuccessAt": "2026-08-04T04:34:21.362718Z",
+      "lastScanAt": "2026-08-04T07:20:53.889Z",
+      "lastSuccessAt": "2026-08-04T07:23:39.224618Z",
       "searches": 5,
-      "offers": 64,
+      "offers": 63,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -187,7 +346,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 12,
+          "offers": 11,
           "matches": 0,
           "errors": 0
         },
@@ -207,5 +366,214 @@
       "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón120 €132 €132 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón180 €198 €198 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón134 €147 €147 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "trip:prop_648086a91f174c2170a2f439|2026-08-12|2026-08-13",
+        "source": "trip",
+        "provider": "Trip.com via Bluepillow",
+        "hotelName": "Motion Chueca Hostel",
+        "address": "Madrid",
+        "checkIn": "2026-08-12",
+        "checkOut": "2026-08-13",
+        "nights": 1,
+        "totalPrice": 37.65,
+        "nightlyPrice": 37.65,
+        "displayedNightlyPrice": 37.65,
+        "rateSubtotal": 37.65,
+        "searchResultPrice": 37.65,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 0,
+        "taxesText": "Total con impuestos y tasas incluidos por Trip.com",
+        "stayText": "1 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "trip_inclusive_total",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-04T07:21:00.523Z",
+        "stars": 2,
+        "guestRating": 0,
+        "reviewCount": 0,
+        "distanceKm": 0.577747134285662,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D8988787%26city%3D357%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-08-12%26checkout%3D2026-08-13%26shoppingid%3D086f99da8fd511f187e4b6e380dac169%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1732939362%26swid%3D0%26pay%3DPP%26fgt%3D1%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wAIAff-CmEKAhgCEgQIARAAGlUI4pyqugYSATIYADDfATi1H5gB89CkBKgBALgBAsABANEB4XoUrkchQUDhATMzMzMz00JA6AHnpavuAYgCQokEAAAAAAAAAACgBAChBQAAAAAAAAAAGiAwODZmOTlkYThmZDUxMWYxODdlNGI2ZTM4MGRhYzE2OSABKNilxtMGSAFSBmZhOWRkZlocCgNVU0QRT6-UZYgDG0AaA0VVUiFMpgpGJRUfQGIFZW5fVVNo3BVwAXgAigEHSAF4AMgBAaoBBwoDMDIxEALyASIwODZmOTlkYThmZDUxMWYxODdlNGI2ZTM4MGRhYzE2OV80mgIJSGlnaFZhbHVlAAAA__8BAAD__zP1GHYIAQAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=648086a91f174c2170a2f439&begin=2026-08-12&end=2026-08-13",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/aw-d.tripcdn.com/images/0223f120009timtog35F5_R_960_660_R5_D.jpg",
+        "bluepillowPropertyId": "prop_648086a91f174c2170a2f439",
+        "bluepillowOta": "TripCom",
+        "matches": true,
+        "candidateMatches": true
+      },
+      "createdAt": "2026-08-04T07:20:56.961123Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_648086a91f174c2170a2f439|2026-08-12|2026-08-13",
+        "source": "bluepillow",
+        "provider": "Trip.com via Bluepillow",
+        "hotelName": "Motion Chueca Hostel",
+        "address": "Madrid",
+        "checkIn": "2026-08-12",
+        "checkOut": "2026-08-13",
+        "nights": 1,
+        "totalPrice": 37.65,
+        "nightlyPrice": 37.65,
+        "displayedNightlyPrice": 37.65,
+        "rateSubtotal": 37.65,
+        "searchResultPrice": 37.65,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 0,
+        "taxesText": "Total con impuestos y tasas incluidos por Trip.com",
+        "stayText": "1 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "trip_inclusive_total",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-04T07:21:00.523Z",
+        "stars": 2,
+        "guestRating": 0,
+        "reviewCount": 0,
+        "distanceKm": 0.577747134285662,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D8988787%26city%3D357%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-08-12%26checkout%3D2026-08-13%26shoppingid%3D086f99da8fd511f187e4b6e380dac169%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1732939362%26swid%3D0%26pay%3DPP%26fgt%3D1%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wAIAff-CmEKAhgCEgQIARAAGlUI4pyqugYSATIYADDfATi1H5gB89CkBKgBALgBAsABANEB4XoUrkchQUDhATMzMzMz00JA6AHnpavuAYgCQokEAAAAAAAAAACgBAChBQAAAAAAAAAAGiAwODZmOTlkYThmZDUxMWYxODdlNGI2ZTM4MGRhYzE2OSABKNilxtMGSAFSBmZhOWRkZlocCgNVU0QRT6-UZYgDG0AaA0VVUiFMpgpGJRUfQGIFZW5fVVNo3BVwAXgAigEHSAF4AMgBAaoBBwoDMDIxEALyASIwODZmOTlkYThmZDUxMWYxODdlNGI2ZTM4MGRhYzE2OV80mgIJSGlnaFZhbHVlAAAA__8BAAD__zP1GHYIAQAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=648086a91f174c2170a2f439&begin=2026-08-12&end=2026-08-13",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/aw-d.tripcdn.com/images/0223f120009timtog35F5_R_960_660_R5_D.jpg",
+        "bluepillowPropertyId": "prop_648086a91f174c2170a2f439",
+        "bluepillowOta": "TripCom",
+        "matches": true,
+        "candidateMatches": true
+      },
+      "createdAt": "2026-08-04T07:20:56.961123Z"
+    },
+    {
+      "type": "price_drop",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 33,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-20|2026-08-21",
+        "source": "booking",
+        "hotelName": "Rooms Sincelejo",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-08-20",
+        "checkOut": "2026-08-21",
+        "nights": 1,
+        "totalPrice": 31.9,
+        "nightlyPrice": 31.9,
+        "rateSubtotal": 29.09,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1258125507_398363677_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 0,
+        "guestRating": 7.7,
+        "reviewCount": 11,
+        "distanceKm": 0,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-20&checkout=2026-08-21&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=bed233c6781f0287&srepoch=1785828110&all_sr_blocks=1258125507_398363677_2_0_0&highlighted_blocks=1258125507_398363677_2_0_0&matching_block_id=1258125507_398363677_2_0_0&sr_pri_blocks=1258125507_398363677_2_0_0__2909&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 31.9,
+        "bookingTableTotal": 31.9,
+        "verificationRows": [
+          {
+            "blockId": "1258125507_398363677_2_0_0",
+            "priceText": "€ 29 por noche\n€ 29\nPrecio € 29\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-04T07:22:13.324Z"
+      },
+      "createdAt": "2026-08-04T07:22:18.109Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-villamil.es.html|2026-08-27|2026-08-28",
+        "source": "booking",
+        "hotelName": "Rooms Villamil",
+        "address": "Tetuán, Madrid",
+        "checkIn": "2026-08-27",
+        "checkOut": "2026-08-28",
+        "nights": 1,
+        "totalPrice": 39.6,
+        "nightlyPrice": 39.6,
+        "rateSubtotal": 36.05,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1491083204_420768519_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6,
+        "reviewCount": 246,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Deluxe",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-villamil.es.html?ucfs=1&arphpl=1&checkin=2026-08-27&checkout=2026-08-28&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=bed233c6781f0287&srepoch=1785828110&all_sr_blocks=1491083204_420768519_2_0_0&highlighted_blocks=1491083204_420768519_2_0_0&matching_block_id=1491083204_420768519_2_0_0&sr_pri_blocks=1491083204_420768519_2_0_0__3605&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 39.6,
+        "bookingTableTotal": 39.6,
+        "verificationRows": [
+          {
+            "blockId": "1491083204_420768519_2_0_0",
+            "priceText": "€ 36 por noche\n€ 36\nPrecio € 36\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-04T07:22:18.087Z"
+      },
+      "createdAt": "2026-08-04T07:22:18.109Z"
+    }
+  ]
 }
