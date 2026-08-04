@@ -1,47 +1,59 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T12:19:12.894Z",
+  "updatedAt": "2026-08-04T14:57:27.879Z",
   "summary": {
-    "generatedAt": "2026-08-04T12:19:12.894Z",
+    "generatedAt": "2026-08-04T14:57:27.879Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 277,
-    "matches": 2,
+    "offers": 235,
+    "matches": 3,
     "newMatches": 0,
     "priceDrops": 1,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 122,
-        "matches": 2,
+        "offers": 120,
+        "matches": 3,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 1,
+        "offers": 2,
         "matches": 0,
-        "errors": 4
+        "errors": 3
       },
       "agoda": {
         "searches": 5,
-        "offers": 37,
+        "offers": 25,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 45,
+        "offers": 37,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 72,
+        "offers": 51,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "Pensión Pardo",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -74,56 +86,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-10-11",
-          "checkOut": "2026-10-12",
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-11",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-04",
-          "flexibleCheckInEnd": "2026-10-18"
+          "flexibleCheckInStart": "2026-11-03",
+          "flexibleCheckInEnd": "2026-11-17"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-11 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-10-11",
-          "checkOut": "2026-10-13",
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-12",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-04",
-          "flexibleCheckInEnd": "2026-10-18"
+          "flexibleCheckInStart": "2026-11-03",
+          "flexibleCheckInEnd": "2026-11-17"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-11\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-10 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-27",
-          "nights": 1,
+          "checkIn": "2026-11-25",
+          "checkOut": "2026-11-27",
+          "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-19",
-          "flexibleCheckInEnd": "2026-11-02"
+          "flexibleCheckInStart": "2026-11-18",
+          "flexibleCheckInEnd": "2026-12-02"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-26\"][aria-hidden=\"false\"]').first() to be visible\n"
-      },
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('h2').nth(1) to be visible\n    23 × locator resolved to hidden <h2 jscontroller=\"bqejFf\" jsaction=\"YcW9n:dDUAne;\" class=\"BgYkof ogfYpf ykx2he\">Plaza Mayor Suites & Apartments</h2>\n"
       }
     ]
   },
@@ -131,17 +132,17 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-04T12:19:12.894Z",
-      "lastSuccessAt": "2026-08-04T12:21:40.035396Z",
+      "lastScanAt": "2026-08-04T14:57:27.879Z",
+      "lastSuccessAt": "2026-08-04T14:58:44.378421Z",
       "searches": 20,
-      "offers": 215,
-      "matches": 1,
+      "offers": 167,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 98,
-          "matches": 1,
+          "offers": 96,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
@@ -152,42 +153,42 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 27,
+          "offers": 11,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 33,
+          "offers": 25,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 56,
+          "offers": 34,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-26\"][aria-hidden=\"false\"]').first() to be visible\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('h2').nth(1) to be visible\n    23 × locator resolved to hidden <h2 jscontroller=\"bqejFf\" jsaction=\"YcW9n:dDUAne;\" class=\"BgYkof ogfYpf ykx2he\">Plaza Mayor Suites & Apartments</h2>\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-04",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 8,
+        "startWindowIndex": 12,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 12,
-        "remainingWindowsInSweep": 12,
+        "nextWindowIndex": 16,
+        "remainingWindowsInSweep": 8,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-04T12:19:12.894Z",
-      "lastSuccessAt": "2026-08-04T12:21:51.998095Z",
+      "lastScanAt": "2026-08-04T14:57:27.879Z",
+      "lastSuccessAt": "2026-08-04T14:59:17.330851Z",
       "searches": 5,
-      "offers": 62,
+      "offers": 68,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -199,13 +200,13 @@
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 0,
+          "offers": 1,
           "matches": 0,
-          "errors": 1
+          "errors": 0
         },
         "agoda": {
           "searches": 1,
-          "offers": 10,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         },
@@ -217,12 +218,12 @@
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 16,
+          "offers": 17,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+      "error": ""
     }
   },
   "alerts": [
@@ -230,23 +231,23 @@
       "type": "price_drop",
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "previousPrice": 38.5,
+      "previousPrice": 34.1,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-11-02|2026-11-03",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-11-16|2026-11-17",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2026-11-02",
-        "checkOut": "2026-11-03",
+        "checkIn": "2026-11-16",
+        "checkOut": "2026-11-17",
         "nights": 1,
-        "totalPrice": 37.4,
-        "nightlyPrice": 37.4,
-        "rateSubtotal": 33.64,
+        "totalPrice": 30.8,
+        "nightlyPrice": 30.8,
+        "rateSubtotal": 28.18,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1258125506_398363677_2_0_0"
+          "1258125507_398363677_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
@@ -256,30 +257,30 @@
         "distanceKm": 0,
         "freeCancellation": true,
         "breakfastIncluded": false,
-        "limitedAvailability": true,
+        "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación Doble Económica - 2 camas",
+        "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-11-02&checkout=2026-11-03&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=37f556d6de0504aa&srepoch=1785846063&all_sr_blocks=1258125506_398363677_2_0_0&highlighted_blocks=1258125506_398363677_2_0_0&matching_block_id=1258125506_398363677_2_0_0&sr_pri_blocks=1258125506_398363677_2_0_0__3364&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-11-16&checkout=2026-11-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=09ec692c86eb02fb&srepoch=1785855451&all_sr_blocks=1258125507_398363677_2_0_0&highlighted_blocks=1258125507_398363677_2_0_0&matching_block_id=1258125507_398363677_2_0_0&sr_pri_blocks=1258125507_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 37.4,
-        "bookingTableTotal": 37.4,
+        "searchResultPrice": 30.8,
+        "bookingTableTotal": 30.8,
         "verificationRows": [
           {
-            "blockId": "1258125506_398363677_2_0_0",
-            "priceText": "€ 34 por noche\n€ 34\nPrecio € 34\n1 noche\nNo incluido: 10% IVA",
+            "blockId": "1258125507_398363677_2_0_0",
+            "priceText": "€ 28",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-04T12:21:20.836Z"
+        "priceConfirmedAt": "2026-08-04T14:57:49.897Z"
       },
-      "createdAt": "2026-08-04T12:21:20.865Z"
+      "createdAt": "2026-08-04T14:57:49.950Z"
     }
   ]
 }
