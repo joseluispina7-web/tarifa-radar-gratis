@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T10:07:53.947Z",
+  "updatedAt": "2026-08-04T12:19:12.894Z",
   "summary": {
-    "generatedAt": "2026-08-04T10:07:53.947Z",
+    "generatedAt": "2026-08-04T12:19:12.894Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 278,
+    "offers": 277,
     "matches": 2,
     "newMatches": 0,
     "priceDrops": 1,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 117,
+        "offers": 122,
         "matches": 2,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 2,
+        "offers": 1,
         "matches": 0,
-        "errors": 3
+        "errors": 4
       },
       "agoda": {
         "searches": 5,
-        "offers": 34,
+        "offers": 37,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 51,
+        "offers": 45,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 74,
+        "offers": 72,
         "matches": 0,
         "errors": 0
       }
@@ -74,30 +74,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-11",
-          "checkOut": "2026-09-12",
+          "checkIn": "2026-10-11",
+          "checkOut": "2026-10-12",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-04",
-          "flexibleCheckInEnd": "2026-09-18"
+          "flexibleCheckInStart": "2026-10-04",
+          "flexibleCheckInEnd": "2026-10-18"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-11 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-11",
-          "checkOut": "2026-09-13",
+          "checkIn": "2026-10-11",
+          "checkOut": "2026-10-13",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-04",
-          "flexibleCheckInEnd": "2026-09-18"
+          "flexibleCheckInStart": "2026-10-04",
+          "flexibleCheckInEnd": "2026-10-18"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-09-11\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-11\"][aria-hidden=\"false\"]').first()\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-10-26",
+          "checkOut": "2026-10-27",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-10-19",
+          "flexibleCheckInEnd": "2026-11-02"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-26\"][aria-hidden=\"false\"]').first() to be visible\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -116,61 +131,61 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-04T10:07:53.947Z",
-      "lastSuccessAt": "2026-08-04T10:10:22.968830Z",
+      "lastScanAt": "2026-08-04T12:19:12.894Z",
+      "lastSuccessAt": "2026-08-04T12:21:40.035396Z",
       "searches": 20,
-      "offers": 216,
+      "offers": 215,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 93,
+          "offers": 98,
           "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 2,
+          "offers": 1,
           "matches": 0,
-          "errors": 2
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 27,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 39,
+          "offers": 33,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 59,
+          "offers": 56,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-09-11\"][aria-hidden=\"false\"]').first()\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-26\"][aria-hidden=\"false\"]').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-04",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 4,
+        "startWindowIndex": 8,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 8,
-        "remainingWindowsInSweep": 16,
+        "nextWindowIndex": 12,
+        "remainingWindowsInSweep": 12,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-04T10:07:53.947Z",
-      "lastSuccessAt": "2026-08-04T10:10:34.026233Z",
+      "lastScanAt": "2026-08-04T12:19:12.894Z",
+      "lastSuccessAt": "2026-08-04T12:21:51.998095Z",
       "searches": 5,
       "offers": 62,
       "matches": 1,
@@ -190,7 +205,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 11,
+          "offers": 10,
           "matches": 0,
           "errors": 0
         },
@@ -202,7 +217,7 @@
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 15,
+          "offers": 16,
           "matches": 0,
           "errors": 0
         }
@@ -217,12 +232,12 @@
       "monitorName": "Madrid",
       "previousPrice": 38.5,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-09-06|2026-09-07",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-11-02|2026-11-03",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2026-09-06",
-        "checkOut": "2026-09-07",
+        "checkIn": "2026-11-02",
+        "checkOut": "2026-11-03",
         "nights": 1,
         "totalPrice": 37.4,
         "nightlyPrice": 37.4,
@@ -231,7 +246,7 @@
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1258125509_398363677_2_0_0"
+          "1258125506_398363677_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
@@ -245,26 +260,26 @@
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
+        "roomName": "Habitación Doble Económica - 2 camas",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-09-06&checkout=2026-09-07&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=9479473d3df90043&srepoch=1785838077&all_sr_blocks=1258125509_398363677_2_0_0&highlighted_blocks=1258125509_398363677_2_0_0&matching_block_id=1258125509_398363677_2_0_0&sr_pri_blocks=1258125509_398363677_2_0_0__3364&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-11-02&checkout=2026-11-03&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=37f556d6de0504aa&srepoch=1785846063&all_sr_blocks=1258125506_398363677_2_0_0&highlighted_blocks=1258125506_398363677_2_0_0&matching_block_id=1258125506_398363677_2_0_0&sr_pri_blocks=1258125506_398363677_2_0_0__3364&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "searchResultPrice": 37.4,
         "bookingTableTotal": 37.4,
         "verificationRows": [
           {
-            "blockId": "1258125509_398363677_2_0_0",
+            "blockId": "1258125506_398363677_2_0_0",
             "priceText": "€ 34 por noche\n€ 34\nPrecio € 34\n1 noche\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-04T10:08:15.612Z"
+        "priceConfirmedAt": "2026-08-04T12:21:20.836Z"
       },
-      "createdAt": "2026-08-04T10:08:15.648Z"
+      "createdAt": "2026-08-04T12:21:20.865Z"
     }
   ]
 }
