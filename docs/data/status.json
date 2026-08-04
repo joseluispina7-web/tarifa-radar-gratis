@@ -1,47 +1,59 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T01:10:12.598Z",
+  "updatedAt": "2026-08-04T04:33:04.556Z",
   "summary": {
-    "generatedAt": "2026-08-04T01:10:12.598Z",
+    "generatedAt": "2026-08-04T04:33:04.556Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 263,
+    "offers": 297,
     "matches": 2,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 120,
+        "offers": 124,
         "matches": 2,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 1,
+        "offers": 3,
         "matches": 0,
-        "errors": 4
+        "errors": 2
       },
       "agoda": {
         "searches": 5,
-        "offers": 33,
+        "offers": 39,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 43,
+        "offers": 55,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 66,
+        "offers": 76,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "Pensión Pardo",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -74,45 +86,15 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-12-09",
-          "checkOut": "2026-12-10",
+          "checkIn": "2027-01-08",
+          "checkOut": "2027-01-09",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-02",
-          "flexibleCheckInEnd": "2026-12-16"
+          "flexibleCheckInStart": "2027-01-01",
+          "flexibleCheckInEnd": "2027-01-15"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-09\"][aria-hidden=\"false\"]').first()\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-12-24",
-          "checkOut": "2026-12-25",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-17",
-          "flexibleCheckInEnd": "2026-12-31"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-24 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-12-24",
-          "checkOut": "2026-12-26",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-17",
-          "flexibleCheckInEnd": "2026-12-31"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-24 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -123,7 +105,7 @@
           "checkOut": "2026-08-10"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón120 €132 €132 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón180 €198 €198 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón134 €147 €147 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -131,63 +113,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-04T01:10:12.598Z",
-      "lastSuccessAt": "2026-08-04T01:12:09.950459Z",
+      "lastScanAt": "2026-08-04T04:33:04.556Z",
+      "lastSuccessAt": "2026-08-04T04:34:10.243256Z",
       "searches": 20,
-      "offers": 200,
+      "offers": 233,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 96,
+          "offers": 100,
           "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
+          "offers": 3,
           "matches": 0,
-          "errors": 3
+          "errors": 1
         },
         "agoda": {
           "searches": 4,
-          "offers": 22,
+          "offers": 27,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 31,
+          "offers": 43,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 50,
+          "offers": 60,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-24 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-03",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 16,
+        "startWindowIndex": 20,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 20,
-        "remainingWindowsInSweep": 4,
-        "completedSweep": false
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-04T01:10:12.598Z",
-      "lastSuccessAt": "2026-08-04T01:12:18.624188Z",
+      "lastScanAt": "2026-08-04T04:33:04.556Z",
+      "lastSuccessAt": "2026-08-04T04:34:21.362718Z",
       "searches": 5,
-      "offers": 63,
+      "offers": 64,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -205,7 +187,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 11,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
@@ -222,7 +204,7 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial126 €139 €139 €120 €132 €132 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón120 €132 €132 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón180 €198 €198 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón134 €147 €147 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
   "alerts": []
