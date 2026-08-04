@@ -1,30 +1,30 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-04T22:46:37.445Z",
+  "updatedAt": "2026-08-04T23:49:06.484Z",
   "summary": {
-    "generatedAt": "2026-08-04T22:46:37.445Z",
+    "generatedAt": "2026-08-04T23:49:06.484Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 278,
-    "matches": 3,
-    "newMatches": 0,
+    "offers": 252,
+    "matches": 5,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 121,
-        "matches": 3,
+        "offers": 120,
+        "matches": 5,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 3,
+        "offers": 1,
         "matches": 0,
-        "errors": 2
+        "errors": 4
       },
       "agoda": {
         "searches": 5,
-        "offers": 37,
+        "offers": 27,
         "matches": 0,
         "errors": 0
       },
@@ -36,24 +36,12 @@
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 72,
+        "offers": 59,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "hotelName": "Hotel Celymar",
-        "message": "Booking cambio el total de 94.60 a 105.60 EUR durante la comprobacion."
-      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -86,15 +74,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-28",
-          "nights": 2,
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-11",
+          "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-10-19",
-          "flexibleCheckInEnd": "2026-11-02"
+          "flexibleCheckInStart": "2026-11-03",
+          "flexibleCheckInEnd": "2026-11-17"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-26 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-10\"][aria-hidden=\"false\"]').first()\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-12",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-11-03",
+          "flexibleCheckInEnd": "2026-11-17"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-25",
+          "checkOut": "2026-11-26",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-11-18",
+          "flexibleCheckInEnd": "2026-12-02"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-25 en el calendario."
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -113,28 +131,28 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-04T22:46:37.445Z",
-      "lastSuccessAt": "2026-08-04T22:47:27.799597Z",
+      "lastScanAt": "2026-08-04T23:49:06.484Z",
+      "lastSuccessAt": "2026-08-04T23:51:15.104651Z",
       "searches": 20,
-      "offers": 215,
-      "matches": 1,
+      "offers": 188,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 97,
-          "matches": 1,
+          "offers": 96,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 1,
           "matches": 0,
-          "errors": 1
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 25,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         },
@@ -146,37 +164,37 @@
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 57,
+          "offers": 44,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-26 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-25 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-04",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 8,
+        "startWindowIndex": 12,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 12,
-        "remainingWindowsInSweep": 12,
+        "nextWindowIndex": 16,
+        "remainingWindowsInSweep": 8,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-04T22:46:37.445Z",
-      "lastSuccessAt": "2026-08-04T22:47:35.299228Z",
+      "lastScanAt": "2026-08-04T23:49:06.484Z",
+      "lastSuccessAt": "2026-08-04T23:51:27.419175Z",
       "searches": 5,
-      "offers": 63,
-      "matches": 2,
+      "offers": 64,
+      "matches": 3,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
           "offers": 24,
-          "matches": 2,
+          "matches": 3,
           "errors": 0
         },
         "google_hotels": {
@@ -187,7 +205,7 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 12,
+          "offers": 13,
           "matches": 0,
           "errors": 0
         },
@@ -207,5 +225,64 @@
       "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+      "monitorName": "Beni",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/celymar.es.html|2026-08-09|2026-08-10",
+        "source": "booking",
+        "hotelName": "Hotel Celymar",
+        "address": "Centro histórico de Benidorm, Benidorm",
+        "checkIn": "2026-08-09",
+        "checkOut": "2026-08-10",
+        "nights": 1,
+        "totalPrice": 94.6,
+        "nightlyPrice": 94.6,
+        "rateSubtotal": 86.06,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "31694101_437674343_0_1_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 1,
+        "guestRating": 8.3,
+        "reviewCount": 872,
+        "distanceKm": 0.3,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "beach",
+          "breakfast"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "Habitación Doble con balcón",
+        "sharedRoom": false,
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "url": "https://www.booking.com/hotel/es/celymar.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=price&srpvid=40c5a7bfa8df0288&srepoch=1785887487&all_sr_blocks=31694101_437674343_0_1_0&highlighted_blocks=31694101_437674343_0_1_0&matching_block_id=31694101_437674343_0_1_0&sr_pri_blocks=31694101_437674343_0_1_0__8606&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 94.6,
+        "bookingTableTotal": 94.6,
+        "verificationRows": [
+          {
+            "blockId": "31694101_437674343_0_1_0",
+            "priceText": "€ 86 por noche\n€ 96 € 86 \nPrecio original € 96 Precio actual € 86\n1 noche\n-10%\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-04T23:51:59.440Z"
+      },
+      "createdAt": "2026-08-04T23:52:02.930Z"
+    }
+  ]
 }
