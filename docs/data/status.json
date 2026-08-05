@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05T19:53:19.334Z",
+  "updatedAt": "2026-08-05T21:09:27.730Z",
   "summary": {
-    "generatedAt": "2026-08-05T19:53:19.334Z",
+    "generatedAt": "2026-08-05T21:09:27.730Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 302,
-    "matches": 7,
-    "newMatches": 3,
+    "offers": 275,
+    "matches": 4,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 113,
-        "matches": 7,
+        "offers": 119,
+        "matches": 4,
         "errors": 0
       },
       "google_hotels": {
@@ -24,56 +24,24 @@
       },
       "agoda": {
         "searches": 5,
-        "offers": 49,
+        "offers": 40,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 57,
+        "offers": 45,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 82,
+        "offers": 70,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-14",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Chima",
-        "message": "Booking cambio el total de 13.20 a 44.00 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-28",
-          "checkOut": "2026-08-29",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-21",
-          "flexibleCheckInEnd": "2026-09-04"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Villamil",
-        "message": "Booking cambio el total de 36.30 a 39.60 EUR durante la comprobacion."
-      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -118,45 +86,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-14",
+          "checkIn": "2026-09-12",
+          "checkOut": "2026-09-13",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
+          "flexibleCheckInStart": "2026-09-05",
+          "flexibleCheckInEnd": "2026-09-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-12 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-15",
+          "checkIn": "2026-09-12",
+          "checkOut": "2026-09-14",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
+          "flexibleCheckInStart": "2026-09-05",
+          "flexibleCheckInEnd": "2026-09-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-13 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-09-12\"][aria-hidden=\"false\"]').first() to be visible\n"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-28",
-          "checkOut": "2026-08-30",
+          "checkIn": "2026-09-27",
+          "checkOut": "2026-09-29",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-21",
-          "flexibleCheckInEnd": "2026-09-04"
+          "flexibleCheckInStart": "2026-09-20",
+          "flexibleCheckInEnd": "2026-10-04"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-30\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-09-27\"][aria-hidden=\"false\"]').first() to be visible\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -167,7 +135,7 @@
           "checkOut": "2026-08-10"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial120 €132 €132 €114 €125 €125 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón114 €125 €125 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón171 €188 €188 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón128 €141 €141 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -175,17 +143,17 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-05T19:53:19.334Z",
-      "lastSuccessAt": "2026-08-05T19:54:31.640622Z",
+      "lastScanAt": "2026-08-05T21:09:27.730Z",
+      "lastSuccessAt": "2026-08-05T21:10:46.011337Z",
       "searches": 20,
-      "offers": 246,
-      "matches": 4,
+      "offers": 214,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 89,
-          "matches": 4,
+          "offers": 95,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
@@ -196,49 +164,49 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 40,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 47,
+          "offers": 34,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 69,
+          "offers": 56,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-30\"][aria-hidden=\"false\"]').first()\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-09-27\"][aria-hidden=\"false\"]').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-05",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 0,
+        "startWindowIndex": 4,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 4,
-        "remainingWindowsInSweep": 20,
+        "nextWindowIndex": 8,
+        "remainingWindowsInSweep": 16,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-05T19:53:19.334Z",
-      "lastSuccessAt": "2026-08-05T19:56:08.364814Z",
+      "lastScanAt": "2026-08-05T21:09:27.730Z",
+      "lastSuccessAt": "2026-08-05T21:11:21.880317Z",
       "searches": 5,
-      "offers": 56,
-      "matches": 3,
+      "offers": 61,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
           "offers": 24,
-          "matches": 3,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
@@ -249,24 +217,24 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 9,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 10,
+          "offers": 11,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 13,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial120 €132 €132 €114 €125 €125 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón114 €125 €125 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón171 €188 €188 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón128 €141 €141 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
   "alerts": [
@@ -276,164 +244,54 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-08-16|2026-08-17",
+        "id": "/hotel/es/rooms-chima.es.html|2026-09-07|2026-09-08",
         "source": "booking",
-        "hotelName": "Rooms Sincelejo",
+        "hotelName": "Rooms Chima",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2026-08-16",
-        "checkOut": "2026-08-17",
+        "checkIn": "2026-09-07",
+        "checkOut": "2026-09-08",
         "nights": 1,
-        "totalPrice": 30.8,
-        "nightlyPrice": 30.8,
-        "rateSubtotal": 28.18,
+        "totalPrice": 13.2,
+        "nightlyPrice": 13.2,
+        "rateSubtotal": 39.82,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1258125510_398363677_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 7.7,
-        "reviewCount": 11,
-        "distanceKm": 0,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-16&checkout=2026-08-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=12138bd8a4f203d4&srepoch=1785959603&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 30.8,
-        "bookingTableTotal": 30.8,
-        "verificationRows": [
-          {
-            "blockId": "1258125510_398363677_2_0_0",
-            "priceText": "€ 28 por noche\n€ 28\nPrecio € 28\n1 noche\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T19:53:50.786Z"
-      },
-      "createdAt": "2026-08-05T19:53:59.459Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/a-amp-z-villegas.es.html|2026-08-10|2026-08-11",
-        "source": "booking",
-        "hotelName": "AYZ Villegas - Auto check-in property",
-        "address": "Hortaleza, Madrid",
-        "checkIn": "2026-08-10",
-        "checkOut": "2026-08-11",
-        "nights": 1,
-        "totalPrice": 33,
-        "nightlyPrice": 33,
-        "rateSubtotal": 29.82,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "546049310_376304918_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 7.1,
-        "reviewCount": 2629,
-        "distanceKm": 0,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/a-amp-z-villegas.es.html?ucfs=1&arphpl=1&checkin=2026-08-10&checkout=2026-08-11&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=12138bd8a4f203d4&srepoch=1785959603&all_sr_blocks=546049310_376304918_2_0_0&highlighted_blocks=546049310_376304918_2_0_0&matching_block_id=546049310_376304918_2_0_0&sr_pri_blocks=546049310_376304918_2_0_0__2982&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 33,
-        "bookingTableTotal": 33,
-        "verificationRows": [
-          {
-            "blockId": "546049310_376304918_2_0_0",
-            "priceText": "€ 30 por noche\n€ 32 € 30 \nPrecio original € 32 Precio actual € 30\n1 noche\n-8%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T19:53:53.095Z"
-      },
-      "createdAt": "2026-08-05T19:53:59.459Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/rooms-villamil.es.html|2026-08-06|2026-08-07",
-        "source": "booking",
-        "hotelName": "Rooms Villamil",
-        "address": "Tetuán, Madrid",
-        "checkIn": "2026-08-06",
-        "checkOut": "2026-08-07",
-        "nights": 1,
-        "totalPrice": 33,
-        "nightlyPrice": 33,
-        "rateSubtotal": 30.31,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "1491083203_420768519_2_0_0"
+          "1297035505_402606904_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
         "stars": 3,
-        "guestRating": 5.9,
-        "reviewCount": 247,
+        "guestRating": 6.7,
+        "reviewCount": 499,
         "distanceKm": 0,
-        "freeCancellation": false,
+        "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "Habitación Doble",
+        "roomName": "Habitación Deluxe",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-villamil.es.html?ucfs=1&arphpl=1&checkin=2026-08-06&checkout=2026-08-07&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=price&srpvid=12138bd8a4f203d4&srepoch=1785959603&all_sr_blocks=1491083203_420768519_2_0_0&highlighted_blocks=1491083203_420768519_2_0_0&matching_block_id=1491083203_420768519_2_0_0&sr_pri_blocks=1491083203_420768519_2_0_0__3031&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-chima.es.html?ucfs=1&arphpl=1&checkin=2026-09-07&checkout=2026-09-08&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=dc9394c4412d01e6&srepoch=1785964171&all_sr_blocks=1297035505_402606904_2_0_0&highlighted_blocks=1297035505_402606904_2_0_0&matching_block_id=1297035505_402606904_2_0_0&sr_pri_blocks=1297035505_402606904_2_0_0__3982&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 33,
-        "bookingTableTotal": 33,
+        "searchResultPrice": 13.2,
+        "bookingTableTotal": 13.2,
         "verificationRows": [
           {
-            "blockId": "1491083203_420768519_2_0_0",
-            "priceText": "€ 30 por noche\n€ 33 € 30 \nPrecio original € 33 Precio actual € 30\n1 noche\n-8%\nNo incluido: 10% IVA",
+            "blockId": "1297035505_402606904_2_0_0",
+            "priceText": "€ 28 por noche\n€ 45 € 40 \nPrecio original € 45 Precio actual € 40\n1 noche\n-11%\nOferta Escapada\nIncluido: suplemento de limpieza de € 12 por estancia\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T19:53:55.081Z"
+        "priceConfirmedAt": "2026-08-05T21:09:55.177Z"
       },
-      "createdAt": "2026-08-05T19:53:59.459Z"
+      "createdAt": "2026-08-05T21:09:55.209Z"
     }
   ]
 }
