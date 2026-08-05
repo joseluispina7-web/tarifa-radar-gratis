@@ -1,107 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05T07:28:35.826Z",
+  "updatedAt": "2026-08-05T10:12:49.093Z",
   "summary": {
-    "generatedAt": "2026-08-05T07:28:35.826Z",
+    "generatedAt": "2026-08-05T10:12:49.093Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 307,
+    "offers": 265,
     "matches": 4,
     "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 114,
+        "offers": 119,
         "matches": 4,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 1,
+        "offers": 2,
         "matches": 0,
-        "errors": 4
+        "errors": 3
       },
       "agoda": {
         "searches": 5,
-        "offers": 50,
+        "offers": 31,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 58,
+        "offers": 44,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 84,
+        "offers": 69,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-14",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "AYZ Villegas - Auto check-in property",
-        "message": "Booking cambio el total de 33.00 a 35.20 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-14",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Villamil",
-        "message": "Booking cambio el total de 33.00 a 36.30 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-28",
-          "checkOut": "2026-08-29",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-21",
-          "flexibleCheckInEnd": "2026-09-04"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Rooms Villamil",
-        "message": "Booking cambio el total de 39.60 a 36.30 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "hotelName": "La Estación",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -146,45 +86,30 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-13",
-          "checkOut": "2026-08-15",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-06",
-          "flexibleCheckInEnd": "2026-08-20"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-13\"][aria-hidden=\"false\"]').first()\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-28",
-          "checkOut": "2026-08-29",
+          "checkIn": "2026-09-12",
+          "checkOut": "2026-09-13",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-21",
-          "flexibleCheckInEnd": "2026-09-04"
+          "flexibleCheckInStart": "2026-09-05",
+          "flexibleCheckInEnd": "2026-09-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-28 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-12 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-08-28",
-          "checkOut": "2026-08-30",
+          "checkIn": "2026-09-12",
+          "checkOut": "2026-09-14",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-08-21",
-          "flexibleCheckInEnd": "2026-09-04"
+          "flexibleCheckInStart": "2026-09-05",
+          "flexibleCheckInEnd": "2026-09-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-28 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-12 en el calendario."
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -203,70 +128,70 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-05T07:28:35.826Z",
-      "lastSuccessAt": "2026-08-05T07:31:15.727264Z",
+      "lastScanAt": "2026-08-05T10:12:49.093Z",
+      "lastSuccessAt": "2026-08-05T10:13:34.095284Z",
       "searches": 20,
-      "offers": 248,
-      "matches": 2,
+      "offers": 205,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 90,
-          "matches": 2,
+          "offers": 95,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
+          "offers": 2,
           "matches": 0,
-          "errors": 3
+          "errors": 2
         },
         "agoda": {
           "searches": 4,
-          "offers": 40,
+          "offers": 22,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 47,
+          "offers": 32,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 70,
+          "offers": 54,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-28 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-12 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-05",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 0,
+        "startWindowIndex": 4,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 4,
-        "remainingWindowsInSweep": 20,
+        "nextWindowIndex": 8,
+        "remainingWindowsInSweep": 16,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-05T07:28:35.826Z",
-      "lastSuccessAt": "2026-08-05T07:31:23.615489Z",
+      "lastScanAt": "2026-08-05T10:12:49.093Z",
+      "lastSuccessAt": "2026-08-05T10:13:45.952723Z",
       "searches": 5,
-      "offers": 59,
-      "matches": 2,
+      "offers": 60,
+      "matches": 3,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
           "offers": 24,
-          "matches": 2,
+          "matches": 3,
           "errors": 0
         },
         "google_hotels": {
@@ -277,19 +202,19 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 10,
+          "offers": 9,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 11,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 14,
+          "offers": 15,
           "matches": 0,
           "errors": 0
         }
@@ -300,60 +225,60 @@
   "alerts": [
     {
       "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
+      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+      "monitorName": "Beni",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-13|2026-08-14",
+        "id": "/hotel/es/la-estacion.es.html|2026-08-09|2026-08-10",
         "source": "booking",
-        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
-        "address": "Fuencarral - El Pardo, Madrid",
-        "checkIn": "2026-08-13",
-        "checkOut": "2026-08-14",
+        "hotelName": "La Estación",
+        "address": "Benidorm",
+        "checkIn": "2026-08-09",
+        "checkOut": "2026-08-10",
         "nights": 1,
-        "totalPrice": 34.1,
-        "nightlyPrice": 34.1,
-        "rateSubtotal": 31.36,
+        "totalPrice": 94.6,
+        "nightlyPrice": 94.6,
+        "rateSubtotal": 86.36,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1046568401_377062656_2_0_0"
+          "1625209_366309704_0_42_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 3,
-        "guestRating": 6.4,
-        "reviewCount": 2177,
-        "distanceKm": 0,
+        "stars": 4,
+        "guestRating": 8.1,
+        "reviewCount": 5488,
+        "distanceKm": 1.6,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [
-          "air_conditioning"
+          "beach"
         ],
         "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
+        "roomName": "Habitación Doble - 1 o 2 camas (2 adultos)",
         "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-13&checkout=2026-08-14&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=af303492a242028f&srepoch=1785914920&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3136&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "url": "https://www.booking.com/hotel/es/la-estacion.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=68cd47ec7e5b009f&srepoch=1785924826&all_sr_blocks=1625209_366309704_0_42_0&highlighted_blocks=1625209_366309704_0_42_0&matching_block_id=1625209_366309704_0_42_0&sr_pri_blocks=1625209_366309704_0_42_0__8636&from_sustainable_property_sr=1&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 34.1,
-        "bookingTableTotal": 34.1,
+        "searchResultPrice": 94.6,
+        "bookingTableTotal": 94.6,
         "verificationRows": [
           {
-            "blockId": "1046568401_377062656_2_0_0",
-            "priceText": "€ 31",
+            "blockId": "1625209_366309704_0_42_0",
+            "priceText": "€ 86",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T07:29:13.262Z"
+        "priceConfirmedAt": "2026-08-05T10:14:27.347Z"
       },
-      "createdAt": "2026-08-05T07:29:13.284Z"
+      "createdAt": "2026-08-05T10:14:27.423Z"
     }
   ]
 }
