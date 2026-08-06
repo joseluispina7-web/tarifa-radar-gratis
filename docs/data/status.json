@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-05T23:32:24.601Z",
+  "updatedAt": "2026-08-06T01:02:27.060Z",
   "summary": {
-    "generatedAt": "2026-08-05T23:32:24.601Z",
+    "generatedAt": "2026-08-06T01:02:27.060Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 247,
-    "matches": 5,
-    "newMatches": 2,
+    "offers": 284,
+    "matches": 3,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 120,
-        "matches": 5,
+        "offers": 124,
+        "matches": 3,
         "errors": 0
       },
       "google_hotels": {
@@ -24,24 +24,36 @@
       },
       "agoda": {
         "searches": 5,
-        "offers": 27,
+        "offers": 36,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 40,
+        "offers": 51,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 59,
+        "offers": 72,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "Pensión Pardo",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -74,45 +86,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-12",
+          "checkIn": "2026-12-11",
+          "checkOut": "2026-12-12",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-04",
-          "flexibleCheckInEnd": "2026-11-18"
+          "flexibleCheckInStart": "2026-12-04",
+          "flexibleCheckInEnd": "2026-12-18"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-12\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-11 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-13",
+          "checkIn": "2026-12-11",
+          "checkOut": "2026-12-13",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-04",
-          "flexibleCheckInEnd": "2026-11-18"
+          "flexibleCheckInStart": "2026-12-04",
+          "flexibleCheckInEnd": "2026-12-18"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-11\"][aria-hidden=\"false\"]').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-11 en el calendario."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-26",
-          "checkOut": "2026-11-27",
+          "checkIn": "2026-12-26",
+          "checkOut": "2026-12-27",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-19",
-          "flexibleCheckInEnd": "2026-12-03"
+          "flexibleCheckInStart": "2026-12-19",
+          "flexibleCheckInEnd": "2027-01-02"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-26\"][aria-hidden=\"false\"]').first() to be visible\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-26\"][aria-hidden=\"false\"]').first()\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -123,7 +135,7 @@
           "checkOut": "2026-08-10"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-09\"][aria-hidden=\"false\"]').first()\n"
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-10 en el calendario."
       }
     ]
   },
@@ -131,17 +143,17 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-05T23:32:24.601Z",
-      "lastSuccessAt": "2026-08-05T23:35:17.710510Z",
+      "lastScanAt": "2026-08-06T01:02:27.060Z",
+      "lastSuccessAt": "2026-08-06T01:04:20.280155Z",
       "searches": 20,
-      "offers": 188,
-      "matches": 2,
+      "offers": 225,
+      "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 96,
-          "matches": 2,
+          "offers": 100,
+          "matches": 0,
           "errors": 0
         },
         "google_hotels": {
@@ -152,40 +164,40 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 17,
+          "offers": 26,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 28,
+          "offers": 39,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 46,
+          "offers": 59,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-11-26\"][aria-hidden=\"false\"]').first() to be visible\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-12-26\"][aria-hidden=\"false\"]').first()\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-05",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 12,
+        "startWindowIndex": 16,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 16,
-        "remainingWindowsInSweep": 8,
+        "nextWindowIndex": 20,
+        "remainingWindowsInSweep": 4,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-05T23:32:24.601Z",
-      "lastSuccessAt": "2026-08-05T23:35:29.530485Z",
+      "lastScanAt": "2026-08-06T01:02:27.060Z",
+      "lastSuccessAt": "2026-08-06T01:04:31.758446Z",
       "searches": 5,
       "offers": 59,
       "matches": 3,
@@ -222,126 +234,8 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-09\"][aria-hidden=\"false\"]').first()\n"
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-10 en el calendario."
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/celymar.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "Hotel Celymar",
-        "address": "Centro histórico de Benidorm, Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
-        "nights": 1,
-        "totalPrice": 74.8,
-        "nightlyPrice": 74.8,
-        "rateSubtotal": 68.16,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "31694101_437674343_0_1_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 1,
-        "guestRating": 8.3,
-        "reviewCount": 870,
-        "distanceKm": 0.3,
-        "freeCancellation": false,
-        "breakfastIncluded": true,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "beach",
-          "breakfast",
-          "air_conditioning"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "Habitación Doble con balcón",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/celymar.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=c455a5e0e8cc01f1&srepoch=1785972930&all_sr_blocks=31694101_437674343_0_1_0&highlighted_blocks=31694101_437674343_0_1_0&matching_block_id=31694101_437674343_0_1_0&sr_pri_blocks=31694101_437674343_0_1_0__6816&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 74.8,
-        "bookingTableTotal": 74.8,
-        "verificationRows": [
-          {
-            "blockId": "31694101_437674343_0_1_0",
-            "priceText": "€ 68 por noche\n€ 84 € 68 \nPrecio original € 84 Precio actual € 68\n1 noche\n-19%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T23:36:01.089Z"
-      },
-      "createdAt": "2026-08-05T23:36:05.396Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/apartamentos-palasiet-benidorm.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "APARTAMENTOS PALASIET",
-        "address": "Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
-        "nights": 1,
-        "totalPrice": 94.6,
-        "nightlyPrice": 94.6,
-        "rateSubtotal": 85.91,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "516607102_279635337_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 3,
-        "guestRating": 7.3,
-        "reviewCount": 2072,
-        "distanceKm": 2.7,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [
-          "beach",
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "APARTAMENTOS PALASIET",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/apartamentos-palasiet-benidorm.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=c455a5e0e8cc01f1&srepoch=1785972930&all_sr_blocks=516607102_279635337_2_0_0&highlighted_blocks=516607102_279635337_2_0_0&matching_block_id=516607102_279635337_2_0_0&sr_pri_blocks=516607102_279635337_2_0_0__8591&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 94.6,
-        "bookingTableTotal": 94.6,
-        "verificationRows": [
-          {
-            "blockId": "516607102_279635337_2_0_0",
-            "priceText": "€ 86 por noche\n€ 95 € 86 \nPrecio original € 95 Precio actual € 86\n1 noche\n-10%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-05T23:36:05.376Z"
-      },
-      "createdAt": "2026-08-05T23:36:05.396Z"
-    }
-  ]
+  "alerts": []
 }
