@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T12:17:33.478Z",
+  "updatedAt": "2026-08-06T14:41:59.433Z",
   "summary": {
-    "generatedAt": "2026-08-06T12:17:33.478Z",
+    "generatedAt": "2026-08-06T14:41:59.433Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 249,
-    "matches": 3,
+    "offers": 265,
+    "matches": 2,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 121,
-        "matches": 3,
+        "offers": 122,
+        "matches": 2,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 4,
+        "offers": 3,
         "matches": 0,
-        "errors": 1
+        "errors": 2
       },
       "agoda": {
         "searches": 5,
-        "offers": 16,
+        "offers": 36,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 44,
+        "offers": 41,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 64,
+        "offers": 63,
         "matches": 0,
         "errors": 0
       }
@@ -82,6 +82,21 @@
     "nearbyErrors": [],
     "errors": [
       {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-12",
+          "checkOut": "2026-11-13",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-11-05",
+          "flexibleCheckInEnd": "2026-11-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-13 en el calendario."
+      },
+      {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
         "source": "google_hotels",
@@ -98,34 +113,34 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-06T12:17:33.478Z",
-      "lastSuccessAt": "2026-08-06T12:18:22.433971Z",
+      "lastScanAt": "2026-08-06T14:41:59.433Z",
+      "lastSuccessAt": "2026-08-06T14:42:48.206309Z",
       "searches": 20,
-      "offers": 189,
+      "offers": 204,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 97,
+          "offers": 98,
           "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 4,
+          "offers": 3,
           "matches": 0,
-          "errors": 0
+          "errors": 1
         },
         "agoda": {
           "searches": 4,
-          "offers": 9,
+          "offers": 26,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 30,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         },
@@ -136,32 +151,32 @@
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-13 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-06",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 8,
+        "startWindowIndex": 12,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 12,
-        "remainingWindowsInSweep": 12,
+        "nextWindowIndex": 16,
+        "remainingWindowsInSweep": 8,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-06T12:17:33.478Z",
-      "lastSuccessAt": "2026-08-06T12:18:35.772782Z",
+      "lastScanAt": "2026-08-06T14:41:59.433Z",
+      "lastSuccessAt": "2026-08-06T14:42:58.479384Z",
       "searches": 5,
-      "offers": 60,
-      "matches": 2,
+      "offers": 61,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
           "offers": 24,
-          "matches": 2,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
@@ -172,19 +187,19 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 7,
+          "offers": 10,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 14,
+          "offers": 13,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 15,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         }
