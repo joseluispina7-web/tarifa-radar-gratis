@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T10:05:58.231Z",
+  "updatedAt": "2026-08-06T12:17:33.478Z",
   "summary": {
-    "generatedAt": "2026-08-06T10:05:58.231Z",
+    "generatedAt": "2026-08-06T12:17:33.478Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 279,
-    "matches": 4,
-    "newMatches": 1,
-    "priceDrops": 1,
+    "offers": 249,
+    "matches": 3,
+    "newMatches": 0,
+    "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 118,
-        "matches": 4,
+        "offers": 121,
+        "matches": 3,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 1,
+        "offers": 4,
         "matches": 0,
-        "errors": 4
+        "errors": 1
       },
       "agoda": {
         "searches": 5,
-        "offers": 35,
+        "offers": 16,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 50,
+        "offers": 44,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 75,
+        "offers": 64,
         "matches": 0,
         "errors": 0
       }
@@ -82,51 +82,6 @@
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-13",
-          "checkOut": "2026-09-14",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-06",
-          "flexibleCheckInEnd": "2026-09-20"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-13 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-28",
-          "checkOut": "2026-09-29",
-          "nights": 1,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-21",
-          "flexibleCheckInEnd": "2026-10-05"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-28",
-          "checkOut": "2026-09-30",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-21",
-          "flexibleCheckInEnd": "2026-10-05"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-28 en el calendario."
-      },
-      {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
         "source": "google_hotels",
@@ -143,63 +98,63 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-06T10:05:58.231Z",
-      "lastSuccessAt": "2026-08-06T10:07:13.360218Z",
+      "lastScanAt": "2026-08-06T12:17:33.478Z",
+      "lastSuccessAt": "2026-08-06T12:18:22.433971Z",
       "searches": 20,
-      "offers": 217,
-      "matches": 2,
+      "offers": 189,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 94,
-          "matches": 2,
+          "offers": 97,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 1,
+          "offers": 4,
           "matches": 0,
-          "errors": 3
+          "errors": 0
         },
         "agoda": {
           "searches": 4,
-          "offers": 24,
+          "offers": 9,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 37,
+          "offers": 30,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 61,
+          "offers": 49,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-28 en el calendario.",
+      "error": "",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-06",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 4,
+        "startWindowIndex": 8,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 8,
-        "remainingWindowsInSweep": 16,
+        "nextWindowIndex": 12,
+        "remainingWindowsInSweep": 12,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-06T10:05:58.231Z",
-      "lastSuccessAt": "2026-08-06T10:07:20.236355Z",
+      "lastScanAt": "2026-08-06T12:17:33.478Z",
+      "lastSuccessAt": "2026-08-06T12:18:35.772782Z",
       "searches": 5,
-      "offers": 62,
+      "offers": 60,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
@@ -217,19 +172,19 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 11,
+          "offers": 7,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 13,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 14,
+          "offers": 15,
           "matches": 0,
           "errors": 0
         }
@@ -237,122 +192,5 @@
       "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
-  "alerts": [
-    {
-      "type": "price_drop",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
-      "previousPrice": 89.1,
-      "offer": {
-        "id": "/hotel/es/kamping-oh-playa-de-levante.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "Kampaoh Playa de Levante",
-        "address": "Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
-        "nights": 1,
-        "totalPrice": 73.7,
-        "nightlyPrice": 73.7,
-        "rateSubtotal": 67.38,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "856323901_391102498_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 7.8,
-        "reviewCount": 449,
-        "distanceKm": 2.3,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "beach"
-        ],
-        "mealPlan": "any",
-        "roomName": "1 cama doble",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/kamping-oh-playa-de-levante.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=4f24472b635700d1&srepoch=1786010839&all_sr_blocks=856323901_391102498_2_0_0&highlighted_blocks=856323901_391102498_2_0_0&matching_block_id=856323901_391102498_2_0_0&sr_pri_blocks=856323901_391102498_2_0_0__6738&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 73.7,
-        "bookingTableTotal": 73.7,
-        "verificationRows": [
-          {
-            "blockId": "856323901_391102498_2_0_0",
-            "priceText": "€ 67 por noche\n€ 67\nPrecio € 67\n1 noche\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-06T10:07:48.804Z"
-      },
-      "createdAt": "2026-08-06T10:07:51.114Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/celymar.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "Hotel Celymar",
-        "address": "Centro histórico de Benidorm, Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
-        "nights": 1,
-        "totalPrice": 74.8,
-        "nightlyPrice": 74.8,
-        "rateSubtotal": 68.16,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "31694101_437674343_0_1_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 1,
-        "guestRating": 8.3,
-        "reviewCount": 870,
-        "distanceKm": 0.3,
-        "freeCancellation": false,
-        "breakfastIncluded": true,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "beach",
-          "breakfast",
-          "air_conditioning"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "Habitación Doble con balcón",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/celymar.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=4f24472b635700d1&srepoch=1786010839&all_sr_blocks=31694101_437674343_0_1_0&highlighted_blocks=31694101_437674343_0_1_0&matching_block_id=31694101_437674343_0_1_0&sr_pri_blocks=31694101_437674343_0_1_0__6816&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 74.8,
-        "bookingTableTotal": 74.8,
-        "verificationRows": [
-          {
-            "blockId": "31694101_437674343_0_1_0",
-            "priceText": "€ 68 por noche\n€ 84 € 68 \nPrecio original € 84 Precio actual € 68\n1 noche\n-19%\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-06T10:07:51.092Z"
-      },
-      "createdAt": "2026-08-06T10:07:51.114Z"
-    }
-  ]
+  "alerts": []
 }
