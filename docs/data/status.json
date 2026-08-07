@@ -1,59 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-06T14:41:59.433Z",
+  "updatedAt": "2026-08-07T00:20:00.330Z",
   "summary": {
-    "generatedAt": "2026-08-06T14:41:59.433Z",
+    "generatedAt": "2026-08-07T00:20:00.330Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 265,
+    "offers": 285,
     "matches": 2,
-    "newMatches": 0,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 122,
+        "offers": 121,
         "matches": 2,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 3,
+        "offers": 1,
         "matches": 0,
-        "errors": 2
+        "errors": 4
       },
       "agoda": {
         "searches": 5,
-        "offers": 36,
+        "offers": 35,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 41,
+        "offers": 56,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 63,
+        "offers": 72,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "hotelName": "Pensión Pardo",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -64,7 +52,7 @@
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
         "hotelName": "B&B Hotel Benidorm Finestrat",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 102.00 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 106.25 EUR."
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -76,7 +64,7 @@
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
         "hotelName": "B&B Hotel Benidorm Finestrat",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 102.00 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 106.25 EUR."
       }
     ],
     "nearbyErrors": [],
@@ -86,15 +74,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-12",
-          "checkOut": "2026-11-13",
+          "checkIn": "2026-12-12",
+          "checkOut": "2026-12-13",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-05",
-          "flexibleCheckInEnd": "2026-11-19"
+          "flexibleCheckInStart": "2026-12-05",
+          "flexibleCheckInEnd": "2026-12-19"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-13 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-12-12",
+          "checkOut": "2026-12-14",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-12-05",
+          "flexibleCheckInEnd": "2026-12-19"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-12 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-12-27",
+          "checkOut": "2026-12-29",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-12-20",
+          "flexibleCheckInEnd": "2027-01-03"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-27 en el calendario."
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -105,7 +123,7 @@
           "checkOut": "2026-08-10"
         },
         "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial109 €120 €120 €104 €114 €114 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Joy - Tarifa estándar Sólo AlojamientoBalcón104 €114 €114 €Visitar sitio web | Habitación Joy - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón155 €171 €171 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -113,70 +131,70 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-06T14:41:59.433Z",
-      "lastSuccessAt": "2026-08-06T14:42:48.206309Z",
+      "lastScanAt": "2026-08-07T00:20:00.330Z",
+      "lastSuccessAt": "2026-08-07T00:20:29.127405Z",
       "searches": 20,
-      "offers": 204,
-      "matches": 1,
+      "offers": 221,
+      "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 98,
-          "matches": 1,
+          "matches": 0,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 3,
+          "offers": 1,
           "matches": 0,
-          "errors": 1
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 26,
+          "offers": 23,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 28,
+          "offers": 42,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 49,
+          "offers": 57,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-13 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-12-27 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-06",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 12,
+        "startWindowIndex": 16,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 16,
-        "remainingWindowsInSweep": 8,
+        "nextWindowIndex": 20,
+        "remainingWindowsInSweep": 4,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-06T14:41:59.433Z",
-      "lastSuccessAt": "2026-08-06T14:42:58.479384Z",
+      "lastScanAt": "2026-08-07T00:20:00.330Z",
+      "lastSuccessAt": "2026-08-07T00:20:35.172734Z",
       "searches": 5,
-      "offers": 61,
-      "matches": 1,
+      "offers": 64,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
-          "offers": 24,
-          "matches": 1,
+          "offers": 23,
+          "matches": 2,
           "errors": 0
         },
         "google_hotels": {
@@ -187,25 +205,85 @@
         },
         "agoda": {
           "searches": 1,
-          "offers": 10,
+          "offers": 12,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 1,
-          "offers": 13,
+          "offers": 14,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 1,
-          "offers": 14,
+          "offers": 15,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial122 €134 €134 €116 €127 €127 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón174 €191 €191 €Visitar sitio web | Habitación Lively - Tarifa estándar Desayuno incluidolos desayunos · Balcón130 €143 €143 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 6 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: Marina Resort Benidorm Sitio web oficial109 €120 €120 €104 €114 €114 €Visitar sitio webVentajas Exclusivas · Reserva directo y ahorra | Habitación Joy - Tarifa estándar Sólo AlojamientoBalcón104 €114 €114 €Visitar sitio web | Habitación Joy - Tarifa estándar Sólo Alojamiento3 huéspedes · Balcón155 €171 €171 €Visitar sitio web | Habitación Lively - Tarifa estándar Sólo AlojamientoBalcón116 €127 €127 €Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+      "monitorName": "Beni",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/hostal-irati.es.html|2026-08-09|2026-08-10",
+        "source": "booking",
+        "hotelName": "Irati",
+        "address": "Centro histórico de Benidorm, Benidorm",
+        "checkIn": "2026-08-09",
+        "checkOut": "2026-08-10",
+        "nights": 1,
+        "totalPrice": 90.2,
+        "nightlyPrice": 90.2,
+        "rateSubtotal": 81.82,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "28887601_165367206_0_1_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 8.7,
+        "reviewCount": 1756,
+        "distanceKm": 0.1,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "Habitación Doble - 1 o 2 camas",
+        "sharedRoom": false,
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "url": "https://www.booking.com/hotel/es/hostal-irati.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=99b50269d4f70090&srepoch=1786062035&all_sr_blocks=28887601_165367206_0_1_0&highlighted_blocks=28887601_165367206_0_1_0&matching_block_id=28887601_165367206_0_1_0&sr_pri_blocks=28887601_165367206_0_1_0__8182&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 90.2,
+        "bookingTableTotal": 90.2,
+        "verificationRows": [
+          {
+            "blockId": "28887601_165367206_0_1_0",
+            "priceText": "€ 82 por noche\n€ 82\nPrecio € 82\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T00:21:01.694Z"
+      },
+      "createdAt": "2026-08-07T00:21:01.720Z"
+    }
+  ]
 }
