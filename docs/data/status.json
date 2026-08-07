@@ -1,47 +1,63 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-07T03:24:54.215Z",
+  "updatedAt": "2026-08-07T05:16:10.441Z",
   "summary": {
-    "generatedAt": "2026-08-07T03:24:54.215Z",
+    "generatedAt": "2026-08-07T05:16:10.441Z",
     "monitors": 2,
     "searches": 25,
-    "offers": 279,
-    "matches": 4,
-    "newMatches": 2,
-    "priceDrops": 0,
+    "offers": 336,
+    "matches": 9,
+    "newMatches": 6,
+    "priceDrops": 1,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 123,
-        "matches": 4,
+        "offers": 115,
+        "matches": 9,
         "errors": 0
       },
       "google_hotels": {
         "searches": 5,
-        "offers": 2,
+        "offers": 3,
         "matches": 0,
-        "errors": 3
+        "errors": 2
       },
       "agoda": {
         "searches": 5,
-        "offers": 33,
+        "offers": 56,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 5,
-        "offers": 48,
+        "offers": 70,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 5,
-        "offers": 73,
+        "offers": 92,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-30",
+          "checkOut": "2026-08-31",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-23",
+          "flexibleCheckInEnd": "2026-09-06"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Chima",
+        "message": "Booking cambio el total de 13.20 a 42.90 EUR durante la comprobacion."
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -74,41 +90,30 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-01-11",
-          "checkOut": "2027-01-13",
-          "nights": 2,
+          "checkIn": "2026-08-15",
+          "checkOut": "2026-08-16",
+          "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-04",
-          "flexibleCheckInEnd": "2027-01-18"
+          "flexibleCheckInStart": "2026-08-08",
+          "flexibleCheckInEnd": "2026-08-22"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mantuvo las fechas solicitadas."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Resumen de reseñas de sitios de viajes | Fotos | Acerca de esta propiedad. Precios: Booking.comObtén recompensas de GeniusObtén recompensas de GeniusEUR 73EUR 73EUR 81EUR 81EUR 81 en totalVisitar sitio web | Booking.com7,5/10 · 2 reseñasBooking.com, Hace 2 meses😊: Location. 😢: We arrive at 23h50, and the host told us we have to pay 15€ in cash because it was very late... but we haven't seen this information...Visitado en mayo | EUR 76/noche20–23 agoPelayo 44 Chueca - Apartment1 dormitorioCapacidad para 2A 0.25 mi | EUR 334/noche27 oct – 3 novGenteel Home Chueca II2 dormitoriosCapacidad para 4A 0.75 mi. Detalle: Google no expuso un total final con impuestos en EUR.."
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-01-26",
-          "checkOut": "2027-01-28",
+          "checkIn": "2026-08-30",
+          "checkOut": "2026-09-01",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-19",
-          "flexibleCheckInEnd": "2027-02-02"
+          "flexibleCheckInStart": "2026-08-23",
+          "flexibleCheckInEnd": "2026-09-06"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-26\"][aria-hidden=\"false\"]').first() to be visible\n"
-      },
-      {
-        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-        "monitorName": "Beni",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-08-09",
-          "checkOut": "2026-08-10"
-        },
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-30 en el calendario."
       }
     ]
   },
@@ -116,17 +121,17 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-07T03:24:54.215Z",
-      "lastSuccessAt": "2026-08-07T03:25:51.487996Z",
+      "lastScanAt": "2026-08-07T05:16:10.441Z",
+      "lastSuccessAt": "2026-08-07T05:17:40.754376Z",
       "searches": 20,
-      "offers": 217,
-      "matches": 2,
+      "offers": 269,
+      "matches": 7,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 100,
-          "matches": 2,
+          "offers": 91,
+          "matches": 7,
           "errors": 0
         },
         "google_hotels": {
@@ -137,60 +142,60 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 43,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 34,
+          "offers": 56,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 58,
+          "offers": 77,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2027-01-26\"][aria-hidden=\"false\"]').first() to be visible\n",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-30 en el calendario.",
       "flexibleCoverage": {
-        "sweepStartDate": "2026-08-06",
+        "sweepStartDate": "2026-08-07",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 20,
+        "startWindowIndex": 0,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 0,
-        "remainingWindowsInSweep": 0,
-        "completedSweep": true
+        "nextWindowIndex": 4,
+        "remainingWindowsInSweep": 20,
+        "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-07T03:24:54.215Z",
-      "lastSuccessAt": "2026-08-07T03:26:28.759798Z",
+      "lastScanAt": "2026-08-07T05:16:10.441Z",
+      "lastSuccessAt": "2026-08-07T05:17:45.853896Z",
       "searches": 5,
-      "offers": 62,
+      "offers": 67,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
-          "offers": 23,
+          "offers": 24,
           "matches": 2,
           "errors": 0
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 0,
+          "offers": 1,
           "matches": 0,
-          "errors": 1
+          "errors": 0
         },
         "agoda": {
           "searches": 1,
-          "offers": 10,
+          "offers": 13,
           "matches": 0,
           "errors": 0
         },
@@ -207,7 +212,7 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-08-09 en el calendario."
+      "error": ""
     }
   },
   "alerts": [
@@ -217,16 +222,16 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2027-01-11|2027-01-12",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-15|2026-08-16",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2027-01-11",
-        "checkOut": "2027-01-12",
+        "checkIn": "2026-08-15",
+        "checkOut": "2026-08-16",
         "nights": 1,
         "totalPrice": 30.8,
         "nightlyPrice": 30.8,
-        "rateSubtotal": 28.18,
+        "rateSubtotal": 29.09,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
@@ -239,7 +244,7 @@
         "guestRating": 7.7,
         "reviewCount": 11,
         "distanceKm": 0,
-        "freeCancellation": true,
+        "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": true,
         "propertyType": "hotel",
@@ -248,7 +253,7 @@
         "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-01-11&checkout=2027-01-12&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=ed2118042fea007c&srepoch=1786073098&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-15&checkout=2026-08-16&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=7114250eb2260078&srepoch=1786079773&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2909&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "searchResultPrice": 30.8,
@@ -262,9 +267,9 @@
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-07T03:25:19.891Z"
+        "priceConfirmedAt": "2026-08-07T05:16:39.315Z"
       },
-      "createdAt": "2026-08-07T03:25:19.953Z"
+      "createdAt": "2026-08-07T05:16:43.331Z"
     },
     {
       "type": "new_match",
@@ -272,12 +277,124 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2027-02-02|2027-02-03",
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-15|2026-08-16",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-08-15",
+        "checkOut": "2026-08-16",
+        "nights": 1,
+        "totalPrice": 38.5,
+        "nightlyPrice": 38.5,
+        "rateSubtotal": 34.5,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.4,
+        "reviewCount": 2178,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-15&checkout=2026-08-16&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=7114250eb2260078&srepoch=1786079773&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3450&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 38.5,
+        "bookingTableTotal": 38.5,
+        "verificationRows": [
+          {
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 35 por noche\n€ 35\nPrecio € 35\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T05:16:41.334Z"
+      },
+      "createdAt": "2026-08-07T05:16:43.331Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-chima.es.html|2026-08-15|2026-08-16",
+        "source": "booking",
+        "hotelName": "Rooms Chima",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-08-15",
+        "checkOut": "2026-08-16",
+        "nights": 1,
+        "totalPrice": 13.2,
+        "nightlyPrice": 13.2,
+        "rateSubtotal": 39.05,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1297035501_402606904_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.7,
+        "reviewCount": 500,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Deluxe",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-chima.es.html?ucfs=1&arphpl=1&checkin=2026-08-15&checkout=2026-08-16&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=7114250eb2260078&srepoch=1786079773&all_sr_blocks=1297035501_402606904_2_0_0&highlighted_blocks=1297035501_402606904_2_0_0&matching_block_id=1297035501_402606904_2_0_0&sr_pri_blocks=1297035501_402606904_2_0_0__3905&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 13.2,
+        "bookingTableTotal": 13.2,
+        "verificationRows": [
+          {
+            "blockId": "1297035501_402606904_2_0_0",
+            "priceText": "€ 28 por noche\n€ 45 € 40 \nPrecio original € 45 Precio actual € 40\n1 noche\n-11%\nOferta Escapada\nIncluido: suplemento de limpieza de € 12 por estancia\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T05:16:43.307Z"
+      },
+      "createdAt": "2026-08-07T05:16:43.331Z"
+    },
+    {
+      "type": "price_drop",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 31.9,
+      "offer": {
+        "id": "/hotel/es/rooms-magangue.es.html|2026-08-24|2026-08-25",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2027-02-02",
-        "checkOut": "2027-02-03",
+        "checkIn": "2026-08-24",
+        "checkOut": "2026-08-25",
         "nights": 1,
         "totalPrice": 30.8,
         "nightlyPrice": 30.8,
@@ -303,7 +420,7 @@
         "roomName": "Habitación Doble Estándar con baño compartido",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2027-02-02&checkout=2027-02-03&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=faf31814d55101de&srepoch=1786073130&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-08-24&checkout=2026-08-25&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=15612524972a01f2&srepoch=1786079819&all_sr_blocks=1258125510_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__2818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "searchResultPrice": 30.8,
@@ -317,9 +434,174 @@
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-07T03:25:48.044Z"
+        "priceConfirmedAt": "2026-08-07T05:17:27.889Z"
       },
-      "createdAt": "2026-08-07T03:25:48.079Z"
+      "createdAt": "2026-08-07T05:17:37.346Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/ayz-hotels-joaquin-pol.es.html|2026-08-30|2026-08-31",
+        "source": "booking",
+        "hotelName": "AYZ Joaquín Pol - Auto check-in property",
+        "address": "Fuencarral - El Pardo, Madrid",
+        "checkIn": "2026-08-30",
+        "checkOut": "2026-08-31",
+        "nights": 1,
+        "totalPrice": 34.1,
+        "nightlyPrice": 34.1,
+        "rateSubtotal": 31.36,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1046568401_377062656_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 6.4,
+        "reviewCount": 2178,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble Estándar con baño compartido",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/ayz-hotels-joaquin-pol.es.html?ucfs=1&arphpl=1&checkin=2026-08-30&checkout=2026-08-31&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=15612524972a01f2&srepoch=1786079819&all_sr_blocks=1046568401_377062656_2_0_0&highlighted_blocks=1046568401_377062656_2_0_0&matching_block_id=1046568401_377062656_2_0_0&sr_pri_blocks=1046568401_377062656_2_0_0__3136&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 34.1,
+        "bookingTableTotal": 34.1,
+        "verificationRows": [
+          {
+            "blockId": "1046568401_377062656_2_0_0",
+            "priceText": "€ 31 por noche\n€ 31\nPrecio € 31\n1 noche\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T05:17:30.248Z"
+      },
+      "createdAt": "2026-08-07T05:17:37.346Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/hello-ifema.es.html|2026-08-23|2026-08-24",
+        "source": "booking",
+        "hotelName": "Hello Feria",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-08-23",
+        "checkOut": "2026-08-24",
+        "nights": 1,
+        "totalPrice": 39.6,
+        "nightlyPrice": 39.6,
+        "rateSubtotal": 35.73,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "328172206_115252822_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 7.1,
+        "reviewCount": 770,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Doble",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/hello-ifema.es.html?ucfs=1&arphpl=1&checkin=2026-08-23&checkout=2026-08-24&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=price&srpvid=15612524972a01f2&srepoch=1786079819&all_sr_blocks=328172206_115252822_2_0_0&highlighted_blocks=328172206_115252822_2_0_0&matching_block_id=328172206_115252822_2_0_0&sr_pri_blocks=328172206_115252822_2_0_0__3573&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 39.6,
+        "bookingTableTotal": 39.6,
+        "verificationRows": [
+          {
+            "blockId": "328172206_115252822_2_0_0",
+            "priceText": "€ 36 por noche\n€ 58 € 36 \nPrecio original € 58 Precio actual € 36\n1 noche\n-38%\nOferta por tiempo limitado\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T05:17:34.902Z"
+      },
+      "createdAt": "2026-08-07T05:17:37.346Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/rooms-villamil.es.html|2026-08-30|2026-08-31",
+        "source": "booking",
+        "hotelName": "Rooms Villamil",
+        "address": "Tetuán, Madrid",
+        "checkIn": "2026-08-30",
+        "checkOut": "2026-08-31",
+        "nights": 1,
+        "totalPrice": 36.3,
+        "nightlyPrice": 36.3,
+        "rateSubtotal": 33.17,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "1 noche, 2 adultos",
+        "bookingBlockIds": [
+          "1491083204_420768519_2_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_availability_table_with_country_tax",
+        "stars": 3,
+        "guestRating": 5.9,
+        "reviewCount": 247,
+        "distanceKm": 0,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Deluxe",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/rooms-villamil.es.html?ucfs=1&arphpl=1&checkin=2026-08-30&checkout=2026-08-31&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=price&srpvid=15612524972a01f2&srepoch=1786079819&all_sr_blocks=1491083204_420768519_2_0_0&highlighted_blocks=1491083204_420768519_2_0_0&matching_block_id=1491083204_420768519_2_0_0&sr_pri_blocks=1491083204_420768519_2_0_0__3317&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 36.3,
+        "bookingTableTotal": 36.3,
+        "verificationRows": [
+          {
+            "blockId": "1491083204_420768519_2_0_0",
+            "priceText": "€ 33 por noche\n€ 36 € 33 \nPrecio original € 36 Precio actual € 33\n1 noche\n-8%\nNo incluido: 10% IVA",
+            "taxesText": ""
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-07T05:17:32.556Z"
+      },
+      "createdAt": "2026-08-07T05:17:37.346Z"
     }
   ]
 }
