@@ -1,42 +1,42 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-07T23:20:50.412Z",
+  "updatedAt": "2026-08-07T23:56:52.186Z",
   "summary": {
-    "generatedAt": "2026-08-07T23:20:50.412Z",
+    "generatedAt": "2026-08-07T23:56:52.186Z",
     "monitors": 3,
-    "searches": 45,
-    "offers": 330,
-    "matches": 2,
-    "newMatches": 1,
+    "searches": 40,
+    "offers": 291,
+    "matches": 3,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 9,
-        "offers": 143,
-        "matches": 2,
+        "searches": 8,
+        "offers": 136,
+        "matches": 3,
         "errors": 1
       },
       "google_hotels": {
-        "searches": 9,
-        "offers": 0,
+        "searches": 8,
+        "offers": 1,
         "matches": 0,
-        "errors": 9
+        "errors": 7
       },
       "agoda": {
-        "searches": 9,
-        "offers": 41,
+        "searches": 8,
+        "offers": 34,
         "matches": 0,
         "errors": 0
       },
       "trip": {
-        "searches": 9,
-        "offers": 52,
+        "searches": 8,
+        "offers": 40,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
-        "searches": 9,
-        "offers": 94,
+        "searches": 8,
+        "offers": 80,
         "matches": 0,
         "errors": 0
       }
@@ -47,28 +47,12 @@
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-08-01",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-11",
           "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
-        },
-        "searchArea": "Alcácer do Sal",
-        "hotelName": "Monte Sol Nascente",
-        "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-08-01",
-          "nights": 6,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Alcácer do Sal",
         "hotelName": "4Ever Palace Design&Nature",
@@ -79,12 +63,12 @@
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-08-01",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-11",
           "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Alcácer do Sal",
         "hotelName": "MontePico",
@@ -98,60 +82,45 @@
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-14",
-          "checkOut": "2026-09-15",
+          "checkIn": "2026-10-14",
+          "checkOut": "2026-10-15",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-07",
-          "flexibleCheckInEnd": "2026-09-21"
+          "flexibleCheckInStart": "2026-10-07",
+          "flexibleCheckInEnd": "2026-10-21"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-14 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible button').filter({ hasText: /^\\s*(?:Hecho|Done)\\s*$/i }).first()\n"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-14",
-          "checkOut": "2026-09-16",
+          "checkIn": "2026-10-14",
+          "checkOut": "2026-10-16",
           "nights": 2,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-07",
-          "flexibleCheckInEnd": "2026-09-21"
+          "flexibleCheckInStart": "2026-10-07",
+          "flexibleCheckInEnd": "2026-10-21"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Sitios cercanos | Fotos | Acerca de esta propiedad. Precios: Book Direct Sitio web oficialEUR 50EUR 50EUR 50EUR 100EUR 100 en totalVisitar sitio web | Book Direct Sitio web oficial EUR 50 EUR 100 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-14\"][aria-hidden=\"false\"]').first()\n"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-09-29",
-          "checkOut": "2026-09-30",
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-10-30",
           "nights": 1,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-22",
-          "flexibleCheckInEnd": "2026-10-06"
+          "flexibleCheckInStart": "2026-10-22",
+          "flexibleCheckInEnd": "2026-11-05"
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-09-30 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-09-29",
-          "checkOut": "2026-10-01",
-          "nights": 2,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-09-22",
-          "flexibleCheckInEnd": "2026-10-06"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-01 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-29\"][aria-hidden=\"false\"]').first()\n"
       },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
@@ -167,29 +136,14 @@
       {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-11",
-          "checkOut": "2027-07-18",
-          "nights": 7,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-04",
-          "flexibleCheckInEnd": "2027-07-18"
-        },
-        "searchArea": "Grândola",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-11 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-07-31",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-10",
           "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Comporta, Distrito de Setúbal, Portugal",
         "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
@@ -199,45 +153,45 @@
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-07-31",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-10",
           "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-26 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-05 en el calendario."
       },
       {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-08-01",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-11",
           "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Alcácer do Sal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-26 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-05 en el calendario."
       },
       {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-07-26",
-          "checkOut": "2027-08-02",
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
           "nights": 7,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-19",
-          "flexibleCheckInEnd": "2027-08-02"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-07"
         },
         "searchArea": "Grândola",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-26 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-05 en el calendario."
       }
     ]
   },
@@ -245,69 +199,69 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-07T23:20:50.412Z",
-      "lastSuccessAt": "2026-08-07T23:21:20.040377Z",
+      "lastScanAt": "2026-08-07T23:56:52.186Z",
+      "lastSuccessAt": "2026-08-08T00:00:43.714088Z",
       "searches": 20,
-      "offers": 215,
-      "matches": 0,
+      "offers": 203,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 94,
-          "matches": 0,
+          "offers": 99,
+          "matches": 1,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 0,
+          "offers": 1,
           "matches": 0,
-          "errors": 4
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 26,
+          "offers": 22,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 35,
+          "offers": 28,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 60,
+          "offers": 53,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-10-01 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-10-29\"][aria-hidden=\"false\"]').first()\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-07",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 4,
+        "startWindowIndex": 8,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 8,
-        "remainingWindowsInSweep": 16,
+        "nextWindowIndex": 12,
+        "remainingWindowsInSweep": 12,
         "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-07T23:20:50.412Z",
-      "lastSuccessAt": "2026-08-07T23:21:25.320617Z",
+      "lastScanAt": "2026-08-07T23:56:52.186Z",
+      "lastSuccessAt": "2026-08-08T00:00:53.850698Z",
       "searches": 5,
-      "offers": 62,
+      "offers": 63,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 1,
-          "offers": 24,
+          "offers": 25,
           "matches": 2,
           "errors": 0
         },
@@ -341,10 +295,10 @@
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-07T23:20:50.412Z",
-      "lastSuccessAt": "2026-08-07T23:23:11.962912Z",
-      "searches": 20,
-      "offers": 53,
+      "lastScanAt": "2026-08-07T23:56:52.186Z",
+      "lastSuccessAt": "2026-08-08T00:02:30.518361Z",
+      "searches": 15,
+      "offers": 25,
       "matches": 0,
       "nearbyLocations": [
         "Alcácer do Sal",
@@ -352,106 +306,48 @@
       ],
       "sources": {
         "booking": {
-          "searches": 4,
-          "offers": 25,
+          "searches": 3,
+          "offers": 12,
           "matches": 0,
           "errors": 1
         },
         "google_hotels": {
-          "searches": 4,
+          "searches": 3,
           "offers": 0,
           "matches": 0,
-          "errors": 4
+          "errors": 3
         },
         "agoda": {
-          "searches": 4,
-          "offers": 3,
+          "searches": 3,
+          "offers": 0,
           "matches": 0,
           "errors": 0
         },
         "trip": {
-          "searches": 4,
-          "offers": 5,
+          "searches": 3,
+          "offers": 0,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
-          "searches": 4,
-          "offers": 20,
+          "searches": 3,
+          "offers": 13,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-26 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-05 en el calendario.",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-07",
         "totalCombinations": 1095,
         "totalSearchWindows": 75,
-        "startWindowIndex": 68,
-        "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 72,
-        "remainingWindowsInSweep": 3,
-        "completedSweep": false
+        "startWindowIndex": 72,
+        "windowsCheckedThisRun": 3,
+        "nextWindowIndex": 0,
+        "remainingWindowsInSweep": 0,
+        "completedSweep": true
       }
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
-      "monitorName": "Beni",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/pension-rosa-benidorm1.es.html|2026-08-09|2026-08-10",
-        "source": "booking",
-        "hotelName": "PENSIÓN ROSA",
-        "address": "Benidorm",
-        "checkIn": "2026-08-09",
-        "checkOut": "2026-08-10",
-        "nights": 1,
-        "totalPrice": 92.4,
-        "nightlyPrice": 92.4,
-        "rateSubtotal": 83.64,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "1 noche, 2 adultos",
-        "bookingBlockIds": [
-          "787077002_338267051_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_availability_table_with_country_tax",
-        "stars": 0,
-        "guestRating": 3.8,
-        "reviewCount": 105,
-        "distanceKm": 0.5,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hostel",
-        "amenities": [
-          "beach"
-        ],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble - 2 camas",
-        "sharedRoom": false,
-        "searchArea": "Benidorm, Comunidad Valenciana, España",
-        "url": "https://www.booking.com/hotel/es/pension-rosa-benidorm1.es.html?ucfs=1&arphpl=1&checkin=2026-08-09&checkout=2026-08-10&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=0e3fa43af0fb00a2&srepoch=1786144886&all_sr_blocks=787077002_338267051_2_0_0&highlighted_blocks=787077002_338267051_2_0_0&matching_block_id=787077002_338267051_2_0_0&sr_pri_blocks=787077002_338267051_2_0_0__8364&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 92.4,
-        "bookingTableTotal": 92.4,
-        "verificationRows": [
-          {
-            "blockId": "787077002_338267051_2_0_0",
-            "priceText": "€ 84 por noche\n€ 84\nPrecio € 84\n1 noche\nNo incluido: 10% IVA",
-            "taxesText": ""
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-07T23:21:47.997Z"
-      },
-      "createdAt": "2026-08-07T23:21:48.021Z"
-    }
-  ]
+  "alerts": []
 }
