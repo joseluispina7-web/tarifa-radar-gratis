@@ -1,61 +1,197 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-08T21:57:59.759Z",
+  "updatedAt": "2026-08-08T22:39:24.550Z",
   "summary": {
-    "generatedAt": "2026-08-08T21:57:59.759Z",
+    "generatedAt": "2026-08-08T22:39:24.550Z",
     "monitors": 3,
     "searches": 45,
-    "offers": 351,
-    "matches": 7,
-    "newMatches": 4,
+    "offers": 368,
+    "matches": 11,
+    "newMatches": 2,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 9,
-        "offers": 148,
-        "matches": 4,
-        "errors": 2
+        "offers": 139,
+        "matches": 8,
+        "errors": 1
       },
       "google_hotels": {
         "searches": 9,
-        "offers": 7,
-        "matches": 3,
-        "errors": 2
+        "offers": 4,
+        "matches": 1,
+        "errors": 5
       },
       "agoda": {
         "searches": 9,
-        "offers": 38,
+        "offers": 59,
         "matches": 0,
         "errors": 0
       },
       "trip": {
         "searches": 9,
-        "offers": 62,
-        "matches": 0,
+        "offers": 61,
+        "matches": 2,
         "errors": 0
       },
       "bluepillow": {
         "searches": 9,
-        "offers": 96,
+        "offers": 105,
         "matches": 0,
         "errors": 0
       }
     },
     "verificationErrors": [
       {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Villamil",
+        "message": "Booking cambio el total de 30.80 a 34.10 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "AYZ Villegas - Auto check-in property",
+        "message": "Booking cambio el total de 34.10 a 36.30 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Rooms Chima",
+        "message": "Booking cambio el total de 13.20 a 37.40 EUR durante la comprobacion."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca Hostel",
+        "message": "Bluepillow no confirmo el precio final (sold_out)."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca Hostel",
+        "message": "Bluepillow no confirmo el precio final (sold_out)."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-31",
+          "checkOut": "2026-09-01",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-24",
+          "flexibleCheckInEnd": "2026-09-07"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 39.51 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-31",
+          "checkOut": "2026-09-01",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-24",
+          "flexibleCheckInEnd": "2026-09-07"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Motion Chueca Hostel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 39.51 EUR."
+      },
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "B&B Hotel Benidorm Finestrat",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 106.25 EUR."
+      },
+      {
+        "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
+        "monitorName": "Beni",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-08-09",
+          "checkOut": "2026-08-10"
+        },
+        "searchArea": "Benidorm, Comunidad Valenciana, España",
+        "hotelName": "B&B Hotel Benidorm Finestrat",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 106.25 EUR."
+      },
+      {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-01-13",
-          "checkOut": "2027-01-18",
-          "nights": 5,
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-06",
-          "flexibleCheckInEnd": "2027-01-20"
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
         },
-        "searchArea": "Grândola",
-        "hotelName": "Monte das Casolas",
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "GuestReady - Enchanting retreat in Alcácer do Sal",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
@@ -63,15 +199,15 @@
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-01-13",
-          "checkOut": "2027-01-18",
-          "nights": 5,
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-06",
-          "flexibleCheckInEnd": "2027-01-20"
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
         },
-        "searchArea": "Grândola",
-        "hotelName": "ONZE",
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "Casa Da Aldeia",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
@@ -79,20 +215,113 @@
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-01-13",
-          "checkOut": "2027-01-18",
-          "nights": 5,
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-06",
-          "flexibleCheckInEnd": "2027-01-20"
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
         },
-        "searchArea": "Grândola",
-        "hotelName": "MyStay - Herdade do Vale da Abelheira",
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "Hotel da Barrosinha",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
+        },
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "Pousada Castelo de Alcacer do Sal",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
+        },
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "Hotel Salatia",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-03",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
+        },
+        "searchArea": "Alcácer do Sal",
+        "hotelName": "4Ever Palace Design&Nature",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       }
     ],
     "nearbyErrors": [],
     "errors": [
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-17",
+          "nights": 1,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-16\"][aria-hidden=\"false\"]').first() to be visible\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-16",
+          "checkOut": "2026-08-18",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-09",
+          "flexibleCheckInEnd": "2026-08-23"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"gridcell\"][data-iso=\"2026-08-16\"][aria-hidden=\"false\"]').first()\n"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-08-31",
+          "checkOut": "2026-09-02",
+          "nights": 2,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2026-08-24",
+          "flexibleCheckInEnd": "2026-09-07"
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n"
+      },
       {
         "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
         "monitorName": "Beni",
@@ -109,27 +338,12 @@
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2026-12-29",
-          "checkOut": "2027-01-04",
-          "nights": 6,
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-02",
+          "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-12-22",
-          "flexibleCheckInEnd": "2027-01-05"
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-01-13",
-          "checkOut": "2027-01-19",
-          "nights": 6,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-06",
-          "flexibleCheckInEnd": "2027-01-20"
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
         },
         "searchArea": "Comporta, Distrito de Setúbal, Portugal",
         "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
@@ -139,15 +353,15 @@
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-01-13",
-          "checkOut": "2027-01-19",
-          "nights": 6,
+          "checkIn": "2027-01-28",
+          "checkOut": "2027-02-02",
+          "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-01-06",
-          "flexibleCheckInEnd": "2027-01-20"
+          "flexibleCheckInStart": "2027-01-21",
+          "flexibleCheckInEnd": "2027-02-04"
         },
         "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Opciones de reserva | Resultados adicionales de la Web | Sitios cercanos. Precios: Expedia.comEUR 50EUR 50EUR 50EUR 299EUR 299 en totalVisitar sitio web | Vrbo.comEUR 50EUR 50EUR 50EUR 299EUR 299 en totalVisitar sitio web | Expedia.com EUR 50 EUR 299 en total Visitar sitio web | Vrbo.com EUR 50 EUR 299 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Opciones de reserva | Resultados adicionales de la Web | Sitios cercanos. Precios: Expedia.comEUR 51EUR 51EUR 51EUR 255EUR 255 en totalVisitar sitio web | Vrbo.comEUR 51EUR 51EUR 51EUR 255EUR 255 en totalVisitar sitio web | Expedia.com EUR 51 EUR 255 en total Visitar sitio web | Vrbo.com EUR 51 EUR 255 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
       }
     ]
   },
@@ -155,61 +369,61 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid",
-      "lastScanAt": "2026-08-08T21:57:59.759Z",
-      "lastSuccessAt": "2026-08-08T21:59:06.924824Z",
+      "lastScanAt": "2026-08-08T22:39:24.550Z",
+      "lastSuccessAt": "2026-08-08T22:42:24.151719Z",
       "searches": 20,
-      "offers": 228,
-      "matches": 4,
+      "offers": 239,
+      "matches": 9,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 100,
-          "matches": 3,
+          "offers": 90,
+          "matches": 7,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 4,
-          "matches": 1,
-          "errors": 0
+          "offers": 1,
+          "matches": 0,
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 42,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 44,
-          "matches": 0,
+          "offers": 40,
+          "matches": 2,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 57,
+          "offers": 66,
           "matches": 0,
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').first() to be visible\n",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-08",
         "totalCombinations": 360,
         "totalSearchWindows": 24,
-        "startWindowIndex": 20,
+        "startWindowIndex": 0,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 0,
-        "remainingWindowsInSweep": 0,
-        "completedSweep": true
+        "nextWindowIndex": 4,
+        "remainingWindowsInSweep": 20,
+        "completedSweep": false
       }
     },
     "d09d6d50-9bdd-4b97-9397-9022151fcdeb": {
       "monitorId": "d09d6d50-9bdd-4b97-9397-9022151fcdeb",
       "monitorName": "Beni",
-      "lastScanAt": "2026-08-08T21:57:59.759Z",
-      "lastSuccessAt": "2026-08-08T21:59:16.403788Z",
+      "lastScanAt": "2026-08-08T22:39:24.550Z",
+      "lastSuccessAt": "2026-08-08T22:42:59.563057Z",
       "searches": 5,
       "offers": 64,
       "matches": 1,
@@ -251,11 +465,11 @@
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-08T21:57:59.759Z",
-      "lastSuccessAt": "2026-08-08T22:01:05.263515Z",
+      "lastScanAt": "2026-08-08T22:39:24.550Z",
+      "lastSuccessAt": "2026-08-08T22:44:56.424598Z",
       "searches": 20,
-      "offers": 59,
-      "matches": 2,
+      "offers": 65,
+      "matches": 1,
       "nearbyLocations": [
         "Alcácer do Sal",
         "Grândola"
@@ -263,25 +477,25 @@
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 24,
+          "offers": 25,
           "matches": 0,
-          "errors": 2
+          "errors": 1
         },
         "google_hotels": {
           "searches": 4,
           "offers": 3,
-          "matches": 2,
+          "matches": 1,
           "errors": 1
         },
         "agoda": {
           "searches": 4,
-          "offers": 2,
+          "offers": 4,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 6,
+          "offers": 9,
           "matches": 0,
           "errors": 0
         },
@@ -292,15 +506,15 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Opciones de reserva | Resultados adicionales de la Web | Sitios cercanos. Precios: Expedia.comEUR 50EUR 50EUR 50EUR 299EUR 299 en totalVisitar sitio web | Vrbo.comEUR 50EUR 50EUR 50EUR 299EUR 299 en totalVisitar sitio web | Expedia.com EUR 50 EUR 299 en total Visitar sitio web | Vrbo.com EUR 50 EUR 299 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR..",
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Opciones de reserva | Opciones de reserva | Resultados adicionales de la Web | Sitios cercanos. Precios: Expedia.comEUR 51EUR 51EUR 51EUR 255EUR 255 en totalVisitar sitio web | Vrbo.comEUR 51EUR 51EUR 51EUR 255EUR 255 en totalVisitar sitio web | Expedia.com EUR 51 EUR 255 en total Visitar sitio web | Vrbo.com EUR 51 EUR 255 en total Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR..",
       "flexibleCoverage": {
         "sweepStartDate": "2026-08-08",
         "totalCombinations": 1095,
         "totalSearchWindows": 75,
-        "startWindowIndex": 28,
+        "startWindowIndex": 32,
         "windowsCheckedThisRun": 4,
-        "nextWindowIndex": 32,
-        "remainingWindowsInSweep": 43,
+        "nextWindowIndex": 36,
+        "remainingWindowsInSweep": 39,
         "completedSweep": false
       }
     }
@@ -312,29 +526,29 @@
       "monitorName": "Madrid",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-chima.es.html|2027-01-11|2027-01-12",
+        "id": "/hotel/es/rooms-villamil.es.html|2026-08-31|2026-09-01",
         "source": "booking",
-        "hotelName": "Rooms Chima",
-        "address": "Hortaleza, Madrid",
-        "checkIn": "2027-01-11",
-        "checkOut": "2027-01-12",
+        "hotelName": "Rooms Villamil",
+        "address": "Tetuán, Madrid",
+        "checkIn": "2026-08-31",
+        "checkOut": "2026-09-01",
         "nights": 1,
-        "totalPrice": 13.2,
-        "nightlyPrice": 13.2,
-        "rateSubtotal": 38.36,
+        "totalPrice": 39.6,
+        "nightlyPrice": 39.6,
+        "rateSubtotal": 36.05,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "1 noche, 2 adultos",
         "bookingBlockIds": [
-          "1297035505_402606904_2_0_0"
+          "1491083202_420768519_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_availability_table_with_country_tax",
         "stars": 3,
-        "guestRating": 6.7,
-        "reviewCount": 500,
+        "guestRating": 5.9,
+        "reviewCount": 247,
         "distanceKm": 0,
-        "freeCancellation": true,
+        "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": true,
         "propertyType": "hotel",
@@ -343,68 +557,23 @@
         "roomName": "Habitación Deluxe",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-chima.es.html?ucfs=1&arphpl=1&checkin=2027-01-11&checkout=2027-01-12&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=852f9a74333101c9&srepoch=1786226283&all_sr_blocks=1297035505_402606904_2_0_0&highlighted_blocks=1297035505_402606904_2_0_0&matching_block_id=1297035505_402606904_2_0_0&sr_pri_blocks=1297035505_402606904_2_0_0__3836&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-villamil.es.html?ucfs=1&arphpl=1&checkin=2026-08-31&checkout=2026-09-01&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=price&srpvid=48d89f96dfb101a0&srepoch=1786228910&all_sr_blocks=1491083202_420768519_2_0_0&highlighted_blocks=1491083202_420768519_2_0_0&matching_block_id=1491083202_420768519_2_0_0&sr_pri_blocks=1491083202_420768519_2_0_0__3605&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 13.2,
-        "bookingTableTotal": 13.2,
+        "searchResultPrice": 39.6,
+        "bookingTableTotal": 39.6,
         "verificationRows": [
           {
-            "blockId": "1297035505_402606904_2_0_0",
-            "priceText": "€ 26 por noche\n€ 38\nPrecio € 38\n1 noche\nIncluido: suplemento de limpieza de € 12 por estancia\nNo incluido: 10% IVA",
+            "blockId": "1491083202_420768519_2_0_0",
+            "priceText": "€ 36 por noche\n€ 36\nPrecio € 36\n1 noche\nNo incluido: 10% IVA",
             "taxesText": ""
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-08T21:58:29.565Z"
+        "priceConfirmedAt": "2026-08-08T22:42:19.688Z"
       },
-      "createdAt": "2026-08-08T21:58:29.590Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:601ddebd24ec4458|2027-01-28|2027-01-30",
-        "source": "google_hotels",
-        "provider": "LooP Alcalá via Google Hotels",
-        "hotelName": "LooP Alcalá Only Adults",
-        "address": "Madrid, Comunidad Autónoma de Madrid, España",
-        "checkIn": "2027-01-28",
-        "checkOut": "2027-01-30",
-        "nights": 2,
-        "totalPrice": 32,
-        "nightlyPrice": 16,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 32,
-        "searchResultPrice": 32,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "2 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-08T21:59:14.609Z",
-        "stars": 0,
-        "guestRating": 5.8,
-        "reviewCount": 64,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESCgoCCAMKAggDEAAaTgowEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkEhoSFAoHCOoPEAgYChIHCOoPEAgYCxgBMgIQACoNCgk6A0VVUmICCAEaAA&qs=CAAgASgAMihDaG9JOVluSGt1ZU5qZVhiQVJvTkwyY3ZNVEZzZWpnNFkzYzRZaEFCOA1IAA&ap=MAC6AQZwcmljZXM&ved=0CB0QssMEahcKEwjQtfrWg5KWAxUAAAAAHQAAAAAQag",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-08T21:59:14.609Z"
+      "createdAt": "2026-08-08T22:42:19.721Z"
     },
     {
       "type": "new_match",
@@ -412,29 +581,29 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "google_hotels:ddea1a69d374b93b|2026-12-29|2027-01-05",
+        "id": "google_hotels:8c957a18b6ce8741|2027-01-28|2027-02-03",
         "source": "google_hotels",
-        "provider": "Super.com via Google Hotels",
-        "hotelName": "4Ever Palace Design&Nature",
+        "provider": "EvendoCancelación gratuita hasta el 20 ene, · via Google Hotels",
+        "hotelName": "Pousada Castelo de Alcácer do Sal",
         "address": "Alcácer do Sal",
-        "checkIn": "2026-12-29",
-        "checkOut": "2027-01-05",
-        "nights": 7,
-        "totalPrice": 593.08,
-        "nightlyPrice": 84.73,
+        "checkIn": "2027-01-28",
+        "checkOut": "2027-02-03",
+        "nights": 6,
+        "totalPrice": 557,
+        "nightlyPrice": 92.83,
         "displayedNightlyPrice": 0,
-        "rateSubtotal": 593.08,
-        "searchResultPrice": 593.08,
+        "rateSubtotal": 557,
+        "searchResultPrice": 557,
         "additionalCharges": 0,
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "7 noches con impuestos y tasas incluidos",
+        "stayText": "6 noches con impuestos y tasas incluidos",
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive_v5",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-08T22:00:50.329Z",
-        "stars": 0,
-        "guestRating": 9.4,
-        "reviewCount": 375,
+        "priceConfirmedAt": "2026-08-08T22:44:46.362Z",
+        "stars": 4,
+        "guestRating": 8.8,
+        "reviewCount": 1355,
         "distanceKm": null,
         "freeCancellation": false,
         "breakfastIncluded": false,
@@ -445,56 +614,11 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Alcácer do Sal",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20alcacer%20do%20sal&ts=CAESCgoCCAMKAggDEAAaWQo7EjcyJDB4ZDE5N2YwODg1YTcyMmE5OjB4NTA1OTU0NjU5YjI5NzMwYToPQWxjw6FjZXIgRG8gU2FsGgASGhIUCgcI6g8QDBgdEgcI6w8QARgFGAcyAggBKgkKBToDRVVSGgA&qs=CAEgASgAMidDaGtJcFoySms5WGIyN3RwR2cwdlp5OHhNV2g2T0d0NlozZzBFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAwQssMEahgKEwiw9KSEhJKWAxUAAAAAHQAAAAAQwAE",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20alcacer%20do%20sal&ts=CAESCgoCCAMKAggDEAAaWQo7EjcyJDB4ZDE5N2YwODg1YTcyMmE5OjB4NTA1OTU0NjU5YjI5NzMwYToPQWxjw6FjZXIgRG8gU2FsGgASGhIUCgcI6w8QARgcEgcI6w8QAhgDGAYyAggBKgkKBToDRVVSGgA&qs=CAEgASgAMidDaGtJb0pXTHhkdWc0ZnAtR2cwdlp5OHhNV0kyWmpCclgzTjJFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAwQssMEahgKEwiI5IDsjZKWAxUAAAAAHQAAAAAQvAE",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-08-08T22:00:50.329Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:0b9f1581ac849b6d|2027-01-13|2027-01-18",
-        "source": "google_hotels",
-        "provider": "Booking.com via Google Hotels",
-        "hotelName": "Sobreiras - Alentejo Country Hotel",
-        "address": "Grândola",
-        "checkIn": "2027-01-13",
-        "checkOut": "2027-01-18",
-        "nights": 5,
-        "totalPrice": 563,
-        "nightlyPrice": 112.6,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 563,
-        "searchResultPrice": 563,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "5 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-08T22:01:03.746Z",
-        "stars": 0,
-        "guestRating": 8.6,
-        "reviewCount": 584,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Grândola",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20grandola%20portugal&ts=CAESCgoCCAMKAggDEAAaUwo1EjEyJDB4ZDFiZDIwMTFiZTZhZGVkOjB4OTgxNTcyNjUzODliNzk2NzoJR3LDom5kb2xhGgASGhIUCgcI6w8QARgNEgcI6w8QARgSGAUyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMidDaGtJMDVHMzlfcklndGtNR2cwdlp5OHhNV0k0ZGpsa01YcGtFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CBkQssMEahgKEwiQktWJhJKWAxUAAAAAHQAAAAAQsgE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-08T22:01:03.747Z"
+      "createdAt": "2026-08-08T22:44:46.362Z"
     }
   ]
 }
