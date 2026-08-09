@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-09T20:55:03.686Z",
+  "updatedAt": "2026-08-09T21:37:56.110Z",
   "summary": {
-    "generatedAt": "2026-08-09T20:55:03.686Z",
+    "generatedAt": "2026-08-09T21:37:56.110Z",
     "monitors": 2,
     "searches": 40,
-    "offers": 251,
+    "offers": 250,
     "matches": 4,
-    "newMatches": 1,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 8,
-        "offers": 139,
+        "offers": 138,
         "matches": 0,
         "errors": 2
       },
@@ -53,18 +53,6 @@
         "searchArea": "Setúbal",
         "hotelName": "quarto na praceta",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-02",
-          "checkOut": "2027-08-07"
-        },
-        "searchArea": "Setúbal",
-        "hotelName": "Vitta casa fernão ferro",
-        "message": "locator.waitFor: Timeout 25000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
       },
       {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
@@ -160,6 +148,18 @@
         },
         "searchArea": "Setúbal",
         "hotelName": "IN SETUBAL Troino",
+        "message": "Booking no mostró un total final con impuestos para esa habitación."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-02",
+          "checkOut": "2027-08-07"
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Sea the City Setúbal",
         "message": "Booking no mostró un total final con impuestos para esa habitación."
       },
       {
@@ -833,10 +833,10 @@
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-09T20:55:03.686Z",
-      "lastSuccessAt": "2026-08-09T20:57:26.074357Z",
+      "lastScanAt": "2026-08-09T21:37:56.110Z",
+      "lastSuccessAt": "2026-08-09T21:39:50.882601Z",
       "searches": 20,
-      "offers": 122,
+      "offers": 121,
       "matches": 2,
       "nearbyLocations": [
         "Setúbal",
@@ -847,7 +847,7 @@
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 69,
+          "offers": 68,
           "matches": 0,
           "errors": 1
         },
@@ -881,8 +881,8 @@
     "3b213bd1-86d7-47df-9749-29f75c2c2781": {
       "monitorId": "3b213bd1-86d7-47df-9749-29f75c2c2781",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-09T20:55:03.686Z",
-      "lastSuccessAt": "2026-08-09T20:59:24.482190Z",
+      "lastScanAt": "2026-08-09T21:37:56.110Z",
+      "lastSuccessAt": "2026-08-09T21:41:46.123956Z",
       "searches": 20,
       "offers": 129,
       "matches": 2,
@@ -927,58 +927,5 @@
       "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-26 en el calendario."
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "3b213bd1-86d7-47df-9749-29f75c2c2781",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_62339a604c4d8d9b9b7aa144|2027-07-26|2027-07-31",
-        "source": "bluepillow",
-        "provider": "Expedia via Bluepillow",
-        "hotelName": "Quinta do Tio Viagem - Casa do Moinho",
-        "address": "Setúbal",
-        "checkIn": "2027-07-26",
-        "checkOut": "2027-07-31",
-        "nights": 5,
-        "totalPrice": 407,
-        "nightlyPrice": 81.4,
-        "displayedNightlyPrice": 81.4,
-        "rateSubtotal": 407,
-        "searchResultPrice": 407,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 62,
-        "taxesText": "Total con 62.00 EUR de impuestos y tasas incluidos",
-        "stayText": "5 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "expedia_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-09T20:59:25.961Z",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 4,
-        "distanceKm": 24.35045361406079,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "pets",
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786309163%2526endDate%253D2027-07-31%2526adults%253D2%2526locale%253Den_US%2526chid%253Da3aafe84-aaa3-4d86-be70-b172076fe62f%2526eapid%253D310064%2526startDate%253D2027-07-26%2526mpd%253DEUR%2526mpn%253D53827329%2526currency%253DEUR%2526rateplanid%253D00019fa90daa915a48239e03e891990ebf5e%2526mpm%253D83%2526selected%253D53827329%2526mpb%253D62.00%2526mpq%253D81.40%2526mpa%253D345.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=62339a604c4d8d9b9b7aa144&begin=2027-07-26&end=2027-07-31",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/media.vrbo.com/lodging/54000000/53830000/53827400/53827329/563659d3.jpg",
-        "bluepillowPropertyId": "prop_62339a604c4d8d9b9b7aa144",
-        "bluepillowOta": "Expedia",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-09T20:59:24.482190Z"
-    }
-  ]
+  "alerts": []
 }
