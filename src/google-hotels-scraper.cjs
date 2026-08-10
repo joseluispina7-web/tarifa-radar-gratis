@@ -377,12 +377,15 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
 async function ensureCalendarDate(page, isoDate, timeoutMs) {
   const selector =
     `[role="gridcell"][data-iso="${isoDate}"][aria-hidden="false"]`;
-  const calendar = page.locator('[role="dialog"]:visible').first();
+  const calendar = page
+    .locator('[role="dialog"]:visible')
+    .filter({ has: page.locator('[role="gridcell"][data-iso]') })
+    .last();
   for (let month = 0; month < 18; month += 1) {
     const dateButton = calendar.locator(selector).first();
     if (await dateButton.count()) {
       await dateButton.waitFor({ state: "visible", timeout: timeoutMs });
-      return selector;
+      return dateButton;
     }
     const nextButton = calendar
       .getByRole("button", {
@@ -400,10 +403,10 @@ async function ensureCalendarDate(page, isoDate, timeoutMs) {
 }
 
 async function clickCalendarDate(page, isoDate, timeoutMs) {
-  const selector = await ensureCalendarDate(page, isoDate, timeoutMs);
+  const dateButton = await ensureCalendarDate(page, isoDate, timeoutMs);
   for (let attempt = 0; attempt < 3; attempt += 1) {
     try {
-      await page.locator(selector).first().evaluate((cell) => cell.click());
+      await dateButton.evaluate((cell) => cell.click());
       return;
     } catch (error) {
       if (attempt === 2) throw error;
@@ -418,7 +421,11 @@ async function selectGoogleHotelsDates(page, search, timeoutMs) {
     .first();
   await entry.waitFor({ state: "visible", timeout: timeoutMs });
   await entry.evaluate((element) => element.click());
-  await page.locator('[role="dialog"]:visible').first().waitFor({
+  const calendar = page
+    .locator('[role="dialog"]:visible')
+    .filter({ has: page.locator('[role="gridcell"][data-iso]') })
+    .last();
+  await calendar.waitFor({
     state: "visible",
     timeout: timeoutMs,
   });
@@ -426,11 +433,11 @@ async function selectGoogleHotelsDates(page, search, timeoutMs) {
   await clickCalendarDate(page, search.checkIn, timeoutMs);
   await clickCalendarDate(page, search.checkOut, timeoutMs);
 
-  const selectedCheckIn = page.locator(
+  const selectedCheckIn = calendar.locator(
     `[role="gridcell"][data-iso="${search.checkIn}"]` +
       '[aria-selected="true"]',
   );
-  const selectedCheckOut = page.locator(
+  const selectedCheckOut = calendar.locator(
     `[role="gridcell"][data-iso="${search.checkOut}"]` +
       '[aria-selected="true"]',
   );
@@ -439,18 +446,28 @@ async function selectGoogleHotelsDates(page, search, timeoutMs) {
   }
 
   const doneButton = page
-    .locator('[role="dialog"]:visible button')
+    .locator('[role="dialog"]:visible')
+    .filter({ has: page.locator('[role="gridcell"][data-iso]') })
+    .last()
+    .locator("button")
     .filter({ hasText: /^\s*(?:Hecho|Done)\s*$/i })
     .first();
   await doneButton.evaluate((button) => button.click());
-  await page.locator('[role="dialog"]:visible').first().waitFor({
+  await calendar.waitFor({
     state: "hidden",
     timeout: timeoutMs,
   }).catch(() => {});
 }
 
 async function openGoogleTravelersDialog(page, timeoutMs) {
-  let dialog = page.locator('[role="dialog"]:visible').last();
+  const travelerDialogs = () => page
+    .locator('[role="dialog"]:visible')
+    .filter({
+      has: page.getByRole("button", {
+        name: /Quitar adulto|Remove adult/i,
+      }),
+    });
+  let dialog = travelerDialogs().last();
   if (await dialog.count()) return dialog;
 
   const travelersButton = page
@@ -460,7 +477,7 @@ async function openGoogleTravelersDialog(page, timeoutMs) {
     .first();
   await travelersButton.waitFor({ state: "visible", timeout: timeoutMs });
   await travelersButton.evaluate((element) => element.click());
-  dialog = page.locator('[role="dialog"]:visible').last();
+  dialog = travelerDialogs().last();
   await dialog.waitFor({ state: "visible", timeout: timeoutMs });
   return dialog;
 }
@@ -882,7 +899,7 @@ async function googleHotelsDiagnostics(page) {
 async function loadGoogleHotels(page, search, options = {}) {
   const timeoutMs = options.timeoutMs || DEFAULT_TIMEOUT_MS;
   const searchUrl = buildGoogleHotelsSearchUrl(search);
-  const attempts = process.env.GITHUB_ACTIONS === "true" ? 1 : 2;
+  const attempts = 2;
   let lastError = null;
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
