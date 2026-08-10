@@ -60,9 +60,91 @@ function flexibleSearchShape(monitor) {
   };
 }
 
+function rangeSearchShape(monitor) {
+  const dateStart = String(monitor.dateStart || "");
+  const dateEnd = String(monitor.dateEnd || "");
+  const startTimestamp = Date.parse(`${dateStart}T00:00:00Z`);
+  const endTimestamp = Date.parse(`${dateEnd}T00:00:00Z`);
+  const rangeDays = Number.isFinite(startTimestamp) && Number.isFinite(endTimestamp)
+    ? Math.max(0, Math.round((endTimestamp - startTimestamp) / 86_400_000))
+    : 0;
+  const minNights = Math.max(1, Number(monitor.minNights) || 1);
+  const requestedMaxNights = Math.max(
+    minNights,
+    Math.min(minNights + 13, Number(monitor.maxNights) || minNights),
+  );
+  const maxNights = Math.min(requestedMaxNights, rangeDays);
+  let combinations = 0;
+  for (let dayOffset = 0; dayOffset < rangeDays; dayOffset += 1) {
+    combinations += Math.max(
+      0,
+      Math.min(maxNights, rangeDays - dayOffset) - minNights + 1,
+    );
+  }
+  return {
+    dateStart,
+    dateEnd,
+    rangeDays,
+    minNights,
+    maxNights,
+    stayOptions: Math.max(0, maxNights - minNights + 1),
+    exactCombinations: combinations,
+    combinations,
+  };
+}
+
+function rangeSearchAtIndex(shape, requestedIndex) {
+  let index = requestedIndex;
+  for (let dayOffset = 0; dayOffset < shape.rangeDays; dayOffset += 1) {
+    const optionsForDay = Math.max(
+      0,
+      Math.min(shape.maxNights, shape.rangeDays - dayOffset) -
+        shape.minNights +
+        1,
+    );
+    if (index < optionsForDay) {
+      return {
+        dayOffset,
+        nights: shape.minNights + index,
+      };
+    }
+    index -= optionsForDay;
+  }
+  return null;
+}
+
 function buildMonitorSearches(monitor, now = new Date(), options = {}) {
   if (monitor.dateMode === "fixed") {
     return [{ checkIn: monitor.dateStart, checkOut: monitor.dateEnd }];
+  }
+
+  if (monitor.dateMode === "range") {
+    const shape = rangeSearchShape(monitor);
+    if (!shape.combinations) return [];
+    const hasPersistentCursor =
+      options.startIndex !== undefined &&
+      options.startIndex !== null &&
+      Number.isFinite(Number(options.startIndex));
+    const slot = Math.floor(now.getTime() / FIVE_MINUTES_MS);
+    const startIndex = hasPersistentCursor
+      ? Math.max(0, Math.floor(Number(options.startIndex))) % shape.combinations
+      : (slot * FLEXIBLE_SEARCHES_PER_RUN + monitorSeed(monitor.id) * 29) %
+        shape.combinations;
+    const searchesThisRun = hasPersistentCursor
+      ? Math.min(FLEXIBLE_SEARCHES_PER_RUN, shape.combinations - startIndex)
+      : Math.min(FLEXIBLE_SEARCHES_PER_RUN, shape.combinations);
+    const anchorDate = new Date(`${shape.dateStart}T00:00:00Z`);
+
+    return Array.from({ length: searchesThisRun }, (_, offset) => {
+      const index = (startIndex + offset) % shape.combinations;
+      const stay = rangeSearchAtIndex(shape, index);
+      const checkInDate = addUtcDays(anchorDate, stay.dayOffset);
+      return {
+        checkIn: isoDay(checkInDate),
+        checkOut: isoDay(addUtcDays(checkInDate, stay.nights)),
+        nights: stay.nights,
+      };
+    });
   }
 
   const shape = flexibleSearchShape(monitor);
@@ -336,5 +418,6 @@ module.exports = {
   monitorIsDue,
   monitorToSearch,
   parseTimestamp,
+  rangeSearchShape,
   runRemoteScan,
 };

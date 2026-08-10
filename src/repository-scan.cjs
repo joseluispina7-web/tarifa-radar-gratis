@@ -14,12 +14,14 @@ const {
   flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
+  rangeSearchShape,
 } = require("./remote-scan.cjs");
 
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
-const FLEXIBLE_SWEEP_VERSION = 2;
+const DATE_SWEEP_VERSION = 3;
 const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
+const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels"]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -27,6 +29,13 @@ const AUTOMATIC_SCRAPERS = {
   trip: scrapeTrip,
   bluepillow: scrapeBluepillow,
 };
+
+function sourceIsEnabledForMonitor(monitor, source) {
+  return Boolean(
+    AUTOMATIC_SCRAPERS[source] &&
+      (monitor.strictPrices === false || STRICT_PRICE_SOURCES.has(source)),
+  );
+}
 
 function readJson(filePath, fallback) {
   try {
@@ -132,6 +141,7 @@ function monitorFingerprint(monitor) {
     "children",
     "rooms",
     "sources",
+    "strictPrices",
   ];
   const normalized = Object.fromEntries(
     fields.map((field) => [field, monitor[field] ?? null]),
@@ -152,6 +162,8 @@ function buildDealMap(previousDeals, activeMonitors) {
       .filter((deal) => {
         const monitor = monitorsById.get(String(deal.monitorId));
         const source = String(deal.source || "booking");
+        const strictPriceAllowed =
+          monitor?.strictPrices === false || STRICT_PRICE_SOURCES.has(source);
         const hasCurrentBluepillowValidation =
           !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
         const hasCurrentGoogleValidation =
@@ -160,6 +172,7 @@ function buildDealMap(previousDeals, activeMonitors) {
         return Boolean(
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
+          strictPriceAllowed &&
           hasCurrentBluepillowValidation &&
           hasCurrentGoogleValidation
         );
@@ -274,7 +287,7 @@ async function runRepositoryScan(options = {}) {
     .filter((monitor) => monitor.active)
     .filter((monitor) =>
       (monitor.sources || ["booking"]).some(
-        (source) => AUTOMATIC_SCRAPERS[source],
+        (source) => sourceIsEnabledForMonitor(monitor, source),
       ),
     );
   const monitors = activeMonitors
@@ -318,19 +331,25 @@ async function runRepositoryScan(options = {}) {
     const beforeMonitor = storedMonitor.fingerprint === fingerprint
       ? storedMonitor
       : { offers: {} };
-    const flexibleShape = monitor.dateMode === "flexible"
+    const requestedDateSweepShape = monitor.dateMode === "flexible"
       ? flexibleSearchShape(monitor)
+      : monitor.dateMode === "range"
+        ? rangeSearchShape(monitor)
+        : null;
+    const dateSweepShape = requestedDateSweepShape?.combinations
+      ? requestedDateSweepShape
       : null;
-    const flexibleStateIsCurrent =
-      flexibleShape &&
-      beforeMonitor.flexibleSweepVersion === FLEXIBLE_SWEEP_VERSION;
-    const flexibleCursor = flexibleStateIsCurrent
-      ? Math.max(0, Number(beforeMonitor.flexibleCursor) || 0) %
-        flexibleShape.combinations
+    const dateSweepStateIsCurrent =
+      dateSweepShape &&
+      beforeMonitor.dateSweepVersion === DATE_SWEEP_VERSION &&
+      beforeMonitor.dateSweepMode === monitor.dateMode;
+    const dateSweepCursor = dateSweepStateIsCurrent
+      ? Math.max(0, Number(beforeMonitor.dateSweepCursor) || 0) %
+        dateSweepShape.combinations
       : 0;
-    const flexibleSweepStartDate = flexibleShape
-      ? (flexibleStateIsCurrent
-          ? beforeMonitor.flexibleSweepStartDate
+    const dateSweepStartDate = dateSweepShape
+      ? (dateSweepStateIsCurrent
+          ? beforeMonitor.dateSweepStartDate
           : "") ||
         now.toISOString().slice(0, 10)
       : "";
@@ -377,19 +396,19 @@ async function runRepositoryScan(options = {}) {
       monitor,
       nearbyLocations,
       now,
-      flexibleShape
+      dateSweepShape
         ? {
-            startIndex: flexibleCursor,
-            anchorDate: flexibleSweepStartDate,
+            startIndex: dateSweepCursor,
+            anchorDate: dateSweepStartDate,
           }
         : {},
     );
     const selectedSources = (monitor.sources || ["booking"])
-      .filter((source) => AUTOMATIC_SCRAPERS[source]);
+      .filter((source) => sourceIsEnabledForMonitor(monitor, source));
     const successfulSearches = new Map(
       selectedSources.map((source) => [source, 0]),
     );
-    let completedFlexibleRequests = 0;
+    let completedDateSweepRequests = 0;
     for (const request of scanRequests) {
       const { dates, area } = request;
       const searchInput = monitorToSearch(monitor, dates, area);
@@ -543,31 +562,32 @@ async function runRepositoryScan(options = {}) {
             currentMatchingOffersBySource.get(source).size;
         }
       }
-      if (flexibleShape && requestSucceeded) completedFlexibleRequests += 1;
-      if (flexibleShape && !requestSucceeded) break;
+      if (dateSweepShape && requestSucceeded) completedDateSweepRequests += 1;
+      if (dateSweepShape && !requestSucceeded) break;
     }
 
-    let nextFlexibleCursor = flexibleCursor;
-    let nextFlexibleSweepStartDate = flexibleSweepStartDate;
-    let completedFlexibleSweep = false;
-    if (flexibleShape && completedFlexibleRequests > 0) {
-      nextFlexibleCursor = flexibleCursor + completedFlexibleRequests;
-      if (nextFlexibleCursor >= flexibleShape.combinations) {
-        nextFlexibleCursor = 0;
-        nextFlexibleSweepStartDate = now.toISOString().slice(0, 10);
-        completedFlexibleSweep = true;
+    let nextDateSweepCursor = dateSweepCursor;
+    let nextDateSweepStartDate = dateSweepStartDate;
+    let completedDateSweep = false;
+    if (dateSweepShape && completedDateSweepRequests > 0) {
+      nextDateSweepCursor = dateSweepCursor + completedDateSweepRequests;
+      if (nextDateSweepCursor >= dateSweepShape.combinations) {
+        nextDateSweepCursor = 0;
+        nextDateSweepStartDate = now.toISOString().slice(0, 10);
+        completedDateSweep = true;
       }
-      status.flexibleCoverage = {
-        sweepStartDate: flexibleSweepStartDate,
-        totalCombinations: flexibleShape.exactCombinations,
-        totalSearchWindows: flexibleShape.combinations,
-        startWindowIndex: flexibleCursor,
-        windowsCheckedThisRun: completedFlexibleRequests,
-        nextWindowIndex: nextFlexibleCursor,
-        remainingWindowsInSweep: completedFlexibleSweep
+      status.dateCoverage = {
+        mode: monitor.dateMode,
+        sweepStartDate: dateSweepStartDate,
+        totalCombinations: dateSweepShape.exactCombinations,
+        totalSearches: dateSweepShape.combinations,
+        startIndex: dateSweepCursor,
+        searchesCheckedThisRun: completedDateSweepRequests,
+        nextIndex: nextDateSweepCursor,
+        remainingSearchesInSweep: completedDateSweep
           ? 0
-          : flexibleShape.combinations - nextFlexibleCursor,
-        completedSweep: completedFlexibleSweep,
+          : dateSweepShape.combinations - nextDateSweepCursor,
+        completedSweep: completedDateSweep,
       };
     }
 
@@ -595,11 +615,12 @@ async function runRepositoryScan(options = {}) {
       lastScanAt: now.toISOString(),
       lastSuccessAt: status.lastSuccessAt,
       nearbyLocations: nearbyDiscoveryFailed ? null : nearbyLocations,
-      ...(flexibleShape
+      ...(dateSweepShape
         ? {
-            flexibleSweepVersion: FLEXIBLE_SWEEP_VERSION,
-            flexibleCursor: nextFlexibleCursor,
-            flexibleSweepStartDate: nextFlexibleSweepStartDate,
+            dateSweepVersion: DATE_SWEEP_VERSION,
+            dateSweepMode: monitor.dateMode,
+            dateSweepCursor: nextDateSweepCursor,
+            dateSweepStartDate: nextDateSweepStartDate,
           }
         : {}),
       offers: nextOffers,
@@ -659,6 +680,7 @@ module.exports = {
   offerStateIsConfirmed,
   readJson,
   runRepositoryScan,
+  sourceIsEnabledForMonitor,
   updateOfferState,
   writeJson,
 };

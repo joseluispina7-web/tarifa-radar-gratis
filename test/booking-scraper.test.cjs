@@ -33,6 +33,7 @@ const {
   flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
+  rangeSearchShape,
 } = require("../src/remote-scan.cjs");
 
 const searchInput = {
@@ -620,6 +621,38 @@ test("walks every flexible date combination with a persistent cursor", () => {
       flexibleCheckInStart: "2027-01-11",
       flexibleCheckInEnd: "2027-01-25",
     },
+  ]);
+});
+
+test("walks every valid stay inside a custom date range", () => {
+  const now = new Date("2026-08-10T16:00:00Z");
+  const monitor = {
+    id: "alicante-range",
+    dateMode: "range",
+    dateStart: "2026-09-01",
+    dateEnd: "2026-09-05",
+    minNights: 1,
+    maxNights: 3,
+  };
+  assert.deepEqual(rangeSearchShape(monitor), {
+    dateStart: "2026-09-01",
+    dateEnd: "2026-09-05",
+    rangeDays: 4,
+    minNights: 1,
+    maxNights: 3,
+    stayOptions: 3,
+    exactCombinations: 9,
+    combinations: 9,
+  });
+
+  assert.deepEqual(buildMonitorSearches(monitor, now, { startIndex: 0 }), [
+    { checkIn: "2026-09-01", checkOut: "2026-09-02", nights: 1 },
+    { checkIn: "2026-09-01", checkOut: "2026-09-03", nights: 2 },
+    { checkIn: "2026-09-01", checkOut: "2026-09-04", nights: 3 },
+    { checkIn: "2026-09-02", checkOut: "2026-09-03", nights: 1 },
+  ]);
+  assert.deepEqual(buildMonitorSearches(monitor, now, { startIndex: 8 }), [
+    { checkIn: "2026-09-04", checkOut: "2026-09-05", nights: 1 },
   ]);
 });
 

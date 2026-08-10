@@ -56,7 +56,7 @@ function formatVerification(source) {
     return "Total con impuestos y tasas leido en Google Hotels";
   }
   if (["agoda", "trip", "bluepillow"].includes(source)) {
-    return `Total en EUR para la estancia obtenido de ${formatSource(source)} via Bluepillow`;
+    return `Precio de comparador revalidado en ${formatSource(source)} via Bluepillow; confirma el total al abrir`;
   }
   return "Precio verificado antes del aviso";
 }

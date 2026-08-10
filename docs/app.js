@@ -36,11 +36,11 @@
     ["gym", "Gimnasio"],
   ];
   const sources = [
-    ["booking", "Booking", true],
-    ["google_hotels", "Google Hotels", true],
-    ["agoda", "Agoda", true, "Automático via Bluepillow"],
-    ["trip", "Trip.com", true, "Automático via Bluepillow"],
-    ["bluepillow", "Bluepillow", true, "API gratuita"],
+    ["booking", "Booking", true, "Precio directo", "strict"],
+    ["google_hotels", "Google Hotels", true, "Total con impuestos", "strict"],
+    ["agoda", "Agoda", true, "Comparador via Bluepillow", "comparison"],
+    ["trip", "Trip.com", true, "Comparador via Bluepillow", "comparison"],
+    ["bluepillow", "Bluepillow", true, "Precio orientativo", "comparison"],
   ];
 
   const state = {
@@ -128,6 +128,7 @@
       rooms: 1,
       intervalMinutes: 5,
       sources: ["booking"],
+      strictPrices: true,
       active: true,
       createdAt: new Date().toISOString(),
       updatedAt: new Date().toISOString(),
@@ -331,6 +332,11 @@
     if (monitor.dateMode === "fixed") {
       return `${formatDate(monitor.dateStart)} - ${formatDate(monitor.dateEnd)}`;
     }
+    if (monitor.dateMode === "range") {
+      return `${monitor.minNights}-${monitor.maxNights} noches entre ${formatDate(
+        monitor.dateStart,
+      )} y ${formatDate(monitor.dateEnd)}`;
+    }
     return `${monitor.minNights}-${monitor.maxNights} noches · ${monitor.windowDays} días`;
   }
 
@@ -346,7 +352,12 @@
   function automaticSourceText(monitor) {
     const selected = (monitor.sources || ["booking"])
       .filter((source) =>
-        sources.some(([id, , automatic]) => id === source && automatic),
+        sources.some(
+          ([id, , automatic, , mode]) =>
+            id === source &&
+            automatic &&
+            (monitor.strictPrices === false || mode === "strict"),
+        ),
       )
       .map(sourceLabel);
     return selected.length ? selected.join(" + ") : "Sin buscador";
@@ -477,6 +488,9 @@
         }`
       : "Sin valoración publicada";
     const details = dealDetails(deal);
+    const priceNote = ["agoda", "trip", "bluepillow"].includes(deal.source)
+      ? "Precio de comparador; confirma el total al abrir"
+      : deal.taxesText || "Total final comprobado";
     return `
       <article class="deal-row">
         <span class="deal-hotel">
@@ -500,7 +514,7 @@
         <span class="deal-price">
           <strong>${Number(deal.totalPrice).toFixed(2)} €</strong>
           <small>${Number(deal.nightlyPrice).toFixed(2)} €/noche</small>
-          <small>${escapeHtml(deal.taxesText || "Total final comprobado")}</small>
+          <small>${escapeHtml(priceNote)}</small>
         </span>
         <span class="deal-quality">
           <strong>${
@@ -697,20 +711,38 @@
       : ["booking"];
     $("#source-grid").innerHTML = sources
       .map(
-        ([id, label, automatic, detail]) =>
+        ([id, label, automatic, detail, sourceMode]) =>
           automatic
             ? `
               <button
                 type="button"
-                class="${selectedSources.includes(id) ? "selected" : ""}"
+                class="${
+                  selectedSources.includes(id) &&
+                  (state.draft.strictPrices === false || sourceMode === "strict")
+                    ? "selected"
+                    : ""
+                }"
                 data-source-id="${id}"
-                aria-pressed="${selectedSources.includes(id)}"
+                aria-pressed="${
+                  selectedSources.includes(id) &&
+                  (state.draft.strictPrices === false || sourceMode === "strict")
+                }"
+                ${
+                  state.draft.strictPrices !== false && sourceMode === "comparison"
+                    ? "disabled"
+                    : ""
+                }
               >
                 <span>${escapeHtml(label)}<small>${escapeHtml(
-                  detail || "Automático",
+                  state.draft.strictPrices !== false && sourceMode === "comparison"
+                    ? "Desactivado en máxima precisión"
+                    : detail || "Automático",
                 )}</small></span>
                 <i data-lucide="${
-                  selectedSources.includes(id) ? "check" : "plus"
+                  selectedSources.includes(id) &&
+                  (state.draft.strictPrices === false || sourceMode === "strict")
+                    ? "check"
+                    : "plus"
                 }"></i>
               </button>
             `
@@ -743,8 +775,14 @@
     $$("[data-date-mode]").forEach((button) => {
       button.classList.toggle("selected", button.dataset.dateMode === mode);
     });
-    $("#flexible-fields").classList.toggle("hidden", mode !== "flexible");
-    $("#fixed-fields").classList.toggle("hidden", mode !== "fixed");
+    $("#flexible-fields").classList.toggle("hidden", mode === "fixed");
+    $("#window-field").classList.toggle("hidden", mode !== "flexible");
+    $("#fixed-fields").classList.toggle(
+      "hidden",
+      mode !== "fixed" && mode !== "range",
+    );
+    $("#date-start-label").textContent = mode === "range" ? "Desde" : "Entrada";
+    $("#date-end-label").textContent = mode === "range" ? "Hasta" : "Salida";
     renderRulePreview();
   }
 
@@ -788,6 +826,7 @@
     $("#children").value = draft.children;
     $("#rooms").value = draft.rooms;
     $("#interval-minutes").value = String(draft.intervalMinutes);
+    $("#strict-prices").checked = draft.strictPrices !== false;
     $("#monitor-active").checked = draft.active;
     $("#delete-button").disabled = !state.config.monitors.some(
       (monitor) => monitor.id === draft.id,
@@ -824,6 +863,7 @@
       5,
       Number($("#interval-minutes").value) || 5,
     );
+    draft.strictPrices = $("#strict-prices").checked;
     draft.active = $("#monitor-active").checked;
     draft.sources = Array.isArray(draft.sources) ? draft.sources : ["booking"];
   }
@@ -835,6 +875,10 @@
     const dates =
       draft.dateMode === "fixed"
         ? `${draft.dateStart || "entrada"} a ${draft.dateEnd || "salida"}`
+        : draft.dateMode === "range"
+          ? `${draft.minNights}-${draft.maxNights} noches entre ${
+              draft.dateStart || "inicio"
+            } y ${draft.dateEnd || "fin"}`
         : `${draft.minNights}-${draft.maxNights} noches`;
     const activeSources = automaticSourceText(draft);
     $("#rule-preview").innerHTML = `
@@ -942,7 +986,12 @@
     }
     if (
       !(draft.sources || []).some((source) =>
-        sources.some(([id, , automatic]) => id === source && automatic),
+        sources.some(
+          ([id, , automatic, , mode]) =>
+            id === source &&
+            automatic &&
+            (draft.strictPrices === false || mode === "strict"),
+        ),
       )
     ) {
       return "Activa al menos un buscador automatico.";
@@ -955,8 +1004,22 @@
       if (nights < 1) return "La salida debe ser posterior a la entrada.";
       draft.minNights = nights;
       draft.maxNights = nights;
-    } else if (draft.maxNights < draft.minNights) {
-      return "Las noches máximas no pueden ser menores que las mínimas.";
+    } else {
+      if (draft.maxNights < draft.minNights) {
+        return "Las noches máximas no pueden ser menores que las mínimas.";
+      }
+      if (draft.dateMode === "range") {
+        if (!draft.dateStart || !draft.dateEnd) {
+          return "Selecciona el inicio y el final del rango.";
+        }
+        const availableNights = nightsBetween(draft.dateStart, draft.dateEnd);
+        if (availableNights < 1) {
+          return "El final del rango debe ser posterior al inicio.";
+        }
+        if (draft.minNights > availableNights) {
+          return "El rango es más corto que la estancia mínima.";
+        }
+      }
     }
     return "";
   }
@@ -1265,6 +1328,11 @@
     });
     $$("[data-date-mode]").forEach((button) => {
       button.addEventListener("click", () => setDateMode(button.dataset.dateMode));
+    });
+    $("#strict-prices").addEventListener("change", () => {
+      state.draft.strictPrices = $("#strict-prices").checked;
+      renderEditorOptions();
+      renderRulePreview();
     });
     $$("#monitor-form input, #monitor-form select").forEach((input) => {
       if (input.id !== "location-query") {

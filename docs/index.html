@@ -15,9 +15,9 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=4" />
+    <link rel="stylesheet" href="./styles.css?v=5" />
     <script src="./vendor/lucide.min.js" defer></script>
-    <script src="./app.js?v=10" defer></script>
+    <script src="./app.js?v=11" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -226,6 +226,7 @@
                   <legend>Fechas y duración</legend>
                   <div class="segmented">
                     <button type="button" data-date-mode="flexible">Fechas flexibles</button>
+                    <button type="button" data-date-mode="range">Dentro de un rango</button>
                     <button type="button" data-date-mode="fixed">Fechas exactas</button>
                   </div>
                   <div id="flexible-fields" class="number-grid three">
@@ -237,7 +238,7 @@
                       <span>Noches máximas</span>
                       <input id="max-nights" type="number" min="1" max="30" />
                     </label>
-                    <label>
+                    <label id="window-field">
                       <span>Ventana</span>
                       <select id="window-days">
                         <option value="30">30 días</option>
@@ -249,11 +250,11 @@
                   </div>
                   <div id="fixed-fields" class="two-columns hidden">
                     <label>
-                      <span>Entrada</span>
+                      <span id="date-start-label">Entrada</span>
                       <input id="date-start" type="date" />
                     </label>
                     <label>
-                      <span>Salida</span>
+                      <span id="date-end-label">Salida</span>
                       <input id="date-end" type="date" />
                     </label>
                   </div>
@@ -384,6 +385,13 @@
 
                 <fieldset class="form-section bottom-fields">
                   <legend>Buscadores</legend>
+                  <label class="binary-option strict-price-option">
+                    <input id="strict-prices" type="checkbox" />
+                    <span>
+                      <strong>Máxima precisión</strong>
+                      <small>Solo Booking y Google Hotels; oculta comparadores indirectos</small>
+                    </span>
+                  </label>
                   <div id="source-grid" class="source-grid"></div>
                 </fieldset>
 

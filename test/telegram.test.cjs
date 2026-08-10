@@ -92,7 +92,7 @@ test("labels Agoda alerts as prices supplied through Bluepillow", () => {
     }),
   ]);
   assert.match(message, /Fuente:<\/b> Agoda/);
-  assert.match(message, /obtenido de Agoda via Bluepillow/);
+  assert.match(message, /revalidado en Agoda via Bluepillow; confirma el total al abrir/);
   assert.doesNotMatch(message, /reconfirmado en Booking/);
 });
 

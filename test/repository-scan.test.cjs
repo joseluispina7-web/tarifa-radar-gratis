@@ -5,6 +5,7 @@ const {
   clearSearchedDeals,
   monitorFingerprint,
   offerStateIsConfirmed,
+  sourceIsEnabledForMonitor,
   updateOfferState,
 } = require("../src/repository-scan.cjs");
 
@@ -71,7 +72,8 @@ test("replaces only deals for the date pair just searched", () => {
 });
 
 test("drops old Bluepillow deals that were never revalidated", () => {
-  const currentFingerprint = monitorFingerprint(monitor);
+  const comparisonMonitor = { ...monitor, strictPrices: false };
+  const currentFingerprint = monitorFingerprint(comparisonMonitor);
   const deals = buildDealMap(
     {
       deals: [
@@ -90,9 +92,41 @@ test("drops old Bluepillow deals that were never revalidated", () => {
         },
       ],
     },
-    [monitor],
+    [comparisonMonitor],
   );
   assert.deepEqual(Array.from(deals.keys()), ["validated-bluepillow"]);
+});
+
+test("strict price mode drops indirect comparison deals", () => {
+  const strictMonitor = { ...monitor, strictPrices: true };
+  const currentFingerprint = monitorFingerprint(strictMonitor);
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "booking-direct",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "booking",
+        },
+        {
+          id: "trip-indirect",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "trip",
+          priceConfirmedAt: "2026-08-10T16:00:00.000Z",
+        },
+      ],
+    },
+    [strictMonitor],
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["booking-direct"]);
+  assert.equal(sourceIsEnabledForMonitor(strictMonitor, "booking"), true);
+  assert.equal(sourceIsEnabledForMonitor(strictMonitor, "trip"), false);
+  assert.equal(
+    sourceIsEnabledForMonitor({ ...strictMonitor, strictPrices: false }, "trip"),
+    true,
+  );
 });
 
 test("drops Google deals created by the old nightly-price parser", () => {
