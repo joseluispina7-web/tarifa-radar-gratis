@@ -382,11 +382,12 @@ test("adds Portuguese VAT and city tax to the Booking stay total", () => {
     [{ blockId: "room-a", priceText: priceCellText, priceCellText }],
     { adults: 2, nights: 5, fallbackTaxRate: 0 },
   );
-  assert.equal(resolved.total, 220);
+  assert.equal(resolved.total, 220.34);
   assert.equal(resolved.tableTotal, 220.34);
   assert.equal(resolved.excludedTaxRate, 0.06);
   assert.equal(resolved.excludedFixedCharges, 20);
   assert.equal(resolved.tablePriceConsistent, true);
+  assert.equal(resolved.priceSource, "availability_table");
 });
 
 test("uses the higher full-cell total when Booking's encoded rate is lower", () => {

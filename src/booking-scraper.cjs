@@ -473,9 +473,7 @@ function resolveVerifiedBookingStayTotal(
   );
 
   return {
-    total: tablePriceConsistent
-      ? encodedStayTotal
-      : Math.max(tableTotal, encodedStayTotal),
+    total: Math.max(tableTotal, encodedStayTotal),
     tableTotal,
     encodedStayTotal,
     tablePriceConsistent,
@@ -484,7 +482,7 @@ function resolveVerifiedBookingStayTotal(
     excludedTaxRate: excluded.taxRate,
     excludedFixedCharges: excluded.fixedCharges,
     taxBreakdownText: excluded.text,
-    priceSource: !tablePriceConsistent && tableTotal > encodedStayTotal
+    priceSource: tableTotal > encodedStayTotal
       ? "availability_table"
       : "encoded_stay_total",
   };
@@ -907,7 +905,7 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   offer.verificationRows = rows;
   offer.taxFallbackRate = resolvedPrice.fallbackTaxRate;
   offer.priceVerified = true;
-  offer.priceBasis = "booking_verified_final_total_v4";
+  offer.priceBasis = "booking_visible_final_total_v5";
   offer.matches = matchesSearch(offer, search);
   return offer;
 }

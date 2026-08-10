@@ -23,7 +23,7 @@ const DATE_SWEEP_VERSION = 3;
 const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
 const CURRENT_BOOKING_PRICE_BASES = new Set([
-  "booking_verified_final_total_v4",
+  "booking_visible_final_total_v5",
 ]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
