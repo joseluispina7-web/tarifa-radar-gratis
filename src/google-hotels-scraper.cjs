@@ -13,7 +13,7 @@ const {
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const GOOGLE_SOURCE = "google_hotels";
-const MAX_GOOGLE_DETAIL_CANDIDATES = 1;
+const MAX_GOOGLE_DETAIL_CANDIDATES = 2;
 const GOOGLE_HOTELS_SEED_URL =
   "https://www.google.com/travel/search?" +
   "q=hoteles%20en%20Madrid&" +
@@ -269,7 +269,7 @@ function buildGoogleOffer(card, search) {
     taxesText: "Impuestos y tasas incluidos segun Google Hotels",
     stayText: `${search.nights} noches con impuestos y tasas incluidos`,
     priceVerified: true,
-    priceBasis: "google_hotels_total_with_taxes",
+    priceBasis: "google_hotels_visible_all_inclusive_v6",
     priceConfirmationCount: 2,
     priceConfirmedAt: new Date().toISOString(),
     stars: parseGoogleStars(text),
@@ -377,18 +377,19 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
 async function ensureCalendarDate(page, isoDate, timeoutMs) {
   const selector =
     `[role="gridcell"][data-iso="${isoDate}"][aria-hidden="false"]`;
-  for (let month = 0; month < 15; month += 1) {
-    const dateButton = page.locator(selector).first();
+  const calendar = page.locator('[role="dialog"]:visible').first();
+  for (let month = 0; month < 18; month += 1) {
+    const dateButton = calendar.locator(selector).first();
     if (await dateButton.count()) {
       await dateButton.waitFor({ state: "visible", timeout: timeoutMs });
       return selector;
     }
-    const nextButton = page
+    const nextButton = calendar
       .getByRole("button", {
         name: /Siguiente|Next|Mes siguiente|Next month/i,
       })
       .first();
-    if (!(await nextButton.count())) break;
+    if (!(await nextButton.count()) || await nextButton.isDisabled()) break;
     await nextButton.evaluate((button) => button.click());
     await page.waitForTimeout(120);
   }
@@ -473,9 +474,15 @@ async function setGoogleTravelerCount(
     const removeButton = dialog
       .getByRole("button", { name: removeName })
       .first();
-    const counterText = await removeButton.evaluate(
-      (element) => element.parentElement?.parentElement?.innerText || "",
-    );
+    const counterText = await removeButton.evaluate((element) => {
+      let container = element.parentElement;
+      for (let level = 0; level < 5 && container; level += 1) {
+        const text = (container.innerText || container.textContent || "").trim();
+        if (/\b\d+\b/.test(text)) return text;
+        container = container.parentElement;
+      }
+      return "";
+    });
     const current = Number(counterText.match(/\b\d+\b/)?.[0]);
     if (!Number.isFinite(current)) {
       throw new Error("Google Hotels no mostro el contador de viajeros.");
@@ -696,6 +703,31 @@ function googleProviderCanSupplyVerifiedTotal(value) {
   return !/\bTripening(?:\s+Hotels)?\b/i.test(String(value || ""));
 }
 
+function verifiedGoogleProviderPrice(link, search) {
+  const linkedTotal = parseGoogleProviderInclusiveTotal(
+    `${link.href || ""}\n${link.text || ""}`,
+  );
+  if (linkedTotal && providerLinkMatchesStay(link.href, search)) {
+    return { totalPrice: linkedTotal, evidence: "provider_link" };
+  }
+
+  // Google sometimes keeps the exact stay in page state instead of repeating
+  // it in the outbound URL. The visible row still names the taxed stay total.
+  const visibleTotal = parseGoogleProviderVisibleTotal(link.text);
+  const visibleGuests = String(link.text || "").match(
+    /(\d+)\s+(?:hu[e\u00e9]spedes?|guests?)/i,
+  )?.[1];
+  if (
+    visibleGuests &&
+    Number(visibleGuests) !== search.adults + search.children
+  ) {
+    return null;
+  }
+  return visibleTotal
+    ? { totalPrice: visibleTotal, evidence: "visible_provider_row" }
+    : null;
+}
+
 function providerLinkMatchesStay(value, search) {
   const text = repeatedlyDecodeUrl(value).join("\n");
   const dateFromParts = (prefix) => {
@@ -788,18 +820,12 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
       );
       const providerPrices = providerLinks.flatMap((link) => {
         if (!googleProviderCanSupplyVerifiedTotal(link.text)) return [];
-        const totalPrice =
-          parseGoogleProviderInclusiveTotal(`${link.href}\n${link.text}`) ||
-          parseGoogleProviderVisibleTotal(link.text);
-        if (
-          !totalPrice ||
-          !providerLinkMatchesStay(link.href, search)
-        ) {
-          return [];
-        }
+        const verifiedPrice = verifiedGoogleProviderPrice(link, search);
+        if (!verifiedPrice) return [];
         return [{
-          totalPrice,
+          ...verifiedPrice,
           provider: providerNameFromText(link.text),
+          text: link.text,
         }];
       }).sort((left, right) => left.totalPrice - right.totalPrice);
       const bestProvider = providerPrices[0];
@@ -816,7 +842,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
             `${candidate.nightlyPrice || bestProvider.totalPrice / search.nights} \u20ac` +
             `${bestProvider.totalPrice} \u20ac en total` +
             `${search.nights} noches con impuestos y tasas incluidos`,
-          text: candidate.text,
+          text: `${candidate.text}\n${bestProvider.text}`,
           labels: candidate.labels,
           url: candidate.pricePageUrl,
         },
@@ -1007,6 +1033,7 @@ module.exports = {
   parseGoogleReviewCount,
   parseGoogleStars,
   providerLinkMatchesStay,
+  verifiedGoogleProviderPrice,
   scrapeGoogleHotels,
   selectGoogleHotelsGuests,
   selectGoogleHotelsDates,

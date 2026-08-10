@@ -13,6 +13,7 @@ const {
   parseGoogleStars,
   providerLinkMatchesStay,
   stableOfferId,
+  verifiedGoogleProviderPrice,
 } = require("../src/google-hotels-scraper.cjs");
 const { normalizeSearch } = require("../src/booking-scraper.cjs");
 
@@ -183,6 +184,37 @@ test("reads the final taxed total from the current Google provider row", () => {
   );
 });
 
+test("accepts Google's explicit final row when its outbound URL omits dates", () => {
+  const result = verifiedGoogleProviderPrice(
+    {
+      href: "https://provider.test/offer",
+      text:
+        "Bluepillow.com\n4 huespedes, EUR 104 con impuestos + comisiones" +
+        "Precio base por nochePrecio por noche con impuestos y comisiones" +
+        "Precio total de la estancia con impuestos y comisiones" +
+        "EUR 95EUR 95EUR 104EUR 313Visitar sitio web",
+    },
+    search({ adults: 2, children: 2 }),
+  );
+  assert.deepEqual(result, {
+    totalPrice: 313,
+    evidence: "visible_provider_row",
+  });
+  assert.equal(
+    verifiedGoogleProviderPrice(
+      {
+        href: "https://provider.test/offer",
+        text:
+          "Bluepillow.com\n2 huespedes" +
+          "Precio total de la estancia con impuestos y comisiones" +
+          "EUR 313Visitar sitio web",
+      },
+      search({ adults: 2, children: 2 }),
+    ),
+    null,
+  );
+});
+
 test("rejects Tripening technical prices as verified hotel totals", () => {
   assert.equal(
     googleProviderCanSupplyVerifiedTotal(
@@ -245,6 +277,7 @@ test("builds a verified source-specific offer only from an explicit total", () =
   assert.equal(offer.totalPrice, 148);
   assert.equal(offer.nightlyPrice, 37);
   assert.equal(offer.priceVerified, true);
+  assert.equal(offer.priceBasis, "google_hotels_visible_all_inclusive_v6");
   assert.equal(offer.priceConfirmationCount, 2);
   assert.equal(offer.stars, 3);
   assert.equal(offer.guestRating, 8.8);

@@ -25,6 +25,10 @@ const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
 const CURRENT_BOOKING_PRICE_BASES = new Set([
   "booking_visible_final_total_v5",
 ]);
+const CURRENT_GOOGLE_PRICE_BASES = new Set([
+  "google_hotels_provider_all_inclusive_v5",
+  "google_hotels_visible_all_inclusive_v6",
+]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -180,7 +184,7 @@ function buildDealMap(previousDeals, activeMonitors) {
           CURRENT_BOOKING_PRICE_BASES.has(deal.priceBasis);
         const hasCurrentGoogleValidation =
           source !== "google_hotels" ||
-          deal.priceBasis === "google_hotels_provider_all_inclusive_v5";
+          CURRENT_GOOGLE_PRICE_BASES.has(deal.priceBasis);
         const hasCurrentTripValidation =
           source !== "trip" ||
           deal.priceBasis === "trip_direct_final_total_v1";
