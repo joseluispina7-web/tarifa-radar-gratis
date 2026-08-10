@@ -329,7 +329,7 @@ async function runRepositoryScan(options = {}) {
     errors: [],
   };
 
-  for (const monitor of monitors) {
+  await Promise.all(monitors.map(async (monitor) => {
     const fingerprint = monitorFingerprint(monitor);
     const storedMonitor = nextState.monitors[monitor.id] || { offers: {} };
     const beforeMonitor = storedMonitor.fingerprint === fingerprint
@@ -630,7 +630,7 @@ async function runRepositoryScan(options = {}) {
       offers: nextOffers,
     };
     monitorStatus[monitor.id] = status;
-  }
+  }));
 
   const sevenDaysAgo = now.getTime() - 7 * 86_400_000;
   const deals = Array.from(dealMap.values())
