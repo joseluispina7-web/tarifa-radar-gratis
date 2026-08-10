@@ -118,6 +118,22 @@ test("splits a digest into pages without omitting offers", () => {
   assert.equal(messages.every((message) => message.length < 4_096), true);
 });
 
+test("labels Trip.com alerts as directly verified", () => {
+  const message = buildAlertMessage([
+    makeAlert({
+      offer: {
+        source: "trip",
+        provider: "Trip.com",
+        priceConfirmationCount: 2,
+        url: "https://us.trip.com/hotels/list/searchresults",
+      },
+    }),
+  ]);
+  assert.match(message, /Fuente:<\/b> Trip.com/);
+  assert.match(message, /Total final leido directamente en Trip.com/);
+  assert.doesNotMatch(message, /via Bluepillow/);
+});
+
 test("does not call Telegram when there are no alerts", async () => {
   let calls = 0;
   const result = await sendAlertDigest({

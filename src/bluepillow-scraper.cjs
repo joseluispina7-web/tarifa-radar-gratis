@@ -6,6 +6,7 @@ const {
   isSharedRoomText,
   matchesSearch,
   normalizeSearch,
+  parseEuroPrice,
 } = require("./booking-scraper.cjs");
 
 const BLUEPILLOW_API_URL = "https://api.b2a.bluepillow.com/v1";
@@ -61,6 +62,25 @@ function decodedLinkValues(value) {
     }
   }
   return values;
+}
+
+function providerRedirectUrl(value) {
+  try {
+    const redirectUrl = new URL(value).searchParams.get("redirecturl");
+    return redirectUrl ? new URL(redirectUrl).toString() : "";
+  } catch {
+    return "";
+  }
+}
+
+function parseTripFinalTotal(value) {
+  const normalized = String(value || "")
+    .replaceAll('\\"', '"')
+    .replaceAll("\\u20ac", "€");
+  const priceDetail = normalized.match(
+    /"priceDetail":\{[\s\S]{0,2500}?"priceInfo":\{"totalPrice":\{"title":"Total","content":"(€\s*[\d.,]+)"/i,
+  );
+  return priceDetail ? parseEuroPrice(priceDetail[1]) : 0;
 }
 
 function linkNumber(values, parameter) {
@@ -458,6 +478,67 @@ async function validateBluepillowOffer(offer, search, options = {}) {
   return pending;
 }
 
+async function validateTripFinalPrice(offer, search, options = {}) {
+  const url = providerRedirectUrl(offer.url);
+  let target;
+  try {
+    target = new URL(url);
+  } catch {
+    return {
+      valid: false,
+      message: "Trip.com no proporciono un enlace final valido.",
+    };
+  }
+  if (
+    !/(^|\.)trip\.com$/i.test(target.hostname) ||
+    !linkMatchesStay(url, search)
+  ) {
+    return {
+      valid: false,
+      message: "El enlace final de Trip.com no conserva las fechas exactas.",
+    };
+  }
+
+  try {
+    const fetchImpl = options.providerFetchImpl || fetch;
+    const response = await fetchImpl(url, {
+      redirect: "follow",
+      headers: {
+        "accept-language": "es-ES,es;q=0.9,en;q=0.8",
+        "user-agent":
+          "Mozilla/5.0 (Windows NT 10.0; Win64; x64) " +
+          "AppleWebKit/537.36 Chrome/140.0.0.0 Safari/537.36",
+      },
+      signal: AbortSignal.timeout(options.providerTimeoutMs || DEFAULT_TIMEOUT_MS),
+    });
+    if (!response.ok) {
+      throw new Error(`Trip.com respondio ${response.status}.`);
+    }
+    const html = await response.text();
+    const totalPrice = parseTripFinalTotal(html);
+    if (!totalPrice) {
+      return {
+        valid: false,
+        message: "Trip.com no mostro un total final comprobable.",
+      };
+    }
+    return {
+      valid: true,
+      totalPrice,
+      url: response.url || url,
+      checkedAt: new Date().toISOString(),
+    };
+  } catch (error) {
+    return {
+      valid: false,
+      message:
+        `No se pudo comprobar el total directamente en Trip.com: ${
+          error instanceof Error ? error.message : String(error)
+        }`,
+    };
+  }
+}
+
 async function requestJson(pathname, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
   const apiKey =
@@ -595,6 +676,33 @@ async function scrapeBluepillowSource(input, source, options = {}) {
       }
       continue;
     }
+    if (source === "trip") {
+      const directValidation = await validateTripFinalPrice(
+        offer,
+        search,
+        options,
+      );
+      if (!directValidation.valid) {
+        offer.matches = false;
+        offer.candidateMatches = false;
+        verificationErrors.push({
+          hotelName: offer.hotelName,
+          message: directValidation.message,
+        });
+        continue;
+      }
+      offer.totalPrice = directValidation.totalPrice;
+      offer.nightlyPrice =
+        Math.round((directValidation.totalPrice / search.nights) * 100) / 100;
+      offer.provider = "Trip.com";
+      offer.url = directValidation.url;
+      offer.priceBasis = "trip_direct_final_total_v1";
+      offer.taxesText = "Total final leido directamente en Trip.com";
+      offer.matches = matchesSearch(offer, search);
+      offer.candidateMatches = offer.matches;
+      if (!offer.matches) continue;
+      validation.checkedAt = directValidation.checkedAt;
+    }
     offer.priceVerified = true;
     offer.priceConfirmationCount = 2;
     offer.priceConfirmedAt =
@@ -644,9 +752,12 @@ module.exports = {
   mapPropertyType,
   normalizeOta,
   parseBluepillowPriceBreakdown,
+  parseTripFinalTotal,
+  providerRedirectUrl,
   scrapeAgoda,
   scrapeBluepillow,
   scrapeBluepillowSource,
   scrapeTrip,
   stableBluepillowOfferId,
+  validateTripFinalPrice,
 };

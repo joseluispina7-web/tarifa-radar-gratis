@@ -5,6 +5,8 @@ const {
   chooseDestination,
   linkMatchesStay,
   parseBluepillowPriceBreakdown,
+  parseTripFinalTotal,
+  providerRedirectUrl,
   scrapeBluepillowSource,
   stableBluepillowOfferId,
 } = require("../src/bluepillow-scraper.cjs");
@@ -149,6 +151,21 @@ test("builds an independent verified Agoda offer", () => {
   assert.equal(offer.matches, true);
 });
 
+test("reads the final total from the Trip.com price detail", () => {
+  const html = String.raw`\"priceDetail\":{\"leaveReturn\":{},\"priceInfo\":{\"totalPrice\":{\"title\":\"Total\",\"content\":\"€333.79\",\"contentDesc\":\"\"}}}`;
+  assert.equal(parseTripFinalTotal(html), 333.79);
+  assert.equal(parseTripFinalTotal("Total aproximado €99"), 0);
+
+  const target =
+    "https://us.trip.com/hotels/list/searchresults?checkin=2026-08-05&checkout=2026-08-09";
+  assert.equal(
+    providerRedirectUrl(
+      `https://www.bluepillow.com/skippy?redirecturl=${encodeURIComponent(target)}`,
+    ),
+    target,
+  );
+});
+
 test("keeps Trip.com and Bluepillow as separate result sources", () => {
   const trip = buildBluepillowOffer(
     property(),
@@ -270,4 +287,67 @@ test("publishes a Bluepillow match only after the validate endpoint confirms it"
   assert.equal(result.matchingOffers.length, 1);
   assert.equal(result.matchingOffers[0].priceVerified, true);
   assert.equal(result.matchingOffers[0].priceConfirmationCount, 2);
+});
+
+test("publishes Trip.com only with the total read from its final page", async () => {
+  const target =
+    "https://us.trip.com/hotels/list/searchresults?hotelid=123" +
+    "&checkin=2026-08-05&checkout=2026-08-09&adult=2&curr=EUR";
+  const tripProperty = property({
+    offers: [{
+      ota: "TripCom",
+      amount: 567,
+      amount_per_night: 141.75,
+      currency: "EUR",
+      refundable: true,
+      breakfast_included: false,
+      deeplink_url:
+        `https://www.bluepillow.com/skippy?redirecturl=${encodeURIComponent(target)}` +
+        "&begin=2026-08-05&end=2026-08-09&connectorname=TripCom&display=inctotal",
+    }],
+  });
+  const fetchImpl = async (url) => {
+    if (url.endsWith("/destinations/resolve")) {
+      return Response.json({
+        candidates: [{
+          id: "dest_benidorm",
+          name: "Benidorm",
+          display_name: "Benidorm",
+          type: "city",
+          country_code: "ES",
+        }],
+      });
+    }
+    if (url.endsWith("/search/stays")) {
+      return Response.json({
+        results: [tripProperty],
+        metadata: { price_as_of: "2026-08-10T19:00:00Z" },
+      });
+    }
+    if (url.endsWith("/validate")) {
+      return Response.json({ still_valid: true });
+    }
+    return Response.json({}, { status: 404 });
+  };
+  const providerFetchImpl = async (url) => {
+    assert.equal(url, target);
+    return new Response(
+      String.raw`\"priceDetail\":{\"priceInfo\":{\"totalPrice\":{\"title\":\"Total\",\"content\":\"€590.00\"}}}`,
+    );
+  };
+
+  const result = await scrapeBluepillowSource(
+    search({ maxTotal: 600 }),
+    "trip",
+    { disableCache: true, fetchImpl, providerFetchImpl },
+  );
+  assert.equal(result.matchingOffers.length, 1);
+  assert.equal(result.matchingOffers[0].totalPrice, 590);
+  assert.equal(result.matchingOffers[0].nightlyPrice, 147.5);
+  assert.equal(result.matchingOffers[0].provider, "Trip.com");
+  assert.equal(
+    result.matchingOffers[0].priceBasis,
+    "trip_direct_final_total_v1",
+  );
+  assert.equal(result.matchingOffers[0].url, target);
 });

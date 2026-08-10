@@ -116,13 +116,21 @@ test("strict price mode drops indirect comparison deals", () => {
           source: "trip",
           priceConfirmedAt: "2026-08-10T16:00:00.000Z",
         },
+        {
+          id: "trip-direct",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "trip",
+          priceBasis: "trip_direct_final_total_v1",
+          priceConfirmedAt: "2026-08-10T19:00:00.000Z",
+        },
       ],
     },
     [strictMonitor],
   );
-  assert.deepEqual(Array.from(deals.keys()), ["booking-direct"]);
+  assert.deepEqual(Array.from(deals.keys()), ["booking-direct", "trip-direct"]);
   assert.equal(sourceIsEnabledForMonitor(strictMonitor, "booking"), true);
-  assert.equal(sourceIsEnabledForMonitor(strictMonitor, "trip"), false);
+  assert.equal(sourceIsEnabledForMonitor(strictMonitor, "trip"), true);
   assert.equal(
     sourceIsEnabledForMonitor({ ...strictMonitor, strictPrices: false }, "trip"),
     true,

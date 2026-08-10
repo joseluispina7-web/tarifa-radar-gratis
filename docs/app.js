@@ -39,7 +39,7 @@
     ["booking", "Booking", true, "Precio directo", "strict"],
     ["google_hotels", "Google Hotels", true, "Total con impuestos", "strict"],
     ["agoda", "Agoda", true, "Comparador via Bluepillow", "comparison"],
-    ["trip", "Trip.com", true, "Comparador via Bluepillow", "comparison"],
+    ["trip", "Trip.com", true, "Total confirmado en Trip.com", "strict"],
     ["bluepillow", "Bluepillow", true, "Precio orientativo", "comparison"],
   ];
 
@@ -488,7 +488,7 @@
         }`
       : "Sin valoración publicada";
     const details = dealDetails(deal);
-    const priceNote = ["agoda", "trip", "bluepillow"].includes(deal.source)
+    const priceNote = ["agoda", "bluepillow"].includes(deal.source)
       ? "Precio de comparador; confirma el total al abrir"
       : deal.taxesText || "Total final comprobado";
     return `
