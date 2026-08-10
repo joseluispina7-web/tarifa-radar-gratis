@@ -143,6 +143,37 @@ test("rejects a price that changes during same-scan confirmation", async () => {
   assert.match(errors[0].message, /cambio el total/);
 });
 
+test("accepts minor Booking rounding changes and keeps the higher total", async () => {
+  const { context } = makeVerificationContext();
+  const offer = {
+    hotelName: "Hotel con redondeo",
+    candidateMatches: true,
+    totalPrice: 250.8,
+    nights: 3,
+  };
+  let calls = 0;
+  const errors = await verifyBookingCandidates(
+    context,
+    [offer],
+    { maxVerifiedResults: 5 },
+    {
+      confirmationDelayMs: 0,
+      verifyOffer: async (_page, currentOffer) => {
+        calls += 1;
+        currentOffer.totalPrice = calls === 1 ? 250.8 : 251;
+        currentOffer.matches = true;
+        currentOffer.priceVerified = true;
+      },
+    },
+  );
+
+  assert.equal(offer.matches, true);
+  assert.equal(offer.totalPrice, 251);
+  assert.equal(offer.nightlyPrice, 83.67);
+  assert.equal(offer.priceConfirmationCount, 2);
+  assert.equal(errors.length, 0);
+});
+
 test("builds an exact Booking search without affiliate credentials", () => {
   const url = new URL(buildBookingSearchUrl(searchInput));
   assert.equal(url.origin, "https://www.booking.com");

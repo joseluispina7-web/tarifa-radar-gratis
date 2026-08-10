@@ -876,10 +876,14 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
         await verifyOffer(confirmationPage, offer, search, {
           timeoutMs: Math.min(options.timeoutMs || 25_000, 25_000),
         });
+        const secondTotal = Number(offer.totalPrice);
+        const confirmationTolerance = Math.max(
+          0.5,
+          Math.max(Number(firstTotal), secondTotal) * 0.002,
+        );
         const samePrice =
-          Math.abs(Number(offer.totalPrice) - Number(firstTotal)) <= 0.01;
+          Math.abs(secondTotal - Number(firstTotal)) <= confirmationTolerance;
         if (!offer.matches || !samePrice) {
-          const secondTotal = Number(offer.totalPrice);
           offer.matches = false;
           offer.priceConfirmationCount = 0;
           offer.verificationError = samePrice
@@ -890,6 +894,11 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
             message: offer.verificationError,
           });
           continue;
+        }
+        offer.totalPrice = Math.max(Number(firstTotal), secondTotal);
+        if (Number(offer.nights) > 0) {
+          offer.nightlyPrice =
+            Math.round((offer.totalPrice / offer.nights) * 100) / 100;
         }
         offer.priceConfirmationCount = 2;
         offer.priceConfirmedAt = new Date().toISOString();
