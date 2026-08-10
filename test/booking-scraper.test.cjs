@@ -15,9 +15,11 @@ const {
   nightsBetween,
   normalizeSearch,
   parseAdditionalCharges,
+  parseBookingExcludedCharges,
   parseBookingBlockIds,
   parseBookingRateTotal,
   parseBookingStay,
+  parseBookingTableSubtotal,
   parseDistanceKm,
   parseEuroPrice,
   parseReviewCount,
@@ -244,6 +246,27 @@ test("uses the exact stay total encoded in Booking rate blocks", () => {
   assert.equal(parseAdditionalCharges("Incluye impuestos y cargos"), 0);
 });
 
+test("reads Booking's full price line and excluded taxes", () => {
+  const priceText = [
+    "€ 38 por noche",
+    "€ 189",
+    "Precio € 189",
+    "5 noches",
+    "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+  ].join("\n");
+  assert.equal(parseBookingTableSubtotal(priceText), 189);
+  assert.deepEqual(
+    parseBookingExcludedCharges(priceText, { adults: 2, nights: 5 }),
+    {
+      hasExcludedCharges: true,
+      taxRate: 0.06,
+      fixedCharges: 20,
+      unresolved: false,
+      text: "6% IVA, Impuesto municipal de € 2 por persona y noche",
+    },
+  );
+});
+
 test("checks additional Booking pages when a surrounding radius is selected", () => {
   const urls = buildBookingPageUrls({
     ...searchInput,
@@ -332,16 +355,59 @@ test("uses the encoded stay total when a table helper shows a partial price", ()
   assert.equal(resolved.priceSource, "encoded_stay_total");
 });
 
-test("keeps Booking's displayed stay total when it matches the encoded rate", () => {
+test("keeps Booking's exact encoded total when the displayed rate is rounded", () => {
   const resolved = resolveVerifiedBookingStayTotal(
     { rateSubtotal: 228.18, additionalCharges: 0 },
     ["room-a"],
     [{ blockId: "room-a", priceText: "€ 228", taxesText: "" }],
     { fallbackTaxRate: fallbackTaxRateForCountry("ES") },
   );
-  assert.equal(resolved.total, 250.8);
+  assert.equal(resolved.total, 251);
   assert.equal(resolved.encodedStayTotal, 251);
   assert.equal(resolved.tablePriceConsistent, true);
+  assert.equal(resolved.priceSource, "encoded_stay_total");
+});
+
+test("adds Portuguese VAT and city tax to the Booking stay total", () => {
+  const priceCellText = [
+    "€ 38 por noche",
+    "€ 189",
+    "Precio € 189",
+    "5 noches",
+    "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+  ].join("\n");
+  const resolved = resolveVerifiedBookingStayTotal(
+    { rateSubtotal: 188.68, additionalCharges: 0 },
+    ["room-a"],
+    [{ blockId: "room-a", priceText: priceCellText, priceCellText }],
+    { adults: 2, nights: 5, fallbackTaxRate: 0 },
+  );
+  assert.equal(resolved.total, 220);
+  assert.equal(resolved.tableTotal, 220.34);
+  assert.equal(resolved.excludedTaxRate, 0.06);
+  assert.equal(resolved.excludedFixedCharges, 20);
+  assert.equal(resolved.tablePriceConsistent, true);
+});
+
+test("uses the higher full-cell total when Booking's encoded rate is lower", () => {
+  const priceCellText = [
+    "€ 71 por noche",
+    "€ 344",
+    "Precio € 344",
+    "4 noches",
+    "Incluido: cargo por servicio de € 60 por estancia",
+    "No incluido: 10% IVA",
+  ].join("\n");
+  const resolved = resolveVerifiedBookingStayTotal(
+    { rateSubtotal: 320.95, additionalCharges: 0 },
+    ["room-a"],
+    [{ blockId: "room-a", priceText: priceCellText, priceCellText }],
+    { adults: 2, nights: 4, fallbackTaxRate: 0.1 },
+  );
+  assert.equal(resolved.encodedStayTotal, 353.05);
+  assert.equal(resolved.tableTotal, 378.4);
+  assert.equal(resolved.tablePriceConsistent, false);
+  assert.equal(resolved.total, 378.4);
   assert.equal(resolved.priceSource, "availability_table");
 });
 

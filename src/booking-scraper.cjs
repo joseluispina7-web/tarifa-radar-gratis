@@ -266,6 +266,79 @@ function parseAdditionalCharges(value) {
   return parseEuroPrice(text);
 }
 
+function parseBookingTableSubtotal(value) {
+  const text = String(value || "").replace(/\u00a0/g, " ");
+  const currentPrices = Array.from(
+    text.matchAll(/Precio actual\s*\u20ac\s*([\d.]+(?:,\d{1,2})?)/gi),
+  );
+  if (currentPrices.length) {
+    return parseLocalizedNumber(currentPrices[currentPrices.length - 1][1]);
+  }
+  const prices = Array.from(
+    text.matchAll(/(?:^|\n)Precio\s*\u20ac\s*([\d.]+(?:,\d{1,2})?)/gi),
+  );
+  return prices.length
+    ? parseLocalizedNumber(prices[prices.length - 1][1])
+    : parseEuroPrice(text);
+}
+
+function parseBookingExcludedCharges(value, options = {}) {
+  const clauses = Array.from(
+    new Set(
+      String(value || "")
+        .split(/\r?\n/)
+        .map((line) =>
+          line.match(/(?:No incluido|Not included)\s*:\s*(.+)$/i)?.[1]
+            ?.trim(),
+        )
+        .filter(Boolean),
+    ),
+  );
+  if (!clauses.length) {
+    return {
+      hasExcludedCharges: false,
+      taxRate: 0,
+      fixedCharges: 0,
+      unresolved: false,
+      text: "",
+    };
+  }
+
+  const text = clauses.join("; ");
+  const percentPattern = /(\d+(?:[,.]\d+)?)\s*%/gi;
+  const percentageRates = Array.from(text.matchAll(percentPattern))
+    .map((match) => parseLocalizedNumber(match[1]) / 100);
+  const taxRate = Array.from(new Set(percentageRates)).reduce(
+    (total, rate) => total + rate,
+    0,
+  );
+  const feePattern = /(?:\u20ac\s*([\d.]+(?:,\d{1,2})?)|([\d.]+(?:,\d{1,2})?)\s*\u20ac)\s*(?:por\s+)?(persona\s+(?:y|por)\s+noche|persona\s+(?:y|por)\s+estancia|persona|noche|estancia)/gi;
+  const adults = clampNumber(options.adults, 1, 20, 1);
+  const nights = clampNumber(options.nights, 1, 365, 1);
+  let fixedCharges = 0;
+  let remainder = text.replace(percentPattern, "");
+  remainder = remainder.replace(
+    feePattern,
+    (_match, leadingAmount, trailingAmount, unit) => {
+      const amount = parseLocalizedNumber(leadingAmount || trailingAmount);
+      const normalizedUnit = String(unit).toLowerCase();
+      let multiplier = 1;
+      if (/persona/.test(normalizedUnit)) multiplier *= adults;
+      if (/noche/.test(normalizedUnit)) multiplier *= nights;
+      fixedCharges += amount * multiplier;
+      return "";
+    },
+  );
+  const unresolved = /\u20ac|\d+(?:[,.]\d+)?\s*%/i.test(remainder);
+  return {
+    hasExcludedCharges: true,
+    taxRate,
+    fixedCharges: Math.round(fixedCharges * 100) / 100,
+    unresolved,
+    text,
+  };
+}
+
 function fallbackTaxRateForCountry(countryCode) {
   return String(countryCode || "").toUpperCase() === "ES" ? 0.1 : 0;
 }
@@ -274,26 +347,46 @@ function calculateVerifiedTableTotal(blockIds, rows, options = {}) {
   const rowsById = new Map(
     rows.map((row) => [String(row.blockId || ""), row]),
   );
-  const fallbackTaxRate = clampNumber(
-    options.fallbackTaxRate,
-    0,
-    1,
+  const selectedRows = blockIds.map((blockId) =>
+    rowsById.get(String(blockId)),
+  );
+  if (selectedRows.some((row) => !row)) return 0;
+  const tableSubtotal = selectedRows.reduce(
+    (total, row) =>
+      total + parseBookingTableSubtotal(row.priceCellText || row.priceText),
     0,
   );
-  let total = 0;
-  for (const blockId of blockIds) {
-    const row = rowsById.get(String(blockId));
-    if (!row) return 0;
-    const price = parseEuroPrice(row.priceText);
-    const charges = parseAdditionalCharges(row.taxesText);
-    const taxesIncluded =
-      /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText);
-    if (!price || (!taxesIncluded && !charges && !fallbackTaxRate)) return 0;
-    total += charges
-      ? price + charges
-      : price * (1 + (taxesIncluded ? 0 : fallbackTaxRate));
+  const taxText = Array.from(
+    new Set(
+      selectedRows.map((row) => row.priceCellText || row.taxesText || ""),
+    ),
+  ).join("\n");
+  const excluded = parseBookingExcludedCharges(taxText, options);
+  if (!tableSubtotal || excluded.unresolved) return 0;
+  const included = selectedRows.every((row) =>
+    /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText),
+  );
+  const legacyCharges = selectedRows.reduce(
+    (total, row) => total + parseAdditionalCharges(row.taxesText),
+    0,
+  );
+  const fallbackTaxRate = excluded.hasExcludedCharges
+    ? excluded.taxRate
+    : included || legacyCharges
+      ? 0
+      : clampNumber(options.fallbackTaxRate, 0, 1, 0);
+  if (
+    !included &&
+    !legacyCharges &&
+    !excluded.hasExcludedCharges &&
+    !fallbackTaxRate
+  ) {
+    return 0;
   }
-  return Math.round(total * 100) / 100;
+  const fixedCharges = Math.max(legacyCharges, excluded.fixedCharges);
+  return Math.round(
+    (tableSubtotal * (1 + fallbackTaxRate) + fixedCharges) * 100,
+  ) / 100;
 }
 
 function verifiedBookingTotalMatchesCandidate(
@@ -326,6 +419,21 @@ function resolveVerifiedBookingStayTotal(
     return { total: 0, tableTotal: 0, encodedStayTotal: 0 };
   }
 
+  const fullPriceText = Array.from(
+    new Set(
+      selectedRows.map((row) => row.priceCellText || row.taxesText || ""),
+    ),
+  ).join("\n");
+  const excluded = parseBookingExcludedCharges(fullPriceText, options);
+  if (excluded.unresolved) {
+    return {
+      total: 0,
+      tableTotal: 0,
+      encodedStayTotal: 0,
+      unresolvedCharges: true,
+      taxBreakdownText: excluded.text,
+    };
+  }
   const rowCharges = selectedRows.reduce(
     (total, row) => total + parseAdditionalCharges(row.taxesText),
     0,
@@ -333,14 +441,18 @@ function resolveVerifiedBookingStayTotal(
   const additionalCharges = Math.max(
     Number(offer?.additionalCharges) || 0,
     rowCharges,
+    excluded.fixedCharges,
   );
   const taxesIncluded = selectedRows.every((row) =>
     /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText),
   );
-  const fallbackTaxRate = additionalCharges || taxesIncluded
-    ? 0
-    : clampNumber(options.fallbackTaxRate, 0, 1, 0);
+  const fallbackTaxRate = excluded.hasExcludedCharges
+    ? excluded.taxRate
+    : additionalCharges || taxesIncluded
+      ? 0
+      : clampNumber(options.fallbackTaxRate, 0, 1, 0);
   const tableTotal = calculateVerifiedTableTotal(blockIds, rows, {
+    ...options,
     fallbackTaxRate,
   });
   const rateSubtotal = Number(offer?.rateSubtotal);
@@ -361,13 +473,18 @@ function resolveVerifiedBookingStayTotal(
   );
 
   return {
-    total: tablePriceConsistent ? tableTotal : encodedStayTotal || tableTotal,
+    total: tablePriceConsistent
+      ? encodedStayTotal
+      : Math.max(tableTotal, encodedStayTotal),
     tableTotal,
     encodedStayTotal,
     tablePriceConsistent,
     additionalCharges,
     fallbackTaxRate,
-    priceSource: tablePriceConsistent
+    excludedTaxRate: excluded.taxRate,
+    excludedFixedCharges: excluded.fixedCharges,
+    taxBreakdownText: excluded.text,
+    priceSource: !tablePriceConsistent && tableTotal > encodedStayTotal
       ? "availability_table"
       : "encoded_stay_total",
   };
@@ -736,7 +853,10 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
           const visibleTaxText = (priceCell?.innerText || row.innerText || "")
             .split("\n")
             .map((line) => line.trim())
-            .filter((line) => /impuestos|cargos/i.test(line))
+            .filter((line) =>
+              /incluido|impuesto|IVA|tasas?|cargos?|suplemento|tax|charges?/i
+                .test(line),
+            )
             .join(" ");
           return {
             blockId: row.getAttribute("data-block-id") || "",
@@ -759,6 +879,9 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     rows,
     {
       fallbackTaxRate: fallbackTaxRateForCountry(search.countryCode),
+      nights: offer.nights,
+      adults: search.adults,
+      children: search.children,
     },
   );
   if (!resolvedPrice.total) {
@@ -778,12 +901,13 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   offer.encodedStayTotal = resolvedPrice.encodedStayTotal;
   offer.bookingPriceSource = resolvedPrice.priceSource;
   offer.additionalCharges = resolvedPrice.additionalCharges;
+  offer.excludedTaxRate = resolvedPrice.excludedTaxRate;
+  offer.excludedFixedCharges = resolvedPrice.excludedFixedCharges;
+  offer.taxBreakdownText = resolvedPrice.taxBreakdownText;
   offer.verificationRows = rows;
   offer.taxFallbackRate = resolvedPrice.fallbackTaxRate;
   offer.priceVerified = true;
-  offer.priceBasis = offer.taxFallbackRate
-    ? "booking_verified_stay_total_with_country_tax_v3"
-    : "booking_verified_stay_total_v3";
+  offer.priceBasis = "booking_verified_final_total_v4";
   offer.matches = matchesSearch(offer, search);
   return offer;
 }
@@ -1016,9 +1140,11 @@ module.exports = {
   nightsBetween,
   normalizeSearch,
   parseAdditionalCharges,
+  parseBookingExcludedCharges,
   parseBookingBlockIds,
   parseBookingRateTotal,
   parseBookingStay,
+  parseBookingTableSubtotal,
   parseEuroPrice,
   parseDistanceKm,
   parseLocalizedNumber,
