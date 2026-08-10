@@ -23,8 +23,8 @@ const DATE_SWEEP_VERSION = 3;
 const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
 const CURRENT_BOOKING_PRICE_BASES = new Set([
-  "booking_availability_table_v2",
-  "booking_availability_table_with_country_tax_v2",
+  "booking_verified_stay_total_v3",
+  "booking_verified_stay_total_with_country_tax_v3",
 ]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
@@ -246,6 +246,9 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     rateSubtotal: offer.rateSubtotal,
     searchResultPrice: offer.searchResultPrice,
     bookingTableTotal: offer.bookingTableTotal,
+    bookingTablePriceConsistent: offer.bookingTablePriceConsistent,
+    encodedStayTotal: offer.encodedStayTotal,
+    bookingPriceSource: offer.bookingPriceSource,
     taxFallbackRate: offer.taxFallbackRate,
     additionalCharges: offer.additionalCharges,
     includedTaxesAndFees: offer.includedTaxesAndFees,

@@ -23,6 +23,7 @@ const {
   parseReviewCount,
   parseReviewScore,
   parseStars,
+  resolveVerifiedBookingStayTotal,
   stayMatchesSearch,
   verifiedBookingTotalMatchesCandidate,
   verifyBookingCandidates,
@@ -283,27 +284,34 @@ test("accepts only bookable table totals with taxes accounted for", () => {
   assert.equal(fallbackTaxRateForCountry("FR"), 0);
 });
 
-test("rejects a nightly table value presented as the stay total", () => {
+test("uses the encoded stay total when a table helper shows a partial price", () => {
   const offer = {
     rateSubtotal: 313.54,
     additionalCharges: 0,
   };
-  assert.equal(
-    verifiedBookingTotalMatchesCandidate(offer, 26.4, 0.1),
-    false,
+  const resolved = resolveVerifiedBookingStayTotal(
+    offer,
+    ["room-a"],
+    [{ blockId: "room-a", priceText: "€ 24", taxesText: "" }],
+    { fallbackTaxRate: fallbackTaxRateForCountry("ES") },
   );
-  assert.equal(
-    verifiedBookingTotalMatchesCandidate(offer, 344.9, 0.1),
-    true,
+  assert.equal(resolved.total, 344.89);
+  assert.equal(resolved.tableTotal, 26.4);
+  assert.equal(resolved.tablePriceConsistent, false);
+  assert.equal(resolved.priceSource, "encoded_stay_total");
+});
+
+test("keeps Booking's displayed stay total when it matches the encoded rate", () => {
+  const resolved = resolveVerifiedBookingStayTotal(
+    { rateSubtotal: 228.18, additionalCharges: 0 },
+    ["room-a"],
+    [{ blockId: "room-a", priceText: "€ 228", taxesText: "" }],
+    { fallbackTaxRate: fallbackTaxRateForCountry("ES") },
   );
-  assert.equal(
-    verifiedBookingTotalMatchesCandidate(
-      { rateSubtotal: 228.18, additionalCharges: 0 },
-      250.8,
-      0.1,
-    ),
-    true,
-  );
+  assert.equal(resolved.total, 250.8);
+  assert.equal(resolved.encodedStayTotal, 251);
+  assert.equal(resolved.tablePriceConsistent, true);
+  assert.equal(resolved.priceSource, "availability_table");
 });
 
 test("rejects a card when its stay does not match the requested search", () => {

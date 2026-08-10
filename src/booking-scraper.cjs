@@ -300,14 +300,77 @@ function verifiedBookingTotalMatchesCandidate(
   offer,
   verifiedTotal,
   fallbackTaxRate = 0,
+  additionalCharges = Number(offer?.additionalCharges) || 0,
 ) {
   const rateSubtotal = Number(offer?.rateSubtotal);
-  const additionalCharges = Number(offer?.additionalCharges) || 0;
   if (!Number.isFinite(rateSubtotal) || rateSubtotal <= 0) return false;
   const expectedTotal =
     rateSubtotal * (1 + Number(fallbackTaxRate || 0)) + additionalCharges;
   const tolerance = Math.max(2, expectedTotal * 0.02);
   return Math.abs(Number(verifiedTotal) - expectedTotal) <= tolerance;
+}
+
+function resolveVerifiedBookingStayTotal(
+  offer,
+  blockIds,
+  rows,
+  options = {},
+) {
+  const rowsById = new Map(
+    rows.map((row) => [String(row.blockId || ""), row]),
+  );
+  const selectedRows = blockIds.map((blockId) =>
+    rowsById.get(String(blockId)),
+  );
+  if (selectedRows.some((row) => !row)) {
+    return { total: 0, tableTotal: 0, encodedStayTotal: 0 };
+  }
+
+  const rowCharges = selectedRows.reduce(
+    (total, row) => total + parseAdditionalCharges(row.taxesText),
+    0,
+  );
+  const additionalCharges = Math.max(
+    Number(offer?.additionalCharges) || 0,
+    rowCharges,
+  );
+  const taxesIncluded = selectedRows.every((row) =>
+    /incluye impuestos|impuestos y cargos incluidos/i.test(row.taxesText),
+  );
+  const fallbackTaxRate = additionalCharges || taxesIncluded
+    ? 0
+    : clampNumber(options.fallbackTaxRate, 0, 1, 0);
+  const tableTotal = calculateVerifiedTableTotal(blockIds, rows, {
+    fallbackTaxRate,
+  });
+  const rateSubtotal = Number(offer?.rateSubtotal);
+  const encodedStayTotal = Number.isFinite(rateSubtotal) && rateSubtotal > 0
+    ? Math.round(
+        (rateSubtotal * (1 + fallbackTaxRate) + additionalCharges) * 100,
+      ) / 100
+    : 0;
+  const tablePriceConsistent = Boolean(
+    tableTotal &&
+      encodedStayTotal &&
+      verifiedBookingTotalMatchesCandidate(
+        offer,
+        tableTotal,
+        fallbackTaxRate,
+        additionalCharges,
+      ),
+  );
+
+  return {
+    total: tablePriceConsistent ? tableTotal : encodedStayTotal || tableTotal,
+    tableTotal,
+    encodedStayTotal,
+    tablePriceConsistent,
+    additionalCharges,
+    fallbackTaxRate,
+    priceSource: tablePriceConsistent
+      ? "availability_table"
+      : "encoded_stay_total",
+  };
 }
 
 function stayMatchesSearch(value, search, expectedNights = search.nights) {
@@ -666,12 +729,10 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
         .filter((row) => blockIds.includes(row.getAttribute("data-block-id")))
         .map((row) => {
           const priceCell = row.querySelector(".hprt-table-cell-price");
-          const priceText =
-            row.querySelector(
-              ".prco-valign-middle-helper, [data-testid='price-and-discounted-price']",
-            )?.textContent?.trim() ||
-            priceCell?.innerText?.trim() ||
-            "";
+          const displayedPriceText = row.querySelector(
+            ".prco-valign-middle-helper, [data-testid='price-and-discounted-price']",
+          )?.textContent?.trim() || "";
+          const priceCellText = priceCell?.innerText?.trim() || "";
           const visibleTaxText = (priceCell?.innerText || row.innerText || "")
             .split("\n")
             .map((line) => line.trim())
@@ -679,7 +740,9 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
             .join(" ");
           return {
             blockId: row.getAttribute("data-block-id") || "",
-            priceText,
+            priceText: displayedPriceText || priceCellText,
+            displayedPriceText,
+            priceCellText,
             taxesText:
             row.querySelector(".prd-taxes-and-fees-under-price")
               ?.textContent?.trim() ||
@@ -690,47 +753,37 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     offer.bookingBlockIds,
   );
 
-  const verifiedTotal = calculateVerifiedTableTotal(
+  const resolvedPrice = resolveVerifiedBookingStayTotal(
+    offer,
     offer.bookingBlockIds,
     rows,
     {
       fallbackTaxRate: fallbackTaxRateForCountry(search.countryCode),
     },
   );
-  if (!verifiedTotal) {
+  if (!resolvedPrice.total) {
     throw new Error(
       "Booking no mostró un total final con impuestos para esa habitación.",
-    );
-  }
-
-  const taxFallbackRate = rows.some((row) => !row.taxesText)
-    ? fallbackTaxRateForCountry(search.countryCode)
-    : 0;
-  if (
-    !verifiedBookingTotalMatchesCandidate(
-      offer,
-      verifiedTotal,
-      taxFallbackRate,
-    )
-  ) {
-    throw new Error(
-      "Booking mostro una cifra de la tabla que no coincide con el total de la estancia.",
     );
   }
 
   if (!Number.isFinite(Number(offer.searchResultPrice))) {
     offer.searchResultPrice = offer.totalPrice;
   }
-  offer.totalPrice = verifiedTotal;
+  offer.totalPrice = resolvedPrice.total;
   offer.nightlyPrice =
-    Math.round((verifiedTotal / offer.nights) * 100) / 100;
-  offer.bookingTableTotal = verifiedTotal;
+    Math.round((resolvedPrice.total / offer.nights) * 100) / 100;
+  offer.bookingTableTotal = resolvedPrice.tableTotal || null;
+  offer.bookingTablePriceConsistent = resolvedPrice.tablePriceConsistent;
+  offer.encodedStayTotal = resolvedPrice.encodedStayTotal;
+  offer.bookingPriceSource = resolvedPrice.priceSource;
+  offer.additionalCharges = resolvedPrice.additionalCharges;
   offer.verificationRows = rows;
-  offer.taxFallbackRate = taxFallbackRate;
+  offer.taxFallbackRate = resolvedPrice.fallbackTaxRate;
   offer.priceVerified = true;
   offer.priceBasis = offer.taxFallbackRate
-    ? "booking_availability_table_with_country_tax_v2"
-    : "booking_availability_table_v2";
+    ? "booking_verified_stay_total_with_country_tax_v3"
+    : "booking_verified_stay_total_v3";
   offer.matches = matchesSearch(offer, search);
   return offer;
 }
@@ -963,6 +1016,7 @@ module.exports = {
   parseReviewCount,
   parseReviewScore,
   parseStars,
+  resolveVerifiedBookingStayTotal,
   scrapeBooking,
   stayMatchesSearch,
   verifiedBookingTotalMatchesCandidate,
