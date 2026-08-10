@@ -11,6 +11,7 @@ const {
   parseGoogleProviderVisibleTotal,
   parseGoogleHotelsTotal,
   parseGoogleStars,
+  providerLinkMatchesStay,
   stableOfferId,
 } = require("../src/google-hotels-scraper.cjs");
 const { normalizeSearch } = require("../src/booking-scraper.cjs");
@@ -99,6 +100,53 @@ test("reads only explicit all-inclusive EUR totals from Google providers", () =>
         "display_all_inclusive_price=1.32",
     ),
     0,
+  );
+});
+
+test("reads taxed totals exposed by known Google Hotels partners", () => {
+  const booking =
+    "https://www.booking.com/searchresults.es.html?checkin=2026-08-05&" +
+    "checkout=2026-08-09&selected_currency=EUR&ext_price_total=148.20&" +
+    "ext_price_tax=18.20&group_adults=2&group_children=0&no_rooms=1";
+  const agoda =
+    "https://www.agoda.com/partners/partnersearch.aspx?CkInDay=5&" +
+    "CkInMonth=8&CkInYear=2026&CkOutDay=9&CkOutMonth=8&" +
+    "CkOutYear=2026&Currency=EUR&PriceTotal=151.00&PriceTax=21.00&" +
+    "NumberOfAdults=2&NumberOfChildren=0&NumberOfRooms=1";
+  const trivago =
+    "https://www.trivago.deals/hotels/test?checkIn=2026-08-05&" +
+    "checkOut=2026-08-09&currencyCode=EUR&priceDisplayedTotal=149.90&" +
+    "priceDisplayedTax=19.90&adults=2&children=0";
+  const expedia =
+    "https://www.expedia.com/Hotel-Search?startDate=2026-08-05&" +
+    "endDate=2026-08-09&currency=EUR&mpa=130.00&mpb=18.25&" +
+    "adults=2";
+
+  assert.equal(parseGoogleProviderInclusiveTotal(booking), 148.2);
+  assert.equal(parseGoogleProviderInclusiveTotal(agoda), 151);
+  assert.equal(parseGoogleProviderInclusiveTotal(trivago), 149.9);
+  assert.equal(parseGoogleProviderInclusiveTotal(expedia), 148.25);
+  assert.equal(
+    parseGoogleProviderInclusiveTotal(
+      "https://www.booking.com/search?currency=EUR&ext_price_total=1.00",
+    ),
+    0,
+  );
+});
+
+test("requires the exact Google provider stay and occupancy", () => {
+  const familySearch = search({ children: 2 });
+  const exact =
+    "https://www.super.com/travel?checkin_at=2026-08-05&" +
+    "checkout_at=2026-08-09&num_adults=2&children=%5B7%2C7%5D";
+  assert.equal(providerLinkMatchesStay(exact, familySearch), true);
+  assert.equal(
+    providerLinkMatchesStay(exact.replace("%5B7%2C7%5D", "%5B7%5D"), familySearch),
+    false,
+  );
+  assert.equal(
+    providerLinkMatchesStay(exact.replace("2026-08-09", "2026-08-10"), familySearch),
+    false,
   );
 });
 

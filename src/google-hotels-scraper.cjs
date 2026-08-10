@@ -73,12 +73,12 @@ function parseGoogleProviderInclusiveTotal(value) {
   for (const candidate of candidates) {
     const currencyMatches = Array.from(
       candidate.matchAll(
-        /(?:currency|display_currency|divisa)=([A-Z]{3})/gi,
+        /(?:currency|display_currency|selected_currency|partnercurrency|currency_code|currencycode|mpd|curr|divisa)=([A-Z]{3})/gi,
       ),
     );
     const hasEurCurrency = currencyMatches.some(
       (match) => match[1].toUpperCase() === "EUR",
-    );
+    ) || /\u20ac/.test(candidate);
     if (!hasEurCurrency) continue;
 
     const bluepillowTotal =
@@ -98,6 +98,38 @@ function parseGoogleProviderInclusiveTotal(value) {
           )
         : null;
     if (superTotal) return parseLocalizedNumber(superTotal[1]);
+
+    const bookingTotal =
+      /(?:^|\/\/)(?:www\.)?booking\.com\//i.test(candidate) &&
+      /(?:^|[?&])ext_price_tax=[\d.,]+/i.test(candidate)
+        ? candidate.match(/(?:^|[?&])ext_price_total=([\d.,]+)/i)
+        : null;
+    if (bookingTotal) return parseLocalizedNumber(bookingTotal[1]);
+
+    const agodaTotal =
+      /(?:^|\/\/)(?:www\.)?agoda\.com\//i.test(candidate) &&
+      /(?:^|[?&])PriceTax=[\d.,]+/i.test(candidate)
+        ? candidate.match(/(?:^|[?&])PriceTotal=([\d.,]+)/i)
+        : null;
+    if (agodaTotal) return parseLocalizedNumber(agodaTotal[1]);
+
+    const trivagoTotal =
+      /(?:^|\/\/)(?:www\.)?trivago\.deals\//i.test(candidate) &&
+      /(?:^|[?&])priceDisplayedTax=[\d.,]+/i.test(candidate)
+        ? candidate.match(/(?:^|[?&])priceDisplayedTotal=([\d.,]+)/i)
+        : null;
+    if (trivagoTotal) return parseLocalizedNumber(trivagoTotal[1]);
+
+    if (/(?:^|\/\/)(?:www\.)?(?:expedia|hotels)\.com\//i.test(candidate)) {
+      const subtotal = candidate.match(/(?:^|[?&])mpa=([\d.,]+)/i);
+      const taxes = candidate.match(/(?:^|[?&])mpb=([\d.,]+)/i);
+      if (subtotal && taxes) {
+        return Math.round(
+          (parseLocalizedNumber(subtotal[1]) +
+            parseLocalizedNumber(taxes[1])) * 100,
+        ) / 100;
+      }
+    }
   }
   return 0;
 }
@@ -416,6 +448,92 @@ async function selectGoogleHotelsDates(page, search, timeoutMs) {
   }).catch(() => {});
 }
 
+async function openGoogleTravelersDialog(page, timeoutMs) {
+  let dialog = page.locator('[role="dialog"]:visible').last();
+  if (await dialog.count()) return dialog;
+
+  const travelersButton = page
+    .getByRole("button", {
+      name: /Numero de viajeros|N[u\u00fa]mero de viajeros|Number of travelers/i,
+    })
+    .first();
+  await travelersButton.waitFor({ state: "visible", timeout: timeoutMs });
+  await travelersButton.evaluate((element) => element.click());
+  dialog = page.locator('[role="dialog"]:visible').last();
+  await dialog.waitFor({ state: "visible", timeout: timeoutMs });
+  return dialog;
+}
+
+async function setGoogleTravelerCount(
+  page,
+  { removeName, addName, target, timeoutMs },
+) {
+  for (let attempt = 0; attempt < 20; attempt += 1) {
+    const dialog = await openGoogleTravelersDialog(page, timeoutMs);
+    const removeButton = dialog
+      .getByRole("button", { name: removeName })
+      .first();
+    const counterText = await removeButton.evaluate(
+      (element) => element.parentElement?.parentElement?.innerText || "",
+    );
+    const current = Number(counterText.match(/\b\d+\b/)?.[0]);
+    if (!Number.isFinite(current)) {
+      throw new Error("Google Hotels no mostro el contador de viajeros.");
+    }
+    if (current === target) return;
+
+    const button = current > target
+      ? removeButton
+      : dialog.getByRole("button", { name: addName }).first();
+    await button.evaluate((element) => element.click());
+    await page.waitForTimeout(150);
+  }
+  throw new Error("Google Hotels no mantuvo la ocupacion solicitada.");
+}
+
+async function selectGoogleHotelsGuests(page, search, timeoutMs) {
+  if (search.rooms !== 1) {
+    throw new Error(
+      "Google Hotels automatico admite por ahora una habitacion por busqueda.",
+    );
+  }
+
+  await openGoogleTravelersDialog(page, timeoutMs);
+  await setGoogleTravelerCount(page, {
+    removeName: /Quitar adulto|Remove adult/i,
+    addName: /A[n\u00f1]adir persona adulta|Add adult/i,
+    target: search.adults,
+    timeoutMs,
+  });
+  await setGoogleTravelerCount(page, {
+    removeName: /Quitar ni[n\u00f1]o|Remove child/i,
+    addName: /A[n\u00f1]adir ni[n\u00f1]o|Add child/i,
+    target: search.children,
+    timeoutMs,
+  });
+
+  const dialog = await openGoogleTravelersDialog(page, timeoutMs);
+  const childAgeSelectors = dialog.getByRole("listbox", {
+    name: /Edad del ni[n\u00f1]o|Child age/i,
+  });
+  for (let child = 0; child < await childAgeSelectors.count(); child += 1) {
+    await childAgeSelectors.nth(child).evaluate((element) => element.click());
+    const ageSeven = dialog
+      .locator('[role="listbox"][aria-expanded="true"] [role="option"]')
+      .filter({ hasText: /^\s*7\s*$/ })
+      .first();
+    if (await ageSeven.count()) {
+      await ageSeven.evaluate((element) => element.click());
+    }
+  }
+
+  await dialog
+    .getByRole("button", { name: /Hecho|Done/i })
+    .first()
+    .evaluate((element) => element.click());
+  await dialog.waitFor({ state: "hidden", timeout: timeoutMs }).catch(() => {});
+}
+
 async function extractGoogleHotelCards(page, search) {
   const rawCards = await page.locator("h2").evaluateAll(
     (headings, limit) => headings.slice(0, limit + 5).flatMap((heading) => {
@@ -580,14 +698,54 @@ function googleProviderCanSupplyVerifiedTotal(value) {
 
 function providerLinkMatchesStay(value, search) {
   const text = repeatedlyDecodeUrl(value).join("\n");
+  const dateFromParts = (prefix) => {
+    const day = text.match(
+      new RegExp(`(?:^|[?&])${prefix}(?:_|)day=([0-9]{1,2})`, "i"),
+    )?.[1];
+    const month = text.match(
+      new RegExp(`(?:^|[?&])${prefix}(?:_|)month=([0-9]{1,2})`, "i"),
+    )?.[1];
+    const year = text.match(
+      new RegExp(`(?:^|[?&])${prefix}(?:_|)year=([0-9]{4})`, "i"),
+    )?.[1];
+    return day && month && year
+      ? `${year}-${month.padStart(2, "0")}-${day.padStart(2, "0")}`
+      : "";
+  };
   const isoCheckIn = text.match(
-    /(?:checkin|check_in|checkin_at|arrival_date)=([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
-  )?.[1];
+    /(?:checkin|check_in|checkin_at|arrival_date|startdate)=([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
+  )?.[1] || dateFromParts("(?:checkin|ckin)");
   const isoCheckOut = text.match(
-    /(?:checkout|check_out|checkout_at|departure_date)=([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
+    /(?:checkout|check_out|checkout_at|departure_date|enddate)=([0-9]{4}-[0-9]{2}-[0-9]{2})/i,
+  )?.[1] || dateFromParts("(?:checkout|ckout)");
+  if (isoCheckIn !== search.checkIn || isoCheckOut !== search.checkOut) {
+    return false;
+  }
+
+  const adults = text.match(
+    /(?:^|[?&])(?:num_adults|numberofadults|group_adults|req_adults|adults|adult)=([0-9]+)/i,
   )?.[1];
-  if (isoCheckIn && isoCheckIn !== search.checkIn) return false;
-  if (isoCheckOut && isoCheckOut !== search.checkOut) return false;
+  if (adults && Number(adults) !== search.adults) return false;
+  if (!adults && search.adults !== 2) return false;
+
+  const childrenValue = text.match(
+    /(?:^|[?&])(?:num_children|numberofchildren|group_children|req_children|children|ch)=([^&\s]*)/i,
+  )?.[1];
+  if (childrenValue !== undefined) {
+    const decodedChildren = decodeURIComponent(childrenValue);
+    const childCount = /^\d+$/.test(decodedChildren)
+      ? Number(decodedChildren)
+      : (decodedChildren.match(/(?:\d+_\d+)|(?:\b\d{1,2}\b)/g) || []).length;
+    if (childCount !== search.children) return false;
+  } else if (search.children > 0) {
+    return false;
+  }
+
+  const rooms = text.match(
+    /(?:^|[?&])(?:num_rooms|numberofrooms|no_rooms)=([0-9]+)/i,
+  )?.[1];
+  if (rooms && Number(rooms) !== search.rooms) return false;
+  if (!rooms && search.rooms !== 1) return false;
   return true;
 }
 
@@ -631,7 +789,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
       const providerPrices = providerLinks.flatMap((link) => {
         if (!googleProviderCanSupplyVerifiedTotal(link.text)) return [];
         const totalPrice =
-          parseGoogleProviderInclusiveTotal(link.href) ||
+          parseGoogleProviderInclusiveTotal(`${link.href}\n${link.text}`) ||
           parseGoogleProviderVisibleTotal(link.text);
         if (
           !totalPrice ||
@@ -714,6 +872,7 @@ async function loadGoogleHotels(page, search, options = {}) {
         });
       }
       await selectGoogleHotelsDestination(page, search, timeoutMs);
+      await selectGoogleHotelsGuests(page, search, timeoutMs);
       await selectGoogleHotelsDates(page, search, timeoutMs);
       await page.locator("h2").nth(1).waitFor({
         state: "visible",
@@ -738,9 +897,9 @@ async function loadGoogleHotels(page, search, options = {}) {
 
 async function scrapeGoogleHotels(input, options = {}) {
   const search = normalizeSearch(input);
-  if (search.adults !== 2 || search.children !== 0 || search.rooms !== 1) {
+  if (search.rooms !== 1) {
     throw new Error(
-      "Google Hotels automatico admite por ahora 2 adultos, sin ninos y 1 habitacion.",
+      "Google Hotels automatico admite por ahora una habitacion por busqueda.",
     );
   }
   const { chromium } = require("playwright");
@@ -847,7 +1006,9 @@ module.exports = {
   parseGoogleHotelsTotal,
   parseGoogleReviewCount,
   parseGoogleStars,
+  providerLinkMatchesStay,
   scrapeGoogleHotels,
+  selectGoogleHotelsGuests,
   selectGoogleHotelsDates,
   stableOfferId,
 };

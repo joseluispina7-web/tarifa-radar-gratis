@@ -37,7 +37,13 @@
   ];
   const sources = [
     ["booking", "Booking", true, "Precio directo", "strict"],
-    ["google_hotels", "Google Hotels", true, "Total con impuestos", "strict"],
+    [
+      "google_hotels",
+      "Google Hotels",
+      true,
+      "Totales de varios proveedores",
+      "strict",
+    ],
     ["agoda", "Agoda", true, "Comparador via Bluepillow", "comparison"],
     ["trip", "Trip.com", true, "Total confirmado en Trip.com", "strict"],
     ["bluepillow", "Bluepillow", true, "Precio orientativo", "comparison"],
