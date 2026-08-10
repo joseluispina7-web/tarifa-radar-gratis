@@ -296,6 +296,20 @@ function calculateVerifiedTableTotal(blockIds, rows, options = {}) {
   return Math.round(total * 100) / 100;
 }
 
+function verifiedBookingTotalMatchesCandidate(
+  offer,
+  verifiedTotal,
+  fallbackTaxRate = 0,
+) {
+  const rateSubtotal = Number(offer?.rateSubtotal);
+  const additionalCharges = Number(offer?.additionalCharges) || 0;
+  if (!Number.isFinite(rateSubtotal) || rateSubtotal <= 0) return false;
+  const expectedTotal =
+    rateSubtotal * (1 + Number(fallbackTaxRate || 0)) + additionalCharges;
+  const tolerance = Math.max(2, expectedTotal * 0.02);
+  return Math.abs(Number(verifiedTotal) - expectedTotal) <= tolerance;
+}
+
 function stayMatchesSearch(value, search, expectedNights = search.nights) {
   const text = String(value || "");
   const nightsMatch = text.match(/(\d+)\s+noches?/i);
@@ -689,19 +703,34 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
     );
   }
 
-  offer.searchResultPrice = offer.totalPrice;
+  const taxFallbackRate = rows.some((row) => !row.taxesText)
+    ? fallbackTaxRateForCountry(search.countryCode)
+    : 0;
+  if (
+    !verifiedBookingTotalMatchesCandidate(
+      offer,
+      verifiedTotal,
+      taxFallbackRate,
+    )
+  ) {
+    throw new Error(
+      "Booking mostro una cifra de la tabla que no coincide con el total de la estancia.",
+    );
+  }
+
+  if (!Number.isFinite(Number(offer.searchResultPrice))) {
+    offer.searchResultPrice = offer.totalPrice;
+  }
   offer.totalPrice = verifiedTotal;
   offer.nightlyPrice =
     Math.round((verifiedTotal / offer.nights) * 100) / 100;
   offer.bookingTableTotal = verifiedTotal;
   offer.verificationRows = rows;
-  offer.taxFallbackRate = rows.some((row) => !row.taxesText)
-    ? fallbackTaxRateForCountry(search.countryCode)
-    : 0;
+  offer.taxFallbackRate = taxFallbackRate;
   offer.priceVerified = true;
   offer.priceBasis = offer.taxFallbackRate
-    ? "booking_availability_table_with_country_tax"
-    : "booking_availability_table";
+    ? "booking_availability_table_with_country_tax_v2"
+    : "booking_availability_table_v2";
   offer.matches = matchesSearch(offer, search);
   return offer;
 }
@@ -936,6 +965,7 @@ module.exports = {
   parseStars,
   scrapeBooking,
   stayMatchesSearch,
+  verifiedBookingTotalMatchesCandidate,
   verifyBookingCandidates,
   verifyBookingOffer,
 };

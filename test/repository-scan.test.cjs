@@ -37,6 +37,7 @@ test("drops deals created for an older monitor configuration", () => {
           id: "current-benidorm",
           monitorId: monitor.id,
           monitorFingerprint: currentFingerprint,
+          priceBasis: "booking_availability_table_v2",
         },
       ],
     },
@@ -108,6 +109,7 @@ test("strict price mode drops indirect comparison deals", () => {
           monitorId: monitor.id,
           monitorFingerprint: currentFingerprint,
           source: "booking",
+          priceBasis: "booking_availability_table_v2",
         },
         {
           id: "trip-indirect",
@@ -135,6 +137,32 @@ test("strict price mode drops indirect comparison deals", () => {
     sourceIsEnabledForMonitor({ ...strictMonitor, strictPrices: false }, "trip"),
     true,
   );
+});
+
+test("drops Booking deals created by the old table parser", () => {
+  const currentFingerprint = monitorFingerprint(monitor);
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "old-booking",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "booking",
+          priceBasis: "booking_availability_table_with_country_tax",
+        },
+        {
+          id: "current-booking",
+          monitorId: monitor.id,
+          monitorFingerprint: currentFingerprint,
+          source: "booking",
+          priceBasis: "booking_availability_table_with_country_tax_v2",
+        },
+      ],
+    },
+    [monitor],
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["current-booking"]);
 });
 
 test("drops Google deals created by the old nightly-price parser", () => {

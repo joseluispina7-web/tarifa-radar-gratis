@@ -24,6 +24,7 @@ const {
   parseReviewScore,
   parseStars,
   stayMatchesSearch,
+  verifiedBookingTotalMatchesCandidate,
   verifyBookingCandidates,
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
@@ -280,6 +281,29 @@ test("accepts only bookable table totals with taxes accounted for", () => {
   );
   assert.equal(fallbackTaxRateForCountry("ES"), 0.1);
   assert.equal(fallbackTaxRateForCountry("FR"), 0);
+});
+
+test("rejects a nightly table value presented as the stay total", () => {
+  const offer = {
+    rateSubtotal: 313.54,
+    additionalCharges: 0,
+  };
+  assert.equal(
+    verifiedBookingTotalMatchesCandidate(offer, 26.4, 0.1),
+    false,
+  );
+  assert.equal(
+    verifiedBookingTotalMatchesCandidate(offer, 344.9, 0.1),
+    true,
+  );
+  assert.equal(
+    verifiedBookingTotalMatchesCandidate(
+      { rateSubtotal: 228.18, additionalCharges: 0 },
+      250.8,
+      0.1,
+    ),
+    true,
+  );
 });
 
 test("rejects a card when its stay does not match the requested search", () => {

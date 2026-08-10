@@ -22,6 +22,10 @@ const PRICE_COMPARISON_EPSILON = 0.01;
 const DATE_SWEEP_VERSION = 3;
 const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
+const CURRENT_BOOKING_PRICE_BASES = new Set([
+  "booking_availability_table_v2",
+  "booking_availability_table_with_country_tax_v2",
+]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -56,6 +60,12 @@ function updateOfferState(
   searchedAt,
   scanCycle = searchedAt,
 ) {
+  if (
+    offer.source === "booking" &&
+    !CURRENT_BOOKING_PRICE_BASES.has(previous.priceBasis)
+  ) {
+    previous = {};
+  }
   const confirmationCount = offer.matches
     ? Number(offer.priceConfirmationCount) || 0
     : 0;
@@ -166,6 +176,9 @@ function buildDealMap(previousDeals, activeMonitors) {
           monitor?.strictPrices === false || STRICT_PRICE_SOURCES.has(source);
         const hasCurrentBluepillowValidation =
           !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
+        const hasCurrentBookingValidation =
+          source !== "booking" ||
+          CURRENT_BOOKING_PRICE_BASES.has(deal.priceBasis);
         const hasCurrentGoogleValidation =
           source !== "google_hotels" ||
           deal.priceBasis === "google_hotels_provider_all_inclusive_v5";
@@ -176,6 +189,7 @@ function buildDealMap(previousDeals, activeMonitors) {
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
           strictPriceAllowed &&
+          hasCurrentBookingValidation &&
           hasCurrentBluepillowValidation &&
           hasCurrentGoogleValidation &&
           hasCurrentTripValidation
