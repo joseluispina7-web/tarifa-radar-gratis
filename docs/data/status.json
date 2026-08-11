@@ -1,260 +1,177 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-11T20:19:46.590Z",
+  "updatedAt": "2026-08-11T21:11:57.469Z",
   "summary": {
-    "generatedAt": "2026-08-11T20:19:46.590Z",
+    "generatedAt": "2026-08-11T21:11:57.469Z",
     "monitors": 4,
     "searches": 80,
-    "offers": 445,
-    "matches": 33,
-    "newMatches": 17,
-    "priceDrops": 6,
+    "offers": 478,
+    "matches": 26,
+    "newMatches": 21,
+    "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 16,
-        "offers": 243,
-        "matches": 28,
+        "offers": 246,
+        "matches": 22,
         "errors": 5
       },
       "google_hotels": {
         "searches": 16,
-        "offers": 8,
-        "matches": 2,
-        "errors": 8
+        "offers": 2,
+        "matches": 0,
+        "errors": 11
       },
       "agoda": {
         "searches": 16,
-        "offers": 32,
+        "offers": 48,
         "matches": 0,
         "errors": 0
       },
       "bluepillow": {
         "searches": 16,
-        "offers": 139,
-        "matches": 3,
+        "offers": 156,
+        "matches": 2,
         "errors": 0
       },
       "trip": {
         "searches": 16,
-        "offers": 23,
-        "matches": 0,
+        "offers": 26,
+        "matches": 2,
         "errors": 0
       }
     },
     "verificationErrors": [
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-29",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Apartamentos Acogedores - Nuevo a estrenar",
-        "message": "Booking cambio el total de 271.91 a 275.00 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-29",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Apartamentos Bravo Murillo",
-        "message": "Booking cambio el total de 312.53 a 315.70 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-29",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Plaza Castilla Apartments",
-        "message": "Booking cambio el total de 327.80 a 360.80 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-10-26",
-          "checkOut": "2026-10-29",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Juan XXIII",
-        "message": "Booking cambio el total de 354.90 a 358.60 EUR durante la comprobacion."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2027-07-12",
-          "checkOut": "2027-07-17",
-          "nights": 5
-        },
-        "searchArea": "Palmela",
-        "hotelName": "Hotel Arangues",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 524.00 EUR."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-12",
-          "checkOut": "2027-07-17",
-          "nights": 5
-        },
-        "searchArea": "Palmela",
-        "hotelName": "Hotel Arangues",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 524.00 EUR."
-      },
-      {
         "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
         "monitorName": "Miami",
         "source": "agoda",
         "dates": {
-          "checkIn": "2027-05-02",
-          "checkOut": "2027-05-06",
+          "checkIn": "2027-05-03",
+          "checkOut": "2027-05-07",
           "nights": 4
         },
         "searchArea": "Miami, Florida, Estados Unidos",
         "hotelName": "Freehand Miami",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 484.81 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 352.48 EUR."
+      },
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Miami",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2027-05-03",
+          "checkOut": "2027-05-07",
+          "nights": 4
+        },
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "hotelName": "Freehand Miami",
+        "message": "Trip.com no mostro un total final comprobable."
       },
       {
         "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
         "monitorName": "Miami",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-05-02",
-          "checkOut": "2027-05-06",
+          "checkIn": "2027-05-03",
+          "checkOut": "2027-05-07",
           "nights": 4
         },
         "searchArea": "Miami, Florida, Estados Unidos",
         "hotelName": "Freehand Miami",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 484.81 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 352.48 EUR."
+      },
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Miami",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2027-05-04",
+          "checkOut": "2027-05-08",
+          "nights": 4
+        },
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "hotelName": "Freehand Miami",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 424.22 EUR."
+      },
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Miami",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-05-04",
+          "checkOut": "2027-05-08",
+          "nights": 4
+        },
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "hotelName": "Freehand Miami",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 424.22 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-01",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.65 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-01",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.65 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-20",
+          "nights": 6
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Hotel ibis Setubal",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 392.79 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-20",
+          "nights": 6
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Hotel ibis Setubal",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 392.79 EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-22",
-          "checkOut": "2027-08-28",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-22",
-          "checkOut": "2027-08-28",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-22 en el calendario."
-      },
-      {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-07-12",
-          "checkOut": "2027-07-17",
-          "nights": 5
-        },
-        "searchArea": "Palmela",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-12 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-12",
-          "checkOut": "2027-07-18",
+          "checkIn": "2027-07-13",
+          "checkOut": "2027-07-19",
           "nights": 6
         },
         "searchArea": "Alcácer do Sal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-12 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-12",
-          "checkOut": "2027-07-19",
-          "nights": 7
-        },
-        "searchArea": "Grândola",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-12 en el calendario."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-22",
-          "checkOut": "2027-08-29",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-22",
-          "checkOut": "2027-08-29",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-22 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-13",
-          "checkOut": "2027-07-18",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-13",
-          "checkOut": "2027-07-18",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-13 en el calendario."
       },
       {
@@ -263,8 +180,8 @@
         "source": "booking",
         "dates": {
           "checkIn": "2027-08-23",
-          "checkOut": "2027-08-28",
-          "nights": 5
+          "checkOut": "2027-08-30",
+          "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
@@ -275,19 +192,91 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2027-08-23",
-          "checkOut": "2027-08-28",
-          "nights": 5
+          "checkOut": "2027-08-30",
+          "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-23 en el calendario."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-13",
+          "checkOut": "2027-07-20",
+          "nights": 7
+        },
+        "searchArea": "Grândola",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-13 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-10-28",
+          "checkOut": "2026-10-31",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').filter({ has: getByRole('button', { name: /Quitar adulto|Remove adult/i }) }).last().getByRole('button', { name: /A[n\\u00f1]adir ni[n\\u00f1]o|Add child/i }).first()\n"
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-23",
+          "checkIn": "2027-08-24",
           "checkOut": "2027-08-29",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-29",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-24 en el calendario."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-19",
+          "nights": 5
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-19",
+          "nights": 5
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-14 en el calendario."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-30",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -298,12 +287,72 @@
         "monitorName": "Sesimbra",
         "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-08-23",
-          "checkOut": "2027-08-29",
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-30",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-23 en el calendario."
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-24 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-01",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: locator.evaluate: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator('[role=\"dialog\"]:visible').filter({ has: getByRole('button', { name: /Quitar adulto|Remove adult/i }) }).last().getByRole('button', { name: /Quitar ni[n\\u00f1]o|Remove child/i }).first()\n"
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-20",
+          "nights": 6
+        },
+        "searchArea": "Setúbal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-14 en el calendario."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-10-29",
+          "checkOut": "2026-11-02",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "message": "Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 7 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: DoubleTree by Hilton Madrid - Prado Sitio web oficial Wi‑Fi gratuito 218 € Visitar sitio web | HABITACIÓN CON 1 CAMA DOBLE 1 cama doble 218 € Visitar sitio web | HABITACIÓN CON 1 CAMA DOBLE 1 cama doble · Cancelación gratuita hasta el 23 oct 248 € Visitar sitio web | HABITACIÓN QUEEN GUEST 1 cama grande 221 € Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR.."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-31",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-31",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-24 en el calendario."
       }
     ]
   },
@@ -311,17 +360,17 @@
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Miami",
-      "lastScanAt": "2026-08-11T20:19:46.590Z",
-      "lastSuccessAt": "2026-08-11T20:21:36.012414Z",
+      "lastScanAt": "2026-08-11T21:11:57.469Z",
+      "lastSuccessAt": "2026-08-11T21:14:38.055267Z",
       "searches": 20,
-      "offers": 190,
-      "matches": 0,
+      "offers": 198,
+      "matches": 4,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 99,
-          "matches": 0,
+          "offers": 98,
+          "matches": 4,
           "errors": 0
         },
         "google_hotels": {
@@ -332,19 +381,19 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 23,
+          "offers": 31,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 9,
+          "offers": 8,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 59,
+          "offers": 61,
           "matches": 0,
           "errors": 0
         }
@@ -355,21 +404,21 @@
         "sweepStartDate": "2026-08-11",
         "totalCombinations": 51,
         "totalSearches": 51,
-        "startIndex": 24,
+        "startIndex": 28,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 28,
-        "remainingSearchesInSweep": 23,
+        "nextIndex": 32,
+        "remainingSearchesInSweep": 19,
         "completedSweep": false
       }
     },
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-11T20:19:46.590Z",
-      "lastSuccessAt": "2026-08-11T20:21:50.426963Z",
+      "lastScanAt": "2026-08-11T21:11:57.469Z",
+      "lastSuccessAt": "2026-08-11T21:14:40.342481Z",
       "searches": 20,
-      "offers": 83,
-      "matches": 11,
+      "offers": 86,
+      "matches": 10,
       "nearbyLocations": [
         "Setúbal",
         "Palmela",
@@ -379,8 +428,8 @@
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 47,
-          "matches": 10,
+          "offers": 48,
+          "matches": 9,
           "errors": 1
         },
         "google_hotels": {
@@ -391,97 +440,97 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 5,
+          "offers": 7,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 4,
-          "matches": 0,
+          "offers": 7,
+          "matches": 1,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 27,
-          "matches": 1,
+          "offers": 24,
+          "matches": 0,
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-13 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-14 en el calendario.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-11",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 0,
+        "startIndex": 4,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 4,
-        "remainingSearchesInSweep": 131,
+        "nextIndex": 8,
+        "remainingSearchesInSweep": 127,
         "completedSweep": false
       }
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid Laura",
-      "lastScanAt": "2026-08-11T20:19:46.590Z",
-      "lastSuccessAt": "2026-08-11T20:22:43.532199Z",
+      "lastScanAt": "2026-08-11T21:11:57.469Z",
+      "lastSuccessAt": "2026-08-11T21:15:49.219242Z",
       "searches": 20,
-      "offers": 139,
-      "matches": 20,
+      "offers": 160,
+      "matches": 10,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
-          "offers": 97,
-          "matches": 18,
+          "offers": 100,
+          "matches": 9,
           "errors": 0
         },
         "google_hotels": {
           "searches": 4,
-          "offers": 8,
-          "matches": 2,
-          "errors": 0
+          "offers": 2,
+          "matches": 0,
+          "errors": 3
         },
         "agoda": {
           "searches": 4,
-          "offers": 4,
+          "offers": 10,
           "matches": 0,
           "errors": 0
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 20,
+          "offers": 37,
           "matches": 0,
           "errors": 0
         },
         "trip": {
           "searches": 4,
-          "offers": 10,
-          "matches": 0,
+          "offers": 11,
+          "matches": 1,
           "errors": 0
         }
       },
-      "error": "",
+      "error": "[google_hotels] Google Hotels abrio la busqueda pero no expuso un total final verificable. Titulos: Patrocinado·Opciones destacadas | Todas las opciones | 7 datos importantes que debes saber | Patrocinado·Hoteles similares. Precios: DoubleTree by Hilton Madrid - Prado Sitio web oficial Wi‑Fi gratuito 218 € Visitar sitio web | HABITACIÓN CON 1 CAMA DOBLE 1 cama doble 218 € Visitar sitio web | HABITACIÓN CON 1 CAMA DOBLE 1 cama doble · Cancelación gratuita hasta el 23 oct 248 € Visitar sitio web | HABITACIÓN QUEEN GUEST 1 cama grande 221 € Visitar sitio web. Detalle: Google no expuso un total final con impuestos en EUR..",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-11",
         "totalCombinations": 65,
         "totalSearches": 65,
-        "startIndex": 0,
+        "startIndex": 4,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 4,
-        "remainingSearchesInSweep": 61,
+        "nextIndex": 8,
+        "remainingSearchesInSweep": 57,
         "completedSweep": false
       }
     },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-11T20:19:46.590Z",
-      "lastSuccessAt": "2026-08-11T20:22:54.887911Z",
+      "lastScanAt": "2026-08-11T21:11:57.469Z",
+      "lastSuccessAt": "2026-08-11T21:15:09.217996Z",
       "searches": 20,
-      "offers": 33,
+      "offers": 34,
       "matches": 2,
       "nearbyLocations": [],
       "sources": {
@@ -505,7 +554,7 @@
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 33,
+          "offers": 34,
           "matches": 2,
           "errors": 0
         },
@@ -516,16 +565,16 @@
           "errors": 0
         }
       },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-23 en el calendario.",
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-08-24 en el calendario.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-10",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 124,
+        "startIndex": 128,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 128,
-        "remainingSearchesInSweep": 7,
+        "nextIndex": 132,
+        "remainingSearchesInSweep": 3,
         "completedSweep": false
       }
     }
@@ -533,69 +582,265 @@
   "alerts": [
     {
       "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Miami",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/albani-hostel-palmela.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/us/the-blue-homestay-near-miami-airport.es.html|2027-05-03|2027-05-07",
         "source": "booking",
-        "hotelName": "Albani Hostel",
-        "address": "Palmela",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 302.25,
-        "nightlyPrice": 60.45,
-        "rateSubtotal": 302.25,
+        "hotelName": "Casa Azul Miami",
+        "address": "Miami",
+        "checkIn": "2027-05-03",
+        "checkOut": "2027-05-07",
+        "nights": 4,
+        "totalPrice": 320.6,
+        "nightlyPrice": 80.15,
+        "rateSubtotal": 280,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "4 noches, 2 adultos",
         "bookingBlockIds": [
-          "1676371702_439360692_4_0_0"
+          "1485381307_429558223_4_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_visible_final_total_v5",
         "stars": 0,
-        "guestRating": 7.7,
-        "reviewCount": 10,
-        "distanceKm": 23.83,
+        "guestRating": 7.6,
+        "reviewCount": 107,
+        "distanceKm": 8.8,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "pool"
+        ],
+        "mealPlan": "any",
+        "roomName": "2 camas dobles",
+        "sharedRoom": false,
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "url": "https://www.booking.com/hotel/us/the-blue-homestay-near-miami-airport.es.html?ucfs=1&arphpl=1&checkin=2027-05-03&checkout=2027-05-07&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&nflt=review_score%3D70&srpvid=ae5495116e480126&srepoch=1786482723&all_sr_blocks=1485381307_429558223_4_0_0&highlighted_blocks=1485381307_429558223_4_0_0&matching_block_id=1485381307_429558223_4_0_0&sr_pri_blocks=1485381307_429558223_4_0_0__28000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 280,
+        "bookingTableTotal": 277.09,
+        "bookingTablePriceConsistent": false,
+        "encodedStayTotal": 320.6,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.145,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "14,5% Impuesto",
+        "verificationRows": [
+          {
+            "blockId": "1485381307_429558223_4_0_0",
+            "priceText": "€ 61 por noche\n€ 242\nPrecio € 242\n4 noches\nNo incluido: 14,5% Impuesto",
+            "displayedPriceText": "",
+            "priceCellText": "€ 61 por noche\n€ 242\nPrecio € 242\n4 noches\nNo incluido: 14,5% Impuesto",
+            "taxesText": "No incluido: 14,5% Impuesto"
+          }
+        ],
+        "taxFallbackRate": 0.145,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:12:59.267Z"
+      },
+      "createdAt": "2026-08-11T21:13:03.339Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Miami",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/us/airwaysinn.es.html|2027-05-03|2027-05-07",
+        "source": "booking",
+        "hotelName": "Ramada by Wyndham Miami Springs/Miami International Airport",
+        "address": "Miami Springs, Miami",
+        "checkIn": "2027-05-03",
+        "checkOut": "2027-05-07",
+        "nights": 4,
+        "totalPrice": 402.28,
+        "nightlyPrice": 100.57,
+        "rateSubtotal": 356,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "4 noches, 2 adultos",
+        "bookingBlockIds": [
+          "5658818_93700538_4_2_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 3,
+        "guestRating": 8.1,
+        "reviewCount": 4988,
+        "distanceKm": 9.4,
         "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
-        "propertyType": "hostel",
-        "amenities": [],
+        "propertyType": "hotel",
+        "amenities": [
+          "pool",
+          "air_conditioning"
+        ],
         "mealPlan": "any",
-        "roomName": "Habitación cuádruple",
+        "roomName": "Habitación Deluxe con 1 cama extragrande y vistas a la piscina - No fumadores",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/albani-hostel-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1676371702_439360692_4_0_0&highlighted_blocks=1676371702_439360692_4_0_0&matching_block_id=1676371702_439360692_4_0_0&sr_pri_blocks=1676371702_439360692_4_0_0__30225&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "url": "https://www.booking.com/hotel/us/airwaysinn.es.html?ucfs=1&arphpl=1&checkin=2027-05-03&checkout=2027-05-07&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=price&nflt=review_score%3D70&srpvid=ae5495116e480126&srepoch=1786482723&all_sr_blocks=5658818_93700538_4_2_0&highlighted_blocks=5658818_93700538_4_2_0&matching_block_id=5658818_93700538_4_2_0&sr_pri_blocks=5658818_93700538_4_2_0__35600&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "latitude": 38.5769319,
-        "longitude": -8.8956961,
-        "distanceVerified": true,
-        "searchResultPrice": 302.25,
-        "bookingTableTotal": null,
+        "searchResultPrice": 356,
+        "bookingTableTotal": 348.04,
         "bookingTablePriceConsistent": false,
-        "encodedStayTotal": 302.25,
+        "encodedStayTotal": 402.28,
         "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0,
+        "excludedTaxRate": 0.13,
         "excludedFixedCharges": 0,
-        "taxBreakdownText": "",
+        "taxBreakdownText": "13% Impuesto",
         "verificationRows": [
           {
-            "blockId": "1676371702_439360692_4_0_0",
-            "priceText": "€ 60 por noche\n€ 302\nPrecio € 302\n5 noches",
+            "blockId": "5658818_93700538_4_2_0",
+            "priceText": "€ 77 por noche\n€ 308\nPrecio € 308\n4 noches\nNo incluido: 13% Impuesto",
             "displayedPriceText": "",
-            "priceCellText": "€ 60 por noche\n€ 302\nPrecio € 302\n5 noches",
-            "taxesText": ""
+            "priceCellText": "€ 77 por noche\n€ 308\nPrecio € 308\n4 noches\nNo incluido: 13% Impuesto",
+            "taxesText": "No incluido: 13% Impuesto"
           }
         ],
-        "taxFallbackRate": 0,
+        "taxFallbackRate": 0.13,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:21:04.856Z"
+        "priceConfirmedAt": "2026-08-11T21:13:02.565Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:13:03.339Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Miami",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/us/the-blue-homestay-near-miami-airport.es.html|2027-05-04|2027-05-08",
+        "source": "booking",
+        "hotelName": "Casa Azul Miami",
+        "address": "Miami",
+        "checkIn": "2027-05-04",
+        "checkOut": "2027-05-08",
+        "nights": 4,
+        "totalPrice": 411.06,
+        "nightlyPrice": 102.77,
+        "rateSubtotal": 359,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "4 noches, 2 adultos",
+        "bookingBlockIds": [
+          "1485381307_429558223_4_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 0,
+        "guestRating": 7.6,
+        "reviewCount": 107,
+        "distanceKm": 8.8,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [
+          "pool"
+        ],
+        "mealPlan": "any",
+        "roomName": "2 camas dobles",
+        "sharedRoom": false,
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "url": "https://www.booking.com/hotel/us/the-blue-homestay-near-miami-airport.es.html?ucfs=1&arphpl=1&checkin=2027-05-04&checkout=2027-05-08&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=13&hapos=13&sr_order=price&nflt=review_score%3D70&srpvid=c8e495319fcc0040&srepoch=1786482788&all_sr_blocks=1485381307_429558223_4_0_0&highlighted_blocks=1485381307_429558223_4_0_0&matching_block_id=1485381307_429558223_4_0_0&sr_pri_blocks=1485381307_429558223_4_0_0__35900&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 359,
+        "bookingTableTotal": 356.1,
+        "bookingTablePriceConsistent": false,
+        "encodedStayTotal": 411.06,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.145,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "14.5% Impuesto",
+        "verificationRows": [
+          {
+            "blockId": "1485381307_429558223_4_0_0",
+            "priceText": "€ 78 por noche\n€ 311\nPrecio € 311\n4 noches\nNo incluido: 14.5% Impuesto",
+            "displayedPriceText": "",
+            "priceCellText": "€ 78 por noche\n€ 311\nPrecio € 311\n4 noches\nNo incluido: 14.5% Impuesto",
+            "taxesText": "No incluido: 14.5% Impuesto"
+          }
+        ],
+        "taxFallbackRate": 0.145,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:13:42.857Z"
+      },
+      "createdAt": "2026-08-11T21:13:46.975Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Miami",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/us/airwaysinn.es.html|2027-05-04|2027-05-08",
+        "source": "booking",
+        "hotelName": "Ramada by Wyndham Miami Springs/Miami International Airport",
+        "address": "Miami Springs, Miami",
+        "checkIn": "2027-05-04",
+        "checkOut": "2027-05-08",
+        "nights": 4,
+        "totalPrice": 458.78,
+        "nightlyPrice": 114.7,
+        "rateSubtotal": 406,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "4 noches, 2 adultos",
+        "bookingBlockIds": [
+          "5658818_93700538_4_2_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 3,
+        "guestRating": 8.1,
+        "reviewCount": 4988,
+        "distanceKm": 9.4,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "pool",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "Habitación Deluxe con 1 cama extragrande y vistas a la piscina - No fumadores",
+        "sharedRoom": false,
+        "searchArea": "Miami, Florida, Estados Unidos",
+        "url": "https://www.booking.com/hotel/us/airwaysinn.es.html?ucfs=1&arphpl=1&checkin=2027-05-04&checkout=2027-05-08&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=24&hapos=24&sr_order=price&nflt=review_score%3D70&srpvid=c8e495319fcc0040&srepoch=1786482788&all_sr_blocks=5658818_93700538_4_2_0&highlighted_blocks=5658818_93700538_4_2_0&matching_block_id=5658818_93700538_4_2_0&sr_pri_blocks=5658818_93700538_4_2_0__40600&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 406,
+        "bookingTableTotal": 396.63,
+        "bookingTablePriceConsistent": false,
+        "encodedStayTotal": 458.78,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.13,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "13% Impuesto",
+        "verificationRows": [
+          {
+            "blockId": "5658818_93700538_4_2_0",
+            "priceText": "€ 88 por noche\n€ 351\nPrecio € 351\n4 noches\nNo incluido: 13% Impuesto",
+            "displayedPriceText": "",
+            "priceCellText": "€ 88 por noche\n€ 351\nPrecio € 351\n4 noches\nNo incluido: 13% Impuesto",
+            "taxesText": "No incluido: 13% Impuesto"
+          }
+        ],
+        "taxFallbackRate": 0.13,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:13:46.871Z"
+      },
+      "createdAt": "2026-08-11T21:13:46.975Z"
     },
     {
       "type": "new_match",
@@ -603,19 +848,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/quartos-na-praceta.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/quartos-na-praceta.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "quarto na praceta",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 148.25,
-        "nightlyPrice": 29.65,
-        "rateSubtotal": 128.25,
-        "additionalCharges": 20,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 178,
+        "nightlyPrice": 29.67,
+        "rateSubtotal": 153.9,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "1653505101_441237647_2_0_0"
         ],
@@ -633,35 +878,35 @@
         "mealPlan": "any",
         "roomName": "Habitación Doble",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/quartos-na-praceta.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=16&hapos=16&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1653505101_441237647_2_0_0&highlighted_blocks=1653505101_441237647_2_0_0&matching_block_id=1653505101_441237647_2_0_0&sr_pri_blocks=1653505101_441237647_2_0_0__12825&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/quartos-na-praceta.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=1653505101_441237647_2_0_0&highlighted_blocks=1653505101_441237647_2_0_0&matching_block_id=1653505101_441237647_2_0_0&sr_pri_blocks=1653505101_441237647_2_0_0__15390&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5305395,
         "longitude": -8.8679087,
         "distanceVerified": true,
-        "searchResultPrice": 128.25,
-        "bookingTableTotal": 148,
+        "searchResultPrice": 153.9,
+        "bookingTableTotal": 178,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 148.25,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 177.9,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
         "verificationRows": [
           {
             "blockId": "1653505101_441237647_2_0_0",
-            "priceText": "€ 26 por noche\n€ 128\nPrecio € 128\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 26 por noche\n€ 154\nPrecio € 154\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
             "displayedPriceText": "",
-            "priceCellText": "€ 26 por noche\n€ 128\nPrecio € 128\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 26 por noche\n€ 154\nPrecio € 154\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
           }
         ],
         "taxFallbackRate": 0,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:42.093Z"
+        "priceConfirmedAt": "2026-08-11T21:15:35.675Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -669,19 +914,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/casa-visconde-de-alcacer.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/casa-visconde-de-alcacer.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Casa Visconde de Alcácer",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 245,
-        "nightlyPrice": 49,
-        "rateSubtotal": 212.26,
-        "additionalCharges": 20,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 294.3,
+        "nightlyPrice": 49.05,
+        "rateSubtotal": 254.72,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "358045505_390704836_2_0_0"
         ],
@@ -695,39 +940,41 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "apartment",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Apartamento - Planta baja",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/casa-visconde-de-alcacer.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=17&hapos=17&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=358045505_390704836_2_0_0&highlighted_blocks=358045505_390704836_2_0_0&matching_block_id=358045505_390704836_2_0_0&sr_pri_blocks=358045505_390704836_2_0_0__21226&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/casa-visconde-de-alcacer.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=358045505_390704836_2_0_0&highlighted_blocks=358045505_390704836_2_0_0&matching_block_id=358045505_390704836_2_0_0&sr_pri_blocks=358045505_390704836_2_0_0__25472&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5245925,
         "longitude": -8.8966122,
         "distanceVerified": true,
-        "searchResultPrice": 212.26,
-        "bookingTableTotal": 244.72,
+        "searchResultPrice": 254.72,
+        "bookingTableTotal": 294.3,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 245,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 294,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "6% IVA, Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
         "verificationRows": [
           {
             "blockId": "358045505_390704836_2_0_0",
-            "priceText": "€ 42 por noche\n€ 212\nPrecio € 212\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 42 por noche\n€ 255\nPrecio € 255\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 42 por noche\n€ 212\nPrecio € 212\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 42 por noche\n€ 255\nPrecio € 255\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:44.007Z"
+        "priceConfirmedAt": "2026-08-11T21:15:37.894Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -735,19 +982,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/quartos-forest-domes-seubal.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/quartos-forest-domes-seubal.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Quartos Forest Domes Seubal",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 258.5,
-        "nightlyPrice": 51.7,
-        "rateSubtotal": 224.53,
-        "additionalCharges": 20,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 309.6,
+        "nightlyPrice": 51.6,
+        "rateSubtotal": 269.43,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "1054370403_377626452_0_0_0"
         ],
@@ -761,39 +1008,41 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Habitación Doble",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/quartos-forest-domes-seubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=18&hapos=18&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1054370403_377626452_0_0_0&highlighted_blocks=1054370403_377626452_0_0_0&matching_block_id=1054370403_377626452_0_0_0&sr_pri_blocks=1054370403_377626452_0_0_0__22453&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/quartos-forest-domes-seubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=4&hapos=4&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=1054370403_377626452_0_0_0&highlighted_blocks=1054370403_377626452_0_0_0&matching_block_id=1054370403_377626452_0_0_0&sr_pri_blocks=1054370403_377626452_0_0_0__26943&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5418966,
         "longitude": -8.895372,
         "distanceVerified": true,
-        "searchResultPrice": 224.53,
-        "bookingTableTotal": 258.5,
+        "searchResultPrice": 269.43,
+        "bookingTableTotal": 309.14,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 258,
-        "bookingPriceSource": "availability_table",
+        "encodedStayTotal": 309.6,
+        "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "6% IVA, Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
         "verificationRows": [
           {
             "blockId": "1054370403_377626452_0_0_0",
-            "priceText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 45 por noche\n€ 269\nPrecio € 269\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 45 por noche\n€ 269\nPrecio € 269\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:45.787Z"
+        "priceConfirmedAt": "2026-08-11T21:15:39.777Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -801,19 +1050,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/sailor-setubal.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/sailor-setubal.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Sailor Setubal",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 245,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 294,
         "nightlyPrice": 49,
-        "rateSubtotal": 225,
-        "additionalCharges": 20,
+        "rateSubtotal": 270,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "1603544101_431301468_2_2_0"
         ],
@@ -827,39 +1076,41 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "apartment",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Apartamento de 1 dormitorio",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/sailor-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=19&hapos=19&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1603544101_431301468_2_2_0&highlighted_blocks=1603544101_431301468_2_2_0&matching_block_id=1603544101_431301468_2_2_0&sr_pri_blocks=1603544101_431301468_2_2_0__22500&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/sailor-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=1603544101_431301468_2_2_0&highlighted_blocks=1603544101_431301468_2_2_0&matching_block_id=1603544101_431301468_2_2_0&sr_pri_blocks=1603544101_431301468_2_2_0__27000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5227399,
         "longitude": -8.9004364,
         "distanceVerified": true,
-        "searchResultPrice": 225,
-        "bookingTableTotal": 245,
+        "searchResultPrice": 270,
+        "bookingTableTotal": 294,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 245,
+        "encodedStayTotal": 294,
         "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
         "verificationRows": [
           {
             "blockId": "1603544101_431301468_2_2_0",
-            "priceText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 45 por noche\n€ 270\nPrecio € 270\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
             "displayedPriceText": "",
-            "priceCellText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 45 por noche\n€ 270\nPrecio € 270\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
           }
         ],
         "taxFallbackRate": 0,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:48.265Z"
+        "priceConfirmedAt": "2026-08-11T21:15:41.978Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -867,19 +1118,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/andreia-todi-riverside.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/andreia-todi-riverside.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Andreia Todi Riverside",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 245,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 294,
         "nightlyPrice": 49,
-        "rateSubtotal": 225,
-        "additionalCharges": 20,
+        "rateSubtotal": 270,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "1632060301_433711759_0_0_0"
         ],
@@ -893,39 +1144,41 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "apartment",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Apartamento de 1 dormitorio",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/andreia-todi-riverside.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=20&hapos=20&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1632060301_433711759_0_0_0&highlighted_blocks=1632060301_433711759_0_0_0&matching_block_id=1632060301_433711759_0_0_0&sr_pri_blocks=1632060301_433711759_0_0_0__22500&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/andreia-todi-riverside.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=6&hapos=6&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=1632060301_433711759_0_0_0&highlighted_blocks=1632060301_433711759_0_0_0&matching_block_id=1632060301_433711759_0_0_0&sr_pri_blocks=1632060301_433711759_0_0_0__27000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5233081,
         "longitude": -8.8883346,
         "distanceVerified": true,
-        "searchResultPrice": 225,
-        "bookingTableTotal": 245,
+        "searchResultPrice": 270,
+        "bookingTableTotal": 294,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 245,
+        "encodedStayTotal": 294,
         "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
         "verificationRows": [
           {
             "blockId": "1632060301_433711759_0_0_0",
-            "priceText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 45 por noche\n€ 270\nPrecio € 270\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
             "displayedPriceText": "",
-            "priceCellText": "€ 45 por noche\n€ 225\nPrecio € 225\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 45 por noche\n€ 270\nPrecio € 270\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
           }
         ],
         "taxFallbackRate": 0,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:51.029Z"
+        "priceConfirmedAt": "2026-08-11T21:15:43.883Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -933,19 +1186,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/travelers-house-setubal.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/travelers-house-setubal.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Travelers House",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 278.75,
-        "nightlyPrice": 55.75,
-        "rateSubtotal": 244.1,
-        "additionalCharges": 20,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 334.58,
+        "nightlyPrice": 55.76,
+        "rateSubtotal": 292.92,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "882383101_357539406_2_0_0"
         ],
@@ -959,39 +1212,41 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [],
+        "amenities": [
+          "beach"
+        ],
         "mealPlan": "any",
         "roomName": "Habitación Doble",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/travelers-house-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=22&hapos=22&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=882383101_357539406_2_0_0&highlighted_blocks=882383101_357539406_2_0_0&matching_block_id=882383101_357539406_2_0_0&sr_pri_blocks=882383101_357539406_2_0_0__24410&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/travelers-house-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=8&hapos=8&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=882383101_357539406_2_0_0&highlighted_blocks=882383101_357539406_2_0_0&matching_block_id=882383101_357539406_2_0_0&sr_pri_blocks=882383101_357539406_2_0_0__29292&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.524955,
         "longitude": -8.8774001,
         "distanceVerified": true,
-        "searchResultPrice": 244.1,
-        "bookingTableTotal": 278.64,
+        "searchResultPrice": 292.92,
+        "bookingTableTotal": 334.58,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 278.75,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 334.5,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "6% IVA, Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
         "verificationRows": [
           {
             "blockId": "882383101_357539406_2_0_0",
-            "priceText": "€ 49 por noche\n€ 244\nPrecio € 244\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 49 por noche\n€ 293\nPrecio € 293\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 49 por noche\n€ 244\nPrecio € 244\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 49 por noche\n€ 293\nPrecio € 293\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:53.867Z"
+        "priceConfirmedAt": "2026-08-11T21:15:46.090Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -999,19 +1254,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/traditional-family-home.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/traditional-family-home.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Traditional Family Home",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 290,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 348,
         "nightlyPrice": 58,
-        "rateSubtotal": 270,
-        "additionalCharges": 20,
+        "rateSubtotal": 324,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "1592004401_430268327_2_0_0"
         ],
@@ -1025,41 +1280,39 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "apartment",
-        "amenities": [
-          "air_conditioning"
-        ],
+        "amenities": [],
         "mealPlan": "any",
         "roomName": "Apartamento de 2 dormitorios",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/traditional-family-home.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=23&hapos=23&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=1592004401_430268327_2_0_0&highlighted_blocks=1592004401_430268327_2_0_0&matching_block_id=1592004401_430268327_2_0_0&sr_pri_blocks=1592004401_430268327_2_0_0__27000&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/traditional-family-home.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=9&hapos=9&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=1592004401_430268327_2_0_0&highlighted_blocks=1592004401_430268327_2_0_0&matching_block_id=1592004401_430268327_2_0_0&sr_pri_blocks=1592004401_430268327_2_0_0__32400&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5383417702375,
         "longitude": -8.88012600229576,
         "distanceVerified": true,
-        "searchResultPrice": 270,
-        "bookingTableTotal": 290,
+        "searchResultPrice": 324,
+        "bookingTableTotal": 348,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 290,
+        "encodedStayTotal": 348,
         "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
         "verificationRows": [
           {
             "blockId": "1592004401_430268327_2_0_0",
-            "priceText": "€ 54 por noche\n€ 270\nPrecio € 270\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 54 por noche\n€ 324\nPrecio € 324\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
             "displayedPriceText": "",
-            "priceCellText": "€ 54 por noche\n€ 270\nPrecio € 270\n5 noches\nNo incluido: Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 54 por noche\n€ 324\nPrecio € 324\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
           }
         ],
         "taxFallbackRate": 0,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:56.443Z"
+        "priceConfirmedAt": "2026-08-11T21:15:48.529Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -1067,19 +1320,87 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/ibis-setubal.es.html|2027-07-12|2027-07-17",
+        "id": "/hotel/pt/comporta-side.es.html|2027-07-14|2027-07-20",
+        "source": "booking",
+        "hotelName": "COMPORTA SIDE - Tents",
+        "address": "Setúbal",
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 384.4,
+        "nightlyPrice": 64.07,
+        "rateSubtotal": 339.62,
+        "additionalCharges": 24,
+        "taxesText": "",
+        "stayText": "6 noches, 2 adultos",
+        "bookingBlockIds": [
+          "977411206_370149014_2_34_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 0,
+        "guestRating": 7.5,
+        "reviewCount": 467,
+        "distanceKm": 18.21,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hotel",
+        "amenities": [
+          "beach"
+        ],
+        "mealPlan": "any",
+        "roomName": "1 cama doble",
+        "sharedRoom": false,
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/comporta-side.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=977411206_370149014_2_34_0&highlighted_blocks=977411206_370149014_2_34_0&matching_block_id=977411206_370149014_2_34_0&sr_pri_blocks=977411206_370149014_2_34_0__33962&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "latitude": 38.543300237427,
+        "longitude": -8.762732615951,
+        "distanceVerified": true,
+        "searchResultPrice": 339.62,
+        "bookingTableTotal": 384.4,
+        "bookingTablePriceConsistent": true,
+        "encodedStayTotal": 384,
+        "bookingPriceSource": "availability_table",
+        "excludedTaxRate": 0.06,
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
+        "verificationRows": [
+          {
+            "blockId": "977411206_370149014_2_34_0",
+            "priceText": "€ 57 por noche\n€ 340\nPrecio € 340\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "displayedPriceText": "",
+            "priceCellText": "€ 57 por noche\n€ 340\nPrecio € 340\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
+          }
+        ],
+        "taxFallbackRate": 0.06,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:15:51.324Z"
+      },
+      "createdAt": "2026-08-11T21:15:53.909Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/pt/ibis-setubal.es.html|2027-07-14|2027-07-20",
         "source": "booking",
         "hotelName": "Hotel ibis Setubal",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 333.79,
-        "nightlyPrice": 66.76,
-        "rateSubtotal": 296.03,
-        "additionalCharges": 20,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 397.12,
+        "nightlyPrice": 66.19,
+        "rateSubtotal": 351.69,
+        "additionalCharges": 24,
         "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
+        "stayText": "6 noches, 2 adultos",
         "bookingBlockIds": [
           "23673204_94356231_2_2_0"
         ],
@@ -1093,41 +1414,39 @@
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
+        "amenities": [],
         "mealPlan": "any",
         "roomName": "Habitación Doble Estándar",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/ibis-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=24&hapos=24&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=23673204_94356231_2_2_0&highlighted_blocks=23673204_94356231_2_2_0&matching_block_id=23673204_94356231_2_2_0&sr_pri_blocks=23673204_94356231_2_2_0__29603&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Setúbal",
+        "url": "https://www.booking.com/hotel/pt/ibis-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-14&checkout=2027-07-20&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=price&srpvid=cfb69560723901d7&srepoch=1786482882&all_sr_blocks=23673204_94356231_2_2_0&highlighted_blocks=23673204_94356231_2_2_0&matching_block_id=23673204_94356231_2_2_0&sr_pri_blocks=23673204_94356231_2_2_0__35169&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.53845025204659,
         "longitude": -8.838227391242981,
         "distanceVerified": true,
-        "searchResultPrice": 296.03,
-        "bookingTableTotal": 333.76,
+        "searchResultPrice": 351.69,
+        "bookingTableTotal": 397.12,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 333.79,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 396.79,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "6% IVA, Impuesto municipal de € 2 por persona y noche",
+        "excludedFixedCharges": 24,
+        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
         "verificationRows": [
           {
             "blockId": "23673204_94356231_2_2_0",
-            "priceText": "€ 59 por noche\n€ 296\nPrecio € 296\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
+            "priceText": "€ 59 por noche\n€ 352\nPrecio € 352\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 59 por noche\n€ 296\nPrecio € 296\n5 noches\nNo incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche",
-            "taxesText": "No incluido: 6% IVA, Impuesto municipal de € 2 por persona y noche"
+            "priceCellText": "€ 59 por noche\n€ 352\nPrecio € 352\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
+            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:59.322Z"
+        "priceConfirmedAt": "2026-08-11T21:15:53.886Z"
       },
-      "createdAt": "2026-08-11T20:21:04.904Z"
+      "createdAt": "2026-08-11T21:15:53.909Z"
     },
     {
       "type": "new_match",
@@ -1135,401 +1454,74 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/o-cantinho-quinta-do-anjo.es.html|2027-07-12|2027-07-17",
-        "source": "booking",
-        "hotelName": "O Cantinho Guesthouse com Terraço e Vistas em Quinta do Anjo",
-        "address": "Quinta do Anjo",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 315,
-        "nightlyPrice": 63,
-        "rateSubtotal": 297.17,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
-        "bookingBlockIds": [
-          "501473701_169714297_0_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 4,
-        "guestRating": 8,
-        "reviewCount": 533,
-        "distanceKm": 24.78,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "1 cama doble grande",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/o-cantinho-quinta-do-anjo.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=25&hapos=25&sr_order=price&srpvid=06388ef26dd2003b&srepoch=1786479591&all_sr_blocks=501473701_169714297_0_0_0&highlighted_blocks=501473701_169714297_0_0_0&matching_block_id=501473701_169714297_0_0_0&sr_pri_blocks=501473701_169714297_0_0_0__29717&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.567278200368655,
-        "longitude": -8.94158439969116,
-        "distanceVerified": true,
-        "searchResultPrice": 297.17,
-        "bookingTableTotal": 314.82,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 315,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "6% IVA",
-        "verificationRows": [
-          {
-            "blockId": "501473701_169714297_0_0_0",
-            "priceText": "€ 59 por noche\n€ 297\nPrecio € 297\n5 noches\nNo incluido: 6% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 59 por noche\n€ 297\nPrecio € 297\n5 noches\nNo incluido: 6% IVA",
-            "taxesText": "No incluido: 6% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:21:02.426Z"
-      },
-      "createdAt": "2026-08-11T20:21:04.904Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_62339a604c4d8d9b9b7aa144|2027-07-12|2027-07-17",
-        "source": "bluepillow",
-        "provider": "Expedia via Bluepillow",
-        "hotelName": "Quinta do Tio Viagem - Casa do Moinho",
+        "id": "trip:prop_594390ea7c00cb0e6438fe8b|2027-07-14|2027-07-20",
+        "source": "trip",
+        "provider": "Trip.com",
+        "hotelName": "Hotel ibis Setubal",
         "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 407,
-        "nightlyPrice": 81.4,
-        "displayedNightlyPrice": 81.4,
-        "rateSubtotal": 407,
-        "searchResultPrice": 407,
+        "checkIn": "2027-07-14",
+        "checkOut": "2027-07-20",
+        "nights": 6,
+        "totalPrice": 396.79,
+        "nightlyPrice": 66.13,
+        "displayedNightlyPrice": 66.13,
+        "rateSubtotal": 396.79,
+        "searchResultPrice": 396.79,
         "additionalCharges": 0,
-        "includedTaxesAndFees": 62,
-        "taxesText": "Total con 62.00 EUR de impuestos y tasas incluidos",
-        "stayText": "5 noches para 2 adultos",
+        "includedTaxesAndFees": 0,
+        "taxesText": "Total final leido directamente en Trip.com",
+        "stayText": "6 noches para 2 adultos",
         "priceVerified": true,
-        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceBasis": "trip_direct_final_total_v1",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:19:50.384Z",
+        "priceConfirmedAt": "2026-08-11T21:14:43.464Z",
         "stars": 0,
         "guestRating": 8,
-        "reviewCount": 4,
-        "distanceKm": 24.35045361406079,
-        "freeCancellation": true,
+        "reviewCount": 2524,
+        "distanceKm": 18.13105619419628,
+        "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [
-          "pets",
+          "parking",
+          "pool",
           "air_conditioning"
         ],
         "mealPlan": "any",
         "roomName": "",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786479588%2526endDate%253D2027-07-17%2526adults%253D2%2526locale%253Den_US%2526chid%253Dde8cc933-b44f-4756-ae41-e368ff5e6c56%2526eapid%253D310064%2526startDate%253D2027-07-12%2526mpd%253DEUR%2526mpn%253D53827329%2526currency%253DEUR%2526rateplanid%253D00019fa90daa915a48239e03e891990ebf5e%2526mpm%253D83%2526selected%253D53827329%2526mpb%253D62.00%2526mpq%253D81.40%2526mpa%253D345.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=62339a604c4d8d9b9b7aa144&begin=2027-07-12&end=2027-07-17",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/media.vrbo.com/lodging/54000000/53830000/53827400/53827329/563659d3.jpg",
-        "bluepillowPropertyId": "prop_62339a604c4d8d9b9b7aa144",
-        "bluepillowOta": "Expedia",
+        "searchArea": "Setúbal",
+        "url": "https://us.trip.com/hotels/list/searchresults?hotelid=3684958&city=10246&Allianceid=3783604&sid=20644290&checkin=2027-07-14&checkout=2027-07-20&shoppingid=a9eb2dc995c911f1a372e274cebef9c7&adult=2&children=0&ages=&language=enus&locale=en_US&roomid=1580303763&swid=0&pay=PP&fgt=1&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wAHAfj-CmAKAhgCEgQIARAAGlQIk4vG8QUSATIYADAfOPURmAHe9OABqAEAuAECwAEA0QGPwvUoXE9NQOEBcT0K16PMeEDoAe-z6I8BiAJCiQQAAAAAAAA4QKAEAKEFAAAAAAAAAAAaIGE5ZWIyZGM5OTVjOTExZjFhMzcyZTI3NGNlYmVmOWM3IAEov6Hu0wZIBlIGMTNlODgzWhwKA0VVUhEzxLEubiMfQBoDRVVSITPEsS5uIx9AYgVlbl9VU2isGHABeACKAQdIAXgAyAEBqgEHCgMwMjEQAvIBImE5ZWIyZGM5OTVjOTExZjFhMzcyZTI3NGNlYmVmOWM3XzGaAglIaWdoVmFsdWUAAAD__wEAAP__E4YHPgcBAAA&display=inctotal",
+        "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/749006134.jpg?k=d559060ef07b3c67dff7b6aee878b2cc26402e1ccca35bbbcb1888658474cb6b&o=&a=1538557",
+        "bluepillowPropertyId": "prop_594390ea7c00cb0e6438fe8b",
+        "bluepillowOta": "TripCom",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-08-11T20:19:48.800274Z"
+      "createdAt": "2026-08-11T21:14:40.342481Z"
     },
     {
-      "type": "price_drop",
+      "type": "new_match",
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid Laura",
-      "previousPrice": 339,
+      "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-10-26|2026-10-29",
+        "id": "/hotel/es/rooms-magangue.es.html|2026-10-28|2026-10-31",
         "source": "booking",
         "hotelName": "Rooms Sincelejo",
         "address": "Hortaleza, Madrid",
-        "checkIn": "2026-10-26",
-        "checkOut": "2026-10-29",
+        "checkIn": "2026-10-28",
+        "checkOut": "2026-10-31",
         "nights": 3,
-        "totalPrice": 335.5,
-        "nightlyPrice": 111.83,
-        "rateSubtotal": 304.55,
+        "totalPrice": 369,
+        "nightlyPrice": 123,
+        "rateSubtotal": 335.45,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "3 noches, 2 adultos, 2 niños",
         "bookingBlockIds": [
-          "1258125508_398363677_2_0_0",
-          "1258125507_398363677_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 0,
-        "guestRating": 7.2,
-        "reviewCount": 13,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Habitación Doble Estándar con baño compartido",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-10-26&checkout=2026-10-29&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=7&hapos=7&sr_order=price&srpvid=1f2e8ef2a2cb002f&srepoch=1786479591&all_sr_blocks=1258125508_398363677_2_0_0%2C1258125507_398363677_2_0_0&highlighted_blocks=1258125508_398363677_2_0_0%2C1258125507_398363677_2_0_0&matching_block_id=1258125508_398363677_2_0_0&sr_pri_blocks=1258125508_398363677_2_0_0__15000%2C1258125507_398363677_2_0_0__15455&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 304.55,
-        "bookingTableTotal": 335.5,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 335.01,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0.1,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "10% IVA",
-        "verificationRows": [
-          {
-            "blockId": "1258125508_398363677_2_0_0",
-            "priceText": "€ 50 por noche\n€ 150\nPrecio € 150\n3 noches\nNo incluido: 10% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 50 por noche\n€ 150\nPrecio € 150\n3 noches\nNo incluido: 10% IVA",
-            "taxesText": "No incluido: 10% IVA"
-          },
-          {
-            "blockId": "1258125507_398363677_2_0_0",
-            "priceText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
-            "taxesText": "No incluido: 10% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:58.917Z"
-      },
-      "createdAt": "2026-08-11T20:21:01.234Z"
-    },
-    {
-      "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 344.42,
-      "offer": {
-        "id": "/hotel/es/puerta-de-hierro-apartments.es.html|2026-10-26|2026-10-29",
-        "source": "booking",
-        "hotelName": "Puerta de Hierro Apartments",
-        "address": "Fuencarral - El Pardo, Madrid",
-        "checkIn": "2026-10-26",
-        "checkOut": "2026-10-29",
-        "nights": 3,
-        "totalPrice": 315.7,
-        "nightlyPrice": 105.23,
-        "rateSubtotal": 286.78,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "3 noches, 2 adultos, 2 niños",
-        "bookingBlockIds": [
-          "1147982901_413289048_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 7.2,
-        "reviewCount": 380,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Estudio",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/puerta-de-hierro-apartments.es.html?ucfs=1&arphpl=1&checkin=2026-10-26&checkout=2026-10-29&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=11&hapos=11&sr_order=price&srpvid=1f2e8ef2a2cb002f&srepoch=1786479591&all_sr_blocks=1147982901_413289048_4_0_0&highlighted_blocks=1147982901_413289048_4_0_0&matching_block_id=1147982901_413289048_4_0_0&sr_pri_blocks=1147982901_413289048_4_0_0__28678&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 286.78,
-        "bookingTableTotal": 315.7,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 315.46,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0.1,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "10% IVA",
-        "verificationRows": [
-          {
-            "blockId": "1147982901_413289048_4_0_0",
-            "priceText": "€ 87 por noche\n€ 348 € 287 \nPrecio original € 348 Precio actual € 287\n3 noches\n-18%\nIncluido: suplemento de limpieza de € 25 por estancia\nNo incluido: 10% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 87 por noche\n€ 348 € 287 \nPrecio original € 348 Precio actual € 287\n3 noches\n-18%\nIncluido: suplemento de limpieza de € 25 por estancia\nNo incluido: 10% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de € 25 por estancia No incluido: 10% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:20:54.165Z"
-      },
-      "createdAt": "2026-08-11T20:21:01.234Z"
-    },
-    {
-      "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 292.6,
-      "offer": {
-        "id": "/hotel/es/ch-antonio-machado.es.html|2026-10-27|2026-10-30",
-        "source": "booking",
-        "hotelName": "CH Antonio Machado",
-        "address": "Moncloa - Aravaca, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
-        "nights": 3,
-        "totalPrice": 248,
-        "nightlyPrice": 82.67,
-        "rateSubtotal": 225.45,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "3 noches, 2 adultos, 2 niños",
-        "bookingBlockIds": [
-          "1545664002_430715883_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 0,
-        "guestRating": 7.7,
-        "reviewCount": 45,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Apartamento",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/ch-antonio-machado.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=1&hapos=1&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=1545664002_430715883_4_0_0&highlighted_blocks=1545664002_430715883_4_0_0&matching_block_id=1545664002_430715883_4_0_0&sr_pri_blocks=1545664002_430715883_4_0_0__22545&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 225.45,
-        "bookingTableTotal": 247.5,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 248,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0.1,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "10% IVA",
-        "verificationRows": [
-          {
-            "blockId": "1545664002_430715883_4_0_0",
-            "priceText": "€ 67 por noche\n€ 248 € 225 \nPrecio original € 248 Precio actual € 225\n3 noches\n-9%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 67 por noche\n€ 248 € 225 \nPrecio original € 248 Precio actual € 225\n3 noches\n-9%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de 25 € por estancia No incluido: 10% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:22.646Z"
-      },
-      "createdAt": "2026-08-11T20:22:40.050Z"
-    },
-    {
-      "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 345.41,
-      "offer": {
-        "id": "/hotel/es/madrid-city-center-apartment-with-modern-amenities.es.html|2026-10-27|2026-10-30",
-        "source": "booking",
-        "hotelName": "Charming Apartment up to 4 persons 3 min to Metro",
-        "address": "Fuencarral - El Pardo, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
-        "nights": 3,
-        "totalPrice": 314.6,
-        "nightlyPrice": 104.87,
-        "rateSubtotal": 285.61,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "3 noches, 2 adultos, 2 niños",
-        "bookingBlockIds": [
-          "1230245802_395013454_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 7.1,
-        "reviewCount": 22,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Apartamento",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/madrid-city-center-apartment-with-modern-amenities.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=6&hapos=6&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=1230245802_395013454_4_0_0&highlighted_blocks=1230245802_395013454_4_0_0&matching_block_id=1230245802_395013454_4_0_0&sr_pri_blocks=1230245802_395013454_4_0_0__28561&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 285.61,
-        "bookingTableTotal": 314.6,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 314.17,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "",
-        "verificationRows": [
-          {
-            "blockId": "1230245802_395013454_4_0_0",
-            "priceText": "€ 85 por noche\n€ 314 € 286 \nPrecio original € 314 Precio actual € 286\n3 noches\n-9%\nIncluido: suplemento de limpieza de 30 € por estancia",
-            "displayedPriceText": "",
-            "priceCellText": "€ 85 por noche\n€ 314 € 286 \nPrecio original € 314 Precio actual € 286\n3 noches\n-9%\nIncluido: suplemento de limpieza de 30 € por estancia",
-            "taxesText": "Incluido: suplemento de limpieza de 30 € por estancia"
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:32.125Z"
-      },
-      "createdAt": "2026-08-11T20:22:40.050Z"
-    },
-    {
-      "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 342.1,
-      "offer": {
-        "id": "/hotel/es/rooms-magangue.es.html|2026-10-27|2026-10-30",
-        "source": "booking",
-        "hotelName": "Rooms Sincelejo",
-        "address": "Hortaleza, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
-        "nights": 3,
-        "totalPrice": 341,
-        "nightlyPrice": 113.67,
-        "rateSubtotal": 309.1,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "3 noches, 2 adultos, 2 niños",
-        "bookingBlockIds": [
-          "1258125510_398363677_2_0_0",
+          "1258125507_398363677_2_0_0",
           "1258125506_398363677_2_0_0"
         ],
         "priceVerified": true,
@@ -1547,55 +1539,55 @@
         "roomName": "Habitación Doble Económica - 2 camas",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=9&hapos=9&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=1258125510_398363677_2_0_0%2C1258125506_398363677_2_0_0&highlighted_blocks=1258125510_398363677_2_0_0%2C1258125506_398363677_2_0_0&matching_block_id=1258125510_398363677_2_0_0&sr_pri_blocks=1258125510_398363677_2_0_0__15455%2C1258125506_398363677_2_0_0__15455&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/rooms-magangue.es.html?ucfs=1&arphpl=1&checkin=2026-10-28&checkout=2026-10-31&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=3&hapos=3&sr_order=price&srpvid=af2c9510a04005e7&srepoch=1786482723&all_sr_blocks=1258125507_398363677_2_0_0%2C1258125506_398363677_2_0_0&highlighted_blocks=1258125507_398363677_2_0_0%2C1258125506_398363677_2_0_0&matching_block_id=1258125507_398363677_2_0_0&sr_pri_blocks=1258125507_398363677_2_0_0__16727%2C1258125506_398363677_2_0_0__16818&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 309.1,
-        "bookingTableTotal": 341,
+        "searchResultPrice": 335.45,
+        "bookingTableTotal": 368.5,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 340.01,
-        "bookingPriceSource": "availability_table",
+        "encodedStayTotal": 369,
+        "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0.1,
         "excludedFixedCharges": 0,
         "taxBreakdownText": "10% IVA",
         "verificationRows": [
           {
-            "blockId": "1258125506_398363677_2_0_0",
-            "priceText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
+            "blockId": "1258125507_398363677_2_0_0",
+            "priceText": "€ 56 por noche\n€ 167\nPrecio € 167\n3 noches\nNo incluido: 10% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
+            "priceCellText": "€ 56 por noche\n€ 167\nPrecio € 167\n3 noches\nNo incluido: 10% IVA",
             "taxesText": "No incluido: 10% IVA"
           },
           {
-            "blockId": "1258125510_398363677_2_0_0",
-            "priceText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
+            "blockId": "1258125506_398363677_2_0_0",
+            "priceText": "€ 56 por noche\n€ 168\nPrecio € 168\n3 noches\nNo incluido: 10% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 52 por noche\n€ 155\nPrecio € 155\n3 noches\nNo incluido: 10% IVA",
+            "priceCellText": "€ 56 por noche\n€ 168\nPrecio € 168\n3 noches\nNo incluido: 10% IVA",
             "taxesText": "No incluido: 10% IVA"
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:38.246Z"
+        "priceConfirmedAt": "2026-08-11T21:14:04.296Z"
       },
-      "createdAt": "2026-08-11T20:22:40.050Z"
+      "createdAt": "2026-08-11T21:14:04.342Z"
     },
     {
-      "type": "price_drop",
+      "type": "new_match",
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid Laura",
-      "previousPrice": 351.08,
+      "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/apartamentos-bravo-murillo-madrid.es.html|2026-10-27|2026-10-30",
+        "id": "/hotel/es/apartamentos-bravo-murillo-madrid.es.html|2026-10-28|2026-10-31",
         "source": "booking",
         "hotelName": "Apartamentos Bravo Murillo",
         "address": "Tetuán, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
+        "checkIn": "2026-10-28",
+        "checkOut": "2026-10-31",
         "nights": 3,
-        "totalPrice": 343.44,
-        "nightlyPrice": 114.48,
-        "rateSubtotal": 312.22,
+        "totalPrice": 344.7,
+        "nightlyPrice": 114.9,
+        "rateSubtotal": 313.36,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "3 noches, 2 adultos, 2 niños",
@@ -1617,13 +1609,13 @@
         "roomName": "Apartamentos Bravo Murillo",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/apartamentos-bravo-murillo-madrid.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=10&hapos=10&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=1022356701_374714375_4_0_0&highlighted_blocks=1022356701_374714375_4_0_0&matching_block_id=1022356701_374714375_4_0_0&sr_pri_blocks=1022356701_374714375_4_0_0__31222&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/apartamentos-bravo-murillo-madrid.es.html?ucfs=1&arphpl=1&checkin=2026-10-28&checkout=2026-10-31&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=4&hapos=4&sr_order=price&srpvid=af2c9510a04005e7&srepoch=1786482723&all_sr_blocks=1022356701_374714375_4_0_0&highlighted_blocks=1022356701_374714375_4_0_0&matching_block_id=1022356701_374714375_4_0_0&sr_pri_blocks=1022356701_374714375_4_0_0__31336&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 312.22,
-        "bookingTableTotal": 315.7,
-        "bookingTablePriceConsistent": false,
-        "encodedStayTotal": 343.44,
+        "searchResultPrice": 313.36,
+        "bookingTableTotal": 341,
+        "bookingTablePriceConsistent": true,
+        "encodedStayTotal": 344.7,
         "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0.1,
         "excludedFixedCharges": 0,
@@ -1631,17 +1623,17 @@
         "verificationRows": [
           {
             "blockId": "1022356701_374714375_4_0_0",
-            "priceText": "€ 96 por noche\n€ 347 € 287 \nPrecio original € 347 Precio actual € 287\n3 noches\n-17%\nNo incluido: 10% IVA",
+            "priceText": "€ 103 por noche\n€ 378 € 310 \nPrecio original € 378 Precio actual € 310\n3 noches\n-18%\nNo incluido: 10% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 96 por noche\n€ 347 € 287 \nPrecio original € 347 Precio actual € 287\n3 noches\n-17%\nNo incluido: 10% IVA",
+            "priceCellText": "€ 103 por noche\n€ 378 € 310 \nPrecio original € 378 Precio actual € 310\n3 noches\n-18%\nNo incluido: 10% IVA",
             "taxesText": "No incluido: 10% IVA"
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:40.031Z"
+        "priceConfirmedAt": "2026-08-11T21:13:56.360Z"
       },
-      "createdAt": "2026-08-11T20:22:40.050Z"
+      "createdAt": "2026-08-11T21:14:04.342Z"
     },
     {
       "type": "new_match",
@@ -1649,29 +1641,156 @@
       "monitorName": "Madrid Laura",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/es/plaza-castilla-apartments-madrid.es.html|2026-10-27|2026-10-30",
+        "id": "/hotel/es/apartamento-4-elephant-wifi-y-netflix.es.html|2026-10-29|2026-11-01",
         "source": "booking",
-        "hotelName": "Plaza Castilla Apartments",
-        "address": "Tetuán, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
+        "hotelName": "Apartamento 4 Elephant Wifi y Netflix",
+        "address": "Alcobendas",
+        "checkIn": "2026-10-29",
+        "checkOut": "2026-11-01",
         "nights": 3,
-        "totalPrice": 328.22,
-        "nightlyPrice": 109.41,
-        "rateSubtotal": 298.38,
+        "totalPrice": 315,
+        "nightlyPrice": 105,
+        "rateSubtotal": 286.36,
         "additionalCharges": 0,
         "taxesText": "",
         "stayText": "3 noches, 2 adultos, 2 niños",
         "bookingBlockIds": [
-          "827622301_413290762_4_0_0"
+          "1245193001_396665774_2_0_1099511627776"
         ],
         "priceVerified": true,
         "priceBasis": "booking_visible_final_total_v5",
         "stars": 3,
-        "guestRating": 7.4,
-        "reviewCount": 304,
-        "distanceKm": 0,
+        "guestRating": 7.3,
+        "reviewCount": 152,
+        "distanceKm": null,
         "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Apartamento 4 Elephant Wifi y Netflix",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/apartamento-4-elephant-wifi-y-netflix.es.html?ucfs=1&arphpl=1&checkin=2026-10-29&checkout=2026-11-01&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=1&hapos=1&sr_order=price&srpvid=07c5955eb0f50024&srepoch=1786482879&all_sr_blocks=1245193001_396665774_2_0_1099511627776&highlighted_blocks=1245193001_396665774_2_0_1099511627776&matching_block_id=1245193001_396665774_2_0_1099511627776&sr_pri_blocks=1245193001_396665774_2_0_1099511627776__28636&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 286.36,
+        "bookingTableTotal": 314.6,
+        "bookingTablePriceConsistent": true,
+        "encodedStayTotal": 315,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.1,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "10% IVA",
+        "verificationRows": [
+          {
+            "blockId": "1245193001_396665774_2_0_1099511627776",
+            "priceText": "€ 95 por noche\n€ 286\nPrecio € 286\n3 noches\nNo incluido: 10% IVA",
+            "displayedPriceText": "",
+            "priceCellText": "€ 95 por noche\n€ 286\nPrecio € 286\n3 noches\nNo incluido: 10% IVA",
+            "taxesText": "No incluido: 10% IVA"
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:15:41.634Z"
+      },
+      "createdAt": "2026-08-11T21:15:46.872Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid Laura",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/hostal-juan-xxiii.es.html|2026-10-29|2026-11-01",
+        "source": "booking",
+        "hotelName": "Hostal Juan XXIII",
+        "address": "San Sebastián de los Reyes",
+        "checkIn": "2026-10-29",
+        "checkOut": "2026-11-01",
+        "nights": 3,
+        "totalPrice": 358.8,
+        "nightlyPrice": 119.6,
+        "rateSubtotal": 326.18,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "3 noches, 2 adultos, 2 niños",
+        "bookingBlockIds": [
+          "1930103_95144061_1_0_0",
+          "1930103_95144061_1_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 2,
+        "guestRating": 7.5,
+        "reviewCount": 481,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "hostel",
+        "amenities": [],
+        "mealPlan": "any",
+        "roomName": "Habitación Estándar - Compra anticipada",
+        "sharedRoom": false,
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "url": "https://www.booking.com/hotel/es/hostal-juan-xxiii.es.html?ucfs=1&arphpl=1&checkin=2026-10-29&checkout=2026-11-01&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=3&hapos=3&sr_order=price&srpvid=07c5955eb0f50024&srepoch=1786482879&all_sr_blocks=1930103_95144061_1_0_0%2C1930103_95144061_1_0_0&highlighted_blocks=1930103_95144061_1_0_0%2C1930103_95144061_1_0_0&matching_block_id=1930103_95144061_1_0_0&sr_pri_blocks=1930103_95144061_1_0_0__16309%2C1930103_95144061_1_0_0__16309&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "searchResultPrice": 326.18,
+        "bookingTableTotal": 354.2,
+        "bookingTablePriceConsistent": true,
+        "encodedStayTotal": 358.8,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.1,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "10% IVA",
+        "verificationRows": [
+          {
+            "blockId": "1930103_95144061_1_0_0",
+            "priceText": "€ 54 por noche\n€ 177 € 161 \nPrecio original € 177 Precio actual € 161\n3 noches\n-9%\nNo incluido: 10% IVA",
+            "displayedPriceText": "",
+            "priceCellText": "€ 54 por noche\n€ 177 € 161 \nPrecio original € 177 Precio actual € 161\n3 noches\n-9%\nNo incluido: 10% IVA",
+            "taxesText": "No incluido: 10% IVA"
+          }
+        ],
+        "taxFallbackRate": 0.1,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:15:44.689Z"
+      },
+      "createdAt": "2026-08-11T21:15:46.872Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid Laura",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/es/m1-loft-privado-4-pers-comodo-parking.es.html|2026-10-29|2026-11-01",
+        "source": "booking",
+        "hotelName": "M2 Loft Privado para 4 personas",
+        "address": "Hortaleza, Madrid",
+        "checkIn": "2026-10-29",
+        "checkOut": "2026-11-01",
+        "nights": 3,
+        "totalPrice": 367.4,
+        "nightlyPrice": 122.47,
+        "rateSubtotal": 334,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "3 noches, 2 adultos, 2 niños",
+        "bookingBlockIds": [
+          "1302421201_416699181_4_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 3,
+        "guestRating": 7.9,
+        "reviewCount": 61,
+        "distanceKm": 0,
+        "freeCancellation": false,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "apartment",
@@ -1680,184 +1799,31 @@
         "roomName": "Apartamento de 1 dormitorio",
         "sharedRoom": false,
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/plaza-castilla-apartments-madrid.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=16&hapos=16&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=827622301_413290762_4_0_0&highlighted_blocks=827622301_413290762_4_0_0&matching_block_id=827622301_413290762_4_0_0&sr_pri_blocks=827622301_413290762_4_0_0__29838&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/es/m1-loft-privado-4-pers-comodo-parking.es.html?ucfs=1&arphpl=1&checkin=2026-10-29&checkout=2026-11-01&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=4&hapos=4&sr_order=price&srpvid=07c5955eb0f50024&srepoch=1786482879&all_sr_blocks=1302421201_416699181_4_0_0&highlighted_blocks=1302421201_416699181_4_0_0&matching_block_id=1302421201_416699181_4_0_0&sr_pri_blocks=1302421201_416699181_4_0_0__33400&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "searchResultPrice": 298.38,
-        "bookingTableTotal": 327.8,
+        "searchResultPrice": 334,
+        "bookingTableTotal": 364.1,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 328.22,
+        "encodedStayTotal": 367.4,
         "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0.1,
         "excludedFixedCharges": 0,
         "taxBreakdownText": "10% IVA",
         "verificationRows": [
           {
-            "blockId": "827622301_413290762_4_0_0",
-            "priceText": "€ 91 por noche\n€ 363 € 298 \nPrecio original € 363 Precio actual € 298\n3 noches\n-18%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
+            "blockId": "1302421201_416699181_4_0_0",
+            "priceText": "€ 90 por noche\n€ 358 € 331 \nPrecio original € 358 Precio actual € 331\n3 noches\n-7%\nIncluido: cargo por servicio de 60 € por estancia\nNo incluido: 10% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 91 por noche\n€ 363 € 298 \nPrecio original € 363 Precio actual € 298\n3 noches\n-18%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de 25 € por estancia No incluido: 10% IVA"
+            "priceCellText": "€ 90 por noche\n€ 358 € 331 \nPrecio original € 358 Precio actual € 331\n3 noches\n-7%\nIncluido: cargo por servicio de 60 € por estancia\nNo incluido: 10% IVA",
+            "taxesText": "Incluido: cargo por servicio de 60 € por estancia No incluido: 10% IVA"
           }
         ],
         "taxFallbackRate": 0.1,
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:34.062Z"
+        "priceConfirmedAt": "2026-08-11T21:15:46.836Z"
       },
-      "createdAt": "2026-08-11T20:22:40.050Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/es/puerta-de-hierro-apartments.es.html|2026-10-27|2026-10-30",
-        "source": "booking",
-        "hotelName": "Puerta de Hierro Apartments",
-        "address": "Fuencarral - El Pardo, Madrid",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
-        "nights": 3,
-        "totalPrice": 335.51,
-        "nightlyPrice": 111.84,
-        "rateSubtotal": 305.01,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "3 noches, 2 adultos, 2 niños",
-        "bookingBlockIds": [
-          "1147982901_413289048_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 7.2,
-        "reviewCount": 380,
-        "distanceKm": 0,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Estudio",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.booking.com/hotel/es/puerta-de-hierro-apartments.es.html?ucfs=1&arphpl=1&checkin=2026-10-27&checkout=2026-10-30&group_adults=2&req_adults=2&no_rooms=1&group_children=2&req_children=2&age=0&req_age=0&age=0&req_age=0&hpos=19&hapos=19&sr_order=price&srpvid=87618f2bcfdb01a9&srepoch=1786479704&all_sr_blocks=1147982901_413289048_4_0_0&highlighted_blocks=1147982901_413289048_4_0_0&matching_block_id=1147982901_413289048_4_0_0&sr_pri_blocks=1147982901_413289048_4_0_0__30501&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "searchResultPrice": 305.01,
-        "bookingTableTotal": 335.5,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 335.51,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0.1,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "10% IVA",
-        "verificationRows": [
-          {
-            "blockId": "1147982901_413289048_4_0_0",
-            "priceText": "€ 93 por noche\n€ 371 € 305 \nPrecio original € 371 Precio actual € 305\n3 noches\n-18%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 93 por noche\n€ 371 € 305 \nPrecio original € 371 Precio actual € 305\n3 noches\n-18%\nIncluido: suplemento de limpieza de 25 € por estancia\nNo incluido: 10% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de 25 € por estancia No incluido: 10% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.1,
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:36.213Z"
-      },
-      "createdAt": "2026-08-11T20:22:40.050Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:5dcf13ba955e252b|2026-10-27|2026-10-30",
-        "source": "google_hotels",
-        "provider": "LATROUPE Prado Hostel Madrid via Google Hotels",
-        "hotelName": "LATROUPE Prado Hostel Madrid",
-        "address": "Madrid, Comunidad Autónoma de Madrid, España",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-30",
-        "nights": 3,
-        "totalPrice": 324,
-        "nightlyPrice": 108,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 324,
-        "searchResultPrice": 324,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "3 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:22:02.013Z",
-        "stars": 0,
-        "guestRating": 8.6,
-        "reviewCount": 906,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hostel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESFgoCCAMKAggDCgQIAhAMCgQIAhAMEAEaUAoyEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkGgASGhIUCgcI6g8QChgbEgcI6g8QChgeGAMyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMidDaGtJbWJ6dnVvcTY4SVltR2cwdlp5OHhNWFJ5ZVdzM01UZHRFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CE4QssMEahgKEwjohfrAs5mWAxUAAAAAHQAAAAAQzgE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-11T20:22:02.013Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 0,
-      "offer": {
-        "id": "google_hotels:f47c897b61fbb624|2026-10-27|2026-10-31",
-        "source": "google_hotels",
-        "provider": "Hostelworld via Google Hotels",
-        "hotelName": "Safestay Madrid Central",
-        "address": "Madrid, Comunidad Autónoma de Madrid, España",
-        "checkIn": "2026-10-27",
-        "checkOut": "2026-10-31",
-        "nights": 4,
-        "totalPrice": 354,
-        "nightlyPrice": 88.5,
-        "displayedNightlyPrice": 0,
-        "rateSubtotal": 354,
-        "searchResultPrice": 354,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "4 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v5",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:23:29.189Z",
-        "stars": 0,
-        "guestRating": 7.6,
-        "reviewCount": 2379,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hostel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20madrid&ts=CAESFgoCCAMKAggDCgQIAhAMCgQIAhAMEAEaUAoyEi4yJDB4ZDQyMjk5NzgwMGEzYzgxOjB4YzQzNmRlYzE2MThjMjI2OToGTWFkcmlkGgASGhIUCgcI6g8QChgbEgcI6g8QChgfGAQyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMidDaGtJNjhmaDVZZTZpdXhNR2cwdlp5OHhNV2RpYkdSNU5GOWtFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CDgQssMEahgKEwjorODus5mWAxUAAAAAHQAAAAAQxAE",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-11T20:23:29.189Z"
+      "createdAt": "2026-08-11T21:15:46.872Z"
     },
     {
       "type": "new_match",
@@ -1865,78 +1831,27 @@
       "monitorName": "Sesimbra",
       "previousPrice": 0,
       "offer": {
-        "id": "bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-08-23|2027-08-28",
-        "source": "bluepillow",
-        "provider": "Expedia via Bluepillow",
-        "hotelName": "Apartment m. Pool u. Sea view, about 500m to the beach in Sesimbra for max. 4 pers",
-        "address": "Sesimbra",
-        "checkIn": "2027-08-23",
-        "checkOut": "2027-08-28",
-        "nights": 5,
-        "totalPrice": 503,
-        "nightlyPrice": 100.6,
-        "displayedNightlyPrice": 100.6,
-        "rateSubtotal": 503,
-        "searchResultPrice": 503,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 98,
-        "taxesText": "Total con 98.00 EUR de impuestos y tasas incluidos",
-        "stayText": "5 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "expedia_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:21:54.637Z",
-        "stars": 0,
-        "guestRating": 10,
-        "reviewCount": 191,
-        "distanceKm": 0.9205604097800808,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [
-          "pool"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786479712%2526endDate%253D2027-08-28%2526adults%253D2%2526locale%253Den_US%2526chid%253D7ef3d7c1-3ea8-460a-bca7-4d1cc923a5ca%2526eapid%253D310064%2526startDate%253D2027-08-23%2526mpd%253DEUR%2526mpn%253D33613585%2526currency%253DEUR%2526rateplanid%253D0002e0bb5216a0694f5e9b8cee58d81bceb4%2526mpm%253D83%2526selected%253D33613585%2526mpb%253D98.00%2526mpq%253D100.60%2526mpa%253D405.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=623374f44c4d8d9b9b7527ae&begin=2027-08-23&end=2027-08-28",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/media.vrbo.com/lodging/34000000/33620000/33613600/33613585/0838950f.jpg",
-        "bluepillowPropertyId": "prop_623374f44c4d8d9b9b7527ae",
-        "bluepillowOta": "Expedia",
-        "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-11T20:21:52.970805Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-23|2027-08-28",
+        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-24|2027-08-29",
         "source": "bluepillow",
         "provider": "Expedia via Bluepillow",
         "hotelName": "Zambujal Suites",
         "address": "Sesimbra",
-        "checkIn": "2027-08-23",
-        "checkOut": "2027-08-28",
+        "checkIn": "2027-08-24",
+        "checkOut": "2027-08-29",
         "nights": 5,
-        "totalPrice": 526.5,
-        "nightlyPrice": 105.3,
-        "displayedNightlyPrice": 105.3,
-        "rateSubtotal": 526.5,
-        "searchResultPrice": 526.5,
+        "totalPrice": 502.85,
+        "nightlyPrice": 100.57,
+        "displayedNightlyPrice": 100.57,
+        "rateSubtotal": 502.85,
+        "searchResultPrice": 502.85,
         "additionalCharges": 0,
-        "includedTaxesAndFees": 29.8,
-        "taxesText": "Total con 29.80 EUR de impuestos y tasas incluidos",
+        "includedTaxesAndFees": 28.5,
+        "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos",
         "stayText": "5 noches para 2 adultos",
         "priceVerified": true,
         "priceBasis": "expedia_total_with_tax_breakdown",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-11T20:21:55.449Z",
+        "priceConfirmedAt": "2026-08-11T21:13:04.932Z",
         "stars": 3,
         "guestRating": 8,
         "reviewCount": 16,
@@ -1952,14 +1867,65 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786479712%2526endDate%253D2027-08-28%2526adults%253D2%2526locale%253Den_US%2526chid%253D7ef3d7c1-3ea8-460a-bca7-4d1cc923a5ca%2526eapid%253D310064%2526startDate%253D2027-08-23%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D29.80%2526mpq%253D100.23%2526mpa%253D496.70&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-23&end=2027-08-28",
+        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786482783%2526endDate%253D2027-08-29%2526adults%253D2%2526locale%253Den_US%2526chid%253D1e9710fc-e4aa-4ccb-9a7c-f476ddfa73db%2526eapid%253D310064%2526startDate%253D2027-08-24%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-24&end=2027-08-29",
         "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
         "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
         "bluepillowOta": "Expedia",
         "matches": true,
         "candidateMatches": true
       },
-      "createdAt": "2026-08-11T20:21:52.970805Z"
+      "createdAt": "2026-08-11T21:13:03.859673Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-08-24|2027-08-29",
+        "source": "bluepillow",
+        "provider": "Expedia via Bluepillow",
+        "hotelName": "Apartment m. Pool u. Sea view, about 500m to the beach in Sesimbra for max. 4 pers",
+        "address": "Sesimbra",
+        "checkIn": "2027-08-24",
+        "checkOut": "2027-08-29",
+        "nights": 5,
+        "totalPrice": 503,
+        "nightlyPrice": 100.6,
+        "displayedNightlyPrice": 100.6,
+        "rateSubtotal": 503,
+        "searchResultPrice": 503,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 98,
+        "taxesText": "Total con 98.00 EUR de impuestos y tasas incluidos",
+        "stayText": "5 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-11T21:13:06.240Z",
+        "stars": 0,
+        "guestRating": 10,
+        "reviewCount": 191,
+        "distanceKm": 0.9205604097800808,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "pool"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "url": "https://pt.bluepillow.com/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786482783%2526endDate%253D2027-08-29%2526adults%253D2%2526locale%253Den_US%2526chid%253D1e9710fc-e4aa-4ccb-9a7c-f476ddfa73db%2526eapid%253D310064%2526startDate%253D2027-08-24%2526mpd%253DEUR%2526mpn%253D33613585%2526currency%253DEUR%2526rateplanid%253D0002e0bb5216a0694f5e9b8cee58d81bceb4%2526mpm%253D83%2526selected%253D33613585%2526mpb%253D98.00%2526mpq%253D100.60%2526mpa%253D405.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fpt.bluepillow.com%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=623374f44c4d8d9b9b7527ae&begin=2027-08-24&end=2027-08-29",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/media.vrbo.com/lodging/34000000/33620000/33613600/33613585/0838950f.jpg",
+        "bluepillowPropertyId": "prop_623374f44c4d8d9b9b7527ae",
+        "bluepillowOta": "Expedia",
+        "matches": true,
+        "candidateMatches": true
+      },
+      "createdAt": "2026-08-11T21:13:03.859673Z"
     }
   ]
 }
