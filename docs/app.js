@@ -1480,7 +1480,13 @@
       "click",
       searchDetailedLocations,
     );
-    $("#location-query").addEventListener("blur", () => {
+    $("#location-query").addEventListener("blur", (event) => {
+      if (
+        event.relatedTarget &&
+        event.currentTarget.closest(".location-search").contains(event.relatedTarget)
+      ) {
+        return;
+      }
       setTimeout(() => $("#location-results").classList.add("hidden"), 180);
     });
     $$("[data-date-mode]").forEach((button) => {
