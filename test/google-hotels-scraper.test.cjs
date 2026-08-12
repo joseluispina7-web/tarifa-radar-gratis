@@ -4,6 +4,7 @@ const {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
   googleProviderCanSupplyVerifiedTotal,
+  googleTotalMatchesNightly,
   parseGoogleGuestRating,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
@@ -40,6 +41,12 @@ test("builds a Google Hotels search without pretending URL dates work", () => {
   assert.equal(url.searchParams.get("curr"), "EUR");
   assert.equal(url.searchParams.has("checkin"), false);
   assert.equal(url.searchParams.has("checkout"), false);
+});
+
+test("rejects a nightly Google price mislabeled as the stay total", () => {
+  assert.equal(googleTotalMatchesNightly(244.34, 61, 4), true);
+  assert.equal(googleTotalMatchesNightly(61, 61, 4), false);
+  assert.equal(googleTotalMatchesNightly(61, 0, 4), false);
 });
 
 test("parses the explicit taxed stay total and nightly amount", () => {
@@ -277,7 +284,7 @@ test("builds a verified source-specific offer only from an explicit total", () =
   assert.equal(offer.totalPrice, 148);
   assert.equal(offer.nightlyPrice, 37);
   assert.equal(offer.priceVerified, true);
-  assert.equal(offer.priceBasis, "google_hotels_visible_all_inclusive_v6");
+  assert.equal(offer.priceBasis, "google_hotels_visible_all_inclusive_v7");
   assert.equal(offer.priceConfirmationCount, 2);
   assert.equal(offer.stars, 3);
   assert.equal(offer.guestRating, 8.8);
@@ -310,6 +317,17 @@ test("rejects cards without exact nights, taxes or a total", () => {
       {
         ...base,
         priceText: "40 \u20ac160 \u20ac en total3 noches con impuestos incluidos",
+      },
+      search(),
+    ),
+    null,
+  );
+  assert.equal(
+    buildGoogleOffer(
+      {
+        ...base,
+        priceText:
+          "40 \u20ac40 \u20ac en total4 noches con impuestos y tasas incluidos",
       },
       search(),
     ),

@@ -26,8 +26,8 @@ const CURRENT_BOOKING_PRICE_BASES = new Set([
   "booking_visible_final_total_v5",
 ]);
 const CURRENT_GOOGLE_PRICE_BASES = new Set([
-  "google_hotels_provider_all_inclusive_v5",
-  "google_hotels_visible_all_inclusive_v6",
+  "google_hotels_provider_all_inclusive_v7",
+  "google_hotels_visible_all_inclusive_v7",
 ]);
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
@@ -84,6 +84,7 @@ function updateOfferState(
     matches: offer.matches,
     priceVerified: offer.priceVerified,
     priceBasis: offer.priceBasis,
+    priceEvidence: offer.priceEvidence,
     searchArea: offer.searchArea,
     checkIn: offer.checkIn,
     checkOut: offer.checkOut,
