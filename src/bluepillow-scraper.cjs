@@ -567,22 +567,43 @@ async function requestJson(pathname, options = {}) {
   return payload;
 }
 
-async function fetchBluepillowSearch(search, options = {}) {
-  const destinationName = search.destination.split(",")[0].trim();
-  const resolution = await requestJson("/destinations/resolve", {
-    ...options,
-    body: {
-      name: destinationName,
-      ...(search.countryCode ? { country: search.countryCode } : {}),
-      language: "es",
-    },
-  });
-  const destination = chooseDestination(resolution.candidates, search);
-  if (!destination) {
-    throw new Error(
-      `Bluepillow no reconocio el destino ${destinationName}.`,
-    );
+async function resolveBluepillowDestination(search, options = {}) {
+  const destinationNames = Array.from(
+    new Set(
+      [
+        search.destination.split(",")[0].trim(),
+        String(search.locationCity || "").trim(),
+      ].filter(Boolean),
+    ),
+  );
+  let lastError = null;
+  for (const destinationName of destinationNames) {
+    try {
+      const resolution = await requestJson("/destinations/resolve", {
+        ...options,
+        body: {
+          name: destinationName,
+          ...(search.countryCode ? { country: search.countryCode } : {}),
+          language: "es",
+        },
+      });
+      const destination = chooseDestination(resolution.candidates, {
+        ...search,
+        destination: destinationName,
+      });
+      if (destination) return destination;
+    } catch (error) {
+      lastError = error;
+    }
   }
+  throw new Error(
+    `Bluepillow no reconocio el destino ${destinationNames[0] || search.destination}.`,
+    { cause: lastError },
+  );
+}
+
+async function fetchBluepillowSearch(search, options = {}) {
+  const destination = await resolveBluepillowDestination(search, options);
 
   const payload = await requestJson("/search/stays", {
     ...options,
@@ -754,6 +775,7 @@ module.exports = {
   parseBluepillowPriceBreakdown,
   parseTripFinalTotal,
   providerRedirectUrl,
+  resolveBluepillowDestination,
   scrapeAgoda,
   scrapeBluepillow,
   scrapeBluepillowSource,

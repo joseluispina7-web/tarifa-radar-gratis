@@ -7,6 +7,7 @@ const {
   parseBluepillowPriceBreakdown,
   parseTripFinalTotal,
   providerRedirectUrl,
+  resolveBluepillowDestination,
   scrapeBluepillowSource,
   stableBluepillowOfferId,
 } = require("../src/bluepillow-scraper.cjs");
@@ -116,6 +117,41 @@ test("chooses the exact city and country from destination candidates", () => {
     search(),
   );
   assert.equal(selected.id, "city");
+});
+
+test("falls back from a neighbourhood to its parent city", async () => {
+  const requestedNames = [];
+  const fetchImpl = async (url, options) => {
+    const body = JSON.parse(options.body);
+    requestedNames.push(body.name);
+    if (body.name === "Malasaña") {
+      return Response.json(
+        { error: { message: "not found" } },
+        { status: 404 },
+      );
+    }
+    return Response.json({
+      candidates: [{
+        id: "dest_madrid",
+        name: "Madrid",
+        display_name: "Madrid, España",
+        type: "city",
+        country_code: "ES",
+        confidence: 1,
+      }],
+    });
+  };
+  const destination = await resolveBluepillowDestination(
+    search({
+      destination: "Malasaña, Madrid, España",
+      locationCity: "Madrid",
+      locationRadiusKm: 3,
+    }),
+    { fetchImpl },
+  );
+
+  assert.deepEqual(requestedNames, ["Malasaña", "Madrid"]);
+  assert.equal(destination.id, "dest_madrid");
 });
 
 test("recognizes exact dates inside nested affiliate links", () => {

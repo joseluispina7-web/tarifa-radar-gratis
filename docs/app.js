@@ -8,6 +8,15 @@
   const STATUS_PATH = "docs/data/status.json";
   const DEALS_PATH = "docs/data/deals.json";
   const ACCESS_KEY_STORAGE = "tarifa-radar-panel-key";
+  const LOCATION_CACHE_STORAGE = "tarifa-radar-location-cache-v1";
+  const DETAILED_GEOCODER_URL =
+    "https://nominatim.openstreetmap.org/search";
+  const {
+    locationTypeLabel,
+    mergeLocationResults,
+    normalizeNominatimLocation,
+    normalizeOpenMeteoLocation,
+  } = window.TarifaLocationSearch;
   const TOKEN_VAULT = {
     salt: "JVjEw2MYf1z15nqoGYMyAQ==",
     iv: "bTZ51FpHrrHWjWC9",
@@ -60,6 +69,9 @@
     view: "monitors",
     locationResults: [],
     locationTimer: null,
+    locationRequest: 0,
+    locationSearchBusy: false,
+    lastDetailedLocationRequestAt: 0,
     dealMonitorFilter: "all",
   };
   let resultsRefreshPending = false;
@@ -112,6 +124,9 @@
       latitude: 40,
       longitude: -4,
       countryCode: "ES",
+      locationType: "country",
+      locationCity: "",
+      locationRadiusKm: 0,
       dateMode: "flexible",
       dateStart: isoDate(start),
       dateEnd: isoDate(addDays(start, 4)),
@@ -348,7 +363,10 @@
 
   function radiusText(monitor) {
     const radius = Number(monitor.maxDistanceKm) || 0;
-    return radius > 0 ? `hasta ${radius} km alrededor` : "zona habitual";
+    const locationRadius = Number(monitor.locationRadiusKm) || 0;
+    if (radius > 0) return `hasta ${radius} km alrededor`;
+    if (locationRadius > 0) return `zona exacta · ${locationRadius} km`;
+    return "zona habitual";
   }
 
   function sourceLabel(source) {
@@ -808,10 +826,13 @@
     $("#editor-status").classList.toggle("ready", draft.active);
     $("#monitor-name").value = draft.name;
     $("#location-query").value = draft.location;
+    const detectedType = locationTypeLabel(draft.locationType);
     $("#location-confirmed").innerHTML = draft.locationId
-      ? `<i data-lucide="map-pin-check"></i> Ubicación detectada · ${escapeHtml(
+      ? `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(detectedType)} · ${escapeHtml(
           draft.countryCode || "",
-        )}${nearbyLocations.length
+        )}${Number(draft.locationRadiusKm) > 0
+          ? ` · radio ${escapeHtml(draft.locationRadiusKm)} km`
+          : ""}${nearbyLocations.length
           ? ` · También: ${escapeHtml(nearbyLocations.join(", "))}`
           : ""}`
       : "";
@@ -1093,7 +1114,7 @@
     }
   }
 
-  async function searchLocations(query) {
+  async function searchCityLocations(query, requestId) {
     const response = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
         query,
@@ -1101,17 +1122,139 @@
     );
     if (!response.ok) throw new Error("No se pudo consultar el destino.");
     const payload = await response.json();
-    state.locationResults = (payload.results || []).map((item) => ({
-      id: String(item.id),
-      name: item.name,
-      label: [item.name, item.admin1, item.country].filter(Boolean).join(", "),
-      details: [item.admin2, item.admin3].filter(Boolean).join(" · "),
-      latitude: item.latitude,
-      longitude: item.longitude,
-      countryCode: item.country_code || "",
-      featureCode: item.feature_code || "",
-    }));
+    if (requestId !== state.locationRequest) return;
+    state.locationResults = (payload.results || [])
+      .map(normalizeOpenMeteoLocation)
+      .filter((location) => location.label);
     renderLocationResults();
+  }
+
+  function locationCacheKey(query) {
+    return String(query || "").trim().toLocaleLowerCase("es");
+  }
+
+  function readDetailedLocationCache(query) {
+    try {
+      const entries = JSON.parse(
+        localStorage.getItem(LOCATION_CACHE_STORAGE) || "[]",
+      );
+      const key = locationCacheKey(query);
+      const entry = entries.find((item) => item.key === key);
+      const maxAgeMs = 30 * 24 * 60 * 60 * 1000;
+      return entry && Date.now() - Number(entry.savedAt) < maxAgeMs
+        ? entry.locations
+        : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeDetailedLocationCache(query, locations) {
+    try {
+      const key = locationCacheKey(query);
+      const current = JSON.parse(
+        localStorage.getItem(LOCATION_CACHE_STORAGE) || "[]",
+      ).filter((item) => item.key !== key);
+      current.unshift({ key, savedAt: Date.now(), locations });
+      localStorage.setItem(
+        LOCATION_CACHE_STORAGE,
+        JSON.stringify(current.slice(0, 25)),
+      );
+    } catch {
+      // The search still works when browser storage is unavailable.
+    }
+  }
+
+  function setDetailedLocationBusy(busy) {
+    state.locationSearchBusy = busy;
+    const button = $("#location-search-button");
+    button.disabled = busy;
+    button.setAttribute("aria-busy", String(busy));
+  }
+
+  function renderLocationMessage(message) {
+    const container = $("#location-results");
+    container.innerHTML = `<span class="location-result-message">${escapeHtml(
+      message,
+    )}</span>`;
+    container.classList.remove("hidden");
+  }
+
+  async function searchDetailedLocations() {
+    const query = $("#location-query").value.trim();
+    if (query.length < 2 || state.locationSearchBusy) return;
+    clearTimeout(state.locationTimer);
+    const requestId = ++state.locationRequest;
+    setDetailedLocationBusy(true);
+    $("#form-error").textContent = "";
+    renderLocationMessage("Buscando barrios, calles y zonas…");
+
+    try {
+      let locations = readDetailedLocationCache(query);
+      if (!locations) {
+        const elapsed = Date.now() - state.lastDetailedLocationRequestAt;
+        if (elapsed < 1_000) {
+          await new Promise((resolve) => setTimeout(resolve, 1_000 - elapsed));
+        }
+        const url = new URL(DETAILED_GEOCODER_URL);
+        url.searchParams.set("q", query);
+        url.searchParams.set("format", "jsonv2");
+        url.searchParams.set("addressdetails", "1");
+        url.searchParams.set("limit", "8");
+        url.searchParams.set("dedupe", "1");
+        url.searchParams.set("accept-language", "es");
+        state.lastDetailedLocationRequestAt = Date.now();
+        const response = await fetch(url, {
+          headers: { Accept: "application/json" },
+        });
+        if (!response.ok) {
+          throw new Error("No se pudo consultar la ubicación detallada.");
+        }
+        const payload = await response.json();
+        locations = payload.map(normalizeNominatimLocation);
+        writeDetailedLocationCache(query, locations);
+      }
+
+      if (requestId !== state.locationRequest) return;
+      state.locationResults = mergeLocationResults(
+        locations,
+        state.locationResults,
+      ).slice(0, 10);
+      if (state.locationResults.length) {
+        renderLocationResults();
+      } else {
+        renderLocationMessage("No se encontró esa ubicación.");
+      }
+    } catch (error) {
+      if (requestId === state.locationRequest) {
+        renderLocationMessage("No se pudo completar la búsqueda.");
+        $("#form-error").textContent = error.message;
+      }
+    } finally {
+      setDetailedLocationBusy(false);
+    }
+  }
+
+  function selectLocation(location) {
+    state.draft.location = location.label;
+    state.draft.locationId = location.id;
+    state.draft.latitude = location.latitude;
+    state.draft.longitude = location.longitude;
+    state.draft.countryCode = location.countryCode;
+    state.draft.locationType = location.locationType || "place";
+    state.draft.locationCity = location.locationCity || "";
+    state.draft.locationRadiusKm = Number(location.locationRadiusKm) || 0;
+    $("#location-query").value = location.label;
+    const type = locationTypeLabel(location.locationType);
+    $("#location-confirmed").innerHTML =
+      `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(type)} · ` +
+      `${escapeHtml(location.countryCode)}${state.draft.locationRadiusKm
+        ? ` · radio ${escapeHtml(state.draft.locationRadiusKm)} km`
+        : ""}`;
+    $("#location-results").classList.add("hidden");
+    renderRulePreview();
+    renderManualLinks();
+    refreshIcons();
   }
 
   function renderLocationResults() {
@@ -1119,7 +1262,13 @@
     container.innerHTML = state.locationResults
       .map(
         (location, index) => `
-          <button class="location-option" type="button" data-location-index="${index}">
+          <button
+            class="location-option"
+            type="button"
+            role="option"
+            aria-selected="false"
+            data-location-index="${index}"
+          >
             <span><i data-lucide="map-pin"></i></span>
             <span>
               <strong>${escapeHtml(location.label)}</strong>
@@ -1134,19 +1283,7 @@
     container.querySelectorAll("[data-location-index]").forEach((button) => {
       button.addEventListener("click", () => {
         const location = state.locationResults[Number(button.dataset.locationIndex)];
-        state.draft.location = location.label;
-        state.draft.locationId = location.id;
-        state.draft.latitude = location.latitude;
-        state.draft.longitude = location.longitude;
-        state.draft.countryCode = location.countryCode;
-        $("#location-query").value = location.label;
-        $("#location-confirmed").innerHTML = `<i data-lucide="map-pin-check"></i> Ubicación detectada · ${escapeHtml(
-          location.countryCode,
-        )}`;
-        container.classList.add("hidden");
-        renderRulePreview();
-        renderManualLinks();
-        refreshIcons();
+        selectLocation(location);
       });
     });
     refreshIcons();
@@ -1158,15 +1295,19 @@
     state.draft.locationId = "";
     state.draft.latitude = null;
     state.draft.longitude = null;
+    state.draft.locationType = "";
+    state.draft.locationCity = "";
+    state.draft.locationRadiusKm = 0;
     $("#location-confirmed").textContent = "";
     clearTimeout(state.locationTimer);
+    const requestId = ++state.locationRequest;
     if (value.length < 2) {
       state.locationResults = [];
       renderLocationResults();
       return;
     }
     state.locationTimer = setTimeout(() => {
-      searchLocations(value).catch((error) => {
+      searchCityLocations(value, requestId).catch((error) => {
         $("#form-error").textContent = error.message;
       });
     }, 350);
@@ -1329,6 +1470,16 @@
       refreshIcons();
     });
     $("#location-query").addEventListener("input", handleLocationInput);
+    $("#location-query").addEventListener("keydown", (event) => {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        searchDetailedLocations();
+      }
+    });
+    $("#location-search-button").addEventListener(
+      "click",
+      searchDetailedLocations,
+    );
     $("#location-query").addEventListener("blur", () => {
       setTimeout(() => $("#location-results").classList.add("hidden"), 180);
     });

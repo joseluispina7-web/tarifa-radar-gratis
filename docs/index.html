@@ -15,9 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=5" />
+    <link rel="stylesheet" href="./styles.css?v=6" />
     <script src="./vendor/lucide.min.js" defer></script>
-    <script src="./app.js?v=13" defer></script>
+    <script src="./location-search.js?v=1" defer></script>
+    <script src="./app.js?v=14" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -201,23 +202,44 @@
                       <span>Nombre de la búsqueda</span>
                       <input id="monitor-name" name="name" required />
                     </label>
-                    <label class="location-search">
-                      <span>Ciudad, región o país</span>
+                    <div class="location-search">
+                      <label for="location-query">
+                        Ciudad, barrio, zona, calle o dirección
+                      </label>
                       <span class="input-with-icon">
                         <i data-lucide="map-pin"></i>
                         <input
                           id="location-query"
                           name="location"
                           aria-autocomplete="list"
+                          aria-controls="location-results"
+                          placeholder="Malasaña, Madrid"
                           required
                         />
+                        <button
+                          id="location-search-button"
+                          class="location-search-button"
+                          type="button"
+                          title="Buscar ubicación exacta"
+                          aria-label="Buscar ubicación exacta"
+                        >
+                          <i data-lucide="search"></i>
+                        </button>
                       </span>
                       <div
                         id="location-results"
                         class="location-results hidden"
                         role="listbox"
                       ></div>
-                    </label>
+                      <small class="location-attribution">
+                        Búsqueda detallada
+                        <a
+                          href="https://www.openstreetmap.org/copyright"
+                          target="_blank"
+                          rel="noreferrer"
+                        >© OpenStreetMap contributors</a>
+                      </small>
+                    </div>
                   </div>
                   <p id="location-confirmed" class="location-confirmed"></p>
                 </fieldset>

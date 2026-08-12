@@ -9,6 +9,7 @@ const {
   detectMealPlan,
   detectPropertyType,
   distanceBetweenCoordinates,
+  effectiveDistanceLimit,
   fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,
@@ -580,6 +581,38 @@ test("applies distance, property, meal and amenity filters", () => {
   );
 });
 
+test("uses a precise implicit radius for neighbourhood searches", () => {
+  const neighbourhoodSearch = normalizeSearch({
+    ...searchInput,
+    destination: "Malasaña, Madrid, España",
+    locationType: "neighbourhood",
+    locationCity: "Madrid",
+    locationRadiusKm: 3,
+    maxDistanceKm: 0,
+  });
+  const offer = {
+    totalPrice: 120,
+    nightlyPrice: 30,
+    stars: 0,
+    guestRating: 8,
+    distanceKm: 2.5,
+    freeCancellation: false,
+    mealPlan: "any",
+    propertyType: "hotel",
+    amenities: [],
+    sharedRoom: false,
+  };
+
+  assert.equal(effectiveDistanceLimit(neighbourhoodSearch), 3);
+  assert.equal(neighbourhoodSearch.locationCity, "Madrid");
+  assert.equal(matchesSearch(offer, neighbourhoodSearch), true);
+  assert.equal(
+    matchesSearch({ ...offer, distanceKm: 3.1 }, neighbourhoodSearch),
+    false,
+  );
+  assert.equal(buildBookingPageUrls(neighbourhoodSearch).length, 2);
+});
+
 test("turns panel monitors into fixed or rotating exact searches", () => {
   const now = new Date("2026-07-29T00:00:00Z");
   assert.deepEqual(
@@ -624,6 +657,9 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
       minStars: 0,
       guestRatingMin: 0,
       maxDistanceKm: 5,
+      locationType: "neighbourhood",
+      locationCity: "Madrid",
+      locationRadiusKm: 3,
       freeCancellation: false,
     },
     searches[0],
@@ -633,6 +669,9 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
   assert.equal(search.priceSafetyPercent, 5);
   assert.equal(search.originLatitude, 40.4168);
   assert.equal(search.originLongitude, -3.7038);
+  assert.equal(search.locationType, "neighbourhood");
+  assert.equal(search.locationCity, "Madrid");
+  assert.equal(search.locationRadiusKm, 3);
   assert.equal(monitorIsDue({ intervalMinutes: 5, lastScanAt: null }, now), true);
   assert.equal(
     monitorIsDue(

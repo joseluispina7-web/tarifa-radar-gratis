@@ -68,6 +68,9 @@ function normalizeSearch(input = {}) {
     countryCode: String(
       input.countryCode || input.destination?.countryCode || "",
     ).toUpperCase(),
+    locationType: String(input.locationType || ""),
+    locationCity: String(input.locationCity || ""),
+    locationRadiusKm: clampNumber(input.locationRadiusKm, 0, 25, 0),
     checkIn,
     checkOut,
     nights,
@@ -158,7 +161,7 @@ function buildBookingSearchUrl(input) {
 function buildBookingPageUrls(input) {
   const search = normalizeSearch(input);
   const firstUrl = buildBookingSearchUrl(search);
-  const pageCount = search.maxDistanceKm > 0
+  const pageCount = effectiveDistanceLimit(search) > 0
     ? Math.min(
         MAX_RADIUS_PAGES,
         Math.max(1, Math.ceil(search.maxResults / BOOKING_PAGE_SIZE)),
@@ -171,6 +174,12 @@ function buildBookingPageUrls(input) {
     }
     return url.toString();
   });
+}
+
+function effectiveDistanceLimit(search) {
+  return Number(search.maxDistanceKm) > 0
+    ? Number(search.maxDistanceKm)
+    : Number(search.locationRadiusKm) || 0;
 }
 
 function parseLocalizedNumber(value) {
@@ -638,13 +647,14 @@ function matchesSearch(offer, search, options = {}) {
     return false;
   }
   if (search.freeCancellation && !offer.freeCancellation) return false;
-  if (search.maxDistanceKm > 0 && !options.ignoreDistance) {
+  const distanceLimit = effectiveDistanceLimit(search);
+  if (distanceLimit > 0 && !options.ignoreDistance) {
     const distanceIsUnknown =
       offer.distanceKm === null || offer.distanceKm === undefined;
     if (distanceIsUnknown) return false;
     if (
       !distanceIsUnknown &&
-      offer.distanceKm > search.maxDistanceKm
+      offer.distanceKm > distanceLimit
     ) {
       return false;
     }
@@ -805,7 +815,7 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   }
 
   if (
-    search.maxDistanceKm > 0 &&
+    effectiveDistanceLimit(search) > 0 &&
     search.originLatitude !== null &&
     search.originLongitude !== null
   ) {
@@ -1132,6 +1142,7 @@ module.exports = {
   detectMealPlan,
   detectPropertyType,
   distanceBetweenCoordinates,
+  effectiveDistanceLimit,
   fallbackTaxRateForCountry,
   isSharedRoomText,
   matchesSearch,

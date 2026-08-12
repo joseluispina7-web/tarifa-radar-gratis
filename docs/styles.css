@@ -758,6 +758,46 @@ select:focus {
   padding-left: 32px;
 }
 
+.location-search .input-with-icon input {
+  padding-right: 42px;
+}
+
+.location-search-button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 4px;
+  color: #405c53;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  padding: 0;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  width: 30px;
+}
+
+.location-search-button:hover,
+.location-search-button:focus-visible {
+  background: #edf2ef;
+  color: #10201b;
+}
+
+.location-search-button:disabled {
+  cursor: wait;
+  opacity: 0.55;
+}
+
+.location-search-button svg {
+  height: 15px;
+  left: auto;
+  pointer-events: none;
+  position: static;
+  top: auto;
+  width: 15px;
+}
+
 .suffix-input input {
   padding-right: 30px;
 }
@@ -771,7 +811,13 @@ select:focus {
 }
 
 .location-search {
+  display: grid;
+  gap: 6px;
   position: relative;
+}
+
+.location-search > label {
+  display: block;
 }
 
 .location-results {
@@ -853,6 +899,23 @@ select:focus {
   margin: 8px 0 0;
   min-height: 15px;
   overflow-wrap: anywhere;
+}
+
+.location-attribution {
+  color: #7a8681;
+  font-size: 8px;
+  line-height: 1.35;
+}
+
+.location-attribution a {
+  color: inherit;
+}
+
+.location-result-message {
+  color: #66736e;
+  display: block;
+  font-size: 10px;
+  padding: 13px 12px;
 }
 
 .segmented {
