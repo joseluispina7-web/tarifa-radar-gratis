@@ -1,6 +1,7 @@
 const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
+  bookingPageIndicatesNoAvailability,
   bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,
@@ -33,6 +34,7 @@ const {
 } = require("../src/booking-scraper.cjs");
 const { compareWithState } = require("../src/state.cjs");
 const {
+  bookingDiscoveryDates,
   buildMonitorScanRequests,
   buildMonitorSearches,
   flexibleSearchShape,
@@ -584,6 +586,19 @@ test("applies distance, property, meal and amenity filters", () => {
   );
 });
 
+test("distinguishes no availability from a technical Booking failure", () => {
+  assert.equal(
+    bookingPageIndicatesNoAvailability(
+      "No hay alojamientos disponibles para estas fechas",
+    ),
+    true,
+  );
+  assert.equal(
+    bookingPageIndicatesNoAvailability("Comprueba tu conexión e inténtalo"),
+    false,
+  );
+});
+
 test("uses a precise implicit radius for neighbourhood searches", () => {
   const neighbourhoodSearch = normalizeSearch({
     ...searchInput,
@@ -826,6 +841,22 @@ test("walks every valid stay inside a custom date range", () => {
   assert.deepEqual(buildMonitorSearches(monitor, now, { startIndex: 8 }), [
     { checkIn: "2026-09-04", checkOut: "2026-09-05", nights: 1 },
   ]);
+
+  assert.deepEqual(
+    bookingDiscoveryDates(monitor, {
+      checkIn: "2026-09-02",
+      checkOut: "2026-09-05",
+      nights: 3,
+    }),
+    {
+      checkIn: "2026-09-02",
+      checkOut: "2026-09-05",
+      nights: 3,
+      flexibleWindowDays: 7,
+      flexibleCheckInStart: "2026-09-01",
+      flexibleCheckInEnd: "2026-09-02",
+    },
+  );
 });
 
 test("calculates the real distance between destination and hotel coordinates", () => {

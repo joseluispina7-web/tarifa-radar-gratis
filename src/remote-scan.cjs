@@ -31,6 +31,39 @@ function isoDay(date) {
   return date.toISOString().slice(0, 10);
 }
 
+function bookingDiscoveryDates(monitor, dates) {
+  if (
+    monitor.dateMode !== "range" ||
+    Number(dates.flexibleWindowDays) > 0
+  ) {
+    return dates;
+  }
+  const nights = Math.max(1, Number(dates.nights) || 1);
+  const checkIn = new Date(`${dates.checkIn}T00:00:00Z`);
+  const rangeStart = new Date(`${monitor.dateStart}T00:00:00Z`);
+  const rangeEnd = new Date(`${monitor.dateEnd}T00:00:00Z`);
+  const latestCheckIn = addUtcDays(rangeEnd, -nights);
+  if (
+    ![checkIn, rangeStart, rangeEnd, latestCheckIn].every((date) =>
+      Number.isFinite(date.getTime())
+    )
+  ) {
+    return dates;
+  }
+  const start = new Date(
+    Math.max(rangeStart.getTime(), addUtcDays(checkIn, -7).getTime()),
+  );
+  const end = new Date(
+    Math.min(latestCheckIn.getTime(), addUtcDays(checkIn, 7).getTime()),
+  );
+  return {
+    ...dates,
+    flexibleWindowDays: 7,
+    flexibleCheckInStart: isoDay(start),
+    flexibleCheckInEnd: isoDay(end),
+  };
+}
+
 function monitorSeed(value) {
   return String(value || "")
     .split("")
@@ -415,6 +448,7 @@ if (require.main === module) {
 }
 
 module.exports = {
+  bookingDiscoveryDates,
   buildMonitorScanRequests,
   buildMonitorSearches,
   flexibleSearchShape,

@@ -10,12 +10,20 @@ const {
 } = require("./bluepillow-scraper.cjs");
 const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
+  bookingDiscoveryDates,
   buildMonitorScanRequests,
   flexibleSearchShape,
   monitorIsDue,
   monitorToSearch,
   rangeSearchShape,
 } = require("./remote-scan.cjs");
+const {
+  googleDateEligibility,
+  googleProbeIsDue,
+  recordSourceFailure,
+  recordSourceSuccess,
+  sourceCanRun,
+} = require("./source-health.cjs");
 
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
@@ -36,12 +44,58 @@ const AUTOMATIC_SCRAPERS = {
   trip: scrapeTrip,
   bluepillow: scrapeBluepillow,
 };
+const DISCOVERY_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
+const DIRECT_SOURCES = new Set(["booking", "google_hotels"]);
 
 function sourceIsEnabledForMonitor(monitor, source) {
   return Boolean(
     AUTOMATIC_SCRAPERS[source] &&
       (monitor.strictPrices === false || STRICT_PRICE_SOURCES.has(source)),
   );
+}
+
+function priceWithinDiscoveryRange(offer, search, multiplier = 1.2) {
+  const totalPrice = Number(offer.totalPrice);
+  const nightlyPrice = Number(offer.nightlyPrice);
+  const totalLimit = Number(search.maxTotal) || 0;
+  const nightlyLimit = Number(search.maxNightly) || 0;
+  const totalMatches = totalLimit > 0 && totalPrice <= totalLimit * multiplier;
+  const nightlyMatches =
+    nightlyLimit > 0 && nightlyPrice <= nightlyLimit * multiplier;
+  if (totalLimit > 0 && nightlyLimit > 0 && search.priceRule === "and") {
+    return totalMatches && nightlyMatches;
+  }
+  if (totalLimit > 0 || nightlyLimit > 0) {
+    return totalMatches || nightlyMatches;
+  }
+  return true;
+}
+
+function resultHasPromisingCandidate(result, search) {
+  if ((result?.matchingOffers || []).length) return true;
+  return (result?.offers || []).some((offer) =>
+    priceWithinDiscoveryRange(offer, search)
+  );
+}
+
+function sourceStats(container, source) {
+  container[source] ||= {
+    searches: 0,
+    offers: 0,
+    matches: 0,
+    errors: 0,
+    skipped: 0,
+  };
+  return container[source];
+}
+
+function inclusiveDays(start, end) {
+  const first = Date.parse(`${String(start || "")}T00:00:00Z`);
+  const last = Date.parse(`${String(end || "")}T00:00:00Z`);
+  if (!Number.isFinite(first) || !Number.isFinite(last) || last < first) {
+    return 0;
+  }
+  return Math.round((last - first) / 86_400_000) + 1;
 }
 
 function readJson(filePath, fallback) {
@@ -314,6 +368,10 @@ async function runRepositoryScan(options = {}) {
   });
   const previousDeals = readJson(dealsPath, { deals: [] });
   const now = options.now || new Date();
+  const runtimeScrapers = {
+    ...AUTOMATIC_SCRAPERS,
+    ...(options.scrapers || {}),
+  };
   const activeMonitors = (config.monitors || [])
     .filter((monitor) => monitor.active)
     .filter((monitor) =>
@@ -389,6 +447,7 @@ async function runRepositoryScan(options = {}) {
     const monitorMatchingOffersBySource = new Map();
     const observedOfferKeys = new Set();
     const pendingAlerts = new Map();
+    let sourceHealth = { ...(beforeMonitor.sourceHealth || {}) };
     const status = {
       monitorId: monitor.id,
       monitorName: monitor.name,
@@ -439,60 +498,133 @@ async function runRepositoryScan(options = {}) {
     const successfulSearches = new Map(
       selectedSources.map((source) => [source, 0]),
     );
+    const bookingHeartbeatNights = new Set();
+    for (const source of selectedSources) {
+      sourceStats(summary.sources, source);
+      sourceStats(status.sources, source);
+      currentMatchingOffersBySource.set(
+        source,
+        currentMatchingOffersBySource.get(source) || new Set(),
+      );
+      monitorMatchingOffersBySource.set(source, new Set());
+    }
+
+    const skipSource = (source, reason, retryAt = "") => {
+      const monitorSource = sourceStats(status.sources, source);
+      sourceStats(summary.sources, source).skipped += 1;
+      monitorSource.skipped += 1;
+      monitorSource.lastSkipReason = reason;
+      if (retryAt) monitorSource.retryAt = retryAt;
+      return { source, skipped: true, skipReason: reason };
+    };
+
+    const runSource = async (source, sourceDates, area) => {
+      const availability = sourceCanRun(sourceHealth, source, now);
+      if (!availability.run) {
+        return skipSource(source, availability.reason, availability.retryAt);
+      }
+      const searchInput = monitorToSearch(monitor, sourceDates, area);
+      const summarySource = sourceStats(summary.sources, source);
+      const monitorSource = sourceStats(status.sources, source);
+      summary.searches += 1;
+      status.searches += 1;
+      summarySource.searches += 1;
+      monitorSource.searches += 1;
+      try {
+        const result = await runtimeScrapers[source](searchInput, {
+          headless: options.headless !== false,
+        });
+        sourceHealth = recordSourceSuccess(sourceHealth, source, now);
+        if (source === "booking") {
+          monitorSource.coveredCheckIns =
+            Number(monitorSource.coveredCheckIns || 0) +
+            inclusiveDays(
+              result.search?.flexibleCheckInStart || result.search?.checkIn,
+              result.search?.flexibleCheckInEnd || result.search?.checkIn,
+            );
+        }
+        return { source, result, dates: sourceDates, searchInput };
+      } catch (error) {
+        sourceHealth = recordSourceFailure(sourceHealth, source, error, now);
+        return { source, error, dates: sourceDates, searchInput };
+      }
+    };
+
     let completedDateSweepRequests = 0;
     for (const request of scanRequests) {
       const { dates, area } = request;
-      const searchInput = monitorToSearch(monitor, dates, area);
-      const sourceRuns = await Promise.all(
-        selectedSources.map(async (source) => {
-          summary.searches += 1;
-          status.searches += 1;
-          summary.sources[source] ||= {
-            searches: 0,
-            offers: 0,
-            matches: 0,
-            errors: 0,
-          };
-          status.sources[source] ||= {
-            searches: 0,
-            offers: 0,
-            matches: 0,
-            errors: 0,
-          };
-          if (!currentMatchingOffersBySource.has(source)) {
-            currentMatchingOffersBySource.set(source, new Set());
-          }
-          if (!monitorMatchingOffersBySource.has(source)) {
-            monitorMatchingOffersBySource.set(source, new Set());
-          }
-          summary.sources[source].searches += 1;
-          status.sources[source].searches += 1;
-          try {
-            const result = await AUTOMATIC_SCRAPERS[source](
-              searchInput,
-              { headless: options.headless !== false },
-            );
-            return { source, result };
-          } catch (error) {
-            return { source, error };
-          }
-        }),
+      const discoverySources = selectedSources.filter((source) =>
+        DISCOVERY_SOURCES.has(source)
+      );
+      const discoveryRuns = await Promise.all(
+        discoverySources.map((source) => runSource(source, dates, area)),
+      );
+      const successfulDiscoveryRuns = discoveryRuns.filter(
+        (run) => run.result,
+      );
+      const exactSearchInput = monitorToSearch(monitor, dates, area);
+      const promisingCandidate =
+        discoverySources.length === 0 ||
+        successfulDiscoveryRuns.length === 0 ||
+        successfulDiscoveryRuns.some((run) =>
+          resultHasPromisingCandidate(run.result, exactSearchInput)
+        );
+      const directRuns = [];
+
+      if (selectedSources.includes("booking")) {
+        const nights = Number(dates.nights) || 0;
+        const needsHeartbeat = !bookingHeartbeatNights.has(nights);
+        if (promisingCandidate || needsHeartbeat) {
+          bookingHeartbeatNights.add(nights);
+          directRuns.push(
+            await runSource(
+              "booking",
+              bookingDiscoveryDates(monitor, dates),
+              area,
+            ),
+          );
+        } else {
+          directRuns.push(skipSource("booking", "waiting_for_candidate"));
+        }
+      }
+
+      if (selectedSources.includes("google_hotels")) {
+        const eligibility = googleDateEligibility(dates.checkIn, now);
+        if (!eligibility.eligible) {
+          directRuns.push(skipSource("google_hotels", eligibility.reason));
+        } else if (
+          promisingCandidate ||
+          googleProbeIsDue(sourceHealth, now)
+        ) {
+          directRuns.push(
+            await runSource("google_hotels", dates, area),
+          );
+        } else {
+          directRuns.push(
+            skipSource("google_hotels", "waiting_for_candidate"),
+          );
+        }
+      }
+
+      const sourceRuns = [...discoveryRuns, ...directRuns].filter(
+        (run) => DIRECT_SOURCES.has(run.source) || DISCOVERY_SOURCES.has(run.source),
       );
       let requestSucceeded = false;
       for (const run of sourceRuns) {
         const { source } = run;
+        if (run.skipped) continue;
         if (run.error) {
           const message = run.error instanceof Error
             ? run.error.message
             : String(run.error);
           status.error = `[${source}] ${message}`;
-          status.sources[source].errors += 1;
-          summary.sources[source].errors += 1;
+          sourceStats(status.sources, source).errors += 1;
+          sourceStats(summary.sources, source).errors += 1;
           summary.errors.push({
             monitorId: monitor.id,
             monitorName: monitor.name,
             source,
-            dates,
+            dates: run.dates || dates,
             searchArea: area.name,
             message,
           });
@@ -515,7 +647,7 @@ async function runRepositoryScan(options = {}) {
             monitorId: monitor.id,
             monitorName: monitor.name,
             source,
-            dates,
+            dates: run.dates || dates,
             searchArea: area.name,
             ...error,
           })),
@@ -523,7 +655,18 @@ async function runRepositoryScan(options = {}) {
         clearSearchedDeals(
           dealMap,
           monitor.id,
-          dates,
+          {
+            checkIn: result.search?.checkIn || run.dates?.checkIn || dates.checkIn,
+            checkOut:
+              result.search?.checkOut || run.dates?.checkOut || dates.checkOut,
+            nights: result.search?.nights || run.dates?.nights || dates.nights,
+            flexibleCheckInStart: result.search?.flexibleWindowDays
+              ? result.search.flexibleCheckInStart
+              : undefined,
+            flexibleCheckInEnd: result.search?.flexibleWindowDays
+              ? result.search.flexibleCheckInEnd
+              : undefined,
+          },
           area.name,
           source,
         );
@@ -597,6 +740,22 @@ async function runRepositoryScan(options = {}) {
       if (dateSweepShape && !requestSucceeded) break;
     }
 
+    for (const source of selectedSources) {
+      const monitorSource = sourceStats(status.sources, source);
+      const healthEntry = sourceHealth[source] || {};
+      const availability = sourceCanRun(sourceHealth, source, now);
+      monitorSource.state = !availability.run
+        ? "paused"
+        : Number(healthEntry.consecutiveErrors) > 0
+          ? "degraded"
+          : "healthy";
+      monitorSource.consecutiveErrors =
+        Number(healthEntry.consecutiveErrors) || 0;
+      monitorSource.lastSuccessAt = healthEntry.lastSuccessAt || "";
+      monitorSource.lastError = healthEntry.lastError || "";
+      monitorSource.retryAt = availability.retryAt || monitorSource.retryAt || "";
+    }
+
     let nextDateSweepCursor = dateSweepCursor;
     let nextDateSweepStartDate = dateSweepStartDate;
     let completedDateSweep = false;
@@ -646,6 +805,7 @@ async function runRepositoryScan(options = {}) {
       lastScanAt: now.toISOString(),
       lastSuccessAt: status.lastSuccessAt,
       nearbyLocations: nearbyDiscoveryFailed ? null : nearbyLocations,
+      sourceHealth,
       ...(dateSweepShape
         ? {
             dateSweepVersion: DATE_SWEEP_VERSION,
@@ -706,10 +866,13 @@ if (require.main === module) {
 module.exports = {
   buildDealMap,
   clearSearchedDeals,
+  inclusiveDays,
   mergeDeal,
   monitorFingerprint,
   offerStateIsConfirmed,
+  priceWithinDiscoveryRange,
   readJson,
+  resultHasPromisingCandidate,
   runRepositoryScan,
   sourceIsEnabledForMonitor,
   updateOfferState,

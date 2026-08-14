@@ -1,10 +1,16 @@
 const assert = require("node:assert/strict");
+const fs = require("node:fs");
+const os = require("node:os");
+const path = require("node:path");
 const test = require("node:test");
 const {
   buildDealMap,
   clearSearchedDeals,
   monitorFingerprint,
   offerStateIsConfirmed,
+  priceWithinDiscoveryRange,
+  resultHasPromisingCandidate,
+  runRepositoryScan,
   sourceIsEnabledForMonitor,
   updateOfferState,
 } = require("../src/repository-scan.cjs");
@@ -22,6 +28,122 @@ const monitor = {
   rooms: 1,
   sources: ["booking"],
 };
+
+test("promotes near-budget discovery candidates to direct verification", () => {
+  const search = {
+    maxTotal: 500,
+    maxNightly: 100,
+    priceRule: "or",
+  };
+  assert.equal(
+    priceWithinDiscoveryRange(
+      { totalPrice: 590, nightlyPrice: 120 },
+      search,
+    ),
+    true,
+  );
+  assert.equal(
+    priceWithinDiscoveryRange(
+      { totalPrice: 650, nightlyPrice: 130 },
+      search,
+    ),
+    false,
+  );
+  assert.equal(
+    resultHasPromisingCandidate(
+      { offers: [{ totalPrice: 550, nightlyPrice: 110 }] },
+      search,
+    ),
+    true,
+  );
+});
+
+test("keeps date discovery moving while a failing direct source cools down", async (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "tarifa-radar-cycle-"));
+  t.after(() => {
+    if (path.resolve(root).startsWith(path.resolve(os.tmpdir()))) {
+      fs.rmSync(root, { recursive: true, force: true });
+    }
+  });
+  const paths = ["config", "state", "docs/data"];
+  for (const directory of paths) {
+    fs.mkdirSync(path.join(root, directory), { recursive: true });
+  }
+  const cycleMonitor = {
+    ...monitor,
+    id: "cycle-monitor",
+    dateMode: "range",
+    dateStart: "2026-09-01",
+    dateEnd: "2026-09-10",
+    minNights: 1,
+    maxNights: 1,
+    maxTotal: 200,
+    maxNightly: 200,
+    priceMatch: "or",
+    strictPrices: false,
+    active: true,
+    intervalMinutes: 5,
+    sources: ["agoda", "booking"],
+  };
+  fs.writeFileSync(
+    path.join(root, "config/searches.json"),
+    JSON.stringify({ monitors: [cycleMonitor] }),
+  );
+  fs.writeFileSync(
+    path.join(root, "state/repository-state.json"),
+    JSON.stringify({ version: 1, monitors: {} }),
+  );
+  fs.writeFileSync(
+    path.join(root, "docs/data/deals.json"),
+    JSON.stringify({ version: 1, deals: [] }),
+  );
+
+  let bookingCalls = 0;
+  const resultFor = (source, search, offers = []) => ({
+    source,
+    search,
+    searchedAt: "2026-08-14T18:00:00.000Z",
+    offers,
+    matchingOffers: [],
+    verificationErrors: [],
+  });
+  const result = await runRepositoryScan({
+    root,
+    now: new Date("2026-08-14T18:00:00Z"),
+    scrapers: {
+      agoda: async (search) => resultFor("agoda", search, [{
+        id: `agoda:${search.checkIn}`,
+        source: "agoda",
+        hotelName: "Hotel candidato",
+        totalPrice: 180,
+        nightlyPrice: 180,
+        matches: false,
+        priceVerified: false,
+        checkIn: search.checkIn,
+        checkOut: search.checkOut,
+      }]),
+      booking: async () => {
+        bookingCalls += 1;
+        throw new Error("Booking timeout");
+      },
+    },
+  });
+
+  const monitorResult = result.status.monitors[cycleMonitor.id];
+  assert.equal(bookingCalls, 2);
+  assert.equal(result.summary.sources.agoda.searches, 4);
+  assert.equal(result.summary.sources.booking.errors, 2);
+  assert.equal(result.summary.sources.booking.skipped, 2);
+  assert.equal(monitorResult.sources.booking.state, "paused");
+  assert.equal(monitorResult.dateCoverage.searchesCheckedThisRun, 4);
+  const storedState = JSON.parse(
+    fs.readFileSync(path.join(root, "state/repository-state.json"), "utf8"),
+  );
+  assert.equal(
+    storedState.monitors[cycleMonitor.id].sourceHealth.booking.consecutiveErrors,
+    2,
+  );
+});
 
 test("drops deals created for an older monitor configuration", () => {
   const currentFingerprint = monitorFingerprint(monitor);

@@ -258,6 +258,12 @@ function parseBookingStay(value) {
   }
 }
 
+function bookingPageIndicatesNoAvailability(value) {
+  return /(?:no (?:hay|hemos encontrado|encontramos) (?:alojamientos|disponibilidad|resultados)|ning[u\u00fa]n alojamiento|no (?:properties|availability|results) (?:were )?(?:found|available)|0 alojamientos)/i.test(
+    String(value || ""),
+  );
+}
+
 function bookingStayMatchesSearch(stay, search) {
   if (!stay || stay.nights !== search.nights) return false;
   return (
@@ -1072,26 +1078,58 @@ async function scrapeBooking(input, options = {}) {
     const seenOfferIds = new Set();
     let searchedPages = 0;
     for (const [pageIndex, pageUrl] of pageUrls.entries()) {
-      try {
-        await page.goto(pageUrl, {
-          waitUntil: "domcontentloaded",
-          timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
-        });
-        await page.locator('[data-testid="property-card"]').first().waitFor({
-          state: "visible",
-          timeout: options.timeoutMs || DEFAULT_TIMEOUT_MS,
-        });
-      } catch (error) {
+      let noAvailability = false;
+      let lastLoadError = null;
+      const loadTimeoutMs = Math.min(
+        options.timeoutMs || DEFAULT_TIMEOUT_MS,
+        35_000,
+      );
+      for (let attempt = 0; attempt < 2; attempt += 1) {
+        try {
+          await page.goto(pageUrl, {
+            waitUntil: "domcontentloaded",
+            timeout: loadTimeoutMs,
+          });
+          await page.locator('[data-testid="property-card"]').first().waitFor({
+            state: "visible",
+            timeout: loadTimeoutMs,
+          });
+          lastLoadError = null;
+          break;
+        } catch (error) {
+          lastLoadError = error;
+          const challenged = /[?&]chal_t=|force_referer/i.test(page.url());
+          if (challenged) {
+            throw new Error(
+              "Booking ha solicitado una comprobación del navegador; no se publican precios.",
+              { cause: error },
+            );
+          }
+          const pageText = await page
+            .locator("body")
+            .innerText()
+            .catch(() => "");
+          if (bookingPageIndicatesNoAvailability(pageText)) {
+            noAvailability = true;
+            lastLoadError = null;
+            break;
+          }
+          if (attempt === 0) {
+            await context.clearCookies().catch(() => {});
+            await page.goto("about:blank").catch(() => {});
+            await page.waitForTimeout(600);
+          }
+        }
+      }
+      if (lastLoadError) {
         if (pageIndex > 0) break;
-        const challenged = /[?&]chal_t=|force_referer/i.test(page.url());
         throw new Error(
-          challenged
-            ? "Booking ha solicitado una comprobación del navegador; no se publican precios."
-            : "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite.",
-          { cause: error },
+          "Booking no ha mostrado resultados de alojamiento tras dos intentos.",
+          { cause: lastLoadError },
         );
       }
       searchedPages += 1;
+      if (noAvailability) break;
 
       const pageOffers = await extractVisibleCards(page, search);
       for (const offer of pageOffers) {
@@ -1130,6 +1168,7 @@ async function scrapeBooking(input, options = {}) {
 }
 
 module.exports = {
+  bookingPageIndicatesNoAvailability,
   bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,

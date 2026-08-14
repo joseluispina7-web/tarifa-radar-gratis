@@ -399,20 +399,52 @@ async function ensureCalendarDate(page, isoDate, timeoutMs) {
     .locator('[role="dialog"]:visible')
     .filter({ has: page.locator('[role="gridcell"][data-iso]') })
     .last();
-  for (let month = 0; month < 18; month += 1) {
+  const targetDate = new Date(`${isoDate}T12:00:00Z`);
+  const today = new Date();
+  const monthsAhead = Number.isFinite(targetDate.getTime())
+    ? Math.max(
+        0,
+        (targetDate.getUTCFullYear() - today.getUTCFullYear()) * 12 +
+          targetDate.getUTCMonth() - today.getUTCMonth(),
+      )
+    : 18;
+  const maximumAdvances = Math.min(24, Math.max(18, monthsAhead + 3));
+  for (let month = 0; month < maximumAdvances; month += 1) {
     const dateButton = calendar.locator(selector).first();
     if (await dateButton.count()) {
       await dateButton.waitFor({ state: "visible", timeout: timeoutMs });
       return dateButton;
     }
-    const nextButton = calendar
+    let nextButton = calendar
       .getByRole("button", {
-        name: /Siguiente|Next|Mes siguiente|Next month/i,
+        name: /Siguiente|Next|Mes siguiente|Next month|Avanzar|Navigate forward/i,
       })
       .first();
+    if (!(await nextButton.count())) {
+      nextButton = page
+        .getByRole("button", {
+          name: /Siguiente|Next|Mes siguiente|Next month|Avanzar|Navigate forward/i,
+        })
+        .last();
+    }
     if (!(await nextButton.count()) || await nextButton.isDisabled()) break;
-    await nextButton.evaluate((button) => button.click());
-    await page.waitForTimeout(120);
+    const firstVisibleDate = await calendar
+      .locator('[role="gridcell"][data-iso][aria-hidden="false"]')
+      .first()
+      .getAttribute("data-iso")
+      .catch(() => "");
+    await nextButton.click({ force: true }).catch(async () => {
+      await nextButton.evaluate((button) => button.click());
+    });
+    for (let wait = 0; wait < 6; wait += 1) {
+      await page.waitForTimeout(100);
+      const currentFirstDate = await calendar
+        .locator('[role="gridcell"][data-iso][aria-hidden="false"]')
+        .first()
+        .getAttribute("data-iso")
+        .catch(() => "");
+      if (!firstVisibleDate || currentFirstDate !== firstVisibleDate) break;
+    }
   }
   throw new Error(
     `Google Hotels no mostro la fecha ${isoDate} en el calendario.`,
