@@ -1,3 +1,5 @@
+const { errorFareLevel } = require("./deal-intelligence.cjs");
+
 const PANEL_URL =
   "https://joseluispina7-web.github.io/tarifa-radar-gratis/";
 const MAX_ALERTS_PER_MESSAGE = 4;
@@ -100,15 +102,16 @@ function formatAlert(alert) {
     : hotelName;
   const score = Number(offer.errorFareScore) || 0;
   const discount = Number(offer.discountPercent) || 0;
-  const priceSignal = score >= 75
+  const signalLevel = offer.errorFareLevel || errorFareLevel(score, offer);
+  const priceSignal = signalLevel === "probable_error"
     ? `🔥 <b>Posible tarifa error · ${score}/99</b>${
         discount > 0 ? ` · ${escapeHtml(`${discount}% bajo referencia`)}` : ""
       }`
-    : score >= 55
+    : signalLevel === "unusually_low"
       ? `📉 <b>Precio muy bajo · ${score}/99</b>${
           discount > 0 ? ` · ${escapeHtml(`${discount}% bajo referencia`)}` : ""
         }`
-      : score >= 30
+      : signalLevel === "good_price"
         ? `💡 Buen precio · ${score}/99`
         : "";
   const provider = offer.provider || source;

@@ -3,6 +3,7 @@ const {
   detectAmenities,
   detectMealPlan,
   distanceBetweenCoordinates,
+  effectiveDistanceLimit,
   isSharedRoomText,
   matchesSearch,
   normalizeSearch,
@@ -181,26 +182,104 @@ function sourceSettings(source) {
   return settings;
 }
 
+function candidateCountryCode(candidate) {
+  const direct = String(candidate?.country_code || "").toUpperCase();
+  if (/^[A-Z]{2}$/.test(direct)) return direct;
+  const breadcrumb = Array.isArray(candidate?.path_breadcrumb)
+    ? candidate.path_breadcrumb
+    : [];
+  const inferred = String(breadcrumb[0] || "").toUpperCase();
+  return /^[A-Z]{2}$/.test(inferred) ? inferred : "";
+}
+
+function candidateDistanceKm(candidate, search) {
+  const latitude = Number(candidate?.location?.lat);
+  const longitude = Number(candidate?.location?.lon);
+  if (
+    !Number.isFinite(latitude) ||
+    !Number.isFinite(longitude) ||
+    !Number.isFinite(Number(search.originLatitude)) ||
+    !Number.isFinite(Number(search.originLongitude))
+  ) {
+    return null;
+  }
+  return distanceBetweenCoordinates(
+    Number(search.originLatitude),
+    Number(search.originLongitude),
+    latitude,
+    longitude,
+  );
+}
+
 function chooseDestination(candidates, search) {
   const destinationName = normalizeText(search.destination.split(",")[0]);
   const countryCode = String(search.countryCode || "").toUpperCase();
   const ranked = (candidates || [])
-    .filter((candidate) =>
-      !countryCode ||
-      !candidate.country_code ||
-      candidate.country_code === countryCode
-    )
+    .filter((candidate) => {
+      const candidateCountry = candidateCountryCode(candidate);
+      return !countryCode || !candidateCountry || candidateCountry === countryCode;
+    })
     .map((candidate) => {
       const name = normalizeText(candidate.name);
       const displayName = normalizeText(candidate.display_name);
+      const distanceKm = candidateDistanceKm(candidate, search);
       let score = Number(candidate.confidence) || 0;
       if (name === destinationName) score += 10;
       else if (displayName.startsWith(destinationName)) score += 5;
       if (candidate.type === "city") score += 2;
-      return { candidate, score };
+      if (distanceKm !== null) score += Math.max(0, 5 - distanceKm / 5);
+      return { candidate, distanceKm, score };
     })
+    .filter(({ distanceKm }) => distanceKm === null || distanceKm <= 100)
     .sort((left, right) => right.score - left.score);
   return ranked[0]?.candidate || null;
+}
+
+function coordinateSearchLocation(search) {
+  const latitude = Number(search.originLatitude);
+  const longitude = Number(search.originLongitude);
+  const radius = effectiveDistanceLimit(search);
+  if (
+    radius <= 0 ||
+    !Number.isFinite(latitude) ||
+    !Number.isFinite(longitude)
+  ) {
+    return null;
+  }
+  return {
+    type: "coordinates",
+    value: {
+      lat: latitude,
+      lon: longitude,
+      radius,
+    },
+  };
+}
+
+function bluepillowSearchFilters(search) {
+  const safetyMultiplier = 1 - Number(search.priceSafetyPercent || 0) / 100;
+  const priceLimits = [];
+  if (Number(search.maxTotal) > 0) {
+    priceLimits.push(Number(search.maxTotal) * safetyMultiplier);
+  }
+  if (Number(search.maxNightly) > 0) {
+    priceLimits.push(
+      Number(search.maxNightly) * Number(search.nights) * safetyMultiplier,
+    );
+  }
+  const priceLimit = priceLimits.length
+    ? search.priceRule === "and"
+      ? Math.min(...priceLimits)
+      : Math.max(...priceLimits)
+    : 0;
+  const filters = {
+    ...(priceLimit > 0 ? { price_max_eur: Math.round(priceLimit * 100) / 100 } : {}),
+    ...(search.propertyTypes.length
+      ? { property_types: search.propertyTypes }
+      : {}),
+    ...(search.amenities.length ? { amenities: search.amenities } : {}),
+  };
+  return Object.keys(filters).length ? filters : null;
 }
 
 function linkMatchesStay(value, search) {
@@ -627,15 +706,20 @@ async function resolveBluepillowDestination(search, options = {}) {
 }
 
 async function fetchBluepillowSearch(search, options = {}) {
-  const destination = await resolveBluepillowDestination(search, options);
+  const coordinateLocation = coordinateSearchLocation(search);
+  const destination = coordinateLocation
+    ? null
+    : await resolveBluepillowDestination(search, options);
 
   const payload = await requestJson("/search/stays", {
     ...options,
     idempotent: true,
     body: {
       location: {
-        type: "destination_id",
-        value: destination.id,
+        ...(coordinateLocation || {
+          type: "destination_id",
+          value: destination.id,
+        }),
       },
       dates: {
         check_in: search.checkIn,
@@ -649,17 +733,27 @@ async function fetchBluepillowSearch(search, options = {}) {
         ),
         rooms: search.rooms,
       },
+      filters: bluepillowSearchFilters(search),
       sort: "price_asc",
       page: {
         limit: Math.min(100, Math.max(30, search.maxResults)),
       },
-      user_country: search.countryCode || "ES",
+      user_country: "ES",
       language: "es",
       currency: "EUR",
     },
   });
   return {
-    destination,
+    destination: destination || {
+      id: "",
+      name: search.searchArea || search.destination,
+      type: search.locationType || "coordinates",
+      location: {
+        lat: search.originLatitude,
+        lon: search.originLongitude,
+        default_radius_km: effectiveDistanceLimit(search),
+      },
+    },
     metadata: payload.metadata || {},
     properties: payload.results || [],
   };
@@ -669,6 +763,9 @@ function searchCacheKey(search) {
   return JSON.stringify([
     search.destination,
     search.countryCode,
+    search.originLatitude,
+    search.originLongitude,
+    effectiveDistanceLimit(search),
     search.checkIn,
     search.checkOut,
     search.adults,
@@ -802,8 +899,10 @@ function scrapeBluepillow(input, options = {}) {
 
 module.exports = {
   BLUEPILLOW_SOURCE,
+  bluepillowSearchFilters,
   buildBluepillowOffer,
   chooseDestination,
+  coordinateSearchLocation,
   findSelectedOffer,
   linkMatchesStay,
   mapAmenities,

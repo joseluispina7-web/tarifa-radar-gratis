@@ -148,6 +148,7 @@ test("puts likely error fares first within one location", () => {
         hotelName: "Tarifa error",
         totalPrice: 180,
         errorFareScore: 88,
+        errorFareLevel: "probable_error",
         discountPercent: 54,
       },
     }),
@@ -155,6 +156,22 @@ test("puts likely error fares first within one location", () => {
   assert.ok(message.indexOf("Tarifa error") < message.indexOf("Precio normal"));
   assert.match(message, /Posible tarifa error · 88\/99/);
   assert.match(message, /54% bajo referencia/);
+});
+
+test("does not call a high score an error fare without the required evidence", () => {
+  const message = buildAlertMessage([
+    makeAlert({
+      offer: {
+        hotelName: "Precio llamativo",
+        totalPrice: 180,
+        errorFareScore: 88,
+        errorFareLevel: "unusually_low",
+        discountPercent: 54,
+      },
+    }),
+  ]);
+  assert.match(message, /Precio muy bajo/);
+  assert.doesNotMatch(message, /Posible tarifa error/);
 });
 
 test("labels Trip.com alerts as directly verified", () => {

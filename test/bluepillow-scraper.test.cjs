@@ -2,7 +2,9 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
   buildBluepillowOffer,
+  bluepillowSearchFilters,
   chooseDestination,
+  coordinateSearchLocation,
   linkMatchesStay,
   parseBluepillowPriceBreakdown,
   parseTripFinalTotal,
@@ -117,6 +119,63 @@ test("chooses the exact city and country from destination candidates", () => {
     search(),
   );
   assert.equal(selected.id, "city");
+});
+
+test("rejects a same-name street candidate in the wrong country", () => {
+  const selected = chooseDestination(
+    [
+      {
+        id: "taipei",
+        name: "Nanjing East Road",
+        display_name: "Nanjing East Road, Taipei, Taiwan",
+        type: "poi",
+        country_code: null,
+        path_breadcrumb: ["tw", "taipei-city", "nanjing-east-road"],
+        confidence: 0.9,
+        location: { lat: 25.05, lon: 121.52 },
+      },
+    ],
+    search({
+      destination: "East Nanjing Road, Shanghai, China",
+      countryCode: "CN",
+      originLatitude: 31.2407165,
+      originLongitude: 121.4842575,
+    }),
+  );
+  assert.equal(selected, null);
+});
+
+test("uses coordinates and the configured radius for street searches", () => {
+  const location = coordinateSearchLocation(
+    search({
+      destination: "East Nanjing Road, Shanghai, China",
+      countryCode: "CN",
+      originLatitude: 31.2407165,
+      originLongitude: 121.4842575,
+      maxDistanceKm: 0,
+      locationRadiusKm: 2,
+    }),
+  );
+  assert.deepEqual(location, {
+    type: "coordinates",
+    value: { lat: 31.2407165, lon: 121.4842575, radius: 2 },
+  });
+});
+
+test("asks the comparison API for the configured price, type and amenities", () => {
+  const filters = bluepillowSearchFilters(
+    search({
+      maxTotal: 250,
+      priceSafetyPercent: 5,
+      propertyTypes: ["hotel", "resort"],
+      amenities: ["pool"],
+    }),
+  );
+  assert.deepEqual(filters, {
+    price_max_eur: 237.5,
+    property_types: ["hotel", "resort"],
+    amenities: ["pool"],
+  });
 });
 
 test("falls back from a neighbourhood to its parent city", async () => {
