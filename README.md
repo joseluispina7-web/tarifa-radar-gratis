@@ -41,12 +41,16 @@ y precio justo antes de generar la alerta.
 
 ## Ubicaciones detalladas
 
-El autocompletado de ciudades utiliza Open-Meteo. Para barrios, distritos,
-playas, calles o direcciones, el usuario debe pulsar la lupa o Enter; esa
-acción consulta Nominatim con datos de OpenStreetMap. Las consultas detalladas
-se limitan a una por segundo y se guardan durante 30 días en el navegador. No
-se usa Nominatim como autocompletado automático, de acuerdo con su
-[política de uso](https://operations.osmfoundation.org/policies/nominatim/).
+Las sugerencias globales de ciudades, barrios, estaciones, lugares y calles
+utilizan [Photon](https://github.com/komoot/photon), con datos de OpenStreetMap,
+una pausa entre consultas y caché local. La ciudad ya seleccionada se usa para
+priorizar resultados cercanos, incluso cuando la calle está escrita en otro
+idioma. Open-Meteo permanece como respaldo para ciudades.
+
+La lupa o Enter realizan una búsqueda más exhaustiva con Nominatim. Esas
+consultas explícitas se limitan a una por segundo y se guardan durante 30 días
+en el navegador. No se usa Nominatim como autocompletado automático, de acuerdo
+con su [política de uso](https://operations.osmfoundation.org/policies/nominatim/).
 
 Una ubicación detallada conserva sus coordenadas y la ciudad a la que
 pertenece. El escáner aplica un radio implícito de 1 km para direcciones, 2 km

@@ -5,6 +5,7 @@ const {
   mergeLocationResults,
   normalizeNominatimLocation,
   normalizeOpenMeteoLocation,
+  normalizePhotonLocation,
 } = require("../docs/location-search.js");
 
 test("normalizes a neighbourhood with its parent city and safe radius", () => {
@@ -76,4 +77,65 @@ test("normalizes streets and keeps city results compatible", () => {
   assert.equal(city.locationRadiusKm, 0);
   assert.equal(city.locationCity, "Madrid");
   assert.equal(mergeLocationResults([street], [street, city]).length, 2);
+});
+
+test("normalizes a Shanghai street from Photon with city context", () => {
+  const street = normalizePhotonLocation(
+    {
+      properties: {
+        osm_type: "W",
+        osm_id: 177993351,
+        osm_key: "highway",
+        osm_value: "pedestrian",
+        type: "street",
+        name: "East Nanjing Road",
+        locality: "Waitanyuan",
+        district: "Waitan",
+        city: "Huangpu",
+        state: "Shanghai",
+        country: "China",
+        postcode: "200002",
+        countrycode: "CN",
+      },
+      geometry: {
+        type: "Point",
+        coordinates: [121.4842575, 31.2407165],
+      },
+    },
+    {
+      latitude: 31.2304,
+      longitude: 121.4737,
+      locationCity: "Shanghai",
+      countryCode: "CN",
+    },
+  );
+
+  assert.match(street.label, /^East Nanjing Road/);
+  assert.match(street.label, /Shanghai/);
+  assert.equal(street.locationCity, "Shanghai");
+  assert.equal(street.locationType, "road");
+  assert.equal(street.locationRadiusKm, 2);
+  assert.equal(street.countryCode, "CN");
+  assert.equal(isDetailedLocation(street), true);
+});
+
+test("recognizes stations before Photon's generic house type", () => {
+  const station = normalizePhotonLocation({
+    properties: {
+      osm_type: "N",
+      osm_id: 468916502,
+      osm_key: "railway",
+      osm_value: "station",
+      type: "house",
+      name: "East Nanjing Road",
+      city: "Huangpu",
+      state: "Shanghai",
+      country: "China",
+      countrycode: "CN",
+    },
+    geometry: { type: "Point", coordinates: [121.4792291, 31.2391239] },
+  });
+
+  assert.equal(station.locationType, "station");
+  assert.equal(station.locationRadiusKm, 2);
 });

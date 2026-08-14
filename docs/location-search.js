@@ -26,7 +26,22 @@
     "city_district",
     "beach",
     "tourism",
+    "station",
+    "airport",
+    "amenity",
+    "shop",
+    "poi",
   ]);
+
+  const CHINA_MUNICIPALITIES = [
+    "beijing",
+    "chongqing",
+    "hong kong",
+    "macao",
+    "macau",
+    "shanghai",
+    "tianjin",
+  ];
 
   function compactParts(parts) {
     const seen = new Set();
@@ -58,6 +73,11 @@
       city_district: "Distrito",
       beach: "Playa",
       tourism: "Lugar",
+      station: "Estaci\u00f3n",
+      airport: "Aeropuerto",
+      amenity: "Lugar",
+      shop: "Comercio",
+      poi: "Lugar",
       city: "Ciudad",
       town: "Localidad",
       village: "Localidad",
@@ -102,11 +122,130 @@
         "city_district",
         "beach",
         "tourism",
+        "airport",
+        "amenity",
+        "shop",
+        "poi",
       ].includes(normalized)
     ) {
       return 3;
     }
+    if (normalized === "station") return 2;
     return 0;
+  }
+
+  function distanceKm(leftLatitude, leftLongitude, rightLatitude, rightLongitude) {
+    const values = [
+      leftLatitude,
+      leftLongitude,
+      rightLatitude,
+      rightLongitude,
+    ].map(Number);
+    if (!values.every(Number.isFinite)) return Infinity;
+    const [lat1, lon1, lat2, lon2] = values.map(
+      (value) => (value * Math.PI) / 180,
+    );
+    const latitudeDelta = lat2 - lat1;
+    const longitudeDelta = lon2 - lon1;
+    const a =
+      Math.sin(latitudeDelta / 2) ** 2 +
+      Math.cos(lat1) * Math.cos(lat2) *
+        Math.sin(longitudeDelta / 2) ** 2;
+    return 6371 * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  }
+
+  function photonLocationType(properties) {
+    const key = String(properties.osm_key || "").toLowerCase();
+    const type = String(properties.type || properties.osm_value || "place")
+      .toLowerCase();
+    if (key === "highway" || type === "street") return "road";
+    if (key === "railway" || type === "station" || type === "stop") {
+      return "station";
+    }
+    if (key === "aeroway" || /airport|aerodrome/.test(type)) return "airport";
+    if (key === "tourism") return "tourism";
+    if (key === "amenity" || key === "leisure" || key === "historic") {
+      return "amenity";
+    }
+    if (key === "shop") return "shop";
+    if (type === "house" && properties.housenumber) return "house";
+    return type;
+  }
+
+  function normalizeMunicipalityName(value) {
+    return String(value || "")
+      .replace(/\s+(?:municipality|city)$/i, "")
+      .trim();
+  }
+
+  function photonParentCity(properties, context, latitude, longitude) {
+    const countryCode = String(properties.countrycode || "").toUpperCase();
+    const contextCountry = String(context?.countryCode || "").toUpperCase();
+    if (
+      context?.locationCity &&
+      (!contextCountry || !countryCode || contextCountry === countryCode) &&
+      distanceKm(
+        latitude,
+        longitude,
+        context.latitude,
+        context.longitude,
+      ) <= 120
+    ) {
+      return String(context.locationCity).trim();
+    }
+
+    const state = normalizeMunicipalityName(properties.state);
+    if (
+      countryCode === "CN" &&
+      CHINA_MUNICIPALITIES.includes(state.toLowerCase())
+    ) {
+      return state;
+    }
+    return String(properties.city || state || properties.district || "").trim();
+  }
+
+  function normalizePhotonLocation(feature, context = null) {
+    const properties = feature?.properties || {};
+    const coordinates = feature?.geometry?.coordinates || [];
+    const longitude = Number(coordinates[0]);
+    const latitude = Number(coordinates[1]);
+    const type = photonLocationType(properties);
+    const name = String(
+      properties.name || properties.street || properties.locality || "",
+    ).trim();
+    const city = photonParentCity(properties, context, latitude, longitude);
+    const district = String(properties.district || properties.locality || "").trim();
+    const label = compactParts([
+      properties.housenumber ? `${name} ${properties.housenumber}` : name,
+      district,
+      city,
+      properties.state,
+      properties.country,
+    ]).join(", ");
+    const details = compactParts([
+      locationTypeLabel(type),
+      properties.street !== name ? properties.street : "",
+      properties.locality !== district ? properties.locality : "",
+      properties.postcode,
+    ]).join(" · ");
+
+    return {
+      id:
+        "photon:" +
+        String(properties.osm_type || "place") +
+        ":" +
+        String(properties.osm_id || label),
+      name,
+      label,
+      details,
+      latitude,
+      longitude,
+      countryCode: String(properties.countrycode || "").toUpperCase(),
+      locationType: type,
+      locationCity: city || name,
+      locationRadiusKm: locationRadiusKm(type),
+      source: "photon",
+    };
   }
 
   function normalizeOpenMeteoLocation(item) {
@@ -130,9 +269,25 @@
     };
   }
 
+  function nominatimLocationType(item) {
+    const type = String(item.addresstype || item.type || "place").toLowerCase();
+    const category = String(item.category || item.class || "").toLowerCase();
+    if (category === "railway" || type === "railway") return "station";
+    if (category === "aeroway" || /airport|aerodrome/.test(type)) {
+      return "airport";
+    }
+    if (category === "tourism") return "tourism";
+    if (["amenity", "leisure", "historic"].includes(category)) {
+      return "amenity";
+    }
+    if (category === "shop") return "shop";
+    return type;
+  }
+
   function normalizeNominatimLocation(item) {
     const address = item.address || {};
-    const type = String(item.addresstype || item.type || "place").toLowerCase();
+    const type = nominatimLocationType(item);
+    const namedetails = item.namedetails || {};
     const city = String(
       address.city ||
         address.town ||
@@ -142,7 +297,9 @@
         "",
     ).trim();
     const name = String(
-      item.name ||
+      namedetails["name:es"] ||
+        namedetails["name:en"] ||
+        item.name ||
         address.road ||
         address.neighbourhood ||
         address.quarter ||
@@ -228,5 +385,6 @@
     mergeLocationResults,
     normalizeNominatimLocation,
     normalizeOpenMeteoLocation,
+    normalizePhotonLocation,
   };
 });

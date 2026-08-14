@@ -9,6 +9,9 @@
   const DEALS_PATH = "docs/data/deals.json";
   const ACCESS_KEY_STORAGE = "tarifa-radar-panel-key";
   const LOCATION_CACHE_STORAGE = "tarifa-radar-location-cache-v1";
+  const LOCATION_SUGGESTION_CACHE_STORAGE =
+    "tarifa-radar-location-suggestions-v1";
+  const SUGGESTION_GEOCODER_URL = "https://photon.komoot.io/api/";
   const DETAILED_GEOCODER_URL =
     "https://nominatim.openstreetmap.org/search";
   const {
@@ -16,6 +19,7 @@
     mergeLocationResults,
     normalizeNominatimLocation,
     normalizeOpenMeteoLocation,
+    normalizePhotonLocation,
   } = window.TarifaLocationSearch;
   const TOKEN_VAULT = {
     salt: "JVjEw2MYf1z15nqoGYMyAQ==",
@@ -72,6 +76,8 @@
     locationRequest: 0,
     locationSearchBusy: false,
     lastDetailedLocationRequestAt: 0,
+    locationContext: null,
+    locationAbortController: null,
     dealMonitorFilter: "all",
   };
   let resultsRefreshPending = false;
@@ -812,6 +818,21 @@
 
   function fillEditor() {
     const draft = state.draft;
+    const hasLocationCoordinates =
+      Number.isFinite(Number(draft.latitude)) &&
+      Number.isFinite(Number(draft.longitude));
+    state.locationContext =
+      draft.locationId &&
+      hasLocationCoordinates &&
+      String(draft.locationType || "").toLowerCase() !== "country"
+        ? {
+            latitude: Number(draft.latitude),
+            longitude: Number(draft.longitude),
+            countryCode: draft.countryCode || "",
+            locationCity:
+              draft.locationCity || String(draft.location || "").split(",")[0],
+          }
+        : null;
     draft.sources = Array.isArray(draft.sources) && draft.sources.length
       ? draft.sources
       : ["booking"];
@@ -1114,23 +1135,118 @@
     }
   }
 
-  async function searchCityLocations(query, requestId) {
+  function locationContextFingerprint() {
+    if (!state.locationContext) return "global";
+    return [
+      Number(state.locationContext.latitude).toFixed(2),
+      Number(state.locationContext.longitude).toFixed(2),
+      state.locationContext.countryCode || "",
+    ].join(":");
+  }
+
+  function suggestionCacheKey(query) {
+    return `${String(query || "").trim().toLocaleLowerCase("es")}|${locationContextFingerprint()}`;
+  }
+
+  function readLocationSuggestionCache(query) {
+    try {
+      const entries = JSON.parse(
+        localStorage.getItem(LOCATION_SUGGESTION_CACHE_STORAGE) || "[]",
+      );
+      const key = suggestionCacheKey(query);
+      const entry = entries.find((item) => item.key === key);
+      const maxAgeMs = 7 * 24 * 60 * 60 * 1000;
+      return entry && Date.now() - Number(entry.savedAt) < maxAgeMs
+        ? entry.locations
+        : null;
+    } catch {
+      return null;
+    }
+  }
+
+  function writeLocationSuggestionCache(query, locations) {
+    try {
+      const key = suggestionCacheKey(query);
+      const current = JSON.parse(
+        localStorage.getItem(LOCATION_SUGGESTION_CACHE_STORAGE) || "[]",
+      ).filter((item) => item.key !== key);
+      current.unshift({ key, savedAt: Date.now(), locations });
+      localStorage.setItem(
+        LOCATION_SUGGESTION_CACHE_STORAGE,
+        JSON.stringify(current.slice(0, 50)),
+      );
+    } catch {
+      // Suggestions still work when browser storage is unavailable.
+    }
+  }
+
+  async function fetchPhotonLocations(query, signal, context) {
+    const cached = readLocationSuggestionCache(query);
+    if (cached) return cached;
+    const url = new URL(SUGGESTION_GEOCODER_URL);
+    url.searchParams.set("q", query);
+    url.searchParams.set("limit", "10");
+    url.searchParams.set("lang", "en");
+    if (context) {
+      url.searchParams.set("lat", String(context.latitude));
+      url.searchParams.set("lon", String(context.longitude));
+      url.searchParams.set("zoom", "12");
+      url.searchParams.set("location_bias_scale", "0.7");
+    }
+    const response = await fetch(url, {
+      headers: { Accept: "application/json" },
+      signal,
+    });
+    if (!response.ok) throw new Error("No se pudieron cargar las sugerencias.");
+    const payload = await response.json();
+    const locations = (payload.features || [])
+      .map((feature) => normalizePhotonLocation(feature, context))
+      .filter((location) => location.label);
+    writeLocationSuggestionCache(query, locations);
+    return locations;
+  }
+
+  async function fetchCityLocations(query, signal) {
     const response = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
         query,
       )}&count=8&language=es&format=json`,
+      { signal },
     );
     if (!response.ok) throw new Error("No se pudo consultar el destino.");
     const payload = await response.json();
-    if (requestId !== state.locationRequest) return;
-    state.locationResults = (payload.results || [])
+    return (payload.results || [])
       .map(normalizeOpenMeteoLocation)
       .filter((location) => location.label);
+  }
+
+  async function searchLocationSuggestions(query, requestId) {
+    state.locationAbortController?.abort();
+    const controller = new AbortController();
+    state.locationAbortController = controller;
+    const context = state.locationContext
+      ? { ...state.locationContext }
+      : null;
+    const requests = [fetchCityLocations(query, controller.signal)];
+    if (query.length >= 3) {
+      requests.unshift(fetchPhotonLocations(query, controller.signal, context));
+    }
+    const results = await Promise.allSettled(requests);
+    if (requestId !== state.locationRequest) return;
+    const fulfilled = results
+      .filter((result) => result.status === "fulfilled")
+      .map((result) => result.value);
+    if (!fulfilled.length) {
+      const failure = results.find((result) => result.status === "rejected");
+      if (failure?.reason?.name === "AbortError") return;
+      throw failure?.reason || new Error("No se pudo consultar el destino.");
+    }
+    state.locationResults = mergeLocationResults(...fulfilled).slice(0, 12);
     renderLocationResults();
   }
 
   function locationCacheKey(query) {
-    return String(query || "").trim().toLocaleLowerCase("es");
+    return `${String(query || "").trim().toLocaleLowerCase("es")}|${locationContextFingerprint()}`;
   }
 
   function readDetailedLocationCache(query) {
@@ -1184,12 +1300,16 @@
     const query = $("#location-query").value.trim();
     if (query.length < 2 || state.locationSearchBusy) return;
     clearTimeout(state.locationTimer);
+    state.locationAbortController?.abort();
     const requestId = ++state.locationRequest;
     setDetailedLocationBusy(true);
     $("#form-error").textContent = "";
     renderLocationMessage("Buscando barrios, calles y zonas…");
 
     try {
+      const context = state.locationContext
+        ? { ...state.locationContext }
+        : null;
       let locations = readDetailedLocationCache(query);
       if (!locations) {
         const elapsed = Date.now() - state.lastDetailedLocationRequestAt;
@@ -1202,7 +1322,26 @@
         url.searchParams.set("addressdetails", "1");
         url.searchParams.set("limit", "8");
         url.searchParams.set("dedupe", "1");
-        url.searchParams.set("accept-language", "es");
+        url.searchParams.set("namedetails", "1");
+        url.searchParams.set(
+          "layer",
+          "address,poi,railway,natural,manmade",
+        );
+        url.searchParams.set("accept-language", "es,en,zh");
+        if (context) {
+          const latitude = Number(context.latitude);
+          const longitude = Number(context.longitude);
+          url.searchParams.set(
+            "viewbox",
+            [
+              longitude - 0.8,
+              latitude + 0.6,
+              longitude + 0.8,
+              latitude - 0.6,
+            ].join(","),
+          );
+          url.searchParams.set("bounded", "0");
+        }
         state.lastDetailedLocationRequestAt = Date.now();
         const response = await fetch(url, {
           headers: { Accept: "application/json" },
@@ -1244,6 +1383,12 @@
     state.draft.locationType = location.locationType || "place";
     state.draft.locationCity = location.locationCity || "";
     state.draft.locationRadiusKm = Number(location.locationRadiusKm) || 0;
+    state.locationContext = {
+      latitude: Number(location.latitude),
+      longitude: Number(location.longitude),
+      countryCode: location.countryCode || "",
+      locationCity: location.locationCity || location.name || "",
+    };
     $("#location-query").value = location.label;
     const type = locationTypeLabel(location.locationType);
     $("#location-confirmed").innerHTML =
@@ -1300,6 +1445,7 @@
     state.draft.locationRadiusKm = 0;
     $("#location-confirmed").textContent = "";
     clearTimeout(state.locationTimer);
+    state.locationAbortController?.abort();
     const requestId = ++state.locationRequest;
     if (value.length < 2) {
       state.locationResults = [];
@@ -1307,10 +1453,11 @@
       return;
     }
     state.locationTimer = setTimeout(() => {
-      searchCityLocations(value, requestId).catch((error) => {
+      searchLocationSuggestions(value, requestId).catch((error) => {
+        if (error?.name === "AbortError") return;
         $("#form-error").textContent = error.message;
       });
-    }, 350);
+    }, 650);
   }
 
   function switchView(view) {
