@@ -769,9 +769,12 @@ async function runRepositoryScan(options = {}) {
       const availability = sourceCanRun(sourceHealth, source, now);
       monitorSource.state = !availability.run
         ? "paused"
-        : Number(healthEntry.consecutiveErrors) > 0
-          ? "degraded"
-          : "healthy";
+        : Number(monitorSource.searches) === 0 &&
+            Number(monitorSource.skipped) > 0
+          ? "limited"
+          : Number(healthEntry.consecutiveErrors) > 0
+            ? "degraded"
+            : "healthy";
       monitorSource.consecutiveErrors =
         Number(healthEntry.consecutiveErrors) || 0;
       monitorSource.lastSuccessAt = healthEntry.lastSuccessAt || "";
@@ -782,12 +785,14 @@ async function runRepositoryScan(options = {}) {
     let nextDateSweepCursor = dateSweepCursor;
     let nextDateSweepStartDate = dateSweepStartDate;
     let completedDateSweep = false;
-    if (dateSweepShape && completedDateSweepRequests > 0) {
-      nextDateSweepCursor = dateSweepCursor + completedDateSweepRequests;
-      if (nextDateSweepCursor >= dateSweepShape.combinations) {
-        nextDateSweepCursor = 0;
-        nextDateSweepStartDate = now.toISOString().slice(0, 10);
-        completedDateSweep = true;
+    if (dateSweepShape) {
+      if (completedDateSweepRequests > 0) {
+        nextDateSweepCursor = dateSweepCursor + completedDateSweepRequests;
+        if (nextDateSweepCursor >= dateSweepShape.combinations) {
+          nextDateSweepCursor = 0;
+          nextDateSweepStartDate = now.toISOString().slice(0, 10);
+          completedDateSweep = true;
+        }
       }
       status.dateCoverage = {
         mode: monitor.dateMode,

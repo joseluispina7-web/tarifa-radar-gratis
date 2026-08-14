@@ -367,9 +367,11 @@
                   value.state === "degraded" || Number(value.errors) > 0,
               )
             ? "degraded"
-            : values.length
-              ? "healthy"
-              : "pending";
+            : values.some((value) => value.state === "limited")
+              ? "limited"
+              : values.length
+                ? "healthy"
+                : "pending";
         const searches = values.reduce(
           (total, value) => total + Number(value.searches || 0),
           0,
@@ -379,7 +381,7 @@
           0,
         );
         return `<span class="connection-source ${health}">
-          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : "check-circle-2"}"></i>
+          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : health === "limited" ? "clock-3" : "check-circle-2"}"></i>
           <span><strong>${escapeHtml(label)}</strong><small>${searches} intentos · ${errors} fallos</small></span>
         </span>`;
       })
@@ -438,6 +440,7 @@
     if (!sourceStatus) return "pending";
     if (sourceStatus.state === "paused") return "paused";
     if (sourceStatus.state === "degraded") return "degraded";
+    if (sourceStatus.state === "limited") return "limited";
     return "healthy";
   }
 
@@ -454,11 +457,15 @@
           ? `Pausado hasta ${current?.retryAt ? formatDateTime(current.retryAt) : "el siguiente intento"}`
           : health === "degraded"
             ? `${current?.consecutiveErrors || 1} fallo(s) reciente(s)`
-            : health === "healthy"
-              ? "Operativo"
-              : "Pendiente del próximo ciclo";
+            : health === "limited"
+              ? current?.lastSkipReason === "calendar_limit"
+                ? "Fecha fuera del calendario fiable de Google"
+                : "Esperando una fecha candidata"
+              : health === "healthy"
+                ? "Operativo"
+                : "Pendiente del próximo ciclo";
         return `<span class="source-health ${health}" title="${escapeHtml(detail)}">
-          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : "check"}"></i>
+          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : health === "limited" ? "clock-3" : "check"}"></i>
           ${escapeHtml(sourceLabel(source))}
         </span>`;
       })

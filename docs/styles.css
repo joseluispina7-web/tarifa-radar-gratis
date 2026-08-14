@@ -833,6 +833,12 @@ select:focus {
   color: #707873;
 }
 
+.source-health.limited {
+  background: #e8f1f5;
+  border-color: #b8d0db;
+  color: #315f70;
+}
+
 .location-search .input-with-icon input {
   padding-right: 42px;
 }
@@ -1562,6 +1568,10 @@ select:focus {
 .connection-source.degraded > svg,
 .connection-source.paused > svg {
   color: #a6533f;
+}
+
+.connection-source.limited > svg {
+  color: #315f70;
 }
 
 .connection-source > span {

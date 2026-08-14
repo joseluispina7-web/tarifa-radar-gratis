@@ -264,6 +264,22 @@ function bookingPageIndicatesNoAvailability(value) {
   );
 }
 
+function bookingPageLostSearch(value, pageText = "") {
+  try {
+    const url = new URL(value);
+    const hasSearchParameters =
+      url.searchParams.has("ss") &&
+      url.searchParams.has("checkin") &&
+      url.searchParams.has("checkout");
+    return (
+      !hasSearchParameters &&
+      /Indica el destino|Enter your destination/i.test(String(pageText || ""))
+    );
+  } catch {
+    return false;
+  }
+}
+
 function bookingStayMatchesSearch(stay, search) {
   if (!stay || stay.nights !== search.nights) return false;
   return (
@@ -1080,6 +1096,7 @@ async function scrapeBooking(input, options = {}) {
     for (const [pageIndex, pageUrl] of pageUrls.entries()) {
       let noAvailability = false;
       let lastLoadError = null;
+      let searchParametersLost = false;
       const loadTimeoutMs = Math.min(
         options.timeoutMs || DEFAULT_TIMEOUT_MS,
         35_000,
@@ -1109,6 +1126,8 @@ async function scrapeBooking(input, options = {}) {
             .locator("body")
             .innerText()
             .catch(() => "");
+          searchParametersLost =
+            searchParametersLost || bookingPageLostSearch(page.url(), pageText);
           if (bookingPageIndicatesNoAvailability(pageText)) {
             noAvailability = true;
             lastLoadError = null;
@@ -1124,7 +1143,9 @@ async function scrapeBooking(input, options = {}) {
       if (lastLoadError) {
         if (pageIndex > 0) break;
         throw new Error(
-          "Booking no ha mostrado resultados de alojamiento tras dos intentos.",
+          searchParametersLost
+            ? "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+            : "Booking no ha mostrado resultados de alojamiento tras dos intentos.",
           { cause: lastLoadError },
         );
       }
@@ -1169,6 +1190,7 @@ async function scrapeBooking(input, options = {}) {
 
 module.exports = {
   bookingPageIndicatesNoAvailability,
+  bookingPageLostSearch,
   bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,

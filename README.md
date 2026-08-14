@@ -30,6 +30,14 @@ publican cuando el enlace acredita que el total incluye impuestos, conserva
 las fechas exactas y el endpoint `/validate` confirma de nuevo disponibilidad
 y precio justo antes de generar la alerta.
 
+El barrido funciona en dos fases. Agoda, Trip.com y Bluepillow descubren
+fechas candidatas con rapidez; Booking usa además ventanas flexibles de hasta
+15 entradas y Google Hotels se reserva para candidatos prometedores o pruebas
+periódicas. Cada fuente conserva un estado de salud. Después de varios fallos
+se pausa durante un intervalo corto sin detener el avance del resto del
+barrido. Las fechas que quedan fuera del calendario fiable de Google se marcan
+como limitadas, no como errores de precio.
+
 - destino verificado con coordenadas;
 - fechas exactas o flexibles;
 - noches mínimas y máximas;
@@ -38,6 +46,17 @@ y precio justo antes de generar la alerta.
 - valoración, distancia, cancelación y régimen;
 - tipo de alojamiento y servicios visibles en la ficha;
 - adultos, niños, habitaciones y frecuencia.
+
+Cada ciclo calcula una referencia de precio por noche con los alojamientos
+observados para la misma estancia. Las ofertas verificadas reciben una
+puntuación de posible tarifa error según su descuento respecto a esa
+referencia, una bajada real y la coincidencia entre varios proveedores. El
+panel agrupa el mismo hotel y muestra sus tarifas juntas, además del porcentaje
+de cobertura y la salud de cada buscador.
+
+Telegram envía todas las alertas, separadas por ubicación y ordenadas por
+probabilidad de tarifa error. Cada mensaje identifica fechas, total, precio
+por noche, calidad, proveedor real y método de verificación.
 
 ## Ubicaciones detalladas
 
@@ -78,3 +97,7 @@ node src/repository-scan.cjs
 
 GitHub puede retrasar alguna ejecución programada. El cron de cinco minutos es
 la frecuencia solicitada, no una garantía de hora exacta.
+
+El escáner publica ofertas, estado y cursor en un único commit atómico por
+ciclo. Si la configuración cambia durante la publicación, vuelve a leer la
+rama y reintenta sin sobrescribir la búsqueda recién guardada.

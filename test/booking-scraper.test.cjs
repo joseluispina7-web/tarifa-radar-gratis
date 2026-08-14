@@ -2,6 +2,7 @@ const assert = require("node:assert/strict");
 const test = require("node:test");
 const {
   bookingPageIndicatesNoAvailability,
+  bookingPageLostSearch,
   bookingStayMatchesSearch,
   buildBookingPageUrls,
   buildBookingSearchUrl,
@@ -595,6 +596,20 @@ test("distinguishes no availability from a technical Booking failure", () => {
   );
   assert.equal(
     bookingPageIndicatesNoAvailability("Comprueba tu conexión e inténtalo"),
+    false,
+  );
+  assert.equal(
+    bookingPageLostSearch(
+      "https://www.booking.com/searchresults.es.html",
+      "Indica el destino Seleccionar fechas",
+    ),
+    true,
+  );
+  assert.equal(
+    bookingPageLostSearch(
+      "https://www.booking.com/searchresults.es.html?ss=Shanghai&checkin=2026-09-23&checkout=2026-09-26",
+      "Indica el destino",
+    ),
     false,
   );
 });
