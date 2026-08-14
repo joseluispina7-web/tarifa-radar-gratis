@@ -836,6 +836,15 @@
           }
           comparisonGroups.get(comparisonId).push(deal);
         }
+        const uniqueHotels = new Set(
+          group
+            .map((deal) =>
+              String(deal.hotelName || "")
+                .trim()
+                .toLocaleLowerCase("es-ES"),
+            )
+            .filter(Boolean),
+        ).size;
         return `
           <section class="deal-group">
             <header class="deal-group-header">
@@ -843,7 +852,7 @@
                 <strong>${escapeHtml(name)}</strong>
                 <small>${escapeHtml(location)}</small>
               </span>
-              <b>${comparisonGroups.size} ${comparisonGroups.size === 1 ? "alojamiento" : "alojamientos"} · ${group.length} ${group.length === 1 ? "tarifa" : "tarifas"}</b>
+              <b>${uniqueHotels} ${uniqueHotels === 1 ? "hotel" : "hoteles"} · ${comparisonGroups.size} ${comparisonGroups.size === 1 ? "estancia" : "estancias"} · ${group.length} ${group.length === 1 ? "tarifa" : "tarifas"}</b>
             </header>
             ${Array.from(comparisonGroups.values())
               .sort(

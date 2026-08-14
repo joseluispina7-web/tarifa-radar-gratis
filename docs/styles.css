@@ -1964,10 +1964,41 @@ select:focus {
     border-top: 1px solid var(--line);
   }
 
+  .deal-group-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .deal-group-header > span {
+    width: 100%;
+  }
+
+  .deal-group-header b {
+    max-width: 100%;
+    white-space: normal;
+  }
+
   .deal-comparison-heading {
     gap: 10px;
-    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr);
     padding: 13px;
+  }
+
+  .deal-comparison-price {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .deal-comparison-title > strong,
+  .deal-comparison-title > small,
+  .provider-offers-heading small {
+    overflow-wrap: anywhere;
+  }
+
+  .fare-signal {
+    flex-wrap: wrap;
+    max-width: 100%;
   }
 
   .deal-comparison-price strong {
@@ -1983,6 +2014,10 @@ select:focus {
 
   .provider-offer {
     grid-template-columns: minmax(0, 1fr) auto 38px;
+  }
+
+  .provider-offers-heading {
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .provider-offer-price {
