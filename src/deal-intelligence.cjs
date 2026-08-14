@@ -252,6 +252,13 @@ function comparisonGroupId(deal) {
     .slice(0, 16);
 }
 
+function comparisonProviderKey(provider) {
+  const providerName = normalizeHotelName(
+    String(provider?.provider || "").replace(/\s+via\s+bluepillow$/i, ""),
+  );
+  return providerName || normalizeHotelName(provider?.source);
+}
+
 function enrichDealComparisons(deals = []) {
   const groups = [];
   for (const deal of deals) {
@@ -282,7 +289,7 @@ function enrichDealComparisons(deals = []) {
       }))
       .sort((left, right) => left.totalPrice - right.totalPrice);
     const uniqueProviders = new Set(
-      providers.map((provider) => provider.source || provider.provider),
+      providers.map(comparisonProviderKey).filter(Boolean),
     );
     const bestTotalPrice = Math.min(
       ...group.map((deal) => Number(deal.totalPrice) || Infinity),
@@ -296,7 +303,8 @@ function enrichDealComparisons(deals = []) {
             if (totalPrice <= 0 || candidatePrice <= 0) return false;
             return Math.abs(candidatePrice - totalPrice) / totalPrice <= 0.08;
           })
-          .map((provider) => provider.source || provider.provider),
+          .map(comparisonProviderKey)
+          .filter(Boolean),
       );
       const agreementBoost = agreeingProviders.size >= 2 ? 10 : 0;
       const marketScore = Number.isFinite(Number(deal.marketErrorFareScore))
@@ -329,6 +337,7 @@ module.exports = {
   annotateMarketPrices,
   applyPriceDropIntelligence,
   classifyErrorFare,
+  comparisonProviderKey,
   enrichDealComparisons,
   errorFareLevel,
   hotelNamesMatch,

@@ -169,3 +169,36 @@ test("does not treat two very different provider prices as corroboration", () =>
   assert.equal(deals[0].agreeingProviderCount, 1);
   assert.equal(deals[0].errorFareLevel, "unusually_low");
 });
+
+test("does not count the same OTA twice through Bluepillow", () => {
+  const base = {
+    monitorId: "shanghai",
+    hotelName: "Meego Yes Hotel",
+    checkIn: "2026-09-23",
+    checkOut: "2026-09-26",
+    totalPrice: 70.2,
+    nightlyPrice: 23.4,
+    discountPercent: 75,
+    marketSampleSize: 18,
+    marketErrorFareScore: 99,
+    priceVerified: true,
+    priceConfirmationCount: 2,
+  };
+  const deals = enrichDealComparisons([
+    {
+      ...base,
+      id: "agoda",
+      source: "agoda",
+      provider: "Agoda via Bluepillow",
+    },
+    {
+      ...base,
+      id: "bluepillow",
+      source: "bluepillow",
+      provider: "Agoda via Bluepillow",
+    },
+  ]);
+  assert.equal(deals[0].providerCount, 1);
+  assert.equal(deals[0].agreeingProviderCount, 1);
+  assert.equal(deals[0].errorFareLevel, "unusually_low");
+});
