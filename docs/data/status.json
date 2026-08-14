@@ -1,73 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T18:20:36.152Z",
+  "updatedAt": "2026-08-14T18:25:35.500Z",
   "summary": {
-    "generatedAt": "2026-08-14T18:20:36.152Z",
-    "monitors": 3,
-    "searches": 60,
-    "offers": 162,
-    "matches": 4,
+    "generatedAt": "2026-08-14T18:25:35.500Z",
+    "monitors": 2,
+    "searches": 40,
+    "offers": 171,
+    "matches": 13,
     "newMatches": 1,
-    "priceDrops": 1,
+    "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 12,
-        "offers": 0,
-        "matches": 0,
-        "errors": 12
+        "searches": 8,
+        "offers": 47,
+        "matches": 10,
+        "errors": 5
       },
       "google_hotels": {
-        "searches": 12,
+        "searches": 8,
         "offers": 0,
         "matches": 0,
-        "errors": 9
+        "errors": 8
       },
       "agoda": {
-        "searches": 12,
-        "offers": 18,
+        "searches": 8,
+        "offers": 12,
         "matches": 0,
-        "errors": 0
-      },
-      "bluepillow": {
-        "searches": 12,
-        "offers": 124,
-        "matches": 2,
         "errors": 0
       },
       "trip": {
-        "searches": 12,
-        "offers": 20,
+        "searches": 8,
+        "offers": 17,
+        "matches": 1,
+        "errors": 0
+      },
+      "bluepillow": {
+        "searches": 8,
+        "offers": 95,
         "matches": 2,
         "errors": 0
       }
     },
     "verificationErrors": [
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-16",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 415.65 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-16",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 415.65 EUR."
-      },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
@@ -80,6 +54,32 @@
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 341.00 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-31",
+          "nights": 7
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Hotel ibis Setubal",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 454.35 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-31",
+          "nights": 7
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Hotel ibis Setubal",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 454.35 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
@@ -95,6 +95,45 @@
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 416.90 EUR."
       },
       {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2027-07-25",
+          "checkOut": "2027-07-30",
+          "nights": 5
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Hotel Arangues",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 524.00 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2027-07-25",
+          "checkOut": "2027-07-30",
+          "nights": 5
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Hotel Arangues",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 524.00 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-25",
+          "checkOut": "2027-07-30",
+          "nights": 5
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Hotel Arangues",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 524.00 EUR."
+      },
+      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
@@ -108,32 +147,6 @@
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 492.80 EUR."
       },
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.54 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.54 EUR."
-      },
-      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
@@ -145,85 +158,11 @@
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 356.40 EUR."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2027-07-25",
-          "checkOut": "2027-07-30",
-          "nights": 5
-        },
-        "searchArea": "Setúbal",
-        "hotelName": "Hotel ibis Setubal",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 319.25 EUR."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-25",
-          "checkOut": "2027-07-30",
-          "nights": 5
-        },
-        "searchArea": "Setúbal",
-        "hotelName": "Hotel ibis Setubal",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 319.25 EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-16",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-29",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-29",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-29",
-          "nights": 5
-        },
-        "searchArea": "Alcácer do Sal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "google_hotels",
@@ -231,66 +170,6 @@
           "checkIn": "2027-07-24",
           "checkOut": "2027-07-29",
           "nights": 5
-        },
-        "searchArea": "Alcácer do Sal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-30",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-30",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-17",
-          "nights": 4
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-30",
-          "nights": 6
-        },
-        "searchArea": "Grândola",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-30",
-          "nights": 6
         },
         "searchArea": "Grândola",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
@@ -301,79 +180,7 @@
         "source": "booking",
         "dates": {
           "checkIn": "2027-07-24",
-          "checkOut": "2027-07-31",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-31",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2026-11-14 en el calendario."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-31",
-          "nights": 7
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-24",
-          "checkOut": "2027-07-31",
-          "nights": 7
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-25",
-          "checkOut": "2027-07-30",
+          "checkOut": "2027-07-29",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -384,57 +191,200 @@
         "monitorName": "Sesimbra",
         "source": "google_hotels",
         "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-29",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-30",
+          "nights": 6
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-30",
+          "nights": 6
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-31",
+          "nights": 7
+        },
+        "searchArea": "Setúbal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-30",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-30",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
           "checkIn": "2027-07-25",
           "checkOut": "2027-07-30",
           "nights": 5
         },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "searchArea": "Palmela",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-25 en el calendario."
       },
       {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-18",
-          "nights": 4
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-31",
+          "nights": 7
         },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
       },
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-24",
+          "checkOut": "2027-07-31",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-24 en el calendario."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
           "checkIn": "2027-07-25",
           "checkOut": "2027-07-30",
           "nights": 5
         },
-        "searchArea": "Setúbal",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking no ha mostrado resultados de alojamiento dentro del tiempo límite."
       },
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
         "source": "google_hotels",
         "dates": {
           "checkIn": "2027-07-25",
           "checkOut": "2027-07-30",
           "nights": 5
         },
-        "searchArea": "Setúbal",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-25 en el calendario."
       }
     ]
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-14T18:25:35.500Z",
+      "lastSuccessAt": "2026-08-14T18:27:25.187134Z",
+      "searches": 20,
+      "offers": 102,
+      "matches": 11,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 4,
+          "offers": 47,
+          "matches": 10,
+          "errors": 1
+        },
+        "google_hotels": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 4
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 9,
+          "matches": 0,
+          "errors": 0
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 9,
+          "matches": 1,
+          "errors": 0
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 37,
+          "matches": 0,
+          "errors": 0
+        }
+      },
+      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-25 en el calendario.",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-14",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 36,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 40,
+        "remainingSearchesInSweep": 95,
+        "completedSweep": false
+      }
+    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-14T18:20:36.152Z",
-      "lastSuccessAt": "2026-08-14T18:23:45.416950Z",
+      "lastScanAt": "2026-08-14T18:25:35.500Z",
+      "lastSuccessAt": "2026-08-14T18:28:42.079017Z",
       "searches": 20,
       "offers": 69,
       "matches": 2,
@@ -483,154 +433,38 @@
         "remainingSearchesInSweep": 95,
         "completedSweep": false
       }
-    },
-    "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "lastScanAt": "2026-08-14T18:20:36.152Z",
-      "lastSuccessAt": "2026-08-14T18:23:46.622855Z",
-      "searches": 20,
-      "offers": 51,
-      "matches": 1,
-      "nearbyLocations": [],
-      "sources": {
-        "booking": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 4
-        },
-        "google_hotels": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 1
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 8,
-          "matches": 0,
-          "errors": 0
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 38,
-          "matches": 0,
-          "errors": 0
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 5,
-          "matches": 1,
-          "errors": 0
-        }
-      },
-      "error": "[booking] Booking no ha mostrado resultados de alojamiento dentro del tiempo límite.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-14",
-        "totalCombinations": 65,
-        "totalSearches": 65,
-        "startIndex": 36,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 40,
-        "remainingSearchesInSweep": 25,
-        "completedSweep": false
-      }
-    },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-14T18:20:36.152Z",
-      "lastSuccessAt": "2026-08-14T18:23:46.720930Z",
-      "searches": 20,
-      "offers": 42,
-      "matches": 1,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 4
-        },
-        "google_hotels": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 4
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 7,
-          "matches": 0,
-          "errors": 0
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 7,
-          "matches": 1,
-          "errors": 0
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 28,
-          "matches": 0,
-          "errors": 0
-        }
-      },
-      "error": "[google_hotels] Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels no mostro la fecha 2027-07-25 en el calendario.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-14",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 36,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 40,
-        "remainingSearchesInSweep": 95,
-        "completedSweep": false
-      }
     }
   },
   "alerts": [
     {
-      "type": "price_drop",
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "previousPrice": 368.6,
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
       "offer": {
-        "id": "trip:prop_648086681f174c2170a26089|2026-11-14|2026-11-17",
-        "source": "trip",
-        "provider": "Trip.com",
-        "hotelName": "Hostal Numancia",
-        "address": "Madrid",
-        "checkIn": "2026-11-14",
-        "checkOut": "2026-11-17",
-        "nights": 3,
-        "totalPrice": 368.54,
-        "nightlyPrice": 122.85,
-        "displayedNightlyPrice": 122.85,
-        "rateSubtotal": 368.54,
-        "searchResultPrice": 368.54,
+        "id": "/hotel/pt/o-cantinho-quinta-do-anjo.es.html|2027-07-25|2027-07-30",
+        "source": "booking",
+        "hotelName": "O Cantinho Guesthouse com Terraço e Vistas em Quinta do Anjo",
+        "address": "Quinta do Anjo",
+        "checkIn": "2027-07-25",
+        "checkOut": "2027-07-30",
+        "nights": 5,
+        "totalPrice": 315,
+        "nightlyPrice": 63,
+        "rateSubtotal": 297.17,
         "additionalCharges": 0,
-        "includedTaxesAndFees": 0,
-        "taxesText": "Total final leido directamente en Trip.com",
-        "stayText": "3 noches para 2 adultos",
+        "taxesText": "",
+        "stayText": "5 noches, 2 adultos",
+        "bookingBlockIds": [
+          "501473701_169714297_0_0_0"
+        ],
         "priceVerified": true,
-        "priceBasis": "trip_direct_final_total_v1",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-14T18:22:51.584Z",
-        "stars": 1,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 4,
         "guestRating": 8,
-        "reviewCount": 631,
-        "distanceKm": 0.4593742097294949,
-        "freeCancellation": false,
+        "reviewCount": 532,
+        "distanceKm": 24.78,
+        "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": true,
         "propertyType": "hotel",
@@ -638,70 +472,37 @@
           "air_conditioning"
         ],
         "mealPlan": "any",
-        "roomName": "",
+        "roomName": "1 cama doble grande",
         "sharedRoom": false,
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "url": "https://us.trip.com/hotels/list/searchresults?hotelid=749768&city=357&Allianceid=3783604&sid=20644290&checkin=2026-11-14&checkout=2026-11-17&shoppingid=245d1822980d11f1a4151e4c19fce612&adult=2&children=2&ages=7,7&language=enus&locale=en_US&roomid=1541516535&swid=0&pay=PP&fgt=1&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wD_AAD_Cl8KBhgCIAcgBxIECAEQABpPCPfZht8FGAAwADj7EZgByOEtqAEAuAEEwAEA0QHsUbgehetbQOEBcT0K16MId0DoAcXAqRuIAkKJBAAAAAAAAAAAoAQAoQX2KFyPwnU-QBogMjQ1ZDE4MjI5ODBkMTFmMWE0MTUxZTRjMTlmY2U2MTIgASj0uf3TBkgDUgY2Y2VlMGFaHAoDRVVSEY4G8BZIMB9AGgNFVVIhjgbwFkgwH0BiBWVuX1VTaLoWcAF4AIoBB0gBeADIAQGqAQDyASIyNDVkMTgyMjk4MGQxMWYxYTQxNTFlNGMxOWZjZTYxMl8zmgIJSGlnaFZhbHVlAAAA__8BAAD__4H9p4f_AAAA&display=inctotal",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/ak-d.tripcdn.com/images/0224q120009zrf1jo04DB_R_960_660_R5_D.jpg",
-        "bluepillowPropertyId": "prop_648086681f174c2170a26089",
-        "bluepillowOta": "TripCom",
+        "searchArea": "Palmela",
+        "url": "https://www.booking.com/hotel/pt/o-cantinho-quinta-do-anjo.es.html?ucfs=1&arphpl=1&checkin=2027-07-25&checkout=2027-07-30&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=25&hapos=25&sr_order=price&srpvid=1ada81c64afc020a&srepoch=1786732046&all_sr_blocks=501473701_169714297_0_0_0&highlighted_blocks=501473701_169714297_0_0_0&matching_block_id=501473701_169714297_0_0_0&sr_pri_blocks=501473701_169714297_0_0_0__29717&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
         "matches": true,
-        "candidateMatches": true
-      },
-      "createdAt": "2026-08-14T18:22:45.018766Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "trip:prop_594390ea7c00cb0e6438fe8b|2027-07-25|2027-07-30",
-        "source": "trip",
-        "provider": "Trip.com",
-        "hotelName": "Hotel ibis Setubal",
-        "address": "Setúbal",
-        "checkIn": "2027-07-25",
-        "checkOut": "2027-07-30",
-        "nights": 5,
-        "totalPrice": 319.25,
-        "nightlyPrice": 63.85,
-        "displayedNightlyPrice": 63.85,
-        "rateSubtotal": 319.25,
-        "searchResultPrice": 319.25,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 0,
-        "taxesText": "Total final leido directamente en Trip.com",
-        "stayText": "5 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "trip_direct_final_total_v1",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-14T18:23:49.995Z",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 2524,
-        "distanceKm": 18.13105619419628,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "parking",
-          "pool",
-          "air_conditioning"
+        "latitude": 38.567278200368655,
+        "longitude": -8.94158439969116,
+        "distanceVerified": true,
+        "searchResultPrice": 297.17,
+        "bookingTableTotal": 314.82,
+        "bookingTablePriceConsistent": true,
+        "encodedStayTotal": 315,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0.06,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "6% IVA",
+        "verificationRows": [
+          {
+            "blockId": "501473701_169714297_0_0_0",
+            "priceText": "€ 297",
+            "displayedPriceText": "€ 297",
+            "priceCellText": "€ 297\nPrecio € 297\nNo incluido: 6% IVA",
+            "taxesText": "No incluido: 6% IVA"
+          }
         ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://us.trip.com/hotels/list/searchresults?hotelid=3684958&city=10246&Allianceid=3783604&sid=20644290&checkin=2027-07-25&checkout=2027-07-30&shoppingid=498e1220980d11f1b7afd2c88ee3ba71&adult=2&children=0&ages=&language=enus&locale=en_US&roomid=1580303763&swid=0&pay=PP&fgt=1&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wAHAfj-CmAKAhgCEgQIARAAGlQIk4vG8QUSATIYADAfOPURmAHe9OABqAEAuAECwAEA0QFcj8L1KDxMQOEBAAAAAAD0c0DoAe-z6I8BiAJCiQQAAAAAAAA0QKAEAKEFAAAAAAAAAAAaIDQ5OGUxMjIwOTgwZDExZjFiN2FmZDJjODhlZTNiYTcxIAEosrr90wZIBVIGNTkzMjVjWhwKA0VVUhGOBvAWSDAfQBoDRVVSIY4G8BZIMB9AYgVlbl9VU2i3GHABeACKAQdIAXgAyAEBqgEHCgMwMjEQAvIBIjQ5OGUxMjIwOTgwZDExZjFiN2FmZDJjODhlZTNiYTcxXzGaAglIaWdoVmFsdWUAAAD__wEAAP__T6_2FQcBAAA&display=inctotal",
-        "imageUrl": "https://q-xx.bstatic.com/xdata/images/hotel/max500/749006134.jpg?k=d559060ef07b3c67dff7b6aee878b2cc26402e1ccca35bbbcb1888658474cb6b&o=&a=1538557",
-        "bluepillowPropertyId": "prop_594390ea7c00cb0e6438fe8b",
-        "bluepillowOta": "TripCom",
-        "matches": true,
-        "candidateMatches": true
+        "taxFallbackRate": 0.06,
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-14T18:28:31.217Z"
       },
-      "createdAt": "2026-08-14T18:23:46.720930Z"
+      "createdAt": "2026-08-14T18:28:31.254Z"
     }
   ]
 }
