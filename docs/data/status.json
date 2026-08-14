@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-14T20:04:54.054Z",
+  "updatedAt": "2026-08-14T20:08:45.904Z",
   "summary": {
-    "generatedAt": "2026-08-14T20:04:54.054Z",
+    "generatedAt": "2026-08-14T20:08:45.904Z",
     "monitors": 3,
     "searches": 35,
-    "offers": 150,
-    "matches": 3,
-    "newMatches": 2,
+    "offers": 148,
+    "matches": 10,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 8,
-        "offers": 25,
-        "matches": 0,
+        "offers": 23,
+        "matches": 9,
         "errors": 2,
         "skipped": 1
       },
@@ -27,7 +27,7 @@
       "agoda": {
         "searches": 9,
         "offers": 23,
-        "matches": 1,
+        "matches": 0,
         "errors": 0,
         "skipped": 0
       },
@@ -41,12 +41,48 @@
       "bluepillow": {
         "searches": 9,
         "offers": 76,
-        "matches": 2,
+        "matches": 1,
         "errors": 0,
         "skipped": 0
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Shanghai",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-09-23",
+          "checkOut": "2026-09-26"
+        },
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "hotelName": "Meego Yes Hotel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 94.99 EUR."
+      },
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Shanghai",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2026-09-23",
+          "checkOut": "2026-09-26"
+        },
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "hotelName": "Meego Yes Hotel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 94.99 EUR."
+      },
+      {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Shanghai",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-09-23",
+          "checkOut": "2026-09-26"
+        },
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "hotelName": "Meego Yes Hotel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 94.99 EUR."
+      },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
@@ -59,18 +95,6 @@
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 499.40 EUR."
-      },
-      {
-        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-        "monitorName": "Shanghai",
-        "source": "trip",
-        "dates": {
-          "checkIn": "2026-09-23",
-          "checkOut": "2026-09-26"
-        },
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "hotelName": "Meego Yes Hotel",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 70.20 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
@@ -131,8 +155,8 @@
         "source": "booking",
         "dates": {
           "checkIn": "2027-07-31",
-          "checkOut": "2027-08-07",
-          "nights": 7,
+          "checkOut": "2027-08-05",
+          "nights": 5,
           "flexibleWindowDays": 7,
           "flexibleCheckInStart": "2027-07-24",
           "flexibleCheckInEnd": "2027-08-07"
@@ -143,106 +167,14 @@
     ]
   },
   "monitors": {
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-14T20:04:54.054Z",
-      "lastSuccessAt": "2026-08-14T20:05:55.981923Z",
-      "searches": 15,
-      "offers": 38,
-      "matches": 0,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 3,
-          "offers": 25,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 1,
-          "coveredCheckIns": 45,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 1,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 12,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-14",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 56,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 60,
-        "remainingSearchesInSweep": 75,
-        "completedSweep": false
-      }
-    },
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-14T20:04:54.054Z",
-      "lastSuccessAt": "2026-08-14T20:04:56.721498Z",
+      "lastScanAt": "2026-08-14T20:08:45.904Z",
+      "lastSuccessAt": "2026-08-14T20:08:46.255462Z",
       "searches": 4,
       "offers": 61,
-      "matches": 2,
+      "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
@@ -255,7 +187,7 @@
           "consecutiveErrors": 2,
           "lastSuccessAt": "2026-08-14T19:12:10.930Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-          "retryAt": "2026-08-14T20:19:54.054Z"
+          "retryAt": "2026-08-14T20:23:45.904Z"
         },
         "google_hotels": {
           "searches": 0,
@@ -273,12 +205,12 @@
         "agoda": {
           "searches": 1,
           "offers": 19,
-          "matches": 1,
+          "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -290,30 +222,122 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 1,
           "offers": 21,
-          "matches": 1,
+          "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         }
       },
       "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
     },
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-14T20:08:45.904Z",
+      "lastSuccessAt": "2026-08-14T20:11:00.208818Z",
+      "searches": 15,
+      "offers": 36,
+      "matches": 9,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 3,
+          "offers": 23,
+          "matches": 9,
+          "errors": 0,
+          "skipped": 1,
+          "coveredCheckIns": 45,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 4,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 1,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 12,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-14",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 56,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 60,
+        "remainingSearchesInSweep": 75,
+        "completedSweep": false
+      }
+    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-14T20:04:54.054Z",
-      "lastSuccessAt": "2026-08-14T20:06:54.732511Z",
+      "lastScanAt": "2026-08-14T20:08:45.904Z",
+      "lastSuccessAt": "2026-08-14T20:13:11.317Z",
       "searches": 16,
       "offers": 51,
       "matches": 1,
@@ -326,10 +350,10 @@
           "errors": 1,
           "skipped": 0,
           "coveredCheckIns": 45,
-          "state": "degraded",
-          "consecutiveErrors": 1,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
+          "lastError": "",
           "retryAt": ""
         },
         "google_hotels": {
@@ -353,7 +377,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -365,7 +389,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -377,7 +401,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-14T20:04:54.054Z",
+          "lastSuccessAt": "2026-08-14T20:08:45.904Z",
           "lastError": "",
           "retryAt": ""
         }
@@ -396,182 +420,5 @@
       }
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-      "monitorName": "Shanghai",
-      "previousPrice": 0,
-      "offer": {
-        "id": "agoda:prop_61828cca9e3163a56a29681e|2026-09-23|2026-09-26",
-        "source": "agoda",
-        "provider": "Agoda via Bluepillow",
-        "hotelName": "Meego Yes Hotel",
-        "address": "Shanghai",
-        "checkIn": "2026-09-23",
-        "checkOut": "2026-09-26",
-        "nights": 3,
-        "totalPrice": 70.2,
-        "nightlyPrice": 23.4,
-        "displayedNightlyPrice": 23.4,
-        "rateSubtotal": 70.2,
-        "searchResultPrice": 70.2,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 9.99,
-        "taxesText": "Total con 9.99 EUR de impuestos y tasas incluidos",
-        "stayText": "3 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "agoda_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-14T20:04:57.811Z",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 988,
-        "distanceKm": 1.9891922868021792,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "pool",
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/pix8.agoda.net/hotelImages/6890740/-1/023460ff3875a59006a3d06ede339c63.jpg",
-        "bluepillowPropertyId": "prop_61828cca9e3163a56a29681e",
-        "bluepillowOta": "Agoda",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 83.93,
-        "marketSampleSize": 28,
-        "discountPercent": 72.1,
-        "marketErrorFareScore": 97,
-        "errorFareScore": 99,
-        "errorFareLevel": "probable_error",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 97,
-        "comparisonGroupId": "afb3c1482de53c0f",
-        "providerCount": 2,
-        "comparisonProviders": [
-          {
-            "source": "agoda",
-            "provider": "Agoda via Bluepillow",
-            "totalPrice": 70.2,
-            "nightlyPrice": 23.4,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          },
-          {
-            "source": "bluepillow",
-            "provider": "Agoda via Bluepillow",
-            "totalPrice": 70.2,
-            "nightlyPrice": 23.4,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 70.2,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-14T20:04:56.721498Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-      "monitorName": "Shanghai",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_61828cca9e3163a56a29681e|2026-09-23|2026-09-26",
-        "source": "bluepillow",
-        "provider": "Agoda via Bluepillow",
-        "hotelName": "Meego Yes Hotel",
-        "address": "Shanghai",
-        "checkIn": "2026-09-23",
-        "checkOut": "2026-09-26",
-        "nights": 3,
-        "totalPrice": 70.2,
-        "nightlyPrice": 23.4,
-        "displayedNightlyPrice": 23.4,
-        "rateSubtotal": 70.2,
-        "searchResultPrice": 70.2,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 9.99,
-        "taxesText": "Total con 9.99 EUR de impuestos y tasas incluidos",
-        "stayText": "3 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "agoda_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-14T20:04:57.811Z",
-        "stars": 0,
-        "guestRating": 8,
-        "reviewCount": 988,
-        "distanceKm": 1.9891922868021792,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "pool",
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/pix8.agoda.net/hotelImages/6890740/-1/023460ff3875a59006a3d06ede339c63.jpg",
-        "bluepillowPropertyId": "prop_61828cca9e3163a56a29681e",
-        "bluepillowOta": "Agoda",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 83.93,
-        "marketSampleSize": 28,
-        "discountPercent": 72.1,
-        "marketErrorFareScore": 97,
-        "errorFareScore": 99,
-        "errorFareLevel": "probable_error",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 97,
-        "comparisonGroupId": "afb3c1482de53c0f",
-        "providerCount": 2,
-        "comparisonProviders": [
-          {
-            "source": "agoda",
-            "provider": "Agoda via Bluepillow",
-            "totalPrice": 70.2,
-            "nightlyPrice": 23.4,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          },
-          {
-            "source": "bluepillow",
-            "provider": "Agoda via Bluepillow",
-            "totalPrice": 70.2,
-            "nightlyPrice": 23.4,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D332%26masterRoomId%3D85173560%26mpt%3DaGw3TFI5bXlrbENYNm1nT2w5UnJSZ1B6cnF0UmxaMGFGMzNoc09tMElGUW5xYXgzV3hGQnhFT09SQVVkY2c4VTJoRGVjUXFzclVZcg%26TotalPrice%3D70.20%26TotalTax%3D3.84%26TotalFee%3D6.15%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 70.2,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-14T20:04:56.721498Z"
-    }
-  ]
+  "alerts": []
 }
