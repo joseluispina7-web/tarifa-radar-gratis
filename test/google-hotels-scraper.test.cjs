@@ -3,6 +3,7 @@ const test = require("node:test");
 const {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
+  googleHotelsLoadAttempt,
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
   parseGoogleGuestRating,
@@ -41,6 +42,19 @@ test("builds a Google Hotels search without pretending URL dates work", () => {
   assert.equal(url.searchParams.get("curr"), "EUR");
   assert.equal(url.searchParams.has("checkin"), false);
   assert.equal(url.searchParams.has("checkout"), false);
+});
+
+test("falls back to a direct Google Hotels query when suggestions fail", () => {
+  const searchUrl = buildGoogleHotelsSearchUrl(search());
+  const firstAttempt = googleHotelsLoadAttempt(searchUrl, 0);
+  const fallbackAttempt = googleHotelsLoadAttempt(searchUrl, 1);
+
+  assert.equal(firstAttempt.selectDestination, true);
+  assert.match(firstAttempt.url, /hoteles%20en%20Madrid/);
+  assert.deepEqual(fallbackAttempt, {
+    url: searchUrl,
+    selectDestination: false,
+  });
 });
 
 test("rejects a nightly Google price mislabeled as the stay total", () => {

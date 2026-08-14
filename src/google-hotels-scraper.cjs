@@ -30,6 +30,12 @@ function buildGoogleHotelsSearchUrl(input) {
   return url.toString();
 }
 
+function googleHotelsLoadAttempt(searchUrl, attempt) {
+  return attempt === 0
+    ? { url: GOOGLE_HOTELS_SEED_URL, selectDestination: true }
+    : { url: searchUrl, selectDestination: false };
+}
+
 function parseGoogleHotelsTotal(value) {
   const text = String(value || "");
   const suffixMatch = text.match(
@@ -357,7 +363,10 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
   await destinationInput.waitFor({ state: "visible", timeout: timeoutMs });
   await destinationInput.fill(query);
   const options = page.getByRole("option");
-  await options.first().waitFor({ state: "visible", timeout: timeoutMs });
+  await options.first().waitFor({
+    state: "visible",
+    timeout: Math.min(timeoutMs, 10_000),
+  });
   const labels = await options.allTextContents();
   const normalizedQuery = normalizeGoogleQuery(query);
   const normalizedDestination = normalizeGoogleQuery(destination);
@@ -974,18 +983,23 @@ async function loadGoogleHotels(page, search, options = {}) {
   let lastError = null;
   for (let attempt = 0; attempt < attempts; attempt += 1) {
     try {
-      await page.goto(GOOGLE_HOTELS_SEED_URL, {
+      const loadAttempt = googleHotelsLoadAttempt(searchUrl, attempt);
+      await page.goto(loadAttempt.url, {
         waitUntil: "domcontentloaded",
         timeout: timeoutMs,
       });
       await acceptGoogleConsent(page);
       if (/Error 500/i.test(await page.title())) {
-        await page.goto(GOOGLE_HOTELS_SEED_URL, {
+        await page.goto(loadAttempt.url, {
           waitUntil: "domcontentloaded",
           timeout: timeoutMs,
         });
       }
-      await selectGoogleHotelsDestination(page, search, timeoutMs);
+      if (loadAttempt.selectDestination) {
+        await selectGoogleHotelsDestination(page, search, timeoutMs);
+      } else {
+        await page.waitForTimeout(1_500);
+      }
       await selectGoogleHotelsGuests(page, search, timeoutMs);
       await selectGoogleHotelsDates(page, search, timeoutMs);
       await page.locator("h2").nth(1).waitFor({
@@ -1110,6 +1124,7 @@ module.exports = {
   extractGoogleHotelCards,
   extractGoogleHotelCandidates,
   googleHotelsDiagnostics,
+  googleHotelsLoadAttempt,
   googleCandidateMatches,
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
