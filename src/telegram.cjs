@@ -1,6 +1,6 @@
 const PANEL_URL =
   "https://joseluispina7-web.github.io/tarifa-radar-gratis/";
-const MAX_ALERTS_PER_MESSAGE = 5;
+const MAX_ALERTS_PER_MESSAGE = 4;
 const MESSAGE_DELAY_MS = 1_100;
 
 function escapeHtml(value) {
@@ -48,7 +48,7 @@ function formatSource(source) {
   }[source] || source;
 }
 
-function formatVerification(source) {
+function formatVerification(source, provider = "") {
   if (source === "booking") {
     return "Precio reconfirmado en Booking antes del aviso";
   }
@@ -59,7 +59,7 @@ function formatVerification(source) {
     return "Total final leido directamente en Trip.com antes del aviso";
   }
   if (["agoda", "bluepillow"].includes(source)) {
-    return `Precio de comparador revalidado en ${formatSource(source)} via Bluepillow; confirma el total al abrir`;
+    return `Precio revalidado por Bluepillow${provider ? `; proveedor ${provider}` : ""}. Confirma el total al abrir`;
   }
   return "Precio verificado antes del aviso";
 }
@@ -98,21 +98,38 @@ function formatAlert(alert) {
   const hotel = offer.url
     ? `<a href="${escapeHtml(offer.url)}">${hotelName}</a>`
     : hotelName;
+  const score = Number(offer.errorFareScore) || 0;
+  const discount = Number(offer.discountPercent) || 0;
+  const priceSignal = score >= 75
+    ? `🔥 <b>Posible tarifa error · ${score}/99</b>${
+        discount > 0 ? ` · ${escapeHtml(`${discount}% bajo referencia`)}` : ""
+      }`
+    : score >= 55
+      ? `📉 <b>Precio muy bajo · ${score}/99</b>${
+          discount > 0 ? ` · ${escapeHtml(`${discount}% bajo referencia`)}` : ""
+        }`
+      : score >= 30
+        ? `💡 Buen precio · ${score}/99`
+        : "";
+  const provider = offer.provider || source;
+  const providerAgreement = Number(offer.providerCount) >= 2
+    ? `🔎 ${offer.providerCount} proveedores comparados`
+    : "";
 
   return [
-    `<b>${type}</b>`,
-    hotel,
-    escapeHtml(
-      [alert.monitorName, offer.address].filter(Boolean).join(" · "),
-    ),
-    escapeHtml(stay),
-    `<b>${escapeHtml(formatMoney(offer.totalPrice))} total</b> · ${escapeHtml(
+    `<b>${alert.type === "price_drop" ? "📉" : "🏨"} ${type}</b>`,
+    `<b>${hotel}</b>`,
+    `📅 ${escapeHtml(stay)}`,
+    `💶 <b>${escapeHtml(formatMoney(offer.totalPrice))} total</b> · ${escapeHtml(
       `${formatMoney(offer.nightlyPrice)}/noche`,
     )}${priceDrop}`,
-    escapeHtml(details),
-    `<b>Fuente:</b> ${escapeHtml(source)}`,
+    priceSignal,
+    details ? `⭐ ${escapeHtml(details)}` : "",
+    offer.address ? `📌 ${escapeHtml(offer.address)}` : "",
+    providerAgreement,
+    `<b>Fuente:</b> ${escapeHtml(provider)}${provider !== source ? ` · ${escapeHtml(source)}` : ""}`,
     Number(offer.priceConfirmationCount) >= 2
-      ? `<i>${escapeHtml(formatVerification(offer.source))}</i>`
+      ? `✅ <i>${escapeHtml(formatVerification(offer.source, provider))}</i>`
       : "",
   ]
     .filter(Boolean)
@@ -122,37 +139,60 @@ function formatAlert(alert) {
 function sortedAlerts(alerts) {
   return [...(alerts || [])].sort(
     (left, right) =>
+      Number(right.offer?.errorFareScore || 0) -
+        Number(left.offer?.errorFareScore || 0) ||
       Number(left.offer?.totalPrice || Infinity) -
-      Number(right.offer?.totalPrice || Infinity),
+        Number(right.offer?.totalPrice || Infinity),
   );
+}
+
+function alertLocationKey(alert) {
+  return String(
+    alert.monitorId ||
+      alert.monitorName ||
+      alert.offer?.searchArea ||
+      alert.offer?.address ||
+      "ubicacion",
+  );
+}
+
+function groupAlertsByLocation(alerts) {
+  const groups = new Map();
+  for (const alert of sortedAlerts(alerts)) {
+    const key = alertLocationKey(alert);
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(alert);
+  }
+  return groups;
 }
 
 function buildAlertMessages(alerts, options = {}) {
   const panelUrl = options.panelUrl || PANEL_URL;
-  const ordered = sortedAlerts(alerts);
-  if (!ordered.length) return [];
-
-  const pages = [];
-  for (
-    let index = 0;
-    index < ordered.length;
-    index += MAX_ALERTS_PER_MESSAGE
-  ) {
-    pages.push(ordered.slice(index, index + MAX_ALERTS_PER_MESSAGE));
+  const groups = groupAlertsByLocation(alerts);
+  if (!groups.size) return [];
+  const messages = [];
+  for (const group of groups.values()) {
+    const pages = [];
+    for (
+      let index = 0;
+      index < group.length;
+      index += MAX_ALERTS_PER_MESSAGE
+    ) {
+      pages.push(group.slice(index, index + MAX_ALERTS_PER_MESSAGE));
+    }
+    for (const [index, page] of pages.entries()) {
+      const location = page[0].monitorName || page[0].offer?.searchArea || "Ubicación";
+      const pageText = pages.length > 1
+        ? ` · ${index + 1}/${pages.length}`
+        : "";
+      const heading =
+        `<b>📍 ${escapeHtml(location)}</b>\n` +
+        `${group.length} ${group.length === 1 ? "alerta" : "alertas"}${pageText}`;
+      const footer = `<a href="${escapeHtml(panelUrl)}">Abrir ofertas de ${escapeHtml(location)}</a>`;
+      messages.push([heading, ...page.map(formatAlert), footer].join("\n\n"));
+    }
   }
-
-  return pages.map((page, index) => {
-    const pageText = pages.length > 1
-      ? ` (${index + 1}/${pages.length})`
-      : "";
-    const heading =
-      ordered.length === 1
-        ? "<b>Tarifa Radar: 1 alerta</b>"
-        : `<b>Tarifa Radar: ${ordered.length} alertas${pageText}</b>`;
-    const footer =
-      `<a href="${escapeHtml(panelUrl)}">Abrir Tarifa Radar</a>`;
-    return [heading, ...page.map(formatAlert), footer].join("\n\n");
-  });
+  return messages;
 }
 
 function buildAlertMessage(alerts, options = {}) {
@@ -243,6 +283,7 @@ module.exports = {
   formatMoney,
   formatSource,
   formatVerification,
+  groupAlertsByLocation,
   sendAlertDigest,
   telegramRequest,
 };

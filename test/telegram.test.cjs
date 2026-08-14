@@ -5,6 +5,7 @@ const {
   buildAlertMessage,
   buildAlertMessages,
   escapeHtml,
+  groupAlertsByLocation,
   sendAlertDigest,
 } = require("../src/telegram.cjs");
 
@@ -48,13 +49,14 @@ test("escapes user and hotel text for Telegram HTML", () => {
 
 test("builds one compact verified Booking alert", () => {
   const message = buildAlertMessage([makeAlert()]);
-  assert.match(message, /Tarifa Radar: 1 alerta/);
+  assert.match(message, /📍 Benidorm/);
+  assert.match(message, /1 alerta/);
   assert.match(message, /425,7/);
   assert.match(message, /106,43/);
   assert.match(message, /Sin estrellas/);
   assert.match(message, /4,8 km del destino/);
   assert.match(message, /Precio reconfirmado en Booking antes del aviso/);
-  assert.match(message, /Abrir Tarifa Radar/);
+  assert.match(message, /Abrir ofertas de Benidorm/);
 });
 
 test("shows the former price for price drops", () => {
@@ -92,7 +94,7 @@ test("labels Agoda alerts as prices supplied through Bluepillow", () => {
     }),
   ]);
   assert.match(message, /Fuente:<\/b> Agoda/);
-  assert.match(message, /revalidado en Agoda via Bluepillow; confirma el total al abrir/);
+  assert.match(message, /revalidado por Bluepillow; proveedor Agoda via Bluepillow/);
   assert.doesNotMatch(message, /reconfirmado en Booking/);
 });
 
@@ -109,13 +111,50 @@ test("splits a digest into pages without omitting offers", () => {
   );
   const messages = buildAlertMessages(alerts);
   assert.equal(messages.length, 2);
-  assert.match(messages[0], /7 alertas \(1\/2\)/);
-  assert.match(messages[1], /7 alertas \(2\/2\)/);
+  assert.match(messages[0], /6 alertas · 1\/2/);
+  assert.match(messages[1], /6 alertas · 2\/2/);
   assert.doesNotMatch(messages.join("\n"), /ofertas más en el panel/);
   for (let index = 0; index < alerts.length; index += 1) {
     assert.match(messages.join("\n"), new RegExp(`Hotel ${index}`));
   }
   assert.equal(messages.every((message) => message.length < 4_096), true);
+});
+
+test("keeps Telegram messages separated by location", () => {
+  const alerts = [
+    makeAlert({ monitorId: "benidorm", monitorName: "Benidorm" }),
+    makeAlert({
+      monitorId: "madrid",
+      monitorName: "Madrid",
+      offer: { hotelName: "Hotel Madrid", totalPrice: 150 },
+    }),
+  ];
+  const groups = groupAlertsByLocation(alerts);
+  const messages = buildAlertMessages(alerts);
+  assert.equal(groups.size, 2);
+  assert.equal(messages.length, 2);
+  const benidormMessage = messages.find((message) => /📍 Benidorm/.test(message));
+  const madridMessage = messages.find((message) => /📍 Madrid/.test(message));
+  assert.ok(benidormMessage);
+  assert.ok(madridMessage);
+  assert.doesNotMatch(benidormMessage, /Hotel Madrid/);
+});
+
+test("puts likely error fares first within one location", () => {
+  const message = buildAlertMessage([
+    makeAlert({ offer: { hotelName: "Precio normal", totalPrice: 100 } }),
+    makeAlert({
+      offer: {
+        hotelName: "Tarifa error",
+        totalPrice: 180,
+        errorFareScore: 88,
+        discountPercent: 54,
+      },
+    }),
+  ]);
+  assert.ok(message.indexOf("Tarifa error") < message.indexOf("Precio normal"));
+  assert.match(message, /Posible tarifa error · 88\/99/);
+  assert.match(message, /54% bajo referencia/);
 });
 
 test("labels Trip.com alerts as directly verified", () => {
