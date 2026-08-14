@@ -10,6 +10,11 @@ const {
 } = require("./bluepillow-scraper.cjs");
 const { discoverNearbyLocations } = require("./nearby-locations.cjs");
 const {
+  annotateMarketPrices,
+  applyPriceDropIntelligence,
+  enrichDealComparisons,
+} = require("./deal-intelligence.cjs");
+const {
   bookingDiscoveryDates,
   buildMonitorScanRequests,
   flexibleSearchShape,
@@ -335,6 +340,14 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     roomName: offer.roomName,
     sharedRoom: offer.sharedRoom,
     imageUrl: offer.imageUrl,
+    firstObservedPrice: offer.firstObservedPrice,
+    priceChangedDuringConfirmation: offer.priceChangedDuringConfirmation,
+    marketMedianNightly: offer.marketMedianNightly,
+    marketSampleSize: offer.marketSampleSize,
+    discountPercent: offer.discountPercent,
+    errorFareScore: offer.errorFareScore,
+    errorFareLevel: offer.errorFareLevel,
+    priceDropPercent: offer.priceDropPercent,
     source: offer.source,
     provider: offer.provider,
     url: offer.url,
@@ -609,6 +622,15 @@ async function runRepositoryScan(options = {}) {
       const sourceRuns = [...discoveryRuns, ...directRuns].filter(
         (run) => DIRECT_SOURCES.has(run.source) || DISCOVERY_SOURCES.has(run.source),
       );
+      const marketGroups = new Map();
+      for (const offer of sourceRuns.flatMap((run) => run.result?.offers || [])) {
+        const key = `${offer.checkIn || dates.checkIn}|${offer.checkOut || dates.checkOut}`;
+        if (!marketGroups.has(key)) marketGroups.set(key, []);
+        marketGroups.get(key).push(offer);
+      }
+      for (const marketOffers of marketGroups.values()) {
+        annotateMarketPrices(marketOffers);
+      }
       let requestSucceeded = false;
       for (const run of sourceRuns) {
         const { source } = run;
@@ -692,6 +714,7 @@ async function runRepositoryScan(options = {}) {
                   previousPublishedPrice - PRICE_COMPARISON_EPSILON
                 ? "price_drop"
                 : "";
+            applyPriceDropIntelligence(offer, previousPublishedPrice);
             offer.priceConfirmationCount = nextOfferState.confirmationCount;
             offer.priceConfirmedAt =
               offer.priceConfirmedAt || result.searchedAt;
@@ -820,14 +843,34 @@ async function runRepositoryScan(options = {}) {
   }));
 
   const sevenDaysAgo = now.getTime() - 7 * 86_400_000;
-  const deals = Array.from(dealMap.values())
-    .filter((deal) => Date.parse(deal.updatedAt) >= sevenDaysAgo)
+  const currentDeals = Array.from(dealMap.values()).filter(
+    (deal) => Date.parse(deal.updatedAt) >= sevenDaysAgo,
+  );
+  const deals = enrichDealComparisons(currentDeals)
     .sort(
       (left, right) =>
         left.totalPrice - right.totalPrice ||
         Date.parse(right.updatedAt) - Date.parse(left.updatedAt),
     )
     .slice(0, 300);
+  const dealsById = new Map(deals.map((deal) => [deal.id, deal]));
+  for (const alert of alerts) {
+    const enriched = dealsById.get(`${alert.monitorId}:${alert.offer.id}`);
+    if (!enriched) continue;
+    Object.assign(alert.offer, {
+      comparisonGroupId: enriched.comparisonGroupId,
+      providerCount: enriched.providerCount,
+      comparisonProviders: enriched.comparisonProviders,
+      bestTotalPrice: enriched.bestTotalPrice,
+      isBestPrice: enriched.isBestPrice,
+      marketMedianNightly: enriched.marketMedianNightly,
+      marketSampleSize: enriched.marketSampleSize,
+      discountPercent: enriched.discountPercent,
+      errorFareScore: enriched.errorFareScore,
+      errorFareLevel: enriched.errorFareLevel,
+      priceDropPercent: enriched.priceDropPercent,
+    });
+  }
   const status = {
     version: 1,
     updatedAt: now.toISOString(),

@@ -347,6 +347,43 @@
     $("#github-status").textContent = updatedAt
       ? `Último ciclo: ${formatDateTime(updatedAt)}.`
       : "Escáner gratuito programado.";
+    renderSourceHealthSummary();
+  }
+
+  function renderSourceHealthSummary() {
+    const container = $("#source-health-list");
+    if (!container) return;
+    const monitorStatuses = Object.values(state.status.monitors || {});
+    container.innerHTML = sources
+      .filter(([, , automatic]) => automatic)
+      .map(([source, label]) => {
+        const values = monitorStatuses
+          .map((monitor) => monitor.sources?.[source])
+          .filter(Boolean);
+        const health = values.some((value) => value.state === "paused")
+          ? "paused"
+          : values.some(
+                (value) =>
+                  value.state === "degraded" || Number(value.errors) > 0,
+              )
+            ? "degraded"
+            : values.length
+              ? "healthy"
+              : "pending";
+        const searches = values.reduce(
+          (total, value) => total + Number(value.searches || 0),
+          0,
+        );
+        const errors = values.reduce(
+          (total, value) => total + Number(value.errors || 0),
+          0,
+        );
+        return `<span class="connection-source ${health}">
+          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : "check-circle-2"}"></i>
+          <span><strong>${escapeHtml(label)}</strong><small>${searches} intentos · ${errors} fallos</small></span>
+        </span>`;
+      })
+      .join("");
   }
 
   function priceText(monitor) {
@@ -393,6 +430,56 @@
     return selected.length ? selected.join(" + ") : "Sin buscador";
   }
 
+  function statusForMonitor(monitorId) {
+    return state.status.monitors?.[monitorId] || null;
+  }
+
+  function sourceHealthLabel(sourceStatus) {
+    if (!sourceStatus) return "pending";
+    if (sourceStatus.state === "paused") return "paused";
+    if (sourceStatus.state === "degraded") return "degraded";
+    return "healthy";
+  }
+
+  function monitorCoverageMarkup(monitor) {
+    const monitorStatus = statusForMonitor(monitor.id);
+    const coverage = monitorStatus?.dateCoverage;
+    const sourcesStatus = monitorStatus?.sources || {};
+    const sourcePills = (monitor.sources || ["booking"])
+      .filter((source) => sources.some(([id]) => id === source))
+      .map((source) => {
+        const current = sourcesStatus[source];
+        const health = sourceHealthLabel(current);
+        const detail = health === "paused"
+          ? `Pausado hasta ${current?.retryAt ? formatDateTime(current.retryAt) : "el siguiente intento"}`
+          : health === "degraded"
+            ? `${current?.consecutiveErrors || 1} fallo(s) reciente(s)`
+            : health === "healthy"
+              ? "Operativo"
+              : "Pendiente del próximo ciclo";
+        return `<span class="source-health ${health}" title="${escapeHtml(detail)}">
+          <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : "check"}"></i>
+          ${escapeHtml(sourceLabel(source))}
+        </span>`;
+      })
+      .join("");
+    if (!coverage) {
+      return `<span class="monitor-scan-meta"><span>Sin barrido pendiente</span><span class="source-health-row">${sourcePills}</span></span>`;
+    }
+    const total = Math.max(1, Number(coverage.totalSearches) || 1);
+    const remaining = Math.max(0, Number(coverage.remainingSearchesInSweep) || 0);
+    const checked = coverage.completedSweep ? total : Math.max(0, total - remaining);
+    const percent = Math.min(100, Math.round((checked / total) * 100));
+    return `<span class="monitor-scan-meta">
+      <span class="coverage-line">
+        <span>Cobertura del barrido</span>
+        <b>${checked}/${total} · ${percent}%</b>
+      </span>
+      <span class="coverage-track"><span style="width:${percent}%"></span></span>
+      <span class="source-health-row">${sourcePills}</span>
+    </span>`;
+  }
+
   function renderMonitorList() {
     const monitors = state.config.monitors || [];
     $("#monitor-count").textContent = String(monitors.length);
@@ -432,6 +519,7 @@
                         monitor.intervalMinutes,
                       )} min | ${escapeHtml(automaticSourceText(monitor))}
                     </span>
+                    ${monitorCoverageMarkup(monitor)}
                   </span>
                 </button>
                 <span class="row-actions">
@@ -568,6 +656,103 @@
     `;
   }
 
+  function fareSignal(deal) {
+    const score = Number(deal.errorFareScore) || 0;
+    const level = deal.errorFareLevel || "normal";
+    const label = {
+      probable_error: "Posible tarifa error",
+      unusually_low: "Muy por debajo del mercado",
+      good_price: "Buen precio",
+      normal: "Precio verificado",
+    }[level] || "Precio verificado";
+    return { score, level, label };
+  }
+
+  function providerPriceNote(deal) {
+    if (deal.priceChangedDuringConfirmation) {
+      return `Actualizado desde ${Number(deal.firstObservedPrice || 0).toFixed(2)} €`;
+    }
+    if (["agoda", "bluepillow"].includes(deal.source)) {
+      return "Comparador revalidado; confirma al abrir";
+    }
+    return deal.taxesText || "Total final comprobado";
+  }
+
+  function comparisonDeal(group) {
+    const ordered = [...group].sort(
+      (left, right) => Number(left.totalPrice) - Number(right.totalPrice),
+    );
+    const primary = ordered[0];
+    const signal = fareSignal(primary);
+    const distance = Number(primary.distanceKm) || 0;
+    const quality = primary.guestRating
+      ? `Nota ${Number(primary.guestRating).toLocaleString("es-ES")}/10${
+          primary.reviewCount
+            ? ` · ${Number(primary.reviewCount).toLocaleString("es-ES")} reseñas`
+            : ""
+        }`
+      : "Sin valoración publicada";
+    const details = dealDetails(primary);
+    const market = Number(primary.marketSampleSize) >= 5
+      ? `${Number(primary.discountPercent || 0).toLocaleString("es-ES")}% bajo la referencia de ${Number(primary.marketMedianNightly).toFixed(2)} €/noche`
+      : "Sin referencia suficiente para comparar";
+    return `
+      <article class="deal-comparison">
+        <header class="deal-comparison-heading">
+          <span class="deal-comparison-title">
+            <span class="fare-signal ${escapeHtml(signal.level)}">
+              <i data-lucide="${signal.level === "probable_error" ? "flame" : "badge-check"}"></i>
+              ${escapeHtml(signal.label)}${signal.score ? ` · ${signal.score}/99` : ""}
+            </span>
+            <strong>${escapeHtml(primary.hotelName)}</strong>
+            <small>${escapeHtml(primary.address || primary.location)}${
+              distance > 0
+                ? ` · ${distance.toLocaleString("es-ES")} km del destino`
+                : ""
+            }</small>
+          </span>
+          <span class="deal-comparison-price">
+            <small>Desde</small>
+            <strong>${Number(primary.totalPrice).toFixed(2)} €</strong>
+            <small>${Number(primary.nightlyPrice).toFixed(2)} €/noche</small>
+          </span>
+        </header>
+        <div class="deal-comparison-facts">
+          <span><i data-lucide="calendar-days"></i>${escapeHtml(formatDate(primary.checkIn))} → ${escapeHtml(formatDate(primary.checkOut))} · ${escapeHtml(primary.nights)} ${Number(primary.nights) === 1 ? "noche" : "noches"}</span>
+          <span><i data-lucide="star"></i>${primary.stars ? `${escapeHtml(primary.stars)} estrellas` : "Sin estrellas"} · ${escapeHtml(quality)}</span>
+          <span><i data-lucide="chart-no-axes-column-increasing"></i>${escapeHtml(market)}</span>
+          ${details ? `<span><i data-lucide="sparkles"></i>${escapeHtml(details)}</span>` : ""}
+        </div>
+        <div class="provider-offers">
+          <div class="provider-offers-heading">
+            <span>${ordered.length} ${ordered.length === 1 ? "tarifa comprobada" : "tarifas comparadas"}</span>
+            <small>Revisado ${escapeHtml(formatDateTime(primary.updatedAt))}</small>
+          </div>
+          ${ordered
+            .map(
+              (deal, index) => `
+                <div class="provider-offer">
+                  <span class="provider-offer-name">
+                    <strong>${escapeHtml(deal.provider || sourceLabel(deal.source || "booking"))}</strong>
+                    <small>${escapeHtml(providerPriceNote(deal))}</small>
+                  </span>
+                  ${index === 0 && ordered.length > 1 ? '<span class="best-price">Mejor</span>' : ""}
+                  <span class="provider-offer-price">
+                    <strong>${Number(deal.totalPrice).toFixed(2)} €</strong>
+                    <small>${Number(deal.nightlyPrice).toFixed(2)} €/noche</small>
+                  </span>
+                  <a class="icon-button" href="${escapeHtml(safeUrl(deal.url))}" target="_blank" rel="noreferrer" title="Abrir en ${escapeHtml(sourceLabel(deal.source || "booking"))}">
+                    <i data-lucide="external-link"></i>
+                  </a>
+                </div>
+              `,
+            )
+            .join("")}
+        </div>
+      </article>
+    `;
+  }
+
   function emptyDeals(message) {
     return `
         <div class="empty-state">
@@ -636,11 +821,13 @@
         const monitor = monitorById.get(monitorId);
         const name = monitor?.name || group[0].monitorName || group[0].location;
         const location = monitor?.location || group[0].location || "";
-        const sourceGroups = new Map();
+        const comparisonGroups = new Map();
         for (const deal of group) {
-          const source = deal.source || "booking";
-          if (!sourceGroups.has(source)) sourceGroups.set(source, []);
-          sourceGroups.get(source).push(deal);
+          const comparisonId = deal.comparisonGroupId || deal.id;
+          if (!comparisonGroups.has(comparisonId)) {
+            comparisonGroups.set(comparisonId, []);
+          }
+          comparisonGroups.get(comparisonId).push(deal);
         }
         return `
           <section class="deal-group">
@@ -649,24 +836,15 @@
                 <strong>${escapeHtml(name)}</strong>
                 <small>${escapeHtml(location)}</small>
               </span>
-              <b>${group.length} ${group.length === 1 ? "oferta" : "ofertas"}</b>
+              <b>${comparisonGroups.size} ${comparisonGroups.size === 1 ? "alojamiento" : "alojamientos"} · ${group.length} ${group.length === 1 ? "tarifa" : "tarifas"}</b>
             </header>
-            ${Array.from(sourceGroups.entries())
-              .map(
-                ([source, sourceDeals]) => `
-                  <div class="deal-source-header">
-                    <span>
-                      <i data-lucide="${
-                        source === "google_hotels" ? "search" : "bed-double"
-                      }"></i>
-                      ${escapeHtml(sourceLabel(source))}
-                    </span>
-                    <b>${sourceDeals.length}</b>
-                  </div>
-                  ${dealTableHeader()}
-                  ${sourceDeals.map(dealRow).join("")}
-                `,
+            ${Array.from(comparisonGroups.values())
+              .sort(
+                (left, right) =>
+                  Math.min(...left.map((deal) => Number(deal.totalPrice))) -
+                  Math.min(...right.map((deal) => Number(deal.totalPrice))),
               )
+              .map(comparisonDeal)
               .join("")}
           </section>
         `;
