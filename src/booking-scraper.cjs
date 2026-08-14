@@ -1009,25 +1009,21 @@ async function verifyBookingCandidates(context, offers, search, options = {}) {
           timeoutMs: Math.min(options.timeoutMs || 25_000, 25_000),
         });
         const secondTotal = Number(offer.totalPrice);
-        const confirmationTolerance = Math.max(
-          0.5,
-          Math.max(Number(firstTotal), secondTotal) * 0.002,
-        );
-        const samePrice =
-          Math.abs(secondTotal - Number(firstTotal)) <= confirmationTolerance;
-        if (!offer.matches || !samePrice) {
+        if (!offer.matches) {
           offer.matches = false;
           offer.priceConfirmationCount = 0;
-          offer.verificationError = samePrice
-            ? "La tarifa dejo de cumplir los filtros al volver a comprobarla."
-            : `Booking cambio el total de ${firstTotal.toFixed(2)} a ${secondTotal.toFixed(2)} EUR durante la comprobacion.`;
+          offer.verificationError =
+            "La tarifa dejo de cumplir los filtros al volver a comprobarla.";
           errors.push({
             hotelName: offer.hotelName,
             message: offer.verificationError,
           });
           continue;
         }
-        offer.totalPrice = Math.max(Number(firstTotal), secondTotal);
+        offer.firstObservedPrice = Number(firstTotal);
+        offer.priceChangedDuringConfirmation =
+          Math.abs(secondTotal - Number(firstTotal)) > 0.01;
+        offer.totalPrice = secondTotal;
         if (Number(offer.nights) > 0) {
           offer.nightlyPrice =
             Math.round((offer.totalPrice / offer.nights) * 100) / 100;

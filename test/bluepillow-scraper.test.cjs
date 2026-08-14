@@ -325,6 +325,76 @@ test("publishes a Bluepillow match only after the validate endpoint confirms it"
   assert.equal(result.matchingOffers[0].priceConfirmationCount, 2);
 });
 
+test("uses a refreshed Bluepillow price when it still matches", async () => {
+  const fetchImpl = async (url) => {
+    if (url.endsWith("/destinations/resolve")) {
+      return Response.json({
+        candidates: [{
+          id: "dest_benidorm",
+          name: "Benidorm",
+          display_name: "Benidorm",
+          type: "city",
+          country_code: "ES",
+        }],
+      });
+    }
+    if (url.endsWith("/search/stays")) {
+      return Response.json({ results: [property()], metadata: {} });
+    }
+    if (url.endsWith("/validate")) {
+      return Response.json({
+        still_valid: false,
+        reason: "price_changed",
+        refreshed_offer: { ota: "Agoda", amount: 449, currency: "EUR" },
+      });
+    }
+    return Response.json({}, { status: 404 });
+  };
+
+  const result = await scrapeBluepillowSource(search(), "agoda", {
+    disableCache: true,
+    fetchImpl,
+  });
+  assert.equal(result.matchingOffers.length, 1);
+  assert.equal(result.matchingOffers[0].totalPrice, 449);
+  assert.equal(result.matchingOffers[0].nightlyPrice, 112.25);
+  assert.equal(result.matchingOffers[0].firstObservedPrice, 437.06);
+  assert.equal(result.matchingOffers[0].priceChangedDuringConfirmation, true);
+});
+
+test("drops a refreshed Bluepillow price above the budget", async () => {
+  const fetchImpl = async (url) => {
+    if (url.endsWith("/destinations/resolve")) {
+      return Response.json({
+        candidates: [{
+          id: "dest_benidorm",
+          name: "Benidorm",
+          display_name: "Benidorm",
+          type: "city",
+          country_code: "ES",
+        }],
+      });
+    }
+    if (url.endsWith("/search/stays")) {
+      return Response.json({ results: [property()], metadata: {} });
+    }
+    if (url.endsWith("/validate")) {
+      return Response.json({
+        still_valid: false,
+        reason: "price_changed",
+        refreshed_offer: { ota: "Agoda", amount: 560, currency: "EUR" },
+      });
+    }
+    return Response.json({}, { status: 404 });
+  };
+
+  const result = await scrapeBluepillowSource(search(), "agoda", {
+    disableCache: true,
+    fetchImpl,
+  });
+  assert.equal(result.matchingOffers.length, 0);
+});
+
 test("publishes Trip.com only with the total read from its final page", async () => {
   const target =
     "https://us.trip.com/hotels/list/searchresults?hotelid=123" +

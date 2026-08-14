@@ -118,7 +118,7 @@ test("confirms a matching price twice in one scan", async () => {
   assert.equal(state.closedContexts, 1);
 });
 
-test("rejects a price that changes during same-scan confirmation", async () => {
+test("accepts the refreshed Booking price when it still matches", async () => {
   const { context } = makeVerificationContext();
   const offer = {
     hotelName: "Hotel cambiante",
@@ -141,9 +141,12 @@ test("rejects a price that changes during same-scan confirmation", async () => {
     },
   );
 
-  assert.equal(offer.matches, false);
-  assert.equal(offer.priceConfirmationCount, 0);
-  assert.match(errors[0].message, /cambio el total/);
+  assert.equal(offer.matches, true);
+  assert.equal(offer.totalPrice, 130);
+  assert.equal(offer.priceConfirmationCount, 2);
+  assert.equal(offer.priceChangedDuringConfirmation, true);
+  assert.equal(offer.firstObservedPrice, 120);
+  assert.equal(errors.length, 0);
 });
 
 test("accepts minor Booking rounding changes and keeps the higher total", async () => {

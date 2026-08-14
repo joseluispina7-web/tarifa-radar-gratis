@@ -417,17 +417,21 @@ function validationCacheKey(offer, search) {
 async function validateBluepillowOffer(offer, search, options = {}) {
   const searchKey = searchCacheKey(search);
   const key = validationCacheKey(offer, search);
-  if (sharedValidations.has(key)) return sharedValidations.get(key);
-
-  const used = validationBudgets.get(searchKey) || 0;
-  if (used >= MAX_VALIDATIONS_PER_SEARCH) {
-    return {
-      valid: false,
-      skipped: true,
-      message: "No se publico porque alcanzo el limite de revalidaciones.",
-    };
+  if (!options.disableCache && sharedValidations.has(key)) {
+    return sharedValidations.get(key);
   }
-  validationBudgets.set(searchKey, used + 1);
+
+  if (!options.disableCache) {
+    const used = validationBudgets.get(searchKey) || 0;
+    if (used >= MAX_VALIDATIONS_PER_SEARCH) {
+      return {
+        valid: false,
+        skipped: true,
+        message: "No se publico porque alcanzo el limite de revalidaciones.",
+      };
+    }
+    validationBudgets.set(searchKey, used + 1);
+  }
 
   const pending = requestJson("/validate", {
     ...options,
@@ -457,6 +461,26 @@ async function validateBluepillowOffer(offer, search, options = {}) {
         };
       }
       const refreshedPrice = Number(payload.refreshed_offer?.amount);
+      const refreshedCurrency = String(
+        payload.refreshed_offer?.currency || "EUR",
+      ).toUpperCase();
+      const refreshedOta = normalizeOta(
+        payload.refreshed_offer?.ota || offer.bluepillowOta,
+      );
+      const canUseRefreshedPrice =
+        payload.reason === "price_changed" &&
+        Number.isFinite(refreshedPrice) &&
+        refreshedPrice > 0 &&
+        refreshedCurrency === "EUR" &&
+        refreshedOta === normalizeOta(offer.bluepillowOta);
+      if (canUseRefreshedPrice) {
+        return {
+          valid: true,
+          refreshed: true,
+          totalPrice: refreshedPrice,
+          checkedAt: payload.metadata?.price_as_of || new Date().toISOString(),
+        };
+      }
       const detail = Number.isFinite(refreshedPrice) && refreshedPrice > 0
         ? ` El precio actualizado es ${refreshedPrice.toFixed(2)} EUR.`
         : "";
@@ -474,7 +498,7 @@ async function validateBluepillowOffer(offer, search, options = {}) {
           error instanceof Error ? error.message : String(error)
         }`,
     }));
-  sharedValidations.set(key, pending);
+  if (!options.disableCache) sharedValidations.set(key, pending);
   return pending;
 }
 
@@ -696,6 +720,19 @@ async function scrapeBluepillowSource(input, source, options = {}) {
         });
       }
       continue;
+    }
+    if (validation.refreshed) {
+      offer.firstObservedPrice = offer.totalPrice;
+      offer.priceChangedDuringConfirmation = true;
+      offer.totalPrice = validation.totalPrice;
+      offer.nightlyPrice =
+        Math.round((validation.totalPrice / search.nights) * 100) / 100;
+      offer.displayedNightlyPrice = offer.nightlyPrice;
+      offer.rateSubtotal = validation.totalPrice;
+      offer.searchResultPrice = validation.totalPrice;
+      offer.matches = matchesSearch(offer, search);
+      offer.candidateMatches = offer.matches;
+      if (!offer.matches) continue;
     }
     if (source === "trip") {
       const directValidation = await validateTripFinalPrice(
