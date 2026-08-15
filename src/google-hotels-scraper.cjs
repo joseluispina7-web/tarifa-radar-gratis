@@ -358,6 +358,40 @@ async function acceptGoogleConsent(page) {
   }
 }
 
+async function selectGoogleHotelsCurrency(page, timeoutMs) {
+  const currencyButton = page
+    .getByRole("button", { name: /Moneda|Currency/i })
+    .first();
+  await currencyButton.waitFor({ state: "visible", timeout: timeoutMs });
+  if (/\bEUR\b/i.test(await currencyButton.innerText())) return;
+
+  await currencyButton.click();
+  const dialog = page
+    .locator('[role="dialog"]:visible')
+    .filter({ has: page.locator('[role="radio"][data-value="EUR"]') })
+    .last();
+  await dialog.waitFor({ state: "visible", timeout: timeoutMs });
+  const euro = dialog.locator('[role="radio"][data-value="EUR"]').first();
+  await euro.click({ force: true }).catch(async () => {
+    await euro.evaluate((element) => element.click());
+  });
+  await dialog
+    .getByRole("button", { name: /Hecho|Done|Listo|Aplicar|Apply/i })
+    .last()
+    .click();
+  await dialog.waitFor({ state: "hidden", timeout: timeoutMs }).catch(() => {});
+  await page.waitForTimeout(500);
+
+  const selectedCurrency = await page
+    .getByRole("button", { name: /Moneda|Currency/i })
+    .first()
+    .innerText()
+    .catch(() => "");
+  if (!/\bEUR\b/i.test(selectedCurrency)) {
+    throw new Error("Google Hotels no mantuvo la moneda EUR.");
+  }
+}
+
 function normalizeGoogleQuery(value) {
   return String(value || "")
     .normalize("NFD")
@@ -1055,7 +1089,9 @@ async function loadGoogleHotels(page, search, options = {}) {
           waitUntil: "domcontentloaded",
           timeout: timeoutMs,
         });
+        await acceptGoogleConsent(page);
       }
+      await selectGoogleHotelsCurrency(page, timeoutMs);
       if (loadAttempt.selectDestination) {
         await selectGoogleHotelsDestination(page, search, timeoutMs);
       } else {
@@ -1213,6 +1249,7 @@ module.exports = {
   providerLinkMatchesStay,
   verifiedGoogleProviderPrice,
   scrapeGoogleHotels,
+  selectGoogleHotelsCurrency,
   selectGoogleHotelsGuests,
   selectGoogleHotelsDates,
   stableOfferId,
