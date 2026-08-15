@@ -982,6 +982,41 @@ select:focus {
   overflow-wrap: anywhere;
 }
 
+.location-radius-editor {
+  align-items: center;
+  display: grid;
+  gap: 12px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  margin-top: 11px;
+}
+
+.location-radius-editor > label {
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.radius-stepper {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: 38px 132px 38px;
+}
+
+.radius-stepper .icon-button {
+  height: 38px;
+  min-width: 38px;
+  padding: 0;
+  width: 38px;
+}
+
+.radius-stepper .icon-button svg {
+  height: 15px;
+  width: 15px;
+}
+
+.radius-stepper input {
+  text-align: right;
+}
+
 .location-attribution {
   color: #7a8681;
   font-size: 8px;
@@ -1953,6 +1988,15 @@ select:focus {
   .inline-field {
     align-items: stretch;
     grid-template-columns: 1fr;
+  }
+
+  .location-radius-editor {
+    align-items: stretch;
+    grid-template-columns: 1fr;
+  }
+
+  .radius-stepper {
+    grid-template-columns: 38px minmax(0, 1fr) 38px;
   }
 
   .manual-list {

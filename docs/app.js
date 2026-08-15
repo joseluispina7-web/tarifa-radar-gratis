@@ -417,8 +417,10 @@
   function radiusText(monitor) {
     const radius = Number(monitor.maxDistanceKm) || 0;
     const locationRadius = Number(monitor.locationRadiusKm) || 0;
-    if (radius > 0) return `hasta ${radius} km alrededor`;
-    if (locationRadius > 0) return `zona exacta · ${locationRadius} km`;
+    if (radius > 0) return `hasta ${formatLocationRadius(radius)} km alrededor`;
+    if (locationRadius > 0) {
+      return `zona exacta · ${formatLocationRadius(locationRadius)} km`;
+    }
     return "zona habitual";
   }
 
@@ -1023,6 +1025,27 @@
     renderRulePreview();
   }
 
+  function parseLocationRadius(value) {
+    const normalized = String(value ?? "").trim().replace(",", ".");
+    const number = Number(normalized);
+    if (!Number.isFinite(number)) return 0;
+    return Math.round(Math.min(25, Math.max(0, number)) * 2) / 2;
+  }
+
+  function formatLocationRadius(value) {
+    return parseLocationRadius(value).toLocaleString("es-ES", {
+      maximumFractionDigits: 1,
+    });
+  }
+
+  function adjustLocationRadius(change) {
+    const radius = parseLocationRadius($("#max-distance").value) + change;
+    $("#max-distance").value = formatLocationRadius(radius);
+    renderRulePreview();
+    renderManualLinks();
+    renderLocationConfirmation();
+  }
+
   function renderLocationConfirmation() {
     const draft = state.draft;
     if (!draft.locationId) {
@@ -1038,7 +1061,7 @@
     $("#location-confirmed").innerHTML =
       `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(detectedType)} · ${escapeHtml(
         draft.countryCode || "",
-      )}${radius > 0 ? ` · radio ${escapeHtml(radius)} km` : ""}${
+      )}${radius > 0 ? ` · radio ${escapeHtml(formatLocationRadius(radius))} km` : ""}${
         nearbyLocations.length
           ? ` · También: ${escapeHtml(nearbyLocations.join(", "))}`
           : ""
@@ -1085,7 +1108,7 @@
     $("#price-match").value = draft.priceMatch;
     $("#price-safety").value = String(draft.priceSafetyPercent ?? 5);
     $("#guest-rating").value = String(draft.guestRatingMin);
-    $("#max-distance").value = String(
+    $("#max-distance").value = formatLocationRadius(
       Number(draft.maxDistanceKm) > 0
         ? Number(draft.maxDistanceKm)
         : Number(draft.locationRadiusKm) || 0,
@@ -1123,10 +1146,7 @@
     draft.priceMatch = $("#price-match").value;
     draft.priceSafetyPercent = Number($("#price-safety").value) || 0;
     draft.guestRatingMin = Number($("#guest-rating").value) || 0;
-    const radiusKm = Math.min(
-      25,
-      Math.max(0, Number($("#max-distance").value) || 0),
-    );
+    const radiusKm = parseLocationRadius($("#max-distance").value);
     draft.maxDistanceKm = radiusKm;
     draft.locationRadiusKm = radiusKm;
     draft.freeCancellation = $("#free-cancellation").checked;
@@ -1618,7 +1638,9 @@
       locationCity: location.locationCity || location.name || "",
     };
     $("#location-query").value = location.label;
-    $("#max-distance").value = String(state.draft.locationRadiusKm);
+    $("#max-distance").value = formatLocationRadius(
+      state.draft.locationRadiusKm,
+    );
     renderLocationConfirmation();
     $("#location-results").classList.add("hidden");
     renderRulePreview();
@@ -1870,12 +1892,27 @@
       renderEditorOptions();
       renderRulePreview();
     });
+    $("#radius-decrease").addEventListener("click", () => {
+      adjustLocationRadius(-0.5);
+    });
+    $("#radius-increase").addEventListener("click", () => {
+      adjustLocationRadius(0.5);
+    });
+    $("#max-distance").addEventListener("input", () => {
+      renderRulePreview();
+      renderManualLinks();
+      renderLocationConfirmation();
+    });
+    $("#max-distance").addEventListener("blur", () => {
+      $("#max-distance").value = formatLocationRadius(
+        $("#max-distance").value,
+      );
+    });
     $$("#monitor-form input, #monitor-form select").forEach((input) => {
-      if (input.id !== "location-query") {
+      if (!["location-query", "max-distance"].includes(input.id)) {
         input.addEventListener("input", () => {
           renderRulePreview();
           renderManualLinks();
-          if (input.id === "max-distance") renderLocationConfirmation();
         });
       }
     });
