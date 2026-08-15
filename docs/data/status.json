@@ -1,21 +1,21 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T09:37:25.509Z",
+  "updatedAt": "2026-08-15T09:58:54.679Z",
   "summary": {
-    "generatedAt": "2026-08-15T09:37:25.509Z",
+    "generatedAt": "2026-08-15T09:58:54.679Z",
     "monitors": 3,
-    "searches": 33,
-    "offers": 185,
-    "matches": 20,
-    "newMatches": 3,
+    "searches": 36,
+    "offers": 157,
+    "matches": 12,
+    "newMatches": 5,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 5,
-        "offers": 44,
-        "matches": 18,
-        "errors": 1,
-        "skipped": 4
+        "searches": 8,
+        "offers": 17,
+        "matches": 9,
+        "errors": 3,
+        "skipped": 1
       },
       "google_hotels": {
         "searches": 1,
@@ -26,21 +26,21 @@
       },
       "agoda": {
         "searches": 9,
-        "offers": 23,
-        "matches": 0,
+        "offers": 22,
+        "matches": 1,
         "errors": 0,
         "skipped": 0
       },
       "trip": {
         "searches": 9,
-        "offers": 28,
+        "offers": 29,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
       "bluepillow": {
         "searches": 9,
-        "offers": 90,
+        "offers": 89,
         "matches": 2,
         "errors": 0,
         "skipped": 0
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-21",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-22",
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-23",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -74,12 +61,24 @@
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
       },
       {
+        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+        "monitorName": "Shanghai",
+        "source": "trip",
+        "dates": {
+          "checkIn": "2026-09-23",
+          "checkOut": "2026-09-26"
+        },
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "hotelName": "Meego Yes Hotel",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 69.72 EUR."
+      },
+      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-23",
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-24",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -91,28 +90,71 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-17",
-          "checkOut": "2027-07-22",
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-23",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-24",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-23",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-24"
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-21",
-          "nights": 5,
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-24",
+          "nights": 7,
           "flexibleWindowDays": 7,
           "flexibleCheckInStart": "2027-07-12",
-          "flexibleCheckInEnd": "2027-07-23"
+          "flexibleCheckInEnd": "2027-07-24"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-24",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-25"
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
@@ -123,11 +165,11 @@
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-15T09:37:25.509Z",
-      "lastSuccessAt": "2026-08-15T09:38:27.609Z",
+      "lastScanAt": "2026-08-15T09:58:54.679Z",
+      "lastSuccessAt": "2026-08-15T10:00:35.764Z",
       "searches": 5,
       "offers": 61,
-      "matches": 0,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "booking": {
@@ -139,7 +181,7 @@
           "coveredCheckIns": 1,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -151,19 +193,19 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
         "agoda": {
           "searches": 1,
           "offers": 19,
-          "matches": 0,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -175,47 +217,53 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 1,
           "offers": 21,
-          "matches": 0,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         }
       },
       "error": ""
     },
-    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T09:37:25.509Z",
-      "lastSuccessAt": "2026-08-15T09:38:49.716860Z",
-      "searches": 13,
-      "offers": 70,
-      "matches": 2,
-      "nearbyLocations": [],
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-15T09:58:54.679Z",
+      "lastSuccessAt": "2026-08-15T10:01:20.447745Z",
+      "searches": 15,
+      "offers": 29,
+      "matches": 9,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
       "sources": {
         "booking": {
-          "searches": 1,
-          "offers": 0,
-          "matches": 0,
+          "searches": 3,
+          "offers": 17,
+          "matches": 9,
           "errors": 1,
-          "skipped": 3,
-          "lastSkipReason": "cooldown",
-          "retryAt": "2026-08-15T09:52:25.509Z",
-          "state": "paused",
-          "consecutiveErrors": 2,
-          "lastSuccessAt": "2026-08-15T09:04:35.148Z",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+          "skipped": 1,
+          "coveredCheckIns": 27,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
+          "lastError": "",
+          "retryAt": ""
         },
         "google_hotels": {
           "searches": 0,
@@ -232,37 +280,37 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 4,
+          "offers": 0,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 59,
-          "matches": 2,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
         "trip": {
           "searches": 4,
-          "offers": 7,
+          "offers": 0,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 12,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         }
@@ -273,40 +321,34 @@
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 12,
+        "startIndex": 16,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 16,
-        "remainingSearchesInSweep": 119,
+        "nextIndex": 20,
+        "remainingSearchesInSweep": 115,
         "completedSweep": false
       }
     },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T09:37:25.509Z",
-      "lastSuccessAt": "2026-08-15T09:39:28.873805Z",
-      "searches": 15,
-      "offers": 54,
-      "matches": 18,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
+    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "lastScanAt": "2026-08-15T09:58:54.679Z",
+      "lastSuccessAt": "2026-08-15T10:02:11.220346Z",
+      "searches": 16,
+      "offers": 67,
+      "matches": 1,
+      "nearbyLocations": [],
       "sources": {
         "booking": {
-          "searches": 3,
-          "offers": 44,
-          "matches": 18,
-          "errors": 0,
-          "skipped": 1,
-          "coveredCheckIns": 36,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
-          "lastError": "",
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 2,
+          "skipped": 0,
+          "coveredCheckIns": 27,
+          "state": "degraded",
+          "consecutiveErrors": 1,
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
           "retryAt": ""
         },
         "google_hotels": {
@@ -324,51 +366,51 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 0,
+          "offers": 3,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 10,
+          "offers": 56,
+          "matches": 1,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 8,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T09:37:25.509Z",
+          "lastSuccessAt": "2026-08-15T09:58:54.679Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 12,
+        "startIndex": 16,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 16,
-        "remainingSearchesInSweep": 119,
+        "nextIndex": 20,
+        "remainingSearchesInSweep": 115,
         "completedSweep": false
       }
     }
@@ -376,23 +418,199 @@
   "alerts": [
     {
       "type": "new_match",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Shanghai",
+      "previousPrice": 0,
+      "offer": {
+        "id": "agoda:prop_61828cca9e3163a56a29681e|2026-09-23|2026-09-26",
+        "source": "agoda",
+        "provider": "Agoda via Bluepillow",
+        "hotelName": "Meego Yes Hotel",
+        "address": "Shanghai",
+        "checkIn": "2026-09-23",
+        "checkOut": "2026-09-26",
+        "nights": 3,
+        "totalPrice": 69.72,
+        "nightlyPrice": 23.24,
+        "displayedNightlyPrice": 23.24,
+        "rateSubtotal": 69.72,
+        "searchResultPrice": 69.72,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 9.93,
+        "taxesText": "Total con 9.93 EUR de impuestos y tasas incluidos",
+        "stayText": "3 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "agoda_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-15T09:58:59.520Z",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 988,
+        "distanceKm": 1.9891922868021792,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [
+          "pool",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/pix8.agoda.net/hotelImages/6890740/-1/023460ff3875a59006a3d06ede339c63.jpg",
+        "bluepillowPropertyId": "prop_61828cca9e3163a56a29681e",
+        "bluepillowOta": "Agoda",
+        "matches": true,
+        "candidateMatches": true,
+        "marketMedianNightly": 83.92,
+        "marketSampleSize": 28,
+        "discountPercent": 72.3,
+        "marketErrorFareScore": 98,
+        "errorFareScore": 98,
+        "errorFareLevel": "unusually_low",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "comparable_market",
+          "verified_price"
+        ],
+        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 98,
+        "comparisonGroupId": "afb3c1482de53c0f",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "agoda",
+            "provider": "Agoda via Bluepillow",
+            "totalPrice": 69.72,
+            "nightlyPrice": 23.24,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+            "priceVerified": true
+          },
+          {
+            "source": "bluepillow",
+            "provider": "Agoda via Bluepillow",
+            "totalPrice": 69.72,
+            "nightlyPrice": 23.24,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 69.72,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-15T09:58:58.249724Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
+      "monitorName": "Shanghai",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_61828cca9e3163a56a29681e|2026-09-23|2026-09-26",
+        "source": "bluepillow",
+        "provider": "Agoda via Bluepillow",
+        "hotelName": "Meego Yes Hotel",
+        "address": "Shanghai",
+        "checkIn": "2026-09-23",
+        "checkOut": "2026-09-26",
+        "nights": 3,
+        "totalPrice": 69.72,
+        "nightlyPrice": 23.24,
+        "displayedNightlyPrice": 23.24,
+        "rateSubtotal": 69.72,
+        "searchResultPrice": 69.72,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 9.93,
+        "taxesText": "Total con 9.93 EUR de impuestos y tasas incluidos",
+        "stayText": "3 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "agoda_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-15T09:58:59.520Z",
+        "stars": 0,
+        "guestRating": 8,
+        "reviewCount": 988,
+        "distanceKm": 1.9891922868021792,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [
+          "pool",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/pix8.agoda.net/hotelImages/6890740/-1/023460ff3875a59006a3d06ede339c63.jpg",
+        "bluepillowPropertyId": "prop_61828cca9e3163a56a29681e",
+        "bluepillowOta": "Agoda",
+        "matches": true,
+        "candidateMatches": true,
+        "marketMedianNightly": 83.92,
+        "marketSampleSize": 28,
+        "discountPercent": 72.3,
+        "marketErrorFareScore": 98,
+        "errorFareScore": 98,
+        "errorFareLevel": "unusually_low",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "comparable_market",
+          "verified_price"
+        ],
+        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 98,
+        "comparisonGroupId": "afb3c1482de53c0f",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "agoda",
+            "provider": "Agoda via Bluepillow",
+            "totalPrice": 69.72,
+            "nightlyPrice": 23.24,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+            "priceVerified": true
+          },
+          {
+            "source": "bluepillow",
+            "provider": "Agoda via Bluepillow",
+            "totalPrice": 69.72,
+            "nightlyPrice": 23.24,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Agoda&redirecturl=https%3A%2F%2Fwww.agoda.com%2Fpartners%2Fpartnersearch.aspx%3Fcid%3D1897699%26hid%3D6890740%26currency%3DEUR%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26NumberofAdults%3D2%26NumberofChildren%3D0%26Rooms%3D1%26mcid%3D27964%26masterRoomId%3D1295921938%26mpt%3DYWUrampscWtqSjh4OG5lOEMzN3BiSnpwUHBqMU4yaDhFakxCOE5xNWMycnU3UGg4WTN0Vm9BNndiTURxU1hSRWN2MC9RVzA4bW9XUDVnPT0%26TotalPrice%3D69.72%26TotalTax%3D3.84%26TotalFee%3D6.09%26TotalSurcharge%3D0%26mcur%3DEUR&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=61828cca9e3163a56a29681e&begin=2026-09-23&end=2026-09-26",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 69.72,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-15T09:58:58.249724Z"
+    },
+    {
+      "type": "new_match",
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/quinta-moscatel.es.html|2027-07-16|2027-07-22",
+        "id": "/hotel/pt/quinta-moscatel.es.html|2027-07-18|2027-07-23",
         "source": "booking",
         "hotelName": "Quinta Moscatel entre vinhas",
         "address": "Palmela",
-        "checkIn": "2027-07-16",
-        "checkOut": "2027-07-22",
-        "nights": 6,
-        "totalPrice": 449.44,
-        "nightlyPrice": 74.91,
-        "rateSubtotal": 423.96,
+        "checkIn": "2027-07-18",
+        "checkOut": "2027-07-23",
+        "nights": 5,
+        "totalPrice": 356.61,
+        "nightlyPrice": 71.32,
+        "rateSubtotal": 336.42,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
+        "stayText": "5 noches, 2 adultos",
         "bookingBlockIds": [
           "1681813301_439933777_2_0_0"
         ],
@@ -413,36 +631,36 @@
         "roomName": "2 camas (1 doble, 1 sofá cama)",
         "sharedRoom": false,
         "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/quinta-moscatel.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=1681813301_439933777_2_0_0&highlighted_blocks=1681813301_439933777_2_0_0&matching_block_id=1681813301_439933777_2_0_0&sr_pri_blocks=1681813301_439933777_2_0_0__42396&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/pt/quinta-moscatel.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=1681813301_439933777_2_0_0&highlighted_blocks=1681813301_439933777_2_0_0&matching_block_id=1681813301_439933777_2_0_0&sr_pri_blocks=1681813301_439933777_2_0_0__33642&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.5908163455081,
         "longitude": -8.86213933188759,
         "distanceVerified": true,
-        "searchResultPrice": 423.96,
-        "bookingTableTotal": 449.44,
+        "searchResultPrice": 336.42,
+        "bookingTableTotal": 356.16,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 449.4,
-        "bookingPriceSource": "availability_table",
+        "encodedStayTotal": 356.61,
+        "bookingPriceSource": "encoded_stay_total",
         "excludedTaxRate": 0.06,
         "excludedFixedCharges": 0,
         "taxBreakdownText": "6% IVA",
         "verificationRows": [
           {
             "blockId": "1681813301_439933777_2_0_0",
-            "priceText": "€ 66 por noche\n€ 522 € 424 \nPrecio original € 522 Precio actual € 424\n6 noches\n-19%\nOferta Nuevo alojamiento\nIncluido: suplemento de limpieza de 30 € por estancia\nNo incluido: 6% IVA",
+            "priceText": "€ 61 por noche\n€ 413 € 336 \nPrecio original € 413 Precio actual € 336\n5 noches\n-19%\nOferta Nuevo alojamiento\nIncluido: suplemento de limpieza de € 30 por estancia\nNo incluido: 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 66 por noche\n€ 522 € 424 \nPrecio original € 522 Precio actual € 424\n6 noches\n-19%\nOferta Nuevo alojamiento\nIncluido: suplemento de limpieza de 30 € por estancia\nNo incluido: 6% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de 30 € por estancia No incluido: 6% IVA"
+            "priceCellText": "€ 61 por noche\n€ 413 € 336 \nPrecio original € 413 Precio actual € 336\n5 noches\n-19%\nOferta Nuevo alojamiento\nIncluido: suplemento de limpieza de € 30 por estancia\nNo incluido: 6% IVA",
+            "taxesText": "Incluido: suplemento de limpieza de € 30 por estancia No incluido: 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "firstObservedPrice": 449.44,
+        "firstObservedPrice": 356.61,
         "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T09:39:17.942Z",
-        "marketMedianNightly": 65.33,
-        "marketSampleSize": 6,
+        "priceConfirmedAt": "2026-08-15T10:01:11.604Z",
+        "marketMedianNightly": 71.32,
+        "marketSampleSize": 5,
         "discountPercent": 0,
         "marketErrorFareScore": 0,
         "errorFareScore": 0,
@@ -455,21 +673,21 @@
         "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceDropPercent": 0,
         "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "a7679fc6625752ef",
+        "comparisonGroupId": "0f2a11d63fc04dcb",
         "providerCount": 1,
         "comparisonProviders": [
           {
             "source": "booking",
-            "totalPrice": 449.44,
-            "nightlyPrice": 74.91,
-            "url": "https://www.booking.com/hotel/pt/quinta-moscatel.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=1681813301_439933777_2_0_0&highlighted_blocks=1681813301_439933777_2_0_0&matching_block_id=1681813301_439933777_2_0_0&sr_pri_blocks=1681813301_439933777_2_0_0__42396&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+            "totalPrice": 356.61,
+            "nightlyPrice": 71.32,
+            "url": "https://www.booking.com/hotel/pt/quinta-moscatel.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=1681813301_439933777_2_0_0&highlighted_blocks=1681813301_439933777_2_0_0&matching_block_id=1681813301_439933777_2_0_0&sr_pri_blocks=1681813301_439933777_2_0_0__33642&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 449.44,
+        "bestTotalPrice": 356.61,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T09:39:22.361Z"
+      "createdAt": "2026-08-15T10:01:15.980Z"
     },
     {
       "type": "new_match",
@@ -477,19 +695,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/castle-house-palmela.es.html|2027-07-16|2027-07-22",
+        "id": "/hotel/pt/castle-house-palmela.es.html|2027-07-18|2027-07-23",
         "source": "booking",
         "hotelName": "Castle House",
         "address": "Palmela",
-        "checkIn": "2027-07-16",
-        "checkOut": "2027-07-22",
-        "nights": 6,
-        "totalPrice": 453.68,
-        "nightlyPrice": 75.61,
-        "rateSubtotal": 427.92,
+        "checkIn": "2027-07-18",
+        "checkOut": "2027-07-23",
+        "nights": 5,
+        "totalPrice": 389.02,
+        "nightlyPrice": 77.8,
+        "rateSubtotal": 366.6,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
+        "stayText": "5 noches, 2 adultos",
         "bookingBlockIds": [
           "1446652201_416051177_2_0_0"
         ],
@@ -508,16 +726,16 @@
         "roomName": "2 camas (1 doble, 1 sofá cama)",
         "sharedRoom": false,
         "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__42792&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__36660&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.56690767698041,
         "longitude": -8.89898923959298,
         "distanceVerified": true,
-        "searchResultPrice": 427.92,
-        "bookingTableTotal": 453.68,
+        "searchResultPrice": 366.6,
+        "bookingTableTotal": 389.02,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 453.6,
+        "encodedStayTotal": 388.6,
         "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
         "excludedFixedCharges": 0,
@@ -525,22 +743,22 @@
         "verificationRows": [
           {
             "blockId": "1446652201_416051177_2_0_0",
-            "priceText": "€ 61 por noche\n€ 428\nPrecio € 428\n6 noches\nIncluido: suplemento de limpieza de 60 € por estancia\nNo incluido: 6% IVA",
+            "priceText": "€ 61 por noche\n€ 367\nPrecio € 367\n5 noches\nIncluido: suplemento de limpieza de € 60 por estancia\nNo incluido: 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 61 por noche\n€ 428\nPrecio € 428\n6 noches\nIncluido: suplemento de limpieza de 60 € por estancia\nNo incluido: 6% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de 60 € por estancia No incluido: 6% IVA"
+            "priceCellText": "€ 61 por noche\n€ 367\nPrecio € 367\n5 noches\nIncluido: suplemento de limpieza de € 60 por estancia\nNo incluido: 6% IVA",
+            "taxesText": "Incluido: suplemento de limpieza de € 60 por estancia No incluido: 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "firstObservedPrice": 453.68,
+        "firstObservedPrice": 389.02,
         "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T09:39:19.918Z",
-        "marketMedianNightly": 100,
+        "priceConfirmedAt": "2026-08-15T10:01:13.761Z",
+        "marketMedianNightly": 100.06,
         "marketSampleSize": 5,
-        "discountPercent": 24.4,
-        "marketErrorFareScore": 33,
-        "errorFareScore": 33,
+        "discountPercent": 22.2,
+        "marketErrorFareScore": 30,
+        "errorFareScore": 30,
         "errorFareLevel": "good_price",
         "errorFareIntelligenceVersion": 2,
         "errorFareEvidence": [
@@ -549,22 +767,22 @@
         ],
         "errorFareReason": "Precio inferior a alojamientos comparables.",
         "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 33,
-        "comparisonGroupId": "a020aadf4b4d0299",
+        "preComparisonErrorFareScore": 30,
+        "comparisonGroupId": "ccf2b00e526f3365",
         "providerCount": 1,
         "comparisonProviders": [
           {
             "source": "booking",
-            "totalPrice": 453.68,
-            "nightlyPrice": 75.61,
-            "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__42792&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+            "totalPrice": 389.02,
+            "nightlyPrice": 77.8,
+            "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__36660&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 453.68,
+        "bestTotalPrice": 389.02,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T09:39:22.361Z"
+      "createdAt": "2026-08-15T10:01:15.980Z"
     },
     {
       "type": "new_match",
@@ -572,19 +790,19 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/patio-da-memoria.es.html|2027-07-16|2027-07-22",
+        "id": "/hotel/pt/patio-da-memoria.es.html|2027-07-18|2027-07-23",
         "source": "booking",
         "hotelName": "Patio da Memoria",
         "address": "Palmela",
-        "checkIn": "2027-07-16",
-        "checkOut": "2027-07-22",
-        "nights": 6,
-        "totalPrice": 600,
-        "nightlyPrice": 100,
-        "rateSubtotal": 566.04,
+        "checkIn": "2027-07-18",
+        "checkOut": "2027-07-23",
+        "nights": 5,
+        "totalPrice": 500.32,
+        "nightlyPrice": 100.06,
+        "rateSubtotal": 471.7,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
+        "stayText": "5 noches, 2 adultos",
         "bookingBlockIds": [
           "229639601_410904649_2_0_0"
         ],
@@ -603,35 +821,35 @@
         "roomName": "1 cama doble",
         "sharedRoom": false,
         "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__47170&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
         "latitude": 38.56305145115987,
         "longitude": -8.94047249278855,
         "distanceVerified": true,
-        "searchResultPrice": 566.04,
-        "bookingTableTotal": 599.96,
+        "searchResultPrice": 471.7,
+        "bookingTableTotal": 500.32,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 600,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 500,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
         "excludedFixedCharges": 0,
         "taxBreakdownText": "6% IVA",
         "verificationRows": [
           {
             "blockId": "229639601_410904649_2_0_0",
-            "priceText": "€ 94 por noche\n€ 566\nPrecio € 566\n6 noches\nNo incluido: 6% IVA",
+            "priceText": "€ 94 por noche\n€ 472\nPrecio € 472\n5 noches\nNo incluido: 6% IVA",
             "displayedPriceText": "",
-            "priceCellText": "€ 94 por noche\n€ 566\nPrecio € 566\n6 noches\nNo incluido: 6% IVA",
+            "priceCellText": "€ 94 por noche\n€ 472\nPrecio € 472\n5 noches\nNo incluido: 6% IVA",
             "taxesText": "No incluido: 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "firstObservedPrice": 600,
+        "firstObservedPrice": 500.32,
         "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T09:39:22.335Z",
-        "marketMedianNightly": 100,
+        "priceConfirmedAt": "2026-08-15T10:01:15.956Z",
+        "marketMedianNightly": 100.06,
         "marketSampleSize": 5,
         "discountPercent": 0,
         "marketErrorFareScore": 0,
@@ -645,21 +863,21 @@
         "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceDropPercent": 0,
         "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "97675ed719e14554",
+        "comparisonGroupId": "ab57213c23dbb6f7",
         "providerCount": 1,
         "comparisonProviders": [
           {
             "source": "booking",
-            "totalPrice": 600,
-            "nightlyPrice": 100,
-            "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-16&checkout=2027-07-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=3ef143ca278f007d&srepoch=1786786710&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+            "totalPrice": 500.32,
+            "nightlyPrice": 100.06,
+            "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-18&checkout=2027-07-23&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=b99e465898c60166&srepoch=1786788019&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__47170&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 600,
+        "bestTotalPrice": 500.32,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T09:39:22.361Z"
+      "createdAt": "2026-08-15T10:01:15.980Z"
     }
   ]
 }
