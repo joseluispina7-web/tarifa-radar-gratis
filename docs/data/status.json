@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T19:31:40.235Z",
+  "updatedAt": "2026-08-15T19:36:16.100Z",
   "summary": {
-    "generatedAt": "2026-08-15T19:31:40.235Z",
+    "generatedAt": "2026-08-15T19:36:16.100Z",
     "monitors": 3,
     "searches": 36,
-    "offers": 110,
-    "matches": 13,
-    "newMatches": 5,
+    "offers": 132,
+    "matches": 23,
+    "newMatches": 3,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 8,
-        "offers": 23,
-        "matches": 9,
-        "errors": 3,
+        "offers": 45,
+        "matches": 19,
+        "errors": 0,
         "skipped": 1
       },
       "google_hotels": {
@@ -61,6 +61,19 @@
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
       },
       {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-13",
+          "checkOut": "2027-08-19",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
+      },
+      {
         "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
         "monitorName": "Shanghai",
         "source": "agoda",
@@ -90,19 +103,6 @@
         "source": "bluepillow",
         "dates": {
           "checkIn": "2027-08-13",
-          "checkOut": "2027-08-19",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-08-13",
           "checkOut": "2027-08-20",
           "nights": 7
         },
@@ -125,56 +125,14 @@
       }
     ],
     "nearbyErrors": [],
-    "errors": [
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-13",
-          "checkOut": "2027-08-18",
-          "nights": 5,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-06",
-          "flexibleCheckInEnd": "2027-08-20"
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      },
-      {
-        "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-        "monitorName": "Shanghai",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-09-23",
-          "checkOut": "2026-09-26"
-        },
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-13",
-          "checkOut": "2027-08-20",
-          "nights": 7,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-06",
-          "flexibleCheckInEnd": "2027-08-20"
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      }
-    ]
+    "errors": []
   },
   "monitors": {
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-15T19:31:40.235Z",
-      "lastSuccessAt": "2026-08-15T19:33:21.434Z",
+      "lastScanAt": "2026-08-15T19:36:16.100Z",
+      "lastSuccessAt": "2026-08-15T19:37:53.769Z",
       "searches": 5,
       "offers": 56,
       "matches": 2,
@@ -184,12 +142,13 @@
           "searches": 1,
           "offers": 0,
           "matches": 0,
-          "errors": 1,
+          "errors": 0,
           "skipped": 0,
-          "state": "degraded",
-          "consecutiveErrors": 1,
-          "lastSuccessAt": "",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+          "coveredCheckIns": 1,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastError": "",
           "retryAt": ""
         },
         "google_hotels": {
@@ -200,7 +159,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -212,7 +171,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -224,7 +183,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -236,21 +195,21 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      "error": ""
     },
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T19:31:40.235Z",
-      "lastSuccessAt": "2026-08-15T19:33:23.066113Z",
+      "lastScanAt": "2026-08-15T19:36:16.100Z",
+      "lastSuccessAt": "2026-08-15T19:38:20.444508Z",
       "searches": 15,
-      "offers": 33,
-      "matches": 9,
+      "offers": 55,
+      "matches": 19,
       "nearbyLocations": [
         "Setúbal",
         "Palmela",
@@ -260,15 +219,15 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 23,
-          "matches": 9,
+          "offers": 45,
+          "matches": 19,
           "errors": 0,
           "skipped": 1,
           "coveredCheckIns": 45,
           "lastSkipReason": "waiting_for_candidate",
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -293,7 +252,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -305,7 +264,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -317,7 +276,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         }
@@ -338,8 +297,8 @@
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T19:31:40.235Z",
-      "lastSuccessAt": "2026-08-15T19:35:31.948Z",
+      "lastScanAt": "2026-08-15T19:36:16.100Z",
+      "lastSuccessAt": "2026-08-15T19:39:30.075Z",
       "searches": 16,
       "offers": 21,
       "matches": 2,
@@ -349,12 +308,12 @@
           "searches": 4,
           "offers": 0,
           "matches": 0,
-          "errors": 2,
+          "errors": 0,
           "skipped": 0,
-          "coveredCheckIns": 30,
+          "coveredCheckIns": 60,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -379,7 +338,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -391,7 +350,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -403,12 +362,12 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:31:40.235Z",
+          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+      "error": "",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-15",
@@ -449,7 +408,7 @@
         "priceVerified": true,
         "priceBasis": "trip_direct_final_total_v1",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:31:46.591Z",
+        "priceConfirmedAt": "2026-08-15T19:36:20.608Z",
         "stars": 3,
         "guestRating": 10,
         "reviewCount": 3,
@@ -506,7 +465,7 @@
         "bestTotalPrice": 147.61,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T19:31:43.260010Z"
+      "createdAt": "2026-08-15T19:36:16.570192Z"
     },
     {
       "type": "new_match",
@@ -534,7 +493,7 @@
         "priceVerified": true,
         "priceBasis": "trip_inclusive_total",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:31:44.586Z",
+        "priceConfirmedAt": "2026-08-15T19:36:18.104Z",
         "stars": 3,
         "guestRating": 10,
         "reviewCount": 3,
@@ -591,201 +550,7 @@
         "bestTotalPrice": 147.61,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T19:31:43.260010Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/comporta-side.es.html|2027-08-13|2027-08-19",
-        "source": "booking",
-        "hotelName": "COMPORTA SIDE - Tents",
-        "address": "Setúbal",
-        "checkIn": "2027-08-13",
-        "checkOut": "2027-08-19",
-        "nights": 6,
-        "totalPrice": 384.4,
-        "nightlyPrice": 64.07,
-        "rateSubtotal": 339.62,
-        "additionalCharges": 24,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "977411206_370149014_2_34_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 0,
-        "guestRating": 7.4,
-        "reviewCount": 467,
-        "distanceKm": 18.21,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [
-          "beach"
-        ],
-        "mealPlan": "any",
-        "roomName": "1 cama doble",
-        "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://www.booking.com/hotel/pt/comporta-side.es.html?ucfs=1&arphpl=1&checkin=2027-08-13&checkout=2027-08-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=price&srpvid=b4538962537200cd&srepoch=1786822343&all_sr_blocks=977411206_370149014_2_34_0&highlighted_blocks=977411206_370149014_2_34_0&matching_block_id=977411206_370149014_2_34_0&sr_pri_blocks=977411206_370149014_2_34_0__33962&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.543300237427,
-        "longitude": -8.762732615951,
-        "distanceVerified": true,
-        "searchResultPrice": 339.62,
-        "bookingTableTotal": 384.4,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 384,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 24,
-        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche, 6% IVA",
-        "verificationRows": [
-          {
-            "blockId": "977411206_370149014_2_34_0",
-            "priceText": "€ 57 por noche\n€ 340\nPrecio € 340\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 57 por noche\n€ 340\nPrecio € 340\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA",
-            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche, 6% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 384.4,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T19:33:14.669Z",
-        "marketMedianNightly": 66.04,
-        "marketSampleSize": 8,
-        "discountPercent": 3,
-        "marketErrorFareScore": 4,
-        "errorFareScore": 4,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 4,
-        "comparisonGroupId": "52a3b26c063edd60",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 384.4,
-            "nightlyPrice": 64.07,
-            "url": "https://www.booking.com/hotel/pt/comporta-side.es.html?ucfs=1&arphpl=1&checkin=2027-08-13&checkout=2027-08-19&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=10&hapos=10&sr_order=price&srpvid=b4538962537200cd&srepoch=1786822343&all_sr_blocks=977411206_370149014_2_34_0&highlighted_blocks=977411206_370149014_2_34_0&matching_block_id=977411206_370149014_2_34_0&sr_pri_blocks=977411206_370149014_2_34_0__33962&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 384.4,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T19:33:16.856Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/fonte-nova-setubal.es.html|2027-08-16|2027-08-22",
-        "source": "booking",
-        "hotelName": "FONTE NOVA Setubal",
-        "address": "Setúbal",
-        "checkIn": "2027-08-16",
-        "checkOut": "2027-08-22",
-        "nights": 6,
-        "totalPrice": 381,
-        "nightlyPrice": 63.5,
-        "rateSubtotal": 357,
-        "additionalCharges": 24,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1678371301_439627100_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 8.5,
-        "reviewCount": 6,
-        "distanceKm": 18.72,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [
-          "beach",
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "Apartamento Estándar de 2 dormitorios",
-        "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://www.booking.com/hotel/pt/fonte-nova-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-08-16&checkout=2027-08-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=price&srpvid=b4538962537200cd&srepoch=1786822343&all_sr_blocks=1678371301_439627100_4_0_0&highlighted_blocks=1678371301_439627100_4_0_0&matching_block_id=1678371301_439627100_4_0_0&sr_pri_blocks=1678371301_439627100_4_0_0__35700&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.5227133,
-        "longitude": -8.9013612,
-        "distanceVerified": true,
-        "searchResultPrice": 357,
-        "bookingTableTotal": 381,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 381,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0,
-        "excludedFixedCharges": 24,
-        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
-        "verificationRows": [
-          {
-            "blockId": "1678371301_439627100_4_0_0",
-            "priceText": "€ 60 por noche\n€ 357\nPrecio € 357\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
-            "displayedPriceText": "",
-            "priceCellText": "€ 60 por noche\n€ 357\nPrecio € 357\n6 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
-          }
-        ],
-        "taxFallbackRate": 0,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 381,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T19:33:16.793Z",
-        "marketMedianNightly": 0,
-        "marketSampleSize": 0,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "c7cd34d5148a2abb",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 381,
-            "nightlyPrice": 63.5,
-            "url": "https://www.booking.com/hotel/pt/fonte-nova-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-08-16&checkout=2027-08-22&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=11&hapos=11&sr_order=price&srpvid=b4538962537200cd&srepoch=1786822343&all_sr_blocks=1678371301_439627100_4_0_0&highlighted_blocks=1678371301_439627100_4_0_0&matching_block_id=1678371301_439627100_4_0_0&sr_pri_blocks=1678371301_439627100_4_0_0__35700&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 381,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T19:33:16.856Z"
+      "createdAt": "2026-08-15T19:36:16.570192Z"
     },
     {
       "type": "new_match",
@@ -813,7 +578,7 @@
         "priceVerified": true,
         "priceBasis": "expedia_total_with_tax_breakdown",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:34:56.161Z",
+        "priceConfirmedAt": "2026-08-15T19:38:54.067Z",
         "stars": 3,
         "guestRating": 8,
         "reviewCount": 16,
@@ -863,7 +628,7 @@
         "bestTotalPrice": 526.5,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T19:34:53.107389Z"
+      "createdAt": "2026-08-15T19:38:51.154549Z"
     }
   ]
 }
