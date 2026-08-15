@@ -60,6 +60,18 @@ function parseGoogleHotelsNightly(value) {
   return match ? parseLocalizedNumber(match[1]) : 0;
 }
 
+function parseGoogleCandidateNightly(value) {
+  const text = String(value || "");
+  const suffixMatch = text.match(
+    /([\d][\d.\s\u00a0]*(?:,\d{1,2})?)\s*(?:\u20ac|EUR)/i,
+  );
+  const prefixMatch = text.match(
+    /(?:\u20ac|EUR)\s*([\d][\d.,\s\u00a0]*)/i,
+  );
+  const match = suffixMatch || prefixMatch;
+  return match ? parseLocalizedNumber(match[1]) : 0;
+}
+
 function repeatedlyDecodeUrl(value) {
   const values = [String(value || "")];
   for (let attempt = 0; attempt < 3; attempt += 1) {
@@ -703,6 +715,12 @@ async function extractGoogleHotelCandidates(page, search) {
           labelFor(link).toLowerCase(),
         )
       );
+      const anyCurrencyLink = links.find((link) =>
+        /(?:\u20ac|\bEUR\b)/i.test(labelFor(link))
+      );
+      const anyCurrencyText = cardElements
+        .map((element) => element.innerText || "")
+        .find((text) => /(?:\u20ac|\bEUR\b)/i.test(text));
       const hotelName = (heading.textContent || "").trim();
       const normalizedHotelName = hotelName.toLowerCase();
       const hotelLink = precedingLinks.reverse().find((link) =>
@@ -736,6 +754,8 @@ async function extractGoogleHotelCandidates(page, search) {
         nightlyText:
           nightlyLink?.innerText ||
           nightlyLink?.getAttribute("aria-label") ||
+          (anyCurrencyLink ? labelFor(anyCurrencyLink) : "") ||
+          anyCurrencyText ||
           "",
         text: cardElements
           .map((element) => element.innerText || "")
@@ -753,7 +773,7 @@ async function extractGoogleHotelCandidates(page, search) {
       ...card,
       nightlyPrice: parseGoogleHotelsNightly(
         String(card.nightlyText).replace(/^.*?(?=\d[\d.,\s]*\s*\u20ac)/, ""),
-      ),
+      ) || parseGoogleCandidateNightly(card.nightlyText),
     }))
     .filter((card) => card.hotelName && card.pricePageUrl);
 }
@@ -884,7 +904,6 @@ function providerLinkMatchesStay(value, search) {
 async function verifyGoogleHotelCandidates(page, candidates, search, options = {}) {
   const timeoutMs = Math.min(options.timeoutMs || 25_000, 25_000);
   const pricedCandidates = candidates
-    .filter((candidate) => Number(candidate.nightlyPrice) > 0)
     .sort(
       (left, right) =>
         (left.nightlyPrice || Infinity) -
@@ -946,6 +965,7 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         }];
       })
         .filter((price) =>
+          !candidate.nightlyPrice ||
           googleTotalMatchesNightly(
             price.totalPrice,
             candidate.nightlyPrice,
@@ -1182,6 +1202,7 @@ module.exports = {
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
   parseGoogleGuestRating,
+  parseGoogleCandidateNightly,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
   parseGoogleProviderInclusiveTotal,

@@ -8,6 +8,7 @@ const {
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
   parseGoogleGuestRating,
+  parseGoogleCandidateNightly,
   parseGoogleHotelsNightly,
   parseGoogleHotelsNights,
   parseGoogleProviderInclusiveTotal,
@@ -79,6 +80,12 @@ test("parses the explicit taxed stay total and nightly amount", () => {
     "\u20ac33\u20ac130 total4 nights including taxes and fees\u20ac33Aug 5-9";
   assert.equal(parseGoogleHotelsNightly(prefixEnglish), 33);
   assert.equal(parseGoogleHotelsTotal(prefixEnglish), 130);
+});
+
+test("reads compact Google candidate prices from Linux card labels", () => {
+  assert.equal(parseGoogleCandidateNightly("Prices from EUR 46"), 46);
+  assert.equal(parseGoogleCandidateNightly("Ver precios de 52 €"), 52);
+  assert.equal(parseGoogleCandidateNightly("Desde € 61,50 por noche"), 61.5);
 });
 
 test("reads only explicit all-inclusive EUR totals from Google providers", () => {
@@ -386,6 +393,24 @@ test("opens Google candidates whose compact card omits requested amenities", () 
   );
   assert.equal(
     googleCandidateMatches(candidate, poolSearch, {
+      ignoreBudget: true,
+      ignoreIncompleteCardDetails: true,
+    }),
+    true,
+  );
+});
+
+test("opens a Google hotel detail even when its compact card omits the price", () => {
+  const candidate = {
+    hotelName: "Hotel Shanghai Center",
+    nightlyPrice: 0,
+    text: "Hotel de 4 estrellas",
+    labels: [],
+    pricePageUrl: "https://www.google.com/travel/search?qs=hotel",
+  };
+
+  assert.equal(
+    googleCandidateMatches(candidate, search(), {
       ignoreBudget: true,
       ignoreIncompleteCardDetails: true,
     }),
