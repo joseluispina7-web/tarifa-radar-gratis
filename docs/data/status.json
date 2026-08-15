@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T19:36:16.100Z",
+  "updatedAt": "2026-08-15T19:43:22.880Z",
   "summary": {
-    "generatedAt": "2026-08-15T19:36:16.100Z",
+    "generatedAt": "2026-08-15T19:43:22.880Z",
     "monitors": 3,
     "searches": 36,
-    "offers": 132,
-    "matches": 23,
-    "newMatches": 3,
+    "offers": 137,
+    "matches": 13,
+    "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 8,
-        "offers": 45,
-        "matches": 19,
-        "errors": 0,
+        "offers": 47,
+        "matches": 10,
+        "errors": 2,
         "skipped": 1
       },
       "google_hotels": {
@@ -40,8 +40,8 @@
       },
       "bluepillow": {
         "searches": 9,
-        "offers": 52,
-        "matches": 3,
+        "offers": 55,
+        "matches": 2,
         "errors": 0,
         "skipped": 0
       }
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-13",
-          "checkOut": "2027-08-18",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-08-13",
-          "checkOut": "2027-08-19",
+          "checkIn": "2027-08-14",
+          "checkOut": "2027-08-20",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -102,8 +89,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-13",
-          "checkOut": "2027-08-20",
+          "checkIn": "2027-08-14",
+          "checkOut": "2027-08-21",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -115,24 +102,160 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-14",
-          "checkOut": "2027-08-19",
+          "checkIn": "2027-08-15",
+          "checkOut": "2027-08-20",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-15",
+          "checkOut": "2027-08-21",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
       }
     ],
     "nearbyErrors": [],
-    "errors": []
+    "errors": [
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-14",
+          "checkOut": "2027-08-21",
+          "nights": 7,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-08-07",
+          "flexibleCheckInEnd": "2027-08-21"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-15",
+          "checkOut": "2027-08-21",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-08-08",
+          "flexibleCheckInEnd": "2027-08-22"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      }
+    ]
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-15T19:43:22.880Z",
+      "lastSuccessAt": "2026-08-15T19:44:48.024424Z",
+      "searches": 15,
+      "offers": 58,
+      "matches": 10,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 3,
+          "offers": 47,
+          "matches": 10,
+          "errors": 0,
+          "skipped": 1,
+          "coveredCheckIns": 45,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 4,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 11,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-15",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 100,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 104,
+        "remainingSearchesInSweep": 31,
+        "completedSweep": false
+      }
+    },
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-15T19:36:16.100Z",
-      "lastSuccessAt": "2026-08-15T19:37:53.769Z",
+      "lastScanAt": "2026-08-15T19:43:22.880Z",
+      "lastSuccessAt": "2026-08-15T19:45:08.752Z",
       "searches": 5,
       "offers": 56,
       "matches": 2,
@@ -147,7 +270,7 @@
           "coveredCheckIns": 1,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -159,7 +282,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -171,7 +294,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -183,7 +306,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -195,126 +318,34 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         }
       },
       "error": ""
     },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T19:36:16.100Z",
-      "lastSuccessAt": "2026-08-15T19:38:20.444508Z",
-      "searches": 15,
-      "offers": 55,
-      "matches": 19,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 3,
-          "offers": 45,
-          "matches": 19,
-          "errors": 0,
-          "skipped": 1,
-          "coveredCheckIns": 45,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 10,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-15",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 96,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 100,
-        "remainingSearchesInSweep": 35,
-        "completedSweep": false
-      }
-    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T19:36:16.100Z",
-      "lastSuccessAt": "2026-08-15T19:39:30.075Z",
+      "lastScanAt": "2026-08-15T19:43:22.880Z",
+      "lastSuccessAt": "2026-08-15T19:46:36.322928Z",
       "searches": 16,
-      "offers": 21,
-      "matches": 2,
+      "offers": 23,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 4,
           "offers": 0,
           "matches": 0,
-          "errors": 0,
+          "errors": 2,
           "skipped": 0,
-          "coveredCheckIns": 60,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
-          "lastError": "",
+          "coveredCheckIns": 30,
+          "state": "degraded",
+          "consecutiveErrors": 1,
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
           "retryAt": ""
         },
         "google_hotels": {
@@ -338,19 +369,19 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 21,
-          "matches": 2,
+          "offers": 23,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -362,273 +393,24 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T19:36:16.100Z",
+          "lastSuccessAt": "2026-08-15T19:43:22.880Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 96,
+        "startIndex": 100,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 100,
-        "remainingSearchesInSweep": 35,
+        "nextIndex": 104,
+        "remainingSearchesInSweep": 31,
         "completedSweep": false
       }
     }
   },
-  "alerts": [
-    {
-      "type": "new_match",
-      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-      "monitorName": "Shanghai",
-      "previousPrice": 0,
-      "offer": {
-        "id": "trip:prop_69ce9d509e12a22c764d607a|2026-09-23|2026-09-26",
-        "source": "trip",
-        "provider": "Trip.com",
-        "hotelName": "Dayin Hotel (Shanghai People's Square & Suzhou River Branch)",
-        "address": "Shanghai",
-        "checkIn": "2026-09-23",
-        "checkOut": "2026-09-26",
-        "nights": 3,
-        "totalPrice": 147.61,
-        "nightlyPrice": 49.2,
-        "displayedNightlyPrice": 49.2,
-        "rateSubtotal": 147.61,
-        "searchResultPrice": 147.61,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 0,
-        "taxesText": "Total final leido directamente en Trip.com",
-        "stayText": "3 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "trip_direct_final_total_v1",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:36:20.608Z",
-        "stars": 3,
-        "guestRating": 10,
-        "reviewCount": 3,
-        "distanceKm": 1.591739804488156,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "url": "https://us.trip.com/hotels/list/searchresults?hotelid=123393913&city=2&Allianceid=3783604&sid=20644290&checkin=2026-09-23&checkout=2026-09-26&shoppingid=f10cce2d98df11f1a3529e1cb1b6f2b5&adult=2&children=0&ages=&language=enus&locale=en_US&roomid=1587874526&swid=0&pay=PP&fgt=1&is_sp=Q2&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA&display=inctotal",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/110000000/109560000/109557700/109557686/fe5877d3.jpg",
-        "bluepillowPropertyId": "prop_69ce9d509e12a22c764d607a",
-        "bluepillowOta": "TripCom",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 62.82,
-        "marketSampleSize": 15,
-        "discountPercent": 21.7,
-        "marketErrorFareScore": 29,
-        "errorFareScore": 29,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 29,
-        "comparisonGroupId": "7e662d1bd9d81936",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "trip",
-            "provider": "Trip.com",
-            "totalPrice": 147.61,
-            "nightlyPrice": 49.2,
-            "url": "https://us.trip.com/hotels/list/searchresults?hotelid=123393913&city=2&Allianceid=3783604&sid=20644290&checkin=2026-09-23&checkout=2026-09-26&shoppingid=f10cce2d98df11f1a3529e1cb1b6f2b5&adult=2&children=0&ages=&language=enus&locale=en_US&roomid=1587874526&swid=0&pay=PP&fgt=1&is_sp=Q2&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA&display=inctotal",
-            "priceVerified": true
-          },
-          {
-            "source": "bluepillow",
-            "provider": "Trip.com via Bluepillow",
-            "totalPrice": 147.61,
-            "nightlyPrice": 49.2,
-            "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D123393913%26city%3D2%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26shoppingid%3Df10cce2d98df11f1a3529e1cb1b6f2b5%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1587874526%26swid%3D0%26pay%3DPP%26fgt%3D1%26is_sp%3DQ2%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=69ce9d509e12a22c764d607a&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 147.61,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T19:36:16.570192Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
-      "monitorName": "Shanghai",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_69ce9d509e12a22c764d607a|2026-09-23|2026-09-26",
-        "source": "bluepillow",
-        "provider": "Trip.com via Bluepillow",
-        "hotelName": "Dayin Hotel (Shanghai People's Square & Suzhou River Branch)",
-        "address": "Shanghai",
-        "checkIn": "2026-09-23",
-        "checkOut": "2026-09-26",
-        "nights": 3,
-        "totalPrice": 147.61,
-        "nightlyPrice": 49.2,
-        "displayedNightlyPrice": 49.2,
-        "rateSubtotal": 147.61,
-        "searchResultPrice": 147.61,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 0,
-        "taxesText": "Total con impuestos y tasas incluidos por Trip.com",
-        "stayText": "3 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "trip_inclusive_total",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:36:18.104Z",
-        "stars": 3,
-        "guestRating": 10,
-        "reviewCount": 3,
-        "distanceKm": 1.591739804488156,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
-        "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D123393913%26city%3D2%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26shoppingid%3Df10cce2d98df11f1a3529e1cb1b6f2b5%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1587874526%26swid%3D0%26pay%3DPP%26fgt%3D1%26is_sp%3DQ2%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=69ce9d509e12a22c764d607a&begin=2026-09-23&end=2026-09-26",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/110000000/109560000/109557700/109557686/fe5877d3.jpg",
-        "bluepillowPropertyId": "prop_69ce9d509e12a22c764d607a",
-        "bluepillowOta": "TripCom",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 62.82,
-        "marketSampleSize": 15,
-        "discountPercent": 21.7,
-        "marketErrorFareScore": 29,
-        "errorFareScore": 29,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 29,
-        "comparisonGroupId": "7e662d1bd9d81936",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "trip",
-            "provider": "Trip.com",
-            "totalPrice": 147.61,
-            "nightlyPrice": 49.2,
-            "url": "https://us.trip.com/hotels/list/searchresults?hotelid=123393913&city=2&Allianceid=3783604&sid=20644290&checkin=2026-09-23&checkout=2026-09-26&shoppingid=f10cce2d98df11f1a3529e1cb1b6f2b5&adult=2&children=0&ages=&language=enus&locale=en_US&roomid=1587874526&swid=0&pay=PP&fgt=1&is_sp=Q2&crn=1&curr=EUR&fmeta=1&wkp=1&stand=H4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA&display=inctotal",
-            "priceVerified": true
-          },
-          {
-            "source": "bluepillow",
-            "provider": "Trip.com via Bluepillow",
-            "totalPrice": 147.61,
-            "nightlyPrice": 49.2,
-            "url": "https://www.bluepillow.es/skippy?connectorname=TripCom&redirecturl=https%3A%2F%2Fus.trip.com%2Fhotels%2Flist%2Fsearchresults%3Fhotelid%3D123393913%26city%3D2%26Allianceid%3D3783604%26sid%3D20644290%26checkin%3D2026-09-23%26checkout%3D2026-09-26%26shoppingid%3Df10cce2d98df11f1a3529e1cb1b6f2b5%26adult%3D2%26children%3D0%26ages%3D%26language%3Denus%26locale%3Den_US%26roomid%3D1587874526%26swid%3D0%26pay%3DPP%26fgt%3D1%26is_sp%3DQ2%26crn%3D1%26curr%3DEUR%26fmeta%3D1%26wkp%3D1%26stand%3DH4sIAAAAAAAA_wAMAfP-CmwKAhgCEgQIARAAGmAI3pWU9QUYADAAONpYmAH5rus6qAEBuAECwAEA0QGamZmZmTlHQOEB7FG4HoVzYkDoAc2E6e8BiAJCiQQAAAAAAAAAAKAEAKoEDAjaDxG4HoXrURhKQKEFFK5H4XrkaEAaIGYxMGNjZTJkOThkZjExZjFhMzUyOWUxY2IxYjZmMmI1IAEonv2C1AZIA1IGOWYzYjk1WhwKA0NOWREAAAAAAADwPxoDRVVSIYts5_upMR9AYgVlbl9VU2iGFnABeACKAQdIAXgAyAEBqgEA8gEiZjEwY2NlMmQ5OGRmMTFmMWEzNTI5ZTFjYjFiNmYyYjVfM5oCCUhpZ2hWYWx1ZQAAAP__AQAA___upiWhDAEAAA%26display%3Dinctotal&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=69ce9d509e12a22c764d607a&begin=2026-09-23&end=2026-09-26",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 147.61,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T19:36:16.570192Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-14|2027-08-19",
-        "source": "bluepillow",
-        "provider": "Expedia via Bluepillow",
-        "hotelName": "Zambujal Suites",
-        "address": "Sesimbra",
-        "checkIn": "2027-08-14",
-        "checkOut": "2027-08-19",
-        "nights": 5,
-        "totalPrice": 526.5,
-        "nightlyPrice": 105.3,
-        "displayedNightlyPrice": 105.3,
-        "rateSubtotal": 526.5,
-        "searchResultPrice": 526.5,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 29.8,
-        "taxesText": "Total con 29.80 EUR de impuestos y tasas incluidos",
-        "stayText": "5 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "expedia_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T19:38:54.067Z",
-        "stars": 3,
-        "guestRating": 8,
-        "reviewCount": 16,
-        "distanceKm": 2.228699593004805,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786822492%2526endDate%253D2027-08-19%2526adults%253D2%2526locale%253Den_US%2526chid%253D0d20e920-8f35-4033-b2b6-d8074c92a1ab%2526eapid%253D310064%2526startDate%253D2027-08-14%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D29.80%2526mpq%253D100.23%2526mpa%253D496.70&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-14&end=2027-08-19",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
-        "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
-        "bluepillowOta": "Expedia",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 0,
-        "marketSampleSize": 0,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "d48acf0b52f0b182",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "bluepillow",
-            "provider": "Expedia via Bluepillow",
-            "totalPrice": 526.5,
-            "nightlyPrice": 105.3,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786822492%2526endDate%253D2027-08-19%2526adults%253D2%2526locale%253Den_US%2526chid%253D0d20e920-8f35-4033-b2b6-d8074c92a1ab%2526eapid%253D310064%2526startDate%253D2027-08-14%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D29.80%2526mpq%253D100.23%2526mpa%253D496.70&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-14&end=2027-08-19",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 526.5,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T19:38:51.154549Z"
-    }
-  ]
+  "alerts": []
 }
