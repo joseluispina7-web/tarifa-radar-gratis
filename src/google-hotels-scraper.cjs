@@ -13,7 +13,7 @@ const {
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const GOOGLE_SOURCE = "google_hotels";
-const MAX_GOOGLE_DETAIL_CANDIDATES = 2;
+const MAX_GOOGLE_DETAIL_CANDIDATES = 4;
 const GOOGLE_HOTELS_SEED_URL =
   "https://www.google.com/travel/search?" +
   "q=hoteles%20en%20Madrid&" +
@@ -402,8 +402,7 @@ async function selectGoogleHotelsDestination(page, search, timeoutMs) {
 }
 
 async function ensureCalendarDate(page, isoDate, timeoutMs) {
-  const selector =
-    `[role="gridcell"][data-iso="${isoDate}"][aria-hidden="false"]`;
+  const selector = `[role="gridcell"][data-iso="${isoDate}"]`;
   const calendar = page
     .locator('[role="dialog"]:visible')
     .filter({ has: page.locator('[role="gridcell"][data-iso]') })
@@ -419,10 +418,19 @@ async function ensureCalendarDate(page, isoDate, timeoutMs) {
     : 18;
   const maximumAdvances = Math.min(24, Math.max(18, monthsAhead + 3));
   for (let month = 0; month < maximumAdvances; month += 1) {
-    const dateButton = calendar.locator(selector).first();
-    if (await dateButton.count()) {
-      await dateButton.waitFor({ state: "visible", timeout: timeoutMs });
-      return dateButton;
+    const attachedDate = calendar.locator(selector).first();
+    if (await attachedDate.count()) {
+      // Google's current calendar renders many months in one vertical dialog.
+      // Only cells inside the viewport have aria-hidden="false", so reveal the
+      // already attached date instead of looking for a non-existent next button.
+      await attachedDate.evaluate((cell) =>
+        cell.scrollIntoView({ block: "center", inline: "center" })
+      );
+      await page.waitForTimeout(150);
+      const visibleDate = calendar
+        .locator(`${selector}[aria-hidden="false"]`)
+        .first();
+      return (await visibleDate.count()) ? visibleDate : attachedDate;
     }
     let nextButton = calendar
       .getByRole("button", {
@@ -754,9 +762,20 @@ function googleCandidateMatches(card, search, options = {}) {
   const estimatedNightly = card.nightlyPrice || 1;
   const estimatedTotal =
     Math.round(estimatedNightly * search.nights * 100) / 100;
-  const candidateSearch = options.ignoreBudget
-    ? { ...search, maxTotal: 0, maxNightly: 0 }
-    : search;
+  const candidateSearch = {
+    ...search,
+    ...(options.ignoreBudget ? { maxTotal: 0, maxNightly: 0 } : {}),
+    ...(options.ignoreIncompleteCardDetails
+      ? {
+          minStars: 0,
+          guestRatingMin: 0,
+          freeCancellation: false,
+          mealPlan: "any",
+          propertyTypes: [],
+          amenities: [],
+        }
+      : {}),
+  };
   const provisional = buildGoogleOffer(
     {
       hotelName: card.hotelName,
@@ -864,20 +883,33 @@ function providerLinkMatchesStay(value, search) {
 
 async function verifyGoogleHotelCandidates(page, candidates, search, options = {}) {
   const timeoutMs = Math.min(options.timeoutMs || 25_000, 25_000);
-  const selected = candidates
+  const pricedCandidates = candidates
     .filter((candidate) => Number(candidate.nightlyPrice) > 0)
-    .filter((candidate) =>
-      googleCandidateMatches(candidate, search, { ignoreBudget: true })
-    )
     .sort(
       (left, right) =>
         (left.nightlyPrice || Infinity) -
         (right.nightlyPrice || Infinity),
-    )
-    .slice(
-      0,
-      Math.min(search.maxVerifiedResults, MAX_GOOGLE_DETAIL_CANDIDATES),
     );
+  const visibleFilterMatches = pricedCandidates.filter((candidate) =>
+    googleCandidateMatches(candidate, search, { ignoreBudget: true })
+  );
+  const incompleteCardMatches = pricedCandidates.filter((candidate) =>
+    googleCandidateMatches(candidate, search, {
+      ignoreBudget: true,
+      ignoreIncompleteCardDetails: true,
+    })
+  );
+  const selected = Array.from(
+    new Map(
+      [...visibleFilterMatches, ...incompleteCardMatches].map((candidate) => [
+        candidate.pricePageUrl,
+        candidate,
+      ]),
+    ).values(),
+  ).slice(
+    0,
+    Math.min(search.maxVerifiedResults, MAX_GOOGLE_DETAIL_CANDIDATES),
+  );
   const offers = [];
   const errors = [];
 
@@ -928,6 +960,15 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         );
       }
 
+      const detailText = await page.locator("body").innerText().catch(() => "");
+      const detailLabels = await page
+        .locator("[aria-label]")
+        .evaluateAll((elements) =>
+          elements
+            .map((element) => element.getAttribute("aria-label") || "")
+            .filter(Boolean)
+        )
+        .catch(() => []);
       const offer = buildGoogleOffer(
         {
           hotelName: candidate.hotelName,
@@ -935,8 +976,8 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
             `${candidate.nightlyPrice || bestProvider.totalPrice / search.nights} \u20ac` +
             `${bestProvider.totalPrice} \u20ac en total` +
             `${search.nights} noches con impuestos y tasas incluidos`,
-          text: `${candidate.text}\n${bestProvider.text}`,
-          labels: candidate.labels,
+          text: `${candidate.text}\n${detailText}\n${bestProvider.text}`,
+          labels: [...candidate.labels, ...detailLabels],
           url: candidate.pricePageUrl,
         },
         search,
@@ -1006,8 +1047,20 @@ async function loadGoogleHotels(page, search, options = {}) {
         state: "visible",
         timeout: timeoutMs,
       });
-      await page.mouse.wheel(0, 900);
-      await page.waitForTimeout(1_500);
+      let previousHeadingCount = 0;
+      let stablePasses = 0;
+      for (let pass = 0; pass < 5; pass += 1) {
+        const headingCount = await page.locator("h2").count();
+        if (headingCount >= search.maxResults) break;
+        stablePasses = headingCount === previousHeadingCount
+          ? stablePasses + 1
+          : 0;
+        if (stablePasses >= 2) break;
+        previousHeadingCount = headingCount;
+        await page.mouse.wheel(0, 1_400);
+        await page.waitForTimeout(700);
+      }
+      await page.waitForTimeout(500);
       return { searchUrl, resultUrl: page.url() };
     } catch (error) {
       lastError = error;

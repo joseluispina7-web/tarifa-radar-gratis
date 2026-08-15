@@ -380,9 +380,17 @@
           (total, value) => total + Number(value.errors || 0),
           0,
         );
+        const offers = values.reduce(
+          (total, value) => total + Number(value.offers || 0),
+          0,
+        );
+        const matches = values.reduce(
+          (total, value) => total + Number(value.matches || 0),
+          0,
+        );
         return `<span class="connection-source ${health}">
           <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : health === "limited" ? "clock-3" : "check-circle-2"}"></i>
-          <span><strong>${escapeHtml(label)}</strong><small>${searches} intentos · ${errors} fallos</small></span>
+          <span><strong>${escapeHtml(label)}</strong><small>${searches} intentos · ${offers} vistos · ${matches} cumplen · ${errors} fallos</small></span>
         </span>`;
       })
       .join("");
@@ -453,6 +461,11 @@
       .map((source) => {
         const current = sourcesStatus[source];
         const health = sourceHealthLabel(current);
+        const offers = Number(current?.offers || 0);
+        const matches = Number(current?.matches || 0);
+        const resultDetail = Number(current?.searches || 0) > 0
+          ? `${offers} precios vistos · ${matches} cumplen`
+          : "Sin consulta en este ciclo";
         const detail = health === "paused"
           ? `Pausado hasta ${current?.retryAt ? formatDateTime(current.retryAt) : "el siguiente intento"}`
           : health === "degraded"
@@ -462,11 +475,11 @@
                 ? "Fecha fuera del calendario fiable de Google"
                 : "Esperando una fecha candidata"
               : health === "healthy"
-                ? "Operativo"
+                ? `Operativo · ${resultDetail}`
                 : "Pendiente del próximo ciclo";
         return `<span class="source-health ${health}" title="${escapeHtml(detail)}">
           <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : health === "limited" ? "clock-3" : "check"}"></i>
-          ${escapeHtml(sourceLabel(source))}
+          ${escapeHtml(sourceLabel(source))}${Number(current?.searches || 0) > 0 ? ` · ${offers}/${matches}` : ""}
         </span>`;
       })
       .join("");

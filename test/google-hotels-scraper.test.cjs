@@ -3,6 +3,7 @@ const test = require("node:test");
 const {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
+  googleCandidateMatches,
   googleHotelsLoadAttempt,
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
@@ -363,6 +364,33 @@ test("does not match shared-room Google results by default", () => {
   );
   assert.equal(offer.sharedRoom, true);
   assert.equal(offer.matches, false);
+});
+
+test("opens Google candidates whose compact card omits requested amenities", () => {
+  const candidate = {
+    hotelName: "Hotel Shanghai Center",
+    nightlyPrice: 45,
+    text: "Hotel de 4 estrellas",
+    labels: [],
+    pricePageUrl: "https://www.google.com/travel/search?qs=hotel",
+  };
+  const poolSearch = search({
+    destination: "Shanghai",
+    amenities: ["pool"],
+    guestRatingMin: 8,
+  });
+
+  assert.equal(
+    googleCandidateMatches(candidate, poolSearch, { ignoreBudget: true }),
+    false,
+  );
+  assert.equal(
+    googleCandidateMatches(candidate, poolSearch, {
+      ignoreBudget: true,
+      ignoreIncompleteCardDetails: true,
+    }),
+    true,
+  );
 });
 
 test("keeps Google IDs stable and separate from Booking IDs", () => {
