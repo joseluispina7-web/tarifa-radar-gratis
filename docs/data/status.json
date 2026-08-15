@@ -1,19 +1,19 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T17:10:49.952Z",
+  "updatedAt": "2026-08-15T17:38:21.894Z",
   "summary": {
-    "generatedAt": "2026-08-15T17:10:49.952Z",
+    "generatedAt": "2026-08-15T17:38:21.894Z",
     "monitors": 3,
     "searches": 33,
-    "offers": 170,
-    "matches": 10,
-    "newMatches": 0,
+    "offers": 174,
+    "matches": 2,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 5,
-        "offers": 48,
-        "matches": 9,
+        "offers": 49,
+        "matches": 1,
         "errors": 2,
         "skipped": 4
       },
@@ -26,7 +26,7 @@
       },
       "agoda": {
         "searches": 9,
-        "offers": 23,
+        "offers": 22,
         "matches": 0,
         "errors": 0,
         "skipped": 0
@@ -40,7 +40,7 @@
       },
       "bluepillow": {
         "searches": 9,
-        "offers": 74,
+        "offers": 78,
         "matches": 1,
         "errors": 0,
         "skipped": 0
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-06",
-          "checkOut": "2027-08-12",
-          "nights": 6
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-08-06",
-          "checkOut": "2027-08-13",
+          "checkIn": "2027-08-07",
+          "checkOut": "2027-08-14",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -78,8 +65,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-07",
-          "checkOut": "2027-08-12",
+          "checkIn": "2027-08-08",
+          "checkOut": "2027-08-13",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -91,13 +78,26 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-07",
-          "checkOut": "2027-08-13",
+          "checkIn": "2027-08-08",
+          "checkOut": "2027-08-14",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-08",
+          "checkOut": "2027-08-15",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 508.20 EUR."
       }
     ],
     "nearbyErrors": [],
@@ -107,12 +107,12 @@
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-06",
-          "checkOut": "2027-08-12",
-          "nights": 6,
+          "checkIn": "2027-08-07",
+          "checkOut": "2027-08-14",
+          "nights": 7,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-30",
-          "flexibleCheckInEnd": "2027-08-13"
+          "flexibleCheckInStart": "2027-07-31",
+          "flexibleCheckInEnd": "2027-08-14"
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
@@ -131,13 +131,105 @@
     ]
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-15T17:38:21.894Z",
+      "lastSuccessAt": "2026-08-15T17:39:18.784251Z",
+      "searches": 15,
+      "offers": 61,
+      "matches": 1,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 3,
+          "offers": 49,
+          "matches": 1,
+          "errors": 0,
+          "skipped": 1,
+          "coveredCheckIns": 45,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 4,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 12,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-15",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 80,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 84,
+        "remainingSearchesInSweep": 51,
+        "completedSweep": false
+      }
+    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T17:10:49.952Z",
-      "lastSuccessAt": "2026-08-15T17:12:14.460770Z",
+      "lastScanAt": "2026-08-15T17:38:21.894Z",
+      "lastSuccessAt": "2026-08-15T17:39:46.808065Z",
       "searches": 13,
-      "offers": 50,
+      "offers": 52,
       "matches": 1,
       "nearbyLocations": [],
       "sources": {
@@ -148,9 +240,9 @@
           "errors": 1,
           "skipped": 3,
           "lastSkipReason": "cooldown",
-          "retryAt": "2026-08-15T17:25:49.952Z",
+          "retryAt": "2026-08-15T17:53:21.894Z",
           "state": "paused",
-          "consecutiveErrors": 7,
+          "consecutiveErrors": 8,
           "lastSuccessAt": "2026-08-15T14:57:39.359Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
         },
@@ -169,25 +261,25 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 4,
+          "offers": 3,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 42,
+          "offers": 45,
           "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -199,7 +291,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         }
@@ -210,18 +302,18 @@
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 76,
+        "startIndex": 80,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 80,
-        "remainingSearchesInSweep": 55,
+        "nextIndex": 84,
+        "remainingSearchesInSweep": 51,
         "completedSweep": false
       }
     },
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-15T17:10:49.952Z",
-      "lastSuccessAt": "2026-08-15T17:12:28.990Z",
+      "lastScanAt": "2026-08-15T17:38:21.894Z",
+      "lastSuccessAt": "2026-08-15T17:39:58.668Z",
       "searches": 5,
       "offers": 61,
       "matches": 0,
@@ -233,11 +325,11 @@
           "matches": 0,
           "errors": 1,
           "skipped": 0,
-          "state": "degraded",
-          "consecutiveErrors": 1,
+          "state": "paused",
+          "consecutiveErrors": 2,
           "lastSuccessAt": "2026-08-15T16:48:32.490Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-          "retryAt": ""
+          "retryAt": "2026-08-15T17:53:21.894Z"
         },
         "google_hotels": {
           "searches": 1,
@@ -247,7 +339,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -259,7 +351,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -271,7 +363,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -283,105 +375,110 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
+          "lastSuccessAt": "2026-08-15T17:38:21.894Z",
           "lastError": "",
           "retryAt": ""
         }
       },
       "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-    },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T17:10:49.952Z",
-      "lastSuccessAt": "2026-08-15T17:13:08.115579Z",
-      "searches": 15,
-      "offers": 59,
-      "matches": 9,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 3,
-          "offers": 48,
-          "matches": 9,
-          "errors": 0,
-          "skipped": 1,
-          "coveredCheckIns": 45,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 11,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T17:10:49.952Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-15",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 76,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 80,
-        "remainingSearchesInSweep": 55,
-        "completedSweep": false
-      }
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html|2027-08-01|2027-08-06",
+        "source": "booking",
+        "hotelName": "GuestReady - Enchanting retreat in Alcácer do Sal",
+        "address": "Alcácer do Sal",
+        "checkIn": "2027-08-01",
+        "checkOut": "2027-08-06",
+        "nights": 5,
+        "totalPrice": 628.12,
+        "nightlyPrice": 125.62,
+        "rateSubtotal": 628.12,
+        "additionalCharges": 0,
+        "taxesText": "",
+        "stayText": "5 noches, 2 adultos",
+        "bookingBlockIds": [
+          "1471875502_440538387_6_0_0"
+        ],
+        "priceVerified": true,
+        "priceBasis": "booking_visible_final_total_v5",
+        "stars": 3,
+        "guestRating": 6.3,
+        "reviewCount": 7,
+        "distanceKm": 23.99,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "Apartamento de 2 dormitorios",
+        "sharedRoom": false,
+        "searchArea": "Alcácer do Sal",
+        "url": "https://www.booking.com/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html?ucfs=1&arphpl=1&checkin=2027-08-01&checkout=2027-08-06&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=a5a17c0b31c20008&srepoch=1786815513&all_sr_blocks=1471875502_440538387_6_0_0&highlighted_blocks=1471875502_440538387_6_0_0&matching_block_id=1471875502_440538387_6_0_0&sr_pri_blocks=1471875502_440538387_6_0_0__62812&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "candidateMatches": true,
+        "matches": true,
+        "latitude": 38.3727217,
+        "longitude": -8.5110259,
+        "distanceVerified": true,
+        "searchResultPrice": 628.12,
+        "bookingTableTotal": null,
+        "bookingTablePriceConsistent": false,
+        "encodedStayTotal": 628.12,
+        "bookingPriceSource": "encoded_stay_total",
+        "excludedTaxRate": 0,
+        "excludedFixedCharges": 0,
+        "taxBreakdownText": "",
+        "verificationRows": [
+          {
+            "blockId": "1471875502_440538387_6_0_0",
+            "priceText": "€ 99 por noche\n€ 683 € 628 \nPrecio original € 683 Precio actual € 628\n5 noches\n-8%\nIncluido: suplemento de limpieza de 133 € por estancia",
+            "displayedPriceText": "",
+            "priceCellText": "€ 99 por noche\n€ 683 € 628 \nPrecio original € 683 Precio actual € 628\n5 noches\n-8%\nIncluido: suplemento de limpieza de 133 € por estancia",
+            "taxesText": "Incluido: suplemento de limpieza de 133 € por estancia"
+          }
+        ],
+        "taxFallbackRate": 0,
+        "priceConfirmationCount": 2,
+        "firstObservedPrice": 628.12,
+        "priceChangedDuringConfirmation": false,
+        "priceConfirmedAt": "2026-08-15T17:38:59.502Z",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "43501e8ffc63ad0e",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "booking",
+            "totalPrice": 628.12,
+            "nightlyPrice": 125.62,
+            "url": "https://www.booking.com/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html?ucfs=1&arphpl=1&checkin=2027-08-01&checkout=2027-08-06&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=a5a17c0b31c20008&srepoch=1786815513&all_sr_blocks=1471875502_440538387_6_0_0&highlighted_blocks=1471875502_440538387_6_0_0&matching_block_id=1471875502_440538387_6_0_0&sr_pri_blocks=1471875502_440538387_6_0_0__62812&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 628.12,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-15T17:38:59.540Z"
+    }
+  ]
 }
