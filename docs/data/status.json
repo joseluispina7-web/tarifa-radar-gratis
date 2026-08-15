@@ -1,21 +1,21 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T22:31:41.768Z",
+  "updatedAt": "2026-08-15T22:54:49.266Z",
   "summary": {
-    "generatedAt": "2026-08-15T22:31:41.768Z",
+    "generatedAt": "2026-08-15T22:54:49.266Z",
     "monitors": 2,
-    "searches": 28,
-    "offers": 107,
-    "matches": 21,
-    "newMatches": 7,
+    "searches": 31,
+    "offers": 89,
+    "matches": 10,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 4,
-        "offers": 32,
-        "matches": 19,
-        "errors": 1,
-        "skipped": 4
+        "searches": 7,
+        "offers": 14,
+        "matches": 9,
+        "errors": 0,
+        "skipped": 1
       },
       "google_hotels": {
         "searches": 0,
@@ -41,7 +41,7 @@
       "bluepillow": {
         "searches": 8,
         "offers": 64,
-        "matches": 2,
+        "matches": 1,
         "errors": 0,
         "skipped": 0
       }
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-20",
-          "checkOut": "2027-07-25",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-20",
-          "checkOut": "2027-07-26",
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-27",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -78,56 +65,145 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-20",
-          "checkOut": "2027-07-27",
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-28",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 431.20 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 446.60 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-21",
-          "checkOut": "2027-07-26",
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-27",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 310.20 EUR."
-      }
-    ],
-    "nearbyErrors": [],
-    "errors": [
+      },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
-        "source": "booking",
+        "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-20",
-          "checkOut": "2027-07-25",
-          "nights": 5,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-13",
-          "flexibleCheckInEnd": "2027-07-27"
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-28",
+          "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 386.10 EUR."
       }
-    ]
+    ],
+    "nearbyErrors": [],
+    "errors": []
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-15T22:54:49.266Z",
+      "lastSuccessAt": "2026-08-15T22:57:06.696327Z",
+      "searches": 15,
+      "offers": 25,
+      "matches": 9,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 3,
+          "offers": 14,
+          "matches": 9,
+          "errors": 0,
+          "skipped": 1,
+          "coveredCheckIns": 28,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 4,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 11,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-15",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 4,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 8,
+        "remainingSearchesInSweep": 127,
+        "completedSweep": false
+      }
+    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T22:31:41.768Z",
-      "lastSuccessAt": "2026-08-15T22:33:05.431031Z",
-      "searches": 13,
+      "lastScanAt": "2026-08-15T22:54:49.266Z",
+      "lastSuccessAt": "2026-08-15T22:58:04.123Z",
+      "searches": 16,
       "offers": 64,
-      "matches": 2,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "google_hotels": {
@@ -151,19 +227,19 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
           "offers": 53,
-          "matches": 2,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -175,112 +251,20 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
           "lastError": "",
           "retryAt": ""
         },
         "booking": {
-          "searches": 1,
-          "offers": 0,
-          "matches": 0,
-          "errors": 1,
-          "skipped": 3,
-          "lastSkipReason": "cooldown",
-          "retryAt": "2026-08-15T22:46:41.768Z",
-          "state": "paused",
-          "consecutiveErrors": 3,
-          "lastSuccessAt": "2026-08-15T21:39:50.705Z",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-        }
-      },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-15",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 24,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 28,
-        "remainingSearchesInSweep": 107,
-        "completedSweep": false
-      }
-    },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T22:31:41.768Z",
-      "lastSuccessAt": "2026-08-15T22:33:44.206771Z",
-      "searches": 15,
-      "offers": 43,
-      "matches": 19,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 3,
-          "offers": 32,
-          "matches": 19,
-          "errors": 0,
-          "skipped": 1,
-          "coveredCheckIns": 24,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
           "searches": 4,
           "offers": 0,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
+          "coveredCheckIns": 60,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 11,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T22:31:41.768Z",
+          "lastSuccessAt": "2026-08-15T22:54:49.266Z",
           "lastError": "",
           "retryAt": ""
         }
@@ -291,10 +275,10 @@
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 0,
+        "startIndex": 28,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 4,
-        "remainingSearchesInSweep": 131,
+        "nextIndex": 32,
+        "remainingSearchesInSweep": 103,
         "completedSweep": false
       }
     }
@@ -306,13 +290,13 @@
       "monitorName": "Sesimbra",
       "previousPrice": 0,
       "offer": {
-        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-07-20|2027-07-25",
+        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-07-22|2027-07-27",
         "source": "bluepillow",
         "provider": "Expedia via Bluepillow",
         "hotelName": "Zambujal Suites",
         "address": "Sesimbra",
-        "checkIn": "2027-07-20",
-        "checkOut": "2027-07-25",
+        "checkIn": "2027-07-22",
+        "checkOut": "2027-07-27",
         "nights": 5,
         "totalPrice": 502.85,
         "nightlyPrice": 100.57,
@@ -326,7 +310,7 @@
         "priceVerified": true,
         "priceBasis": "expedia_total_with_tax_breakdown",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T22:31:46.152Z",
+        "priceConfirmedAt": "2026-08-15T22:56:13.148Z",
         "stars": 3,
         "guestRating": 8,
         "reviewCount": 16,
@@ -342,86 +326,7 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786833103%2526endDate%253D2027-07-25%2526adults%253D2%2526locale%253Den_US%2526chid%253Da8852491-2e19-4d18-bcc7-06345ad0d99c%2526eapid%253D310064%2526startDate%253D2027-07-20%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-20&end=2027-07-25",
-        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
-        "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
-        "bluepillowOta": "Expedia",
-        "matches": true,
-        "candidateMatches": true,
-        "marketMedianNightly": 256.44,
-        "marketSampleSize": 8,
-        "discountPercent": 60.8,
-        "marketErrorFareScore": 82,
-        "errorFareScore": 82,
-        "errorFareLevel": "unusually_low",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 82,
-        "comparisonGroupId": "efce384c3b51afb4",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "bluepillow",
-            "provider": "Expedia via Bluepillow",
-            "totalPrice": 502.85,
-            "nightlyPrice": 100.57,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786833103%2526endDate%253D2027-07-25%2526adults%253D2%2526locale%253Den_US%2526chid%253Da8852491-2e19-4d18-bcc7-06345ad0d99c%2526eapid%253D310064%2526startDate%253D2027-07-20%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-20&end=2027-07-25",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 502.85,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:31:44.089147Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "previousPrice": 0,
-      "offer": {
-        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-07-21|2027-07-26",
-        "source": "bluepillow",
-        "provider": "Expedia via Bluepillow",
-        "hotelName": "Zambujal Suites",
-        "address": "Sesimbra",
-        "checkIn": "2027-07-21",
-        "checkOut": "2027-07-26",
-        "nights": 5,
-        "totalPrice": 502.85,
-        "nightlyPrice": 100.57,
-        "displayedNightlyPrice": 100.57,
-        "rateSubtotal": 502.85,
-        "searchResultPrice": 502.85,
-        "additionalCharges": 0,
-        "includedTaxesAndFees": 28.5,
-        "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos",
-        "stayText": "5 noches para 2 adultos",
-        "priceVerified": true,
-        "priceBasis": "expedia_total_with_tax_breakdown",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-15T22:33:07.235Z",
-        "stars": 3,
-        "guestRating": 8,
-        "reviewCount": 16,
-        "distanceKm": 2.228699593004805,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "air_conditioning"
-        ],
-        "mealPlan": "any",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786833184%2526endDate%253D2027-07-26%2526adults%253D2%2526locale%253Den_US%2526chid%253De4177fd7-6b06-45da-960b-2fb676bf69a0%2526eapid%253D310064%2526startDate%253D2027-07-21%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-21&end=2027-07-26",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786834570%2526endDate%253D2027-07-27%2526adults%253D2%2526locale%253Den_US%2526chid%253D6732a611-e908-47dc-bbd9-2d7e44e3e787%2526eapid%253D310064%2526startDate%253D2027-07-22%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-22&end=2027-07-27",
         "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
         "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
         "bluepillowOta": "Expedia",
@@ -441,7 +346,7 @@
         "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
         "priceDropPercent": 0,
         "preComparisonErrorFareScore": 82,
-        "comparisonGroupId": "a26968038573e2ef",
+        "comparisonGroupId": "bc1a1b037c6de947",
         "providerCount": 1,
         "comparisonProviders": [
           {
@@ -449,496 +354,14 @@
             "provider": "Expedia via Bluepillow",
             "totalPrice": 502.85,
             "nightlyPrice": 100.57,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786833184%2526endDate%253D2027-07-26%2526adults%253D2%2526locale%253Den_US%2526chid%253De4177fd7-6b06-45da-960b-2fb676bf69a0%2526eapid%253D310064%2526startDate%253D2027-07-21%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-21&end=2027-07-26",
+            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786834570%2526endDate%253D2027-07-27%2526adults%253D2%2526locale%253Den_US%2526chid%253D6732a611-e908-47dc-bbd9-2d7e44e3e787%2526eapid%253D310064%2526startDate%253D2027-07-22%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-22&end=2027-07-27",
             "priceVerified": true
           }
         ],
         "bestTotalPrice": 502.85,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T22:33:05.431031Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/fonte-nova-setubal.es.html|2027-07-12|2027-07-17",
-        "source": "booking",
-        "hotelName": "FONTE NOVA Setubal",
-        "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 318,
-        "nightlyPrice": 63.6,
-        "rateSubtotal": 297.5,
-        "additionalCharges": 20,
-        "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1678371301_439627100_4_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 8.5,
-        "reviewCount": 6,
-        "distanceKm": 18.72,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [
-          "beach"
-        ],
-        "mealPlan": "any",
-        "roomName": "Apartamento Estándar de 2 dormitorios",
-        "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://www.booking.com/hotel/pt/fonte-nova-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=price&srpvid=8da09e68f5cc0830&srepoch=1786833106&all_sr_blocks=1678371301_439627100_4_0_0&highlighted_blocks=1678371301_439627100_4_0_0&matching_block_id=1678371301_439627100_4_0_0&sr_pri_blocks=1678371301_439627100_4_0_0__29750&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.5227133,
-        "longitude": -8.9013612,
-        "distanceVerified": true,
-        "searchResultPrice": 297.5,
-        "bookingTableTotal": 318,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 317.5,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0,
-        "excludedFixedCharges": 20,
-        "taxBreakdownText": "Impuesto municipal de 2 € por persona y noche",
-        "verificationRows": [
-          {
-            "blockId": "1678371301_439627100_4_0_0",
-            "priceText": "€ 60 por noche\n€ 298\nPrecio € 298\n5 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
-            "displayedPriceText": "",
-            "priceCellText": "€ 60 por noche\n€ 298\nPrecio € 298\n5 noches\nNo incluido: Impuesto municipal de 2 € por persona y noche",
-            "taxesText": "No incluido: Impuesto municipal de 2 € por persona y noche"
-          }
-        ],
-        "taxFallbackRate": 0,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 318,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T22:32:37.273Z",
-        "marketMedianNightly": 63.6,
-        "marketSampleSize": 5,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "f799ba227e63d337",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 318,
-            "nightlyPrice": 63.6,
-            "url": "https://www.booking.com/hotel/pt/fonte-nova-setubal.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-17&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=14&hapos=14&sr_order=price&srpvid=8da09e68f5cc0830&srepoch=1786833106&all_sr_blocks=1678371301_439627100_4_0_0&highlighted_blocks=1678371301_439627100_4_0_0&matching_block_id=1678371301_439627100_4_0_0&sr_pri_blocks=1678371301_439627100_4_0_0__29750&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 318,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:32:37.304Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/castle-house-palmela.es.html|2027-07-12|2027-07-18",
-        "source": "booking",
-        "hotelName": "Castle House",
-        "address": "Palmela",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-18",
-        "nights": 6,
-        "totalPrice": 453.68,
-        "nightlyPrice": 75.61,
-        "rateSubtotal": 427.92,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1446652201_416051177_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 9,
-        "reviewCount": 2,
-        "distanceKm": 22.93,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "2 camas (1 doble, 1 sofá cama)",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__42792&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.56690767698041,
-        "longitude": -8.89898923959298,
-        "distanceVerified": true,
-        "searchResultPrice": 427.92,
-        "bookingTableTotal": 453.68,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 453.6,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "6% IVA",
-        "verificationRows": [
-          {
-            "blockId": "1446652201_416051177_2_0_0",
-            "priceText": "€ 61 por noche\n€ 428\nPrecio € 428\n6 noches\nIncluido: suplemento de limpieza de € 60 por estancia\nNo incluido: 6% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 61 por noche\n€ 428\nPrecio € 428\n6 noches\nIncluido: suplemento de limpieza de € 60 por estancia\nNo incluido: 6% IVA",
-            "taxesText": "Incluido: suplemento de limpieza de € 60 por estancia No incluido: 6% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 453.68,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T22:33:28.799Z",
-        "marketMedianNightly": 100,
-        "marketSampleSize": 5,
-        "discountPercent": 24.4,
-        "marketErrorFareScore": 33,
-        "errorFareScore": 33,
-        "errorFareLevel": "good_price",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Precio inferior a alojamientos comparables.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 33,
-        "comparisonGroupId": "654a247343bb92ce",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 453.68,
-            "nightlyPrice": 75.61,
-            "url": "https://www.booking.com/hotel/pt/castle-house-palmela.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=2&hapos=2&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=1446652201_416051177_2_0_0&highlighted_blocks=1446652201_416051177_2_0_0&matching_block_id=1446652201_416051177_2_0_0&sr_pri_blocks=1446652201_416051177_2_0_0__42792&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 453.68,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:33:37.889Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/patio-da-memoria.es.html|2027-07-12|2027-07-18",
-        "source": "booking",
-        "hotelName": "Patio da Memoria",
-        "address": "Palmela",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-18",
-        "nights": 6,
-        "totalPrice": 600,
-        "nightlyPrice": 100,
-        "rateSubtotal": 566.04,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "229639601_410904649_2_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 7.9,
-        "reviewCount": 94,
-        "distanceKm": 24.34,
-        "freeCancellation": true,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "hotel",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "1 cama doble",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.56305145115987,
-        "longitude": -8.94047249278855,
-        "distanceVerified": true,
-        "searchResultPrice": 566.04,
-        "bookingTableTotal": 599.96,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 600,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "6% IVA",
-        "verificationRows": [
-          {
-            "blockId": "229639601_410904649_2_0_0",
-            "priceText": "€ 94 por noche\n€ 566\nPrecio € 566\n6 noches\nNo incluido: 6% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 94 por noche\n€ 566\nPrecio € 566\n6 noches\nNo incluido: 6% IVA",
-            "taxesText": "No incluido: 6% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 600,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T22:33:31.246Z",
-        "marketMedianNightly": 100,
-        "marketSampleSize": 5,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "9d3d4261ce8ceb7a",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 600,
-            "nightlyPrice": 100,
-            "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=3&hapos=3&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 600,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:33:37.889Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/quinta-laranjal-da-arrabida.es.html|2027-07-12|2027-07-18",
-        "source": "booking",
-        "hotelName": "Quinta Laranjal da Arrabida",
-        "address": "Palmela",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-18",
-        "nights": 6,
-        "totalPrice": 648,
-        "nightlyPrice": 108,
-        "rateSubtotal": 611.32,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "267501301_418728927_2_1_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 4,
-        "guestRating": 8,
-        "reviewCount": 32,
-        "distanceKm": 24.6,
-        "freeCancellation": false,
-        "breakfastIncluded": true,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "breakfast",
-          "air_conditioning"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "Habitación Doble Superior",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/quinta-laranjal-da-arrabida.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=267501301_418728927_2_1_0&highlighted_blocks=267501301_418728927_2_1_0&matching_block_id=267501301_418728927_2_1_0&sr_pri_blocks=267501301_418728927_2_1_0__61132&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.57335,
-        "longitude": -8.92479,
-        "distanceVerified": true,
-        "searchResultPrice": 611.32,
-        "bookingTableTotal": 647.66,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 648,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "6% IVA",
-        "verificationRows": [
-          {
-            "blockId": "267501301_418728927_2_1_0",
-            "priceText": "€ 102 por noche\n€ 611\nPrecio € 611\n6 noches\nNo incluido: 6% IVA",
-            "displayedPriceText": "",
-            "priceCellText": "€ 102 por noche\n€ 611\nPrecio € 611\n6 noches\nNo incluido: 6% IVA",
-            "taxesText": "No incluido: 6% IVA"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 648,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T22:33:33.396Z",
-        "marketMedianNightly": 100,
-        "marketSampleSize": 5,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "5f4a389f26c87ffd",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 648,
-            "nightlyPrice": 108,
-            "url": "https://www.booking.com/hotel/pt/quinta-laranjal-da-arrabida.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=5&hapos=5&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=267501301_418728927_2_1_0&highlighted_blocks=267501301_418728927_2_1_0&matching_block_id=267501301_418728927_2_1_0&sr_pri_blocks=267501301_418728927_2_1_0__61132&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 648,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:33:37.889Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/biovilla-sustentabilidade.es.html|2027-07-12|2027-07-18",
-        "source": "booking",
-        "hotelName": "Biovilla Sustentabilidade",
-        "address": "Palmela",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-18",
-        "nights": 6,
-        "totalPrice": 660.38,
-        "nightlyPrice": 110.06,
-        "rateSubtotal": 622.64,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
-        "bookingBlockIds": [
-          "109917132_377161386_0_41_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 0,
-        "guestRating": 8.1,
-        "reviewCount": 303,
-        "distanceKm": 22.22,
-        "freeCancellation": true,
-        "breakfastIncluded": true,
-        "limitedAvailability": true,
-        "propertyType": "hotel",
-        "amenities": [
-          "breakfast"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "Habitación Doble con baño compartido - 1 o 2 camas",
-        "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/biovilla-sustentabilidade.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=109917132_377161386_0_41_0&highlighted_blocks=109917132_377161386_0_41_0&matching_block_id=109917132_377161386_0_41_0&sr_pri_blocks=109917132_377161386_0_41_0__62264&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.53931396627394,
-        "longitude": -8.941082060337067,
-        "distanceVerified": true,
-        "searchResultPrice": 622.64,
-        "bookingTableTotal": 660.38,
-        "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 660,
-        "bookingPriceSource": "availability_table",
-        "excludedTaxRate": 0.06,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "6% Impuesto",
-        "verificationRows": [
-          {
-            "blockId": "109917132_377161386_0_41_0",
-            "priceText": "€ 104 por noche\n€ 623\nPrecio € 623\n6 noches\nNo incluido: 6% Impuesto",
-            "displayedPriceText": "",
-            "priceCellText": "€ 104 por noche\n€ 623\nPrecio € 623\n6 noches\nNo incluido: 6% Impuesto",
-            "taxesText": "No incluido: 6% Impuesto"
-          }
-        ],
-        "taxFallbackRate": 0.06,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 660.38,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T22:33:37.866Z",
-        "marketMedianNightly": 87.81,
-        "marketSampleSize": 6,
-        "discountPercent": 0,
-        "marketErrorFareScore": 0,
-        "errorFareScore": 0,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "6d580f50f5f1cdad",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 660.38,
-            "nightlyPrice": 110.06,
-            "url": "https://www.booking.com/hotel/pt/biovilla-sustentabilidade.es.html?ucfs=1&arphpl=1&checkin=2027-07-12&checkout=2027-07-18&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=7&hapos=7&sr_order=price&srpvid=6e7b9e84e4e400ca&srepoch=1786833161&all_sr_blocks=109917132_377161386_0_41_0&highlighted_blocks=109917132_377161386_0_41_0&matching_block_id=109917132_377161386_0_41_0&sr_pri_blocks=109917132_377161386_0_41_0__62264&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 660.38,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-15T22:33:37.889Z"
+      "createdAt": "2026-08-15T22:56:10.462201Z"
     }
   ]
 }
