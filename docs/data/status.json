@@ -1,47 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-15T07:02:12.395Z",
+  "updatedAt": "2026-08-15T07:40:15.373Z",
   "summary": {
-    "generatedAt": "2026-08-15T07:02:12.395Z",
+    "generatedAt": "2026-08-15T07:40:15.373Z",
     "monitors": 3,
-    "searches": 36,
-    "offers": 131,
-    "matches": 21,
-    "newMatches": 1,
+    "searches": 26,
+    "offers": 111,
+    "matches": 5,
+    "newMatches": 2,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 8,
-        "offers": 33,
-        "matches": 19,
-        "errors": 3,
-        "skipped": 1
+        "searches": 4,
+        "offers": 25,
+        "matches": 1,
+        "errors": 2,
+        "skipped": 3
       },
       "google_hotels": {
         "searches": 1,
         "offers": 0,
         "matches": 0,
         "errors": 0,
-        "skipped": 8
+        "skipped": 6
       },
       "agoda": {
-        "searches": 9,
+        "searches": 7,
         "offers": 19,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
       "trip": {
-        "searches": 9,
+        "searches": 7,
         "offers": 21,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
       "bluepillow": {
-        "searches": 9,
-        "offers": 58,
-        "matches": 2,
+        "searches": 7,
+        "offers": 46,
+        "matches": 4,
         "errors": 0,
         "skipped": 0
       }
@@ -50,18 +50,18 @@
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-23",
+          "checkIn": "2027-08-25",
           "checkOut": "2027-08-30",
-          "nights": 7,
+          "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-16",
-          "flexibleCheckInEnd": "2027-08-24"
+          "flexibleCheckInStart": "2027-08-18",
+          "flexibleCheckInEnd": "2027-08-26"
         },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
       },
       {
@@ -74,30 +74,193 @@
         },
         "searchArea": "East Nanjing Road, Waitan, Shanghai, China",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-08-24",
-          "checkOut": "2027-08-31",
-          "nights": 7,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-17",
-          "flexibleCheckInEnd": "2027-08-24"
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
       }
     ]
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-15T07:40:15.373Z",
+      "lastSuccessAt": "2026-08-15T07:41:07.972196Z",
+      "searches": 11,
+      "offers": 32,
+      "matches": 1,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 2,
+          "offers": 25,
+          "matches": 1,
+          "errors": 0,
+          "skipped": 1,
+          "coveredCheckIns": 17,
+          "lastSkipReason": "waiting_for_candidate",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 3,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 3,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 3,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 3,
+          "offers": 7,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-14",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 132,
+        "searchesCheckedThisRun": 3,
+        "nextIndex": 0,
+        "remainingSearchesInSweep": 0,
+        "completedSweep": true
+      }
+    },
+    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "lastScanAt": "2026-08-15T07:40:15.373Z",
+      "lastSuccessAt": "2026-08-15T07:41:37.140746Z",
+      "searches": 10,
+      "offers": 18,
+      "matches": 4,
+      "nearbyLocations": [],
+      "sources": {
+        "booking": {
+          "searches": 1,
+          "offers": 0,
+          "matches": 0,
+          "errors": 1,
+          "skipped": 2,
+          "lastSkipReason": "cooldown",
+          "retryAt": "2026-08-15T07:55:15.373Z",
+          "state": "paused",
+          "consecutiveErrors": 2,
+          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+        },
+        "google_hotels": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 3,
+          "lastSkipReason": "calendar_limit",
+          "state": "limited",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 3,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 3,
+          "offers": 18,
+          "matches": 4,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 3,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-14",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 132,
+        "searchesCheckedThisRun": 3,
+        "nextIndex": 0,
+        "remainingSearchesInSweep": 0,
+        "completedSweep": true
+      }
+    },
     "8a079a5f-d505-469c-94ca-77ac3316a735": {
       "monitorId": "8a079a5f-d505-469c-94ca-77ac3316a735",
       "monitorName": "Shanghai",
-      "lastScanAt": "2026-08-15T07:02:12.395Z",
-      "lastSuccessAt": "2026-08-15T07:03:53.122Z",
+      "lastScanAt": "2026-08-15T07:40:15.373Z",
+      "lastSuccessAt": "2026-08-15T07:41:52.768Z",
       "searches": 5,
       "offers": 61,
       "matches": 0,
@@ -110,10 +273,10 @@
           "errors": 1,
           "skipped": 0,
           "state": "paused",
-          "consecutiveErrors": 2,
+          "consecutiveErrors": 3,
           "lastSuccessAt": "2026-08-15T05:44:31.893Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-          "retryAt": "2026-08-15T07:17:12.395Z"
+          "retryAt": "2026-08-15T07:55:15.373Z"
         },
         "google_hotels": {
           "searches": 1,
@@ -123,7 +286,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -135,7 +298,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -147,7 +310,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -159,190 +322,12 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
+          "lastSuccessAt": "2026-08-15T07:40:15.373Z",
           "lastError": "",
           "retryAt": ""
         }
       },
       "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-    },
-    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-15T07:02:12.395Z",
-      "lastSuccessAt": "2026-08-15T07:04:12.423179Z",
-      "searches": 16,
-      "offers": 26,
-      "matches": 2,
-      "nearbyLocations": [],
-      "sources": {
-        "booking": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 1,
-          "skipped": 0,
-          "coveredCheckIns": 28,
-          "state": "degraded",
-          "consecutiveErrors": 1,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 26,
-          "matches": 2,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-14",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 128,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 132,
-        "remainingSearchesInSweep": 3,
-        "completedSweep": false
-      }
-    },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-15T07:02:12.395Z",
-      "lastSuccessAt": "2026-08-15T07:05:31.078762Z",
-      "searches": 15,
-      "offers": 44,
-      "matches": 19,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 3,
-          "offers": 33,
-          "matches": 19,
-          "errors": 1,
-          "skipped": 1,
-          "coveredCheckIns": 19,
-          "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 4,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 11,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-15T07:02:12.395Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-14",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 128,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 132,
-        "remainingSearchesInSweep": 3,
-        "completedSweep": false
-      }
     }
   },
   "alerts": [
@@ -352,94 +337,172 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "/hotel/pt/patio-da-memoria.es.html|2027-08-24|2027-08-30",
+        "id": "/hotel/pt/casa-azul-comporta-unforgettable-holidays.es.html|2027-08-22|2027-08-27",
         "source": "booking",
-        "hotelName": "Patio da Memoria",
-        "address": "Palmela",
-        "checkIn": "2027-08-24",
-        "checkOut": "2027-08-30",
-        "nights": 6,
-        "totalPrice": 600,
-        "nightlyPrice": 100,
-        "rateSubtotal": 566.04,
+        "hotelName": "Casa Azul Comporta, unforgettable holidays",
+        "address": "Comporta",
+        "checkIn": "2027-08-22",
+        "checkOut": "2027-08-27",
+        "nights": 5,
+        "totalPrice": 500.32,
+        "nightlyPrice": 100.06,
+        "rateSubtotal": 471.7,
         "additionalCharges": 0,
         "taxesText": "",
-        "stayText": "6 noches, 2 adultos",
+        "stayText": "5 noches, 2 adultos",
         "bookingBlockIds": [
-          "229639601_410904649_2_0_0"
+          "1614846801_432395510_2_0_0"
         ],
         "priceVerified": true,
         "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 7.9,
-        "reviewCount": 94,
-        "distanceKm": 24.34,
+        "stars": 0,
+        "guestRating": 0,
+        "reviewCount": 0,
+        "distanceKm": 0.48,
         "freeCancellation": true,
         "breakfastIncluded": false,
         "limitedAvailability": false,
         "propertyType": "hotel",
         "amenities": [],
         "mealPlan": "any",
-        "roomName": "1 cama doble",
+        "roomName": "2 camas (1 doble, 1 futón)",
         "sharedRoom": false,
-        "searchArea": "Palmela",
-        "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-08-24&checkout=2027-08-30&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=a15e31c0b9980012&srepoch=1786777474&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+        "searchArea": "Alcácer do Sal",
+        "url": "https://www.booking.com/hotel/pt/casa-azul-comporta-unforgettable-holidays.es.html?ucfs=1&arphpl=1&checkin=2027-08-22&checkout=2027-08-27&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=22&hapos=22&sr_order=price&srpvid=920135f10f830143&srepoch=1786779620&all_sr_blocks=1614846801_432395510_2_0_0&highlighted_blocks=1614846801_432395510_2_0_0&matching_block_id=1614846801_432395510_2_0_0&sr_pri_blocks=1614846801_432395510_2_0_0__47170&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
         "candidateMatches": true,
         "matches": true,
-        "latitude": 38.56305145115987,
-        "longitude": -8.94047249278855,
+        "latitude": 38.3762743,
+        "longitude": -8.7858283,
         "distanceVerified": true,
-        "searchResultPrice": 566.04,
-        "bookingTableTotal": 599.96,
+        "searchResultPrice": 471.7,
+        "bookingTableTotal": 500.32,
         "bookingTablePriceConsistent": true,
-        "encodedStayTotal": 600,
-        "bookingPriceSource": "encoded_stay_total",
+        "encodedStayTotal": 500,
+        "bookingPriceSource": "availability_table",
         "excludedTaxRate": 0.06,
         "excludedFixedCharges": 0,
         "taxBreakdownText": "6% IVA",
         "verificationRows": [
           {
-            "blockId": "229639601_410904649_2_0_0",
-            "priceText": "€ 566",
-            "displayedPriceText": "€ 566",
-            "priceCellText": "€ 566\nPrecio € 566\nNo incluido: 6% IVA",
+            "blockId": "1614846801_432395510_2_0_0",
+            "priceText": "€ 94 por noche\n€ 472\nPrecio € 472\n5 noches\nNo incluido: 6% IVA",
+            "displayedPriceText": "",
+            "priceCellText": "€ 94 por noche\n€ 472\nPrecio € 472\n5 noches\nNo incluido: 6% IVA",
             "taxesText": "No incluido: 6% IVA"
           }
         ],
         "taxFallbackRate": 0.06,
         "priceConfirmationCount": 2,
-        "firstObservedPrice": 600,
+        "firstObservedPrice": 500.32,
         "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-15T07:05:29.843Z",
-        "marketMedianNightly": 100,
-        "marketSampleSize": 5,
+        "priceConfirmedAt": "2026-08-15T07:40:52.024Z",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
         "discountPercent": 0,
         "marketErrorFareScore": 0,
         "errorFareScore": 0,
         "errorFareLevel": "normal",
         "errorFareIntelligenceVersion": 2,
         "errorFareEvidence": [
-          "comparable_market",
           "verified_price"
         ],
         "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceDropPercent": 0,
         "preComparisonErrorFareScore": 0,
-        "comparisonGroupId": "d3cf0cf24b4a090f",
+        "comparisonGroupId": "efb893a6f4c43411",
         "providerCount": 1,
         "comparisonProviders": [
           {
             "source": "booking",
-            "totalPrice": 600,
-            "nightlyPrice": 100,
-            "url": "https://www.booking.com/hotel/pt/patio-da-memoria.es.html?ucfs=1&arphpl=1&checkin=2027-08-24&checkout=2027-08-30&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=a15e31c0b9980012&srepoch=1786777474&all_sr_blocks=229639601_410904649_2_0_0&highlighted_blocks=229639601_410904649_2_0_0&matching_block_id=229639601_410904649_2_0_0&sr_pri_blocks=229639601_410904649_2_0_0__56604&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
+            "totalPrice": 500.32,
+            "nightlyPrice": 100.06,
+            "url": "https://www.booking.com/hotel/pt/casa-azul-comporta-unforgettable-holidays.es.html?ucfs=1&arphpl=1&checkin=2027-08-22&checkout=2027-08-27&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=22&hapos=22&sr_order=price&srpvid=920135f10f830143&srepoch=1786779620&all_sr_blocks=1614846801_432395510_2_0_0&highlighted_blocks=1614846801_432395510_2_0_0&matching_block_id=1614846801_432395510_2_0_0&sr_pri_blocks=1614846801_432395510_2_0_0__47170&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 600,
+        "bestTotalPrice": 500.32,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-15T07:05:29.879Z"
+      "createdAt": "2026-08-15T07:40:52.062Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-08-25|2027-08-30",
+        "source": "bluepillow",
+        "provider": "Expedia via Bluepillow",
+        "hotelName": "Apartment m. Pool u. Sea view, about 500m to the beach in Sesimbra for max. 4 pers",
+        "address": "Sesimbra",
+        "checkIn": "2027-08-25",
+        "checkOut": "2027-08-30",
+        "nights": 5,
+        "totalPrice": 503,
+        "nightlyPrice": 100.6,
+        "displayedNightlyPrice": 100.6,
+        "rateSubtotal": 503,
+        "searchResultPrice": 503,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 98,
+        "taxesText": "Total con 98.00 EUR de impuestos y tasas incluidos",
+        "stayText": "5 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-15T07:40:20.196Z",
+        "stars": 0,
+        "guestRating": 10,
+        "reviewCount": 191,
+        "distanceKm": 0.9205604097800808,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "pool"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786779617%2526endDate%253D2027-08-30%2526adults%253D2%2526locale%253Den_US%2526chid%253Dc3f96789-8124-473a-b36e-634a1b1e1586%2526eapid%253D310064%2526startDate%253D2027-08-25%2526mpd%253DEUR%2526mpn%253D33613585%2526currency%253DEUR%2526rateplanid%253D0002e0bb5216a0694f5e9b8cee58d81bceb4%2526mpm%253D83%2526selected%253D33613585%2526mpb%253D98.00%2526mpq%253D100.60%2526mpa%253D405.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=623374f44c4d8d9b9b7527ae&begin=2027-08-25&end=2027-08-30",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/media.vrbo.com/lodging/34000000/33620000/33613600/33613585/0838950f.jpg",
+        "bluepillowPropertyId": "prop_623374f44c4d8d9b9b7527ae",
+        "bluepillowOta": "Expedia",
+        "matches": true,
+        "candidateMatches": true,
+        "marketMedianNightly": 132.75,
+        "marketSampleSize": 5,
+        "discountPercent": 24.2,
+        "marketErrorFareScore": 33,
+        "errorFareScore": 33,
+        "errorFareLevel": "good_price",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "comparable_market",
+          "verified_price"
+        ],
+        "errorFareReason": "Precio inferior a alojamientos comparables.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 33,
+        "comparisonGroupId": "59ecf2936d7ff052",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow",
+            "totalPrice": 503,
+            "nightlyPrice": 100.6,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786779617%2526endDate%253D2027-08-30%2526adults%253D2%2526locale%253Den_US%2526chid%253Dc3f96789-8124-473a-b36e-634a1b1e1586%2526eapid%253D310064%2526startDate%253D2027-08-25%2526mpd%253DEUR%2526mpn%253D33613585%2526currency%253DEUR%2526rateplanid%253D0002e0bb5216a0694f5e9b8cee58d81bceb4%2526mpm%253D83%2526selected%253D33613585%2526mpb%253D98.00%2526mpq%253D100.60%2526mpa%253D405.00&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=623374f44c4d8d9b9b7527ae&begin=2027-08-25&end=2027-08-30",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 503,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-15T07:40:17.703954Z"
     }
   ]
 }
