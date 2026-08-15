@@ -1023,6 +1023,28 @@
     renderRulePreview();
   }
 
+  function renderLocationConfirmation() {
+    const draft = state.draft;
+    if (!draft.locationId) {
+      $("#location-confirmed").textContent = "";
+      return;
+    }
+    const nearbyLocations =
+      state.status.monitors?.[draft.id]?.nearbyLocations || [];
+    const detectedType = locationTypeLabel(draft.locationType);
+    const radius = Number(draft.maxDistanceKm) > 0
+      ? Number(draft.maxDistanceKm)
+      : Number(draft.locationRadiusKm) || 0;
+    $("#location-confirmed").innerHTML =
+      `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(detectedType)} · ${escapeHtml(
+        draft.countryCode || "",
+      )}${radius > 0 ? ` · radio ${escapeHtml(radius)} km` : ""}${
+        nearbyLocations.length
+          ? ` · También: ${escapeHtml(nearbyLocations.join(", "))}`
+          : ""
+      }`;
+  }
+
   function fillEditor() {
     const draft = state.draft;
     const hasLocationCoordinates =
@@ -1043,8 +1065,6 @@
     draft.sources = Array.isArray(draft.sources) && draft.sources.length
       ? draft.sources
       : ["booking"];
-    const nearbyLocations =
-      state.status.monitors?.[draft.id]?.nearbyLocations || [];
     $("#editor-title").textContent = state.config.monitors.some(
       (monitor) => monitor.id === draft.id,
     )
@@ -1054,16 +1074,7 @@
     $("#editor-status").classList.toggle("ready", draft.active);
     $("#monitor-name").value = draft.name;
     $("#location-query").value = draft.location;
-    const detectedType = locationTypeLabel(draft.locationType);
-    $("#location-confirmed").innerHTML = draft.locationId
-      ? `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(detectedType)} · ${escapeHtml(
-          draft.countryCode || "",
-        )}${Number(draft.locationRadiusKm) > 0
-          ? ` · radio ${escapeHtml(draft.locationRadiusKm)} km`
-          : ""}${nearbyLocations.length
-          ? ` · También: ${escapeHtml(nearbyLocations.join(", "))}`
-          : ""}`
-      : "";
+    renderLocationConfirmation();
     $("#min-nights").value = draft.minNights;
     $("#max-nights").value = draft.maxNights;
     $("#window-days").value = String(draft.windowDays);
@@ -1074,7 +1085,11 @@
     $("#price-match").value = draft.priceMatch;
     $("#price-safety").value = String(draft.priceSafetyPercent ?? 5);
     $("#guest-rating").value = String(draft.guestRatingMin);
-    $("#max-distance").value = String(draft.maxDistanceKm);
+    $("#max-distance").value = String(
+      Number(draft.maxDistanceKm) > 0
+        ? Number(draft.maxDistanceKm)
+        : Number(draft.locationRadiusKm) || 0,
+    );
     $("#free-cancellation").checked = draft.freeCancellation;
     $("#meal-plan").value = draft.mealPlan;
     $("#adults").value = draft.adults;
@@ -1108,7 +1123,12 @@
     draft.priceMatch = $("#price-match").value;
     draft.priceSafetyPercent = Number($("#price-safety").value) || 0;
     draft.guestRatingMin = Number($("#guest-rating").value) || 0;
-    draft.maxDistanceKm = Number($("#max-distance").value) || 0;
+    const radiusKm = Math.min(
+      25,
+      Math.max(0, Number($("#max-distance").value) || 0),
+    );
+    draft.maxDistanceKm = radiusKm;
+    draft.locationRadiusKm = radiusKm;
     draft.freeCancellation = $("#free-cancellation").checked;
     draft.mealPlan = $("#meal-plan").value;
     draft.adults = Number($("#adults").value) || 1;
@@ -1590,6 +1610,7 @@
     state.draft.locationType = location.locationType || "place";
     state.draft.locationCity = location.locationCity || "";
     state.draft.locationRadiusKm = Number(location.locationRadiusKm) || 0;
+    state.draft.maxDistanceKm = state.draft.locationRadiusKm;
     state.locationContext = {
       latitude: Number(location.latitude),
       longitude: Number(location.longitude),
@@ -1597,12 +1618,8 @@
       locationCity: location.locationCity || location.name || "",
     };
     $("#location-query").value = location.label;
-    const type = locationTypeLabel(location.locationType);
-    $("#location-confirmed").innerHTML =
-      `<i data-lucide="map-pin-check"></i> Destino verificado · ${escapeHtml(type)} · ` +
-      `${escapeHtml(location.countryCode)}${state.draft.locationRadiusKm
-        ? ` · radio ${escapeHtml(state.draft.locationRadiusKm)} km`
-        : ""}`;
+    $("#max-distance").value = String(state.draft.locationRadiusKm);
+    renderLocationConfirmation();
     $("#location-results").classList.add("hidden");
     renderRulePreview();
     renderManualLinks();
@@ -1650,6 +1667,8 @@
     state.draft.locationType = "";
     state.draft.locationCity = "";
     state.draft.locationRadiusKm = 0;
+    state.draft.maxDistanceKm = 0;
+    $("#max-distance").value = "0";
     $("#location-confirmed").textContent = "";
     clearTimeout(state.locationTimer);
     state.locationAbortController?.abort();
@@ -1856,6 +1875,7 @@
         input.addEventListener("input", () => {
           renderRulePreview();
           renderManualLinks();
+          if (input.id === "max-distance") renderLocationConfirmation();
         });
       }
     });

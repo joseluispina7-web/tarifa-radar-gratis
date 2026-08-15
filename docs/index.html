@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="./styles.css?v=8" />
     <script src="./vendor/lucide.min.js" defer></script>
     <script src="./location-search.js?v=2" defer></script>
-    <script src="./app.js?v=18" defer></script>
+    <script src="./app.js?v=19" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -242,6 +242,19 @@
                     </div>
                   </div>
                   <p id="location-confirmed" class="location-confirmed"></p>
+                  <label class="inline-field" for="max-distance">
+                    <span>Radio desde la ubicación</span>
+                    <span class="suffix-input">
+                      <input
+                        id="max-distance"
+                        type="number"
+                        min="0"
+                        max="25"
+                        step="0.5"
+                      />
+                      <b>km</b>
+                    </span>
+                  </label>
                 </fieldset>
 
                 <fieldset class="form-section">
@@ -324,29 +337,16 @@
                   <legend>Calidad y condiciones</legend>
                   <span class="field-label">Estrellas mínimas</span>
                   <div id="star-picker" class="star-picker"></div>
-                  <div class="number-grid two compact">
-                    <label>
-                      <span>Nota mínima</span>
-                      <select id="guest-rating">
-                        <option value="0">Cualquiera</option>
-                        <option value="6">6 o más</option>
-                        <option value="7">7 o más</option>
-                        <option value="8">8 o más</option>
-                        <option value="9">9 o más</option>
-                      </select>
-                    </label>
-                    <label>
-                      <span>Buscar alrededor</span>
-                      <select id="max-distance">
-                        <option value="0">Resultado habitual</option>
-                        <option value="1">Hasta 1 km</option>
-                        <option value="3">Hasta 3 km</option>
-                        <option value="5">Hasta 5 km</option>
-                        <option value="10">Hasta 10 km</option>
-                        <option value="25">Hasta 25 km</option>
-                      </select>
-                    </label>
-                  </div>
+                  <label class="inline-field">
+                    <span>Nota mínima</span>
+                    <select id="guest-rating">
+                      <option value="0">Cualquiera</option>
+                      <option value="6">6 o más</option>
+                      <option value="7">7 o más</option>
+                      <option value="8">8 o más</option>
+                      <option value="9">9 o más</option>
+                    </select>
+                  </label>
                   <div class="condition-grid">
                     <label class="binary-option">
                       <input id="free-cancellation" type="checkbox" />
