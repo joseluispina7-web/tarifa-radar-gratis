@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-16T17:50:13.300Z",
+  "updatedAt": "2026-08-16T18:17:29.790Z",
   "summary": {
-    "generatedAt": "2026-08-16T17:50:13.300Z",
+    "generatedAt": "2026-08-16T18:17:29.790Z",
     "monitors": 2,
     "searches": 31,
-    "offers": 99,
-    "matches": 2,
+    "offers": 97,
+    "matches": 1,
     "newMatches": 0,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 7,
-        "offers": 15,
+        "offers": 14,
         "matches": 0,
-        "errors": 0,
+        "errors": 4,
         "skipped": 1
       },
       "google_hotels": {
@@ -26,7 +26,7 @@
       },
       "agoda": {
         "searches": 8,
-        "offers": 7,
+        "offers": 6,
         "matches": 0,
         "errors": 0,
         "skipped": 0
@@ -41,7 +41,7 @@
       "bluepillow": {
         "searches": 8,
         "offers": 70,
-        "matches": 2,
+        "matches": 1,
         "errors": 0,
         "skipped": 0
       }
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-21",
-          "nights": 5
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-22",
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-23",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -78,8 +65,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-16",
-          "checkOut": "2027-07-23",
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-24",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -91,26 +78,100 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-17",
-          "checkOut": "2027-07-22",
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-23",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-24",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
       }
     ],
     "nearbyErrors": [],
-    "errors": []
+    "errors": [
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-17",
+          "checkOut": "2027-07-23",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-24"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-24",
+          "checkOut": "2027-08-30",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-08-17",
+          "flexibleCheckInEnd": "2027-08-25"
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-23",
+          "nights": 5,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-25"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-18",
+          "checkOut": "2027-07-24",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-25"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      }
+    ]
   },
   "monitors": {
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-16T17:50:13.300Z",
-      "lastSuccessAt": "2026-08-16T17:51:49.668435Z",
+      "lastScanAt": "2026-08-16T18:17:29.790Z",
+      "lastSuccessAt": "2026-08-16T18:19:02.328241Z",
       "searches": 15,
-      "offers": 26,
+      "offers": 25,
       "matches": 0,
       "nearbyLocations": [
         "Setúbal",
@@ -121,16 +182,16 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 15,
+          "offers": 14,
           "matches": 0,
-          "errors": 0,
+          "errors": 1,
           "skipped": 1,
-          "coveredCheckIns": 32,
+          "coveredCheckIns": 19,
           "lastSkipReason": "waiting_for_candidate",
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
-          "lastError": "",
+          "state": "degraded",
+          "consecutiveErrors": 1,
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
           "retryAt": ""
         },
         "google_hotels": {
@@ -154,7 +215,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -166,7 +227,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -178,32 +239,32 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 124,
+        "startIndex": 128,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 128,
-        "remainingSearchesInSweep": 7,
+        "nextIndex": 132,
+        "remainingSearchesInSweep": 3,
         "completedSweep": false
       }
     },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-16T17:50:13.300Z",
-      "lastSuccessAt": "2026-08-16T17:52:54.163Z",
+      "lastScanAt": "2026-08-16T18:17:29.790Z",
+      "lastSuccessAt": "2026-08-16T18:21:23.231349Z",
       "searches": 16,
-      "offers": 73,
-      "matches": 2,
+      "offers": 72,
+      "matches": 1,
       "nearbyLocations": [],
       "sources": {
         "google_hotels": {
@@ -221,25 +282,25 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 7,
+          "offers": 6,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
           "offers": 59,
-          "matches": 2,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -251,7 +312,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -259,26 +320,26 @@
           "searches": 4,
           "offers": 0,
           "matches": 0,
-          "errors": 0,
+          "errors": 3,
           "skipped": 0,
-          "coveredCheckIns": 49,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T17:50:13.300Z",
-          "lastError": "",
-          "retryAt": ""
+          "coveredCheckIns": 13,
+          "state": "paused",
+          "consecutiveErrors": 2,
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+          "retryAt": "2026-08-16T18:32:29.790Z"
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-16",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 12,
+        "startIndex": 16,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 16,
-        "remainingSearchesInSweep": 119,
+        "nextIndex": 20,
+        "remainingSearchesInSweep": 115,
         "completedSweep": false
       }
     }
