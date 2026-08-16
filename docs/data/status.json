@@ -1,47 +1,47 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-16T18:51:41.919Z",
+  "updatedAt": "2026-08-16T19:18:25.171Z",
   "summary": {
-    "generatedAt": "2026-08-16T18:51:41.919Z",
+    "generatedAt": "2026-08-16T19:18:25.171Z",
     "monitors": 2,
-    "searches": 25,
-    "offers": 75,
-    "matches": 1,
-    "newMatches": 0,
+    "searches": 27,
+    "offers": 86,
+    "matches": 5,
+    "newMatches": 3,
     "priceDrops": 0,
     "sources": {
       "booking": {
-        "searches": 4,
+        "searches": 2,
         "offers": 0,
         "matches": 0,
-        "errors": 3,
-        "skipped": 3
+        "errors": 2,
+        "skipped": 6
       },
       "google_hotels": {
-        "searches": 0,
-        "offers": 0,
-        "matches": 0,
+        "searches": 1,
+        "offers": 3,
+        "matches": 3,
         "errors": 0,
         "skipped": 7
       },
       "agoda": {
-        "searches": 7,
-        "offers": 5,
-        "matches": 0,
-        "errors": 0,
-        "skipped": 0
-      },
-      "trip": {
-        "searches": 7,
+        "searches": 8,
         "offers": 7,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
+      "trip": {
+        "searches": 8,
+        "offers": 8,
+        "matches": 0,
+        "errors": 0,
+        "skipped": 0
+      },
       "bluepillow": {
-        "searches": 7,
-        "offers": 63,
-        "matches": 1,
+        "searches": 8,
+        "offers": 68,
+        "matches": 2,
         "errors": 0,
         "skipped": 0
       }
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-18",
+          "checkIn": "2027-07-20",
           "checkOut": "2027-07-25",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 423.50 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-07-19",
-          "checkOut": "2027-07-24",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -78,177 +65,97 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-19",
-          "checkOut": "2027-07-25",
+          "checkIn": "2027-07-20",
+          "checkOut": "2027-07-26",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 370.70 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-19",
-          "checkOut": "2027-07-26",
+          "checkIn": "2027-07-20",
+          "checkOut": "2027-07-27",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 431.20 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-26",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 310.20 EUR."
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "nights": 5
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "hotelName": "34 Guest House",
+        "message": "Google no expuso un total final con impuestos en EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-20",
+          "checkOut": "2027-07-25",
+          "nights": 5,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-13",
+          "flexibleCheckInEnd": "2027-07-27"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-25",
-          "checkOut": "2027-08-30",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
           "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-18",
-          "flexibleCheckInEnd": "2027-08-26"
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-19"
         },
         "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-19",
-          "checkOut": "2027-07-24",
-          "nights": 5,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-12",
-          "flexibleCheckInEnd": "2027-07-26"
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-19",
-          "checkOut": "2027-07-25",
-          "nights": 6,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-12",
-          "flexibleCheckInEnd": "2027-07-26"
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
       }
     ]
   },
   "monitors": {
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-16T18:51:41.919Z",
-      "lastSuccessAt": "2026-08-16T18:52:59.864291Z",
-      "searches": 10,
-      "offers": 7,
-      "matches": 0,
-      "nearbyLocations": [
-        "Setúbal",
-        "Palmela",
-        "Alcácer do Sal",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 1,
-          "offers": 0,
-          "matches": 0,
-          "errors": 1,
-          "skipped": 2,
-          "lastSkipReason": "waiting_for_candidate",
-          "retryAt": "2026-08-16T19:06:41.919Z",
-          "state": "paused",
-          "consecutiveErrors": 2,
-          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
-          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
-        },
-        "google_hotels": {
-          "searches": 0,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 3,
-          "lastSkipReason": "calendar_limit",
-          "state": "limited",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "agoda": {
-          "searches": 3,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 3,
-          "offers": 0,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 3,
-          "offers": 7,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
-          "lastError": "",
-          "retryAt": ""
-        }
-      },
-      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-15",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 132,
-        "searchesCheckedThisRun": 3,
-        "nextIndex": 0,
-        "remainingSearchesInSweep": 0,
-        "completedSweep": true
-      }
-    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-16T18:51:41.919Z",
-      "lastSuccessAt": "2026-08-16T18:55:33.298561Z",
-      "searches": 15,
-      "offers": 68,
-      "matches": 1,
+      "lastScanAt": "2026-08-16T19:18:25.171Z",
+      "lastSuccessAt": "2026-08-16T19:19:47.707071Z",
+      "searches": 13,
+      "offers": 72,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "google_hotels": {
@@ -266,51 +173,50 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 5,
-          "matches": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 56,
-          "matches": 1,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
-          "lastError": "",
-          "retryAt": ""
-        },
-        "trip": {
-          "searches": 4,
           "offers": 7,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T18:51:41.919Z",
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 57,
+          "matches": 2,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 8,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
           "lastError": "",
           "retryAt": ""
         },
         "booking": {
-          "searches": 3,
+          "searches": 1,
           "offers": 0,
           "matches": 0,
-          "errors": 2,
-          "skipped": 1,
-          "coveredCheckIns": 14,
+          "errors": 1,
+          "skipped": 3,
           "lastSkipReason": "cooldown",
-          "retryAt": "2026-08-16T19:06:41.919Z",
+          "retryAt": "2026-08-16T19:33:25.171Z",
           "state": "paused",
-          "consecutiveErrors": 2,
+          "consecutiveErrors": 3,
           "lastSuccessAt": "2026-08-16T18:51:41.919Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
         }
@@ -321,13 +227,341 @@
         "sweepStartDate": "2026-08-16",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 20,
+        "startIndex": 24,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 24,
-        "remainingSearchesInSweep": 111,
+        "nextIndex": 28,
+        "remainingSearchesInSweep": 107,
+        "completedSweep": false
+      }
+    },
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-16T19:18:25.171Z",
+      "lastSuccessAt": "2026-08-16T19:21:49.387143Z",
+      "searches": 14,
+      "offers": 14,
+      "matches": 3,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 1,
+          "offers": 0,
+          "matches": 0,
+          "errors": 1,
+          "skipped": 3,
+          "lastSkipReason": "waiting_for_candidate",
+          "retryAt": "2026-08-16T19:33:25.171Z",
+          "state": "paused",
+          "consecutiveErrors": 3,
+          "lastSuccessAt": "2026-08-16T18:17:29.790Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 3,
+          "matches": 3,
+          "errors": 0,
+          "skipped": 3,
+          "lastSkipReason": "calendar_limit",
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 11,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
+          "lastError": "",
+          "retryAt": ""
+        }
+      },
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-16",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 0,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 4,
+        "remainingSearchesInSweep": 131,
         "completedSweep": false
       }
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:44bccd7b9fed51a1|2027-07-12|2027-07-17",
+        "source": "google_hotels",
+        "provider": "MontePico via Google Hotels",
+        "hotelName": "MontePico – Alojamento de Luxo com Piscina Privada",
+        "address": "Comporta, Distrito de Setúbal, Portugal",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-17",
+        "nights": 5,
+        "totalPrice": 405,
+        "nightlyPrice": 81,
+        "displayedNightlyPrice": 81,
+        "rateSubtotal": 405,
+        "searchResultPrice": 405,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "5 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-16T19:20:19.679Z",
+        "stars": 4,
+        "guestRating": 9.8,
+        "reviewCount": 47,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "resort",
+        "amenities": [
+          "pool",
+          "parking",
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMihDaG9JaXZQNzU3RFExSS1YQVJvTkwyY3ZNVEZtYlY5MFkzWTNkaEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwj4sYCB76WWAxUAAAAAHQAAAAAQAw",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "visible_provider_row",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "7ae4e911fda3c552",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "MontePico via Google Hotels",
+            "totalPrice": 405,
+            "nightlyPrice": 81,
+            "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMihDaG9JaXZQNzU3RFExSS1YQVJvTkwyY3ZNVEZtYlY5MFkzWTNkaEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwj4sYCB76WWAxUAAAAAHQAAAAAQAw",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 405,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-16T19:21:44.593Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:4e17919ef9e59c65|2027-07-12|2027-07-17",
+        "source": "google_hotels",
+        "provider": "Villa Center - Alojamento Local via Google Hotels",
+        "hotelName": "Villa Center - Alojamento Local",
+        "address": "Comporta, Distrito de Setúbal, Portugal",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-17",
+        "nights": 5,
+        "totalPrice": 425,
+        "nightlyPrice": 85,
+        "displayedNightlyPrice": 85,
+        "rateSubtotal": 425,
+        "searchResultPrice": 425,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "5 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-16T19:20:48.082Z",
+        "stars": 4,
+        "guestRating": 9.8,
+        "reviewCount": 79,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "resort",
+        "amenities": [
+          "pool",
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMidDaGtJbFllRXlkcWk1X1ZNR2cwdlp5OHhNVzV1YzJObWNIcG1FQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjQksmO76WWAxUAAAAAHQAAAAAQAw",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "visible_provider_row",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "b4866a02fa61721e",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Villa Center - Alojamento Local via Google Hotels",
+            "totalPrice": 425,
+            "nightlyPrice": 85,
+            "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMidDaGtJbFllRXlkcWk1X1ZNR2cwdlp5OHhNVzV1YzJObWNIcG1FQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjQksmO76WWAxUAAAAAHQAAAAAQAw",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 425,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-16T19:21:44.593Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:e830d12310449176|2027-07-12|2027-07-17",
+        "source": "google_hotels",
+        "provider": "Verde e Mar via Google Hotels",
+        "hotelName": "Verde e Mar",
+        "address": "Comporta, Distrito de Setúbal, Portugal",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-17",
+        "nights": 5,
+        "totalPrice": 500,
+        "nightlyPrice": 100,
+        "displayedNightlyPrice": 100,
+        "rateSubtotal": 500,
+        "searchResultPrice": 500,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "5 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-16T19:21:44.592Z",
+        "stars": 4,
+        "guestRating": 8.6,
+        "reviewCount": 235,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "resort",
+        "amenities": [
+          "pool",
+          "parking",
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMidDaGtJbElTTzktTEE4WTNsQVJvTUwyY3ZNVEY0Ym1NNU5IQmZFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjol8ep76WWAxUAAAAAHQAAAAAQAw",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "visible_provider_row",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "fc84723ec2d4b16b",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Verde e Mar via Google Hotels",
+            "totalPrice": 500,
+            "nightlyPrice": 100,
+            "url": "https://www.google.com/travel/search?q=hoteles%20en%20comporta&ts=CAESCgoCCAMKAggDEAEaUQozEi8yIzB4ZDE5NjExOTQyNDhjZTY1OjB4ZDJiODY1ZDc3YzhjYTkxOghDb21wb3J0YRoAEhoSFAoHCOsPEAcYDBIHCOsPEAcYERgFMgIIASoNCgk6A0VVUmICCAEaAA&qs=CAEgASgAMidDaGtJbElTTzktTEE4WTNsQVJvTUwyY3ZNVEY0Ym1NNU5IQmZFQUU4DUgA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjol8ep76WWAxUAAAAAHQAAAAAQAw",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 500,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-16T19:21:44.593Z"
+    }
+  ]
 }
