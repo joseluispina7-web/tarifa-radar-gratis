@@ -1,20 +1,20 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-16T08:12:11.787Z",
+  "updatedAt": "2026-08-16T08:50:16.119Z",
   "summary": {
-    "generatedAt": "2026-08-16T08:12:11.787Z",
+    "generatedAt": "2026-08-16T08:50:16.119Z",
     "monitors": 2,
     "searches": 31,
-    "offers": 115,
-    "matches": 2,
+    "offers": 76,
+    "matches": 11,
     "newMatches": 2,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 7,
-        "offers": 49,
-        "matches": 1,
-        "errors": 2,
+        "offers": 23,
+        "matches": 9,
+        "errors": 3,
         "skipped": 1
       },
       "google_hotels": {
@@ -26,22 +26,22 @@
       },
       "agoda": {
         "searches": 8,
-        "offers": 7,
+        "offers": 2,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
       "trip": {
         "searches": 8,
-        "offers": 4,
+        "offers": 5,
         "matches": 0,
         "errors": 0,
         "skipped": 0
       },
       "bluepillow": {
         "searches": 8,
-        "offers": 55,
-        "matches": 1,
+        "offers": 46,
+        "matches": 2,
         "errors": 0,
         "skipped": 0
       }
@@ -52,21 +52,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-07",
+          "checkIn": "2027-08-09",
           "checkOut": "2027-08-14",
-          "nights": 7
-        },
-        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 508.20 EUR."
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2027-08-08",
-          "checkOut": "2027-08-13",
           "nights": 5
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -78,8 +65,8 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-08",
-          "checkOut": "2027-08-14",
+          "checkIn": "2027-08-09",
+          "checkOut": "2027-08-15",
           "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
@@ -91,28 +78,56 @@
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-08",
-          "checkOut": "2027-08-15",
+          "checkIn": "2027-08-09",
+          "checkOut": "2027-08-16",
           "nights": 7
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
         "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 508.20 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-10",
+          "checkOut": "2027-08-15",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-08-01",
+          "checkOut": "2027-08-06",
+          "nights": 5,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-25",
+          "flexibleCheckInEnd": "2027-08-08"
+        },
+        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-08",
-          "checkOut": "2027-08-13",
-          "nights": 5,
+          "checkIn": "2027-08-09",
+          "checkOut": "2027-08-15",
+          "nights": 6,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-01",
-          "flexibleCheckInEnd": "2027-08-15"
+          "flexibleCheckInStart": "2027-08-02",
+          "flexibleCheckInEnd": "2027-08-16"
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
@@ -122,12 +137,12 @@
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-08-08",
+          "checkIn": "2027-08-10",
           "checkOut": "2027-08-15",
-          "nights": 7,
+          "nights": 5,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-08-01",
-          "flexibleCheckInEnd": "2027-08-15"
+          "flexibleCheckInStart": "2027-08-03",
+          "flexibleCheckInEnd": "2027-08-17"
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
@@ -138,11 +153,11 @@
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-16T08:12:11.787Z",
-      "lastSuccessAt": "2026-08-16T08:13:09.127042Z",
+      "lastScanAt": "2026-08-16T08:50:16.119Z",
+      "lastSuccessAt": "2026-08-16T08:52:40.429418Z",
       "searches": 15,
-      "offers": 61,
-      "matches": 1,
+      "offers": 34,
+      "matches": 9,
       "nearbyLocations": [
         "Setúbal",
         "Palmela",
@@ -152,15 +167,15 @@
       "sources": {
         "booking": {
           "searches": 3,
-          "offers": 49,
-          "matches": 1,
-          "errors": 0,
+          "offers": 23,
+          "matches": 9,
+          "errors": 1,
           "skipped": 1,
-          "coveredCheckIns": 45,
+          "coveredCheckIns": 30,
           "lastSkipReason": "waiting_for_candidate",
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -185,56 +200,56 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
         "trip": {
           "searches": 4,
-          "offers": 0,
+          "offers": 1,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 12,
+          "offers": 10,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "dateCoverage": {
         "mode": "range",
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 56,
+        "startIndex": 60,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 60,
-        "remainingSearchesInSweep": 75,
+        "nextIndex": 64,
+        "remainingSearchesInSweep": 71,
         "completedSweep": false
       }
     },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-16T08:12:11.787Z",
-      "lastSuccessAt": "2026-08-16T08:15:26.930939Z",
+      "lastScanAt": "2026-08-16T08:50:16.119Z",
+      "lastSuccessAt": "2026-08-16T08:53:30.911780Z",
       "searches": 16,
-      "offers": 54,
-      "matches": 1,
+      "offers": 42,
+      "matches": 2,
       "nearbyLocations": [],
       "sources": {
         "google_hotels": {
@@ -252,25 +267,25 @@
         },
         "agoda": {
           "searches": 4,
-          "offers": 7,
+          "offers": 2,
           "matches": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 43,
-          "matches": 1,
+          "offers": 36,
+          "matches": 2,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -282,7 +297,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "",
           "retryAt": ""
         },
@@ -295,7 +310,7 @@
           "coveredCheckIns": 30,
           "state": "degraded",
           "consecutiveErrors": 1,
-          "lastSuccessAt": "2026-08-16T08:12:11.787Z",
+          "lastSuccessAt": "2026-08-16T08:50:16.119Z",
           "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
           "retryAt": ""
         }
@@ -306,10 +321,10 @@
         "sweepStartDate": "2026-08-15",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 80,
+        "startIndex": 84,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 84,
-        "remainingSearchesInSweep": 51,
+        "nextIndex": 88,
+        "remainingSearchesInSweep": 47,
         "completedSweep": false
       }
     }
@@ -317,112 +332,17 @@
   "alerts": [
     {
       "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
-        "id": "/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html|2027-07-31|2027-08-05",
-        "source": "booking",
-        "hotelName": "GuestReady - Enchanting retreat in Alcácer do Sal",
-        "address": "Alcácer do Sal",
-        "checkIn": "2027-07-31",
-        "checkOut": "2027-08-05",
-        "nights": 5,
-        "totalPrice": 620.02,
-        "nightlyPrice": 124,
-        "rateSubtotal": 620.02,
-        "additionalCharges": 0,
-        "taxesText": "",
-        "stayText": "5 noches, 2 adultos",
-        "bookingBlockIds": [
-          "1471875502_440538387_6_0_0"
-        ],
-        "priceVerified": true,
-        "priceBasis": "booking_visible_final_total_v5",
-        "stars": 3,
-        "guestRating": 6.3,
-        "reviewCount": 7,
-        "distanceKm": 23.99,
-        "freeCancellation": false,
-        "breakfastIncluded": false,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [],
-        "mealPlan": "any",
-        "roomName": "Apartamento de 2 dormitorios",
-        "sharedRoom": false,
-        "searchArea": "Alcácer do Sal",
-        "url": "https://www.booking.com/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html?ucfs=1&arphpl=1&checkin=2027-07-31&checkout=2027-08-05&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=960239b32e61081f&srepoch=1786867943&all_sr_blocks=1471875502_440538387_6_0_0&highlighted_blocks=1471875502_440538387_6_0_0&matching_block_id=1471875502_440538387_6_0_0&sr_pri_blocks=1471875502_440538387_6_0_0__62002&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-        "candidateMatches": true,
-        "matches": true,
-        "latitude": 38.3727217,
-        "longitude": -8.5110259,
-        "distanceVerified": true,
-        "searchResultPrice": 620.02,
-        "bookingTableTotal": null,
-        "bookingTablePriceConsistent": false,
-        "encodedStayTotal": 620.02,
-        "bookingPriceSource": "encoded_stay_total",
-        "excludedTaxRate": 0,
-        "excludedFixedCharges": 0,
-        "taxBreakdownText": "",
-        "verificationRows": [
-          {
-            "blockId": "1471875502_440538387_6_0_0",
-            "priceText": "€ 97 por noche\n€ 674 € 620 \nPrecio original € 674 Precio actual € 620\n5 noches\n-8%\nIncluido: suplemento de limpieza de € 133 por estancia",
-            "displayedPriceText": "",
-            "priceCellText": "€ 97 por noche\n€ 674 € 620 \nPrecio original € 674 Precio actual € 620\n5 noches\n-8%\nIncluido: suplemento de limpieza de € 133 por estancia",
-            "taxesText": "Incluido: suplemento de limpieza de € 133 por estancia"
-          }
-        ],
-        "taxFallbackRate": 0,
-        "priceConfirmationCount": 2,
-        "firstObservedPrice": 620.02,
-        "priceChangedDuringConfirmation": false,
-        "priceConfirmedAt": "2026-08-16T08:12:49.589Z",
-        "marketMedianNightly": 179.53,
-        "marketSampleSize": 6,
-        "discountPercent": 30.9,
-        "marketErrorFareScore": 42,
-        "errorFareScore": 42,
-        "errorFareLevel": "good_price",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Precio inferior a alojamientos comparables.",
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 42,
-        "comparisonGroupId": "56e93aad51b32cb1",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "booking",
-            "totalPrice": 620.02,
-            "nightlyPrice": 124,
-            "url": "https://www.booking.com/hotel/pt/guestready-enchanting-retreat-in-alcacer-do-sal.es.html?ucfs=1&arphpl=1&checkin=2027-07-31&checkout=2027-08-05&group_adults=2&req_adults=2&no_rooms=1&group_children=0&req_children=0&hpos=1&hapos=1&sr_order=price&srpvid=960239b32e61081f&srepoch=1786867943&all_sr_blocks=1471875502_440538387_6_0_0&highlighted_blocks=1471875502_440538387_6_0_0&matching_block_id=1471875502_440538387_6_0_0&sr_pri_blocks=1471875502_440538387_6_0_0__62002&from=searchresults&selected_currency=EUR&sb_price_type=total&type=total&lang=es",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 620.02,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-16T08:12:49.874Z"
-    },
-    {
-      "type": "new_match",
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
       "previousPrice": 0,
       "offer": {
-        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-08|2027-08-13",
+        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-09|2027-08-14",
         "source": "bluepillow",
         "provider": "Expedia via Bluepillow",
         "hotelName": "Zambujal Suites",
         "address": "Sesimbra",
-        "checkIn": "2027-08-08",
-        "checkOut": "2027-08-13",
+        "checkIn": "2027-08-09",
+        "checkOut": "2027-08-14",
         "nights": 5,
         "totalPrice": 502.85,
         "nightlyPrice": 100.57,
@@ -436,7 +356,7 @@
         "priceVerified": true,
         "priceBasis": "expedia_total_with_tax_breakdown",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-16T08:13:33.983Z",
+        "priceConfirmedAt": "2026-08-16T08:50:20.812Z",
         "stars": 3,
         "guestRating": 8,
         "reviewCount": 16,
@@ -452,27 +372,26 @@
         "roomName": "",
         "sharedRoom": false,
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786868010%2526endDate%253D2027-08-13%2526adults%253D2%2526locale%253Den_US%2526chid%253D2c632b13-4e98-4757-8b54-539f1dcb48fe%2526eapid%253D310064%2526startDate%253D2027-08-08%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-08&end=2027-08-13",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786870217%2526endDate%253D2027-08-14%2526adults%253D2%2526locale%253Den_US%2526chid%253Df5be3db7-6bca-4fb1-b116-9ef26eaa5756%2526eapid%253D310064%2526startDate%253D2027-08-09%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-09&end=2027-08-14",
         "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
         "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
         "bluepillowOta": "Expedia",
         "matches": true,
         "candidateMatches": true,
-        "marketMedianNightly": 314.64,
-        "marketSampleSize": 7,
-        "discountPercent": 68,
-        "marketErrorFareScore": 92,
-        "errorFareScore": 92,
-        "errorFareLevel": "unusually_low",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
         "errorFareIntelligenceVersion": 2,
         "errorFareEvidence": [
-          "comparable_market",
           "verified_price"
         ],
-        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 92,
-        "comparisonGroupId": "d16c45fa52388a4c",
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "4be2342db37c8b3f",
         "providerCount": 1,
         "comparisonProviders": [
           {
@@ -480,14 +399,92 @@
             "provider": "Expedia via Bluepillow",
             "totalPrice": 502.85,
             "nightlyPrice": 100.57,
-            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786868010%2526endDate%253D2027-08-13%2526adults%253D2%2526locale%253Den_US%2526chid%253D2c632b13-4e98-4757-8b54-539f1dcb48fe%2526eapid%253D310064%2526startDate%253D2027-08-08%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-08&end=2027-08-13",
+            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786870217%2526endDate%253D2027-08-14%2526adults%253D2%2526locale%253Den_US%2526chid%253Df5be3db7-6bca-4fb1-b116-9ef26eaa5756%2526eapid%253D310064%2526startDate%253D2027-08-09%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-09&end=2027-08-14",
             "priceVerified": true
           }
         ],
         "bestTotalPrice": 502.85,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-16T08:13:30.926202Z"
+      "createdAt": "2026-08-16T08:50:17.963381Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-08-10|2027-08-15",
+        "source": "bluepillow",
+        "provider": "Expedia via Bluepillow",
+        "hotelName": "Zambujal Suites",
+        "address": "Sesimbra",
+        "checkIn": "2027-08-10",
+        "checkOut": "2027-08-15",
+        "nights": 5,
+        "totalPrice": 502.85,
+        "nightlyPrice": 100.57,
+        "displayedNightlyPrice": 100.57,
+        "rateSubtotal": 502.85,
+        "searchResultPrice": 502.85,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 28.5,
+        "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos",
+        "stayText": "5 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-16T08:53:36.121Z",
+        "stars": 3,
+        "guestRating": 8,
+        "reviewCount": 16,
+        "distanceKm": 2.228699593004805,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786870410%2526endDate%253D2027-08-15%2526adults%253D2%2526locale%253Den_US%2526chid%253D941cc42e-e303-4e2e-8950-8e7479f4f0df%2526eapid%253D310064%2526startDate%253D2027-08-10%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-10&end=2027-08-15",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
+        "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
+        "bluepillowOta": "Expedia",
+        "matches": true,
+        "candidateMatches": true,
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "36e47cd5e7b28288",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow",
+            "totalPrice": 502.85,
+            "nightlyPrice": 100.57,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1786870410%2526endDate%253D2027-08-15%2526adults%253D2%2526locale%253Den_US%2526chid%253D941cc42e-e303-4e2e-8950-8e7479f4f0df%2526eapid%253D310064%2526startDate%253D2027-08-10%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-08-10&end=2027-08-15",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 502.85,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-16T08:53:30.911780Z"
     }
   ]
 }
