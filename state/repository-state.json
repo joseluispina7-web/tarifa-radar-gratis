@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T18:56:50.000Z",
+  "updatedAt": "2026-08-20T19:36:48.936Z",
   "monitors": {
     "madrid-agosto-4-noches": {
       "fingerprint": "60b808304912ccc271f3",
@@ -60890,8 +60890,8 @@
     },
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "fingerprint": "5437578ee30e0572b616",
-      "lastScanAt": "2026-08-20T18:56:50.000Z",
-      "lastSuccessAt": "2026-08-20T18:57:03.904319Z",
+      "lastScanAt": "2026-08-20T19:36:48.936Z",
+      "lastSuccessAt": "2026-08-20T19:38:43.331313Z",
       "nearbyLocations": [
         {
           "name": "Setúbal",
@@ -60918,43 +60918,53 @@
         "agoda": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "trip": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "bluepillow": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "booking": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "google_hotels": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-16T19:18:25.171Z",
-          "lastAttemptAt": "2026-08-16T19:18:25.171Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         }
       },
-      "dateSweepVersion": 3,
+      "dateSweepVersion": 4,
       "dateSweepMode": "range",
-      "dateSweepCursor": 116,
+      "dateSweepCursor": 4,
       "dateSweepStartDate": "2026-08-16",
+      "sourceDateSweepCursors": {
+        "discovery": 4,
+        "booking": 2,
+        "google_hotels": 1
+      },
+      "sourceDateSweepStartDates": {
+        "discovery": "2026-08-16",
+        "booking": "2026-08-16",
+        "google_hotels": "2026-08-16"
+      },
       "offers": {
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quartos-na-praceta.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -60964,14 +60974,34 @@
           "matches": true,
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:37:13.733Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 148.25,
+            "nightlyPrice": 29.65,
+            "confirmationCount": 2,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:37:13.758Z",
+              "totalPrice": 148.25,
+              "nightlyPrice": 29.65,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 2,
           "publishedPrice": 148.25,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/vitta-casa-fernao-ferro.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -60981,150 +61011,186 @@
           "matches": false,
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:37:13.758Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 220,
+            "nightlyPrice": 44,
+            "confirmationCount": 0,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:37:13.758Z",
+              "totalPrice": 220,
+              "nightlyPrice": 44,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-visconde-de-alcacer.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Casa Visconde de Alcácer",
-          "totalPrice": 245,
-          "nightlyPrice": 49,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 212.26,
+          "nightlyPrice": 42.45,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 245,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quartos-forest-domes-seubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Quartos Forest Domes Seubal",
-          "totalPrice": 258.5,
-          "nightlyPrice": 51.7,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 224.53,
+          "nightlyPrice": 44.91,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 258.5,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/sailor-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Sailor Setubal",
-          "totalPrice": 245,
-          "nightlyPrice": 49,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 225,
+          "nightlyPrice": 45,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 245,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/andreia-todi-riverside.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Andreia Todi Riverside",
-          "totalPrice": 245,
-          "nightlyPrice": 49,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 225,
+          "nightlyPrice": 45,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 245,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/travelers-house-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Travelers House",
-          "totalPrice": 278.75,
-          "nightlyPrice": 55.75,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 244.1,
+          "nightlyPrice": 48.82,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 278.75,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/traditional-family-home.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "Traditional Family Home",
-          "totalPrice": 290,
-          "nightlyPrice": 58,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 270,
+          "nightlyPrice": 54,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 290,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/fonte-nova-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "FONTE NOVA Setubal",
-          "totalPrice": 318,
-          "nightlyPrice": 63.6,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 297.5,
+          "nightlyPrice": 59.5,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 318,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/comporta-side.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
           "hotelName": "COMPORTA SIDE - Tents",
-          "totalPrice": 320,
-          "nightlyPrice": 64,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 283.02,
+          "nightlyPrice": 56.6,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
-          "confirmationCount": 2,
-          "publishedPrice": 320,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/ibis-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61151,14 +61217,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/sea-the-city-setubal-by-miradouro.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61168,14 +61236,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/falcoaria-eco.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61185,14 +61255,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/t1-para-ferias-sado-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61202,14 +61274,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/chimney-loft.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61219,14 +61293,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/maison-grise-loft.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61253,14 +61329,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-da-anunciada-old-town.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61270,14 +61348,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/studio-setubal.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61287,14 +61367,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-12T17:50:11.314Z",
-          "firstSeenAt": "2026-08-12T17:52:10.392Z",
-          "lastSeenAt": "2026-08-12T17:52:10.392Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/refugio-casa-tipica-portuguesa.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -61338,14 +61420,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:32:37.304Z",
-          "lastSeenAt": "2026-08-15T22:32:37.304Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:agoda:prop_594390ea7c00cb0e6438fe8b|2027-07-12|2027-07-17": {
           "source": "agoda",
@@ -61748,17 +61832,19 @@
           "hotelName": "Albani Hostel",
           "totalPrice": 613.8,
           "nightlyPrice": 102.3,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 613.8,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:53:37.944Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quinta-moscatel.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -61780,70 +61866,78 @@
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/castle-house-palmela.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
           "hotelName": "Castle House",
-          "totalPrice": 453.68,
-          "nightlyPrice": 75.61,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 427.92,
+          "nightlyPrice": 71.32,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 453.68,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/patio-da-memoria.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
           "hotelName": "Patio da Memoria",
-          "totalPrice": 600,
-          "nightlyPrice": 100,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 566.04,
+          "nightlyPrice": 94.34,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 600,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quinta-laranjal-da-arrabida.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
           "hotelName": "Quinta Laranjal da Arrabida",
-          "totalPrice": 648,
-          "nightlyPrice": 108,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 611.32,
+          "nightlyPrice": 101.89,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 648,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/biovilla-sustentabilidade.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
           "hotelName": "Biovilla Sustentabilidade",
-          "totalPrice": 660.38,
-          "nightlyPrice": 110.06,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 622.64,
+          "nightlyPrice": 103.77,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 660.38,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/palmela-oasis-apartment-ii-by-home-match.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -61887,14 +61981,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:39.333Z",
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/new-charming-palmela-retreat-near-arrabida-amp-castle.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -61972,14 +62068,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
-          "firstSeenAt": "2026-08-15T22:33:37.889Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:39.333Z",
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quartos-na-praceta.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -61989,14 +62087,34 @@
           "matches": true,
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:38:36.929Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 178,
+            "nightlyPrice": 29.67,
+            "confirmationCount": 2,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:38:39.333Z",
+              "totalPrice": 178,
+              "nightlyPrice": 29.67,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 2,
           "publishedPrice": 178,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:53:37.944Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-visconde-de-alcacer.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -62006,31 +62124,53 @@
           "matches": true,
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:38:39.310Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 294.3,
+            "nightlyPrice": 49.05,
+            "confirmationCount": 2,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:38:39.333Z",
+              "totalPrice": 294.3,
+              "nightlyPrice": 49.05,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 2,
           "publishedPrice": 294.3,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:53:37.944Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quartos-forest-domes-seubal.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
           "hotelName": "Quartos Forest Domes Seubal",
-          "totalPrice": 309.6,
-          "nightlyPrice": 51.6,
-          "matches": true,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
+          "totalPrice": 269.43,
+          "nightlyPrice": 44.91,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
-          "confirmationCount": 2,
-          "publishedPrice": 309.6,
-          "lastObservationCycle": "2026-08-15T22:31:41.768Z",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-12T17:53:37.944Z",
-          "lastSeenAt": "2026-08-15T22:33:37.889Z"
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/sailor-setubal.es.html|2027-07-12|2027-07-18": {
           "source": "booking",
@@ -70462,14 +70602,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Palmela",
           "checkIn": "2027-07-18",
           "checkOut": "2027-07-24",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T22:36:04.663Z",
-          "firstSeenAt": "2026-08-16T22:39:09.428Z",
-          "lastSeenAt": "2026-08-16T22:39:09.428Z"
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:39.333Z",
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quartos-na-praceta.es.html|2027-07-18|2027-07-24": {
           "source": "booking",
@@ -111796,19 +111938,21 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "2-bedr. apartment with private garden and terrace, condominium w\\/ pool",
-          "totalPrice": 1665,
-          "nightlyPrice": 277.5,
+          "totalPrice": 1677,
+          "nightlyPrice": 279.5,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Setúbal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-14T08:53:50.751877Z",
-          "lastSeenAt": "2026-08-16T19:21:46.716434Z"
+          "lastSeenAt": "2026-08-20T19:38:16.014157Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_654cafca3011da1e8b785e4e|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -111819,14 +111963,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Setúbal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-14T08:53:50.751877Z",
-          "lastSeenAt": "2026-08-16T19:21:46.716434Z"
+          "lastSeenAt": "2026-08-20T19:38:16.014157Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_6398fee6c551970d3c766a72|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -111837,14 +111983,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Setúbal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-14T08:53:50.751877Z",
-          "lastSeenAt": "2026-08-16T19:21:46.716434Z"
+          "lastSeenAt": "2026-08-20T19:38:16.014157Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_65cb75c23e6d928972f5f3c2|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -139321,14 +139469,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:01:06.880794Z",
-          "lastSeenAt": "2026-08-16T19:18:26.908760Z"
+          "lastSeenAt": "2026-08-20T19:36:51.226802Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_6398fee6c551970d3c766a72|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -139339,14 +139489,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:01:06.880794Z",
-          "lastSeenAt": "2026-08-16T19:18:26.908760Z"
+          "lastSeenAt": "2026-08-20T19:36:51.226802Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_5eb4578167a9d10d04277ccd|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -139357,14 +139509,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:01:06.880794Z",
-          "lastSeenAt": "2026-08-16T19:18:26.908760Z"
+          "lastSeenAt": "2026-08-20T19:36:51.226802Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/castle-house-palmela.es.html|2027-07-12|2027-07-17": {
           "source": "booking",
@@ -139846,19 +140000,21 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "2-bedr. apartment with private garden and terrace, condominium w\\/ pool",
-          "totalPrice": 1960,
-          "nightlyPrice": 280,
+          "totalPrice": 1745,
+          "nightlyPrice": 249.29,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Palmela",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Alcácer do Sal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:02:29.174422Z",
-          "lastSeenAt": "2026-08-16T19:21:47.826786Z"
+          "lastSeenAt": "2026-08-20T19:38:40.437896Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_654cafca3011da1e8b785e4e|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -139869,14 +140025,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Palmela",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Alcácer do Sal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:02:29.174422Z",
-          "lastSeenAt": "2026-08-16T19:21:47.826786Z"
+          "lastSeenAt": "2026-08-20T19:38:40.437896Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_6398fee6c551970d3c766a72|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -139887,14 +140045,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Palmela",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Alcácer do Sal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:02:29.174422Z",
-          "lastSeenAt": "2026-08-16T19:21:47.826786Z"
+          "lastSeenAt": "2026-08-20T19:38:40.437896Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_654cafca3011da1e8b785e4e|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -139905,14 +140065,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Alcácer do Sal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Grândola",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:02:36.453993Z",
-          "lastSeenAt": "2026-08-16T19:21:49.387143Z"
+          "lastSeenAt": "2026-08-20T19:38:43.331313Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_6398fee6c551970d3c766a72|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -139923,14 +140085,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
-          "searchArea": "Alcácer do Sal",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Grândola",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-16T19:18:25.171Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-15T08:02:36.453993Z",
-          "lastSeenAt": "2026-08-16T19:21:49.387143Z"
+          "lastSeenAt": "2026-08-20T19:38:43.331313Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_63974573fc70cceab619fc6c|2027-07-13|2027-07-19": {
           "source": "bluepillow",
@@ -163710,6 +163874,141 @@
           "lastObservationCycle": "2026-08-20T18:56:50.000Z",
           "firstSeenAt": "2026-08-20T18:57:00.428Z",
           "lastSeenAt": "2026-08-20T18:57:00.428Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/vila-maria-apartment.es.html|2027-07-12|2027-07-17": {
+          "source": "booking",
+          "hotelName": "Coast 2 Bedroom Apart Setúbal 45 min from Lisbon",
+          "totalPrice": 420.28,
+          "nightlyPrice": 84.06,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:37:13.758Z",
+          "lastSeenAt": "2026-08-20T19:37:13.758Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:google_hotels:9075e8815ae013b3|2027-07-12|2027-07-17": {
+          "source": "google_hotels",
+          "provider": "Booking.com via Google Hotels",
+          "hotelName": "Travelers House",
+          "totalPrice": 278.75,
+          "nightlyPrice": 55.75,
+          "matches": true,
+          "priceVerified": true,
+          "priceBasis": "google_hotels_provider_all_inclusive_v7",
+          "priceEvidence": "provider_link",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:37:50.276Z",
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v7",
+            "priceEvidence": "provider_link",
+            "totalPrice": 278.75,
+            "nightlyPrice": 55.75,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:38:13.980Z",
+              "totalPrice": 278.75,
+              "nightlyPrice": 55.75,
+              "source": "google_hotels",
+              "provider": "Booking.com via Google Hotels"
+            }
+          ],
+          "searchArea": "Setúbal",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "confirmationCount": 2,
+          "publishedPrice": 278.75,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:13.980Z",
+          "lastSeenAt": "2026-08-20T19:38:13.980Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:google_hotels:97f03725f37b95a0|2027-07-12|2027-07-17": {
+          "source": "google_hotels",
+          "provider": "Central de Reservas via Google Hotels",
+          "hotelName": "ibis Setubal",
+          "totalPrice": 334,
+          "nightlyPrice": 66.8,
+          "matches": true,
+          "priceVerified": true,
+          "priceBasis": "google_hotels_provider_all_inclusive_v7",
+          "priceEvidence": "visible_provider_row",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:38:13.979Z",
+            "source": "google_hotels",
+            "provider": "Central de Reservas via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v7",
+            "priceEvidence": "visible_provider_row",
+            "totalPrice": 334,
+            "nightlyPrice": 66.8,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:38:13.980Z",
+              "totalPrice": 334,
+              "nightlyPrice": 66.8,
+              "source": "google_hotels",
+              "provider": "Central de Reservas via Google Hotels"
+            }
+          ],
+          "searchArea": "Setúbal",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "confirmationCount": 2,
+          "publishedPrice": 334,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:13.980Z",
+          "lastSeenAt": "2026-08-20T19:38:13.980Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/arrabida-cozy-house-in-palmela.es.html|2027-07-12|2027-07-18": {
+          "source": "booking",
+          "hotelName": "Arrábida Cozy House",
+          "totalPrice": 636.79,
+          "nightlyPrice": 106.13,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-18",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:39.333Z",
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/quinta-dos-filipes.es.html|2027-07-12|2027-07-18": {
+          "source": "booking",
+          "hotelName": "Quinta dos Filipes",
+          "totalPrice": 2264.15,
+          "nightlyPrice": 377.36,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-18",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:38:39.333Z",
+          "lastSeenAt": "2026-08-20T19:38:39.333Z"
         }
       }
     },
@@ -165104,50 +165403,60 @@
     },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "fingerprint": "fb6d864a7de40a41dd0e",
-      "lastScanAt": "2026-08-20T18:56:50.000Z",
-      "lastSuccessAt": "2026-08-20T18:58:37.272846Z",
+      "lastScanAt": "2026-08-20T19:36:48.936Z",
+      "lastSuccessAt": "2026-08-20T19:39:24.177809Z",
       "nearbyLocations": [],
       "sourceHealth": {
         "agoda": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "trip": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "bluepillow": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "booking": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         },
         "google_hotels": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
-          "lastAttemptAt": "2026-08-20T18:56:50.000Z",
+          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastAttemptAt": "2026-08-20T19:36:48.936Z",
           "lastError": ""
         }
       },
-      "dateSweepVersion": 3,
+      "dateSweepVersion": 4,
       "dateSweepMode": "range",
       "dateSweepCursor": 4,
       "dateSweepStartDate": "2026-08-20",
+      "sourceDateSweepCursors": {
+        "discovery": 4,
+        "booking": 2,
+        "google_hotels": 1
+      },
+      "sourceDateSweepStartDates": {
+        "discovery": "2026-08-20",
+        "booking": "2026-08-20",
+        "google_hotels": "2026-08-20"
+      },
       "offers": {
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-17": {
           "source": "agoda",
@@ -165158,32 +165467,36 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_594394467c00cb0e643a9a82|2027-07-12|2027-07-17": {
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1218.88,
-          "nightlyPrice": 243.78,
+          "totalPrice": 1530.13,
+          "nightlyPrice": 306.03,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165194,14 +165507,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6626473d4338d48a8fc929d5|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165212,14 +165527,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_63974c24fc70cceab61af747|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165230,14 +165547,34 @@
           "matches": true,
           "priceVerified": true,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:36:53.826Z",
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow",
+            "priceBasis": "expedia_total_with_tax_breakdown",
+            "priceEvidence": "",
+            "totalPrice": 502.85,
+            "nightlyPrice": 100.57,
+            "confirmationCount": 2,
+            "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:36:51.286122Z",
+              "totalPrice": 502.85,
+              "nightlyPrice": 100.57,
+              "source": "bluepillow",
+              "provider": "Expedia via Bluepillow"
+            }
+          ],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 2,
           "publishedPrice": 502.85,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165248,14 +165585,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_67a4d8c1064d51dcdc950bd1|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165266,14 +165605,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_59438fee7c00cb0e64382056|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165284,14 +165625,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_64c8d27da1247fa35c63745c|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165302,14 +165645,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165320,14 +165665,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165338,14 +165685,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165356,14 +165705,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165374,14 +165725,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165392,14 +165745,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165410,14 +165765,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-12|2027-07-17": {
           "source": "bluepillow",
@@ -165428,32 +165785,36 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594394467c00cb0e643a9a82|2027-07-12|2027-07-17": {
           "source": "bluepillow",
-          "provider": "Agoda via Bluepillow",
+          "provider": "Expedia via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1218.88,
-          "nightlyPrice": 243.78,
+          "totalPrice": 1474.18,
+          "nightlyPrice": 294.84,
           "matches": false,
           "priceVerified": false,
-          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-17": {
           "source": "trip",
@@ -165464,14 +165825,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-12|2027-07-17": {
           "source": "trip",
@@ -165482,14 +165845,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:56:50.989573Z",
-          "lastSeenAt": "2026-08-20T18:56:50.989573Z"
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:google_hotels:80193dcd99205764|2027-07-12|2027-07-17": {
           "source": "google_hotels",
@@ -165501,14 +165866,34 @@
           "priceVerified": true,
           "priceBasis": "google_hotels_provider_all_inclusive_v7",
           "priceEvidence": "provider_link",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:38:11.053Z",
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v7",
+            "priceEvidence": "provider_link",
+            "totalPrice": 467.5,
+            "nightlyPrice": 93.5,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:38:33.395Z",
+              "totalPrice": 467.5,
+              "nightlyPrice": 93.5,
+              "source": "google_hotels",
+              "provider": "Booking.com via Google Hotels"
+            }
+          ],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-17",
           "confirmationCount": 2,
           "publishedPrice": 467.5,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:12.409Z",
-          "lastSeenAt": "2026-08-20T18:58:12.409Z"
+          "lastSeenAt": "2026-08-20T19:38:33.395Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-18": {
           "source": "agoda",
@@ -165519,14 +165904,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-18": {
           "source": "agoda",
@@ -165555,14 +165942,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165573,14 +165962,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6626473d4338d48a8fc929d5|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165591,14 +165982,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_63974c24fc70cceab61af747|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165609,14 +166002,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165627,14 +166022,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_67a4d8c1064d51dcdc950bd1|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165645,14 +166042,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_64c8d27da1247fa35c63745c|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165663,14 +166062,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_59438fee7c00cb0e64382056|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165681,14 +166082,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165699,14 +166102,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165717,14 +166122,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165735,14 +166142,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165753,14 +166162,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165771,14 +166182,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165789,14 +166202,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165807,14 +166222,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594394467c00cb0e643a9a82|2027-07-12|2027-07-18": {
           "source": "bluepillow",
@@ -165825,14 +166242,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-18": {
           "source": "trip",
@@ -165843,14 +166262,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-12|2027-07-18": {
           "source": "trip",
@@ -165861,14 +166282,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:13.112087Z",
-          "lastSeenAt": "2026-08-20T18:58:13.112087Z"
+          "lastSeenAt": "2026-08-20T19:38:35.718827Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-19": {
           "source": "agoda",
@@ -165879,14 +166302,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-19": {
           "source": "agoda",
@@ -165915,14 +166340,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6626473d4338d48a8fc929d5|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -165933,14 +166360,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_63974c24fc70cceab61af747|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -165951,14 +166380,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_67a4d8c1064d51dcdc950bd1|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -165969,14 +166400,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -165987,14 +166420,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_64c8d27da1247fa35c63745c|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166005,14 +166440,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_59438fee7c00cb0e64382056|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166023,14 +166460,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5a84f1217c00cb0e042475f6|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166041,14 +166480,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166059,14 +166500,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166077,14 +166520,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_623374ab4c4d8d9b9b75162e|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166095,14 +166540,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5eb4546f67a9d10d0425d58e|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166113,14 +166560,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166131,14 +166580,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-19": {
           "source": "bluepillow",
@@ -166149,14 +166600,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-19": {
           "source": "trip",
@@ -166167,14 +166620,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-12",
           "checkOut": "2027-07-19",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:35.817238Z",
-          "lastSeenAt": "2026-08-20T18:58:35.817238Z"
+          "lastSeenAt": "2026-08-20T19:39:21.463767Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-13|2027-07-18": {
           "source": "agoda",
@@ -166185,32 +166640,36 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_594394467c00cb0e643a9a82|2027-07-13|2027-07-18": {
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1605,
-          "nightlyPrice": 321,
+          "totalPrice": 1245.16,
+          "nightlyPrice": 249.03,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166221,14 +166680,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6626473d4338d48a8fc929d5|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166239,14 +166700,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_63974c24fc70cceab61af747|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166257,14 +166720,34 @@
           "matches": true,
           "priceVerified": true,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": {
+            "verifiedAt": "2026-08-20T19:39:27.052Z",
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow",
+            "priceBasis": "expedia_total_with_tax_breakdown",
+            "priceEvidence": "",
+            "totalPrice": 502.85,
+            "nightlyPrice": 100.57,
+            "confirmationCount": 2,
+            "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-08-20T19:39:24.177809Z",
+              "totalPrice": 502.85,
+              "nightlyPrice": 100.57,
+              "source": "bluepillow",
+              "provider": "Expedia via Bluepillow"
+            }
+          ],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 2,
           "publishedPrice": 502.85,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_623374f44c4d8d9b9b7527ae|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166275,14 +166758,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_67a4d8c1064d51dcdc950bd1|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166293,14 +166778,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_59438fee7c00cb0e64382056|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166311,14 +166798,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_64c8d27da1247fa35c63745c|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166329,14 +166818,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166347,14 +166838,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166365,14 +166858,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5eb4546f67a9d10d0425d58e|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166383,14 +166878,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166401,14 +166898,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166419,14 +166918,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166437,14 +166938,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-13|2027-07-18": {
           "source": "bluepillow",
@@ -166455,32 +166958,36 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594394467c00cb0e643a9a82|2027-07-13|2027-07-18": {
           "source": "bluepillow",
-          "provider": "Expedia via Bluepillow",
+          "provider": "Agoda via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1506.59,
-          "nightlyPrice": 301.32,
+          "totalPrice": 1245.16,
+          "nightlyPrice": 249.03,
           "matches": false,
           "priceVerified": false,
-          "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-13|2027-07-18": {
           "source": "trip",
@@ -166491,14 +166998,16 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-13|2027-07-18": {
           "source": "trip",
@@ -166509,14 +167018,56 @@
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
           "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "checkIn": "2027-07-13",
           "checkOut": "2027-07-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-20T18:56:50.000Z",
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
           "firstSeenAt": "2026-08-20T18:58:37.272846Z",
-          "lastSeenAt": "2026-08-20T18:58:37.272846Z"
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5943942b7c00cb0e643a8d0f|2027-07-12|2027-07-17": {
+          "source": "agoda",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "SANA Sesimbra Hotel",
+          "totalPrice": 1169.31,
+          "nightlyPrice": 233.86,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:36:51.286122Z",
+          "lastSeenAt": "2026-08-20T19:36:51.286122Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5943942b7c00cb0e643a8d0f|2027-07-13|2027-07-18": {
+          "source": "agoda",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "SANA Sesimbra Hotel",
+          "totalPrice": 1169.31,
+          "nightlyPrice": 233.86,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "checkIn": "2027-07-13",
+          "checkOut": "2027-07-18",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-08-20T19:36:48.936Z",
+          "firstSeenAt": "2026-08-20T19:39:24.177809Z",
+          "lastSeenAt": "2026-08-20T19:39:24.177809Z"
         }
       }
     },
@@ -167933,5 +168484,32 @@
         }
       }
     }
+  },
+  "telegram": {
+    "mutedMonitorIds": [],
+    "updateOffset": 0,
+    "updateError": "",
+    "sentAlerts": [
+      {
+        "id": "b2a40b263dcd4904aab1e3a4",
+        "sentAt": "2026-08-20T19:39:27.820Z"
+      },
+      {
+        "id": "fb1f5fd590eb0bca408e8b41",
+        "sentAt": "2026-08-20T19:39:27.820Z"
+      }
+    ]
+  },
+  "health": {
+    "state": "healthy",
+    "startedAt": "2026-08-20T19:36:48.936Z",
+    "lastCompletedAt": "2026-08-20T19:36:48.936Z",
+    "previousCompletedAt": "2026-08-20T18:56:50.000Z",
+    "gapMinutes": 40,
+    "recoveredAfterInterruption": true,
+    "durationMs": 158167,
+    "completedNormally": true,
+    "monitorsProcessed": 2,
+    "searchesCompleted": 30
   }
 }
