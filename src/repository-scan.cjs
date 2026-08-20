@@ -21,6 +21,10 @@ const {
   enrichDealComparisons,
 } = require("./deal-intelligence.cjs");
 const {
+  hotelIsExcluded,
+  normalizeExclusionsDocument,
+} = require("./hotel-exclusions.cjs");
+const {
   bookingDiscoveryDates,
   buildMonitorScanRequests,
   flexibleSearchShape,
@@ -383,7 +387,7 @@ function monitorFingerprint(monitor) {
     .slice(0, 20);
 }
 
-function buildDealMap(previousDeals, activeMonitors) {
+function buildDealMap(previousDeals, activeMonitors, exclusions = {}) {
   const monitorsById = new Map(
     activeMonitors.map((monitor) => [String(monitor.id), monitor]),
   );
@@ -409,6 +413,11 @@ function buildDealMap(previousDeals, activeMonitors) {
           source !== "trip" ||
           deal.priceBasis === "trip_direct_final_total_v1";
         const hasValidDistance = offerMatchesMonitorDistance(deal, monitor);
+        const isExcluded = hotelIsExcluded(
+          exclusions,
+          deal.monitorId,
+          deal.hotelName,
+        );
         return Boolean(
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
@@ -418,10 +427,27 @@ function buildDealMap(previousDeals, activeMonitors) {
           hasCurrentGoogleValidation &&
           hasValidGoogleName &&
           hasCurrentTripValidation &&
-          hasValidDistance
+          hasValidDistance &&
+          !isExcluded
         );
       })
       .map((deal) => [deal.id, deal]),
+  );
+}
+
+function pruneExcludedMonitorOffers(monitors, exclusions) {
+  return Object.fromEntries(
+    Object.entries(monitors || {}).map(([monitorId, monitorState]) => [
+      monitorId,
+      {
+        ...monitorState,
+        offers: Object.fromEntries(
+          Object.entries(monitorState?.offers || {}).filter(([, offer]) =>
+            !hotelIsExcluded(exclusions, monitorId, offer.hotelName)
+          ),
+        ),
+      },
+    ]),
   );
 }
 
@@ -567,6 +593,10 @@ async function runRepositoryScan(options = {}) {
     root,
     options.configPath || "config/searches.json",
   );
+  const exclusionsPath = path.resolve(
+    root,
+    options.exclusionsPath || "config/excluded-hotels.json",
+  );
   const statePath = path.resolve(
     root,
     options.statePath || "state/repository-state.json",
@@ -580,6 +610,11 @@ async function runRepositoryScan(options = {}) {
     options.statusPath || "docs/data/status.json",
   );
   const localConfig = readJson(configPath, { monitors: [] });
+  const localExclusions = readJson(exclusionsPath, {
+    version: 1,
+    updatedAt: "",
+    hotels: [],
+  });
   const localPreviousState = readJson(statePath, {
     version: 1,
     monitors: {},
@@ -591,6 +626,7 @@ async function runRepositoryScan(options = {}) {
           readRemoteJson("config/searches.json", options.remoteOptions),
           readRemoteJson("state/repository-state.json", options.remoteOptions),
           readRemoteJson("docs/data/deals.json", options.remoteOptions),
+          readRemoteJson("config/excluded-hotels.json", options.remoteOptions),
         ])
       : []
   );
@@ -606,6 +642,10 @@ async function runRepositoryScan(options = {}) {
     localPreviousDeals,
     remoteDocuments[2],
   );
+  const exclusions = normalizeExclusionsDocument(newestRepositoryDocument(
+    localExclusions,
+    remoteDocuments[3],
+  ));
   const now = options.now || new Date();
   const previousCompletedAt =
     previousState.health?.lastCompletedAt || previousState.updatedAt || "";
@@ -638,11 +678,14 @@ async function runRepositoryScan(options = {}) {
   const nextState = {
     version: 1,
     updatedAt: now.toISOString(),
-    monitors: { ...(previousState.monitors || {}) },
+    monitors: pruneExcludedMonitorOffers(
+      previousState.monitors,
+      exclusions,
+    ),
     telegram: { ...(previousState.telegram || {}) },
     hotelLocations: pruneHotelLocationCache(previousState.hotelLocations),
   };
-  const dealMap = buildDealMap(previousDeals, activeMonitors);
+  const dealMap = buildDealMap(previousDeals, activeMonitors, exclusions);
   const monitorStatus = {};
   const alerts = [];
   const currentMatchingOffers = new Set();
@@ -1037,6 +1080,9 @@ async function runRepositoryScan(options = {}) {
         );
 
         for (const offer of result.offers) {
+          if (hotelIsExcluded(exclusions, monitor.id, offer.hotelName)) {
+            continue;
+          }
           if (!offerMatchesMonitorDistance(offer, monitor)) {
             if (offer.matches) {
               status.sources[source].locationRejected += 1;
@@ -1315,6 +1361,7 @@ module.exports = {
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
   pruneHotelLocationCache,
+  pruneExcludedMonitorOffers,
   readJson,
   readRemoteJson,
   resultHasPromisingCandidate,

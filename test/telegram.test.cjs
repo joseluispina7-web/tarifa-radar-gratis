@@ -224,9 +224,22 @@ test("sends a digest with previews disabled", async () => {
   assert.equal(request.body.chat_id, "123");
   assert.equal(request.body.link_preview_options.is_disabled, true);
   assert.equal(request.body.reply_markup.inline_keyboard.length, 2);
+  assert.equal(request.body.reply_markup.inline_keyboard[0].length, 2);
+  assert.match(
+    request.body.reply_markup.inline_keyboard[0][0].text,
+    /^Abrir Hotel Sol & Mar/,
+  );
   assert.match(
     request.body.reply_markup.inline_keyboard[0][0].url,
     /booking\.com/,
+  );
+  assert.equal(
+    request.body.reply_markup.inline_keyboard[0][1].text,
+    "Descartar",
+  );
+  assert.match(
+    request.body.reply_markup.inline_keyboard[0][1].callback_data,
+    /^exclude:[a-f0-9]{16}$/,
   );
   assert.match(
     request.body.reply_markup.inline_keyboard[1][0].callback_data,

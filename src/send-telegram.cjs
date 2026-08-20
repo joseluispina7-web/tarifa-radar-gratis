@@ -1,6 +1,16 @@
 const crypto = require("node:crypto");
 const path = require("node:path");
-const { readJson, writeJson } = require("./repository-scan.cjs");
+const {
+  newestRepositoryDocument,
+  readJson,
+  writeJson,
+} = require("./repository-scan.cjs");
+const {
+  addHotelExclusion,
+  exclusionActionId,
+  hotelIsExcluded,
+  normalizeExclusionsDocument,
+} = require("./hotel-exclusions.cjs");
 const {
   PANEL_URL,
   sendAlertDigest,
@@ -9,6 +19,8 @@ const {
 
 const MAX_SENT_ALERTS = 1_000;
 const SENT_ALERT_RETENTION_MS = 45 * 86_400_000;
+const MAX_HOTEL_ACTIONS = 1_000;
+const HOTEL_ACTION_RETENTION_MS = 180 * 86_400_000;
 
 function normalizeFingerprintPart(value) {
   return String(value ?? "")
@@ -75,6 +87,59 @@ async function readRemoteState(options = {}) {
   }
 }
 
+async function readRemoteExclusions(options = {}) {
+  if (options.remoteExclusions) return options.remoteExclusions;
+  const repository = options.repository || process.env.GITHUB_REPOSITORY;
+  if (!repository) return null;
+  const branch = options.branch || process.env.GITHUB_REF_NAME || "main";
+  const fetchImpl = options.remoteFetchImpl || fetch;
+  try {
+    const response = await fetchImpl(
+      `https://raw.githubusercontent.com/${repository}/${encodeURIComponent(branch)}/config/excluded-hotels.json?t=${Date.now()}`,
+      { signal: AbortSignal.timeout(10_000) },
+    );
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function pruneHotelActions(actions, now = new Date()) {
+  const threshold = now.getTime() - HOTEL_ACTION_RETENTION_MS;
+  return Object.fromEntries(
+    Object.entries(actions || {})
+      .filter(([, target]) =>
+        target?.monitorId &&
+        target?.hotelName &&
+        Date.parse(target.registeredAt || "") >= threshold
+      )
+      .sort((left, right) =>
+        Date.parse(left[1].registeredAt) - Date.parse(right[1].registeredAt)
+      )
+      .slice(-MAX_HOTEL_ACTIONS),
+  );
+}
+
+function registerHotelActions(actions, alerts, registeredAt) {
+  const next = { ...(actions || {}) };
+  for (const alert of alerts || []) {
+    if (!alert.monitorId || !alert.offer?.hotelName) continue;
+    const id = exclusionActionId({
+      monitorId: alert.monitorId,
+      hotelName: alert.offer.hotelName,
+    });
+    next[id] = {
+      monitorId: String(alert.monitorId),
+      monitorName: String(alert.monitorName || "Busqueda"),
+      hotelName: String(alert.offer.hotelName),
+      source: String(alert.offer.source || ""),
+      registeredAt,
+    };
+  }
+  return next;
+}
+
 function monitorEntries(status) {
   return Object.entries(status.monitors || {}).map(([id, monitor]) => ({
     id: String(id),
@@ -95,7 +160,7 @@ function findMonitor(status, query) {
   );
 }
 
-function botStatusMessage(status, mutedMonitorIds = []) {
+function botStatusMessage(status, mutedMonitorIds = [], excludedCount = 0) {
   const summary = status.summary || {};
   const health = status.health || summary.health || {};
   const monitors = monitorEntries(status);
@@ -111,12 +176,14 @@ function botStatusMessage(status, mutedMonitorIds = []) {
     `Búsquedas: ${Number(summary.searches) || 0} · precios: ${Number(summary.offers) || 0} · coincidencias: ${Number(summary.matches) || 0}`,
     `Ubicaciones: ${monitors.length} · fuentes pausadas: ${pausedSources}`,
     `Ubicaciones silenciadas: ${mutedMonitorIds.length}`,
+    `Hoteles descartados: ${excludedCount}`,
     PANEL_URL,
   ].join("\n");
 }
 
 async function processTelegramUpdates(options) {
   const telegramState = { ...(options.telegramState || {}) };
+  const exclusions = options.exclusions || { version: 1, hotels: [] };
   const muted = new Set(
     Array.isArray(telegramState.mutedMonitorIds)
       ? telegramState.mutedMonitorIds.map(String)
@@ -163,19 +230,37 @@ async function processTelegramUpdates(options) {
 
     try {
       if (callback) {
-        const [action, monitorId] = String(callback.data || "").split(":", 2);
+        const [action, value] = String(callback.data || "").split(":", 2);
+        const monitorId = value;
         const monitor = monitorEntries(options.status)
           .find((entry) => entry.id === String(monitorId));
         if (action === "mute" && monitor) muted.add(monitor.id);
         if (action === "unmute" && monitor) muted.delete(monitor.id);
+        let callbackText = monitor
+          ? `${monitor.name}: ${muted.has(monitor.id) ? "silenciada" : "activa"}`
+          : "Búsqueda no encontrada";
+        if (action === "exclude") {
+          const target = telegramState.hotelActions?.[value];
+          if (target) {
+            const result = addHotelExclusion(
+              exclusions,
+              { ...target, origin: "telegram" },
+              options.now || new Date(),
+            );
+            Object.assign(exclusions, result.document);
+            callbackText = result.added
+              ? `${target.hotelName}: descartado. Puedes restaurarlo en el panel.`
+              : `${target.hotelName}: ya estaba descartado.`;
+          } else {
+            callbackText = "Este botón ha caducado. Puedes descartarlo desde una alerta nueva.";
+          }
+        }
         await telegramRequest(
           options.token,
           "answerCallbackQuery",
           {
             callback_query_id: callback.id,
-            text: monitor
-              ? `${monitor.name}: ${muted.has(monitor.id) ? "silenciada" : "activa"}`
-              : "Búsqueda no encontrada",
+            text: callbackText.slice(0, 190),
           },
           { fetchImpl: options.fetchImpl },
         );
@@ -187,7 +272,11 @@ async function processTelegramUpdates(options) {
       const command = rawCommand.toLowerCase().split("@")[0];
       const argument = argumentParts.join(" ");
       if (command === "/estado") {
-        await sendReply(botStatusMessage(options.status, Array.from(muted)));
+        await sendReply(botStatusMessage(
+          options.status,
+          Array.from(muted),
+          normalizeExclusionsDocument(exclusions).hotels.length,
+        ));
       } else if (command === "/ayuda" || command === "/start") {
         await sendReply([
           "Comandos de Tarifa Radar:",
@@ -195,6 +284,7 @@ async function processTelegramUpdates(options) {
           "/silenciar Nombre de la búsqueda",
           "/activar Nombre de la búsqueda",
           "/silenciadas",
+          "/descartados",
         ].join("\n"));
       } else if (command === "/silenciadas") {
         const names = monitorEntries(options.status)
@@ -203,6 +293,14 @@ async function processTelegramUpdates(options) {
         await sendReply(names.length
           ? `Silenciadas:\n${names.join("\n")}`
           : "No hay ubicaciones silenciadas.");
+      } else if (command === "/descartados") {
+        const hotels = normalizeExclusionsDocument(exclusions).hotels;
+        await sendReply(hotels.length
+          ? `Hoteles descartados:\n${hotels
+              .slice(-30)
+              .map((entry) => `${entry.hotelName} (${entry.monitorName})`)
+              .join("\n")}\n\nPuedes restaurarlos desde el panel.`
+          : "No hay hoteles descartados.");
       } else if (command === "/silenciar" || command === "/activar") {
         const monitor = findMonitor(options.status, argument);
         if (!monitor) {
@@ -242,8 +340,22 @@ async function sendRepositoryAlerts(options = {}) {
     root,
     options.statePath || "state/repository-state.json",
   );
+  const exclusionsPath = path.resolve(
+    root,
+    options.exclusionsPath || "config/excluded-hotels.json",
+  );
   const repositoryState = readJson(statePath, { version: 1, monitors: {} });
   const remoteState = await readRemoteState(options);
+  const localExclusions = readJson(exclusionsPath, {
+    version: 1,
+    updatedAt: "",
+    hotels: [],
+  });
+  const remoteExclusions = await readRemoteExclusions(options);
+  const exclusions = normalizeExclusionsDocument(newestRepositoryDocument(
+    localExclusions,
+    remoteExclusions,
+  ));
   const now = options.now || new Date();
   let telegramState = {
     ...(remoteState?.telegram || {}),
@@ -256,6 +368,10 @@ async function sendRepositoryAlerts(options = {}) {
       Number(remoteState?.telegram?.updateOffset) || 0,
       Number(repositoryState.telegram?.updateOffset) || 0,
     ),
+    hotelActions: pruneHotelActions({
+      ...(remoteState?.telegram?.hotelActions || {}),
+      ...(repositoryState.telegram?.hotelActions || {}),
+    }, now),
   };
   if (options.processUpdates !== false) {
     try {
@@ -265,6 +381,8 @@ async function sendRepositoryAlerts(options = {}) {
         token,
         chatId,
         fetchImpl: options.fetchImpl,
+        exclusions,
+        now,
       });
     } catch (error) {
       telegramState.updateError = error instanceof Error
@@ -286,6 +404,11 @@ async function sendRepositoryAlerts(options = {}) {
   const batchIds = new Set();
   const newAlerts = (status.alerts || []).filter((alert) => {
     if (mutedIds.has(String(alert.monitorId))) return false;
+    if (hotelIsExcluded(
+      exclusions,
+      alert.monitorId,
+      alert.offer?.hotelName,
+    )) return false;
     const id = alertFingerprint(alert);
     if (sentIds.has(id) || batchIds.has(id)) return false;
     batchIds.add(id);
@@ -297,9 +420,10 @@ async function sendRepositoryAlerts(options = {}) {
       sentAlerts: pruneSentAlerts(nextSentAlerts, now),
     };
     writeJson(statePath, repositoryState);
+    writeJson(exclusionsPath, exclusions);
   };
+  persistTelegramState(sentAlerts);
   if (!newAlerts.length) {
-    persistTelegramState(sentAlerts);
     return {
       sent: false,
       reason: "no_alerts",
@@ -316,6 +440,11 @@ async function sendRepositoryAlerts(options = {}) {
   });
   if (result.sent) {
     const sentAt = now.toISOString();
+    telegramState.hotelActions = pruneHotelActions(registerHotelActions(
+      telegramState.hotelActions,
+      newAlerts,
+      sentAt,
+    ), now);
     persistTelegramState([
       ...sentAlerts,
       ...newAlerts.map((alert) => ({
@@ -358,8 +487,11 @@ module.exports = {
   botStatusMessage,
   findMonitor,
   mergeSentAlerts,
+  pruneHotelActions,
   pruneSentAlerts,
   processTelegramUpdates,
+  readRemoteExclusions,
   readRemoteState,
+  registerHotelActions,
   sendRepositoryAlerts,
 };

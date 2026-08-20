@@ -15,10 +15,10 @@
       href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&family=Space+Mono:wght@400;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=9" />
+    <link rel="stylesheet" href="./styles.css?v=10" />
     <script src="./vendor/lucide.min.js" defer></script>
     <script src="./location-search.js?v=2" defer></script>
-    <script src="./app.js?v=20" defer></script>
+    <script src="./app.js?v=21" defer></script>
   </head>
   <body>
     <main id="login-view" class="access-page">
@@ -69,6 +69,11 @@
             <i data-lucide="circle-dollar-sign"></i>
             <span>Ofertas</span>
             <b id="deal-count" class="nav-count">0</b>
+          </button>
+          <button class="nav-button" data-view="excluded">
+            <i data-lucide="ban"></i>
+            <span>Descartados</span>
+            <b id="excluded-count" class="nav-count">0</b>
           </button>
           <button class="nav-button" data-view="connections">
             <i data-lucide="radio-tower"></i>
@@ -492,6 +497,17 @@
               <div id="price-calendar" class="price-calendar"></div>
             </section>
             <div id="deals-table" class="deals-table"></div>
+          </section>
+
+          <section id="excluded-view" class="view">
+            <div class="page-heading compact-heading">
+              <div>
+                <p class="eyebrow">Control de alertas</p>
+                <h1>Hoteles descartados</h1>
+                <p>Estos alojamientos no aparecerán en el panel ni volverán a generar alertas para su búsqueda.</p>
+              </div>
+            </div>
+            <div id="excluded-hotels-list" class="excluded-hotels-list"></div>
           </section>
 
           <section id="connections-view" class="view">

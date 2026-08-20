@@ -10,6 +10,7 @@ const {
   offerMatchesMonitorDistance,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
+  pruneExcludedMonitorOffers,
   pruneHotelLocationCache,
   resultHasPromisingCandidate,
   runRepositoryScan,
@@ -425,6 +426,51 @@ test("drops deals created for an older monitor configuration", () => {
     [monitor],
   );
   assert.deepEqual(Array.from(deals.keys()), ["current-benidorm"]);
+});
+
+test("drops excluded hotels from stored deals and monitor offer state", () => {
+  const currentFingerprint = monitorFingerprint(monitor);
+  const exclusions = {
+    hotels: [{
+      monitorId: monitor.id,
+      hotelName: "Hotel Grand Plaza Benidorm",
+    }],
+  };
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "excluded",
+          monitorId: monitor.id,
+          hotelName: "Grand Plaza Benidorm Hotel",
+          monitorFingerprint: currentFingerprint,
+          source: "booking",
+          priceBasis: "booking_visible_final_total_v5",
+        },
+        {
+          id: "kept",
+          monitorId: monitor.id,
+          hotelName: "Hotel Mediterraneo",
+          monitorFingerprint: currentFingerprint,
+          source: "booking",
+          priceBasis: "booking_visible_final_total_v5",
+        },
+      ],
+    },
+    [monitor],
+    exclusions,
+  );
+  const monitors = pruneExcludedMonitorOffers({
+    [monitor.id]: {
+      offers: {
+        excluded: { hotelName: "Grand Plaza Benidorm Hotel" },
+        kept: { hotelName: "Hotel Mediterraneo" },
+      },
+    },
+  }, exclusions);
+
+  assert.deepEqual(Array.from(deals.keys()), ["kept"]);
+  assert.deepEqual(Object.keys(monitors[monitor.id].offers), ["kept"]);
 });
 
 test("drops stored deals whose distance is unknown for an active radius", () => {

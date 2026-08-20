@@ -1766,6 +1766,56 @@ select:focus {
   font-size: 8px;
 }
 
+.excluded-hotels-list {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.excluded-hotel-row {
+  align-items: center;
+  display: grid;
+  gap: 14px;
+  grid-template-columns: 42px minmax(0, 1fr) auto;
+  min-height: 82px;
+  padding: 14px 16px;
+}
+
+.excluded-hotel-row + .excluded-hotel-row {
+  border-top: 1px solid var(--line);
+}
+
+.excluded-hotel-icon {
+  align-items: center;
+  background: #fbe9e5;
+  border-radius: 6px;
+  color: var(--danger);
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  width: 40px;
+}
+
+.excluded-hotel-copy {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+}
+
+.excluded-hotel-copy strong {
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.excluded-hotel-copy small {
+  color: var(--muted);
+  font-size: 10px;
+  overflow-wrap: anywhere;
+}
+
 .empty-state {
   align-items: center;
   color: var(--muted);
@@ -2217,6 +2267,18 @@ select:focus {
   .provider-offer > .icon-button {
     grid-column: 3;
     grid-row: 1 / 3;
+  }
+}
+
+@media (max-width: 620px) {
+  .excluded-hotel-row {
+    align-items: start;
+    grid-template-columns: 40px minmax(0, 1fr);
+  }
+
+  .excluded-hotel-row .secondary-button {
+    grid-column: 1 / -1;
+    width: 100%;
   }
 }
 

@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 
 const RESULT_FILES = [
+  "config/excluded-hotels.json",
   "docs/data/deals.json",
   "docs/data/status.json",
   "state/repository-state.json",

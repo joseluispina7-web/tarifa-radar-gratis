@@ -117,6 +117,7 @@ test("records a new alert only after Telegram accepts it", async (t) => {
   assert.equal(result.sent, true);
   assert.equal(saved.telegram.sentAlerts.length, 1);
   assert.equal(saved.telegram.sentAlerts[0].id, alertFingerprint(fresh));
+  assert.equal(Object.keys(saved.telegram.hotelActions).length, 1);
 });
 
 test("processes Telegram status and mute commands for the configured chat", async () => {
@@ -164,6 +165,59 @@ test("processes Telegram status and mute commands for the configured chat", asyn
   assert.equal(state.updateOffset, 12);
   assert.deepEqual(state.mutedMonitorIds, ["sesimbra"]);
   assert.equal(requests.filter((request) => request.url.endsWith("/sendMessage")).length, 2);
+});
+
+test("persists a hotel exclusion from its Telegram button", async () => {
+  const exclusions = { version: 1, updatedAt: "", hotels: [] };
+  const requests = [];
+  const state = await processTelegramUpdates({
+    telegramState: {
+      updateOffset: 0,
+      mutedMonitorIds: [],
+      hotelActions: {
+        abc123: {
+          monitorId: "madrid",
+          monitorName: "Madrid centro",
+          hotelName: "Hotel Centro",
+          source: "booking",
+          registeredAt: "2026-08-20T12:00:00.000Z",
+        },
+      },
+    },
+    exclusions,
+    now: new Date("2026-08-20T12:05:00.000Z"),
+    token: "secret",
+    chatId: "123",
+    status: { summary: {}, monitors: {} },
+    fetchImpl: async (url, options) => {
+      requests.push({ url, body: JSON.parse(options.body) });
+      if (url.endsWith("/getUpdates")) {
+        return Response.json({
+          ok: true,
+          result: [{
+            update_id: 30,
+            callback_query: {
+              id: "exclude-hotel",
+              data: "exclude:abc123",
+              message: { chat: { id: 123 } },
+            },
+          }],
+        });
+      }
+      return Response.json({ ok: true, result: true });
+    },
+  });
+
+  assert.equal(state.updateOffset, 31);
+  assert.equal(exclusions.hotels.length, 1);
+  assert.equal(exclusions.hotels[0].hotelName, "Hotel Centro");
+  assert.equal(exclusions.hotels[0].monitorId, "madrid");
+  assert.match(
+    requests.find((request) =>
+      request.url.endsWith("/answerCallbackQuery")
+    ).body.text,
+    /descartado/,
+  );
 });
 
 test("advances past an expired callback and continues with newer commands", async () => {

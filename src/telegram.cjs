@@ -1,4 +1,5 @@
 const { errorFareLevel } = require("./deal-intelligence.cjs");
+const { exclusionActionId } = require("./hotel-exclusions.cjs");
 
 const PANEL_URL =
   "https://joseluispina7-web.github.io/tarifa-radar-gratis/";
@@ -276,11 +277,26 @@ async function sendAlertDigest(options) {
       link_preview_options: { is_disabled: true },
     };
     const buttons = page.alerts
-      .filter((alert) => alert.offer?.url)
-      .map((alert) => [{
-        text: `Abrir ${String(alert.offer.hotelName || "hotel").slice(0, 48)}`,
-        url: alert.offer.url,
-      }]);
+      .map((alert) => {
+        const row = [];
+        if (alert.offer?.url) {
+          row.push({
+            text: `Abrir ${String(alert.offer.hotelName || "hotel").slice(0, 28)}`,
+            url: alert.offer.url,
+          });
+        }
+        if (alert.monitorId && alert.offer?.hotelName) {
+          row.push({
+            text: "Descartar",
+            callback_data: `exclude:${exclusionActionId({
+              monitorId: alert.monitorId,
+              hotelName: alert.offer.hotelName,
+            })}`,
+          });
+        }
+        return row;
+      })
+      .filter((row) => row.length);
     if (page.monitorId && `mute:${page.monitorId}`.length <= 64) {
       buttons.push([{
         text: `Silenciar ${String(page.monitorName).slice(0, 42)}`,

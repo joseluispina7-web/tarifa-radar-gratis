@@ -57,7 +57,7 @@ test("publishes all scanner files in one atomic commit", async (t) => {
     fetchImpl,
   });
   assert.equal(result.commitSha, "new-commit");
-  assert.equal(result.published.length, 3);
+  assert.equal(result.published.length, 4);
   assert.equal(
     requests.filter((request) => request.url.endsWith("/git/commits")).length,
     1,

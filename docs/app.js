@@ -5,6 +5,7 @@
   const REPO = "tarifa-radar-gratis";
   const BRANCH = "main";
   const CONFIG_PATH = "config/searches.json";
+  const EXCLUSIONS_PATH = "config/excluded-hotels.json";
   const STATUS_PATH = "docs/data/status.json";
   const DEALS_PATH = "docs/data/deals.json";
   const ACCESS_KEY_STORAGE = "tarifa-radar-panel-key";
@@ -66,6 +67,7 @@
     accessKey: localStorage.getItem(ACCESS_KEY_STORAGE) || "",
     token: "",
     config: { version: 1, monitors: [] },
+    exclusions: { version: 1, updatedAt: "", hotels: [] },
     status: { summary: {}, monitors: {}, alerts: [] },
     deals: { deals: [] },
     selectedId: null,
@@ -257,8 +259,11 @@
     }
   }
 
-  async function saveConfig(config) {
-    const current = await getFile(CONFIG_PATH, { version: 1, monitors: [] });
+  async function saveConfig(config, currentFile = null) {
+    const current = currentFile || await getFile(
+      CONFIG_PATH,
+      { version: 1, monitors: [] },
+    );
     const body = {
       message: "Actualizar búsquedas desde Tarifa Radar",
       content: toBase64(`${JSON.stringify(config, null, 2)}\n`),
@@ -1060,6 +1065,98 @@
       .join("");
   }
 
+  function renderExcludedHotels() {
+    const container = $("#excluded-hotels-list");
+    const hotels = [...(state.exclusions.hotels || [])].sort(
+      (left, right) =>
+        Date.parse(right.excludedAt || "") - Date.parse(left.excludedAt || ""),
+    );
+    $("#excluded-count").textContent = String(hotels.length);
+    if (!hotels.length) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <span><i data-lucide="shield-check"></i></span>
+          <strong>No hay hoteles descartados</strong>
+          <p>Los hoteles que descartes desde Telegram aparecerán aquí.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const monitorById = new Map(
+      state.config.monitors.map((monitor) => [String(monitor.id), monitor]),
+    );
+    container.innerHTML = hotels.map((entry) => {
+      const monitor = monitorById.get(String(entry.monitorId));
+      const monitorName = monitor?.name || entry.monitorName || "Búsqueda eliminada";
+      const location = monitor?.location || "";
+      const source = entry.source ? sourceLabel(entry.source) : "Telegram";
+      return `
+        <article class="excluded-hotel-row">
+          <span class="excluded-hotel-icon"><i data-lucide="ban"></i></span>
+          <span class="excluded-hotel-copy">
+            <strong>${escapeHtml(entry.hotelName)}</strong>
+            <small>${escapeHtml(monitorName)}${location ? ` · ${escapeHtml(location)}` : ""}</small>
+            <small>Descartado ${escapeHtml(formatDateTime(entry.excludedAt))} · ${escapeHtml(source)}</small>
+          </span>
+          <button
+            class="secondary-button"
+            type="button"
+            data-restore-exclusion="${escapeHtml(entry.id)}"
+          >
+            <i data-lucide="rotate-ccw"></i>
+            Restaurar
+          </button>
+        </article>
+      `;
+    }).join("");
+  }
+
+  async function restoreExcludedHotel(id) {
+    setBusy(true);
+    try {
+      const current = await getFile(EXCLUSIONS_PATH, {
+        version: 1,
+        updatedAt: "",
+        hotels: [],
+      });
+      const hotels = (current.value.hotels || []).filter(
+        (entry) => String(entry.id) !== String(id),
+      );
+      if (hotels.length === (current.value.hotels || []).length) {
+        state.exclusions = current.value;
+        renderExcludedHotels();
+        showToast("Ese hotel ya estaba restaurado.");
+        return;
+      }
+      const next = {
+        version: 1,
+        updatedAt: new Date().toISOString(),
+        hotels,
+      };
+      await saveExclusions(next, current);
+      const currentConfig = await getFile(
+        CONFIG_PATH,
+        { version: 1, monitors: [] },
+      );
+      const nextConfig = {
+        ...currentConfig.value,
+        updatedAt: new Date().toISOString(),
+      };
+      await saveConfig(nextConfig, currentConfig);
+      state.config = nextConfig;
+      state.exclusions = next;
+      renderExcludedHotels();
+      refreshIcons();
+      showToast("Hotel restaurado. Volverá a entrar en las próximas búsquedas.");
+    } catch (error) {
+      showToast(`No se pudo restaurar: ${error.message}`);
+      await loadAll().catch(() => {});
+    } finally {
+      setBusy(false);
+    }
+  }
+
   function renderOptionButtons(containerSelector, options, selected, key) {
     const container = $(containerSelector);
     container.innerHTML = options
@@ -1212,6 +1309,25 @@
   function formatLocationRadius(value) {
     return parseLocationRadius(value).toLocaleString("es-ES", {
       maximumFractionDigits: 1,
+    });
+  }
+
+  async function saveExclusions(exclusions, currentFile = null) {
+    const current = currentFile || await getFile(EXCLUSIONS_PATH, {
+      version: 1,
+      updatedAt: "",
+      hotels: [],
+    });
+    const body = {
+      message: "Actualizar hoteles descartados desde Tarifa Radar",
+      content: toBase64(`${JSON.stringify(exclusions, null, 2)}\n`),
+      branch: BRANCH,
+    };
+    if (current.sha) body.sha = current.sha;
+    await apiFetch(`/repos/${OWNER}/${REPO}/contents/${EXCLUSIONS_PATH}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
     });
   }
 
@@ -1896,6 +2012,7 @@
     const titles = {
       monitors: "Búsquedas guardadas",
       deals: "Ofertas encontradas",
+      excluded: "Hoteles descartados",
       connections: "Conexiones",
     };
     $("#view-title").textContent = titles[view];
@@ -1917,6 +2034,7 @@
     renderMonitorList();
     renderStats();
     renderDeals();
+    renderExcludedHotels();
     renderConnectionState();
     refreshIcons();
   }
@@ -1924,14 +2042,16 @@
   async function loadAll() {
     setBusy(true);
     try {
-      const [config, status, deals] = await Promise.all([
+      const [config, status, deals, exclusions] = await Promise.all([
         getFile(CONFIG_PATH, { version: 1, monitors: [] }),
         getFile(STATUS_PATH, { summary: {}, monitors: {}, alerts: [] }),
         getFile(DEALS_PATH, { deals: [] }),
+        getFile(EXCLUSIONS_PATH, { version: 1, updatedAt: "", hotels: [] }),
       ]);
       state.config = config.value;
       state.status = status.value;
       state.deals = deals.value;
+      state.exclusions = exclusions.value;
       const selected = state.config.monitors.find(
         (monitor) => monitor.id === state.selectedId,
       );
@@ -1949,14 +2069,17 @@
     if (!state.token || resultsRefreshPending) return;
     resultsRefreshPending = true;
     try {
-      const [status, deals] = await Promise.all([
+      const [status, deals, exclusions] = await Promise.all([
         getFile(STATUS_PATH, { summary: {}, monitors: {}, alerts: [] }),
         getFile(DEALS_PATH, { deals: [] }),
+        getFile(EXCLUSIONS_PATH, { version: 1, updatedAt: "", hotels: [] }),
       ]);
       state.status = status.value;
       state.deals = deals.value;
+      state.exclusions = exclusions.value;
       renderStats();
       renderDeals();
+      renderExcludedHotels();
       renderConnectionState();
       refreshIcons();
     } finally {
@@ -2040,6 +2163,10 @@
       state.dealMonitorFilter = event.target.value;
       renderDeals();
       refreshIcons();
+    });
+    $("#excluded-hotels-list").addEventListener("click", (event) => {
+      const button = event.target.closest("[data-restore-exclusion]");
+      if (button) restoreExcludedHotel(button.dataset.restoreExclusion);
     });
     $("#location-query").addEventListener("input", handleLocationInput);
     $("#location-query").addEventListener("keydown", (event) => {
