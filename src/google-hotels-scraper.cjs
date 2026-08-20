@@ -1053,6 +1053,14 @@ function googleProviderCanSupplyVerifiedTotal(value) {
   return !/\bTripening(?:\s+Hotels)?\b/i.test(String(value || ""));
 }
 
+function googleVerificationOnlyLocationFiltered(verification) {
+  return Boolean(
+    Number(verification?.selectedCount) > 0 &&
+    Number(verification?.locationFilteredCount) ===
+      Number(verification?.selectedCount)
+  );
+}
+
 function verifiedGoogleProviderPrice(link, search) {
   const linkedTotal = parseGoogleProviderInclusiveTotal(
     `${link.href || ""}\n${link.text || ""}`,
@@ -1266,14 +1274,25 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
       offers.push(offer);
       if (offers.length >= search.maxVerifiedResults) break;
     } catch (error) {
+      const message = error instanceof Error ? error.message : String(error);
       errors.push({
         hotelName: candidate.hotelName,
-        message: error instanceof Error ? error.message : String(error),
+        message,
+        kind: /distancia real|fuera del radio/i.test(message)
+          ? "location_filtered"
+          : "verification_failed",
       });
     }
   }
 
-  return { selectedCount: selected.length, offers, errors };
+  return {
+    selectedCount: selected.length,
+    locationFilteredCount: errors.filter(
+      (error) => error.kind === "location_filtered",
+    ).length,
+    offers,
+    errors,
+  };
 }
 
 async function googleHotelsDiagnostics(page) {
@@ -1416,6 +1435,20 @@ async function scrapeGoogleHotels(input, options = {}) {
           cheapestOffer: null,
         };
       }
+      if (!offers.length && googleVerificationOnlyLocationFiltered(verification)) {
+        return {
+          source: GOOGLE_SOURCE,
+          searchedAt: new Date().toISOString(),
+          search,
+          searchUrl,
+          resultUrl,
+          searchedPages: 1,
+          offers: [],
+          matchingOffers: [],
+          verificationErrors,
+          cheapestOffer: null,
+        };
+      }
     }
     if (!offers.length) {
       const diagnostics = await googleHotelsDiagnostics(page);
@@ -1456,6 +1489,7 @@ module.exports = {
   extractGoogleHotelCandidates,
   googleHotelNameMatches,
   googleDestinationScopeMatches,
+  googleVerificationOnlyLocationFiltered,
   googleHotelsDiagnostics,
   googleHotelsLoadAttempt,
   googleCandidateMatches,

@@ -7,6 +7,7 @@ const {
   googleDestinationScopeMatches,
   googleHotelNameMatches,
   googleHotelsLoadAttempt,
+  googleVerificationOnlyLocationFiltered,
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
   parseGoogleGuestRating,
@@ -115,6 +116,23 @@ test("selects only the same hotel and country for distance calculation", () => {
     googleHotelNameMatches("Bungalows Castillo Beach Park", {
       name: "Palmela",
       city: "Palmela",
+    }),
+    false,
+  );
+});
+
+test("treats unlocatable Google candidates as a safe empty result", () => {
+  assert.equal(
+    googleVerificationOnlyLocationFiltered({
+      selectedCount: 2,
+      locationFilteredCount: 2,
+    }),
+    true,
+  );
+  assert.equal(
+    googleVerificationOnlyLocationFiltered({
+      selectedCount: 2,
+      locationFilteredCount: 1,
     }),
     false,
   );
