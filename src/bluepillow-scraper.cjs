@@ -457,6 +457,7 @@ function buildBluepillowOffer(property, search, source, metadata = {}) {
       Number(property.reviews_aggregate?.rating_count) ||
       0,
     distanceKm,
+    distanceVerified: Number.isFinite(distanceKm),
     freeCancellation: selectedOffer.refundable === true,
     breakfastIncluded: selectedOffer.breakfast_included === true,
     limitedAvailability:

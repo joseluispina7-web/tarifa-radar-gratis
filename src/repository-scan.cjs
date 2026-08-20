@@ -1,7 +1,10 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const crypto = require("node:crypto");
-const { scrapeBooking } = require("./booking-scraper.cjs");
+const {
+  effectiveDistanceLimit,
+  scrapeBooking,
+} = require("./booking-scraper.cjs");
 const { scrapeGoogleHotels } = require("./google-hotels-scraper.cjs");
 const {
   scrapeAgoda,
@@ -95,10 +98,23 @@ function sourceStats(container, source) {
     searches: 0,
     offers: 0,
     matches: 0,
+    locationRejected: 0,
     errors: 0,
     skipped: 0,
   };
   return container[source];
+}
+
+function offerMatchesMonitorDistance(offer, monitor) {
+  const distanceLimit = effectiveDistanceLimit(monitor);
+  if (distanceLimit <= 0) return true;
+  if (offer.distanceVerified !== true) return false;
+  const distanceKm = Number(offer.distanceKm);
+  return (
+    Number.isFinite(distanceKm) &&
+    distanceKm >= 0 &&
+    distanceKm <= distanceLimit
+  );
 }
 
 function inclusiveDays(start, end) {
@@ -278,6 +294,8 @@ function updateOfferState(
     priceProof: buildPriceProof(offer, searchedAt),
     priceHistory,
     searchArea: offer.searchArea,
+    distanceKm: offer.distanceKm,
+    distanceVerified: offer.distanceVerified === true,
     checkIn: offer.checkIn,
     checkOut: offer.checkOut,
     confirmationCount,
@@ -384,6 +402,7 @@ function buildDealMap(previousDeals, activeMonitors) {
         const hasCurrentTripValidation =
           source !== "trip" ||
           deal.priceBasis === "trip_direct_final_total_v1";
+        const hasValidDistance = offerMatchesMonitorDistance(deal, monitor);
         return Boolean(
           monitor &&
           deal.monitorFingerprint === monitorFingerprint(monitor) &&
@@ -391,7 +410,8 @@ function buildDealMap(previousDeals, activeMonitors) {
           hasCurrentBookingValidation &&
           hasCurrentBluepillowValidation &&
           hasCurrentGoogleValidation &&
-          hasCurrentTripValidation
+          hasCurrentTripValidation &&
+          hasValidDistance
         );
       })
       .map((deal) => [deal.id, deal]),
@@ -466,6 +486,7 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     guestRating: offer.guestRating,
     reviewCount: offer.reviewCount,
     distanceKm: offer.distanceKm,
+    distanceVerified: offer.distanceVerified === true,
     priceConfirmationCount: offer.priceConfirmationCount,
     freeCancellation: offer.freeCancellation,
     breakfastIncluded: offer.breakfastIncluded,
@@ -602,6 +623,7 @@ async function runRepositoryScan(options = {}) {
     updatedAt: now.toISOString(),
     monitors: { ...(previousState.monitors || {}) },
     telegram: { ...(previousState.telegram || {}) },
+    hotelLocations: { ...(previousState.hotelLocations || {}) },
   };
   const dealMap = buildDealMap(previousDeals, activeMonitors);
   const monitorStatus = {};
@@ -771,6 +793,7 @@ async function runRepositoryScan(options = {}) {
       try {
         const result = await runtimeScrapers[source](searchInput, {
           headless: options.headless !== false,
+          locationCache: nextState.hotelLocations,
           ...(sourceTimeoutMs ? { timeoutMs: sourceTimeoutMs } : {}),
         });
         sourceHealth = recordSourceSuccess(sourceHealth, source, now);
@@ -992,6 +1015,14 @@ async function runRepositoryScan(options = {}) {
         );
 
         for (const offer of result.offers) {
+          if (!offerMatchesMonitorDistance(offer, monitor)) {
+            if (offer.matches) {
+              status.sources[source].locationRejected += 1;
+              summary.sources[source].locationRejected += 1;
+            }
+            offer.matches = false;
+            offer.locationRejected = true;
+          }
           const offerKey = `${monitor.id}:${offer.id}`;
           observedOfferKeys.add(offerKey);
           const before = nextOffers[offerKey];
@@ -1258,6 +1289,7 @@ module.exports = {
   mergeDeal,
   monitorFingerprint,
   newestRepositoryDocument,
+  offerMatchesMonitorDistance,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
   readJson,

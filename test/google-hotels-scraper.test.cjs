@@ -4,6 +4,8 @@ const {
   buildGoogleHotelsSearchUrl,
   buildGoogleOffer,
   googleCandidateMatches,
+  googleDestinationScopeMatches,
+  googleHotelNameMatches,
   googleHotelsLoadAttempt,
   googleProviderCanSupplyVerifiedTotal,
   googleTotalMatchesNightly,
@@ -16,6 +18,7 @@ const {
   parseGoogleHotelsTotal,
   parseGoogleStars,
   providerLinkMatchesStay,
+  selectGoogleHotelLocation,
   stableOfferId,
   verifiedGoogleProviderPrice,
 } = require("../src/google-hotels-scraper.cjs");
@@ -35,6 +38,87 @@ function search(overrides = {}) {
     ...overrides,
   });
 }
+
+test("rejects a Google page that silently changes to another destination", () => {
+  const nearbySearch = search({
+    destination: "Alcacer do Sal, Portugal",
+    searchArea: "Alcacer do Sal",
+    isNearbySearch: true,
+    locationCity: "Comporta",
+  });
+  assert.equal(
+    googleDestinationScopeMatches(
+      "Busca alojamiento en Alcacer do Sal - Google Hoteles",
+      nearbySearch,
+    ),
+    true,
+  );
+  assert.equal(
+    googleDestinationScopeMatches(
+      "Busca alojamiento en Espana - Google Hoteles",
+      nearbySearch,
+    ),
+    false,
+  );
+});
+
+test("allows the parent city for a street search", () => {
+  const streetSearch = search({
+    destination: "Nanjing Road, Shanghai, China",
+    locationCity: "Shanghai",
+  });
+  assert.equal(
+    googleDestinationScopeMatches(
+      "Busca alojamiento en Shanghai - Google Hoteles",
+      streetSearch,
+    ),
+    true,
+  );
+});
+
+test("selects only the same hotel and country for distance calculation", () => {
+  const locationSearch = search({
+    originLatitude: 38.44451,
+    originLongitude: -9.10149,
+    countryCode: "PT",
+  });
+  const location = selectGoogleHotelLocation(
+    {
+      features: [
+        {
+          properties: {
+            name: "Hotel do Mar",
+            city: "Sesimbra",
+            country: "Portugal",
+            countrycode: "PT",
+            street: "Rua Padre Joao Honorio Ferreira",
+          },
+          geometry: { coordinates: [-9.1069216, 38.4440159] },
+        },
+        {
+          properties: {
+            name: "Hotel do Mar",
+            city: "Funchal",
+            country: "Portugal",
+            countrycode: "PT",
+          },
+          geometry: { coordinates: [-16.9, 32.65] },
+        },
+      ],
+    },
+    "Hotel do Mar",
+    locationSearch,
+  );
+  assert.equal(location.distanceKm < 1, true);
+  assert.match(location.address, /Sesimbra/);
+  assert.equal(
+    googleHotelNameMatches("Bungalows Castillo Beach Park", {
+      name: "Palmela",
+      city: "Palmela",
+    }),
+    false,
+  );
+});
 
 test("builds a Google Hotels search without pretending URL dates work", () => {
   const url = new URL(buildGoogleHotelsSearchUrl(search()));

@@ -4,6 +4,8 @@ const {
   detectAmenities,
   detectMealPlan,
   detectPropertyType,
+  distanceBetweenCoordinates,
+  effectiveDistanceLimit,
   isSharedRoomText,
   matchesSearch,
   normalizeSearch,
@@ -13,7 +15,10 @@ const {
 
 const DEFAULT_TIMEOUT_MS = 30_000;
 const GOOGLE_SOURCE = "google_hotels";
-const MAX_GOOGLE_DETAIL_CANDIDATES = 4;
+const MAX_GOOGLE_LOCATION_CANDIDATES = 8;
+const PHOTON_SEARCH_URL = "https://photon.komoot.io/api/";
+const POSITIVE_LOCATION_CACHE_MS = 180 * 86_400_000;
+const NEGATIVE_LOCATION_CACHE_MS = 30 * 86_400_000;
 const GOOGLE_HOTELS_SEED_URL =
   "https://www.google.com/travel/search?" +
   "q=hoteles%20en%20Madrid&" +
@@ -312,6 +317,9 @@ function buildGoogleOffer(card, search) {
     guestRating: parseGoogleGuestRating(text),
     reviewCount: parseGoogleReviewCount(text),
     distanceKm: parsedDistance > 0 ? parsedDistance : null,
+    // Google can express this relative to a nearby town rather than to the
+    // exact point selected in the radar, so it is not valid for a hard radius.
+    distanceVerified: false,
     freeCancellation:
       /cancelaci\u00f3n gratis|free cancellation/i.test(text),
     breakfastIncluded: /desayuno incluido|breakfast included/i.test(text),
@@ -328,11 +336,7 @@ function buildGoogleOffer(card, search) {
     searchArea: search.searchArea,
     url: card.url,
   };
-  offer.matches = matchesSearch(offer, search, {
-    // Google lists accommodation for the selected place but does not expose a
-    // reliable distance on every card. Nearby areas are searched separately.
-    ignoreDistance: true,
-  });
+  offer.matches = matchesSearch(offer, search);
   offer.candidateMatches = offer.matches;
   return offer;
 }
@@ -398,6 +402,195 @@ function normalizeGoogleQuery(value) {
     .replace(/[\u0300-\u036f]/g, "")
     .trim()
     .toLowerCase();
+}
+
+function googleDestinationScopeMatches(title, search) {
+  const normalizedTitle = normalizeGoogleQuery(title);
+  const requestedPlace = normalizeGoogleQuery(
+    String(search.destination || "").split(",")[0],
+  );
+  const parentCity = normalizeGoogleQuery(search.locationCity);
+  if (requestedPlace && normalizedTitle.includes(requestedPlace)) return true;
+  return Boolean(
+    !search.isNearbySearch &&
+    parentCity &&
+    normalizedTitle.includes(parentCity)
+  );
+}
+
+async function assertGoogleDestinationScope(page, search) {
+  const title = await page.title();
+  if (googleDestinationScopeMatches(title, search)) return;
+  throw new Error(
+    `Google Hotels abrio una zona distinta de ${search.searchArea || search.destination}. ` +
+      `Pagina recibida: ${title || "sin titulo"}.`,
+  );
+}
+
+function googleHotelLocationCacheKey(hotelName, search) {
+  return [
+    String(search.countryCode || "").toUpperCase(),
+    normalizeGoogleQuery(hotelName),
+    Number(search.originLatitude).toFixed(3),
+    Number(search.originLongitude).toFixed(3),
+  ].join(":");
+}
+
+function googleHotelNameMatches(hotelName, properties = {}) {
+  const expected = normalizeGoogleQuery(hotelName);
+  const candidateName = normalizeGoogleQuery(properties.name);
+  if (!expected || !candidateName) return false;
+  if (
+    expected === candidateName ||
+    (candidateName.length >= 4 && expected.startsWith(`${candidateName} `)) ||
+    (expected.length >= 4 && candidateName.startsWith(`${expected} `))
+  ) {
+    return true;
+  }
+
+  const ignored = new Set([
+    "hotel", "hotels", "hostel", "resort", "apartments", "apartamentos",
+    "the", "de", "del", "do", "da", "la", "el", "and", "spa",
+  ]);
+  const tokens = (value) => normalizeGoogleQuery(value)
+    .split(/[^\p{L}\p{N}]+/u)
+    .filter((token) => token.length >= 3 && !ignored.has(token));
+  const expectedTokens = tokens(hotelName);
+  const candidateText = [
+    properties.name,
+    properties.street,
+    properties.district,
+    properties.city,
+    properties.town,
+    properties.village,
+  ].join(" ");
+  const candidateTokens = new Set(tokens(candidateText));
+  const matches = expectedTokens.filter((token) => candidateTokens.has(token));
+  return expectedTokens.length > 1 && matches.length / expectedTokens.length >= 0.75;
+}
+
+function selectGoogleHotelLocation(payload, hotelName, search) {
+  const expectedCountry = String(search.countryCode || "").toUpperCase();
+  const originLatitude = Number(search.originLatitude);
+  const originLongitude = Number(search.originLongitude);
+  if (!Number.isFinite(originLatitude) || !Number.isFinite(originLongitude)) {
+    return null;
+  }
+
+  return (payload?.features || [])
+    .flatMap((feature) => {
+      const properties = feature?.properties || {};
+      const coordinates = feature?.geometry?.coordinates || [];
+      const longitude = Number(coordinates[0]);
+      const latitude = Number(coordinates[1]);
+      const countryCode = String(properties.countrycode || "").toUpperCase();
+      if (
+        !Number.isFinite(latitude) ||
+        !Number.isFinite(longitude) ||
+        (expectedCountry && countryCode && countryCode !== expectedCountry) ||
+        !googleHotelNameMatches(hotelName, properties)
+      ) {
+        return [];
+      }
+      const distanceKm = distanceBetweenCoordinates(
+        originLatitude,
+        originLongitude,
+        latitude,
+        longitude,
+      );
+      return [{
+        latitude,
+        longitude,
+        distanceKm: Math.round(distanceKm * 100) / 100,
+        address: [
+          properties.street,
+          properties.city || properties.town || properties.village,
+          properties.country,
+        ].filter(Boolean).join(", "),
+      }];
+    })
+    .sort((left, right) => left.distanceKm - right.distanceKm)[0] || null;
+}
+
+async function resolveGoogleHotelLocation(hotelName, search, options = {}) {
+  const cache = options.locationCache || {};
+  const cacheKey = googleHotelLocationCacheKey(hotelName, search);
+  const cached = cache[cacheKey];
+  const cachedAt = Date.parse(cached?.resolvedAt || "");
+  const cacheLifetime = cached?.miss
+    ? NEGATIVE_LOCATION_CACHE_MS
+    : POSITIVE_LOCATION_CACHE_MS;
+  if (Number.isFinite(cachedAt) && Date.now() - cachedAt < cacheLifetime) {
+    return cached.miss ? null : cached;
+  }
+
+  const country = String(search.destination || "").split(",").at(-1)?.trim();
+  const queries = Array.from(new Set([
+    [hotelName, search.searchArea, country].filter(Boolean).join(", "),
+    [hotelName, country].filter(Boolean).join(", "),
+  ]));
+  const fetchImpl = options.fetchImpl || fetch;
+  let location = null;
+  for (const query of queries) {
+    try {
+      const url = new URL(PHOTON_SEARCH_URL);
+      url.searchParams.set("q", query);
+      url.searchParams.set("limit", "5");
+      const response = await fetchImpl(url, {
+        headers: {
+          accept: "application/json",
+          "user-agent": "TarifaRadar/1.0 (hotel distance validation)",
+        },
+        signal: AbortSignal.timeout(8_000),
+      });
+      if (!response.ok) continue;
+      location = selectGoogleHotelLocation(
+        await response.json(),
+        hotelName,
+        search,
+      );
+      if (location) break;
+    } catch {
+      // A map outage must not turn an unverified location into a valid offer.
+    }
+  }
+
+  cache[cacheKey] = location
+    ? { ...location, resolvedAt: new Date().toISOString() }
+    : { miss: true, resolvedAt: new Date().toISOString() };
+  return location;
+}
+
+function applyGoogleHotelLocation(offer, location, search) {
+  if (location) {
+    offer.latitude = location.latitude;
+    offer.longitude = location.longitude;
+    offer.distanceKm = location.distanceKm;
+    offer.distanceVerified = true;
+    if (location.address) offer.address = location.address;
+  }
+  offer.matches = matchesSearch(offer, search);
+  offer.candidateMatches = offer.matches;
+  return offer;
+}
+
+async function enrichGoogleOfferLocations(offers, search, options = {}) {
+  const candidates = offers
+    .slice()
+    .sort((left, right) => left.totalPrice - right.totalPrice)
+    .slice(0, MAX_GOOGLE_LOCATION_CANDIDATES);
+  let matchingLocations = 0;
+  for (const offer of candidates) {
+    const location = await resolveGoogleHotelLocation(
+      offer.hotelName,
+      search,
+      options,
+    );
+    applyGoogleHotelLocation(offer, location, search);
+    if (offer.matches) matchingLocations += 1;
+    if (matchingLocations >= search.maxVerifiedResults) break;
+  }
+  return offers;
 }
 
 async function selectGoogleHotelsDestination(page, search, timeoutMs) {
@@ -819,6 +1012,9 @@ function googleCandidateMatches(card, search, options = {}) {
   const candidateSearch = {
     ...search,
     ...(options.ignoreBudget ? { maxTotal: 0, maxNightly: 0 } : {}),
+    ...(options.ignoreDistance
+      ? { maxDistanceKm: 0, locationRadiusKm: 0 }
+      : {}),
     ...(options.ignoreIncompleteCardDetails
       ? {
           minStars: 0,
@@ -944,11 +1140,15 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         (right.nightlyPrice || Infinity),
     );
   const visibleFilterMatches = pricedCandidates.filter((candidate) =>
-    googleCandidateMatches(candidate, search, { ignoreBudget: true })
+    googleCandidateMatches(candidate, search, {
+      ignoreBudget: true,
+      ignoreDistance: true,
+    })
   );
   const incompleteCardMatches = pricedCandidates.filter((candidate) =>
     googleCandidateMatches(candidate, search, {
       ignoreBudget: true,
+      ignoreDistance: true,
       ignoreIncompleteCardDetails: true,
     })
   );
@@ -961,13 +1161,29 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
     ).values(),
   ).slice(
     0,
-    Math.min(search.maxVerifiedResults, MAX_GOOGLE_DETAIL_CANDIDATES),
+    MAX_GOOGLE_LOCATION_CANDIDATES,
   );
   const offers = [];
   const errors = [];
 
   for (const candidate of selected) {
     try {
+      const location = await resolveGoogleHotelLocation(
+        candidate.hotelName,
+        search,
+        options,
+      );
+      const distanceLimit = effectiveDistanceLimit(search);
+      if (
+        distanceLimit > 0 &&
+        (!location || location.distanceKm > distanceLimit)
+      ) {
+        throw new Error(
+          !location
+            ? "No se pudo comprobar la distancia real de este hotel."
+            : `El hotel esta a ${location.distanceKm} km y queda fuera del radio.`,
+        );
+      }
       await page.goto(candidate.pricePageUrl, {
         waitUntil: "domcontentloaded",
         timeout: timeoutMs,
@@ -1046,7 +1262,9 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
       offer.url = bestProvider.evidence === "provider_link"
         ? bestProvider.href
         : exactPricePageUrl;
+      applyGoogleHotelLocation(offer, location, search);
       offers.push(offer);
+      if (offers.length >= search.maxVerifiedResults) break;
     } catch (error) {
       errors.push({
         hotelName: candidate.hotelName,
@@ -1103,6 +1321,7 @@ async function loadGoogleHotels(page, search, options = {}) {
         state: "visible",
         timeout: timeoutMs,
       });
+      await assertGoogleDestinationScope(page, search);
       let previousHeadingCount = 0;
       let stablePasses = 0;
       for (let pass = 0; pass < 5; pass += 1) {
@@ -1161,6 +1380,9 @@ async function scrapeGoogleHotels(input, options = {}) {
     let offers = options.forceProviderVerification
       ? []
       : await extractGoogleHotelCards(page, search);
+    if (offers.length) {
+      offers = await enrichGoogleOfferLocations(offers, search, options);
+    }
     let verificationErrors = [];
     if (!offers.length) {
       const candidates = await extractGoogleHotelCandidates(page, search);
@@ -1232,6 +1454,8 @@ module.exports = {
   buildGoogleOffer,
   extractGoogleHotelCards,
   extractGoogleHotelCandidates,
+  googleHotelNameMatches,
+  googleDestinationScopeMatches,
   googleHotelsDiagnostics,
   googleHotelsLoadAttempt,
   googleCandidateMatches,
@@ -1247,6 +1471,7 @@ module.exports = {
   parseGoogleReviewCount,
   parseGoogleStars,
   providerLinkMatchesStay,
+  selectGoogleHotelLocation,
   verifiedGoogleProviderPrice,
   scrapeGoogleHotels,
   selectGoogleHotelsCurrency,

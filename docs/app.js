@@ -648,8 +648,12 @@
   }
 
   function dealRow(deal) {
-    const distance = Number(deal.distanceKm) || 0;
-    const distanceLabel = distance > 0
+    const hasDistance =
+      deal.distanceKm !== null &&
+      deal.distanceKm !== undefined &&
+      Number.isFinite(Number(deal.distanceKm));
+    const distance = hasDistance ? Number(deal.distanceKm) : 0;
+    const distanceLabel = hasDistance
       ? ` · ${distance.toLocaleString("es-ES")} km del destino`
       : "";
     const provider = deal.provider || sourceLabel(deal.source || "booking");
@@ -764,7 +768,11 @@
     );
     const primary = ordered[0];
     const signal = fareSignal(primary);
-    const distance = Number(primary.distanceKm) || 0;
+    const hasDistance =
+      primary.distanceKm !== null &&
+      primary.distanceKm !== undefined &&
+      Number.isFinite(Number(primary.distanceKm));
+    const distance = hasDistance ? Number(primary.distanceKm) : 0;
     const quality = primary.guestRating
       ? `Nota ${Number(primary.guestRating).toLocaleString("es-ES")}/10${
           primary.reviewCount
@@ -786,7 +794,7 @@
             </span>
             <strong>${escapeHtml(primary.hotelName)}</strong>
             <small>${escapeHtml(primary.address || primary.location)}${
-              distance > 0
+              hasDistance
                 ? ` · ${distance.toLocaleString("es-ES")} km del destino`
                 : ""
             }</small>

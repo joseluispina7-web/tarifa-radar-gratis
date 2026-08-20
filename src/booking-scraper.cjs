@@ -837,9 +837,8 @@ async function verifyBookingOffer(page, offer, search, options = {}) {
   }
 
   if (
-    effectiveDistanceLimit(search) > 0 &&
-    search.originLatitude !== null &&
-    search.originLongitude !== null
+    Number.isFinite(Number(search.originLatitude)) &&
+    Number.isFinite(Number(search.originLongitude))
   ) {
     const coordinatesText = await page
       .locator("[data-atlas-latlng]")

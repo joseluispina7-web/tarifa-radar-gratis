@@ -7,6 +7,7 @@ const {
   buildDealMap,
   clearSearchedDeals,
   monitorFingerprint,
+  offerMatchesMonitorDistance,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
   resultHasPromisingCandidate,
@@ -28,6 +29,31 @@ const monitor = {
   rooms: 1,
   sources: ["booking"],
 };
+
+test("requires a verified distance whenever a monitor has a radius", () => {
+  const radiusMonitor = { ...monitor, maxDistanceKm: 20 };
+  assert.equal(
+    offerMatchesMonitorDistance(
+      { distanceKm: 19.9, distanceVerified: true },
+      radiusMonitor,
+    ),
+    true,
+  );
+  assert.equal(
+    offerMatchesMonitorDistance(
+      { distanceKm: 20.1, distanceVerified: true },
+      radiusMonitor,
+    ),
+    false,
+  );
+  assert.equal(
+    offerMatchesMonitorDistance(
+      { distanceKm: null, distanceVerified: false },
+      radiusMonitor,
+    ),
+    false,
+  );
+});
 
 test("promotes near-budget discovery candidates to direct verification", () => {
   const search = {
@@ -378,6 +404,37 @@ test("drops deals created for an older monitor configuration", () => {
     [monitor],
   );
   assert.deepEqual(Array.from(deals.keys()), ["current-benidorm"]);
+});
+
+test("drops stored deals whose distance is unknown for an active radius", () => {
+  const radiusMonitor = { ...monitor, maxDistanceKm: 20 };
+  const fingerprint = monitorFingerprint(radiusMonitor);
+  const deals = buildDealMap(
+    {
+      deals: [
+        {
+          id: "unknown-distance",
+          monitorId: monitor.id,
+          monitorFingerprint: fingerprint,
+          source: "google_hotels",
+          priceBasis: "google_hotels_visible_all_inclusive_v7",
+          distanceKm: null,
+          distanceVerified: false,
+        },
+        {
+          id: "inside-radius",
+          monitorId: monitor.id,
+          monitorFingerprint: fingerprint,
+          source: "booking",
+          priceBasis: "booking_visible_final_total_v5",
+          distanceKm: 19.5,
+          distanceVerified: true,
+        },
+      ],
+    },
+    [radiusMonitor],
+  );
+  assert.deepEqual(Array.from(deals.keys()), ["inside-radius"]);
 });
 
 test("replaces only deals for the date pair just searched", () => {

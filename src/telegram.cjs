@@ -95,7 +95,9 @@ function formatAlert(alert) {
     offer.guestRating
       ? `Nota ${Number(offer.guestRating).toLocaleString("es-ES")}`
       : "",
-    Number(offer.distanceKm) > 0
+    offer.distanceKm !== null &&
+    offer.distanceKm !== undefined &&
+    Number.isFinite(Number(offer.distanceKm))
       ? `${Number(offer.distanceKm).toLocaleString("es-ES")} km del destino`
       : "",
     offer.breakfastIncluded ? "Desayuno incluido" : "",
