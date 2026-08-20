@@ -1,26 +1,26 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T19:36:48.936Z",
+  "updatedAt": "2026-08-20T19:40:22.751Z",
   "summary": {
-    "generatedAt": "2026-08-20T19:36:48.936Z",
+    "generatedAt": "2026-08-20T19:40:22.751Z",
     "monitors": 2,
     "searches": 30,
-    "offers": 122,
-    "matches": 8,
-    "newMatches": 2,
+    "offers": 121,
+    "matches": 5,
+    "newMatches": 1,
     "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 4,
-        "offers": 33,
-        "matches": 3,
-        "errors": 0,
+        "offers": 32,
+        "matches": 1,
+        "errors": 2,
         "skipped": 0
       },
       "google_hotels": {
         "searches": 2,
         "offers": 3,
-        "matches": 3,
+        "matches": 2,
         "errors": 0,
         "skipped": 0
       },
@@ -47,6 +47,22 @@
       }
     },
     "verificationErrors": [
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "nights": 5,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-19"
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Casa Visconde de Alcácer",
+        "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
+      },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
@@ -114,18 +130,49 @@
       }
     ],
     "nearbyErrors": [],
-    "errors": [],
+    "errors": [
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-17",
+          "nights": 5,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-19"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "booking",
+        "dates": {
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-18",
+          "nights": 6,
+          "flexibleWindowDays": 7,
+          "flexibleCheckInStart": "2027-07-12",
+          "flexibleCheckInEnd": "2027-07-19"
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
+      }
+    ],
     "timeBudgetReached": false,
     "stoppedEarlyMonitors": 0,
-    "durationMs": 158167,
+    "durationMs": 151195,
     "health": {
       "state": "healthy",
-      "startedAt": "2026-08-20T19:36:48.936Z",
-      "lastCompletedAt": "2026-08-20T19:36:48.936Z",
+      "startedAt": "2026-08-20T19:40:22.751Z",
+      "lastCompletedAt": "2026-08-20T19:40:22.751Z",
       "previousCompletedAt": "2026-08-20T18:56:50.000Z",
-      "gapMinutes": 40,
+      "gapMinutes": 44,
       "recoveredAfterInterruption": true,
-      "durationMs": 158167,
+      "durationMs": 151195,
       "completedNormally": true,
       "monitorsProcessed": 2,
       "searchesCompleted": 30
@@ -133,12 +180,12 @@
   },
   "health": {
     "state": "healthy",
-    "startedAt": "2026-08-20T19:36:48.936Z",
-    "lastCompletedAt": "2026-08-20T19:36:48.936Z",
+    "startedAt": "2026-08-20T19:40:22.751Z",
+    "lastCompletedAt": "2026-08-20T19:40:22.751Z",
     "previousCompletedAt": "2026-08-20T18:56:50.000Z",
-    "gapMinutes": 40,
+    "gapMinutes": 44,
     "recoveredAfterInterruption": true,
-    "durationMs": 158167,
+    "durationMs": 151195,
     "completedNormally": true,
     "monitorsProcessed": 2,
     "searchesCompleted": 30
@@ -147,11 +194,11 @@
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "lastScanAt": "2026-08-20T19:36:48.936Z",
-      "lastSuccessAt": "2026-08-20T19:38:43.331313Z",
+      "lastScanAt": "2026-08-20T19:40:22.751Z",
+      "lastSuccessAt": "2026-08-20T19:42:16.274259Z",
       "searches": 15,
-      "offers": 46,
-      "matches": 5,
+      "offers": 45,
+      "matches": 2,
       "nearbyLocations": [
         "Setúbal",
         "Palmela",
@@ -161,14 +208,14 @@
       "sources": {
         "booking": {
           "searches": 2,
-          "offers": 33,
-          "matches": 3,
+          "offers": 32,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "coveredCheckIns": 16,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -187,12 +234,12 @@
         "google_hotels": {
           "searches": 1,
           "offers": 2,
-          "matches": 2,
+          "matches": 1,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -216,7 +263,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -240,7 +287,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -264,7 +311,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -360,8 +407,8 @@
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-20T19:36:48.936Z",
-      "lastSuccessAt": "2026-08-20T19:39:24.177809Z",
+      "lastScanAt": "2026-08-20T19:40:22.751Z",
+      "lastSuccessAt": "2026-08-20T19:42:51.449629Z",
       "searches": 15,
       "offers": 76,
       "matches": 3,
@@ -375,7 +422,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -399,7 +446,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -423,7 +470,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -447,7 +494,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
+          "lastSuccessAt": "2026-08-20T19:40:22.751Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -467,14 +514,13 @@
           "searches": 2,
           "offers": 0,
           "matches": 0,
-          "errors": 0,
+          "errors": 2,
           "skipped": 0,
-          "coveredCheckIns": 16,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-20T19:36:48.936Z",
-          "lastError": "",
-          "retryAt": "",
+          "state": "paused",
+          "consecutiveErrors": 2,
+          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+          "retryAt": "2026-08-20T19:55:22.751Z",
           "dateCoverage": {
             "mode": "range",
             "sweepStartDate": "2026-08-20",
@@ -489,7 +535,7 @@
           }
         }
       },
-      "error": "",
+      "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "sourceCoverage": {
         "google_hotels": {
           "mode": "range",
@@ -573,124 +619,26 @@
       "monitorName": "Comporta",
       "previousPrice": 0,
       "offer": {
-        "id": "google_hotels:9075e8815ae013b3|2027-07-12|2027-07-17",
-        "source": "google_hotels",
-        "provider": "Booking.com via Google Hotels",
-        "hotelName": "Travelers House",
-        "address": "Setúbal",
-        "checkIn": "2027-07-12",
-        "checkOut": "2027-07-17",
-        "nights": 5,
-        "totalPrice": 278.75,
-        "nightlyPrice": 55.75,
-        "displayedNightlyPrice": 49,
-        "rateSubtotal": 278.75,
-        "searchResultPrice": 278.75,
-        "additionalCharges": 0,
-        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "5 noches con impuestos y tasas incluidos",
-        "priceVerified": true,
-        "priceBasis": "google_hotels_provider_all_inclusive_v7",
-        "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-20T19:37:50.276Z",
-        "stars": 4,
-        "guestRating": 9.8,
-        "reviewCount": 19,
-        "distanceKm": null,
-        "freeCancellation": false,
-        "breakfastIncluded": true,
-        "limitedAvailability": false,
-        "propertyType": "apartment",
-        "amenities": [
-          "beach",
-          "breakfast",
-          "air_conditioning"
-        ],
-        "mealPlan": "breakfast",
-        "roomName": "",
-        "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://www.google.com/travel/lodging/clk?pc=AA80OsyfB4FkPEDTM_I7P0E3guMRPLqfWmQ6CU8TawKZ79kfH9tVxWv-sOy_3k3E6PaAW-vObRjE9bBsgjlRURcFsaKAi8dBWstnYWcZvk10-R9Osany6EoaF9jO5bTD4UEszahXWf5FRNdPlC5nWGGdav4oAW1LgL0W0K44N7OlP_44L1Ih9qRHSSU3EUv3HHu3ivGq6A&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D8823831%26highlighted_hotels%3D8823831%26dest_type%3Dhotel%26checkin%3D2027-07-12%26checkout%3D2027-07-17%26group_adults%3D2%26req_adults%3D2%26show_room%3D882383101_357539406_2_0_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D278.75%26ext_price_tax%3D34.65%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787238238%26edgtid%3DxHhwpl1tSzmZ-S0VyuFKfg%26efpc%3DJYt1oni3Wh8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-8823831%26utm_content%3Ddev-desktop_los-5_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-8823831_dev-desktop_los-5_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-&s=AD1XQnn_J12JuPD48R0mjrBkmWoF",
-        "matches": true,
-        "candidateMatches": true,
-        "priceEvidence": "provider_link",
-        "marketMedianNightly": 66.04,
-        "marketSampleSize": 9,
-        "discountPercent": 15.6,
-        "marketErrorFareScore": 21,
-        "errorFareScore": 21,
-        "errorFareLevel": "normal",
-        "errorFareIntelligenceVersion": 2,
-        "errorFareEvidence": [
-          "comparable_market",
-          "verified_price"
-        ],
-        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
-        "priceHistory": [
-          {
-            "at": "2026-08-20T19:38:13.980Z",
-            "totalPrice": 278.75,
-            "nightlyPrice": 55.75,
-            "source": "google_hotels",
-            "provider": "Booking.com via Google Hotels"
-          }
-        ],
-        "priceProof": {
-          "verifiedAt": "2026-08-20T19:37:50.276Z",
-          "source": "google_hotels",
-          "provider": "Booking.com via Google Hotels",
-          "priceBasis": "google_hotels_provider_all_inclusive_v7",
-          "priceEvidence": "provider_link",
-          "totalPrice": 278.75,
-          "nightlyPrice": 55.75,
-          "confirmationCount": 2,
-          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
-        },
-        "priceDropPercent": 0,
-        "preComparisonErrorFareScore": 21,
-        "comparisonGroupId": "900e4dc32622178b",
-        "providerCount": 1,
-        "comparisonProviders": [
-          {
-            "source": "google_hotels",
-            "provider": "Booking.com via Google Hotels",
-            "totalPrice": 278.75,
-            "nightlyPrice": 55.75,
-            "url": "https://www.google.com/travel/lodging/clk?pc=AA80OsyfB4FkPEDTM_I7P0E3guMRPLqfWmQ6CU8TawKZ79kfH9tVxWv-sOy_3k3E6PaAW-vObRjE9bBsgjlRURcFsaKAi8dBWstnYWcZvk10-R9Osany6EoaF9jO5bTD4UEszahXWf5FRNdPlC5nWGGdav4oAW1LgL0W0K44N7OlP_44L1Ih9qRHSSU3EUv3HHu3ivGq6A&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D8823831%26highlighted_hotels%3D8823831%26dest_type%3Dhotel%26checkin%3D2027-07-12%26checkout%3D2027-07-17%26group_adults%3D2%26req_adults%3D2%26show_room%3D882383101_357539406_2_0_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D278.75%26ext_price_tax%3D34.65%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787238238%26edgtid%3DxHhwpl1tSzmZ-S0VyuFKfg%26efpc%3DJYt1oni3Wh8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-8823831%26utm_content%3Ddev-desktop_los-5_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-8823831_dev-desktop_los-5_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-&s=AD1XQnn_J12JuPD48R0mjrBkmWoF",
-            "priceVerified": true
-          }
-        ],
-        "bestTotalPrice": 278.75,
-        "isBestPrice": true
-      },
-      "createdAt": "2026-08-20T19:38:13.980Z"
-    },
-    {
-      "type": "new_match",
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "previousPrice": 0,
-      "offer": {
         "id": "google_hotels:97f03725f37b95a0|2027-07-12|2027-07-17",
         "source": "google_hotels",
-        "provider": "Central de Reservas via Google Hotels",
+        "provider": "Super.com via Google Hotels",
         "hotelName": "ibis Setubal",
-        "address": "Setúbal",
+        "address": "Palmela",
         "checkIn": "2027-07-12",
         "checkOut": "2027-07-17",
         "nights": 5,
-        "totalPrice": 334,
-        "nightlyPrice": 66.8,
-        "displayedNightlyPrice": 63,
-        "rateSubtotal": 334,
-        "searchResultPrice": 334,
+        "totalPrice": 295.68,
+        "nightlyPrice": 59.14,
+        "displayedNightlyPrice": 57,
+        "rateSubtotal": 295.68,
+        "searchResultPrice": 295.68,
         "additionalCharges": 0,
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
         "stayText": "5 noches con impuestos y tasas incluidos",
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive_v7",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-20T19:38:13.979Z",
+        "priceConfirmedAt": "2026-08-20T19:42:04.324Z",
         "stars": 4,
         "guestRating": 8,
         "reviewCount": 2273,
@@ -710,40 +658,39 @@
         "mealPlan": "breakfast",
         "roomName": "",
         "sharedRoom": false,
-        "searchArea": "Setúbal",
-        "url": "https://www.google.com/travel/search?q=hoteles%20en%20setubal&ts=CAESCgoCCAMKAggDEAEaUgo0EjAyJDB4ZDE5NDJmZWFiMDI3NDM1OjB4OWZmMjNmNzY5YmI1YWE1NDoIU2V0w7piYWwaABIaEhQKBwjrDxAHGAwSBwjrDxAHGBEYBTICCAEqDQoJOgNFVVJiAggBGgA&qs=CAEgASgAMiZDaGdJcVkyUzdfelVqcm5TQVJvTEwyY3ZNWFk1WjJ3NE1XWVFBUTgNSAA&ap=KigKEgnwtP19XSVEQBH8BE8h0_cNwBISCVrhG59XQURAEfwETyHbPAzAMAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjgzsK--q-WAxUAAAAAHQAAAAAQAw",
+        "searchArea": "Palmela",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80OswjNmpQJuzV_7v4nnjYT23vDgKiPLU-r5FmOwX4eC6j998rrfDBZpJOe12pOagNV1PEJ0LvpkDV8HOkGvjOJLmAif5qucI4Dt5ox4g403_PYZww6x3LWtU8f1prHZdmvKH9_GBGGvDXZJwcJkSK24qAC1uJdN_4a3PJTIIKJyLwSilMoQvq4MfQ8w&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D273.81%2526total_price%3D283.77%2526retail_price%3D373.41%2526retail_total_price%3D387.0%2526surcharge%3D11.91%2526request_id%3D9871998739314589696%2526ps%3D2178426524%2526pb%3D0-slAkZlDjP06IhVxwa_7EUDwcSPX-xArMSCqIxFMcyIO8HeIX9BISTF0VubJFZbKpzvXtH4l9Y6kUtqwe79Z3j2tCwOlU1w30DB83Z2ptRwnhQeayeQEFncujtEo00ebYla0nQoUDAVHyM7QVVyAA%25253D%25253D%2526alwd_rand%3Dfalse%2526gt%3D1787254809%2526sg%3DZynpz%2526sid%3DGHA_MD9%2526cmab_id%3D33%2526xb%3Dc%2526ib%3Dfalse%2526hga%3Dc%2526hgs%3D2%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D295.68%26checkin_at%3D2027-07-12%26checkout_at%3D2027-07-17%26provider_hotel_id%3D10004338960%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnlLbHNOw6iFKDmlRaYz1Z7L",
         "matches": true,
         "candidateMatches": true,
-        "priceEvidence": "visible_provider_row",
-        "marketMedianNightly": 66.04,
-        "marketSampleSize": 9,
+        "priceEvidence": "provider_link",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
         "discountPercent": 0,
         "marketErrorFareScore": 0,
         "errorFareScore": 0,
         "errorFareLevel": "normal",
         "errorFareIntelligenceVersion": 2,
         "errorFareEvidence": [
-          "comparable_market",
           "verified_price"
         ],
         "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceHistory": [
           {
-            "at": "2026-08-20T19:38:13.980Z",
-            "totalPrice": 334,
-            "nightlyPrice": 66.8,
+            "at": "2026-08-20T19:42:04.325Z",
+            "totalPrice": 295.68,
+            "nightlyPrice": 59.14,
             "source": "google_hotels",
-            "provider": "Central de Reservas via Google Hotels"
+            "provider": "Super.com via Google Hotels"
           }
         ],
         "priceProof": {
-          "verifiedAt": "2026-08-20T19:38:13.979Z",
+          "verifiedAt": "2026-08-20T19:42:04.324Z",
           "source": "google_hotels",
-          "provider": "Central de Reservas via Google Hotels",
+          "provider": "Super.com via Google Hotels",
           "priceBasis": "google_hotels_provider_all_inclusive_v7",
-          "priceEvidence": "visible_provider_row",
-          "totalPrice": 334,
-          "nightlyPrice": 66.8,
+          "priceEvidence": "provider_link",
+          "totalPrice": 295.68,
+          "nightlyPrice": 59.14,
           "confirmationCount": 2,
           "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
         },
@@ -754,17 +701,17 @@
         "comparisonProviders": [
           {
             "source": "google_hotels",
-            "provider": "Central de Reservas via Google Hotels",
-            "totalPrice": 334,
-            "nightlyPrice": 66.8,
-            "url": "https://www.google.com/travel/search?q=hoteles%20en%20setubal&ts=CAESCgoCCAMKAggDEAEaUgo0EjAyJDB4ZDE5NDJmZWFiMDI3NDM1OjB4OWZmMjNmNzY5YmI1YWE1NDoIU2V0w7piYWwaABIaEhQKBwjrDxAHGAwSBwjrDxAHGBEYBTICCAEqDQoJOgNFVVJiAggBGgA&qs=CAEgASgAMiZDaGdJcVkyUzdfelVqcm5TQVJvTEwyY3ZNWFk1WjJ3NE1XWVFBUTgNSAA&ap=KigKEgnwtP19XSVEQBH8BE8h0_cNwBISCVrhG59XQURAEfwETyHbPAzAMAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjgzsK--q-WAxUAAAAAHQAAAAAQAw",
+            "provider": "Super.com via Google Hotels",
+            "totalPrice": 295.68,
+            "nightlyPrice": 59.14,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80OswjNmpQJuzV_7v4nnjYT23vDgKiPLU-r5FmOwX4eC6j998rrfDBZpJOe12pOagNV1PEJ0LvpkDV8HOkGvjOJLmAif5qucI4Dt5ox4g403_PYZww6x3LWtU8f1prHZdmvKH9_GBGGvDXZJwcJkSK24qAC1uJdN_4a3PJTIIKJyLwSilMoQvq4MfQ8w&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D273.81%2526total_price%3D283.77%2526retail_price%3D373.41%2526retail_total_price%3D387.0%2526surcharge%3D11.91%2526request_id%3D9871998739314589696%2526ps%3D2178426524%2526pb%3D0-slAkZlDjP06IhVxwa_7EUDwcSPX-xArMSCqIxFMcyIO8HeIX9BISTF0VubJFZbKpzvXtH4l9Y6kUtqwe79Z3j2tCwOlU1w30DB83Z2ptRwnhQeayeQEFncujtEo00ebYla0nQoUDAVHyM7QVVyAA%25253D%25253D%2526alwd_rand%3Dfalse%2526gt%3D1787254809%2526sg%3DZynpz%2526sid%3DGHA_MD9%2526cmab_id%3D33%2526xb%3Dc%2526ib%3Dfalse%2526hga%3Dc%2526hgs%3D2%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D295.68%26checkin_at%3D2027-07-12%26checkout_at%3D2027-07-17%26provider_hotel_id%3D10004338960%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnlLbHNOw6iFKDmlRaYz1Z7L",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 334,
+        "bestTotalPrice": 295.68,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-20T19:38:13.980Z"
+      "createdAt": "2026-08-20T19:42:04.325Z"
     }
   ]
 }
