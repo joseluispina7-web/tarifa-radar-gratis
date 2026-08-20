@@ -239,6 +239,7 @@ async function processTelegramUpdates(options) {
         let callbackText = monitor
           ? `${monitor.name}: ${muted.has(monitor.id) ? "silenciada" : "activa"}`
           : "Búsqueda no encontrada";
+        let confirmationMessage = "";
         if (action === "exclude") {
           const target = telegramState.hotelActions?.[value];
           if (target) {
@@ -251,8 +252,18 @@ async function processTelegramUpdates(options) {
             callbackText = result.added
               ? `${target.hotelName}: descartado. Puedes restaurarlo en el panel.`
               : `${target.hotelName}: ya estaba descartado.`;
+            confirmationMessage = result.added
+              ? `Hotel descartado: ${target.hotelName}\nBúsqueda: ${target.monitorName}\nPuedes restaurarlo desde el panel.`
+              : `${target.hotelName} ya estaba descartado.`;
           } else {
             callbackText = "Este botón ha caducado. Puedes descartarlo desde una alerta nueva.";
+          }
+        }
+        if (confirmationMessage) {
+          try {
+            await sendReply(confirmationMessage);
+          } catch (error) {
+            updateError = error instanceof Error ? error.message : String(error);
           }
         }
         await telegramRequest(

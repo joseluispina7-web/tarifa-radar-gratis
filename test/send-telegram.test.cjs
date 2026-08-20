@@ -213,6 +213,10 @@ test("persists a hotel exclusion from its Telegram button", async () => {
   assert.equal(exclusions.hotels[0].hotelName, "Hotel Centro");
   assert.equal(exclusions.hotels[0].monitorId, "madrid");
   assert.match(
+    requests.find((request) => request.url.endsWith("/sendMessage")).body.text,
+    /Hotel descartado: Hotel Centro/,
+  );
+  assert.match(
     requests.find((request) =>
       request.url.endsWith("/answerCallbackQuery")
     ).body.text,
