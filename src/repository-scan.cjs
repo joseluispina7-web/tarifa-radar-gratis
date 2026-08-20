@@ -46,6 +46,9 @@ const DIRECT_SEARCH_LIMITS = {
   booking: 2,
   google_hotels: 1,
 };
+const DEFAULT_SCAN_BUDGET_MS = 270_000;
+const DEFAULT_REQUEST_RESERVE_MS = 45_000;
+const DEFAULT_SOURCE_TIMEOUT_MS = 20_000;
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -364,25 +367,31 @@ async function runRepositoryScan(options = {}) {
   const clock = options.clock || Date.now;
   const scanStartedAt = clock();
   const configuredBudget = Number(
-    options.scanBudgetMs ?? process.env.RADAR_SCAN_BUDGET_MS,
+    options.scanBudgetMs ??
+      process.env.RADAR_SCAN_BUDGET_MS ??
+      DEFAULT_SCAN_BUDGET_MS,
   );
   const scanBudgetMs = Number.isFinite(configuredBudget) && configuredBudget > 0
     ? configuredBudget
     : Infinity;
   const configuredRequestReserve = Number(
-    options.requestReserveMs ?? process.env.RADAR_REQUEST_RESERVE_MS,
+    options.requestReserveMs ??
+      process.env.RADAR_REQUEST_RESERVE_MS ??
+      DEFAULT_REQUEST_RESERVE_MS,
   );
   const requestReserveMs = Number.isFinite(configuredRequestReserve) &&
       configuredRequestReserve >= 0
     ? configuredRequestReserve
-    : 45_000;
+    : DEFAULT_REQUEST_RESERVE_MS;
   const configuredSourceTimeout = Number(
-    options.sourceTimeoutMs ?? process.env.RADAR_SOURCE_TIMEOUT_MS,
+    options.sourceTimeoutMs ??
+      process.env.RADAR_SOURCE_TIMEOUT_MS ??
+      DEFAULT_SOURCE_TIMEOUT_MS,
   );
   const sourceTimeoutMs = Number.isFinite(configuredSourceTimeout) &&
       configuredSourceTimeout > 0
     ? configuredSourceTimeout
-    : undefined;
+    : DEFAULT_SOURCE_TIMEOUT_MS;
   const deadline = scanStartedAt + scanBudgetMs;
   const timeBudgetReached = () =>
     Number.isFinite(deadline) && clock() + requestReserveMs >= deadline;
