@@ -5,7 +5,10 @@ const {
   effectiveDistanceLimit,
   scrapeBooking,
 } = require("./booking-scraper.cjs");
-const { scrapeGoogleHotels } = require("./google-hotels-scraper.cjs");
+const {
+  googleHeadingLooksLikeHotel,
+  scrapeGoogleHotels,
+} = require("./google-hotels-scraper.cjs");
 const {
   scrapeAgoda,
   scrapeBluepillow,
@@ -399,6 +402,9 @@ function buildDealMap(previousDeals, activeMonitors) {
         const hasCurrentGoogleValidation =
           source !== "google_hotels" ||
           CURRENT_GOOGLE_PRICE_BASES.has(deal.priceBasis);
+        const hasValidGoogleName =
+          source !== "google_hotels" ||
+          googleHeadingLooksLikeHotel(deal.hotelName);
         const hasCurrentTripValidation =
           source !== "trip" ||
           deal.priceBasis === "trip_direct_final_total_v1";
@@ -410,6 +416,7 @@ function buildDealMap(previousDeals, activeMonitors) {
           hasCurrentBookingValidation &&
           hasCurrentBluepillowValidation &&
           hasCurrentGoogleValidation &&
+          hasValidGoogleName &&
           hasCurrentTripValidation &&
           hasValidDistance
         );
@@ -694,7 +701,12 @@ async function runRepositoryScan(options = {}) {
       booking: sweepStateFor("booking"),
       google_hotels: sweepStateFor("google_hotels"),
     };
-    const nextOffers = { ...(beforeMonitor.offers || {}) };
+    const nextOffers = Object.fromEntries(
+      Object.entries(beforeMonitor.offers || {}).filter(([, offer]) =>
+        offer.source !== "google_hotels" ||
+        googleHeadingLooksLikeHotel(offer.hotelName)
+      ),
+    );
     const monitorMatchingOffers = new Set();
     const monitorMatchingOffersBySource = new Map();
     const observedOfferKeys = new Set();

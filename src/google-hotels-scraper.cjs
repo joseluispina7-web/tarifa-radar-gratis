@@ -265,6 +265,7 @@ function stableOfferId(hotelName, checkIn, checkOut) {
 }
 
 function buildGoogleOffer(card, search) {
+  if (!googleHeadingLooksLikeHotel(card.hotelName)) return null;
   const totalPrice = parseGoogleHotelsTotal(card.priceText);
   const displayedNights = parseGoogleHotelsNights(card.priceText);
   const displayedNightlyPrice = parseGoogleHotelsNightly(card.priceText);
@@ -402,6 +403,19 @@ function normalizeGoogleQuery(value) {
     .replace(/[\u0300-\u036f]/g, "")
     .trim()
     .toLowerCase();
+}
+
+function googleHeadingLooksLikeHotel(value) {
+  const heading = normalizeGoogleQuery(value).replace(/\s+/g, " ");
+  if (!heading || heading.length < 2 || heading.length > 140) return false;
+  return !(
+    /(?:los )?precios? en esta zona/.test(heading) ||
+    /(?:mas|menos) car[oa]s? de lo habitual/.test(heading) ||
+    /prices? in this area/.test(heading) ||
+    /(?:higher|lower|more|less) than usual/.test(heading) ||
+    /^(?:resultados?|results?)\b/.test(heading) ||
+    /^(?:patrocinado|sponsored)\b/.test(heading)
+  );
 }
 
 function googleDestinationScopeMatches(title, search) {
@@ -869,12 +883,24 @@ async function extractGoogleHotelCards(page, search) {
   const rawCards = await page.locator("h2").evaluateAll(
     (headings, limit) => headings.slice(0, limit + 5).flatMap((heading) => {
       if (/patrocinado|sponsored/i.test(heading.textContent || "")) return [];
+      const hotelName = (heading.textContent || "").trim();
+      const normalizeName = (value) => String(value || "")
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+      const normalizedHotelName = normalizeName(hotelName);
+      const linkNamesHotel = (link) =>
+        normalizeName(
+          `${link.getAttribute("aria-label") || ""} ${link.innerText || ""}`,
+        )
+          .includes(normalizedHotelName);
       let container = heading;
       let totalLink = null;
       for (let level = 0; level < 9 && container; level += 1) {
         totalLink = Array.from(container.querySelectorAll("a")).find((link) =>
           /(?:en total|\btotal\b)/i.test(link.innerText || "") &&
-          /noches?|nights?/i.test(link.innerText || "")
+          /noches?|nights?/i.test(link.innerText || "") &&
+          linkNamesHotel(link)
         );
         if (totalLink) break;
         container = container.parentElement;
@@ -884,10 +910,10 @@ async function extractGoogleHotelCards(page, search) {
         (link) =>
           /ver detalles de|view details (?:of|for)/i.test(
             link.getAttribute("aria-label") || "",
-          ),
+          ) && linkNamesHotel(link),
       );
       return [{
-        hotelName: (heading.textContent || "").trim(),
+        hotelName,
         priceText: totalLink.innerText || "",
         text: container.innerText || "",
         labels: Array.from(container.querySelectorAll("[aria-label]"))
@@ -931,25 +957,32 @@ async function extractGoogleHotelCandidates(page, search) {
       const labelFor = (link) =>
         `${link.getAttribute("aria-label") || ""} ${link.innerText || ""}`
           .trim();
+      const hotelName = (heading.textContent || "").trim();
+      const normalizeName = (value) => String(value || "")
+        .toLowerCase()
+        .replace(/\s+/g, " ")
+        .trim();
+      const normalizedHotelName = normalizeName(hotelName);
+      const linkNamesHotel = (link) =>
+        normalizeName(labelFor(link)).includes(normalizedHotelName);
       const nightlyLink = links.find((link) =>
         /(?:precios de|prices (?:of|for)|a partir de|starting (?:at|from))/.test(
           labelFor(link).toLowerCase(),
         ) &&
-        /(?:\u20ac|EUR)/i.test(labelFor(link))
+        /(?:\u20ac|EUR)/i.test(labelFor(link)) &&
+        linkNamesHotel(link)
       );
       const pricesLink = links.find((link) =>
         /(?:ver precios de|view prices (?:of|for))/.test(
           labelFor(link).toLowerCase(),
-        )
+        ) && linkNamesHotel(link)
       );
       const anyCurrencyLink = links.find((link) =>
-        /(?:\u20ac|\bEUR\b)/i.test(labelFor(link))
+        /(?:\u20ac|\bEUR\b)/i.test(labelFor(link)) && linkNamesHotel(link)
       );
       const anyCurrencyText = cardElements
         .map((element) => element.innerText || "")
         .find((text) => /(?:\u20ac|\bEUR\b)/i.test(text));
-      const hotelName = (heading.textContent || "").trim();
-      const normalizedHotelName = hotelName.toLowerCase();
       const hotelLink = precedingLinks.reverse().find((link) =>
         labelFor(link).toLowerCase().includes(normalizedHotelName) &&
         /\/travel\/search/i.test(link.href || "")
@@ -1487,6 +1520,7 @@ module.exports = {
   buildGoogleOffer,
   extractGoogleHotelCards,
   extractGoogleHotelCandidates,
+  googleHeadingLooksLikeHotel,
   googleHotelNameMatches,
   googleDestinationScopeMatches,
   googleVerificationOnlyLocationFiltered,

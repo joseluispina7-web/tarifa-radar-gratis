@@ -5,6 +5,7 @@ const {
   buildGoogleOffer,
   googleCandidateMatches,
   googleDestinationScopeMatches,
+  googleHeadingLooksLikeHotel,
   googleHotelNameMatches,
   googleHotelsLoadAttempt,
   googleVerificationOnlyLocationFiltered,
@@ -60,6 +61,36 @@ test("rejects a Google page that silently changes to another destination", () =>
       nearbySearch,
     ),
     false,
+  );
+});
+
+test("rejects Google informational headings as hotel names", () => {
+  assert.equal(
+    googleHeadingLooksLikeHotel(
+      "Los precios en esta zona son mas caros de lo habitual",
+    ),
+    false,
+  );
+  assert.equal(
+    googleHeadingLooksLikeHotel(
+      "Prices in this area are higher than usual",
+    ),
+    false,
+  );
+  assert.equal(googleHeadingLooksLikeHotel("Far Home Atocha"), true);
+  assert.equal(
+    buildGoogleOffer(
+      {
+        hotelName: "Los precios en esta zona son mas caros de lo habitual",
+        priceText:
+          "50 \u20ac200 \u20ac en total4 noches con impuestos y tasas incluidos",
+        text: "",
+        labels: [],
+        url: "https://www.google.com/travel/search",
+      },
+      search(),
+    ),
+    null,
   );
 });
 
