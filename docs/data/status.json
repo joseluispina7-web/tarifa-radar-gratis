@@ -1,46 +1,967 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-20T19:49:46.220Z",
+  "updatedAt": "2026-08-20T19:52:09.232Z",
   "summary": {
-    "generatedAt": "2026-08-20T19:49:46.220Z",
-    "monitors": 0,
-    "searches": 0,
-    "offers": 0,
-    "matches": 0,
-    "newMatches": 0,
+    "generatedAt": "2026-08-20T19:52:09.232Z",
+    "monitors": 2,
+    "searches": 28,
+    "offers": 102,
+    "matches": 4,
+    "newMatches": 4,
     "priceDrops": 0,
-    "sources": {},
-    "verificationErrors": [],
+    "sources": {
+      "booking": {
+        "searches": 2,
+        "offers": 19,
+        "matches": 0,
+        "errors": 0,
+        "skipped": 1
+      },
+      "google_hotels": {
+        "searches": 2,
+        "offers": 3,
+        "matches": 3,
+        "errors": 0,
+        "skipped": 0
+      },
+      "agoda": {
+        "searches": 8,
+        "offers": 5,
+        "matches": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "trip": {
+        "searches": 8,
+        "offers": 6,
+        "matches": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "bluepillow": {
+        "searches": 8,
+        "offers": 69,
+        "matches": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "verificationErrors": [
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-14",
+          "checkOut": "2027-07-21",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 423.50 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-12",
+          "checkOut": "2027-07-19",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Sesimbraholidayname",
+        "message": "Google no expuso un total final con impuestos en EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-15",
+          "checkOut": "2027-07-20",
+          "nights": 5
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 302.50 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-15",
+          "checkOut": "2027-07-21",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-07-15",
+          "checkOut": "2027-07-22",
+          "nights": 7
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 423.50 EUR."
+      }
+    ],
     "nearbyErrors": [],
     "errors": [],
     "timeBudgetReached": false,
     "stoppedEarlyMonitors": 0,
-    "durationMs": 851,
+    "durationMs": 102392,
     "health": {
       "state": "healthy",
-      "startedAt": "2026-08-20T19:49:46.220Z",
-      "lastCompletedAt": "2026-08-20T19:49:46.220Z",
-      "previousCompletedAt": "2026-08-20T19:45:33.356Z",
-      "gapMinutes": 4,
+      "startedAt": "2026-08-20T19:52:09.232Z",
+      "lastCompletedAt": "2026-08-20T19:52:09.232Z",
+      "previousCompletedAt": "2026-08-20T19:49:46.220Z",
+      "gapMinutes": 2,
       "recoveredAfterInterruption": false,
-      "durationMs": 851,
+      "durationMs": 102392,
       "completedNormally": true,
-      "monitorsProcessed": 0,
-      "searchesCompleted": 0
+      "monitorsProcessed": 2,
+      "searchesCompleted": 28
     }
   },
   "health": {
     "state": "healthy",
-    "startedAt": "2026-08-20T19:49:46.220Z",
-    "lastCompletedAt": "2026-08-20T19:49:46.220Z",
-    "previousCompletedAt": "2026-08-20T19:45:33.356Z",
-    "gapMinutes": 4,
+    "startedAt": "2026-08-20T19:52:09.232Z",
+    "lastCompletedAt": "2026-08-20T19:52:09.232Z",
+    "previousCompletedAt": "2026-08-20T19:49:46.220Z",
+    "gapMinutes": 2,
     "recoveredAfterInterruption": false,
-    "durationMs": 851,
+    "durationMs": 102392,
     "completedNormally": true,
-    "monitorsProcessed": 0,
-    "searchesCompleted": 0
+    "monitorsProcessed": 2,
+    "searchesCompleted": 28
   },
-  "monitors": {},
-  "alerts": []
+  "monitors": {
+    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "lastScanAt": "2026-08-20T19:52:09.232Z",
+      "lastSuccessAt": "2026-08-20T19:53:25.340014Z",
+      "searches": 13,
+      "offers": 70,
+      "matches": 2,
+      "nearbyLocations": [],
+      "sources": {
+        "google_hotels": {
+          "searches": 1,
+          "offers": 1,
+          "matches": 1,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-20",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 2,
+            "searchesCheckedThisRun": 1,
+            "nextIndex": 3,
+            "remainingSearchesInSweep": 132,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-20"
+          }
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 5,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-20",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-20"
+          }
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 58,
+          "matches": 1,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-20",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-20"
+          }
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 6,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-20",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-20"
+          }
+        },
+        "booking": {
+          "searches": 0,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 1,
+          "lastSkipReason": "cooldown",
+          "retryAt": "2026-08-20T19:55:22.751Z",
+          "state": "paused",
+          "consecutiveErrors": 2,
+          "lastSuccessAt": "2026-08-20T18:56:50.000Z",
+          "lastError": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-20",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 2,
+            "searchesCheckedThisRun": 0,
+            "nextIndex": 2,
+            "remainingSearchesInSweep": 133,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-20"
+          }
+        }
+      },
+      "error": "",
+      "sourceCoverage": {
+        "google_hotels": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-20",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 2,
+          "searchesCheckedThisRun": 1,
+          "nextIndex": 3,
+          "remainingSearchesInSweep": 132,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-20"
+        },
+        "agoda": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-20",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-20"
+        },
+        "bluepillow": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-20",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-20"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-20",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-20"
+        },
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-20",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 2,
+          "searchesCheckedThisRun": 0,
+          "nextIndex": 2,
+          "remainingSearchesInSweep": 133,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-20"
+        }
+      },
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-20",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 8,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 12,
+        "remainingSearchesInSweep": 123,
+        "completedSweep": false,
+        "nextSweepStartDate": "2026-08-20"
+      }
+    },
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-20T19:52:09.232Z",
+      "lastSuccessAt": "2026-08-20T19:53:51.113099Z",
+      "searches": 15,
+      "offers": 32,
+      "matches": 2,
+      "nearbyLocations": [
+        "Setúbal",
+        "Palmela",
+        "Alcácer do Sal",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 2,
+          "offers": 19,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "coveredCheckIns": 18,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-16",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 4,
+            "searchesCheckedThisRun": 2,
+            "nextIndex": 6,
+            "remainingSearchesInSweep": 129,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-16"
+          }
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 2,
+          "matches": 2,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-16",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 2,
+            "searchesCheckedThisRun": 1,
+            "nextIndex": 3,
+            "remainingSearchesInSweep": 132,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-16"
+          }
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-16",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-16"
+          }
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-16",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-16"
+          }
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 11,
+          "matches": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-20T19:52:09.232Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-16",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 8,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 12,
+            "remainingSearchesInSweep": 123,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-16"
+          }
+        }
+      },
+      "error": "",
+      "sourceCoverage": {
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-16",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 4,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 6,
+          "remainingSearchesInSweep": 129,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-16"
+        },
+        "google_hotels": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-16",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 2,
+          "searchesCheckedThisRun": 1,
+          "nextIndex": 3,
+          "remainingSearchesInSweep": 132,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-16"
+        },
+        "agoda": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-16",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-16"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-16",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-16"
+        },
+        "bluepillow": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-16",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 8,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 12,
+          "remainingSearchesInSweep": 123,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-16"
+        }
+      },
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-16",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 8,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 12,
+        "remainingSearchesInSweep": 123,
+        "completedSweep": false,
+        "nextSweepStartDate": "2026-08-16"
+      }
+    }
+  },
+  "alerts": [
+    {
+      "type": "new_match",
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:80193dcd99205764|2027-07-12|2027-07-19",
+        "source": "google_hotels",
+        "provider": "Booking.com via Google Hotels",
+        "hotelName": "Quinta do Meco",
+        "address": "Sesimbra, Distrito de Setúbal, Portugal",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-19",
+        "nights": 7,
+        "totalPrice": 487.9,
+        "nightlyPrice": 69.7,
+        "displayedNightlyPrice": 66,
+        "rateSubtotal": 487.9,
+        "searchResultPrice": 487.9,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "7 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-20T19:52:53.215Z",
+        "stars": 4,
+        "guestRating": 10,
+        "reviewCount": 60,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "pool",
+          "spa",
+          "parking",
+          "beach",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oszn7_2VQI451ZXBxINf7WPUvccB-mv48MfJZoZZG0OiFg75AJc1ZVTpRDEzGNWP4VCq8aRJdIBLHc01ygLBh53SOSbm3DfajRfzFK-TpoHyVxNDE-1wO5apnpj6i9qhNP37LlC5AcLpqtDmE0PXwEvjtuQtX_y3OngkZwyFR6EW4lOexAOQ6Wzo9Go4TZ0BPXvlkQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D3557814%26highlighted_hotels%3D3557814%26dest_type%3Dhotel%26checkin%3D2027-07-12%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D355781402_118168748_2_0_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D487.90%26ext_price_tax%3D27.62%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1786960791%26edgtid%3DZtBHjja1Ts-4eunGvh35Qw%26efpc%3DSHuQpIe5Ch8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-3557814%26utm_content%3Ddev-desktop_los-7_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-3557814_dev-desktop_los-7_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-&s=AD1XQnnHjwTrqlyRX6gNy8gDcsbt",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "provider_link",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceHistory": [
+          {
+            "at": "2026-08-20T19:53:15.797Z",
+            "totalPrice": 487.9,
+            "nightlyPrice": 69.7,
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-08-20T19:52:53.215Z",
+          "source": "google_hotels",
+          "provider": "Booking.com via Google Hotels",
+          "priceBasis": "google_hotels_provider_all_inclusive_v7",
+          "priceEvidence": "provider_link",
+          "totalPrice": 487.9,
+          "nightlyPrice": 69.7,
+          "confirmationCount": 2,
+          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+        },
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "066e0e7921c5c733",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels",
+            "totalPrice": 487.9,
+            "nightlyPrice": 69.7,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oszn7_2VQI451ZXBxINf7WPUvccB-mv48MfJZoZZG0OiFg75AJc1ZVTpRDEzGNWP4VCq8aRJdIBLHc01ygLBh53SOSbm3DfajRfzFK-TpoHyVxNDE-1wO5apnpj6i9qhNP37LlC5AcLpqtDmE0PXwEvjtuQtX_y3OngkZwyFR6EW4lOexAOQ6Wzo9Go4TZ0BPXvlkQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D3557814%26highlighted_hotels%3D3557814%26dest_type%3Dhotel%26checkin%3D2027-07-12%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D355781402_118168748_2_0_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D487.90%26ext_price_tax%3D27.62%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1786960791%26edgtid%3DZtBHjja1Ts-4eunGvh35Qw%26efpc%3DSHuQpIe5Ch8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-3557814%26utm_content%3Ddev-desktop_los-7_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-3557814_dev-desktop_los-7_bw-326_dow-Monday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270712_ppt-&s=AD1XQnnHjwTrqlyRX6gNy8gDcsbt",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 487.9,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-20T19:53:15.797Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "previousPrice": 0,
+      "offer": {
+        "id": "bluepillow:prop_63974c24fc70cceab61af747|2027-07-15|2027-07-20",
+        "source": "bluepillow",
+        "provider": "Expedia via Bluepillow",
+        "hotelName": "Zambujal Suites",
+        "address": "Sesimbra",
+        "checkIn": "2027-07-15",
+        "checkOut": "2027-07-20",
+        "nights": 5,
+        "totalPrice": 502.85,
+        "nightlyPrice": 100.57,
+        "displayedNightlyPrice": 100.57,
+        "rateSubtotal": 502.85,
+        "searchResultPrice": 502.85,
+        "additionalCharges": 0,
+        "includedTaxesAndFees": 28.5,
+        "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos",
+        "stayText": "5 noches para 2 adultos",
+        "priceVerified": true,
+        "priceBasis": "expedia_total_with_tax_breakdown",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-20T19:53:19.885Z",
+        "stars": 3,
+        "guestRating": 8,
+        "reviewCount": 16,
+        "distanceKm": 2.228699593004805,
+        "freeCancellation": true,
+        "breakfastIncluded": false,
+        "limitedAvailability": true,
+        "propertyType": "hotel",
+        "amenities": [
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1787255597%2526endDate%253D2027-07-20%2526adults%253D2%2526locale%253Den_US%2526chid%253D2f03a915-1df0-4faf-aec6-2c7964a1ff9e%2526eapid%253D310064%2526startDate%253D2027-07-15%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-15&end=2027-07-20",
+        "imageUrl": "https://metasearch-cdn.azureedge.net/remote/images.trvl-media.com/lodging/83000000/82850000/82841200/82841155/d04e7a6d.jpg",
+        "bluepillowPropertyId": "prop_63974c24fc70cceab61af747",
+        "bluepillowOta": "Expedia",
+        "matches": true,
+        "candidateMatches": true,
+        "marketMedianNightly": 208.8,
+        "marketSampleSize": 9,
+        "discountPercent": 51.8,
+        "marketErrorFareScore": 70,
+        "errorFareScore": 70,
+        "errorFareLevel": "unusually_low",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "comparable_market",
+          "verified_price"
+        ],
+        "errorFareReason": "Precio muy por debajo de alojamientos comparables; no basta para afirmar que sea una tarifa error.",
+        "priceHistory": [
+          {
+            "at": "2026-08-20T19:53:17.889621Z",
+            "totalPrice": 502.85,
+            "nightlyPrice": 100.57,
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-08-20T19:53:19.885Z",
+          "source": "bluepillow",
+          "provider": "Expedia via Bluepillow",
+          "priceBasis": "expedia_total_with_tax_breakdown",
+          "priceEvidence": "",
+          "totalPrice": 502.85,
+          "nightlyPrice": 100.57,
+          "confirmationCount": 2,
+          "taxesText": "Total con 28.50 EUR de impuestos y tasas incluidos"
+        },
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 70,
+        "comparisonGroupId": "e1a3342a318a0923",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "bluepillow",
+            "provider": "Expedia via Bluepillow",
+            "totalPrice": 502.85,
+            "nightlyPrice": 100.57,
+            "url": "https://www.bluepillow.es/skippy?connectorname=Expedia&redirecturl=https%3A%2F%2Fprf.hn%2Fclick%2Fcamref%3A1011lkSDm%2Far%3Ahw%2Fdestination%3Ahttps%253A%252F%252Fwww.expedia.com%252FHotel-Search%253Ftpid%253D1%2526mpe%253D1787255597%2526endDate%253D2027-07-20%2526adults%253D2%2526locale%253Den_US%2526chid%253D2f03a915-1df0-4faf-aec6-2c7964a1ff9e%2526eapid%253D310064%2526startDate%253D2027-07-15%2526mpd%253DEUR%2526mpn%253D318522810%2526currency%253DEUR%2526rateplanid%253D386867995%2526mpm%253D24%2526selected%253D82841155%2526mpb%253D28.50%2526mpq%253D95.50%2526mpa%253D474.35&source=Inline&lang=es&searchurl=https%3A%2F%2Fwww.bluepillow.es%2F%3Futm_source%3Db2a%26utm_medium%3Dai_agent%26utm_campaign%3Db2a%26utm_content%3Db017bfad8a275da4%26utm_term%3Dapi&accomodationid=63974c24fc70cceab61af747&begin=2027-07-15&end=2027-07-20",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 502.85,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-20T19:53:17.889621Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:44bccd7b9fed51a1|2027-07-12|2027-07-19",
+        "source": "google_hotels",
+        "provider": "MontePico via Google Hotels",
+        "hotelName": "MontePico – Alojamento de Luxo com Piscina Privada",
+        "address": "Grândola",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-19",
+        "nights": 7,
+        "totalPrice": 555,
+        "nightlyPrice": 79.29,
+        "displayedNightlyPrice": 79,
+        "rateSubtotal": 555,
+        "searchResultPrice": 555,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "7 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-20T19:53:00.125Z",
+        "stars": 4,
+        "guestRating": 9.8,
+        "reviewCount": 47,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "resort",
+        "amenities": [
+          "pool",
+          "spa",
+          "parking",
+          "beach",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Grândola",
+        "url": "https://www.google.com/travel/search?q=hoteles%20en%20grandola%20portugal&ts=CAESCgoCCAMKAggDEAEaUwo1EjEyJDB4ZDFiZDIwMTFiZTZhZGVkOjB4OTgxNTcyNjUzODliNzk2NzoJR3LDom5kb2xhGgASGhIUCgcI6w8QBxgMEgcI6w8QBxgTGAcyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMihDaG9JaXZQNzU3RFExSS1YQVJvTkwyY3ZNVEZtYlY5MFkzWTNkaEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjojv7k_a-WAxUAAAAAHQAAAAAQAw",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "visible_provider_row",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceHistory": [
+          {
+            "at": "2026-08-20T19:53:23.997Z",
+            "totalPrice": 555,
+            "nightlyPrice": 79.29,
+            "source": "google_hotels",
+            "provider": "MontePico via Google Hotels"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-08-20T19:53:00.125Z",
+          "source": "google_hotels",
+          "provider": "MontePico via Google Hotels",
+          "priceBasis": "google_hotels_provider_all_inclusive_v7",
+          "priceEvidence": "visible_provider_row",
+          "totalPrice": 555,
+          "nightlyPrice": 79.29,
+          "confirmationCount": 2,
+          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+        },
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "4117b9dcfd066f97",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "MontePico via Google Hotels",
+            "totalPrice": 555,
+            "nightlyPrice": 79.29,
+            "url": "https://www.google.com/travel/search?q=hoteles%20en%20grandola%20portugal&ts=CAESCgoCCAMKAggDEAEaUwo1EjEyJDB4ZDFiZDIwMTFiZTZhZGVkOjB4OTgxNTcyNjUzODliNzk2NzoJR3LDom5kb2xhGgASGhIUCgcI6w8QBxgMEgcI6w8QBxgTGAcyAggBKg0KCToDRVVSYgIIARoA&qs=CAEgASgAMihDaG9JaXZQNzU3RFExSS1YQVJvTkwyY3ZNVEZtYlY5MFkzWTNkaEFCOA1IAA&ap=MAG6AQZwcmljZXM&ved=0CAAQ5JsGahcKEwjojv7k_a-WAxUAAAAAHQAAAAAQAw",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 555,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-20T19:53:23.997Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:6fe3e0dc090d6e97|2027-07-12|2027-07-19",
+        "source": "google_hotels",
+        "provider": "Super.com via Google Hotels",
+        "hotelName": "Hotel Vila Park",
+        "address": "Grândola",
+        "checkIn": "2027-07-12",
+        "checkOut": "2027-07-19",
+        "nights": 7,
+        "totalPrice": 606.34,
+        "nightlyPrice": 86.62,
+        "displayedNightlyPrice": 84,
+        "rateSubtotal": 606.34,
+        "searchResultPrice": 606.34,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "7 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v7",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-20T19:53:23.996Z",
+        "stars": 4,
+        "guestRating": 8.2,
+        "reviewCount": 1503,
+        "distanceKm": null,
+        "freeCancellation": false,
+        "breakfastIncluded": false,
+        "limitedAvailability": false,
+        "propertyType": "resort",
+        "amenities": [
+          "pool",
+          "spa",
+          "parking",
+          "beach",
+          "air_conditioning"
+        ],
+        "mealPlan": "any",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Grândola",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oswc58DnmyvLIB8UWoGIu0FadZ92hmVLMuxoQr0DhdN-TZiqu5v1K4Qy1TRDj44zGvjIjCO-gwSkx-iIKfDsIl15HA95v0vNUCTVYmi4O2HTft6riKnQ8YTfO6RQc93nWERcQYiHmPpRpOif1pCZx0eEJlriEafy74m3CgmaxouMQO-eQqnaSN5tkA&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D590.85%2526total_price%3D606.36%2526request_id%3D12764057818761338880%2526ps%3D296306%2526pb%3D0-slAkZlDjP06IhVxwa_7H8-BjwhMVAAwvVBJnd95RLL5JZWiQbECN9dlIXo-MbCu9yEEuLfnByfrky0s1WtEvJeu7IJ6cI7nqOIsDg9hFf6D-FB2z79Bjl5TMvxuJk8WoueEq1BTfdf5zlTf78Epw%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1787209297%2526sg%3DHP1j8%2526sid%3DGHA_MD8%2526cmab_id%3D33%2526xb%3Dt%2526ib%3Dfalse%2526hga%3Dmd2%2526hgs%3D4%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D606.34%26checkin_at%3D2027-07-12%26checkout_at%3D2027-07-19%26provider_hotel_id%3D10004145435%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnmJRH531opaS4ikCEBN_1Oc",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "provider_link",
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceHistory": [
+          {
+            "at": "2026-08-20T19:53:23.997Z",
+            "totalPrice": 606.34,
+            "nightlyPrice": 86.62,
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-08-20T19:53:23.996Z",
+          "source": "google_hotels",
+          "provider": "Super.com via Google Hotels",
+          "priceBasis": "google_hotels_provider_all_inclusive_v7",
+          "priceEvidence": "provider_link",
+          "totalPrice": 606.34,
+          "nightlyPrice": 86.62,
+          "confirmationCount": 2,
+          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+        },
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "055354b749433ec9",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels",
+            "totalPrice": 606.34,
+            "nightlyPrice": 86.62,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oswc58DnmyvLIB8UWoGIu0FadZ92hmVLMuxoQr0DhdN-TZiqu5v1K4Qy1TRDj44zGvjIjCO-gwSkx-iIKfDsIl15HA95v0vNUCTVYmi4O2HTft6riKnQ8YTfO6RQc93nWERcQYiHmPpRpOif1pCZx0eEJlriEafy74m3CgmaxouMQO-eQqnaSN5tkA&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D590.85%2526total_price%3D606.36%2526request_id%3D12764057818761338880%2526ps%3D296306%2526pb%3D0-slAkZlDjP06IhVxwa_7H8-BjwhMVAAwvVBJnd95RLL5JZWiQbECN9dlIXo-MbCu9yEEuLfnByfrky0s1WtEvJeu7IJ6cI7nqOIsDg9hFf6D-FB2z79Bjl5TMvxuJk8WoueEq1BTfdf5zlTf78Epw%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1787209297%2526sg%3DHP1j8%2526sid%3DGHA_MD8%2526cmab_id%3D33%2526xb%3Dt%2526ib%3Dfalse%2526hga%3Dmd2%2526hgs%3D4%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D606.34%26checkin_at%3D2027-07-12%26checkout_at%3D2027-07-19%26provider_hotel_id%3D10004145435%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnmJRH531opaS4ikCEBN_1Oc",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 606.34,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-20T19:53:23.997Z"
+    }
+  ]
 }
