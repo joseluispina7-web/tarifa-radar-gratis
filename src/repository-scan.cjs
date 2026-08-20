@@ -208,6 +208,35 @@ function readJson(filePath, fallback) {
   }
 }
 
+async function readRemoteJson(filePath, options = {}) {
+  const repository = options.repository || process.env.GITHUB_REPOSITORY;
+  if (!repository) return null;
+  const branch = options.branch || process.env.GITHUB_REF_NAME || "main";
+  const fetchImpl = options.fetchImpl || fetch;
+  try {
+    const response = await fetchImpl(
+      `https://raw.githubusercontent.com/${repository}/${encodeURIComponent(branch)}/${filePath}?t=${Date.now()}`,
+      { signal: AbortSignal.timeout(10_000), cache: "no-store" },
+    );
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function newestRepositoryDocument(localDocument, remoteDocument) {
+  if (!remoteDocument || typeof remoteDocument !== "object") {
+    return localDocument;
+  }
+  const localTime = Date.parse(localDocument?.updatedAt || "");
+  const remoteTime = Date.parse(remoteDocument.updatedAt || "");
+  if (!Number.isFinite(localTime) || remoteTime > localTime) {
+    return remoteDocument;
+  }
+  return localDocument;
+}
+
 function writeJson(filePath, value) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, `${JSON.stringify(value, null, 2)}\n`, "utf8");
@@ -512,12 +541,33 @@ async function runRepositoryScan(options = {}) {
     root,
     options.statusPath || "docs/data/status.json",
   );
-  const config = readJson(configPath, { monitors: [] });
-  const previousState = readJson(statePath, {
+  const localConfig = readJson(configPath, { monitors: [] });
+  const localPreviousState = readJson(statePath, {
     version: 1,
     monitors: {},
   });
-  const previousDeals = readJson(dealsPath, { deals: [] });
+  const localPreviousDeals = readJson(dealsPath, { deals: [] });
+  const remoteDocuments = options.remoteDocuments || (
+    process.env.GITHUB_ACTIONS === "true" && process.env.GITHUB_REPOSITORY
+      ? await Promise.all([
+          readRemoteJson("config/searches.json", options.remoteOptions),
+          readRemoteJson("state/repository-state.json", options.remoteOptions),
+          readRemoteJson("docs/data/deals.json", options.remoteOptions),
+        ])
+      : []
+  );
+  const config = newestRepositoryDocument(
+    localConfig,
+    remoteDocuments[0],
+  );
+  const previousState = newestRepositoryDocument(
+    localPreviousState,
+    remoteDocuments[1],
+  );
+  const previousDeals = newestRepositoryDocument(
+    localPreviousDeals,
+    remoteDocuments[2],
+  );
   const now = options.now || new Date();
   const previousCompletedAt =
     previousState.health?.lastCompletedAt || previousState.updatedAt || "";
@@ -1207,9 +1257,11 @@ module.exports = {
   inclusiveDays,
   mergeDeal,
   monitorFingerprint,
+  newestRepositoryDocument,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
   readJson,
+  readRemoteJson,
   resultHasPromisingCandidate,
   runRepositoryScan,
   sourceIsEnabledForMonitor,

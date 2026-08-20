@@ -317,9 +317,24 @@ test("caps expensive direct sources while discovery covers every date", async (t
   calls.agoda.length = 0;
   calls.booking.length = 0;
   calls.google_hotels.length = 0;
+  const remoteState = JSON.parse(
+    fs.readFileSync(path.join(root, "state/repository-state.json"), "utf8"),
+  );
+  const remoteDeals = JSON.parse(
+    fs.readFileSync(path.join(root, "docs/data/deals.json"), "utf8"),
+  );
+  fs.writeFileSync(
+    path.join(root, "state/repository-state.json"),
+    JSON.stringify({ version: 1, monitors: {} }),
+  );
   await runRepositoryScan({
     root,
     now: new Date("2026-08-14T18:05:00Z"),
+    remoteDocuments: [
+      { version: 1, monitors: [directMonitor] },
+      remoteState,
+      remoteDeals,
+    ],
     scrapers: {
       agoda: async (search) => {
         calls.agoda.push(search.checkIn);

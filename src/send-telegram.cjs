@@ -144,6 +144,7 @@ async function processTelegramUpdates(options) {
   }
   if (!Array.isArray(updates)) return telegramState;
 
+  let updateError = "";
   const sendReply = (text) => telegramRequest(
     options.token,
     "sendMessage",
@@ -160,64 +161,68 @@ async function processTelegramUpdates(options) {
     const updateChatId = callback?.message?.chat?.id ?? message?.chat?.id;
     if (String(updateChatId) !== String(options.chatId)) continue;
 
-    if (callback) {
-      const [action, monitorId] = String(callback.data || "").split(":", 2);
-      const monitor = monitorEntries(options.status)
-        .find((entry) => entry.id === String(monitorId));
-      if (action === "mute" && monitor) muted.add(monitor.id);
-      if (action === "unmute" && monitor) muted.delete(monitor.id);
-      await telegramRequest(
-        options.token,
-        "answerCallbackQuery",
-        {
-          callback_query_id: callback.id,
-          text: monitor
-            ? `${monitor.name}: ${muted.has(monitor.id) ? "silenciada" : "activa"}`
-            : "Búsqueda no encontrada",
-        },
-        { fetchImpl: options.fetchImpl },
-      );
-      continue;
-    }
-
-    const text = String(message?.text || "").trim();
-    const [rawCommand, ...argumentParts] = text.split(/\s+/);
-    const command = rawCommand.toLowerCase().split("@")[0];
-    const argument = argumentParts.join(" ");
-    if (command === "/estado") {
-      await sendReply(botStatusMessage(options.status, Array.from(muted)));
-    } else if (command === "/ayuda" || command === "/start") {
-      await sendReply([
-        "Comandos de Tarifa Radar:",
-        "/estado",
-        "/silenciar Nombre de la búsqueda",
-        "/activar Nombre de la búsqueda",
-        "/silenciadas",
-      ].join("\n"));
-    } else if (command === "/silenciadas") {
-      const names = monitorEntries(options.status)
-        .filter((monitor) => muted.has(monitor.id))
-        .map((monitor) => monitor.name);
-      await sendReply(names.length
-        ? `Silenciadas:\n${names.join("\n")}`
-        : "No hay ubicaciones silenciadas.");
-    } else if (command === "/silenciar" || command === "/activar") {
-      const monitor = findMonitor(options.status, argument);
-      if (!monitor) {
-        await sendReply("No encuentro esa búsqueda. Usa el nombre que aparece en el panel.");
-      } else {
-        if (command === "/silenciar") muted.add(monitor.id);
-        else muted.delete(monitor.id);
-        await sendReply(
-          `${monitor.name}: ${command === "/silenciar" ? "silenciada" : "activada"}.`,
+    try {
+      if (callback) {
+        const [action, monitorId] = String(callback.data || "").split(":", 2);
+        const monitor = monitorEntries(options.status)
+          .find((entry) => entry.id === String(monitorId));
+        if (action === "mute" && monitor) muted.add(monitor.id);
+        if (action === "unmute" && monitor) muted.delete(monitor.id);
+        await telegramRequest(
+          options.token,
+          "answerCallbackQuery",
+          {
+            callback_query_id: callback.id,
+            text: monitor
+              ? `${monitor.name}: ${muted.has(monitor.id) ? "silenciada" : "activa"}`
+              : "Búsqueda no encontrada",
+          },
+          { fetchImpl: options.fetchImpl },
         );
+        continue;
       }
+
+      const text = String(message?.text || "").trim();
+      const [rawCommand, ...argumentParts] = text.split(/\s+/);
+      const command = rawCommand.toLowerCase().split("@")[0];
+      const argument = argumentParts.join(" ");
+      if (command === "/estado") {
+        await sendReply(botStatusMessage(options.status, Array.from(muted)));
+      } else if (command === "/ayuda" || command === "/start") {
+        await sendReply([
+          "Comandos de Tarifa Radar:",
+          "/estado",
+          "/silenciar Nombre de la búsqueda",
+          "/activar Nombre de la búsqueda",
+          "/silenciadas",
+        ].join("\n"));
+      } else if (command === "/silenciadas") {
+        const names = monitorEntries(options.status)
+          .filter((monitor) => muted.has(monitor.id))
+          .map((monitor) => monitor.name);
+        await sendReply(names.length
+          ? `Silenciadas:\n${names.join("\n")}`
+          : "No hay ubicaciones silenciadas.");
+      } else if (command === "/silenciar" || command === "/activar") {
+        const monitor = findMonitor(options.status, argument);
+        if (!monitor) {
+          await sendReply("No encuentro esa búsqueda. Usa el nombre que aparece en el panel.");
+        } else {
+          if (command === "/silenciar") muted.add(monitor.id);
+          else muted.delete(monitor.id);
+          await sendReply(
+            `${monitor.name}: ${command === "/silenciar" ? "silenciada" : "activada"}.`,
+          );
+        }
+      }
+    } catch (error) {
+      updateError = error instanceof Error ? error.message : String(error);
     }
   }
   return {
     ...telegramState,
     mutedMonitorIds: Array.from(muted),
-    updateError: "",
+    updateError,
   };
 }
 

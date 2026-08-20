@@ -165,3 +165,56 @@ test("processes Telegram status and mute commands for the configured chat", asyn
   assert.deepEqual(state.mutedMonitorIds, ["sesimbra"]);
   assert.equal(requests.filter((request) => request.url.endsWith("/sendMessage")).length, 2);
 });
+
+test("advances past an expired callback and continues with newer commands", async () => {
+  const state = await processTelegramUpdates({
+    telegramState: { updateOffset: 0, mutedMonitorIds: [] },
+    token: "secret",
+    chatId: "123",
+    status: {
+      updatedAt: "2026-08-20T12:00:00.000Z",
+      summary: {},
+      monitors: {
+        sesimbra: { monitorName: "Sesimbra", sources: {} },
+      },
+    },
+    fetchImpl: async (url) => {
+      if (url.endsWith("/getUpdates")) {
+        return {
+          ok: true,
+          json: async () => ({
+            ok: true,
+            result: [
+              {
+                update_id: 20,
+                callback_query: {
+                  id: "expired",
+                  data: "mute:sesimbra",
+                  message: { chat: { id: 123 } },
+                },
+              },
+              {
+                update_id: 21,
+                message: { chat: { id: 123 }, text: "/estado" },
+              },
+            ],
+          }),
+        };
+      }
+      if (url.endsWith("/answerCallbackQuery")) {
+        return {
+          ok: false,
+          status: 400,
+          json: async () => ({ ok: false, description: "query is too old" }),
+        };
+      }
+      return {
+        ok: true,
+        json: async () => ({ ok: true, result: { message_id: 9 } }),
+      };
+    },
+  });
+  assert.equal(state.updateOffset, 22);
+  assert.deepEqual(state.mutedMonitorIds, ["sesimbra"]);
+  assert.match(state.updateError, /query is too old/);
+});
