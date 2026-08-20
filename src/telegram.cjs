@@ -33,6 +33,18 @@ function formatDate(value) {
     .replace(".", "");
 }
 
+function formatDateTime(value) {
+  const date = new Date(value || "");
+  if (Number.isNaN(date.getTime())) return "";
+  return new Intl.DateTimeFormat("es-ES", {
+    day: "2-digit",
+    month: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: "Europe/Madrid",
+  }).format(date);
+}
+
 function formatStars(stars) {
   const value = Number(stars) || 0;
   return value > 0
@@ -134,6 +146,13 @@ function formatAlert(alert) {
     Number(offer.priceConfirmationCount) >= 2
       ? `✅ <i>${escapeHtml(formatVerification(offer.source, provider))}</i>`
       : "",
+    offer.priceProof?.verifiedAt || offer.priceConfirmedAt
+      ? `🕒 Verificado ${escapeHtml(formatDateTime(
+          offer.priceProof?.verifiedAt || offer.priceConfirmedAt,
+        ))}${Number(offer.priceProof?.confirmationCount || offer.priceConfirmationCount) > 0
+          ? ` · ${Number(offer.priceProof?.confirmationCount || offer.priceConfirmationCount)} lecturas`
+          : ""}`
+      : "",
   ]
     .filter(Boolean)
     .join("\n");
@@ -169,7 +188,7 @@ function groupAlertsByLocation(alerts) {
   return groups;
 }
 
-function buildAlertMessages(alerts, options = {}) {
+function buildAlertPages(alerts, options = {}) {
   const panelUrl = options.panelUrl || PANEL_URL;
   const groups = groupAlertsByLocation(alerts);
   if (!groups.size) return [];
@@ -192,10 +211,19 @@ function buildAlertMessages(alerts, options = {}) {
         `<b>📍 ${escapeHtml(location)}</b>\n` +
         `${group.length} ${group.length === 1 ? "alerta" : "alertas"}${pageText}`;
       const footer = `<a href="${escapeHtml(panelUrl)}">Abrir ofertas de ${escapeHtml(location)}</a>`;
-      messages.push([heading, ...page.map(formatAlert), footer].join("\n\n"));
+      messages.push({
+        text: [heading, ...page.map(formatAlert), footer].join("\n\n"),
+        alerts: page,
+        monitorId: String(page[0].monitorId || ""),
+        monitorName: location,
+      });
     }
   }
   return messages;
+}
+
+function buildAlertMessages(alerts, options = {}) {
+  return buildAlertPages(alerts, options).map((page) => page.text);
 }
 
 function buildAlertMessage(alerts, options = {}) {
@@ -229,22 +257,35 @@ function sleep(milliseconds) {
 }
 
 async function sendAlertDigest(options) {
-  const messages = buildAlertMessages(options.alerts, {
+  const pages = buildAlertPages(options.alerts, {
     panelUrl: options.panelUrl,
   });
-  if (!messages.length) return { sent: false, reason: "no_alerts" };
+  if (!pages.length) return { sent: false, reason: "no_alerts" };
 
   const sleepImpl = options.sleepImpl || sleep;
   const delayMs = options.delayMs ?? MESSAGE_DELAY_MS;
   const messageIds = [];
-  for (const [index, text] of messages.entries()) {
+  for (const [index, page] of pages.entries()) {
     if (index > 0 && delayMs > 0) await sleepImpl(delayMs);
     const body = {
       chat_id: options.chatId,
-      text,
+      text: page.text,
       parse_mode: "HTML",
       link_preview_options: { is_disabled: true },
     };
+    const buttons = page.alerts
+      .filter((alert) => alert.offer?.url)
+      .map((alert) => [{
+        text: `Abrir ${String(alert.offer.hotelName || "hotel").slice(0, 48)}`,
+        url: alert.offer.url,
+      }]);
+    if (page.monitorId && `mute:${page.monitorId}`.length <= 64) {
+      buttons.push([{
+        text: `Silenciar ${String(page.monitorName).slice(0, 42)}`,
+        callback_data: `mute:${page.monitorId}`,
+      }]);
+    }
+    if (buttons.length) body.reply_markup = { inline_keyboard: buttons };
     let result;
     try {
       result = await telegramRequest(
@@ -280,9 +321,11 @@ module.exports = {
   PANEL_URL,
   buildAlertMessage,
   buildAlertMessages,
+  buildAlertPages,
   escapeHtml,
   formatAlert,
   formatDate,
+  formatDateTime,
   formatMoney,
   formatSource,
   formatVerification,

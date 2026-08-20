@@ -1313,6 +1313,150 @@ select:focus {
   background-color: var(--surface);
 }
 
+.price-calendar-section {
+  border-bottom: 8px solid var(--page);
+}
+
+.price-calendar-heading {
+  align-items: flex-end;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 16px 12px;
+}
+
+.price-calendar-heading h2 {
+  font-size: 14px;
+  margin: 3px 0 0;
+}
+
+.price-calendar-heading > small {
+  color: var(--muted);
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  text-align: right;
+}
+
+.price-calendar {
+  max-width: 100%;
+  overflow: auto;
+}
+
+.price-calendar-overview {
+  display: grid;
+  max-height: 330px;
+  overflow: auto;
+}
+
+.price-calendar-overview button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 14px;
+  grid-template-columns: minmax(0, 1fr) auto;
+  min-height: 56px;
+  padding: 9px 16px;
+  text-align: left;
+  width: 100%;
+}
+
+.price-calendar-overview button:first-child {
+  border-top: 0;
+}
+
+.price-calendar-overview button:hover {
+  background: #f7f9f4;
+}
+
+.price-calendar-overview button > span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.price-calendar-overview button > span:last-child {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.price-calendar-overview strong {
+  font-size: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.price-calendar-overview small {
+  color: var(--muted);
+  font-size: 8px;
+  margin-top: 3px;
+}
+
+.price-calendar-grid {
+  display: grid;
+  grid-template-columns: 138px repeat(var(--night-columns), minmax(86px, 1fr));
+  min-width: max-content;
+}
+
+.calendar-corner,
+.calendar-night,
+.calendar-date,
+.calendar-price {
+  align-items: center;
+  border-right: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: flex;
+  min-height: 48px;
+  padding: 7px 9px;
+}
+
+.calendar-corner,
+.calendar-night {
+  background: #eff2ec;
+  border-top: 0;
+  color: #68756f;
+  font-family: "Space Mono", monospace;
+  font-size: 8px;
+  min-height: 34px;
+}
+
+.calendar-date {
+  background: #f8faf6;
+  font-size: 9px;
+}
+
+.calendar-price {
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+.calendar-price.available {
+  background: #f4fbc8;
+  color: #405200;
+}
+
+.calendar-price.available:hover {
+  background: #eaf7a7;
+}
+
+.calendar-price strong {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+}
+
+.calendar-price small {
+  color: #60702c;
+  font-size: 8px;
+  margin-top: 2px;
+}
+
+.calendar-price.empty {
+  color: #a6afaa;
+}
+
 .deals-table {
   overflow: hidden;
 }

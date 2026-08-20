@@ -12,6 +12,7 @@ const {
 function makeAlert(overrides = {}) {
   return {
     type: "new_match",
+    monitorId: "benidorm",
     monitorName: "Benidorm",
     previousPrice: 0,
     offer: {
@@ -222,6 +223,15 @@ test("sends a digest with previews disabled", async () => {
   assert.equal(result.messageId, 42);
   assert.equal(request.body.chat_id, "123");
   assert.equal(request.body.link_preview_options.is_disabled, true);
+  assert.equal(request.body.reply_markup.inline_keyboard.length, 2);
+  assert.match(
+    request.body.reply_markup.inline_keyboard[0][0].url,
+    /booking\.com/,
+  );
+  assert.match(
+    request.body.reply_markup.inline_keyboard[1][0].callback_data,
+    /^mute:/,
+  );
   assert.match(request.url, /botsecret\/sendMessage$/);
 });
 

@@ -133,9 +133,10 @@ test("keeps date discovery moving while a failing direct source cools down", asy
   assert.equal(bookingCalls, 2);
   assert.equal(result.summary.sources.agoda.searches, 4);
   assert.equal(result.summary.sources.booking.errors, 2);
-  assert.equal(result.summary.sources.booking.skipped, 2);
+  assert.equal(result.summary.sources.booking.skipped, 0);
   assert.equal(monitorResult.sources.booking.state, "paused");
   assert.equal(monitorResult.dateCoverage.searchesCheckedThisRun, 4);
+  assert.equal(monitorResult.sourceCoverage.booking.searchesCheckedThisRun, 2);
   const storedState = JSON.parse(
     fs.readFileSync(path.join(root, "state/repository-state.json"), "utf8"),
   );
@@ -186,12 +187,12 @@ test("stops between date searches and persists the completed sweep progress", as
   const result = await runRepositoryScan({
     root,
     now: new Date("2026-08-14T18:00:00Z"),
-    scanBudgetMs: 5,
+    scanBudgetMs: 50,
     requestReserveMs: 0,
     scrapers: {
       agoda: async (search) => {
         calls += 1;
-        await new Promise((resolve) => setTimeout(resolve, 10));
+        await new Promise((resolve) => setTimeout(resolve, 60));
         return {
           source: "agoda",
           search,
@@ -207,6 +208,8 @@ test("stops between date searches and persists the completed sweep progress", as
   assert.equal(calls, 1);
   assert.equal(result.summary.timeBudgetReached, true);
   assert.equal(result.summary.stoppedEarlyMonitors, 1);
+  assert.equal(result.status.health.state, "partial");
+  assert.equal(result.status.health.completedNormally, false);
   assert.equal(
     result.status.monitors[budgetMonitor.id].dateCoverage.searchesCheckedThisRun,
     1,
@@ -254,7 +257,7 @@ test("caps expensive direct sources while discovery covers every date", async (t
     JSON.stringify({ version: 1, deals: [] }),
   );
 
-  const calls = { agoda: 0, booking: 0, google_hotels: 0 };
+  const calls = { agoda: [], booking: [], google_hotels: [] };
   const resultFor = (source, search, offers = []) => ({
     source,
     search,
@@ -268,7 +271,7 @@ test("caps expensive direct sources while discovery covers every date", async (t
     now: new Date("2026-08-14T18:00:00Z"),
     scrapers: {
       agoda: async (search) => {
-        calls.agoda += 1;
+        calls.agoda.push(search.checkIn);
         return resultFor("agoda", search, [{
           id: `agoda:${search.checkIn}:${search.checkOut}`,
           source: "agoda",
@@ -283,21 +286,60 @@ test("caps expensive direct sources while discovery covers every date", async (t
         }]);
       },
       booking: async (search) => {
-        calls.booking += 1;
+        calls.booking.push(search.checkIn);
         return resultFor("booking", search);
       },
       google_hotels: async (search) => {
-        calls.google_hotels += 1;
+        calls.google_hotels.push(search.checkIn);
         return resultFor("google_hotels", search);
       },
     },
   });
 
-  assert.deepEqual(calls, { agoda: 4, booking: 2, google_hotels: 1 });
+  assert.deepEqual(calls, {
+    agoda: ["2026-09-01", "2026-09-02", "2026-09-03", "2026-09-04"],
+    booking: ["2026-09-01", "2026-09-02"],
+    google_hotels: ["2026-09-01"],
+  });
   assert.equal(
     result.status.monitors[directMonitor.id].dateCoverage.searchesCheckedThisRun,
     4,
   );
+  assert.equal(
+    result.status.monitors[directMonitor.id].sourceCoverage.booking.nextIndex,
+    2,
+  );
+  assert.equal(
+    result.status.monitors[directMonitor.id].sourceCoverage.google_hotels.nextIndex,
+    1,
+  );
+
+  calls.agoda.length = 0;
+  calls.booking.length = 0;
+  calls.google_hotels.length = 0;
+  await runRepositoryScan({
+    root,
+    now: new Date("2026-08-14T18:05:00Z"),
+    scrapers: {
+      agoda: async (search) => {
+        calls.agoda.push(search.checkIn);
+        return resultFor("agoda", search);
+      },
+      booking: async (search) => {
+        calls.booking.push(search.checkIn);
+        return resultFor("booking", search);
+      },
+      google_hotels: async (search) => {
+        calls.google_hotels.push(search.checkIn);
+        return resultFor("google_hotels", search);
+      },
+    },
+  });
+  assert.deepEqual(calls, {
+    agoda: ["2026-09-05", "2026-09-06", "2026-09-07", "2026-09-08"],
+    booking: ["2026-09-03", "2026-09-04"],
+    google_hotels: ["2026-09-02"],
+  });
 });
 
 test("drops deals created for an older monitor configuration", () => {
@@ -596,6 +638,15 @@ test("publishes a price after two checks in the same scan cycle", () => {
   assert.equal(first.confirmationCount, 2);
   assert.equal(first.source, "google_hotels");
   assert.equal(offerStateIsConfirmed(first), true);
+  assert.deepEqual(first.priceHistory, [{
+    at: "2026-07-29T08:45:00.000Z",
+    totalPrice: 120,
+    nightlyPrice: 30,
+    source: "google_hotels",
+    provider: "",
+  }]);
+  assert.equal(first.priceProof.totalPrice, 120);
+  assert.equal(first.priceProof.confirmationCount, 2);
 
   const unconfirmed = updateOfferState(
     first,
@@ -619,6 +670,10 @@ test("publishes a price after two checks in the same scan cycle", () => {
   );
   assert.equal(changedPrice.confirmationCount, 0);
   assert.equal(offerStateIsConfirmed(changedPrice), false);
+  assert.deepEqual(
+    changedPrice.priceHistory.map((sample) => sample.totalPrice),
+    [120, 130],
+  );
 
   const unavailable = updateOfferState(
     first,

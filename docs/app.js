@@ -320,6 +320,7 @@
 
   function renderConnectionState() {
     const updatedAt = state.status.updatedAt;
+    const cycleHealth = state.status.health || state.status.summary?.health || {};
     const age = updatedAt ? Date.now() - Date.parse(updatedAt) : Infinity;
     const online = age < 30 * 60_000;
     const configChangedAt = Date.parse(state.config.updatedAt || "");
@@ -332,6 +333,10 @@
     $("#scanner-dot").classList.toggle("online", online || pendingConfig);
     $("#scanner-label").textContent = pendingConfig
       ? "Cambio pendiente"
+      : cycleHealth.state === "partial"
+        ? "Ciclo parcial"
+        : cycleHealth.state === "degraded"
+          ? "Escáner degradado"
       : online
         ? "Escáner activo"
         : "Esperando ciclo";
@@ -344,8 +349,21 @@
     $("#sync-badge").innerHTML = pendingConfig
       ? '<i data-lucide="clock-3"></i> Actualizando'
       : '<i data-lucide="cloud"></i> Sincronizado';
+    const durationSeconds = Number(cycleHealth.durationMs) > 0
+      ? Math.round(Number(cycleHealth.durationMs) / 1_000)
+      : 0;
+    const cycleDetail = [
+      updatedAt ? `Último ciclo: ${formatDateTime(updatedAt)}` : "",
+      Number(cycleHealth.searchesCompleted) >= 0
+        ? `${Number(cycleHealth.searchesCompleted)} consultas`
+        : "",
+      durationSeconds ? `${durationSeconds} s` : "",
+      cycleHealth.recoveredAfterInterruption
+        ? `recuperado tras ${Number(cycleHealth.gapMinutes)} min`
+        : "",
+    ].filter(Boolean).join(" · ");
     $("#github-status").textContent = updatedAt
-      ? `Último ciclo: ${formatDateTime(updatedAt)}.`
+      ? `${cycleDetail}.`
       : "Escáner gratuito programado.";
     renderSourceHealthSummary();
   }
@@ -457,17 +475,33 @@
   function monitorCoverageMarkup(monitor) {
     const monitorStatus = statusForMonitor(monitor.id);
     const coverage = monitorStatus?.dateCoverage;
+    const sourceCoverage = monitorStatus?.sourceCoverage || {};
     const sourcesStatus = monitorStatus?.sources || {};
     const sourcePills = (monitor.sources || ["booking"])
       .filter((source) => sources.some(([id]) => id === source))
       .map((source) => {
         const current = sourcesStatus[source];
+        const currentCoverage = sourceCoverage[source] || current?.dateCoverage;
         const health = sourceHealthLabel(current);
         const offers = Number(current?.offers || 0);
         const matches = Number(current?.matches || 0);
         const resultDetail = Number(current?.searches || 0) > 0
           ? `${offers} precios vistos · ${matches} cumplen`
           : "Sin consulta en este ciclo";
+        const coverageTotal = Math.max(
+          0,
+          Number(currentCoverage?.totalSearches) || 0,
+        );
+        const coverageRemaining = Math.max(
+          0,
+          Number(currentCoverage?.remainingSearchesInSweep) || 0,
+        );
+        const coverageChecked = currentCoverage?.completedSweep
+          ? coverageTotal
+          : Math.max(0, coverageTotal - coverageRemaining);
+        const coverageText = coverageTotal
+          ? `${coverageChecked}/${coverageTotal}`
+          : "";
         const detail = health === "paused"
           ? `Pausado hasta ${current?.retryAt ? formatDateTime(current.retryAt) : "el siguiente intento"}`
           : health === "degraded"
@@ -481,7 +515,7 @@
                 : "Pendiente del próximo ciclo";
         return `<span class="source-health ${health}" title="${escapeHtml(detail)}">
           <i data-lucide="${health === "paused" ? "pause" : health === "degraded" ? "triangle-alert" : health === "limited" ? "clock-3" : "check"}"></i>
-          ${escapeHtml(sourceLabel(source))}${Number(current?.searches || 0) > 0 ? ` · ${offers}/${matches}` : ""}
+          ${escapeHtml(sourceLabel(source))}${coverageText ? ` · ${escapeHtml(coverageText)}` : ""}
         </span>`;
       })
       .join("");
@@ -494,10 +528,9 @@
     const percent = Math.min(100, Math.round((checked / total) * 100));
     return `<span class="monitor-scan-meta">
       <span class="coverage-line">
-        <span>Cobertura del barrido</span>
-        <b>${checked}/${total} · ${percent}%</b>
+        <span>Cobertura por buscador</span>
+        <b>${sourcePills ? "independiente" : `${checked}/${total} · ${percent}%`}</b>
       </span>
-      <span class="coverage-track"><span style="width:${percent}%"></span></span>
       <span class="source-health-row">${sourcePills}</span>
     </span>`;
   }
@@ -700,6 +733,31 @@
     return deal.taxesText || "Total final comprobado";
   }
 
+  function priceHistoryNote(deal) {
+    const history = Array.isArray(deal.priceHistory)
+      ? deal.priceHistory.filter((sample) => Number(sample?.totalPrice) > 0)
+      : [];
+    if (!history.length) return "Sin historial anterior";
+    const prices = history.map((sample) => Number(sample.totalPrice));
+    const minimum = Math.min(...prices);
+    const maximum = Math.max(...prices);
+    const range = Math.abs(maximum - minimum) >= 0.01
+      ? ` · ${minimum.toFixed(2)}–${maximum.toFixed(2)} €`
+      : "";
+    return `${history.length} ${history.length === 1 ? "verificación" : "verificaciones"}${range}`;
+  }
+
+  function priceProofNote(deal) {
+    const proof = deal.priceProof || {};
+    const verifiedAt = proof.verifiedAt || deal.priceConfirmedAt || deal.updatedAt;
+    const confirmations = Number(
+      proof.confirmationCount || deal.priceConfirmationCount,
+    );
+    return `Comprobado ${formatDateTime(verifiedAt)}${
+      confirmations > 0 ? ` · ${confirmations} lecturas coincidentes` : ""
+    }`;
+  }
+
   function comparisonDeal(group) {
     const ordered = [...group].sort(
       (left, right) => Number(left.totalPrice) - Number(right.totalPrice),
@@ -757,6 +815,8 @@
                   <span class="provider-offer-name">
                     <strong>${escapeHtml(deal.provider || sourceLabel(deal.source || "booking"))}</strong>
                     <small>${escapeHtml(providerPriceNote(deal))}</small>
+                    <small>${escapeHtml(priceProofNote(deal))}</small>
+                    <small>${escapeHtml(priceHistoryNote(deal))}</small>
                   </span>
                   ${index === 0 && ordered.length > 1 ? '<span class="best-price">Mejor</span>' : ""}
                   <span class="provider-offer-price">
@@ -783,6 +843,114 @@
           <p>${escapeHtml(message)}</p>
         </div>
     `;
+  }
+
+  function calendarDates(monitor, deals) {
+    const today = isoDate(new Date());
+    const dealDates = (deals || []).map((deal) => deal.checkIn).filter(Boolean);
+    let start = monitor.dateStart || today;
+    let end = monitor.dateEnd || start;
+    if (monitor.dateMode === "flexible") {
+      start = start > today ? start : today;
+      end = isoDate(addDays(new Date(`${start}T12:00:00`), 30));
+    }
+    const dates = [];
+    let cursor = new Date(`${start}T12:00:00`);
+    const last = new Date(`${end}T12:00:00`);
+    while (
+      !Number.isNaN(cursor.getTime()) &&
+      !Number.isNaN(last.getTime()) &&
+      cursor <= last &&
+      dates.length < 42
+    ) {
+      dates.push(isoDate(cursor));
+      cursor = addDays(cursor, 1);
+    }
+    return Array.from(new Set([...dates, ...dealDates])).sort().slice(0, 42);
+  }
+
+  function calendarNights(monitor, deals) {
+    const minimum = Math.max(1, Number(monitor.minNights) || 1);
+    const maximum = Math.max(minimum, Number(monitor.maxNights) || minimum);
+    if (maximum - minimum <= 6) {
+      return Array.from(
+        { length: maximum - minimum + 1 },
+        (_, index) => minimum + index,
+      );
+    }
+    const observed = Array.from(
+      new Set((deals || []).map((deal) => Number(deal.nights)).filter(Boolean)),
+    ).sort((left, right) => left - right);
+    return observed.length ? observed.slice(0, 7) : [minimum, maximum];
+  }
+
+  function renderPriceCalendar(deals, monitorById) {
+    const container = $("#price-calendar");
+    const meta = $("#price-calendar-meta");
+    if (!container || !meta) return;
+    if (state.dealMonitorFilter === "all") {
+      meta.textContent = `${state.config.monitors.length} búsquedas`;
+      container.innerHTML = `<div class="price-calendar-overview">${state.config.monitors
+        .map((monitor) => {
+          const monitorDeals = deals.filter(
+            (deal) => String(deal.monitorId) === String(monitor.id),
+          );
+          const best = [...monitorDeals].sort(
+            (left, right) => Number(left.totalPrice) - Number(right.totalPrice),
+          )[0];
+          return `<button type="button" data-calendar-monitor="${escapeHtml(monitor.id)}">
+            <span><strong>${escapeHtml(monitor.name)}</strong><small>${escapeHtml(monitor.location)}</small></span>
+            ${best
+              ? `<span><strong>${Number(best.totalPrice).toFixed(2)} €</strong><small>${escapeHtml(formatDate(best.checkIn))} · ${escapeHtml(best.nights)} ${Number(best.nights) === 1 ? "noche" : "noches"}</small></span>`
+              : "<span><strong>Sin oferta</strong><small>verificada</small></span>"}
+          </button>`;
+        })
+        .join("")}</div>`;
+      container.querySelectorAll("[data-calendar-monitor]").forEach((button) => {
+        button.addEventListener("click", () => {
+          state.dealMonitorFilter = button.dataset.calendarMonitor;
+          renderDeals();
+          refreshIcons();
+        });
+      });
+      return;
+    }
+
+    const monitor = monitorById.get(state.dealMonitorFilter);
+    const monitorDeals = deals.filter(
+      (deal) => String(deal.monitorId) === state.dealMonitorFilter,
+    );
+    if (!monitor) {
+      meta.textContent = "";
+      container.innerHTML = "";
+      return;
+    }
+    const dates = calendarDates(monitor, monitorDeals);
+    const nights = calendarNights(monitor, monitorDeals);
+    meta.textContent = `${monitor.name} · ${dates.length} entradas`;
+    const bestByStay = new Map();
+    for (const deal of monitorDeals) {
+      const key = `${deal.checkIn}|${deal.nights}`;
+      const current = bestByStay.get(key);
+      if (!current || Number(deal.totalPrice) < Number(current.totalPrice)) {
+        bestByStay.set(key, deal);
+      }
+    }
+    container.innerHTML = `<div class="price-calendar-grid" style="--night-columns:${nights.length}">
+      <span class="calendar-corner">Entrada</span>
+      ${nights.map((night) => `<strong class="calendar-night">${night} ${night === 1 ? "noche" : "noches"}</strong>`).join("")}
+      ${dates.map((date) => `
+        <strong class="calendar-date">${escapeHtml(formatDate(date))}</strong>
+        ${nights.map((night) => {
+          const deal = bestByStay.get(`${date}|${night}`);
+          if (!deal) return '<span class="calendar-price empty">—</span>';
+          return `<a class="calendar-price available" href="${escapeHtml(safeUrl(deal.url))}" target="_blank" rel="noreferrer" title="${escapeHtml(`${deal.hotelName} · ${sourceLabel(deal.source)}`)}">
+            <strong>${Number(deal.totalPrice).toFixed(0)} €</strong>
+            <small>${Number(deal.nightlyPrice).toFixed(0)} €/n</small>
+          </a>`;
+        }).join("")}
+      `).join("")}
+    </div>`;
   }
 
   function renderDeals() {
@@ -818,7 +986,8 @@
       ? deals
       : deals.filter(
         (deal) => String(deal.monitorId) === state.dealMonitorFilter,
-      );
+       );
+    renderPriceCalendar(deals, monitorById);
     $("#deal-count").textContent = String(deals.length);
 
     if (!filteredDeals.length) {

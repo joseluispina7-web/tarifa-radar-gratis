@@ -24,7 +24,6 @@ const {
 } = require("./remote-scan.cjs");
 const {
   googleDateEligibility,
-  googleProbeIsDue,
   recordSourceFailure,
   recordSourceSuccess,
   sourceCanRun,
@@ -32,7 +31,7 @@ const {
 
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
-const DATE_SWEEP_VERSION = 3;
+const DATE_SWEEP_VERSION = 4;
 const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
 const CURRENT_BOOKING_PRICE_BASES = new Set([
@@ -49,6 +48,7 @@ const DIRECT_SEARCH_LIMITS = {
 const DEFAULT_SCAN_BUDGET_MS = 270_000;
 const DEFAULT_REQUEST_RESERVE_MS = 45_000;
 const DEFAULT_SOURCE_TIMEOUT_MS = 20_000;
+const MAX_PRICE_HISTORY_SAMPLES = 24;
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -110,6 +110,96 @@ function inclusiveDays(start, end) {
   return Math.round((last - first) / 86_400_000) + 1;
 }
 
+function appendPriceHistory(previousHistory, offer, searchedAt) {
+  const history = Array.isArray(previousHistory)
+    ? previousHistory.filter((sample) =>
+        Number.isFinite(Number(sample?.totalPrice)) && Number(sample.totalPrice) > 0
+      )
+    : [];
+  const totalPrice = Number(offer.totalPrice);
+  if (offer.priceVerified !== true || !Number.isFinite(totalPrice) || totalPrice <= 0) {
+    return history.slice(-MAX_PRICE_HISTORY_SAMPLES);
+  }
+  const sample = {
+    at: searchedAt,
+    totalPrice,
+    nightlyPrice: Number(offer.nightlyPrice) || 0,
+    source: offer.source,
+    provider: offer.provider || "",
+  };
+  const previous = history.at(-1);
+  const duplicated = previous &&
+    previous.at === sample.at &&
+    Number(previous.totalPrice) === sample.totalPrice &&
+    Number(previous.nightlyPrice) === sample.nightlyPrice &&
+    String(previous.source || "") === String(sample.source || "") &&
+    String(previous.provider || "") === String(sample.provider || "");
+  return (duplicated ? history : [...history, sample]).slice(
+    -MAX_PRICE_HISTORY_SAMPLES,
+  );
+}
+
+function buildPriceProof(offer, searchedAt) {
+  if (offer.priceVerified !== true) return null;
+  return {
+    verifiedAt: offer.priceConfirmedAt || searchedAt,
+    source: offer.source,
+    provider: offer.provider || "",
+    priceBasis: offer.priceBasis || "",
+    priceEvidence: offer.priceEvidence || "",
+    totalPrice: Number(offer.totalPrice) || 0,
+    nightlyPrice: Number(offer.nightlyPrice) || 0,
+    confirmationCount: Number(offer.priceConfirmationCount) || 0,
+    taxesText: offer.taxesText || "",
+  };
+}
+
+function advanceDateSweep(shape, cursor, completedSearches, startDate, now) {
+  let nextIndex = cursor;
+  let nextStartDate = startDate;
+  let completedSweep = false;
+  if (shape && completedSearches > 0) {
+    nextIndex = cursor + completedSearches;
+    if (nextIndex >= shape.combinations) {
+      nextIndex = 0;
+      nextStartDate = now.toISOString().slice(0, 10);
+      completedSweep = true;
+    }
+  }
+  return { nextIndex, nextStartDate, completedSweep };
+}
+
+function dateCoverageStatus(
+  monitor,
+  shape,
+  cursor,
+  completedSearches,
+  startDate,
+  now,
+) {
+  const advanced = advanceDateSweep(
+    shape,
+    cursor,
+    completedSearches,
+    startDate,
+    now,
+  );
+  return {
+    mode: monitor.dateMode,
+    sweepStartDate: startDate,
+    totalCombinations: shape.exactCombinations,
+    totalSearches: shape.combinations,
+    startIndex: cursor,
+    searchesCheckedThisRun: completedSearches,
+    nextIndex: advanced.nextIndex,
+    remainingSearchesInSweep: advanced.completedSweep
+      ? 0
+      : shape.combinations - advanced.nextIndex,
+    completedSweep: advanced.completedSweep,
+    nextSweepStartDate: advanced.nextStartDate,
+  };
+}
+
 function readJson(filePath, fallback) {
   try {
     return JSON.parse(fs.readFileSync(filePath, "utf8"));
@@ -141,6 +231,11 @@ function updateOfferState(
   const previousPublishedPrice =
     Number(previous.publishedPrice) ||
     (previous.matches ? Number(previous.totalPrice) : 0);
+  const priceHistory = appendPriceHistory(
+    previous.priceHistory,
+    offer,
+    searchedAt,
+  );
   return {
     source: offer.source,
     provider: offer.provider,
@@ -151,6 +246,8 @@ function updateOfferState(
     priceVerified: offer.priceVerified,
     priceBasis: offer.priceBasis,
     priceEvidence: offer.priceEvidence,
+    priceProof: buildPriceProof(offer, searchedAt),
+    priceHistory,
     searchArea: offer.searchArea,
     checkIn: offer.checkIn,
     checkOut: offer.checkOut,
@@ -332,6 +429,9 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
     stayText: offer.stayText,
     priceVerified: offer.priceVerified,
     priceBasis: offer.priceBasis,
+    priceEvidence: offer.priceEvidence,
+    priceProof: offer.priceProof,
+    priceHistory: offer.priceHistory,
     priceConfirmedAt: offer.priceConfirmedAt,
     stars: offer.stars,
     guestRating: offer.guestRating,
@@ -419,6 +519,12 @@ async function runRepositoryScan(options = {}) {
   });
   const previousDeals = readJson(dealsPath, { deals: [] });
   const now = options.now || new Date();
+  const previousCompletedAt =
+    previousState.health?.lastCompletedAt || previousState.updatedAt || "";
+  const previousCompletedTime = Date.parse(previousCompletedAt);
+  const cycleGapMinutes = Number.isFinite(previousCompletedTime)
+    ? Math.max(0, Math.round((now.getTime() - previousCompletedTime) / 60_000))
+    : null;
   const runtimeScrapers = {
     ...AUTOMATIC_SCRAPERS,
     ...(options.scrapers || {}),
@@ -445,6 +551,7 @@ async function runRepositoryScan(options = {}) {
     version: 1,
     updatedAt: now.toISOString(),
     monitors: { ...(previousState.monitors || {}) },
+    telegram: { ...(previousState.telegram || {}) },
   };
   const dealMap = buildDealMap(previousDeals, activeMonitors);
   const monitorStatus = {};
@@ -485,16 +592,36 @@ async function runRepositoryScan(options = {}) {
       dateSweepShape &&
       beforeMonitor.dateSweepVersion === DATE_SWEEP_VERSION &&
       beforeMonitor.dateSweepMode === monitor.dateMode;
-    const dateSweepCursor = dateSweepStateIsCurrent
-      ? Math.max(0, Number(beforeMonitor.dateSweepCursor) || 0) %
-        dateSweepShape.combinations
+    const legacyDateSweepCursor = dateSweepStateIsCurrent
+      ? Math.max(0, Number(beforeMonitor.dateSweepCursor) || 0)
       : 0;
-    const dateSweepStartDate = dateSweepShape
-      ? (dateSweepStateIsCurrent
-          ? beforeMonitor.dateSweepStartDate
-          : "") ||
-        now.toISOString().slice(0, 10)
-      : "";
+    const storedSweepCursors = dateSweepStateIsCurrent
+      ? beforeMonitor.sourceDateSweepCursors || {}
+      : {};
+    const storedSweepStartDates = dateSweepStateIsCurrent
+      ? beforeMonitor.sourceDateSweepStartDates || {}
+      : {};
+    const today = now.toISOString().slice(0, 10);
+    const sweepStateFor = (key) => ({
+      cursor: dateSweepShape
+        ? Math.max(
+            0,
+            Number(storedSweepCursors[key] ?? legacyDateSweepCursor) || 0,
+          ) % dateSweepShape.combinations
+        : 0,
+      startDate: dateSweepShape
+        ? String(
+            storedSweepStartDates[key] ||
+              beforeMonitor.dateSweepStartDate ||
+              today,
+          )
+        : "",
+    });
+    const sourceSweepStates = {
+      discovery: sweepStateFor("discovery"),
+      booking: sweepStateFor("booking"),
+      google_hotels: sweepStateFor("google_hotels"),
+    };
     const nextOffers = { ...(beforeMonitor.offers || {}) };
     const monitorMatchingOffers = new Set();
     const monitorMatchingOffersBySource = new Map();
@@ -535,23 +662,28 @@ async function runRepositoryScan(options = {}) {
     }
     status.nearbyLocations = nearbyLocations.map((location) => location.name);
 
-    const scanRequests = buildMonitorScanRequests(
+    const buildSweepRequests = (key) => buildMonitorScanRequests(
       monitor,
       nearbyLocations,
       now,
       dateSweepShape
         ? {
-            startIndex: dateSweepCursor,
-            anchorDate: dateSweepStartDate,
+            startIndex: sourceSweepStates[key].cursor,
+            anchorDate: sourceSweepStates[key].startDate,
           }
         : {},
     );
+    const scanRequests = buildSweepRequests("discovery");
+    const sourceScanRequests = {
+      discovery: scanRequests,
+      booking: buildSweepRequests("booking"),
+      google_hotels: buildSweepRequests("google_hotels"),
+    };
     const selectedSources = (monitor.sources || ["booking"])
       .filter((source) => sourceIsEnabledForMonitor(monitor, source));
     const successfulSearches = new Map(
       selectedSources.map((source) => [source, 0]),
     );
-    const bookingHeartbeatNights = new Set();
     const directSearches = new Map(
       Object.keys(DIRECT_SEARCH_LIMITS).map((source) => [source, 0]),
     );
@@ -607,8 +739,25 @@ async function runRepositoryScan(options = {}) {
       }
     };
 
-    let completedDateSweepRequests = 0;
-    for (const request of scanRequests) {
+    const completedSweepSearches = {
+      discovery: 0,
+      booking: 0,
+      google_hotels: 0,
+    };
+    const sweepBlocked = {
+      discovery: false,
+      booking: false,
+      google_hotels: false,
+    };
+    const discoverySources = selectedSources.filter((source) =>
+      DISCOVERY_SOURCES.has(source)
+    );
+    const requestCount = Math.max(
+      scanRequests.length,
+      sourceScanRequests.booking.length,
+      sourceScanRequests.google_hotels.length,
+    );
+    for (let requestIndex = 0; requestIndex < requestCount; requestIndex += 1) {
       if (timeBudgetReached()) {
         status.stoppedEarly = true;
         status.stopReason = "scan_time_budget";
@@ -616,78 +765,103 @@ async function runRepositoryScan(options = {}) {
         summary.stoppedEarlyMonitors += 1;
         break;
       }
-      const { dates, area } = request;
-      const discoverySources = selectedSources.filter((source) =>
-        DISCOVERY_SOURCES.has(source)
-      );
-      const discoveryRuns = await Promise.all(
-        discoverySources.map((source) => runSource(source, dates, area)),
-      );
-      const successfulDiscoveryRuns = discoveryRuns.filter(
-        (run) => run.result,
-      );
-      const exactSearchInput = monitorToSearch(monitor, dates, area);
-      const promisingCandidate =
-        discoverySources.length === 0 ||
-        successfulDiscoveryRuns.length === 0 ||
-        successfulDiscoveryRuns.some((run) =>
-          resultHasPromisingCandidate(run.result, exactSearchInput)
+      const discoveryRequest = sourceScanRequests.discovery[requestIndex];
+      let discoveryRuns = [];
+      if (
+        discoveryRequest &&
+        discoverySources.length > 0 &&
+        !sweepBlocked.discovery
+      ) {
+        discoveryRuns = await Promise.all(
+          discoverySources.map(async (source) => ({
+            ...(await runSource(
+              source,
+              discoveryRequest.dates,
+              discoveryRequest.area,
+            )),
+            sweepKey: "discovery",
+          })),
         );
-      const directRuns = [];
-
-      if (selectedSources.includes("booking")) {
-        const nights = Number(dates.nights) || 0;
-        const needsHeartbeat = !bookingHeartbeatNights.has(nights);
-        const withinCycleLimit =
-          directSearches.get("booking") < DIRECT_SEARCH_LIMITS.booking;
-        if ((promisingCandidate || needsHeartbeat) && withinCycleLimit) {
-          bookingHeartbeatNights.add(nights);
-          const bookingRun = await runSource(
-            "booking",
-            bookingDiscoveryDates(monitor, dates),
-            area,
-          );
-          if (!bookingRun.skipped) {
-            directSearches.set(
-              "booking",
-              directSearches.get("booking") + 1,
-            );
-          }
-          directRuns.push(bookingRun);
-        } else if (!withinCycleLimit) {
-          directRuns.push(skipSource("booking", "cycle_search_limit"));
+        if (discoveryRuns.some((run) => run.result)) {
+          completedSweepSearches.discovery += 1;
         } else {
-          directRuns.push(skipSource("booking", "waiting_for_candidate"));
+          sweepBlocked.discovery = true;
         }
       }
+      const directRuns = [];
 
-      if (selectedSources.includes("google_hotels")) {
-        const eligibility = googleDateEligibility(dates.checkIn, now);
-        const withinCycleLimit =
-          directSearches.get("google_hotels") <
-          DIRECT_SEARCH_LIMITS.google_hotels;
-        if (!eligibility.eligible) {
-          directRuns.push(skipSource("google_hotels", eligibility.reason));
-        } else if (!withinCycleLimit) {
-          directRuns.push(
-            skipSource("google_hotels", "cycle_search_limit"),
+      const bookingRequest = sourceScanRequests.booking[requestIndex];
+      if (
+        selectedSources.includes("booking") &&
+        bookingRequest &&
+        !sweepBlocked.booking &&
+        directSearches.get("booking") < DIRECT_SEARCH_LIMITS.booking
+      ) {
+        const bookingRun = {
+          ...(await runSource(
+            "booking",
+            bookingDiscoveryDates(monitor, bookingRequest.dates),
+            bookingRequest.area,
+          )),
+          sweepKey: "booking",
+        };
+        if (bookingRun.skipped) {
+          sweepBlocked.booking = true;
+        } else {
+          directSearches.set(
+            "booking",
+            directSearches.get("booking") + 1,
           );
-        } else if (
-          promisingCandidate ||
-          googleProbeIsDue(sourceHealth, now)
-        ) {
-          const googleRun = await runSource("google_hotels", dates, area);
-          if (!googleRun.skipped) {
+          completedSweepSearches.booking += 1;
+        }
+        directRuns.push(bookingRun);
+      }
+
+      const googleRequest = sourceScanRequests.google_hotels[requestIndex];
+      if (
+        selectedSources.includes("google_hotels") &&
+        googleRequest &&
+        !sweepBlocked.google_hotels &&
+        directSearches.get("google_hotels") <
+          DIRECT_SEARCH_LIMITS.google_hotels
+      ) {
+        const eligibility = googleDateEligibility(
+          googleRequest.dates.checkIn,
+          now,
+        );
+        if (!eligibility.eligible) {
+          directRuns.push(
+            {
+              ...skipSource("google_hotels", eligibility.reason),
+              dates: googleRequest.dates,
+              searchInput: monitorToSearch(
+                monitor,
+                googleRequest.dates,
+                googleRequest.area,
+              ),
+              sweepKey: "google_hotels",
+            },
+          );
+          completedSweepSearches.google_hotels += 1;
+        } else {
+          const googleRun = {
+            ...(await runSource(
+              "google_hotels",
+              googleRequest.dates,
+              googleRequest.area,
+            )),
+            sweepKey: "google_hotels",
+          };
+          if (googleRun.skipped) {
+            sweepBlocked.google_hotels = true;
+          } else {
             directSearches.set(
               "google_hotels",
               directSearches.get("google_hotels") + 1,
             );
+            completedSweepSearches.google_hotels += 1;
           }
           directRuns.push(googleRun);
-        } else {
-          directRuns.push(
-            skipSource("google_hotels", "waiting_for_candidate"),
-          );
         }
       }
 
@@ -695,15 +869,18 @@ async function runRepositoryScan(options = {}) {
         (run) => DIRECT_SOURCES.has(run.source) || DISCOVERY_SOURCES.has(run.source),
       );
       const marketGroups = new Map();
-      for (const offer of sourceRuns.flatMap((run) => run.result?.offers || [])) {
-        const key = `${offer.checkIn || dates.checkIn}|${offer.checkOut || dates.checkOut}`;
-        if (!marketGroups.has(key)) marketGroups.set(key, []);
-        marketGroups.get(key).push(offer);
+      for (const run of sourceRuns) {
+        for (const offer of run.result?.offers || []) {
+          const key = `${offer.checkIn || run.dates?.checkIn}|${
+            offer.checkOut || run.dates?.checkOut
+          }`;
+          if (!marketGroups.has(key)) marketGroups.set(key, []);
+          marketGroups.get(key).push(offer);
+        }
       }
       for (const marketOffers of marketGroups.values()) {
         annotateMarketPrices(marketOffers);
       }
-      let requestSucceeded = false;
       for (const run of sourceRuns) {
         const { source } = run;
         if (run.skipped) continue;
@@ -718,14 +895,13 @@ async function runRepositoryScan(options = {}) {
             monitorId: monitor.id,
             monitorName: monitor.name,
             source,
-            dates: run.dates || dates,
-            searchArea: area.name,
+            dates: run.dates,
+            searchArea: run.searchInput?.searchArea || monitor.location,
             message,
           });
           continue;
         }
 
-        requestSucceeded = true;
         const { result } = run;
         successfulSearches.set(
           source,
@@ -741,8 +917,8 @@ async function runRepositoryScan(options = {}) {
             monitorId: monitor.id,
             monitorName: monitor.name,
             source,
-            dates: run.dates || dates,
-            searchArea: area.name,
+            dates: run.dates,
+            searchArea: run.searchInput?.searchArea || monitor.location,
             ...error,
           })),
         );
@@ -750,10 +926,10 @@ async function runRepositoryScan(options = {}) {
           dealMap,
           monitor.id,
           {
-            checkIn: result.search?.checkIn || run.dates?.checkIn || dates.checkIn,
+            checkIn: result.search?.checkIn || run.dates?.checkIn,
             checkOut:
-              result.search?.checkOut || run.dates?.checkOut || dates.checkOut,
-            nights: result.search?.nights || run.dates?.nights || dates.nights,
+              result.search?.checkOut || run.dates?.checkOut,
+            nights: result.search?.nights || run.dates?.nights,
             flexibleCheckInStart: result.search?.flexibleWindowDays
               ? result.search.flexibleCheckInStart
               : undefined,
@@ -761,7 +937,7 @@ async function runRepositoryScan(options = {}) {
               ? result.search.flexibleCheckInEnd
               : undefined,
           },
-          area.name,
+          run.searchInput?.searchArea || monitor.location,
           source,
         );
 
@@ -775,6 +951,8 @@ async function runRepositoryScan(options = {}) {
             result.searchedAt,
             now.toISOString(),
           );
+          offer.priceHistory = nextOfferState.priceHistory;
+          offer.priceProof = nextOfferState.priceProof;
           const confirmed = offerStateIsConfirmed(nextOfferState);
           if (confirmed) {
             const previousPublishedPrice =
@@ -790,6 +968,11 @@ async function runRepositoryScan(options = {}) {
             offer.priceConfirmationCount = nextOfferState.confirmationCount;
             offer.priceConfirmedAt =
               offer.priceConfirmedAt || result.searchedAt;
+            offer.priceProof = {
+              ...(offer.priceProof || buildPriceProof(offer, result.searchedAt)),
+              verifiedAt: offer.priceConfirmedAt,
+              confirmationCount: nextOfferState.confirmationCount,
+            };
             nextOfferState.publishedPrice = offer.totalPrice;
             monitorMatchingOffers.add(offerKey);
             monitorMatchingOffersBySource.get(source).add(offerKey);
@@ -831,8 +1014,6 @@ async function runRepositoryScan(options = {}) {
             currentMatchingOffersBySource.get(source).size;
         }
       }
-      if (dateSweepShape && requestSucceeded) completedDateSweepRequests += 1;
-      if (dateSweepShape && !requestSucceeded) break;
     }
 
     for (const source of selectedSources) {
@@ -854,31 +1035,41 @@ async function runRepositoryScan(options = {}) {
       monitorSource.retryAt = availability.retryAt || monitorSource.retryAt || "";
     }
 
-    let nextDateSweepCursor = dateSweepCursor;
-    let nextDateSweepStartDate = dateSweepStartDate;
-    let completedDateSweep = false;
+    let nextDateSweepCursor = 0;
+    let nextDateSweepStartDate = "";
+    const nextSourceSweepCursors = {};
+    const nextSourceSweepStartDates = {};
     if (dateSweepShape) {
-      if (completedDateSweepRequests > 0) {
-        nextDateSweepCursor = dateSweepCursor + completedDateSweepRequests;
-        if (nextDateSweepCursor >= dateSweepShape.combinations) {
-          nextDateSweepCursor = 0;
-          nextDateSweepStartDate = now.toISOString().slice(0, 10);
-          completedDateSweep = true;
-        }
+      status.sourceCoverage = {};
+      const sweepKeys = ["discovery", "booking", "google_hotels"];
+      const coverageByKey = {};
+      for (const key of sweepKeys) {
+        const sweep = sourceSweepStates[key];
+        const coverage = dateCoverageStatus(
+          monitor,
+          dateSweepShape,
+          sweep.cursor,
+          completedSweepSearches[key],
+          sweep.startDate,
+          now,
+        );
+        coverageByKey[key] = coverage;
+        nextSourceSweepCursors[key] = coverage.nextIndex;
+        nextSourceSweepStartDates[key] = coverage.nextSweepStartDate;
       }
-      status.dateCoverage = {
-        mode: monitor.dateMode,
-        sweepStartDate: dateSweepStartDate,
-        totalCombinations: dateSweepShape.exactCombinations,
-        totalSearches: dateSweepShape.combinations,
-        startIndex: dateSweepCursor,
-        searchesCheckedThisRun: completedDateSweepRequests,
-        nextIndex: nextDateSweepCursor,
-        remainingSearchesInSweep: completedDateSweep
-          ? 0
-          : dateSweepShape.combinations - nextDateSweepCursor,
-        completedSweep: completedDateSweep,
-      };
+      for (const source of selectedSources) {
+        const key = DISCOVERY_SOURCES.has(source) ? "discovery" : source;
+        status.sourceCoverage[source] = coverageByKey[key];
+        status.sources[source].dateCoverage = coverageByKey[key];
+      }
+      const primarySweepKey = discoverySources.length > 0
+        ? "discovery"
+        : selectedSources.find((source) => DIRECT_SOURCES.has(source)) ||
+          "discovery";
+      status.dateCoverage = coverageByKey[primarySweepKey];
+      nextDateSweepCursor = coverageByKey[primarySweepKey].nextIndex;
+      nextDateSweepStartDate =
+        coverageByKey[primarySweepKey].nextSweepStartDate;
     }
 
     if (monitor.dateMode === "fixed") {
@@ -912,6 +1103,8 @@ async function runRepositoryScan(options = {}) {
             dateSweepMode: monitor.dateMode,
             dateSweepCursor: nextDateSweepCursor,
             dateSweepStartDate: nextDateSweepStartDate,
+            sourceDateSweepCursors: nextSourceSweepCursors,
+            sourceDateSweepStartDates: nextSourceSweepStartDates,
           }
         : {}),
       offers: nextOffers,
@@ -948,10 +1141,33 @@ async function runRepositoryScan(options = {}) {
       priceDropPercent: enriched.priceDropPercent,
     });
   }
+  const durationMs = Math.max(0, clock() - scanStartedAt);
+  const completedNormally = summary.timeBudgetReached !== true;
+  const health = {
+    state: summary.timeBudgetReached
+      ? "partial"
+      : summary.errors.length > 0 && summary.searches === summary.errors.length
+        ? "degraded"
+        : "healthy",
+    startedAt: now.toISOString(),
+    lastCompletedAt: now.toISOString(),
+    previousCompletedAt: previousCompletedAt || null,
+    gapMinutes: cycleGapMinutes,
+    recoveredAfterInterruption:
+      cycleGapMinutes !== null && cycleGapMinutes >= 30,
+    durationMs,
+    completedNormally,
+    monitorsProcessed: monitors.length,
+    searchesCompleted: summary.searches,
+  };
+  summary.durationMs = durationMs;
+  summary.health = health;
+  nextState.health = health;
   const status = {
     version: 1,
     updatedAt: now.toISOString(),
     summary,
+    health,
     monitors: monitorStatus,
     alerts: alerts.slice(0, 100),
   };
@@ -984,6 +1200,8 @@ if (require.main === module) {
 }
 
 module.exports = {
+  appendPriceHistory,
+  buildPriceProof,
   buildDealMap,
   clearSearchedDeals,
   inclusiveDays,
