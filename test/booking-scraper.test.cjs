@@ -699,6 +699,7 @@ test("turns panel monitors into fixed or rotating exact searches", () => {
   );
   assert.equal(search.priceRule, "and");
   assert.equal(search.maxResults, 25);
+  assert.equal(search.maxVerifiedResults, 2);
   assert.equal(search.priceSafetyPercent, 5);
   assert.equal(search.originLatitude, 40.4168);
   assert.equal(search.originLongitude, -3.7038);

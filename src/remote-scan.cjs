@@ -317,6 +317,9 @@ function monitorToSearch(monitor, dates, area = null) {
     amenities: monitor.amenities,
     excludeSharedRooms: true,
     maxResults: Number(monitor.maxDistanceKm) > 0 ? 25 : 30,
+    // Direct scrapers revisit the cheapest candidates to confirm the final total.
+    // Keeping this small prevents one promising date from consuming a whole cycle.
+    maxVerifiedResults: 2,
   };
 }
 

@@ -42,6 +42,10 @@ const CURRENT_GOOGLE_PRICE_BASES = new Set([
   "google_hotels_provider_all_inclusive_v7",
   "google_hotels_visible_all_inclusive_v7",
 ]);
+const DIRECT_SEARCH_LIMITS = {
+  booking: 2,
+  google_hotels: 1,
+};
 const AUTOMATIC_SCRAPERS = {
   booking: scrapeBooking,
   google_hotels: scrapeGoogleHotels,
@@ -357,6 +361,31 @@ function mergeDeal(previousDeals, monitor, offer, searchedAt, fingerprint) {
 }
 
 async function runRepositoryScan(options = {}) {
+  const clock = options.clock || Date.now;
+  const scanStartedAt = clock();
+  const configuredBudget = Number(
+    options.scanBudgetMs ?? process.env.RADAR_SCAN_BUDGET_MS,
+  );
+  const scanBudgetMs = Number.isFinite(configuredBudget) && configuredBudget > 0
+    ? configuredBudget
+    : Infinity;
+  const configuredRequestReserve = Number(
+    options.requestReserveMs ?? process.env.RADAR_REQUEST_RESERVE_MS,
+  );
+  const requestReserveMs = Number.isFinite(configuredRequestReserve) &&
+      configuredRequestReserve >= 0
+    ? configuredRequestReserve
+    : 45_000;
+  const configuredSourceTimeout = Number(
+    options.sourceTimeoutMs ?? process.env.RADAR_SOURCE_TIMEOUT_MS,
+  );
+  const sourceTimeoutMs = Number.isFinite(configuredSourceTimeout) &&
+      configuredSourceTimeout > 0
+    ? configuredSourceTimeout
+    : undefined;
+  const deadline = scanStartedAt + scanBudgetMs;
+  const timeBudgetReached = () =>
+    Number.isFinite(deadline) && clock() + requestReserveMs >= deadline;
   const root = path.resolve(options.root || process.cwd());
   const configPath = path.resolve(
     root,
@@ -425,6 +454,8 @@ async function runRepositoryScan(options = {}) {
     verificationErrors: [],
     nearbyErrors: [],
     errors: [],
+    timeBudgetReached: false,
+    stoppedEarlyMonitors: 0,
   };
 
   await Promise.all(monitors.map(async (monitor) => {
@@ -512,6 +543,9 @@ async function runRepositoryScan(options = {}) {
       selectedSources.map((source) => [source, 0]),
     );
     const bookingHeartbeatNights = new Set();
+    const directSearches = new Map(
+      Object.keys(DIRECT_SEARCH_LIMITS).map((source) => [source, 0]),
+    );
     for (const source of selectedSources) {
       sourceStats(summary.sources, source);
       sourceStats(status.sources, source);
@@ -546,6 +580,7 @@ async function runRepositoryScan(options = {}) {
       try {
         const result = await runtimeScrapers[source](searchInput, {
           headless: options.headless !== false,
+          ...(sourceTimeoutMs ? { timeoutMs: sourceTimeoutMs } : {}),
         });
         sourceHealth = recordSourceSuccess(sourceHealth, source, now);
         if (source === "booking") {
@@ -565,6 +600,13 @@ async function runRepositoryScan(options = {}) {
 
     let completedDateSweepRequests = 0;
     for (const request of scanRequests) {
+      if (timeBudgetReached()) {
+        status.stoppedEarly = true;
+        status.stopReason = "scan_time_budget";
+        summary.timeBudgetReached = true;
+        summary.stoppedEarlyMonitors += 1;
+        break;
+      }
       const { dates, area } = request;
       const discoverySources = selectedSources.filter((source) =>
         DISCOVERY_SOURCES.has(source)
@@ -587,15 +629,24 @@ async function runRepositoryScan(options = {}) {
       if (selectedSources.includes("booking")) {
         const nights = Number(dates.nights) || 0;
         const needsHeartbeat = !bookingHeartbeatNights.has(nights);
-        if (promisingCandidate || needsHeartbeat) {
+        const withinCycleLimit =
+          directSearches.get("booking") < DIRECT_SEARCH_LIMITS.booking;
+        if ((promisingCandidate || needsHeartbeat) && withinCycleLimit) {
           bookingHeartbeatNights.add(nights);
-          directRuns.push(
-            await runSource(
-              "booking",
-              bookingDiscoveryDates(monitor, dates),
-              area,
-            ),
+          const bookingRun = await runSource(
+            "booking",
+            bookingDiscoveryDates(monitor, dates),
+            area,
           );
+          if (!bookingRun.skipped) {
+            directSearches.set(
+              "booking",
+              directSearches.get("booking") + 1,
+            );
+          }
+          directRuns.push(bookingRun);
+        } else if (!withinCycleLimit) {
+          directRuns.push(skipSource("booking", "cycle_search_limit"));
         } else {
           directRuns.push(skipSource("booking", "waiting_for_candidate"));
         }
@@ -603,15 +654,27 @@ async function runRepositoryScan(options = {}) {
 
       if (selectedSources.includes("google_hotels")) {
         const eligibility = googleDateEligibility(dates.checkIn, now);
+        const withinCycleLimit =
+          directSearches.get("google_hotels") <
+          DIRECT_SEARCH_LIMITS.google_hotels;
         if (!eligibility.eligible) {
           directRuns.push(skipSource("google_hotels", eligibility.reason));
+        } else if (!withinCycleLimit) {
+          directRuns.push(
+            skipSource("google_hotels", "cycle_search_limit"),
+          );
         } else if (
           promisingCandidate ||
           googleProbeIsDue(sourceHealth, now)
         ) {
-          directRuns.push(
-            await runSource("google_hotels", dates, area),
-          );
+          const googleRun = await runSource("google_hotels", dates, area);
+          if (!googleRun.skipped) {
+            directSearches.set(
+              "google_hotels",
+              directSearches.get("google_hotels") + 1,
+            );
+          }
+          directRuns.push(googleRun);
         } else {
           directRuns.push(
             skipSource("google_hotels", "waiting_for_candidate"),

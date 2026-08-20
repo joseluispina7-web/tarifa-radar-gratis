@@ -145,6 +145,161 @@ test("keeps date discovery moving while a failing direct source cools down", asy
   );
 });
 
+test("stops between date searches and persists the completed sweep progress", async (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "tarifa-radar-budget-"));
+  t.after(() => {
+    if (path.resolve(root).startsWith(path.resolve(os.tmpdir()))) {
+      fs.rmSync(root, { recursive: true, force: true });
+    }
+  });
+  for (const directory of ["config", "state", "docs/data"]) {
+    fs.mkdirSync(path.join(root, directory), { recursive: true });
+  }
+  const budgetMonitor = {
+    ...monitor,
+    id: "budget-monitor",
+    dateMode: "range",
+    dateStart: "2026-09-01",
+    dateEnd: "2026-09-10",
+    minNights: 1,
+    maxNights: 1,
+    maxTotal: 200,
+    strictPrices: false,
+    active: true,
+    intervalMinutes: 5,
+    sources: ["agoda"],
+  };
+  fs.writeFileSync(
+    path.join(root, "config/searches.json"),
+    JSON.stringify({ monitors: [budgetMonitor] }),
+  );
+  fs.writeFileSync(
+    path.join(root, "state/repository-state.json"),
+    JSON.stringify({ version: 1, monitors: {} }),
+  );
+  fs.writeFileSync(
+    path.join(root, "docs/data/deals.json"),
+    JSON.stringify({ version: 1, deals: [] }),
+  );
+
+  let calls = 0;
+  const result = await runRepositoryScan({
+    root,
+    now: new Date("2026-08-14T18:00:00Z"),
+    scanBudgetMs: 5,
+    requestReserveMs: 0,
+    scrapers: {
+      agoda: async (search) => {
+        calls += 1;
+        await new Promise((resolve) => setTimeout(resolve, 10));
+        return {
+          source: "agoda",
+          search,
+          searchedAt: "2026-08-14T18:00:00.000Z",
+          offers: [],
+          matchingOffers: [],
+          verificationErrors: [],
+        };
+      },
+    },
+  });
+
+  assert.equal(calls, 1);
+  assert.equal(result.summary.timeBudgetReached, true);
+  assert.equal(result.summary.stoppedEarlyMonitors, 1);
+  assert.equal(
+    result.status.monitors[budgetMonitor.id].dateCoverage.searchesCheckedThisRun,
+    1,
+  );
+  const storedState = JSON.parse(
+    fs.readFileSync(path.join(root, "state/repository-state.json"), "utf8"),
+  );
+  assert.equal(storedState.monitors[budgetMonitor.id].dateSweepCursor, 1);
+});
+
+test("caps expensive direct sources while discovery covers every date", async (t) => {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), "tarifa-radar-direct-"));
+  t.after(() => {
+    if (path.resolve(root).startsWith(path.resolve(os.tmpdir()))) {
+      fs.rmSync(root, { recursive: true, force: true });
+    }
+  });
+  for (const directory of ["config", "state", "docs/data"]) {
+    fs.mkdirSync(path.join(root, directory), { recursive: true });
+  }
+  const directMonitor = {
+    ...monitor,
+    id: "direct-monitor",
+    dateMode: "range",
+    dateStart: "2026-09-01",
+    dateEnd: "2026-09-10",
+    minNights: 1,
+    maxNights: 1,
+    maxTotal: 200,
+    strictPrices: false,
+    active: true,
+    intervalMinutes: 5,
+    sources: ["agoda", "booking", "google_hotels"],
+  };
+  fs.writeFileSync(
+    path.join(root, "config/searches.json"),
+    JSON.stringify({ monitors: [directMonitor] }),
+  );
+  fs.writeFileSync(
+    path.join(root, "state/repository-state.json"),
+    JSON.stringify({ version: 1, monitors: {} }),
+  );
+  fs.writeFileSync(
+    path.join(root, "docs/data/deals.json"),
+    JSON.stringify({ version: 1, deals: [] }),
+  );
+
+  const calls = { agoda: 0, booking: 0, google_hotels: 0 };
+  const resultFor = (source, search, offers = []) => ({
+    source,
+    search,
+    searchedAt: "2026-08-14T18:00:00.000Z",
+    offers,
+    matchingOffers: [],
+    verificationErrors: [],
+  });
+  const result = await runRepositoryScan({
+    root,
+    now: new Date("2026-08-14T18:00:00Z"),
+    scrapers: {
+      agoda: async (search) => {
+        calls.agoda += 1;
+        return resultFor("agoda", search, [{
+          id: `agoda:${search.checkIn}:${search.checkOut}`,
+          source: "agoda",
+          hotelName: "Hotel candidato",
+          totalPrice: 180,
+          nightlyPrice: 180,
+          matches: false,
+          priceVerified: false,
+          checkIn: search.checkIn,
+          checkOut: search.checkOut,
+          nights: search.nights,
+        }]);
+      },
+      booking: async (search) => {
+        calls.booking += 1;
+        return resultFor("booking", search);
+      },
+      google_hotels: async (search) => {
+        calls.google_hotels += 1;
+        return resultFor("google_hotels", search);
+      },
+    },
+  });
+
+  assert.deepEqual(calls, { agoda: 4, booking: 2, google_hotels: 1 });
+  assert.equal(
+    result.status.monitors[directMonitor.id].dateCoverage.searchesCheckedThisRun,
+    4,
+  );
+});
+
 test("drops deals created for an older monitor configuration", () => {
   const currentFingerprint = monitorFingerprint(monitor);
   const deals = buildDealMap(
