@@ -2,6 +2,7 @@ const crypto = require("node:crypto");
 const path = require("node:path");
 const {
   newestRepositoryDocument,
+  pruneExcludedMonitorOffers,
   readJson,
   writeJson,
 } = require("./repository-scan.cjs");
@@ -266,15 +267,22 @@ async function processTelegramUpdates(options) {
             updateError = error instanceof Error ? error.message : String(error);
           }
         }
-        await telegramRequest(
-          options.token,
-          "answerCallbackQuery",
-          {
-            callback_query_id: callback.id,
-            text: callbackText.slice(0, 190),
-          },
-          { fetchImpl: options.fetchImpl },
-        );
+        try {
+          await telegramRequest(
+            options.token,
+            "answerCallbackQuery",
+            {
+              callback_query_id: callback.id,
+              text: callbackText.slice(0, 190),
+            },
+            { fetchImpl: options.fetchImpl },
+          );
+        } catch (error) {
+          const expired = /query is too old|query ID is invalid/i.test(
+            error instanceof Error ? error.message : String(error),
+          );
+          if (action !== "exclude" || !expired) throw error;
+        }
         continue;
       }
 
@@ -343,10 +351,16 @@ async function sendRepositoryAlerts(options = {}) {
     return { sent: false, reason: "not_configured" };
   }
 
-  const status = readJson(
-    path.resolve(root, options.statusPath || "docs/data/status.json"),
-    { alerts: [] },
+  const statusPath = path.resolve(
+    root,
+    options.statusPath || "docs/data/status.json",
   );
+  const dealsPath = path.resolve(
+    root,
+    options.dealsPath || "docs/data/deals.json",
+  );
+  const status = readJson(statusPath, { alerts: [] });
+  const dealsDocument = readJson(dealsPath, { version: 1, deals: [] });
   const statePath = path.resolve(
     root,
     options.statePath || "state/repository-state.json",
@@ -401,6 +415,23 @@ async function sendRepositoryAlerts(options = {}) {
         : String(error);
     }
   }
+  const isExcluded = (entry) => hotelIsExcluded(
+    exclusions,
+    entry.monitorId,
+    entry.hotelName || entry.offer?.hotelName,
+  );
+  repositoryState.monitors = pruneExcludedMonitorOffers(
+    repositoryState.monitors,
+    exclusions,
+  );
+  dealsDocument.deals = (dealsDocument.deals || []).filter(
+    (deal) => !isExcluded(deal),
+  );
+  status.alerts = (status.alerts || []).filter(
+    (alert) => !isExcluded(alert),
+  );
+  writeJson(dealsPath, dealsDocument);
+  writeJson(statusPath, status);
   const sentAlerts = pruneSentAlerts(
     mergeSentAlerts(
       repositoryState.telegram?.sentAlerts,

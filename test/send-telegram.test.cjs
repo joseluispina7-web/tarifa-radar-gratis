@@ -224,6 +224,98 @@ test("persists a hotel exclusion from its Telegram button", async () => {
   );
 });
 
+test("removes a discarded hotel from published data in the callback cycle", async (t) => {
+  const fresh = alert(100);
+  const root = fixture(t, [fresh], {
+    version: 1,
+    monitors: {
+      madrid: {
+        offers: {
+          hotel: { hotelName: "Hotel Centro", matches: true },
+        },
+      },
+    },
+    telegram: {
+      updateOffset: 0,
+      hotelActions: {
+        abc123: {
+          monitorId: "madrid",
+          monitorName: "Madrid",
+          hotelName: "Hotel Centro",
+          source: "booking",
+          registeredAt: "2026-08-20T12:00:00.000Z",
+        },
+      },
+    },
+  });
+  fs.writeFileSync(
+    path.join(root, "docs/data/deals.json"),
+    JSON.stringify({
+      version: 1,
+      deals: [{
+        id: "madrid:hotel",
+        monitorId: "madrid",
+        hotelName: "Hotel Centro",
+      }],
+    }),
+  );
+
+  const result = await sendRepositoryAlerts({
+    root,
+    token: "secret",
+    chatId: "123",
+    now: new Date("2026-08-20T12:05:00.000Z"),
+    remoteState: { telegram: {} },
+    remoteExclusions: { version: 1, updatedAt: "", hotels: [] },
+    fetchImpl: async (url) => {
+      if (url.endsWith("/getUpdates")) {
+        return Response.json({
+          ok: true,
+          result: [{
+            update_id: 40,
+            callback_query: {
+              id: "old-exclude",
+              data: "exclude:abc123",
+              message: { chat: { id: 123 } },
+            },
+          }],
+        });
+      }
+      if (url.endsWith("/answerCallbackQuery")) {
+        return Response.json(
+          { ok: false, description: "query is too old and response timeout expired" },
+          { status: 400 },
+        );
+      }
+      return Response.json({ ok: true, result: { message_id: 12 } });
+    },
+  });
+
+  const savedState = JSON.parse(fs.readFileSync(
+    path.join(root, "state/repository-state.json"),
+    "utf8",
+  ));
+  const savedDeals = JSON.parse(fs.readFileSync(
+    path.join(root, "docs/data/deals.json"),
+    "utf8",
+  ));
+  const savedStatus = JSON.parse(fs.readFileSync(
+    path.join(root, "docs/data/status.json"),
+    "utf8",
+  ));
+  const savedExclusions = JSON.parse(fs.readFileSync(
+    path.join(root, "config/excluded-hotels.json"),
+    "utf8",
+  ));
+
+  assert.equal(result.reason, "no_alerts");
+  assert.equal(savedExclusions.hotels.length, 1);
+  assert.deepEqual(savedDeals.deals, []);
+  assert.deepEqual(savedStatus.alerts, []);
+  assert.deepEqual(savedState.monitors.madrid.offers, {});
+  assert.equal(savedState.telegram.updateError, "");
+});
+
 test("advances past an expired callback and continues with newer commands", async () => {
   const state = await processTelegramUpdates({
     telegramState: { updateOffset: 0, mutedMonitorIds: [] },
