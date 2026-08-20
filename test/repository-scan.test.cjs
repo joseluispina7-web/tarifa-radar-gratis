@@ -10,11 +10,32 @@ const {
   offerMatchesMonitorDistance,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
+  pruneHotelLocationCache,
   resultHasPromisingCandidate,
   runRepositoryScan,
   sourceIsEnabledForMonitor,
   updateOfferState,
 } = require("../src/repository-scan.cjs");
+
+test("removes Google informational headings from the hotel location cache", () => {
+  const cache = {
+    "ES:los precios en esta zona son mas caros de lo habitual:40.416:-3.703": {
+      miss: true,
+    },
+    "ES:hotel colon: madrid centro:40.416:-3.703": {
+      latitude: 40.416,
+      longitude: -3.703,
+    },
+    malformed: { miss: true },
+  };
+
+  assert.deepEqual(pruneHotelLocationCache(cache), {
+    "ES:hotel colon: madrid centro:40.416:-3.703": {
+      latitude: 40.416,
+      longitude: -3.703,
+    },
+  });
+});
 
 const monitor = {
   id: "search-1",

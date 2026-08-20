@@ -425,6 +425,16 @@ function buildDealMap(previousDeals, activeMonitors) {
   );
 }
 
+function pruneHotelLocationCache(cache) {
+  return Object.fromEntries(
+    Object.entries(cache || {}).filter(([key]) => {
+      const parts = String(key).split(":");
+      const hotelName = parts.length >= 4 ? parts.slice(1, -2).join(":") : "";
+      return googleHeadingLooksLikeHotel(hotelName);
+    }),
+  );
+}
+
 function clearSearchedDeals(
   dealMap,
   monitorId,
@@ -630,7 +640,7 @@ async function runRepositoryScan(options = {}) {
     updatedAt: now.toISOString(),
     monitors: { ...(previousState.monitors || {}) },
     telegram: { ...(previousState.telegram || {}) },
-    hotelLocations: { ...(previousState.hotelLocations || {}) },
+    hotelLocations: pruneHotelLocationCache(previousState.hotelLocations),
   };
   const dealMap = buildDealMap(previousDeals, activeMonitors);
   const monitorStatus = {};
@@ -1304,6 +1314,7 @@ module.exports = {
   offerMatchesMonitorDistance,
   offerStateIsConfirmed,
   priceWithinDiscoveryRange,
+  pruneHotelLocationCache,
   readJson,
   readRemoteJson,
   resultHasPromisingCandidate,
