@@ -13,8 +13,10 @@ const {
   normalizeExclusionsDocument,
 } = require("./hotel-exclusions.cjs");
 const {
+  DISCARD_BUTTON_UI_VERSION,
   PANEL_URL,
   sendAlertDigest,
+  sendDiscardButtonUpgradeNotice,
   telegramRequest,
 } = require("./telegram.cjs");
 
@@ -465,10 +467,33 @@ async function sendRepositoryAlerts(options = {}) {
     writeJson(exclusionsPath, exclusions);
   };
   persistTelegramState(sentAlerts);
+  let buttonUpgradeSent = false;
+  if (
+    Number(telegramState.discardButtonUiVersion || 0) <
+      DISCARD_BUTTON_UI_VERSION
+  ) {
+    try {
+      await sendDiscardButtonUpgradeNotice({
+        token,
+        chatId,
+        panelUrl: options.panelUrl,
+        fetchImpl: options.fetchImpl,
+      });
+      telegramState.discardButtonUiVersion = DISCARD_BUTTON_UI_VERSION;
+      telegramState.discardButtonUpdatedAt = now.toISOString();
+      buttonUpgradeSent = true;
+      persistTelegramState(sentAlerts);
+    } catch (error) {
+      telegramState.updateError =
+        error instanceof Error ? error.message : String(error);
+      persistTelegramState(sentAlerts);
+    }
+  }
   if (!newAlerts.length) {
     return {
       sent: false,
       reason: "no_alerts",
+      buttonUpgradeSent,
       duplicatesSkipped: (status.alerts || []).length,
     };
   }
@@ -497,6 +522,7 @@ async function sendRepositoryAlerts(options = {}) {
   }
   return {
     ...result,
+    buttonUpgradeSent,
     duplicatesSkipped: (status.alerts || []).length - newAlerts.length,
   };
 }

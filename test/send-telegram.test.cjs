@@ -40,10 +40,45 @@ function fixture(t, alerts, state = { version: 1, monitors: {} }) {
   );
   fs.writeFileSync(
     path.join(root, "state/repository-state.json"),
-    JSON.stringify(state),
+    JSON.stringify({
+      ...state,
+      telegram: {
+        discardButtonUiVersion: 2,
+        ...(state.telegram || {}),
+      },
+    }),
   );
   return root;
 }
+
+test("sends the new discard-button notice once", async (t) => {
+  const root = fixture(t, [], {
+    version: 1,
+    monitors: {},
+    telegram: { discardButtonUiVersion: 1 },
+  });
+  const requests = [];
+  const result = await sendRepositoryAlerts({
+    root,
+    token: "secret",
+    chatId: "123",
+    now: new Date("2026-08-21T07:00:00.000Z"),
+    remoteState: { telegram: {} },
+    processUpdates: false,
+    fetchImpl: async (url, options) => {
+      requests.push({ url, body: JSON.parse(options.body) });
+      return Response.json({ ok: true, result: { message_id: 99 } });
+    },
+  });
+  const saved = JSON.parse(fs.readFileSync(
+    path.join(root, "state/repository-state.json"),
+    "utf8",
+  ));
+  assert.equal(result.reason, "no_alerts");
+  assert.equal(result.buttonUpgradeSent, true);
+  assert.equal(requests.length, 1);
+  assert.equal(saved.telegram.discardButtonUiVersion, 2);
+});
 
 test("does not resend an alert already present in the persistent ledger", async (t) => {
   const duplicate = alert();

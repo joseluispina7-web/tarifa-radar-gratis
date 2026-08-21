@@ -4,9 +4,11 @@ const {
   MAX_ALERTS_PER_MESSAGE,
   buildAlertMessage,
   buildAlertMessages,
+  buildDiscardButtonTestUrl,
   escapeHtml,
   groupAlertsByLocation,
   sendAlertDigest,
+  sendDiscardButtonUpgradeNotice,
 } = require("../src/telegram.cjs");
 
 function makeAlert(overrides = {}) {
@@ -203,6 +205,23 @@ test("does not call Telegram when there are no alerts", async () => {
   });
   assert.deepEqual(result, { sent: false, reason: "no_alerts" });
   assert.equal(calls, 0);
+});
+
+test("sends a URL button to test the immediate discard interaction", async () => {
+  let request;
+  await sendDiscardButtonUpgradeNotice({
+    token: "secret",
+    chatId: "123",
+    panelUrl: "https://panel.example/radar",
+    fetchImpl: async (url, options) => {
+      request = { url, body: JSON.parse(options.body) };
+      return Response.json({ ok: true, result: { message_id: 99 } });
+    },
+  });
+  const button = request.body.reply_markup.inline_keyboard[0][0];
+  assert.equal(button.callback_data, undefined);
+  assert.equal(button.url, buildDiscardButtonTestUrl("https://panel.example/radar"));
+  assert.match(request.url, /sendMessage$/);
 });
 
 test("sends a digest with previews disabled", async () => {

@@ -3,6 +3,7 @@ const { exclusionActionId } = require("./hotel-exclusions.cjs");
 
 const PANEL_URL =
   "https://joseluispina7-web.github.io/tarifa-radar-gratis/";
+const DISCARD_BUTTON_UI_VERSION = 2;
 const MAX_ALERTS_PER_MESSAGE = 4;
 const MESSAGE_DELAY_MS = 1_100;
 
@@ -247,6 +248,36 @@ function buildDiscardUrl(panelUrl, alert) {
   return url.toString();
 }
 
+function buildDiscardButtonTestUrl(panelUrl = PANEL_URL) {
+  const url = new URL(panelUrl);
+  url.searchParams.set("v", "22");
+  url.searchParams.set("button_test", String(DISCARD_BUTTON_UI_VERSION));
+  return url.toString();
+}
+
+async function sendDiscardButtonUpgradeNotice(options) {
+  return telegramRequest(
+    options.token,
+    "sendMessage",
+    {
+      chat_id: options.chatId,
+      text:
+        "Boton Descartar actualizado.\n\n" +
+        "Los botones de las alertas nuevas abriran el panel directamente, " +
+        "sin esperar al siguiente ciclo del radar. Los mensajes anteriores " +
+        "siguen usando el boton antiguo.",
+      link_preview_options: { is_disabled: true },
+      reply_markup: {
+        inline_keyboard: [[{
+          text: "Probar boton nuevo",
+          url: buildDiscardButtonTestUrl(options.panelUrl || PANEL_URL),
+        }]],
+      },
+    },
+    options,
+  );
+}
+
 async function telegramRequest(token, method, body, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
   const response = await fetchImpl(
@@ -351,7 +382,9 @@ module.exports = {
   buildAlertMessage,
   buildAlertMessages,
   buildAlertPages,
+  buildDiscardButtonTestUrl,
   buildDiscardUrl,
+  DISCARD_BUTTON_UI_VERSION,
   escapeHtml,
   formatAlert,
   formatDate,
@@ -360,6 +393,7 @@ module.exports = {
   formatSource,
   formatVerification,
   groupAlertsByLocation,
+  sendDiscardButtonUpgradeNotice,
   sendAlertDigest,
   telegramRequest,
 };
