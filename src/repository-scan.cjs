@@ -42,14 +42,15 @@ const {
 const REQUIRED_PRICE_CONFIRMATIONS = 2;
 const PRICE_COMPARISON_EPSILON = 0.01;
 const DATE_SWEEP_VERSION = 4;
-const BLUEPILLOW_SOURCES = new Set(["agoda", "trip", "bluepillow"]);
 const STRICT_PRICE_SOURCES = new Set(["booking", "google_hotels", "trip"]);
 const CURRENT_BOOKING_PRICE_BASES = new Set([
   "booking_visible_final_total_v5",
 ]);
 const CURRENT_GOOGLE_PRICE_BASES = new Set([
-  "google_hotels_provider_all_inclusive_v7",
-  "google_hotels_visible_all_inclusive_v7",
+  "google_hotels_provider_all_inclusive_v8",
+]);
+const CURRENT_COMPARISON_PRICE_BASES = new Set([
+  "bluepillow_api_unchanged_total_v2",
 ]);
 const DIRECT_SEARCH_LIMITS = {
   booking: 2,
@@ -399,7 +400,11 @@ function buildDealMap(previousDeals, activeMonitors, exclusions = {}) {
         const strictPriceAllowed =
           monitor?.strictPrices === false || STRICT_PRICE_SOURCES.has(source);
         const hasCurrentBluepillowValidation =
-          !BLUEPILLOW_SOURCES.has(source) || Boolean(deal.priceConfirmedAt);
+          !["agoda", "bluepillow"].includes(source) ||
+          (
+            Boolean(deal.priceConfirmedAt) &&
+            CURRENT_COMPARISON_PRICE_BASES.has(deal.priceBasis)
+          );
         const hasCurrentBookingValidation =
           source !== "booking" ||
           CURRENT_BOOKING_PRICE_BASES.has(deal.priceBasis);
@@ -411,7 +416,7 @@ function buildDealMap(previousDeals, activeMonitors, exclusions = {}) {
           googleHeadingLooksLikeHotel(deal.hotelName);
         const hasCurrentTripValidation =
           source !== "trip" ||
-          deal.priceBasis === "trip_direct_final_total_v1";
+          deal.priceBasis === "trip_direct_final_total_v2";
         const hasValidDistance = offerMatchesMonitorDistance(deal, monitor);
         const isExcluded = hotelIsExcluded(
           exclusions,

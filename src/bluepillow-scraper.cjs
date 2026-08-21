@@ -295,6 +295,28 @@ function linkMatchesStay(value, search) {
   return checkInPattern.test(decoded) && checkOutPattern.test(decoded);
 }
 
+function linkMatchesOccupancy(value, search) {
+  const decoded = decodedLinkValues(value).join("\n");
+  const adults = decoded.match(
+    /(?:[?&]|%26)(?:adult|adults|group_adults|numberofadults)=([0-9]+)/i,
+  )?.[1];
+  if (adults && Number(adults) !== search.adults) return false;
+  if (!adults && search.adults !== 2) return false;
+
+  const children = decoded.match(
+    /(?:[?&]|%26)(?:children|group_children|numberofchildren)=([0-9]+)/i,
+  )?.[1];
+  if (children && Number(children) !== search.children) return false;
+  if (!children && search.children > 0) return false;
+
+  const rooms = decoded.match(
+    /(?:[?&]|%26)(?:rooms|no_rooms|numberofrooms)=([0-9]+)/i,
+  )?.[1];
+  if (rooms && Number(rooms) !== search.rooms) return false;
+  if (!rooms && search.rooms !== 1) return false;
+  return true;
+}
+
 function mapPropertyType(value) {
   const type = normalizeText(value);
   if (["apartment", "aparthotel", "villa"].includes(type)) return "apartment";
@@ -496,13 +518,14 @@ function validationCacheKey(offer, search) {
 
 async function validateBluepillowOffer(offer, search, options = {}) {
   const searchKey = searchCacheKey(search);
+  const budgetKey = `${offer.source}:${searchKey}`;
   const key = validationCacheKey(offer, search);
   if (!options.disableCache && sharedValidations.has(key)) {
     return sharedValidations.get(key);
   }
 
   if (!options.disableCache) {
-    const used = validationBudgets.get(searchKey) || 0;
+    const used = validationBudgets.get(budgetKey) || 0;
     if (used >= MAX_VALIDATIONS_PER_SEARCH) {
       return {
         valid: false,
@@ -510,7 +533,7 @@ async function validateBluepillowOffer(offer, search, options = {}) {
         message: "No se publico porque alcanzo el limite de revalidaciones.",
       };
     }
-    validationBudgets.set(searchKey, used + 1);
+    validationBudgets.set(budgetKey, used + 1);
   }
 
   const pending = requestJson("/validate", {
@@ -541,26 +564,6 @@ async function validateBluepillowOffer(offer, search, options = {}) {
         };
       }
       const refreshedPrice = Number(payload.refreshed_offer?.amount);
-      const refreshedCurrency = String(
-        payload.refreshed_offer?.currency || "EUR",
-      ).toUpperCase();
-      const refreshedOta = normalizeOta(
-        payload.refreshed_offer?.ota || offer.bluepillowOta,
-      );
-      const canUseRefreshedPrice =
-        payload.reason === "price_changed" &&
-        Number.isFinite(refreshedPrice) &&
-        refreshedPrice > 0 &&
-        refreshedCurrency === "EUR" &&
-        refreshedOta === normalizeOta(offer.bluepillowOta);
-      if (canUseRefreshedPrice) {
-        return {
-          valid: true,
-          refreshed: true,
-          totalPrice: refreshedPrice,
-          checkedAt: payload.metadata?.price_as_of || new Date().toISOString(),
-        };
-      }
       const detail = Number.isFinite(refreshedPrice) && refreshedPrice > 0
         ? ` El precio actualizado es ${refreshedPrice.toFixed(2)} EUR.`
         : "";
@@ -595,11 +598,13 @@ async function validateTripFinalPrice(offer, search, options = {}) {
   }
   if (
     !/(^|\.)trip\.com$/i.test(target.hostname) ||
-    !linkMatchesStay(url, search)
+    !linkMatchesStay(url, search) ||
+    !linkMatchesOccupancy(url, search)
   ) {
     return {
       valid: false,
-      message: "El enlace final de Trip.com no conserva las fechas exactas.",
+      message:
+        "El enlace final de Trip.com no conserva fechas y ocupacion exactas.",
     };
   }
 
@@ -618,6 +623,16 @@ async function validateTripFinalPrice(offer, search, options = {}) {
     if (!response.ok) {
       throw new Error(`Trip.com respondio ${response.status}.`);
     }
+    const finalUrl = response.url || url;
+    if (
+      !linkMatchesStay(finalUrl, search) ||
+      !linkMatchesOccupancy(finalUrl, search)
+    ) {
+      return {
+        valid: false,
+        message: "Trip.com cambio las fechas o la ocupacion al abrir la tarifa.",
+      };
+    }
     const html = await response.text();
     const totalPrice = parseTripFinalTotal(html);
     if (!totalPrice) {
@@ -629,7 +644,7 @@ async function validateTripFinalPrice(offer, search, options = {}) {
     return {
       valid: true,
       totalPrice,
-      url: response.url || url,
+      url: finalUrl,
       checkedAt: new Date().toISOString(),
     };
   } catch (error) {
@@ -819,19 +834,6 @@ async function scrapeBluepillowSource(input, source, options = {}) {
       }
       continue;
     }
-    if (validation.refreshed) {
-      offer.firstObservedPrice = offer.totalPrice;
-      offer.priceChangedDuringConfirmation = true;
-      offer.totalPrice = validation.totalPrice;
-      offer.nightlyPrice =
-        Math.round((validation.totalPrice / search.nights) * 100) / 100;
-      offer.displayedNightlyPrice = offer.nightlyPrice;
-      offer.rateSubtotal = validation.totalPrice;
-      offer.searchResultPrice = validation.totalPrice;
-      offer.matches = matchesSearch(offer, search);
-      offer.candidateMatches = offer.matches;
-      if (!offer.matches) continue;
-    }
     if (source === "trip") {
       const directValidation = await validateTripFinalPrice(
         offer,
@@ -852,12 +854,16 @@ async function scrapeBluepillowSource(input, source, options = {}) {
         Math.round((directValidation.totalPrice / search.nights) * 100) / 100;
       offer.provider = "Trip.com";
       offer.url = directValidation.url;
-      offer.priceBasis = "trip_direct_final_total_v1";
+      offer.priceEvidence = offer.priceBasis;
+      offer.priceBasis = "trip_direct_final_total_v2";
       offer.taxesText = "Total final leido directamente en Trip.com";
       offer.matches = matchesSearch(offer, search);
       offer.candidateMatches = offer.matches;
       if (!offer.matches) continue;
       validation.checkedAt = directValidation.checkedAt;
+    } else {
+      offer.priceEvidence = offer.priceBasis;
+      offer.priceBasis = "bluepillow_api_unchanged_total_v2";
     }
     offer.priceVerified = true;
     offer.priceConfirmationCount = 2;
@@ -906,6 +912,7 @@ module.exports = {
   coordinateSearchLocation,
   findSelectedOffer,
   linkMatchesStay,
+  linkMatchesOccupancy,
   mapAmenities,
   mapPropertyType,
   normalizeOta,

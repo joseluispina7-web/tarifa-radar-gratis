@@ -310,10 +310,10 @@ function buildGoogleOffer(card, search) {
     additionalCharges: 0,
     taxesText: "Impuestos y tasas incluidos segun Google Hotels",
     stayText: `${search.nights} noches con impuestos y tasas incluidos`,
-    priceVerified: true,
-    priceBasis: "google_hotels_visible_all_inclusive_v7",
-    priceConfirmationCount: 2,
-    priceConfirmedAt: new Date().toISOString(),
+    priceVerified: false,
+    priceBasis: "google_hotels_visible_candidate_v8",
+    priceConfirmationCount: 0,
+    priceConfirmedAt: "",
     stars: parseGoogleStars(text),
     guestRating: parseGoogleGuestRating(text),
     reviewCount: parseGoogleReviewCount(text),
@@ -1101,22 +1101,7 @@ function verifiedGoogleProviderPrice(link, search) {
   if (linkedTotal && providerLinkMatchesStay(link.href, search)) {
     return { totalPrice: linkedTotal, evidence: "provider_link" };
   }
-
-  // Google sometimes keeps the exact stay in page state instead of repeating
-  // it in the outbound URL. The visible row still names the taxed stay total.
-  const visibleTotal = parseGoogleProviderVisibleTotal(link.text);
-  const visibleGuests = String(link.text || "").match(
-    /(\d+)\s+(?:hu[e\u00e9]spedes?|guests?)/i,
-  )?.[1];
-  if (
-    visibleGuests &&
-    Number(visibleGuests) !== search.adults + search.children
-  ) {
-    return null;
-  }
-  return visibleTotal
-    ? { totalPrice: visibleTotal, evidence: "visible_provider_row" }
-    : null;
+  return null;
 }
 
 function providerLinkMatchesStay(value, search) {
@@ -1230,7 +1215,6 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         timeout: timeoutMs,
       });
       await selectGoogleHotelsDates(page, search, timeoutMs);
-      const exactPricePageUrl = page.url();
       const providerLocator = page
         .locator("a")
         .filter({ hasText: /Visitar sitio web|Visit website/i });
@@ -1297,12 +1281,13 @@ async function verifyGoogleHotelCandidates(page, candidates, search, options = {
         throw new Error("Google cambio el hotel o las fechas al verificarlo.");
       }
       offer.provider = `${bestProvider.provider} via Google Hotels`;
-      offer.priceBasis = "google_hotels_provider_all_inclusive_v7";
+      offer.priceVerified = true;
+      offer.priceBasis = "google_hotels_provider_all_inclusive_v8";
       offer.priceEvidence = bestProvider.evidence;
+      offer.priceConfirmationCount = 2;
+      offer.priceConfirmedAt = new Date().toISOString();
       offer.displayedNightlyPrice = candidate.nightlyPrice;
-      offer.url = bestProvider.evidence === "provider_link"
-        ? bestProvider.href
-        : exactPricePageUrl;
+      offer.url = bestProvider.href;
       applyGoogleHotelLocation(offer, location, search);
       offers.push(offer);
       if (offers.length >= search.maxVerifiedResults) break;
@@ -1429,68 +1414,69 @@ async function scrapeGoogleHotels(input, options = {}) {
       search,
       options,
     );
-    let offers = options.forceProviderVerification
-      ? []
-      : await extractGoogleHotelCards(page, search);
-    if (offers.length) {
-      offers = await enrichGoogleOfferLocations(offers, search, options);
-    }
+    // Result cards are useful for discovering hotels, but their opaque Google
+    // URLs do not prove that the clicked provider will preserve the stay.
+    // Publish only after an exact dated provider link has been validated.
+    let offers = [];
     let verificationErrors = [];
-    if (!offers.length) {
-      const candidates = await extractGoogleHotelCandidates(page, search);
-      if (!candidates.length) {
-        const diagnostics = await googleHotelsDiagnostics(page);
-        throw new Error(
-          "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. " +
-            `Titulos: ${diagnostics.headings.join(" | ") || "ninguno"}. ` +
-            `Precios: ${diagnostics.prices.join(" | ") || "ninguno"}.`,
-        );
-      }
-      const verification = await verifyGoogleHotelCandidates(
-        page,
-        candidates,
-        search,
-        options,
-      );
-      offers = verification.offers;
-      verificationErrors = verification.errors;
-      if (!verification.selectedCount) {
-        return {
-          source: GOOGLE_SOURCE,
-          searchedAt: new Date().toISOString(),
-          search,
-          searchUrl,
-          resultUrl,
-          searchedPages: 1,
-          offers: [],
-          matchingOffers: [],
-          verificationErrors: [],
-          cheapestOffer: null,
-        };
-      }
-      if (!offers.length && googleVerificationOnlyLocationFiltered(verification)) {
-        return {
-          source: GOOGLE_SOURCE,
-          searchedAt: new Date().toISOString(),
-          search,
-          searchUrl,
-          resultUrl,
-          searchedPages: 1,
-          offers: [],
-          matchingOffers: [],
-          verificationErrors,
-          cheapestOffer: null,
-        };
-      }
-    }
-    if (!offers.length) {
+    const candidates = await extractGoogleHotelCandidates(page, search);
+    if (!candidates.length) {
       const diagnostics = await googleHotelsDiagnostics(page);
       throw new Error(
-        "Google Hotels abrio la busqueda pero no expuso un total final verificable. " +
+        "Google Hotels abrio la busqueda pero no mostro tarjetas de hotel verificables. " +
           `Titulos: ${diagnostics.headings.join(" | ") || "ninguno"}. ` +
-          `Precios: ${diagnostics.prices.join(" | ") || "ninguno"}. ` +
-          `Detalle: ${verificationErrors[0]?.message || "sin proveedores compatibles"}.`,
+          `Precios: ${diagnostics.prices.join(" | ") || "ninguno"}.`,
       );
+    }
+    const verification = await verifyGoogleHotelCandidates(
+      page,
+      candidates,
+      search,
+      options,
+    );
+    offers = verification.offers;
+    verificationErrors = verification.errors;
+    if (!verification.selectedCount) {
+      return {
+        source: GOOGLE_SOURCE,
+        searchedAt: new Date().toISOString(),
+        search,
+        searchUrl,
+        resultUrl,
+        searchedPages: 1,
+        offers: [],
+        matchingOffers: [],
+        verificationErrors: [],
+        cheapestOffer: null,
+      };
+    }
+    if (!offers.length && googleVerificationOnlyLocationFiltered(verification)) {
+      return {
+        source: GOOGLE_SOURCE,
+        searchedAt: new Date().toISOString(),
+        search,
+        searchUrl,
+        resultUrl,
+        searchedPages: 1,
+        offers: [],
+        matchingOffers: [],
+        verificationErrors,
+        cheapestOffer: null,
+      };
+    }
+    if (!offers.length) {
+      return {
+        source: GOOGLE_SOURCE,
+        searchedAt: new Date().toISOString(),
+        search,
+        searchUrl,
+        resultUrl,
+        searchedPages: 1,
+        offers: [],
+        matchingOffers: [],
+        verificationErrors,
+        cheapestOffer: null,
+      };
     }
     const matchingOffers = offers
       .filter((offer) => offer.matches)

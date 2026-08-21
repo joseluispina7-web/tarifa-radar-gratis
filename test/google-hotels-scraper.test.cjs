@@ -346,7 +346,7 @@ test("reads the final taxed total from the current Google provider row", () => {
   );
 });
 
-test("accepts Google's explicit final row when its outbound URL omits dates", () => {
+test("rejects provider rows whose outbound URL omits exact dates", () => {
   const result = verifiedGoogleProviderPrice(
     {
       href: "https://provider.test/offer",
@@ -358,10 +358,7 @@ test("accepts Google's explicit final row when its outbound URL omits dates", ()
     },
     search({ adults: 2, children: 2 }),
   );
-  assert.deepEqual(result, {
-    totalPrice: 313,
-    evidence: "visible_provider_row",
-  });
+  assert.equal(result, null);
   assert.equal(
     verifiedGoogleProviderPrice(
       {
@@ -374,6 +371,18 @@ test("accepts Google's explicit final row when its outbound URL omits dates", ()
       search({ adults: 2, children: 2 }),
     ),
     null,
+  );
+});
+
+test("accepts a provider total only when its link proves the exact stay", () => {
+  const href =
+    "https://www.super.com/travel?currency=EUR&" +
+    "checkin_at=2026-08-05&checkout_at=2026-08-09&" +
+    "num_adults=2&children=0&num_rooms=1&" +
+    "display_all_inclusive_price=313";
+  assert.deepEqual(
+    verifiedGoogleProviderPrice({ href, text: "Super.com" }, search()),
+    { totalPrice: 313, evidence: "provider_link" },
   );
 });
 
@@ -423,7 +432,7 @@ test("accepts an explicit English total from GitHub runners", () => {
   );
 });
 
-test("builds a verified source-specific offer only from an explicit total", () => {
+test("builds a provisional source-specific offer from an explicit total", () => {
   const offer = buildGoogleOffer(
     {
       hotelName: "Hotel Centro",
@@ -438,9 +447,9 @@ test("builds a verified source-specific offer only from an explicit total", () =
   assert.equal(offer.source, "google_hotels");
   assert.equal(offer.totalPrice, 148);
   assert.equal(offer.nightlyPrice, 37);
-  assert.equal(offer.priceVerified, true);
-  assert.equal(offer.priceBasis, "google_hotels_visible_all_inclusive_v7");
-  assert.equal(offer.priceConfirmationCount, 2);
+  assert.equal(offer.priceVerified, false);
+  assert.equal(offer.priceBasis, "google_hotels_visible_candidate_v8");
+  assert.equal(offer.priceConfirmationCount, 0);
   assert.equal(offer.stars, 3);
   assert.equal(offer.guestRating, 8.8);
   assert.deepEqual(

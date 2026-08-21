@@ -5,6 +5,7 @@ const {
   bluepillowSearchFilters,
   chooseDestination,
   coordinateSearchLocation,
+  linkMatchesOccupancy,
   linkMatchesStay,
   parseBluepillowPriceBreakdown,
   parseTripFinalTotal,
@@ -226,6 +227,17 @@ test("recognizes exact dates inside nested affiliate links", () => {
   );
 });
 
+test("requires the exact occupancy on direct provider links", () => {
+  const exact =
+    "https://us.trip.com/hotels/list?checkin=2026-08-05&" +
+    "checkout=2026-08-09&adult=2&children=0&rooms=1";
+  assert.equal(linkMatchesOccupancy(exact, search()), true);
+  assert.equal(
+    linkMatchesOccupancy(exact.replace("adult=2", "adult=1"), search()),
+    false,
+  );
+});
+
 test("builds an independent verified Agoda offer", () => {
   const offer = buildBluepillowOffer(
     property(),
@@ -382,9 +394,13 @@ test("publishes a Bluepillow match only after the validate endpoint confirms it"
   assert.equal(result.matchingOffers.length, 1);
   assert.equal(result.matchingOffers[0].priceVerified, true);
   assert.equal(result.matchingOffers[0].priceConfirmationCount, 2);
+  assert.equal(
+    result.matchingOffers[0].priceBasis,
+    "bluepillow_api_unchanged_total_v2",
+  );
 });
 
-test("uses a refreshed Bluepillow price when it still matches", async () => {
+test("rejects a refreshed Bluepillow price tied to the old link", async () => {
   const fetchImpl = async (url) => {
     if (url.endsWith("/destinations/resolve")) {
       return Response.json({
@@ -414,11 +430,8 @@ test("uses a refreshed Bluepillow price when it still matches", async () => {
     disableCache: true,
     fetchImpl,
   });
-  assert.equal(result.matchingOffers.length, 1);
-  assert.equal(result.matchingOffers[0].totalPrice, 449);
-  assert.equal(result.matchingOffers[0].nightlyPrice, 112.25);
-  assert.equal(result.matchingOffers[0].firstObservedPrice, 437.06);
-  assert.equal(result.matchingOffers[0].priceChangedDuringConfirmation, true);
+  assert.equal(result.matchingOffers.length, 0);
+  assert.match(result.verificationErrors[0].message, /actualizado es 449/);
 });
 
 test("drops a refreshed Bluepillow price above the budget", async () => {
@@ -512,7 +525,7 @@ test("publishes Trip.com only with the total read from its final page", async ()
   assert.equal(result.matchingOffers[0].provider, "Trip.com");
   assert.equal(
     result.matchingOffers[0].priceBasis,
-    "trip_direct_final_total_v1",
+    "trip_direct_final_total_v2",
   );
   assert.equal(result.matchingOffers[0].url, target);
 });

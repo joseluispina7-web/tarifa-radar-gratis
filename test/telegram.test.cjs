@@ -237,10 +237,12 @@ test("sends a digest with previews disabled", async () => {
     request.body.reply_markup.inline_keyboard[0][1].text,
     "Descartar",
   );
-  assert.match(
-    request.body.reply_markup.inline_keyboard[0][1].callback_data,
-    /^exclude:[a-f0-9]{16}$/,
+  const discardUrl = new URL(
+    request.body.reply_markup.inline_keyboard[0][1].url,
   );
+  assert.match(discardUrl.searchParams.get("discard"), /^[a-f0-9]{16}$/);
+  assert.equal(discardUrl.searchParams.get("monitor"), "benidorm");
+  assert.equal(discardUrl.searchParams.get("hotel"), "Hotel Sol & Mar");
   assert.match(
     request.body.reply_markup.inline_keyboard[1][0].callback_data,
     /^mute:/,

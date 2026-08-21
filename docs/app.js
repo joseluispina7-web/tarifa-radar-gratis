@@ -63,6 +63,20 @@
     ["bluepillow", "Bluepillow", true, "Precio orientativo", "comparison"],
   ];
 
+  function pendingDiscardFromUrl() {
+    const parameters = new URLSearchParams(window.location.search);
+    const target = {
+      id: parameters.get("discard") || "",
+      monitorId: parameters.get("monitor") || "",
+      hotelName: parameters.get("hotel") || "",
+      source: parameters.get("source") || "",
+    };
+    return /^[a-f0-9]{16}$/i.test(target.id) &&
+      target.monitorId && target.hotelName
+      ? target
+      : null;
+  }
+
   const state = {
     accessKey: localStorage.getItem(ACCESS_KEY_STORAGE) || "",
     token: "",
@@ -81,6 +95,7 @@
     locationContext: null,
     locationAbortController: null,
     dealMonitorFilter: "all",
+    pendingDiscard: pendingDiscardFromUrl(),
   };
   let resultsRefreshPending = false;
   let autoRefreshTimer = null;
@@ -110,6 +125,17 @@
     return crypto.randomUUID
       ? crypto.randomUUID()
       : `monitor-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+  }
+
+  function normalizedHotelName(value) {
+    return String(value || "")
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "")
+      .toLowerCase()
+      .replace(/&/g, " and ")
+      .replace(/[^a-z0-9]+/g, " ")
+      .trim()
+      .replace(/\s+/g, " ");
   }
 
   function addDays(date, days) {
@@ -968,7 +994,14 @@
 
   function renderDeals() {
     const deals = (state.deals.deals || []).filter(
-      (deal) => deal.priceVerified === true,
+      (deal) =>
+        deal.priceVerified === true &&
+        !(state.exclusions.hotels || []).some(
+          (entry) =>
+            String(entry.monitorId) === String(deal.monitorId) &&
+            normalizedHotelName(entry.hotelName) ===
+              normalizedHotelName(deal.hotelName),
+        ),
     );
     const monitorById = new Map(
       state.config.monitors.map((monitor) => [String(monitor.id), monitor]),
@@ -1329,6 +1362,66 @@
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
+  }
+
+  function clearPendingDiscardUrl() {
+    const url = new URL(window.location.href);
+    ["discard", "monitor", "hotel", "source"].forEach((name) =>
+      url.searchParams.delete(name)
+    );
+    window.history.replaceState({}, "", url);
+    state.pendingDiscard = null;
+  }
+
+  async function applyPendingDiscard(currentExclusions) {
+    const target = state.pendingDiscard;
+    if (!target) return;
+    const existing = (state.exclusions.hotels || []).find(
+      (entry) => String(entry.id) === target.id,
+    );
+    if (existing) {
+      clearPendingDiscardUrl();
+      state.view = "excluded";
+      showToast(`${existing.hotelName} ya estaba descartado.`);
+      return;
+    }
+
+    const monitor = state.config.monitors.find(
+      (entry) => String(entry.id) === target.monitorId,
+    );
+    if (!monitor) {
+      clearPendingDiscardUrl();
+      showToast("La busqueda de este hotel ya no existe.");
+      return;
+    }
+
+    const now = new Date().toISOString();
+    const next = {
+      version: 1,
+      updatedAt: now,
+      hotels: [
+        ...(state.exclusions.hotels || []),
+        {
+          id: target.id,
+          monitorId: target.monitorId,
+          monitorName: monitor.name || "Busqueda",
+          hotelName: target.hotelName,
+          source: target.source,
+          excludedAt: now,
+          origin: "telegram-panel",
+        },
+      ].slice(-500),
+    };
+
+    try {
+      await saveExclusions(next, currentExclusions);
+      state.exclusions = next;
+      clearPendingDiscardUrl();
+      state.view = "excluded";
+      showToast(`${target.hotelName} descartado.`);
+    } catch (error) {
+      showToast(`No se pudo descartar: ${error.message}`);
+    }
   }
 
   function adjustLocationRadius(change) {
@@ -2058,7 +2151,9 @@
       const first = selected || state.config.monitors[0];
       state.selectedId = first?.id || null;
       state.draft = clone(first || defaultMonitor());
+      await applyPendingDiscard(exclusions);
       renderAll();
+      if (state.view === "excluded") switchView("excluded");
       fillEditor();
     } finally {
       setBusy(false);

@@ -233,6 +233,20 @@ function buildAlertMessage(alerts, options = {}) {
   return buildAlertMessages(alerts, options)[0] || "";
 }
 
+function buildDiscardUrl(panelUrl, alert) {
+  const url = new URL(panelUrl || PANEL_URL);
+  url.searchParams.set("discard", exclusionActionId({
+    monitorId: alert.monitorId,
+    hotelName: alert.offer?.hotelName,
+  }));
+  url.searchParams.set("monitor", String(alert.monitorId || ""));
+  url.searchParams.set("hotel", String(alert.offer?.hotelName || ""));
+  if (alert.offer?.source) {
+    url.searchParams.set("source", String(alert.offer.source));
+  }
+  return url.toString();
+}
+
 async function telegramRequest(token, method, body, options = {}) {
   const fetchImpl = options.fetchImpl || fetch;
   const response = await fetchImpl(
@@ -288,10 +302,7 @@ async function sendAlertDigest(options) {
         if (alert.monitorId && alert.offer?.hotelName) {
           row.push({
             text: "Descartar",
-            callback_data: `exclude:${exclusionActionId({
-              monitorId: alert.monitorId,
-              hotelName: alert.offer.hotelName,
-            })}`,
+            url: buildDiscardUrl(options.panelUrl || PANEL_URL, alert),
           });
         }
         return row;
@@ -340,6 +351,7 @@ module.exports = {
   buildAlertMessage,
   buildAlertMessages,
   buildAlertPages,
+  buildDiscardUrl,
   escapeHtml,
   formatAlert,
   formatDate,
