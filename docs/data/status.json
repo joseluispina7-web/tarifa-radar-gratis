@@ -1,18 +1,18 @@
 {
   "version": 1,
-  "updatedAt": "2026-08-24T21:27:18.231Z",
+  "updatedAt": "2026-08-24T21:56:22.963Z",
   "summary": {
-    "generatedAt": "2026-08-24T21:27:18.231Z",
+    "generatedAt": "2026-08-24T21:56:22.963Z",
     "monitors": 3,
     "searches": 45,
-    "offers": 172,
-    "matches": 1,
-    "newMatches": 0,
-    "priceDrops": 1,
+    "offers": 211,
+    "matches": 2,
+    "newMatches": 2,
+    "priceDrops": 0,
     "sources": {
       "booking": {
         "searches": 6,
-        "offers": 48,
+        "offers": 85,
         "matches": 0,
         "locationRejected": 0,
         "errors": 1,
@@ -20,15 +20,15 @@
       },
       "google_hotels": {
         "searches": 3,
-        "offers": 4,
-        "matches": 1,
+        "offers": 6,
+        "matches": 2,
         "locationRejected": 0,
         "errors": 0,
         "skipped": 0
       },
       "agoda": {
         "searches": 12,
-        "offers": 10,
+        "offers": 12,
         "matches": 0,
         "locationRejected": 0,
         "errors": 0,
@@ -36,7 +36,7 @@
       },
       "bluepillow": {
         "searches": 12,
-        "offers": 97,
+        "offers": 95,
         "matches": 0,
         "locationRejected": 0,
         "errors": 0,
@@ -53,17 +53,139 @@
     },
     "verificationErrors": [
       {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-11-15",
+          "checkOut": "2026-11-18",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 321.43 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-11-15",
+          "checkOut": "2026-11-18",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 321.43 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-11",
+          "checkOut": "2026-11-15",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "LATROUPE Prado Hostel Madrid",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-11",
+          "checkOut": "2026-11-15",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Room Gran Vía",
+        "message": "El hotel esta a 572.84 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-11",
+          "checkOut": "2026-11-15",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "The Central House Madrid Lavapiés",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-11",
+          "checkOut": "2026-11-15",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Adventure Hostel Madrid",
+        "message": "El hotel esta a 7.94 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-13",
+          "checkOut": "2027-07-19",
+          "nights": 6
+        },
+        "searchArea": "Setúbal",
+        "hotelName": "Travelers House",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-11-15",
+          "checkOut": "2026-11-19",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 412.87 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2026-11-15",
+          "checkOut": "2026-11-19",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 412.87 EUR."
+      },
+      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-15",
-          "checkOut": "2027-08-20",
-          "nights": 5
+          "checkIn": "2027-08-16",
+          "checkOut": "2027-08-22",
+          "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 423.50 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
@@ -71,11 +193,11 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2027-07-16",
-          "checkOut": "2027-07-21",
-          "nights": 5
+          "checkOut": "2027-07-22",
+          "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
-        "hotelName": "Quinta do Meco",
+        "hotelName": "Sesimbraholidayname",
         "message": "No se pudo comprobar la distancia real de este hotel.",
         "kind": "location_filtered"
       },
@@ -85,8 +207,8 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2027-07-16",
-          "checkOut": "2027-07-21",
-          "nights": 5
+          "checkOut": "2027-07-22",
+          "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Senhora do Cabo Meco Homy Holidays",
@@ -96,70 +218,82 @@
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
-        "source": "bluepillow",
+        "source": "google_hotels",
         "dates": {
-          "checkIn": "2027-08-15",
-          "checkOut": "2027-08-21",
+          "checkIn": "2027-07-16",
+          "checkOut": "2027-07-22",
           "nights": 6
         },
-        "searchArea": "Seixal",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 435.60 EUR."
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Lighthouse Apartment",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-07-16",
+          "checkOut": "2027-07-22",
+          "nights": 6
+        },
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+        "hotelName": "Apartamento en Sesimbra, en primera línea de playa, frente al mar y el centro",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "agoda",
+        "dates": {
+          "checkIn": "2026-11-16",
+          "checkOut": "2026-11-19",
+          "nights": 3
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 274.32 EUR."
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
         "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-08-15",
-          "checkOut": "2027-08-22",
-          "nights": 7
+          "checkIn": "2026-11-16",
+          "checkOut": "2026-11-19",
+          "nights": 3
         },
-        "searchArea": "Palmela",
-        "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 496.10 EUR."
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 274.32 EUR."
       },
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "agoda",
         "dates": {
-          "checkIn": "2027-07-13",
-          "checkOut": "2027-07-18",
-          "nights": 5
+          "checkIn": "2026-11-16",
+          "checkOut": "2026-11-20",
+          "nights": 4
         },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "Villa Center - Alojamento Local",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 365.76 EUR."
       },
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "bluepillow",
         "dates": {
-          "checkIn": "2027-07-13",
-          "checkOut": "2027-07-18",
-          "nights": 5
+          "checkIn": "2026-11-16",
+          "checkOut": "2026-11-20",
+          "nights": 4
         },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "Verde e Mar",
-        "message": "El hotel esta a 1724.51 km y queda fuera del radio.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-13",
-          "checkOut": "2027-07-18",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "MontePico – Alojamento de Luxo com Piscina Privada",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "Hostal Numancia",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 365.76 EUR."
       },
       {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
@@ -167,207 +301,69 @@
         "source": "bluepillow",
         "dates": {
           "checkIn": "2027-08-16",
-          "checkOut": "2027-08-21",
+          "checkOut": "2027-08-23",
+          "nights": 7
+        },
+        "searchArea": "Seixal",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 484.00 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-17",
+          "checkOut": "2027-08-22",
           "nights": 5
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Lá em Cima",
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 350.90 EUR."
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "bluepillow",
+        "dates": {
+          "checkIn": "2027-08-17",
+          "checkOut": "2027-08-23",
+          "nights": 6
         },
         "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "hotelName": "Lá em Cima",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 363.00 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-16",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 415.65 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-11-13",
-          "checkOut": "2026-11-16",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 415.65 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "TOC Hostel Madrid",
-        "message": "Google no expuso un total final con impuestos en EUR.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "The Hat Madrid",
-        "message": "El hotel esta a 6.97 km y queda fuera del radio.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "The Loft House Madrid",
-        "message": "Google no expuso un total final con impuestos en EUR.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "LooP Alcalá Only Adults",
-        "message": "El hotel esta a 1811.83 km y queda fuera del radio.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Tu espacio en el corazón de la Ciudad",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Novotel Madrid Center",
-        "message": "Google Hotels no mostro la fecha 2026-11-14 en el calendario.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hotel Riu Plaza España",
-        "message": "Google no expuso un total final con impuestos en EUR.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-11",
-          "checkOut": "2026-11-14",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Far Home Atocha",
-        "message": "Google no expuso un total final con impuestos en EUR.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "agoda",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.54 EUR."
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "bluepillow",
-        "dates": {
-          "checkIn": "2026-11-14",
-          "checkOut": "2026-11-17",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hostal Numancia",
-        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 368.54 EUR."
+        "message": "Bluepillow no confirmo el precio final (price_changed). El precio actualizado es 411.40 EUR."
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-27",
+          "checkIn": "2027-07-26",
           "checkOut": "2027-08-02",
-          "nights": 6,
+          "nights": 7,
           "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-20",
-          "flexibleCheckInEnd": "2027-08-03"
+          "flexibleCheckInStart": "2027-07-19",
+          "flexibleCheckInEnd": "2027-08-02"
         },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente."
       }
     ],
     "timeBudgetReached": false,
     "stoppedEarlyMonitors": 0,
-    "durationMs": 153889,
+    "durationMs": 127842,
     "health": {
       "state": "healthy",
-      "startedAt": "2026-08-24T21:27:18.231Z",
-      "lastCompletedAt": "2026-08-24T21:27:18.231Z",
-      "previousCompletedAt": "2026-08-24T20:52:35.070Z",
-      "gapMinutes": 35,
-      "recoveredAfterInterruption": true,
-      "durationMs": 153889,
+      "startedAt": "2026-08-24T21:56:22.963Z",
+      "lastCompletedAt": "2026-08-24T21:56:22.963Z",
+      "previousCompletedAt": "2026-08-24T21:27:18.231Z",
+      "gapMinutes": 29,
+      "recoveredAfterInterruption": false,
+      "durationMs": 127842,
       "completedNormally": true,
       "monitorsProcessed": 3,
       "searchesCompleted": 45
@@ -375,24 +371,455 @@
   },
   "health": {
     "state": "healthy",
-    "startedAt": "2026-08-24T21:27:18.231Z",
-    "lastCompletedAt": "2026-08-24T21:27:18.231Z",
-    "previousCompletedAt": "2026-08-24T20:52:35.070Z",
-    "gapMinutes": 35,
-    "recoveredAfterInterruption": true,
-    "durationMs": 153889,
+    "startedAt": "2026-08-24T21:56:22.963Z",
+    "lastCompletedAt": "2026-08-24T21:56:22.963Z",
+    "previousCompletedAt": "2026-08-24T21:27:18.231Z",
+    "gapMinutes": 29,
+    "recoveredAfterInterruption": false,
+    "durationMs": 127842,
     "completedNormally": true,
     "monitorsProcessed": 3,
     "searchesCompleted": 45
   },
   "monitors": {
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-08-24T21:56:22.963Z",
+      "lastSuccessAt": "2026-08-24T21:58:13.878140Z",
+      "searches": 15,
+      "offers": 58,
+      "matches": 2,
+      "nearbyLocations": [
+        "Setúbal",
+        "Alcácer do Sal",
+        "Palma",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 2,
+          "offers": 46,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "coveredCheckIns": 30,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-24",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 48,
+            "searchesCheckedThisRun": 2,
+            "nextIndex": 50,
+            "remainingSearchesInSweep": 85,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-24"
+          }
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 2,
+          "matches": 2,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-24",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 4,
+            "searchesCheckedThisRun": 1,
+            "nextIndex": 5,
+            "remainingSearchesInSweep": 130,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-24"
+          }
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-23",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 108,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 112,
+            "remainingSearchesInSweep": 23,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-23"
+          }
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-23",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 108,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 112,
+            "remainingSearchesInSweep": 23,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-23"
+          }
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 10,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-23",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 108,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 112,
+            "remainingSearchesInSweep": 23,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-23"
+          }
+        }
+      },
+      "error": "",
+      "sourceCoverage": {
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 48,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 50,
+          "remainingSearchesInSweep": 85,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
+        },
+        "google_hotels": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 4,
+          "searchesCheckedThisRun": 1,
+          "nextIndex": 5,
+          "remainingSearchesInSweep": 130,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
+        },
+        "agoda": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 108,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 112,
+          "remainingSearchesInSweep": 23,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 108,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 112,
+          "remainingSearchesInSweep": 23,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        },
+        "bluepillow": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 108,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 112,
+          "remainingSearchesInSweep": 23,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        }
+      },
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-23",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 108,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 112,
+        "remainingSearchesInSweep": 23,
+        "completedSweep": false,
+        "nextSweepStartDate": "2026-08-23"
+      }
+    },
+    "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
+      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+      "monitorName": "Madrid Laura",
+      "lastScanAt": "2026-08-24T21:56:22.963Z",
+      "lastSuccessAt": "2026-08-24T21:58:13.976049Z",
+      "searches": 15,
+      "offers": 78,
+      "matches": 0,
+      "nearbyLocations": [],
+      "sources": {
+        "booking": {
+          "searches": 2,
+          "offers": 15,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "coveredCheckIns": 17,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-23",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 62,
+            "searchesCheckedThisRun": 2,
+            "nextIndex": 64,
+            "remainingSearchesInSweep": 1,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-23"
+          }
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 2,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-23",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 33,
+            "searchesCheckedThisRun": 1,
+            "nextIndex": 34,
+            "remainingSearchesInSweep": 31,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-23"
+          }
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 9,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-24",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 40,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 44,
+            "remainingSearchesInSweep": 21,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-24"
+          }
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 43,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-24",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 40,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 44,
+            "remainingSearchesInSweep": 21,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-24"
+          }
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 9,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-08-24",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 40,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 44,
+            "remainingSearchesInSweep": 21,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-08-24"
+          }
+        }
+      },
+      "error": "",
+      "sourceCoverage": {
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 65,
+          "totalSearches": 65,
+          "startIndex": 62,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 64,
+          "remainingSearchesInSweep": 1,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        },
+        "google_hotels": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 65,
+          "totalSearches": 65,
+          "startIndex": 33,
+          "searchesCheckedThisRun": 1,
+          "nextIndex": 34,
+          "remainingSearchesInSweep": 31,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        },
+        "agoda": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 65,
+          "totalSearches": 65,
+          "startIndex": 40,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 44,
+          "remainingSearchesInSweep": 21,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
+        },
+        "bluepillow": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 65,
+          "totalSearches": 65,
+          "startIndex": 40,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 44,
+          "remainingSearchesInSweep": 21,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 65,
+          "totalSearches": 65,
+          "startIndex": 40,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 44,
+          "remainingSearchesInSweep": 21,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
+        }
+      },
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-08-24",
+        "totalCombinations": 65,
+        "totalSearches": 65,
+        "startIndex": 40,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 44,
+        "remainingSearchesInSweep": 21,
+        "completedSweep": false,
+        "nextSweepStartDate": "2026-08-24"
+      }
+    },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
       "monitorName": "Sesimbra",
-      "lastScanAt": "2026-08-24T21:27:18.231Z",
-      "lastSuccessAt": "2026-08-24T21:29:03.854183Z",
+      "lastScanAt": "2026-08-24T21:56:22.963Z",
+      "lastSuccessAt": "2026-08-24T21:58:27.640344Z",
       "searches": 15,
-      "offers": 76,
+      "offers": 75,
       "matches": 0,
       "nearbyLocations": [
         "Seixal",
@@ -408,7 +835,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -416,10 +843,10 @@
             "sweepStartDate": "2026-08-24",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 12,
+            "startIndex": 13,
             "searchesCheckedThisRun": 1,
-            "nextIndex": 13,
-            "remainingSearchesInSweep": 122,
+            "nextIndex": 14,
+            "remainingSearchesInSweep": 121,
             "completedSweep": false,
             "nextSweepStartDate": "2026-08-24"
           }
@@ -433,7 +860,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -441,24 +868,24 @@
             "sweepStartDate": "2026-08-23",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 102,
+            "startIndex": 106,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 106,
-            "remainingSearchesInSweep": 29,
+            "nextIndex": 110,
+            "remainingSearchesInSweep": 25,
             "completedSweep": false,
             "nextSweepStartDate": "2026-08-23"
           }
         },
         "bluepillow": {
           "searches": 4,
-          "offers": 43,
+          "offers": 42,
           "matches": 0,
           "locationRejected": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -466,10 +893,10 @@
             "sweepStartDate": "2026-08-23",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 102,
+            "startIndex": 106,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 106,
-            "remainingSearchesInSweep": 29,
+            "nextIndex": 110,
+            "remainingSearchesInSweep": 25,
             "completedSweep": false,
             "nextSweepStartDate": "2026-08-23"
           }
@@ -483,7 +910,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -491,10 +918,10 @@
             "sweepStartDate": "2026-08-23",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 102,
+            "startIndex": 106,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 106,
-            "remainingSearchesInSweep": 29,
+            "nextIndex": 110,
+            "remainingSearchesInSweep": 25,
             "completedSweep": false,
             "nextSweepStartDate": "2026-08-23"
           }
@@ -502,124 +929,6 @@
         "booking": {
           "searches": 2,
           "offers": 24,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "coveredCheckIns": 30,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-24",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 42,
-            "searchesCheckedThisRun": 2,
-            "nextIndex": 44,
-            "remainingSearchesInSweep": 91,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-24"
-          }
-        }
-      },
-      "error": "",
-      "sourceCoverage": {
-        "google_hotels": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 12,
-          "searchesCheckedThisRun": 1,
-          "nextIndex": 13,
-          "remainingSearchesInSweep": 122,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        },
-        "agoda": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 102,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 106,
-          "remainingSearchesInSweep": 29,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "bluepillow": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 102,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 106,
-          "remainingSearchesInSweep": 29,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "trip": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 102,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 106,
-          "remainingSearchesInSweep": 29,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "booking": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 42,
-          "searchesCheckedThisRun": 2,
-          "nextIndex": 44,
-          "remainingSearchesInSweep": 91,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        }
-      },
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-23",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 102,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 106,
-        "remainingSearchesInSweep": 29,
-        "completedSweep": false,
-        "nextSweepStartDate": "2026-08-23"
-      }
-    },
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-08-24T21:27:18.231Z",
-      "lastSuccessAt": "2026-08-24T21:29:12.021526Z",
-      "searches": 15,
-      "offers": 13,
-      "matches": 1,
-      "nearbyLocations": [
-        "Setúbal",
-        "Alcácer do Sal",
-        "Palma",
-        "Grândola"
-      ],
-      "sources": {
-        "booking": {
-          "searches": 2,
-          "offers": 0,
           "matches": 0,
           "locationRejected": 0,
           "errors": 1,
@@ -627,7 +936,7 @@
           "coveredCheckIns": 15,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
+          "lastSuccessAt": "2026-08-24T21:56:22.963Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -635,138 +944,26 @@
             "sweepStartDate": "2026-08-24",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 46,
+            "startIndex": 44,
             "searchesCheckedThisRun": 2,
-            "nextIndex": 48,
-            "remainingSearchesInSweep": 87,
+            "nextIndex": 46,
+            "remainingSearchesInSweep": 89,
             "completedSweep": false,
             "nextSweepStartDate": "2026-08-24"
-          }
-        },
-        "google_hotels": {
-          "searches": 1,
-          "offers": 2,
-          "matches": 1,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-24",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 3,
-            "searchesCheckedThisRun": 1,
-            "nextIndex": 4,
-            "remainingSearchesInSweep": 131,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-24"
-          }
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-23",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 104,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 108,
-            "remainingSearchesInSweep": 27,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-23"
-          }
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-23",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 104,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 108,
-            "remainingSearchesInSweep": 27,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-23"
-          }
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 11,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-23",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 104,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 108,
-            "remainingSearchesInSweep": 27,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-23"
           }
         }
       },
       "error": "[booking] Booking descartó el destino o las fechas tras dos intentos; la fuente se pausará temporalmente.",
       "sourceCoverage": {
-        "booking": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 46,
-          "searchesCheckedThisRun": 2,
-          "nextIndex": 48,
-          "remainingSearchesInSweep": 87,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        },
         "google_hotels": {
           "mode": "range",
           "sweepStartDate": "2026-08-24",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 3,
+          "startIndex": 13,
           "searchesCheckedThisRun": 1,
-          "nextIndex": 4,
-          "remainingSearchesInSweep": 131,
+          "nextIndex": 14,
+          "remainingSearchesInSweep": 121,
           "completedSweep": false,
           "nextSweepStartDate": "2026-08-24"
         },
@@ -775,22 +972,10 @@
           "sweepStartDate": "2026-08-23",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 104,
+          "startIndex": 106,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 108,
-          "remainingSearchesInSweep": 27,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "trip": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 104,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 108,
-          "remainingSearchesInSweep": 27,
+          "nextIndex": 110,
+          "remainingSearchesInSweep": 25,
           "completedSweep": false,
           "nextSweepStartDate": "2026-08-23"
         },
@@ -799,12 +984,36 @@
           "sweepStartDate": "2026-08-23",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 104,
+          "startIndex": 106,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 108,
-          "remainingSearchesInSweep": 27,
+          "nextIndex": 110,
+          "remainingSearchesInSweep": 25,
           "completedSweep": false,
           "nextSweepStartDate": "2026-08-23"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-23",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 106,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 110,
+          "remainingSearchesInSweep": 25,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-23"
+        },
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-08-24",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 44,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 46,
+          "remainingSearchesInSweep": 89,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-08-24"
         }
       },
       "dateCoverage": {
@@ -812,255 +1021,145 @@
         "sweepStartDate": "2026-08-23",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 104,
+        "startIndex": 106,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 108,
-        "remainingSearchesInSweep": 27,
-        "completedSweep": false,
-        "nextSweepStartDate": "2026-08-23"
-      }
-    },
-    "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
-      "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-      "monitorName": "Madrid Laura",
-      "lastScanAt": "2026-08-24T21:27:18.231Z",
-      "lastSuccessAt": "2026-08-24T21:29:51.322266Z",
-      "searches": 15,
-      "offers": 83,
-      "matches": 0,
-      "nearbyLocations": [],
-      "sources": {
-        "booking": {
-          "searches": 2,
-          "offers": 24,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "coveredCheckIns": 19,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-23",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 60,
-            "searchesCheckedThisRun": 2,
-            "nextIndex": 62,
-            "remainingSearchesInSweep": 3,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-23"
-          }
-        },
-        "google_hotels": {
-          "searches": 1,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-23",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 32,
-            "searchesCheckedThisRun": 1,
-            "nextIndex": 33,
-            "remainingSearchesInSweep": 32,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-23"
-          }
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 7,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-24",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 36,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 40,
-            "remainingSearchesInSweep": 25,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-24"
-          }
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 43,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-24",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 36,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 40,
-            "remainingSearchesInSweep": 25,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-24"
-          }
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 9,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-08-24T21:27:18.231Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-08-24",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 36,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 40,
-            "remainingSearchesInSweep": 25,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-08-24"
-          }
-        }
-      },
-      "error": "",
-      "sourceCoverage": {
-        "booking": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 65,
-          "totalSearches": 65,
-          "startIndex": 60,
-          "searchesCheckedThisRun": 2,
-          "nextIndex": 62,
-          "remainingSearchesInSweep": 3,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "google_hotels": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-23",
-          "totalCombinations": 65,
-          "totalSearches": 65,
-          "startIndex": 32,
-          "searchesCheckedThisRun": 1,
-          "nextIndex": 33,
-          "remainingSearchesInSweep": 32,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-23"
-        },
-        "agoda": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 65,
-          "totalSearches": 65,
-          "startIndex": 36,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 40,
-          "remainingSearchesInSweep": 25,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        },
-        "bluepillow": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 65,
-          "totalSearches": 65,
-          "startIndex": 36,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 40,
-          "remainingSearchesInSweep": 25,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        },
-        "trip": {
-          "mode": "range",
-          "sweepStartDate": "2026-08-24",
-          "totalCombinations": 65,
-          "totalSearches": 65,
-          "startIndex": 36,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 40,
-          "remainingSearchesInSweep": 25,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-08-24"
-        }
-      },
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-08-24",
-        "totalCombinations": 65,
-        "totalSearches": 65,
-        "startIndex": 36,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 40,
+        "nextIndex": 110,
         "remainingSearchesInSweep": 25,
         "completedSweep": false,
-        "nextSweepStartDate": "2026-08-24"
+        "nextSweepStartDate": "2026-08-23"
       }
     }
   },
   "alerts": [
     {
-      "type": "price_drop",
+      "type": "new_match",
       "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
       "monitorName": "Comporta",
-      "previousPrice": 495.39,
+      "previousPrice": 0,
       "offer": {
-        "id": "google_hotels:832a9dbf04d88302|2027-07-13|2027-07-18",
+        "id": "google_hotels:97f03725f37b95a0|2027-07-13|2027-07-19",
         "source": "google_hotels",
-        "provider": "Super.com via Google Hotels",
-        "hotelName": "B&B HOTEL Sado Setúbal",
-        "address": "Rua Irene Lisboa, Setúbal, Portugal",
+        "provider": "Booking.com via Google Hotels",
+        "hotelName": "ibis Setubal",
+        "address": "Rua Cidade de Porto Seguro, Setúbal, Portugal",
         "checkIn": "2027-07-13",
-        "checkOut": "2027-07-18",
-        "nights": 5,
-        "totalPrice": 404.88,
-        "nightlyPrice": 80.98,
-        "displayedNightlyPrice": 77,
-        "rateSubtotal": 404.88,
-        "searchResultPrice": 404.88,
+        "checkOut": "2027-07-19",
+        "nights": 6,
+        "totalPrice": 392.78,
+        "nightlyPrice": 65.46,
+        "displayedNightlyPrice": 59,
+        "rateSubtotal": 392.78,
+        "searchResultPrice": 392.78,
         "additionalCharges": 0,
         "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
-        "stayText": "5 noches con impuestos y tasas incluidos",
+        "stayText": "6 noches con impuestos y tasas incluidos",
         "priceVerified": true,
         "priceBasis": "google_hotels_provider_all_inclusive_v8",
         "priceConfirmationCount": 2,
-        "priceConfirmedAt": "2026-08-24T21:28:39.037Z",
+        "priceConfirmedAt": "2026-08-24T21:57:32.948Z",
+        "stars": 4,
+        "guestRating": 8,
+        "reviewCount": 2276,
+        "distanceKm": 18.08,
+        "distanceVerified": true,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "pool",
+          "spa",
+          "parking",
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Setúbal",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80Osw5ifw_9tuhb6J0dscoExC55uF730k_uFQY28Z45wjmLvHkgnKWpuk-KqIGhTIJk7sehO_FJH4QJNeq-IoRTtTUNFe031fJV0BtUpbvqgA39OtENE06e961YG7r0xQ-gIkeLuuIsUzV-qeupauHfCMz4W2KQmOh-FsEwVKX8ZgHXjMqfWsdxEyFgLpWI1Xx5SCWXQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D236732%26highlighted_hotels%3D236732%26dest_type%3Dhotel%26checkin%3D2027-07-13%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D23673204_94356231_2_2_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D392.78%26ext_price_tax%3D41.09%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787586498%26edgtid%3DgyKAt6DKTcCE_rl_jmSJig%26efpc%3DNyt5o5K3mh8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-236732%26utm_content%3Ddev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-236732_dev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-&s=AD1XQnl6gNFFB0O87QWdSatNyj6q",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "provider_link",
+        "latitude": 38.5382245,
+        "longitude": -8.8372069,
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 0,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceHistory": [
+          {
+            "at": "2026-08-24T21:57:56.545Z",
+            "totalPrice": 392.78,
+            "nightlyPrice": 65.46,
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-08-24T21:57:32.948Z",
+          "source": "google_hotels",
+          "provider": "Booking.com via Google Hotels",
+          "priceBasis": "google_hotels_provider_all_inclusive_v8",
+          "priceEvidence": "provider_link",
+          "totalPrice": 392.78,
+          "nightlyPrice": 65.46,
+          "confirmationCount": 2,
+          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+        },
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "151f2dec0b290ef3",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels",
+            "totalPrice": 392.78,
+            "nightlyPrice": 65.46,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80Osw5ifw_9tuhb6J0dscoExC55uF730k_uFQY28Z45wjmLvHkgnKWpuk-KqIGhTIJk7sehO_FJH4QJNeq-IoRTtTUNFe031fJV0BtUpbvqgA39OtENE06e961YG7r0xQ-gIkeLuuIsUzV-qeupauHfCMz4W2KQmOh-FsEwVKX8ZgHXjMqfWsdxEyFgLpWI1Xx5SCWXQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D236732%26highlighted_hotels%3D236732%26dest_type%3Dhotel%26checkin%3D2027-07-13%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D23673204_94356231_2_2_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D392.78%26ext_price_tax%3D41.09%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787586498%26edgtid%3DgyKAt6DKTcCE_rl_jmSJig%26efpc%3DNyt5o5K3mh8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-236732%26utm_content%3Ddev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-236732_dev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-&s=AD1XQnl6gNFFB0O87QWdSatNyj6q",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 392.78,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-08-24T21:57:56.545Z"
+    },
+    {
+      "type": "new_match",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 0,
+      "offer": {
+        "id": "google_hotels:832a9dbf04d88302|2027-07-13|2027-07-19",
+        "source": "google_hotels",
+        "provider": "Booking.com via Google Hotels",
+        "hotelName": "B&B HOTEL Sado Setúbal",
+        "address": "Rua Irene Lisboa, Setúbal, Portugal",
+        "checkIn": "2027-07-13",
+        "checkOut": "2027-07-19",
+        "nights": 6,
+        "totalPrice": 590.47,
+        "nightlyPrice": 98.41,
+        "displayedNightlyPrice": 90,
+        "rateSubtotal": 590.47,
+        "searchResultPrice": 590.47,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "6 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v8",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-08-24T21:57:56.545Z",
         "stars": 4,
         "guestRating": 8.2,
         "reviewCount": 2449,
@@ -1081,8 +1180,8 @@
         "mealPlan": "breakfast",
         "roomName": "",
         "sharedRoom": false,
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oszv3yU7BtHrRTjaf8f3a6Fh2gVtK1MuvJkEyBDuFGLci0Q6t6JpNIqz_m2xeMMdszZ4ZzlQtAMSx2epjb4J5kol3Rn9ecWAgLTxnSjMBIG2bj4MihPgj27PiTWmrD-LjK5zND7hvvRIOqX97-LU8h7F2H46anj07xTDPpwG4iII-36xhgCP9DwQpw&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D366.91%2526total_price%3D384.88%2526surcharge%3D20.0%2526request_id%3D12569217517568706560%2526ps%3D125358856027%2526pb%3D0-slAkZlDjP06IhVxwa_7CMvbVKWIMNEZ5wZ2ev9hYyWuadot2F2B2eO-SZIAB63gfEh002ZgBtaJKAEdEDBgdRDtc-5187eAu4cd6vubbUP2dDay2X1FBIIy8YrONA9_eKrrX8yX2srb2qnBDXY5g%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1787566356%2526sg%3DzxKmi%2526sid%3DGHA_MD6%2526cmab_id%3D33%2526xb%3Dc%2526ib%3Dfalse%2526hga%3Dc%2526hgs%3D4%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D404.88%26checkin_at%3D2027-07-13%26checkout_at%3D2027-07-18%26provider_hotel_id%3D10004145321%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnn4qlf4h6jW40DL8en7ckhr",
+        "searchArea": "Setúbal",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80OsxsYCoNx0EeoLfYKrjFXh3XfQ7A6Ik3iKRUI8XjklQCLRMc9Fa3vvdXTQkTYK79T5gatilvnorwDZ7e69EFX2wq6Kd6bMePJezGI5-YlThckWtNpZ0WmkNZapOCh3ZvUDQc6gsFjc6G-Kry6qFvB8xfDQtIZlRsEldrDlAbaSVRK4yYSLV2dcyCDsZjMikj139VfQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D38642%26highlighted_hotels%3D38642%26dest_type%3Dhotel%26checkin%3D2027-07-13%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D3864201_95162895_2_2_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D590.47%26ext_price_tax%3D52.28%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787527317%26edgtid%3D6CvID1cdQleToaHMfQ6hcQ%26efpc%3DVwtIpZC0ih8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-38642%26utm_content%3Ddev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-38642_dev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-&s=AD1XQnma3XYvEzw4s2Fa7VfMXpkU",
         "matches": true,
         "candidateMatches": true,
         "priceEvidence": "provider_link",
@@ -1092,7 +1191,7 @@
         "marketSampleSize": 0,
         "discountPercent": 0,
         "marketErrorFareScore": 0,
-        "errorFareScore": 9,
+        "errorFareScore": 0,
         "errorFareLevel": "normal",
         "errorFareIntelligenceVersion": 2,
         "errorFareEvidence": [
@@ -1101,49 +1200,42 @@
         "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
         "priceHistory": [
           {
-            "at": "2026-08-22T04:10:59.741Z",
-            "totalPrice": 495.39,
-            "nightlyPrice": 99.08,
+            "at": "2026-08-24T21:57:56.545Z",
+            "totalPrice": 590.47,
+            "nightlyPrice": 98.41,
             "source": "google_hotels",
             "provider": "Booking.com via Google Hotels"
-          },
-          {
-            "at": "2026-08-24T21:29:04.279Z",
-            "totalPrice": 404.88,
-            "nightlyPrice": 80.98,
-            "source": "google_hotels",
-            "provider": "Super.com via Google Hotels"
           }
         ],
         "priceProof": {
-          "verifiedAt": "2026-08-24T21:28:39.037Z",
+          "verifiedAt": "2026-08-24T21:57:56.545Z",
           "source": "google_hotels",
-          "provider": "Super.com via Google Hotels",
+          "provider": "Booking.com via Google Hotels",
           "priceBasis": "google_hotels_provider_all_inclusive_v8",
           "priceEvidence": "provider_link",
-          "totalPrice": 404.88,
-          "nightlyPrice": 80.98,
+          "totalPrice": 590.47,
+          "nightlyPrice": 98.41,
           "confirmationCount": 2,
           "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
         },
-        "priceDropPercent": 18.3,
-        "preComparisonErrorFareScore": 9,
-        "comparisonGroupId": "27fabb857ca69c96",
+        "priceDropPercent": 0,
+        "preComparisonErrorFareScore": 0,
+        "comparisonGroupId": "572a405b693825c2",
         "providerCount": 1,
         "comparisonProviders": [
           {
             "source": "google_hotels",
-            "provider": "Super.com via Google Hotels",
-            "totalPrice": 404.88,
-            "nightlyPrice": 80.98,
-            "url": "https://www.google.com/travel/lodging/clk?pc=AA80Oszv3yU7BtHrRTjaf8f3a6Fh2gVtK1MuvJkEyBDuFGLci0Q6t6JpNIqz_m2xeMMdszZ4ZzlQtAMSx2epjb4J5kol3Rn9ecWAgLTxnSjMBIG2bj4MihPgj27PiTWmrD-LjK5zND7hvvRIOqX97-LU8h7F2H46anj07xTDPpwG4iII-36xhgCP9DwQpw&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D366.91%2526total_price%3D384.88%2526surcharge%3D20.0%2526request_id%3D12569217517568706560%2526ps%3D125358856027%2526pb%3D0-slAkZlDjP06IhVxwa_7CMvbVKWIMNEZ5wZ2ev9hYyWuadot2F2B2eO-SZIAB63gfEh002ZgBtaJKAEdEDBgdRDtc-5187eAu4cd6vubbUP2dDay2X1FBIIy8YrONA9_eKrrX8yX2srb2qnBDXY5g%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1787566356%2526sg%3DzxKmi%2526sid%3DGHA_MD6%2526cmab_id%3D33%2526xb%3Dc%2526ib%3Dfalse%2526hga%3Dc%2526hgs%3D4%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D404.88%26checkin_at%3D2027-07-13%26checkout_at%3D2027-07-18%26provider_hotel_id%3D10004145321%26provider%3Dean%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnn4qlf4h6jW40DL8en7ckhr",
+            "provider": "Booking.com via Google Hotels",
+            "totalPrice": 590.47,
+            "nightlyPrice": 98.41,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80OsxsYCoNx0EeoLfYKrjFXh3XfQ7A6Ik3iKRUI8XjklQCLRMc9Fa3vvdXTQkTYK79T5gatilvnorwDZ7e69EFX2wq6Kd6bMePJezGI5-YlThckWtNpZ0WmkNZapOCh3ZvUDQc6gsFjc6G-Kry6qFvB8xfDQtIZlRsEldrDlAbaSVRK4yYSLV2dcyCDsZjMikj139VfQ&pcurl=https://www.booking.com/searchresults.es.html?dest_id%3D38642%26highlighted_hotels%3D38642%26dest_type%3Dhotel%26checkin%3D2027-07-13%26checkout%3D2027-07-19%26group_adults%3D2%26req_adults%3D2%26show_room%3D3864201_95162895_2_2_0%26lang%3Des%26selected_currency%3DEUR%26exrt%3D1.00000000%26ext_price_total%3D590.47%26ext_price_tax%3D52.28%26xfc%3DEUR%26hca%3Dm%26group_children%3D0%26req_children%3D0%26%26no_rooms%3D1%26ts%3D1787527317%26edgtid%3D6CvID1cdQleToaHMfQ6hcQ%26efpc%3DVwtIpZC0ih8%26utm_source%3Dmetagha%26utm_medium%3Dlocaluniversal%26utm_campaign%3DUS%26utm_term%3Dhotel-38642%26utm_content%3Ddev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-%26aid%3D2127486%26label%3Dmetagha-link-LUUS-hotel-38642_dev-desktop_los-6_bw-323_dow-Tuesday_defdate-0_room-0_gstadt-2_rateid-public_aud-0_gacid-_mcid-10_ppa-0_clrid-0_ad-0_gstkid-0_checkin-20270713_ppt-&s=AD1XQnma3XYvEzw4s2Fa7VfMXpkU",
             "priceVerified": true
           }
         ],
-        "bestTotalPrice": 404.88,
+        "bestTotalPrice": 590.47,
         "isBestPrice": true
       },
-      "createdAt": "2026-08-24T21:29:04.279Z"
+      "createdAt": "2026-08-24T21:57:56.545Z"
     }
   ]
 }
