@@ -1,34 +1,34 @@
 {
   "version": 1,
-  "updatedAt": "2026-10-11T19:04:36.224Z",
+  "updatedAt": "2026-10-11T22:51:02.897Z",
   "summary": {
-    "generatedAt": "2026-10-11T19:04:36.224Z",
+    "generatedAt": "2026-10-11T22:51:02.897Z",
     "monitors": 3,
-    "searches": 44,
-    "offers": 171,
-    "matches": 4,
+    "searches": 45,
+    "offers": 239,
+    "matches": 6,
     "newMatches": 0,
-    "priceDrops": 0,
+    "priceDrops": 1,
     "sources": {
       "booking": {
-        "searches": 5,
-        "offers": 34,
+        "searches": 6,
+        "offers": 70,
         "matches": 0,
         "locationRejected": 0,
-        "errors": 2,
-        "skipped": 1
+        "errors": 1,
+        "skipped": 0
       },
       "google_hotels": {
         "searches": 3,
-        "offers": 3,
-        "matches": 0,
+        "offers": 4,
+        "matches": 2,
         "locationRejected": 0,
         "errors": 0,
         "skipped": 0
       },
       "agoda": {
         "searches": 12,
-        "offers": 20,
+        "offers": 31,
         "matches": 0,
         "locationRejected": 0,
         "errors": 0,
@@ -36,7 +36,7 @@
       },
       "bluepillow": {
         "searches": 12,
-        "offers": 91,
+        "offers": 102,
         "matches": 4,
         "locationRejected": 0,
         "errors": 0,
@@ -44,7 +44,7 @@
       },
       "trip": {
         "searches": 12,
-        "offers": 23,
+        "offers": 32,
         "matches": 0,
         "locationRejected": 0,
         "errors": 0,
@@ -53,200 +53,86 @@
     },
     "verificationErrors": [
       {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
+          "nights": 7
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Travelers House",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
+          "nights": 7
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Day Off Hostel",
+        "message": "El hotel esta a 20.52 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
+          "nights": 7
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Casa das Pipas - Palmela",
+        "message": "El hotel esta a 23.6 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
+          "nights": 7
+        },
+        "searchArea": "Palmela",
+        "hotelName": "ibis Setubal",
+        "message": "El hotel esta a 25.25 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+        "monitorName": "Sesimbra",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2027-08-05",
+          "checkOut": "2027-08-12",
+          "nights": 7
+        },
+        "searchArea": "Palmela",
+        "hotelName": "Hotel Aranguês",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
+        "kind": "location_filtered"
+      },
+      {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
         "source": "google_hotels",
         "dates": {
           "checkIn": "2027-07-28",
-          "checkOut": "2027-08-02",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "Villa Center - Alojamento Local",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-28",
-          "checkOut": "2027-08-02",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "MontePico – Alojamento com Piscina Privada",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-28",
-          "checkOut": "2027-08-02",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "Verde e Mar",
-        "message": "El hotel esta a 1724.51 km y queda fuera del radio.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-07-28",
-          "checkOut": "2027-08-02",
-          "nights": 5
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "hotelName": "Casa Morgados Boutique Guesthouse",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
+          "checkOut": "2027-08-03",
           "nights": 6
         },
-        "searchArea": "Seixal",
-        "hotelName": "Holiday House \"Casa Aroeira\"",
-        "message": "El hotel esta a 116.2 km y queda fuera del radio.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Kais do Sol",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Quinta Valenciana",
-        "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('a').filter({ hasText: /Visitar sitio web|Visit website/i }).first()\n",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Alojamento Seixal Bay Village",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Evidência Light Sta Catarina Hotel",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Our Little Spot in Chiado",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Boutique Rooms and Apartments in Lisbon",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-        "monitorName": "Sesimbra",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2027-08-05",
-          "checkOut": "2027-08-11",
-          "nights": 6
-        },
-        "searchArea": "Seixal",
-        "hotelName": "Lisbon Big House with Hot Tub",
-        "message": "No se pudo comprobar la distancia real de este hotel.",
-        "kind": "location_filtered"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2026-11-17",
-          "checkOut": "2026-11-20",
-          "nights": 3,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-10",
-          "flexibleCheckInEnd": "2026-11-24"
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Yurta cerca de Madrid",
-        "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Woohoo Rooms Fuencarral",
+        "searchArea": "Setúbal",
+        "hotelName": "Travelers House",
         "message": "No se pudo comprobar la distancia real de este hotel.",
         "kind": "location_filtered"
       },
@@ -256,12 +142,12 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Hotel BESTPRICE Alcalá",
-        "message": "El hotel esta a 7.05 km y queda fuera del radio.",
+        "hotelName": "Room Chueca",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
         "kind": "location_filtered"
       },
       {
@@ -270,12 +156,12 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Senator Barajas Hotel",
-        "message": "El hotel esta a 11.19 km y queda fuera del radio.",
+        "hotelName": "HostelEstrella20",
+        "message": "No se pudo comprobar la distancia real de este hotel.",
         "kind": "location_filtered"
       },
       {
@@ -284,11 +170,25 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Only YOU Hotel Atocha",
+        "hotelName": "Vértice Roomspace Madrid",
+        "message": "El hotel esta a 9.35 km y queda fuera del radio.",
+        "kind": "location_filtered"
+      },
+      {
+        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
+        "monitorName": "Madrid Laura",
+        "source": "google_hotels",
+        "dates": {
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-14",
+          "nights": 4
+        },
+        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
+        "hotelName": "2060 The Newton Hostel",
         "message": "Google no expuso un total final con impuestos en EUR.",
         "kind": "verification_failed"
       },
@@ -298,25 +198,11 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Pestana Collection Plaza Mayor",
-        "message": "Google no expuso un total final con impuestos en EUR.",
-        "kind": "verification_failed"
-      },
-      {
-        "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
-        "monitorName": "Madrid Laura",
-        "source": "google_hotels",
-        "dates": {
-          "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
-        },
-        "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Arenal Suites Madrid",
+        "hotelName": "LATROUPE Prado Hostel Madrid",
         "message": "No se pudo comprobar la distancia real de este hotel.",
         "kind": "location_filtered"
       },
@@ -326,150 +212,103 @@
         "source": "google_hotels",
         "dates": {
           "checkIn": "2026-11-10",
-          "checkOut": "2026-11-13",
-          "nights": 3
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "VP Plaza España Design",
+        "hotelName": "The Loft House Madrid",
         "message": "Google no expuso un total final con impuestos en EUR.",
         "kind": "verification_failed"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid Laura",
-        "source": "booking",
+        "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-17",
-          "checkOut": "2026-11-21",
-          "nights": 4,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-10",
-          "flexibleCheckInEnd": "2026-11-24"
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Yurta cerca de Madrid",
-        "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
+        "hotelName": "Adventure Hostel Madrid",
+        "message": "El hotel esta a 7.94 km y queda fuera del radio.",
+        "kind": "location_filtered"
       },
       {
         "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
         "monitorName": "Madrid Laura",
-        "source": "booking",
+        "source": "google_hotels",
         "dates": {
-          "checkIn": "2026-11-17",
-          "checkOut": "2026-11-21",
-          "nights": 4,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2026-11-10",
-          "flexibleCheckInEnd": "2026-11-24"
+          "checkIn": "2026-11-10",
+          "checkOut": "2026-11-14",
+          "nights": 4
         },
         "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-        "hotelName": "Apto 2 Mario Bros wifi y Netflix",
-        "message": "locator.waitFor: Timeout 20000ms exceeded.\nCall log:\n  - waiting for locator('#hprt-table tr[data-block-id]').first() to be visible\n"
+        "hotelName": "Generator Madrid",
+        "message": "Google no expuso un total final con impuestos en EUR.",
+        "kind": "verification_failed"
       }
     ],
     "nearbyErrors": [],
     "errors": [
       {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "source": "booking",
-        "dates": {
-          "checkIn": "2027-07-15",
-          "checkOut": "2027-07-21",
-          "nights": 6,
-          "flexibleWindowDays": 7,
-          "flexibleCheckInStart": "2027-07-12",
-          "flexibleCheckInEnd": "2027-07-22"
-        },
-        "searchArea": "Comporta, Distrito de Setúbal, Portugal",
-        "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
-      },
-      {
         "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
         "monitorName": "Sesimbra",
         "source": "booking",
         "dates": {
-          "checkIn": "2027-07-13",
+          "checkIn": "2027-07-14",
           "checkOut": "2027-07-19",
-          "nights": 6,
+          "nights": 5,
           "flexibleWindowDays": 7,
           "flexibleCheckInStart": "2027-07-12",
-          "flexibleCheckInEnd": "2027-07-20"
+          "flexibleCheckInEnd": "2027-07-21"
         },
-        "searchArea": "Seixal",
+        "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
         "message": "Booking ha solicitado una comprobación del navegador; no se publican precios."
       }
     ],
     "timeBudgetReached": false,
     "stoppedEarlyMonitors": 0,
-    "durationMs": 211386,
+    "durationMs": 133804,
     "health": {
       "state": "healthy",
-      "startedAt": "2026-10-11T19:04:36.224Z",
-      "lastCompletedAt": "2026-10-11T19:04:36.224Z",
-      "previousCompletedAt": "2026-10-11T14:20:26.724Z",
-      "gapMinutes": 284,
+      "startedAt": "2026-10-11T22:51:02.897Z",
+      "lastCompletedAt": "2026-10-11T22:51:02.897Z",
+      "previousCompletedAt": "2026-10-11T19:04:36.224Z",
+      "gapMinutes": 226,
       "recoveredAfterInterruption": true,
-      "durationMs": 211386,
+      "durationMs": 133804,
       "completedNormally": true,
       "monitorsProcessed": 3,
-      "searchesCompleted": 44
+      "searchesCompleted": 45
     }
   },
   "health": {
     "state": "healthy",
-    "startedAt": "2026-10-11T19:04:36.224Z",
-    "lastCompletedAt": "2026-10-11T19:04:36.224Z",
-    "previousCompletedAt": "2026-10-11T14:20:26.724Z",
-    "gapMinutes": 284,
+    "startedAt": "2026-10-11T22:51:02.897Z",
+    "lastCompletedAt": "2026-10-11T22:51:02.897Z",
+    "previousCompletedAt": "2026-10-11T19:04:36.224Z",
+    "gapMinutes": 226,
     "recoveredAfterInterruption": true,
-    "durationMs": 211386,
+    "durationMs": 133804,
     "completedNormally": true,
     "monitorsProcessed": 3,
-    "searchesCompleted": 44
+    "searchesCompleted": 45
   },
   "monitors": {
-    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
-      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-      "monitorName": "Comporta",
-      "lastScanAt": "2026-10-11T19:04:36.224Z",
-      "lastSuccessAt": "2026-10-11T19:06:17.838933Z",
+    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
+      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
+      "monitorName": "Sesimbra",
+      "lastScanAt": "2026-10-11T22:51:02.897Z",
+      "lastSuccessAt": "2026-10-11T22:52:51.410414Z",
       "searches": 15,
-      "offers": 22,
-      "matches": 0,
+      "offers": 85,
+      "matches": 4,
       "nearbyLocations": [
-        "Setúbal",
-        "Alcácer do Sal",
-        "Palma",
-        "Grândola"
+        "Seixal",
+        "Palmela"
       ],
       "sources": {
-        "booking": {
-          "searches": 2,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 1,
-          "skipped": 0,
-          "coveredCheckIns": 11,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-10",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 10,
-            "searchesCheckedThisRun": 2,
-            "nextIndex": 12,
-            "remainingSearchesInSweep": 123,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-10"
-          }
-        },
         "google_hotels": {
           "searches": 1,
           "offers": 2,
@@ -479,197 +318,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-01",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 48,
-            "searchesCheckedThisRun": 1,
-            "nextIndex": 49,
-            "remainingSearchesInSweep": 86,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-01"
-          }
-        },
-        "agoda": {
-          "searches": 4,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-10",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 20,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-10"
-          }
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 4,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-10",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 20,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-10"
-          }
-        },
-        "bluepillow": {
-          "searches": 4,
-          "offers": 16,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-10",
-            "totalCombinations": 135,
-            "totalSearches": 135,
-            "startIndex": 20,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-10"
-          }
-        }
-      },
-      "error": "[booking] Booking ha solicitado una comprobación del navegador; no se publican precios.",
-      "sourceCoverage": {
-        "booking": {
-          "mode": "range",
-          "sweepStartDate": "2026-10-10",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 10,
-          "searchesCheckedThisRun": 2,
-          "nextIndex": 12,
-          "remainingSearchesInSweep": 123,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-10-10"
-        },
-        "google_hotels": {
-          "mode": "range",
-          "sweepStartDate": "2026-10-01",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 48,
-          "searchesCheckedThisRun": 1,
-          "nextIndex": 49,
-          "remainingSearchesInSweep": 86,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-10-01"
-        },
-        "agoda": {
-          "mode": "range",
-          "sweepStartDate": "2026-10-10",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 20,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-10-10"
-        },
-        "trip": {
-          "mode": "range",
-          "sweepStartDate": "2026-10-10",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 20,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-10-10"
-        },
-        "bluepillow": {
-          "mode": "range",
-          "sweepStartDate": "2026-10-10",
-          "totalCombinations": 135,
-          "totalSearches": 135,
-          "startIndex": 20,
-          "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
-          "completedSweep": false,
-          "nextSweepStartDate": "2026-10-10"
-        }
-      },
-      "dateCoverage": {
-        "mode": "range",
-        "sweepStartDate": "2026-10-10",
-        "totalCombinations": 135,
-        "totalSearches": 135,
-        "startIndex": 20,
-        "searchesCheckedThisRun": 4,
-        "nextIndex": 24,
-        "remainingSearchesInSweep": 111,
-        "completedSweep": false,
-        "nextSweepStartDate": "2026-10-10"
-      }
-    },
-    "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
-      "monitorId": "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13",
-      "monitorName": "Sesimbra",
-      "lastScanAt": "2026-10-11T19:04:36.224Z",
-      "lastSuccessAt": "2026-10-11T19:06:23.140058Z",
-      "searches": 14,
-      "offers": 81,
-      "matches": 4,
-      "nearbyLocations": [
-        "Seixal",
-        "Palmela"
-      ],
-      "sources": {
-        "google_hotels": {
-          "searches": 1,
-          "offers": 0,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -677,24 +326,24 @@
             "sweepStartDate": "2026-09-26",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 73,
+            "startIndex": 74,
             "searchesCheckedThisRun": 1,
-            "nextIndex": 74,
-            "remainingSearchesInSweep": 61,
+            "nextIndex": 75,
+            "remainingSearchesInSweep": 60,
             "completedSweep": false,
             "nextSweepStartDate": "2026-09-26"
           }
         },
         "agoda": {
           "searches": 4,
-          "offers": 10,
+          "offers": 12,
           "matches": 0,
           "locationRejected": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -702,10 +351,10 @@
             "sweepStartDate": "2026-10-10",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 20,
+            "startIndex": 24,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-10"
           }
@@ -719,7 +368,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -727,10 +376,10 @@
             "sweepStartDate": "2026-10-10",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 20,
+            "startIndex": 24,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-10"
           }
@@ -744,7 +393,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -752,36 +401,36 @@
             "sweepStartDate": "2026-10-10",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 20,
+            "startIndex": 24,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 111,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-10"
           }
         },
         "booking": {
-          "searches": 1,
+          "searches": 2,
           "offers": 0,
           "matches": 0,
           "locationRejected": 0,
           "errors": 1,
-          "skipped": 1,
-          "lastSkipReason": "cooldown",
-          "retryAt": "2026-10-11T19:19:36.224Z",
-          "state": "paused",
-          "consecutiveErrors": 2,
-          "lastSuccessAt": "2026-10-11T14:20:26.724Z",
+          "skipped": 0,
+          "coveredCheckIns": 9,
+          "state": "degraded",
+          "consecutiveErrors": 1,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "Booking ha solicitado una comprobación del navegador; no se publican precios.",
+          "retryAt": "",
           "dateCoverage": {
             "mode": "range",
             "sweepStartDate": "2026-10-11",
             "totalCombinations": 135,
             "totalSearches": 135,
-            "startIndex": 4,
-            "searchesCheckedThisRun": 1,
-            "nextIndex": 5,
-            "remainingSearchesInSweep": 130,
+            "startIndex": 5,
+            "searchesCheckedThisRun": 2,
+            "nextIndex": 7,
+            "remainingSearchesInSweep": 128,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-11"
           }
@@ -794,10 +443,10 @@
           "sweepStartDate": "2026-09-26",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 73,
+          "startIndex": 74,
           "searchesCheckedThisRun": 1,
-          "nextIndex": 74,
-          "remainingSearchesInSweep": 61,
+          "nextIndex": 75,
+          "remainingSearchesInSweep": 60,
           "completedSweep": false,
           "nextSweepStartDate": "2026-09-26"
         },
@@ -806,10 +455,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         },
@@ -818,10 +467,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         },
@@ -830,10 +479,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 111,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         },
@@ -842,10 +491,10 @@
           "sweepStartDate": "2026-10-11",
           "totalCombinations": 135,
           "totalSearches": 135,
-          "startIndex": 4,
-          "searchesCheckedThisRun": 1,
-          "nextIndex": 5,
-          "remainingSearchesInSweep": 130,
+          "startIndex": 5,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 7,
+          "remainingSearchesInSweep": 128,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-11"
         }
@@ -855,10 +504,228 @@
         "sweepStartDate": "2026-10-10",
         "totalCombinations": 135,
         "totalSearches": 135,
-        "startIndex": 20,
+        "startIndex": 24,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 24,
-        "remainingSearchesInSweep": 111,
+        "nextIndex": 28,
+        "remainingSearchesInSweep": 107,
+        "completedSweep": false,
+        "nextSweepStartDate": "2026-10-10"
+      }
+    },
+    "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "lastScanAt": "2026-10-11T22:51:02.897Z",
+      "lastSuccessAt": "2026-10-11T22:52:55.091285Z",
+      "searches": 15,
+      "offers": 48,
+      "matches": 2,
+      "nearbyLocations": [
+        "Setúbal",
+        "Alcácer do Sal",
+        "Palma",
+        "Grândola"
+      ],
+      "sources": {
+        "booking": {
+          "searches": 2,
+          "offers": 28,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "coveredCheckIns": 24,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-10",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 12,
+            "searchesCheckedThisRun": 2,
+            "nextIndex": 14,
+            "remainingSearchesInSweep": 121,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-10"
+          }
+        },
+        "google_hotels": {
+          "searches": 1,
+          "offers": 2,
+          "matches": 2,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-01",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 49,
+            "searchesCheckedThisRun": 1,
+            "nextIndex": 50,
+            "remainingSearchesInSweep": 85,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-01"
+          }
+        },
+        "agoda": {
+          "searches": 4,
+          "offers": 0,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-10",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 24,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-10"
+          }
+        },
+        "trip": {
+          "searches": 4,
+          "offers": 4,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-10",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 24,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-10"
+          }
+        },
+        "bluepillow": {
+          "searches": 4,
+          "offers": 14,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-10",
+            "totalCombinations": 135,
+            "totalSearches": 135,
+            "startIndex": 24,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 107,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-10"
+          }
+        }
+      },
+      "error": "",
+      "sourceCoverage": {
+        "booking": {
+          "mode": "range",
+          "sweepStartDate": "2026-10-10",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 12,
+          "searchesCheckedThisRun": 2,
+          "nextIndex": 14,
+          "remainingSearchesInSweep": 121,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-10-10"
+        },
+        "google_hotels": {
+          "mode": "range",
+          "sweepStartDate": "2026-10-01",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 49,
+          "searchesCheckedThisRun": 1,
+          "nextIndex": 50,
+          "remainingSearchesInSweep": 85,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-10-01"
+        },
+        "agoda": {
+          "mode": "range",
+          "sweepStartDate": "2026-10-10",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 24,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-10-10"
+        },
+        "trip": {
+          "mode": "range",
+          "sweepStartDate": "2026-10-10",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 24,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-10-10"
+        },
+        "bluepillow": {
+          "mode": "range",
+          "sweepStartDate": "2026-10-10",
+          "totalCombinations": 135,
+          "totalSearches": 135,
+          "startIndex": 24,
+          "searchesCheckedThisRun": 4,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 107,
+          "completedSweep": false,
+          "nextSweepStartDate": "2026-10-10"
+        }
+      },
+      "dateCoverage": {
+        "mode": "range",
+        "sweepStartDate": "2026-10-10",
+        "totalCombinations": 135,
+        "totalSearches": 135,
+        "startIndex": 24,
+        "searchesCheckedThisRun": 4,
+        "nextIndex": 28,
+        "remainingSearchesInSweep": 107,
         "completedSweep": false,
         "nextSweepStartDate": "2026-10-10"
       }
@@ -866,16 +733,16 @@
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "monitorId": "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced",
       "monitorName": "Madrid Laura",
-      "lastScanAt": "2026-10-11T19:04:36.224Z",
-      "lastSuccessAt": "2026-10-11T19:08:06.160991Z",
+      "lastScanAt": "2026-10-11T22:51:02.897Z",
+      "lastSuccessAt": "2026-10-11T22:53:14.525681Z",
       "searches": 15,
-      "offers": 68,
+      "offers": 106,
       "matches": 0,
       "nearbyLocations": [],
       "sources": {
         "booking": {
           "searches": 2,
-          "offers": 34,
+          "offers": 42,
           "matches": 0,
           "locationRejected": 0,
           "errors": 0,
@@ -883,7 +750,7 @@
           "coveredCheckIns": 30,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -891,24 +758,24 @@
             "sweepStartDate": "2026-10-06",
             "totalCombinations": 65,
             "totalSearches": 65,
-            "startIndex": 44,
+            "startIndex": 46,
             "searchesCheckedThisRun": 2,
-            "nextIndex": 46,
-            "remainingSearchesInSweep": 19,
+            "nextIndex": 48,
+            "remainingSearchesInSweep": 17,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-06"
           }
         },
         "google_hotels": {
           "searches": 1,
-          "offers": 1,
+          "offers": 0,
           "matches": 0,
           "locationRejected": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -916,24 +783,24 @@
             "sweepStartDate": "2026-10-04",
             "totalCombinations": 65,
             "totalSearches": 65,
-            "startIndex": 30,
+            "startIndex": 31,
             "searchesCheckedThisRun": 1,
-            "nextIndex": 31,
-            "remainingSearchesInSweep": 34,
+            "nextIndex": 32,
+            "remainingSearchesInSweep": 33,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-04"
           }
         },
         "agoda": {
           "searches": 4,
-          "offers": 10,
+          "offers": 19,
           "matches": 0,
           "locationRejected": 0,
           "errors": 0,
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -941,15 +808,40 @@
             "sweepStartDate": "2026-10-10",
             "totalCombinations": 65,
             "totalSearches": 65,
-            "startIndex": 20,
+            "startIndex": 24,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 41,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 37,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-10"
           }
         },
         "bluepillow": {
+          "searches": 4,
+          "offers": 29,
+          "matches": 0,
+          "locationRejected": 0,
+          "errors": 0,
+          "skipped": 0,
+          "state": "healthy",
+          "consecutiveErrors": 0,
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
+          "lastError": "",
+          "retryAt": "",
+          "dateCoverage": {
+            "mode": "range",
+            "sweepStartDate": "2026-10-10",
+            "totalCombinations": 65,
+            "totalSearches": 65,
+            "startIndex": 24,
+            "searchesCheckedThisRun": 4,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 37,
+            "completedSweep": false,
+            "nextSweepStartDate": "2026-10-10"
+          }
+        },
+        "trip": {
           "searches": 4,
           "offers": 16,
           "matches": 0,
@@ -958,7 +850,7 @@
           "skipped": 0,
           "state": "healthy",
           "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
+          "lastSuccessAt": "2026-10-11T22:51:02.897Z",
           "lastError": "",
           "retryAt": "",
           "dateCoverage": {
@@ -966,35 +858,10 @@
             "sweepStartDate": "2026-10-10",
             "totalCombinations": 65,
             "totalSearches": 65,
-            "startIndex": 20,
+            "startIndex": 24,
             "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 41,
-            "completedSweep": false,
-            "nextSweepStartDate": "2026-10-10"
-          }
-        },
-        "trip": {
-          "searches": 4,
-          "offers": 7,
-          "matches": 0,
-          "locationRejected": 0,
-          "errors": 0,
-          "skipped": 0,
-          "state": "healthy",
-          "consecutiveErrors": 0,
-          "lastSuccessAt": "2026-10-11T19:04:36.224Z",
-          "lastError": "",
-          "retryAt": "",
-          "dateCoverage": {
-            "mode": "range",
-            "sweepStartDate": "2026-10-10",
-            "totalCombinations": 65,
-            "totalSearches": 65,
-            "startIndex": 20,
-            "searchesCheckedThisRun": 4,
-            "nextIndex": 24,
-            "remainingSearchesInSweep": 41,
+            "nextIndex": 28,
+            "remainingSearchesInSweep": 37,
             "completedSweep": false,
             "nextSweepStartDate": "2026-10-10"
           }
@@ -1007,10 +874,10 @@
           "sweepStartDate": "2026-10-06",
           "totalCombinations": 65,
           "totalSearches": 65,
-          "startIndex": 44,
+          "startIndex": 46,
           "searchesCheckedThisRun": 2,
-          "nextIndex": 46,
-          "remainingSearchesInSweep": 19,
+          "nextIndex": 48,
+          "remainingSearchesInSweep": 17,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-06"
         },
@@ -1019,10 +886,10 @@
           "sweepStartDate": "2026-10-04",
           "totalCombinations": 65,
           "totalSearches": 65,
-          "startIndex": 30,
+          "startIndex": 31,
           "searchesCheckedThisRun": 1,
-          "nextIndex": 31,
-          "remainingSearchesInSweep": 34,
+          "nextIndex": 32,
+          "remainingSearchesInSweep": 33,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-04"
         },
@@ -1031,10 +898,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 65,
           "totalSearches": 65,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 41,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 37,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         },
@@ -1043,10 +910,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 65,
           "totalSearches": 65,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 41,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 37,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         },
@@ -1055,10 +922,10 @@
           "sweepStartDate": "2026-10-10",
           "totalCombinations": 65,
           "totalSearches": 65,
-          "startIndex": 20,
+          "startIndex": 24,
           "searchesCheckedThisRun": 4,
-          "nextIndex": 24,
-          "remainingSearchesInSweep": 41,
+          "nextIndex": 28,
+          "remainingSearchesInSweep": 37,
           "completedSweep": false,
           "nextSweepStartDate": "2026-10-10"
         }
@@ -1068,14 +935,125 @@
         "sweepStartDate": "2026-10-10",
         "totalCombinations": 65,
         "totalSearches": 65,
-        "startIndex": 20,
+        "startIndex": 24,
         "searchesCheckedThisRun": 4,
-        "nextIndex": 24,
-        "remainingSearchesInSweep": 41,
+        "nextIndex": 28,
+        "remainingSearchesInSweep": 37,
         "completedSweep": false,
         "nextSweepStartDate": "2026-10-10"
       }
     }
   },
-  "alerts": []
+  "alerts": [
+    {
+      "type": "price_drop",
+      "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+      "monitorName": "Comporta",
+      "previousPrice": 627.75,
+      "offer": {
+        "id": "google_hotels:832a9dbf04d88302|2027-07-28|2027-08-03",
+        "source": "google_hotels",
+        "provider": "Super.com via Google Hotels",
+        "hotelName": "B&B HOTEL Sado Setúbal",
+        "address": "Rua Irene Lisboa, Setúbal, Portugal",
+        "checkIn": "2027-07-28",
+        "checkOut": "2027-08-03",
+        "nights": 6,
+        "totalPrice": 509.14,
+        "nightlyPrice": 84.86,
+        "displayedNightlyPrice": 82,
+        "rateSubtotal": 509.14,
+        "searchResultPrice": 509.14,
+        "additionalCharges": 0,
+        "taxesText": "Impuestos y tasas incluidos segun Google Hotels",
+        "stayText": "6 noches con impuestos y tasas incluidos",
+        "priceVerified": true,
+        "priceBasis": "google_hotels_provider_all_inclusive_v8",
+        "priceConfirmationCount": 2,
+        "priceConfirmedAt": "2026-10-11T22:52:41.790Z",
+        "stars": 4,
+        "guestRating": 8.2,
+        "reviewCount": 2470,
+        "distanceKm": 19.49,
+        "distanceVerified": true,
+        "freeCancellation": false,
+        "breakfastIncluded": true,
+        "limitedAvailability": false,
+        "propertyType": "apartment",
+        "amenities": [
+          "pool",
+          "spa",
+          "parking",
+          "beach",
+          "breakfast",
+          "air_conditioning"
+        ],
+        "mealPlan": "breakfast",
+        "roomName": "",
+        "sharedRoom": false,
+        "searchArea": "Setúbal",
+        "url": "https://www.google.com/travel/lodging/clk?pc=AA80OswIX2u4s8EPBY1Jk3bwwDKaYKsrOnvWZ4IJQJh0r21l5Z7SuX2EpndAOdvpgkM2jSjRNiz2ch6i4GquWwXxf9Lauk4fPpCb0vwa18_Oaid3tZchyjR_rrtMQUY3OaTIpYttiCVvf4ac8VUpTGTW0ySSEIyPD7xITYcJzgyly03iUpPwYN16ooAAkg&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D470.28%2526total_price%3D489.04%2526surcharge%3D20.11%2526request_id%3D9224634262607491072%2526ps%3D125358856027%2526pb%3D0-slAkZlDjP06IhVxwa_7MhJzpz48bIViejFNc9mLk5WPGEHwO94674aQxNKTrDDn_jfTI00DOREBEclJR4d8O-iJSSJ6Gb-yLOqZaFAl2X2pFtdP2O8HN9MOJFuFTzDHJdmUDLoI-x6yNxg5K89aQ%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1791741316%2526sg%3DXbYk0%2526sid%3DGHA_MD8%2526cmab_id%3D33%2526ib%3Dfalse%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D509.14%26checkin_at%3D2027-07-28%26checkout_at%3D2027-08-03%26provider_hotel_id%3D10004145321%26provider%3Dhtl%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnnitB0mIkUVBJA0J3JaGm7_",
+        "matches": true,
+        "candidateMatches": true,
+        "priceEvidence": "provider_link",
+        "latitude": 38.5307101,
+        "longitude": -8.9017088,
+        "marketMedianNightly": 0,
+        "marketSampleSize": 0,
+        "discountPercent": 0,
+        "marketErrorFareScore": 0,
+        "errorFareScore": 9,
+        "errorFareLevel": "normal",
+        "errorFareIntelligenceVersion": 2,
+        "errorFareEvidence": [
+          "verified_price"
+        ],
+        "errorFareReason": "Sin evidencia suficiente de una anomalia de precio.",
+        "priceHistory": [
+          {
+            "at": "2026-09-04T19:42:20.664Z",
+            "totalPrice": 627.75,
+            "nightlyPrice": 104.63,
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels"
+          },
+          {
+            "at": "2026-10-11T22:52:41.790Z",
+            "totalPrice": 509.14,
+            "nightlyPrice": 84.86,
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels"
+          }
+        ],
+        "priceProof": {
+          "verifiedAt": "2026-10-11T22:52:41.790Z",
+          "source": "google_hotels",
+          "provider": "Super.com via Google Hotels",
+          "priceBasis": "google_hotels_provider_all_inclusive_v8",
+          "priceEvidence": "provider_link",
+          "totalPrice": 509.14,
+          "nightlyPrice": 84.86,
+          "confirmationCount": 2,
+          "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+        },
+        "priceDropPercent": 18.9,
+        "preComparisonErrorFareScore": 9,
+        "comparisonGroupId": "49acd8e696317ebc",
+        "providerCount": 1,
+        "comparisonProviders": [
+          {
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels",
+            "totalPrice": 509.14,
+            "nightlyPrice": 84.86,
+            "url": "https://www.google.com/travel/lodging/clk?pc=AA80OswIX2u4s8EPBY1Jk3bwwDKaYKsrOnvWZ4IJQJh0r21l5Z7SuX2EpndAOdvpgkM2jSjRNiz2ch6i4GquWwXxf9Lauk4fPpCb0vwa18_Oaid3tZchyjR_rrtMQUY3OaTIpYttiCVvf4ac8VUpTGTW0ySSEIyPD7xITYcJzgyly03iUpPwYN16ooAAkg&pcurl=https://www.super.com/travel/transition/?data%3Dprice%3D470.28%2526total_price%3D489.04%2526surcharge%3D20.11%2526request_id%3D9224634262607491072%2526ps%3D125358856027%2526pb%3D0-slAkZlDjP06IhVxwa_7MhJzpz48bIViejFNc9mLk5WPGEHwO94674aQxNKTrDDn_jfTI00DOREBEclJR4d8O-iJSSJ6Gb-yLOqZaFAl2X2pFtdP2O8HN9MOJFuFTzDHJdmUDLoI-x6yNxg5K89aQ%25253D%25253D%2526gha_pull_request%3DTrue%2526alwd_rand%3Dfalse%2526gt%3D1791741316%2526sg%3DXbYk0%2526sid%3DGHA_MD8%2526cmab_id%3D33%2526ib%3Dfalse%2526all_inclusive%3Dfalse%26utm_source%3Dgha%26utm_content%3Dlocaluniversal%26currency%3DEUR%26user_country%3DUS%26verification%3Dfalse%26rate_rule_ids%3D%26date_type%3Dselected%26rate_rule_id%3Dsignedout_desktop%26display_currency%3DEUR%26display_all_inclusive_price%3D509.14%26checkin_at%3D2027-07-28%26checkout_at%3D2027-08-03%26provider_hotel_id%3D10004145321%26provider%3Dhtl%26num_adults%3D2%26children%3D%5B%5D%26hotel_campaign%3D%26utm_campaign%3D%26user_locale%3Des-US%26user_list_id%3D%26utm_medium%3Dorganic%26utm_id%3Dgha_organic&s=AD1XQnnitB0mIkUVBJA0J3JaGm7_",
+            "priceVerified": true
+          }
+        ],
+        "bestTotalPrice": 509.14,
+        "isBestPrice": true
+      },
+      "createdAt": "2026-10-11T22:52:41.790Z"
+    }
+  ]
 }
