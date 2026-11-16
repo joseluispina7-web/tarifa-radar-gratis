@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-11-15T20:20:13.266Z",
+  "updatedAt": "2026-11-16T00:05:53.185Z",
   "monitors": {
     "madrid-agosto-4-noches": {
       "fingerprint": "60b808304912ccc271f3",
@@ -3973,44 +3973,44 @@
     },
     "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced": {
       "fingerprint": "1e0091473b47d35e157b",
-      "lastScanAt": "2026-11-15T20:20:13.266Z",
-      "lastSuccessAt": "2026-11-15T20:22:43.404Z",
+      "lastScanAt": "2026-11-16T00:05:53.185Z",
+      "lastSuccessAt": "2026-11-16T00:06:42.696Z",
       "nearbyLocations": [],
       "sourceHealth": {
         "agoda": {
-          "consecutiveErrors": 77,
-          "suspendedUntil": "2026-11-15T20:35:13.266Z",
+          "consecutiveErrors": 78,
+          "suspendedUntil": "2026-11-16T00:20:53.185Z",
           "lastSuccessAt": "2026-10-28T01:31:20.515Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
-          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-15); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
+          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-16); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
         },
         "bluepillow": {
-          "consecutiveErrors": 77,
-          "suspendedUntil": "2026-11-15T20:35:13.266Z",
+          "consecutiveErrors": 78,
+          "suspendedUntil": "2026-11-16T00:20:53.185Z",
           "lastSuccessAt": "2026-10-28T01:31:20.515Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
-          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-15); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
+          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-16); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
         },
         "trip": {
-          "consecutiveErrors": 77,
-          "suspendedUntil": "2026-11-15T20:35:13.266Z",
+          "consecutiveErrors": 78,
+          "suspendedUntil": "2026-11-16T00:20:53.185Z",
           "lastSuccessAt": "2026-10-28T01:31:20.515Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
-          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-15); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
+          "lastError": "Request validation failed — body.dates: check_in 2026-10-26 is in the past (today is 2026-11-16); confirm the year — natural-language references such as 'the weekend of June 2' or 'Memorial Day weekend' resolve to the next occurrence after today, not a past anniversary."
         },
         "booking": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "google_hotels": {
-          "consecutiveErrors": 0,
+          "consecutiveErrors": 1,
           "suspendedUntil": "",
           "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
-          "lastError": ""
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
+          "lastError": "Google Hotels no ha mostrado resultados para las fechas solicitadas. Motivo: Google Hotels abrio una zona distinta de Madrid, Comunidad Autónoma de Madrid, España. Pagina recibida: Busca alojamiento en España - Google Hoteles."
         }
       },
       "dateSweepVersion": 4,
@@ -4019,8 +4019,8 @@
       "dateSweepStartDate": "2026-10-28",
       "sourceDateSweepCursors": {
         "discovery": 0,
-        "booking": 62,
-        "google_hotels": 44
+        "booking": 64,
+        "google_hotels": 45
       },
       "sourceDateSweepStartDates": {
         "discovery": "2026-10-28",
@@ -36894,23 +36894,41 @@
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/apartamento-4-elephant-wifi-y-netflix.es.html|2026-11-23|2026-11-26": {
           "source": "booking",
           "hotelName": "Apartamento 4 Elephant Wifi y Netflix",
-          "totalPrice": 245.45,
-          "nightlyPrice": 81.82,
+          "totalPrice": 270,
+          "nightlyPrice": 90,
           "matches": false,
-          "priceVerified": false,
-          "priceBasis": "booking_search_candidate",
-          "priceProof": null,
-          "priceHistory": [],
+          "priceVerified": true,
+          "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:06:12.191Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 270,
+            "nightlyPrice": 90,
+            "confirmationCount": 0,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:06:12.191Z",
+              "totalPrice": 270,
+              "nightlyPrice": 90,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-          "distanceKm": null,
-          "distanceVerified": false,
+          "distanceKm": 15.33,
+          "distanceVerified": true,
           "checkIn": "2026-11-23",
           "checkOut": "2026-11-26",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:00:32.596Z",
-          "lastSeenAt": "2026-11-15T15:00:32.596Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.191Z",
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/apartamentos-acogedores-nuevo-a-estrenar-a26.es.html|2026-11-17|2026-11-20": {
           "source": "booking",
@@ -37159,7 +37177,7 @@
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
           "priceProof": {
-            "verifiedAt": "2026-11-15T15:00:32.596Z",
+            "verifiedAt": "2026-11-16T00:06:12.191Z",
             "source": "booking",
             "provider": "",
             "priceBasis": "booking_visible_final_total_v5",
@@ -37211,6 +37229,13 @@
               "nightlyPrice": 86.67,
               "source": "booking",
               "provider": ""
+            },
+            {
+              "at": "2026-11-16T00:06:12.191Z",
+              "totalPrice": 260,
+              "nightlyPrice": 86.67,
+              "source": "booking",
+              "provider": ""
             }
           ],
           "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
@@ -37220,9 +37245,9 @@
           "checkOut": "2026-11-25",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-11-14T10:08:19.886Z",
-          "lastSeenAt": "2026-11-15T15:00:32.596Z"
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/apto-1-leones-con-wifi-y-netflix.es.html|2026-11-22|2026-11-25": {
           "source": "booking",
@@ -37555,7 +37580,7 @@
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
           "priceProof": {
-            "verifiedAt": "2026-11-15T15:02:05.379Z",
+            "verifiedAt": "2026-11-16T00:06:42.696Z",
             "source": "booking",
             "provider": "",
             "priceBasis": "booking_visible_final_total_v5",
@@ -37572,6 +37597,13 @@
               "nightlyPrice": 87.5,
               "source": "booking",
               "provider": ""
+            },
+            {
+              "at": "2026-11-16T00:06:42.696Z",
+              "totalPrice": 350,
+              "nightlyPrice": 87.5,
+              "source": "booking",
+              "provider": ""
             }
           ],
           "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
@@ -37581,9 +37613,9 @@
           "checkOut": "2026-11-26",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-11-15T15:02:05.379Z",
-          "lastSeenAt": "2026-11-15T15:02:05.379Z"
+          "lastSeenAt": "2026-11-16T00:06:42.696Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/m1-loft-privado-4-pers-comodo-parking.es.html|2026-11-22|2026-11-26": {
           "source": "booking",
@@ -40356,9 +40388,9 @@
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:02:05.379Z",
-          "lastSeenAt": "2026-11-15T15:02:05.379Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:42.696Z",
+          "lastSeenAt": "2026-11-16T00:06:42.696Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/nortalia-corporate-studio-coworking-y-parking.es.html|2026-11-22|2026-11-26": {
           "source": "booking",
@@ -112292,7 +112324,7 @@
           "priceVerified": true,
           "priceBasis": "booking_visible_final_total_v5",
           "priceProof": {
-            "verifiedAt": "2026-11-15T15:02:05.379Z",
+            "verifiedAt": "2026-11-16T00:06:42.696Z",
             "source": "booking",
             "provider": "",
             "priceBasis": "booking_visible_final_total_v5",
@@ -112309,6 +112341,13 @@
               "nightlyPrice": 89.75,
               "source": "booking",
               "provider": ""
+            },
+            {
+              "at": "2026-11-16T00:06:42.696Z",
+              "totalPrice": 359,
+              "nightlyPrice": 89.75,
+              "source": "booking",
+              "provider": ""
             }
           ],
           "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
@@ -112318,9 +112357,9 @@
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-11-15T15:02:05.379Z",
-          "lastSeenAt": "2026-11-15T15:02:05.379Z"
+          "lastSeenAt": "2026-11-16T00:06:42.696Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/suio-alcobendas.es.html|2026-11-23|2026-11-27": {
           "source": "booking",
@@ -121980,23 +122019,23 @@
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/can-kuychi.es.html|2026-11-24|2026-11-27": {
           "source": "booking",
           "hotelName": "Casita Campo 15 minutos Aeropuerto Ifema y Plaza Castilla",
-          "totalPrice": 278.18,
-          "nightlyPrice": 92.73,
+          "totalPrice": 252.27,
+          "nightlyPrice": 84.09,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
           "priceProof": null,
           "priceHistory": [],
           "searchArea": "Madrid, Comunidad Autónoma de Madrid, España",
-          "distanceKm": 13.01,
-          "distanceVerified": true,
+          "distanceKm": 0,
+          "distanceVerified": false,
           "checkIn": "2026-11-24",
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T17:50:34.531Z",
-          "firstSeenAt": "2026-11-07T17:50:46.916Z",
-          "lastSeenAt": "2026-11-07T17:50:46.916Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.191Z",
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:trip:prop_5d40e6bbe24da4120caa31b0|2026-11-26|2026-11-29": {
           "source": "trip",
@@ -172973,9 +173012,9 @@
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:02:05.379Z",
-          "lastSeenAt": "2026-11-15T15:02:05.379Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:42.696Z",
+          "lastSeenAt": "2026-11-16T00:06:42.696Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/expressbyholidayinnmadridalcobendas.es.html|2026-11-10|2026-11-14": {
           "source": "booking",
@@ -173456,9 +173495,9 @@
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:00:32.596Z",
-          "lastSeenAt": "2026-11-15T15:00:32.596Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.191Z",
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/the-little-haven-alcobendas.es.html|2026-11-24|2026-11-27": {
           "source": "booking",
@@ -173477,9 +173516,9 @@
           "checkOut": "2026-11-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:00:32.596Z",
-          "lastSeenAt": "2026-11-15T15:00:32.596Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.191Z",
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/elegant-designer-apartment-in-alcobendas.es.html|2026-11-23|2026-11-27": {
           "source": "booking",
@@ -174800,8 +174839,8 @@
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/madrid-las-tablas-apartments.es.html|2026-11-26|2026-11-29": {
           "source": "booking",
           "hotelName": "Madrid Las Tablas apartments",
-          "totalPrice": 469.9,
-          "nightlyPrice": 156.63,
+          "totalPrice": 461.86,
+          "nightlyPrice": 153.95,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -174814,9 +174853,9 @@
           "checkOut": "2026-11-29",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T07:45:07.360Z",
-          "firstSeenAt": "2026-11-15T07:45:25.245Z",
-          "lastSeenAt": "2026-11-15T07:45:25.245Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.191Z",
+          "lastSeenAt": "2026-11-16T00:06:12.191Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/apertura-en-marzo-2025.es.html|2026-11-26|2026-11-29": {
           "source": "booking",
@@ -174863,8 +174902,8 @@
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/madrid-las-tablas-apartments.es.html|2026-11-26|2026-11-30": {
           "source": "booking",
           "hotelName": "Madrid Las Tablas apartments",
-          "totalPrice": 576.41,
-          "nightlyPrice": 144.1,
+          "totalPrice": 569.02,
+          "nightlyPrice": 142.26,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -174877,9 +174916,9 @@
           "checkOut": "2026-11-30",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:02:05.379Z",
-          "lastSeenAt": "2026-11-15T15:02:05.379Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:42.696Z",
+          "lastSeenAt": "2026-11-16T00:06:42.696Z"
         },
         "0c0ff5bc-ca96-4fe2-8a82-7c7d187acced:/hotel/es/duplex-modernos-en-alcobendas.es.html|2026-11-20|2026-11-23": {
           "source": "booking",
@@ -182364,8 +182403,8 @@
     },
     "787552ea-debd-4c0a-84dc-c1f5ae4d73a5": {
       "fingerprint": "2f9d5cc824c8eb4c36f3",
-      "lastScanAt": "2026-11-15T20:20:13.266Z",
-      "lastSuccessAt": "2026-11-15T20:22:00.128929Z",
+      "lastScanAt": "2026-11-16T00:05:53.185Z",
+      "lastSuccessAt": "2026-11-16T00:09:38.000Z",
       "nearbyLocations": [
         {
           "name": "Setúbal",
@@ -182392,47 +182431,47 @@
         "agoda": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "trip": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "bluepillow": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "booking": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "google_hotels": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z"
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z"
         }
       },
       "dateSweepVersion": 4,
       "dateSweepMode": "range",
-      "dateSweepCursor": 32,
+      "dateSweepCursor": 33,
       "dateSweepStartDate": "2026-11-13",
       "sourceDateSweepCursors": {
-        "discovery": 32,
-        "booking": 82,
-        "google_hotels": 87
+        "discovery": 33,
+        "booking": 83,
+        "google_hotels": 88
       },
       "sourceDateSweepStartDates": {
         "discovery": "2026-11-13",
@@ -187798,23 +187837,23 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "2-bedr. apartment with private garden and terrace, condominium w\\/ pool",
-          "totalPrice": 1639,
-          "nightlyPrice": 234.14,
+          "totalPrice": 1492.56,
+          "nightlyPrice": 213.22,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palma",
+          "searchArea": "Setúbal",
           "distanceKm": 0.44717803965815356,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-29",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T22:12:58.150070Z",
-          "lastSeenAt": "2026-11-07T05:52:18.061468Z"
+          "lastSeenAt": "2026-11-16T00:05:55.394441Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_654cafca3011da1e8b785e4e|2027-07-22|2027-07-29": {
           "source": "bluepillow",
@@ -187842,23 +187881,23 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "AlmaLusa Comporta",
-          "totalPrice": 2526.4,
-          "nightlyPrice": 360.91,
+          "totalPrice": 2554.49,
+          "nightlyPrice": 364.93,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palma",
+          "searchArea": "Setúbal",
           "distanceKm": 0.16551743324057228,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-29",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T22:12:58.150070Z",
-          "lastSeenAt": "2026-11-07T05:52:18.061468Z"
+          "lastSeenAt": "2026-11-16T00:05:55.394441Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/4ever-palace-alcacer-do-sal.es.html|2027-07-17|2027-07-23": {
           "source": "booking",
@@ -280902,9 +280941,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/sailor-setubal.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -280965,9 +281004,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/traditional-family-home.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -280986,9 +281025,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/comporta-side.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -281007,9 +281046,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/insetubal-troino.es.html|2027-08-13|2027-08-19": {
           "source": "booking",
@@ -281049,15 +281088,15 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/falcoaria-eco.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
           "hotelName": "FALCOARIA Eco",
-          "totalPrice": 408,
-          "nightlyPrice": 68,
+          "totalPrice": 432,
+          "nightlyPrice": 72,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -281070,9 +281109,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/t1-para-ferias-sado-setubal.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -281091,9 +281130,9 @@
           "checkOut": "2027-08-14",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-09-02T00:09:20.119Z",
-          "firstSeenAt": "2026-09-02T00:09:47.361Z",
-          "lastSeenAt": "2026-09-02T00:09:47.361Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/ferias-em-setubal.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -299256,9 +299295,9 @@
           "checkOut": "2027-08-09",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T20:56:27.044Z",
-          "firstSeenAt": "2026-11-14T20:58:35.357Z",
-          "lastSeenAt": "2026-11-14T20:58:35.357Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/ferias-em-setubal.es.html|2027-08-07|2027-08-13": {
           "source": "booking",
@@ -347152,45 +347191,45 @@
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Pestana Comporta",
-          "totalPrice": 4517.59,
-          "nightlyPrice": 645.37,
+          "totalPrice": 4065.25,
+          "nightlyPrice": 580.75,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palma",
+          "searchArea": "Setúbal",
           "distanceKm": 0.5684225470106744,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-29",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-18T06:24:55.913899Z",
-          "lastSeenAt": "2026-11-07T05:52:18.061468Z"
+          "lastSeenAt": "2026-11-16T00:05:55.394441Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:bluepillow:prop_6ac39119b56d7908495be61a|2027-07-22|2027-07-29": {
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Pestana Comporta",
-          "totalPrice": 4517.59,
-          "nightlyPrice": 645.37,
+          "totalPrice": 4065.25,
+          "nightlyPrice": 580.75,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palma",
+          "searchArea": "Setúbal",
           "distanceKm": 0.5684225470106744,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-29",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-18T06:24:55.913899Z",
-          "lastSeenAt": "2026-11-07T05:52:18.061468Z"
+          "lastSeenAt": "2026-11-16T00:05:55.394441Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-das-laranjeiras-grandola.es.html|2027-08-08|2027-08-14": {
           "source": "booking",
@@ -369128,9 +369167,9 @@
           "checkOut": "2027-08-18",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T20:56:27.044Z",
-          "firstSeenAt": "2026-11-14T20:58:35.357Z",
-          "lastSeenAt": "2026-11-14T20:58:35.357Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
         },
         "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-das-laranjeiras-grandola.es.html|2027-08-06|2027-08-11": {
           "source": "booking",
@@ -369767,6 +369806,110 @@
           "lastObservationCycle": "2026-11-15T20:20:13.266Z",
           "firstSeenAt": "2026-11-15T20:21:34.539Z",
           "lastSeenAt": "2026-11-15T20:21:34.539Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/kais-do-sol.es.html|2027-08-08|2027-08-14": {
+          "source": "booking",
+          "hotelName": "Kais do Sol",
+          "totalPrice": 314.15,
+          "nightlyPrice": 52.36,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
+          "distanceKm": 22.8,
+          "distanceVerified": false,
+          "checkIn": "2027-08-08",
+          "checkOut": "2027-08-14",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/campanilesetubal.es.html|2027-08-08|2027-08-14": {
+          "source": "booking",
+          "hotelName": "Campanile Setubal",
+          "totalPrice": 379.25,
+          "nightlyPrice": 63.21,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
+          "distanceKm": 2.3,
+          "distanceVerified": false,
+          "checkIn": "2027-08-08",
+          "checkOut": "2027-08-14",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:/hotel/pt/casa-roaz.es.html|2027-08-07|2027-08-13": {
+          "source": "booking",
+          "hotelName": "Casa Roaz",
+          "totalPrice": 485.98,
+          "nightlyPrice": 81,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Setúbal",
+          "distanceKm": 0.35,
+          "distanceVerified": false,
+          "checkIn": "2027-08-07",
+          "checkOut": "2027-08-13",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:26.715Z",
+          "lastSeenAt": "2026-11-16T00:06:26.715Z"
+        },
+        "787552ea-debd-4c0a-84dc-c1f5ae4d73a5:google_hotels:97f03725f37b95a0|2027-08-10|2027-08-15": {
+          "source": "google_hotels",
+          "provider": "Booking.com via Google Hotels",
+          "hotelName": "ibis Setubal",
+          "totalPrice": 535.84,
+          "nightlyPrice": 107.17,
+          "matches": true,
+          "priceVerified": true,
+          "priceBasis": "google_hotels_provider_all_inclusive_v8",
+          "priceEvidence": "provider_link",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:07:05.422Z",
+            "source": "google_hotels",
+            "provider": "Booking.com via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v8",
+            "priceEvidence": "provider_link",
+            "totalPrice": 535.84,
+            "nightlyPrice": 107.17,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:09:38.000Z",
+              "totalPrice": 535.84,
+              "nightlyPrice": 107.17,
+              "source": "google_hotels",
+              "provider": "Booking.com via Google Hotels"
+            }
+          ],
+          "searchArea": "Setúbal",
+          "distanceKm": 18.08,
+          "distanceVerified": true,
+          "checkIn": "2027-08-10",
+          "checkOut": "2027-08-15",
+          "confirmationCount": 2,
+          "publishedPrice": 535.84,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:09:38.000Z",
+          "lastSeenAt": "2026-11-16T00:09:38.000Z"
         }
       }
     },
@@ -371161,8 +371304,8 @@
     },
     "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13": {
       "fingerprint": "4eb9c697ea4c5bc1af9a",
-      "lastScanAt": "2026-11-15T20:20:13.266Z",
-      "lastSuccessAt": "2026-11-15T20:22:34.381315Z",
+      "lastScanAt": "2026-11-16T00:05:53.185Z",
+      "lastSuccessAt": "2026-11-16T00:08:18.537037Z",
       "nearbyLocations": [
         {
           "name": "Seixal",
@@ -371179,47 +371322,47 @@
         "agoda": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "trip": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "bluepillow": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         },
         "booking": {
-          "consecutiveErrors": 0,
+          "consecutiveErrors": 1,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
-          "lastError": ""
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
+          "lastError": "Booking ha solicitado una comprobación del navegador; no se publican precios."
         },
         "google_hotels": {
           "consecutiveErrors": 0,
           "suspendedUntil": "",
-          "lastSuccessAt": "2026-11-15T20:20:13.266Z",
-          "lastAttemptAt": "2026-11-15T20:20:13.266Z",
+          "lastSuccessAt": "2026-11-16T00:05:53.185Z",
+          "lastAttemptAt": "2026-11-16T00:05:53.185Z",
           "lastError": ""
         }
       },
       "dateSweepVersion": 4,
       "dateSweepMode": "range",
-      "dateSweepCursor": 28,
+      "dateSweepCursor": 32,
       "dateSweepStartDate": "2026-11-13",
       "sourceDateSweepCursors": {
-        "discovery": 28,
-        "booking": 60,
-        "google_hotels": 112
+        "discovery": 32,
+        "booking": 62,
+        "google_hotels": 113
       },
       "sourceDateSweepStartDates": {
         "discovery": "2026-11-13",
@@ -386530,8 +386673,8 @@
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2478.58,
-          "nightlyPrice": 413.1,
+          "totalPrice": 2268.58,
+          "nightlyPrice": 378.1,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -386544,9 +386687,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -386701,9 +386844,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -386767,9 +386910,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -386789,9 +386932,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -386841,8 +386984,8 @@
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2478.58,
-          "nightlyPrice": 413.1,
+          "totalPrice": 2268.58,
+          "nightlyPrice": 378.1,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -386855,16 +386998,16 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-21|2027-07-27": {
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "A-MO Sesimbra by Trip2Portugal",
-          "totalPrice": 2424.21,
-          "nightlyPrice": 404.04,
+          "totalPrice": 2432.32,
+          "nightlyPrice": 405.39,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -386877,9 +387020,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-21|2027-07-27": {
           "source": "trip",
@@ -386899,9 +387042,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:47:58.356686Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-21|2027-07-27": {
           "source": "trip",
@@ -387078,9 +387221,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:23.104929Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -387188,9 +387331,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:23.104929Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -387210,9 +387353,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:23.104929Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -387298,9 +387441,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:23.104929Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-21|2027-07-28": {
           "source": "trip",
@@ -387744,8 +387887,8 @@
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2102.15,
-          "nightlyPrice": 420.43,
+          "totalPrice": 1961.3,
+          "nightlyPrice": 392.26,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -387758,9 +387901,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -387908,9 +388051,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -387974,9 +388117,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -387996,9 +388139,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb75503e6d928972f5f088|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -388048,8 +388191,8 @@
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2102.15,
-          "nightlyPrice": 420.43,
+          "totalPrice": 1961.3,
+          "nightlyPrice": 392.26,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -388062,16 +388205,16 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-22|2027-07-27": {
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "A-MO Sesimbra by Trip2Portugal",
-          "totalPrice": 2142.51,
-          "nightlyPrice": 428.5,
+          "totalPrice": 2146.12,
+          "nightlyPrice": 429.22,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -388084,9 +388227,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-22|2027-07-27": {
           "source": "trip",
@@ -388106,9 +388249,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:45.271974Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-22|2027-07-27": {
           "source": "trip",
@@ -388136,8 +388279,8 @@
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2478.58,
-          "nightlyPrice": 413.1,
+          "totalPrice": 2268.58,
+          "nightlyPrice": 378.1,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -388150,9 +388293,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5df4ef6be24da45b685b9360|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -388307,9 +388450,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65cb2c103e6d928972f452e7|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -388351,9 +388494,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_5943942b7c00cb0e643a8d0f|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -388373,9 +388516,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_60afc7fbe1592a12ea696562|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -388447,8 +388590,8 @@
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2478.58,
-          "nightlyPrice": 413.1,
+          "totalPrice": 2268.58,
+          "nightlyPrice": 378.1,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -388461,16 +388604,16 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398e571c551970d3c7405ba|2027-07-22|2027-07-28": {
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "A-MO Sesimbra by Trip2Portugal",
-          "totalPrice": 2557.42,
-          "nightlyPrice": 426.24,
+          "totalPrice": 2513.32,
+          "nightlyPrice": 418.89,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -388483,9 +388626,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_5943942b7c00cb0e643a8d0f|2027-07-22|2027-07-28": {
           "source": "trip",
@@ -388505,9 +388648,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-20T21:48:48.083595Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_594394467c00cb0e643a9a82|2027-07-22|2027-07-28": {
           "source": "trip",
@@ -428762,9 +428905,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-21T19:57:32.489460Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-21|2027-07-28": {
           "source": "agoda",
@@ -428784,9 +428927,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-21T19:57:56.859517Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-do-batista-seixal.es.html|2027-08-08|2027-08-13": {
           "source": "booking",
@@ -429318,9 +429461,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-21T19:58:09.618573Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-22|2027-07-28": {
           "source": "agoda",
@@ -429340,9 +429483,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-08-21T19:58:12.887210Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_5eb4546f67a9d10d0425d58e|2027-07-22|2027-07-29": {
           "source": "agoda",
@@ -446377,8 +446520,8 @@
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/grapeescape.es.html|2027-07-25|2027-07-30": {
           "source": "booking",
           "hotelName": "Grape Escape, By Home Match",
-          "totalPrice": 667.72,
-          "nightlyPrice": 133.54,
+          "totalPrice": 672.6,
+          "nightlyPrice": 134.52,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -446391,9 +446534,9 @@
           "checkOut": "2027-07-30",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/apartment-in-palmela-close-to-beaches-and-mountains.es.html|2027-07-27|2027-08-01": {
           "source": "booking",
@@ -448814,22 +448957,12 @@
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/castle-house-palmela.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
           "hotelName": "Castle House",
-          "totalPrice": 389.02,
-          "nightlyPrice": 77.8,
+          "totalPrice": 366.6,
+          "nightlyPrice": 73.32,
           "matches": false,
-          "priceVerified": true,
-          "priceBasis": "booking_visible_final_total_v5",
-          "priceProof": {
-            "verifiedAt": "2026-10-02T22:07:14.138Z",
-            "source": "booking",
-            "provider": "",
-            "priceBasis": "booking_visible_final_total_v5",
-            "priceEvidence": "",
-            "totalPrice": 389.02,
-            "nightlyPrice": 77.8,
-            "confirmationCount": 0,
-            "taxesText": ""
-          },
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
           "priceHistory": [
             {
               "at": "2026-10-02T22:07:14.138Z",
@@ -448840,21 +448973,21 @@
             }
           ],
           "searchArea": "Palmela",
-          "distanceKm": 22.26,
-          "distanceVerified": true,
+          "distanceKm": 0.35,
+          "distanceVerified": false,
           "checkIn": "2027-08-01",
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/patio-da-memoria.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
           "hotelName": "Patio da Memoria",
-          "totalPrice": 471.7,
-          "nightlyPrice": 94.34,
+          "totalPrice": 424.53,
+          "nightlyPrice": 84.91,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -448867,9 +449000,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/quinta-laranjal-da-arrabida.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
@@ -448888,9 +449021,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/albani-hostel-palmela.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
@@ -448909,9 +449042,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/biovilla-sustentabilidade.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
@@ -448930,9 +449063,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/apartment-in-palmela-close-to-beaches-and-mountains.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
@@ -448951,9 +449084,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-08-25T04:21:01.570Z",
-          "firstSeenAt": "2026-08-25T04:22:00.973Z",
-          "lastSeenAt": "2026-08-25T04:22:00.973Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/pousada-castelo-de-palmela.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
@@ -479559,9 +479692,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:01:06.066Z",
-          "lastSeenAt": "2026-11-15T15:01:06.066Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/pousada-castelo-de-palmela.es.html|2027-07-25|2027-07-30": {
           "source": "booking",
@@ -499335,9 +499468,9 @@
           "checkOut": "2027-07-30",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/patio-da-memoria.es.html|2027-07-25|2027-07-30": {
           "source": "booking",
@@ -499440,9 +499573,9 @@
           "checkOut": "2027-07-30",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:01:06.066Z",
-          "lastSeenAt": "2026-11-15T15:01:06.066Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/grapeescape.es.html|2027-07-18|2027-07-23": {
           "source": "booking",
@@ -506303,9 +506436,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:36:33.723989Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -506325,9 +506458,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:36:33.723989Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -506452,9 +506585,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:37:46.157431Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -506474,9 +506607,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:37:46.157431Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -506518,9 +506651,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:38:32.203743Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -506540,9 +506673,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:38:32.203743Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -506584,9 +506717,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:38:36.105104Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_65ca0d89671b07d23c6bdb6b|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -506606,9 +506739,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-11T06:38:36.105104Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6398ff1cc551970d3c767896|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -518172,9 +518305,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-16T09:53:49.605098Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:google_hotels:832a9dbf04d88302|2027-08-02|2027-08-07": {
           "source": "google_hotels",
@@ -518290,9 +518423,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-16T09:55:05.711259Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594386f77c00cb0e6433d650|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -518312,9 +518445,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-16T09:55:36.396373Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594386f77c00cb0e6433d650|2027-07-22|2027-07-29": {
           "source": "bluepillow",
@@ -526720,9 +526853,9 @@
           "checkOut": "2027-08-01",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-syrah.es.html|2027-07-27|2027-08-01": {
           "source": "booking",
@@ -526741,9 +526874,9 @@
           "checkOut": "2027-08-01",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_62337e764c4d8d9b9b76c2b4|2027-07-15|2027-07-22": {
           "source": "bluepillow",
@@ -527814,8 +527947,8 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Lingon Silver Apartment, Wifi, AC, Balcony",
-          "totalPrice": 1215,
-          "nightlyPrice": 173.57,
+          "totalPrice": 1244,
+          "nightlyPrice": 177.71,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -527828,9 +527961,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-21T13:31:27.138010Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-das-videiras.es.html|2027-08-07|2027-08-12": {
           "source": "booking",
@@ -528300,9 +528433,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-09-21T13:31:38.013892Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_62337ccb4c4d8d9b9b76863f|2027-07-22|2027-07-29": {
           "source": "bluepillow",
@@ -538134,23 +538267,41 @@
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-em-palmela-setubal.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
           "hotelName": "Casa em Palmela - Setúbal",
-          "totalPrice": 394.81,
-          "nightlyPrice": 78.96,
+          "totalPrice": 295.8,
+          "nightlyPrice": 59.16,
           "matches": false,
-          "priceVerified": false,
-          "priceBasis": "booking_search_candidate",
-          "priceProof": null,
-          "priceHistory": [],
+          "priceVerified": true,
+          "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:06:12.050Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 295.8,
+            "nightlyPrice": 59.16,
+            "confirmationCount": 0,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:06:12.050Z",
+              "totalPrice": 295.8,
+              "nightlyPrice": 59.16,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
           "searchArea": "Palmela",
-          "distanceKm": 1.5,
-          "distanceVerified": false,
+          "distanceKm": 23.58,
+          "distanceVerified": true,
           "checkIn": "2027-08-01",
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-02T22:06:55.760Z",
-          "firstSeenAt": "2026-10-02T22:07:14.138Z",
-          "lastSeenAt": "2026-10-02T22:07:14.138Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/tiny-house-palmela.es.html|2027-07-25|2027-07-30": {
           "source": "booking",
@@ -540134,8 +540285,8 @@
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2855.01,
-          "nightlyPrice": 407.86,
+          "totalPrice": 2610.01,
+          "nightlyPrice": 372.86,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -540148,16 +540299,16 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-04T17:07:07.273223Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_61828a819e3163a56a277891|2027-07-21|2027-07-28": {
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Villa Santiago, Sesimbra charming Villa Escape",
-          "totalPrice": 2855.01,
-          "nightlyPrice": 407.86,
+          "totalPrice": 2610.01,
+          "nightlyPrice": 372.86,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -540170,9 +540321,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-04T17:07:07.273223Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_61828a819e3163a56a277891|2027-07-22|2027-07-29": {
           "source": "agoda",
@@ -549089,8 +549240,8 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Hotel dos Zimbros",
-          "totalPrice": 1229.52,
-          "nightlyPrice": 204.92,
+          "totalPrice": 1255.62,
+          "nightlyPrice": 209.27,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -549103,9 +549254,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:07.031245Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6a9181d6a4399b7bfeec466b|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -549125,9 +549276,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:07.031245Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6233b15c4c4d8d9b9b826e2a|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -549169,9 +549320,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:07.031245Z",
-          "lastSeenAt": "2026-11-07T05:52:19.230500Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-do-batista-seixal.es.html|2027-07-14|2027-07-20": {
           "source": "booking",
@@ -549345,8 +549496,8 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Hotel dos Zimbros",
-          "totalPrice": 1434.44,
-          "nightlyPrice": 204.92,
+          "totalPrice": 1464.89,
+          "nightlyPrice": 209.27,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -549359,9 +549510,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:35.373605Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6a9181d6a4399b7bfeec466b|2027-07-21|2027-07-28": {
           "source": "bluepillow",
@@ -549381,9 +549532,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:35.373605Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6a9181d6a4399b7bfeec466b|2027-07-21|2027-07-28": {
           "source": "trip",
@@ -549403,16 +549554,16 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:35.373605Z",
-          "lastSeenAt": "2026-11-07T05:53:46.693834Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-27": {
           "source": "agoda",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Hotel do Mar",
-          "totalPrice": 1470.11,
-          "nightlyPrice": 294.02,
+          "totalPrice": 824.38,
+          "nightlyPrice": 164.88,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -549425,16 +549576,16 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-18T01:23:49.340Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:41.562373Z",
-          "lastSeenAt": "2026-10-18T01:24:57.359772Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594392d87c00cb0e6439ecea|2027-07-22|2027-07-27": {
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Hotel dos Zimbros",
-          "totalPrice": 1024.6,
-          "nightlyPrice": 204.92,
+          "totalPrice": 1046.35,
+          "nightlyPrice": 209.27,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
@@ -549447,9 +549598,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:41.562373Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6a9181d6a4399b7bfeec466b|2027-07-22|2027-07-27": {
           "source": "bluepillow",
@@ -549469,16 +549620,16 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:41.562373Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-27": {
           "source": "bluepillow",
           "provider": "Agoda via Bluepillow",
           "hotelName": "Hotel do Mar",
-          "totalPrice": 1470.11,
-          "nightlyPrice": 294.02,
+          "totalPrice": 824.38,
+          "nightlyPrice": 164.88,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "agoda_total_with_tax_breakdown",
@@ -549491,9 +549642,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-18T01:23:49.340Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:41.562373Z",
-          "lastSeenAt": "2026-10-18T01:24:57.359772Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6a9181d6a4399b7bfeec466b|2027-07-22|2027-07-27": {
           "source": "trip",
@@ -549513,9 +549664,9 @@
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:41.562373Z",
-          "lastSeenAt": "2026-11-07T05:54:31.212894Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_594392d87c00cb0e6439ecea|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -549535,9 +549686,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:45.127731Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6a9181d6a4399b7bfeec466b|2027-07-22|2027-07-28": {
           "source": "bluepillow",
@@ -549557,9 +549708,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:45.127731Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6a9181d6a4399b7bfeec466b|2027-07-22|2027-07-28": {
           "source": "trip",
@@ -549579,9 +549730,9 @@
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-07T05:52:16.354Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-12T02:00:45.127731Z",
-          "lastSeenAt": "2026-11-07T05:54:35.738466Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_594394467c00cb0e643a9a82|2027-07-22|2027-07-29": {
           "source": "agoda",
@@ -559546,9 +559697,9 @@
           "checkOut": "2027-07-31",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-15T15:00:16.464Z",
-          "firstSeenAt": "2026-11-15T15:01:06.066Z",
-          "lastSeenAt": "2026-11-15T15:01:06.066Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-do-jardim-palmela.es.html|2027-07-20|2027-07-25": {
           "source": "booking",
@@ -565947,8 +566098,8 @@
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/new-charming-palmela-retreat-near-arrabida-amp-castle.es.html|2027-08-01|2027-08-06": {
           "source": "booking",
           "hotelName": "Charming Palmela Retreat near Arrábida&Castle",
-          "totalPrice": 1134.24,
-          "nightlyPrice": 226.85,
+          "totalPrice": 968.96,
+          "nightlyPrice": 193.79,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -565961,9 +566112,9 @@
           "checkOut": "2027-08-06",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-17T21:33:36.211Z",
-          "firstSeenAt": "2026-10-17T21:34:47.589Z",
-          "lastSeenAt": "2026-10-17T21:34:47.589Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-castelao.es.html|2027-07-28|2027-08-02": {
           "source": "booking",
@@ -566471,23 +566622,23 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1774.04,
-          "nightlyPrice": 295.67,
+          "totalPrice": 1621.32,
+          "nightlyPrice": 270.22,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Seixal",
+          "searchArea": "Palmela",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-21",
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-18T01:23:51.845916Z",
-          "lastSeenAt": "2026-10-29T21:15:54.806369Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6ac84073eb2861ac5a60ec37|2027-07-21|2027-07-27": {
           "source": "bluepillow",
@@ -566515,23 +566666,23 @@
           "source": "trip",
           "provider": "Trip.com via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1992.12,
-          "nightlyPrice": 332.02,
+          "totalPrice": 1688.85,
+          "nightlyPrice": 281.47,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Seixal",
+          "searchArea": "Palmela",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-21",
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-18T01:23:51.845916Z",
-          "lastSeenAt": "2026-10-29T21:15:54.806369Z"
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-em-palmela-setubal.es.html|2027-08-05|2027-08-10": {
           "source": "booking",
@@ -566697,9 +566848,9 @@
           "checkOut": "2027-08-12",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-30T01:09:43.960Z",
-          "firstSeenAt": "2026-10-30T01:10:01.226Z",
-          "lastSeenAt": "2026-10-30T01:10:01.226Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/nuovo-palmela.es.html|2027-08-09|2027-08-14": {
           "source": "booking",
@@ -576077,89 +576228,89 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 2068.7,
-          "nightlyPrice": 295.53,
+          "totalPrice": 1870.16,
+          "nightlyPrice": 267.17,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palmela",
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-21",
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-23T20:24:44.959518Z",
-          "lastSeenAt": "2026-10-29T21:16:34.505832Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6480856a1f174c2170a03355|2027-07-21|2027-07-28": {
           "source": "trip",
           "provider": "Trip.com via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 2323,
-          "nightlyPrice": 331.86,
+          "totalPrice": 1948.05,
+          "nightlyPrice": 278.29,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Palmela",
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-21",
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-23T20:24:44.959518Z",
-          "lastSeenAt": "2026-10-29T21:16:34.505832Z"
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6480856a1f174c2170a03355|2027-07-22|2027-07-27": {
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1459.59,
-          "nightlyPrice": 291.92,
+          "totalPrice": 1372.48,
+          "nightlyPrice": 274.5,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "searchArea": "Seixal",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-23T20:25:08.612653Z",
-          "lastSeenAt": "2026-10-29T21:16:40.031965Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6480856a1f174c2170a03355|2027-07-22|2027-07-27": {
           "source": "trip",
           "provider": "Trip.com via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1639.01,
-          "nightlyPrice": 327.8,
+          "totalPrice": 1429.65,
+          "nightlyPrice": 285.93,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "searchArea": "Seixal",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-27",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-23T20:25:08.612653Z",
-          "lastSeenAt": "2026-10-29T21:16:40.031965Z"
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6480856a1f174c2170a03355|2027-07-23|2027-07-30": {
           "source": "bluepillow",
@@ -582504,9 +582655,9 @@
           "checkOut": "2027-07-31",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/arrabida-cozy-house-in-palmela.es.html|2027-07-27|2027-08-01": {
           "source": "booking",
@@ -582546,15 +582697,15 @@
           "checkOut": "2027-08-01",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/pousada-castelo-de-palmela.es.html|2027-07-26|2027-07-31": {
           "source": "booking",
           "hotelName": "Pousada Castelo de Palmela",
-          "totalPrice": 723.58,
-          "nightlyPrice": 144.72,
+          "totalPrice": 742.45,
+          "nightlyPrice": 148.49,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "booking_search_candidate",
@@ -582567,9 +582718,9 @@
           "checkOut": "2027-07-31",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T09:20:56.399Z",
-          "firstSeenAt": "2026-10-29T09:21:14.691Z",
-          "lastSeenAt": "2026-10-29T09:21:14.691Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_648085821f174c2170a065ee|2027-07-19|2027-07-24": {
           "source": "bluepillow",
@@ -583188,23 +583339,23 @@
           "source": "bluepillow",
           "provider": "Expedia via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1754.25,
-          "nightlyPrice": 292.38,
+          "totalPrice": 1621.32,
+          "nightlyPrice": 270.22,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "expedia_total_with_tax_breakdown",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Seixal",
+          "searchArea": "Palmela",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-29T21:16:42.241042Z",
-          "lastSeenAt": "2026-10-29T21:16:42.241042Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_648085821f174c2170a065ee|2027-07-22|2027-07-28": {
           "source": "trip",
@@ -583232,23 +583383,23 @@
           "source": "trip",
           "provider": "Trip.com via Bluepillow",
           "hotelName": "Sesimbra Oceanfront Hotel - Preferred Hotels and Resorts",
-          "totalPrice": 1969.89,
-          "nightlyPrice": 328.32,
+          "totalPrice": 1688.85,
+          "nightlyPrice": 281.47,
           "matches": false,
           "priceVerified": false,
           "priceBasis": "trip_inclusive_total",
           "priceProof": null,
           "priceHistory": [],
-          "searchArea": "Seixal",
+          "searchArea": "Palmela",
           "distanceKm": 0.5030194977318515,
           "distanceVerified": true,
           "checkIn": "2027-07-22",
           "checkOut": "2027-07-28",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-10-29T21:15:51.304Z",
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
           "firstSeenAt": "2026-10-29T21:16:42.241042Z",
-          "lastSeenAt": "2026-10-29T21:16:42.241042Z"
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_648085821f174c2170a065ee|2027-07-22|2027-07-29": {
           "source": "bluepillow",
@@ -600618,9 +600769,9 @@
           "checkOut": "2027-08-01",
           "confirmationCount": 0,
           "publishedPrice": 0,
-          "lastObservationCycle": "2026-11-14T10:07:59.711Z",
-          "firstSeenAt": "2026-11-14T10:08:21.129Z",
-          "lastSeenAt": "2026-11-14T10:08:21.129Z"
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
         },
         "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-do-papagaio.es.html|2027-07-21|2027-07-26": {
           "source": "booking",
@@ -601541,6 +601692,410 @@
           "lastObservationCycle": "2026-11-15T20:20:13.266Z",
           "firstSeenAt": "2026-11-15T20:22:34.381315Z",
           "lastSeenAt": "2026-11-15T20:22:34.381315Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-27": {
+          "source": "agoda",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 993.88,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-27",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:05:57.104238Z",
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-27": {
+          "source": "bluepillow",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 993.88,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-27",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:05:57.104238Z",
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-27": {
+          "source": "trip",
+          "provider": "Trip.com via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1513.2,
+          "nightlyPrice": 252.2,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-27",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:05:57.104238Z",
+          "lastSeenAt": "2026-11-16T00:05:57.104238Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/dona-joaninha.es.html|2027-08-01|2027-08-06": {
+          "source": "booking",
+          "hotelName": "Jardim da Joaninha",
+          "totalPrice": 343.44,
+          "nightlyPrice": 68.69,
+          "matches": false,
+          "priceVerified": true,
+          "priceBasis": "booking_visible_final_total_v5",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:06:12.050Z",
+            "source": "booking",
+            "provider": "",
+            "priceBasis": "booking_visible_final_total_v5",
+            "priceEvidence": "",
+            "totalPrice": 343.44,
+            "nightlyPrice": 68.69,
+            "confirmationCount": 0,
+            "taxesText": ""
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:06:12.050Z",
+              "totalPrice": 343.44,
+              "nightlyPrice": 68.69,
+              "source": "booking",
+              "provider": ""
+            }
+          ],
+          "searchArea": "Palmela",
+          "distanceKm": 36.32,
+          "distanceVerified": true,
+          "checkIn": "2027-08-01",
+          "checkOut": "2027-08-06",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/downtown-palmela.es.html|2027-08-01|2027-08-06": {
+          "source": "booking",
+          "hotelName": "Downtown Palmela",
+          "totalPrice": 450,
+          "nightlyPrice": 90,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 1.2,
+          "distanceVerified": false,
+          "checkIn": "2027-08-01",
+          "checkOut": "2027-08-06",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-arinto.es.html|2027-08-03|2027-08-08": {
+          "source": "booking",
+          "hotelName": "Casa Arinto",
+          "totalPrice": 817.21,
+          "nightlyPrice": 163.44,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 5.5,
+          "distanceVerified": false,
+          "checkIn": "2027-08-03",
+          "checkOut": "2027-08-08",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:/hotel/pt/casa-verdelho.es.html|2027-07-26|2027-07-31": {
+          "source": "booking",
+          "hotelName": "Casa Verdelho",
+          "totalPrice": 1120.36,
+          "nightlyPrice": 224.07,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "booking_search_candidate",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 5.5,
+          "distanceVerified": false,
+          "checkIn": "2027-07-26",
+          "checkOut": "2027-07-31",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:06:12.050Z",
+          "lastSeenAt": "2026-11-16T00:06:12.050Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:google_hotels:832a9dbf04d88302|2027-08-18|2027-08-24": {
+          "source": "google_hotels",
+          "provider": "Super.com via Google Hotels",
+          "hotelName": "B&B HOTEL Sado Setúbal",
+          "totalPrice": 642,
+          "nightlyPrice": 107,
+          "matches": false,
+          "priceVerified": true,
+          "priceBasis": "google_hotels_provider_all_inclusive_v8",
+          "priceEvidence": "provider_link",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:07:04.785Z",
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v8",
+            "priceEvidence": "provider_link",
+            "totalPrice": 642,
+            "nightlyPrice": 107,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:07:51.131Z",
+              "totalPrice": 642,
+              "nightlyPrice": 107,
+              "source": "google_hotels",
+              "provider": "Super.com via Google Hotels"
+            }
+          ],
+          "searchArea": "Palmela",
+          "distanceKm": 19.86,
+          "distanceVerified": true,
+          "checkIn": "2027-08-18",
+          "checkOut": "2027-08-24",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:07:51.131Z",
+          "lastSeenAt": "2026-11-16T00:07:51.131Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:google_hotels:5049e670441f02da|2027-08-18|2027-08-24": {
+          "source": "google_hotels",
+          "provider": "Super.com via Google Hotels",
+          "hotelName": "Hotel Laitau",
+          "totalPrice": 701.59,
+          "nightlyPrice": 116.93,
+          "matches": false,
+          "priceVerified": true,
+          "priceBasis": "google_hotels_provider_all_inclusive_v8",
+          "priceEvidence": "provider_link",
+          "priceProof": {
+            "verifiedAt": "2026-11-16T00:07:51.131Z",
+            "source": "google_hotels",
+            "provider": "Super.com via Google Hotels",
+            "priceBasis": "google_hotels_provider_all_inclusive_v8",
+            "priceEvidence": "provider_link",
+            "totalPrice": 701.59,
+            "nightlyPrice": 116.93,
+            "confirmationCount": 2,
+            "taxesText": "Impuestos y tasas incluidos segun Google Hotels"
+          },
+          "priceHistory": [
+            {
+              "at": "2026-11-16T00:07:51.131Z",
+              "totalPrice": 701.59,
+              "nightlyPrice": 116.93,
+              "source": "google_hotels",
+              "provider": "Super.com via Google Hotels"
+            }
+          ],
+          "searchArea": "Palmela",
+          "distanceKm": 19.98,
+          "distanceVerified": true,
+          "checkIn": "2027-08-18",
+          "checkOut": "2027-08-24",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:07:51.131Z",
+          "lastSeenAt": "2026-11-16T00:07:51.131Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-28": {
+          "source": "agoda",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1159.53,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:07:52.995274Z",
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-28": {
+          "source": "bluepillow",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1159.53,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:07:52.995274Z",
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6182887a9e3163a56a24fd5b|2027-07-21|2027-07-28": {
+          "source": "trip",
+          "provider": "Trip.com via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1760.55,
+          "nightlyPrice": 251.51,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Sesimbra, Distrito de Setúbal, Portugal",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-21",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:07:52.995274Z",
+          "lastSeenAt": "2026-11-16T00:07:52.995274Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-27": {
+          "source": "trip",
+          "provider": "Trip.com via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1265.85,
+          "nightlyPrice": 253.17,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Seixal",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-27",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:08:16.158646Z",
+          "lastSeenAt": "2026-11-16T00:08:16.158646Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:agoda:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-28": {
+          "source": "agoda",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 993.88,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:08:18.537037Z",
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:bluepillow:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-28": {
+          "source": "bluepillow",
+          "provider": "Agoda via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 993.88,
+          "nightlyPrice": 165.65,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "agoda_total_with_tax_breakdown",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:08:18.537037Z",
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
+        },
+        "2ce0ed25-2192-4dc4-a66c-3dc3176c6d13:trip:prop_6182887a9e3163a56a24fd5b|2027-07-22|2027-07-28": {
+          "source": "trip",
+          "provider": "Trip.com via Bluepillow",
+          "hotelName": "Hotel do Mar",
+          "totalPrice": 1513.2,
+          "nightlyPrice": 252.2,
+          "matches": false,
+          "priceVerified": false,
+          "priceBasis": "trip_inclusive_total",
+          "priceProof": null,
+          "priceHistory": [],
+          "searchArea": "Palmela",
+          "distanceKm": 0.512645381421137,
+          "distanceVerified": true,
+          "checkIn": "2027-07-22",
+          "checkOut": "2027-07-28",
+          "confirmationCount": 0,
+          "publishedPrice": 0,
+          "lastObservationCycle": "2026-11-16T00:05:53.185Z",
+          "firstSeenAt": "2026-11-16T00:08:18.537037Z",
+          "lastSeenAt": "2026-11-16T00:08:18.537037Z"
         }
       }
     },
@@ -602964,42 +603519,6 @@
     "updateError": "",
     "sentAlerts": [
       {
-        "id": "d5ee16c6be3dcf30472a5168",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "25c095474e6027bdede0fca9",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "544cd2d67f49fa2435617475",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "93c15aec1b68b41b10d49e71",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "b5a138af47129f3bfe7872c2",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "ed92df9a21b1a33dfe94e84f",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "3652d12811ed9ee9ee13a1cf",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "491719a40355a1a411e54e0d",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
-        "id": "2f70e68bbd2b8f6bc4ddd03c",
-        "sentAt": "2026-10-01T20:52:45.876Z"
-      },
-      {
         "id": "733e4e93a8277aee2290f909",
         "sentAt": "2026-10-02T00:24:33.048Z"
       },
@@ -603370,6 +603889,10 @@
       {
         "id": "00c03a2bc987bf62d8440e1a",
         "sentAt": "2026-11-15T20:22:44.188Z"
+      },
+      {
+        "id": "7ea5178b467df8880b7d00cb",
+        "sentAt": "2026-11-16T00:09:39.008Z"
       }
     ],
     "hotelActions": {
@@ -603576,13 +604099,6 @@
         "source": "google_hotels",
         "registeredAt": "2026-11-07T05:54:38.211Z"
       },
-      "6ffe097fcf2a9583": {
-        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
-        "monitorName": "Comporta",
-        "hotelName": "ibis Setubal",
-        "source": "google_hotels",
-        "registeredAt": "2026-11-13T22:57:03.550Z"
-      },
       "b149f5349e8e58f9": {
         "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
         "monitorName": "Comporta",
@@ -603596,6 +604112,13 @@
         "hotelName": "B&B HOTEL Sado Setúbal",
         "source": "google_hotels",
         "registeredAt": "2026-11-15T20:22:44.188Z"
+      },
+      "6ffe097fcf2a9583": {
+        "monitorId": "787552ea-debd-4c0a-84dc-c1f5ae4d73a5",
+        "monitorName": "Comporta",
+        "hotelName": "ibis Setubal",
+        "source": "google_hotels",
+        "registeredAt": "2026-11-16T00:09:39.008Z"
       }
     },
     "discardButtonUiVersion": 2,
@@ -606579,15 +607102,15 @@
     }
   },
   "health": {
-    "state": "healthy",
-    "startedAt": "2026-11-15T20:20:13.266Z",
-    "lastCompletedAt": "2026-11-15T20:20:13.266Z",
-    "previousCompletedAt": "2026-11-15T15:00:16.464Z",
-    "gapMinutes": 320,
+    "state": "partial",
+    "startedAt": "2026-11-16T00:05:53.185Z",
+    "lastCompletedAt": "2026-11-16T00:05:53.185Z",
+    "previousCompletedAt": "2026-11-15T20:20:13.266Z",
+    "gapMinutes": 226,
     "recoveredAfterInterruption": true,
-    "durationMs": 151267,
-    "completedNormally": true,
+    "durationMs": 226313,
+    "completedNormally": false,
     "monitorsProcessed": 3,
-    "searchesCompleted": 36
+    "searchesCompleted": 26
   }
 }
